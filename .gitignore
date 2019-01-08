@@ -1,0 +1,12 @@
+.cache
+.DS_Store
+.idea
+.npm
+*.log
+coverage/
+logs
+node_modules/
+npm-debug.log*
+stats.html
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,14 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "plugins": ["jsx-a11y"],
+  "extends": [
+    "react-app",
+    "eslint-config-prettier",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "env": {
+    "browser": true
+  }
+}

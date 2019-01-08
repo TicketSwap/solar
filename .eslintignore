@@ -1,0 +1,7 @@
+node_modules
+.docz
+etc
+.circleci
+.github
+build
+dist
