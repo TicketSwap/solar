@@ -17,9 +17,9 @@ storiesOf('MenuButton', module)
         <MenuButton
           items={items}
           itemKey={'name'}
-          onSelect={index => console.log(items[index].value)}
           downShiftProps={{
             itemToString: item => (item ? item.name : ''),
+            onChange: item => console.log(item),
             initialSelectedItem: items[0],
           }}
         />
