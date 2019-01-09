@@ -30,7 +30,6 @@ export const MenuButton = ({
   dropdownPosition,
   itemKey,
   items,
-  onSelect,
   ...props
 }) => (
   <Downshift {...downShiftProps}>
@@ -90,7 +89,6 @@ export const MenuButton = ({
                         <Item
                           {...getItemProps({
                             key: item[itemKey],
-                            onClick: () => onSelect(index),
                             index,
                             item,
                             highlighted:
@@ -118,5 +116,4 @@ MenuButton.propTypes = {
   dropdownPosition: PropTypes.string,
   itemKey: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
-  onSelect: PropTypes.func,
 }
