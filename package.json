@@ -17,7 +17,8 @@
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "format": "npm run prettier -- --write",
     "validate": "npm run test && npm run prettier -- --list-different",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "peerDependencies": {
     "downshift": "^3.1.12",
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@storybook/react": "^4.1.6",
+    "@storybook/storybook-deployer": "^2.8.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
     "commitizen": "^3.0.5",
