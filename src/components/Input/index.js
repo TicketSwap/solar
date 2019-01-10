@@ -117,6 +117,7 @@ const Label = styled.label`
 const LabelText = styled.span`
   display: inline-block;
   color: ${color.spaceMedium};
+  margin-bottom: ${space[16]};
 `
 
 export const Adornment = styled.span`
