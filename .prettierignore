@@ -1,8 +1,4 @@
-.circleci
-docs
 .github
-build
 coverage/
-dist
-etc
+dist/
 node_modules
