@@ -9,7 +9,6 @@
     "prepublishOnly": "npm run build",
     "lint": "eslint src",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "storybook:build": "build-storybook -c .storybook -o docs",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|scss|ts|tsx|md|mdx|graphql)\"",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
@@ -17,8 +16,7 @@
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "format": "npm run prettier -- --write",
     "validate": "npm run test && npm run prettier -- --list-different",
-    "semantic-release": "semantic-release",
-    "deploy-storybook": "storybook-to-ghpages"
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "downshift": "^3.1.12",
