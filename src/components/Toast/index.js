@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Transition, Spring, animated } from 'react-spring'
 import { Portal } from '../Portal'
-import { space, shadow, device, color } from '../../theme'
+import { space, shadow, device, color, radius } from '../../theme'
 
 const Container = styled.div`
   position: fixed;
@@ -27,7 +27,7 @@ const Item = styled(animated.div)`
 `
 
 export const Toast = styled.div`
-  border-radius: ${space[8]};
+  border-radius: ${radius.lg};
   background-color: ${color.stardustLight};
   box-shadow: ${shadow.strong};
   padding: ${space[16]};

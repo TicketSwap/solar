@@ -6,6 +6,7 @@ import { Spinner } from '../Spinner'
 import {
   color,
   space,
+  radius,
   fontSize,
   fontWeight,
   lineHeight,
@@ -27,7 +28,7 @@ const StyledButton = styled.button`
   background-color: ${color.earth};
   color: white;
   line-height: ${lineHeight.solid};
-  border-radius: ${props => (props.rounded ? space[32] : space[4])};
+  border-radius: ${props => (props.rounded ? space[32] : radius.md)};
   font-size: ${props => (props.size === 'small' ? fontSize[16] : fontSize[18])};
   width: ${props =>
     props.width === 'full'

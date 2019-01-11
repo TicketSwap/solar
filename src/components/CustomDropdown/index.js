@@ -9,6 +9,7 @@ import {
   fontWeight,
   lineHeight,
   transition,
+  radius,
 } from '../../theme'
 
 export const Menu = styled.ul`
@@ -19,7 +20,7 @@ export const Menu = styled.ul`
   list-style: none;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: ${space[8]};
+  border-radius: ${radius.md};
   display: block;
   box-shadow: ${shadow.strong};
   background-color: white;
@@ -46,7 +47,7 @@ export const Item = styled.li`
   font-size: ${fontSize[24]};
   line-height: ${lineHeight.title};
   padding: ${space[4]} ${space[8]};
-  border-radius: ${space[4]};
+  border-radius: ${radius.sm};
   font-weight: ${fontWeight.regular};
   white-space: nowrap;
   color: ${props =>
