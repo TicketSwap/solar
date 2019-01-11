@@ -3,10 +3,10 @@ module.exports = {
   collectCoverageFrom: ['**/src/**/*.js'],
   coverageThreshold: {
     global: {
-      statements: 1,
-      branches: 1,
-      functions: 1,
-      lines: 1,
+      statements: 35,
+      branches: 35,
+      functions: 35,
+      lines: 35,
     },
   },
   projects: ['./test/jest.lint.js', './test/jest.client.js'],

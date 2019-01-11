@@ -15,7 +15,6 @@ describe('Banner', () => {
         <p>Description about the event</p>
       </Banner>
     )
-    const el = container.firstChild
-    expect(el).toBeInTheDocument()
+    expect(container.firstChild).toBeInTheDocument()
   })
 })
