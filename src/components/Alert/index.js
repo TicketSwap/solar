@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { color, space, fontWeight, transition } from '../../theme'
+import { color, space, fontWeight, transition, radius } from '../../theme'
 import { Icon } from '../Icon'
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
       : props.variant === 'warning'
       ? color.sunLightest
       : color.earthLightest};
-  border-radius: ${space[4]};
+  border-radius: ${radius.md};
   min-height: ${space[56]};
   display: flex;
   align-items: flex-start;

@@ -4,7 +4,14 @@ import { Transition } from 'react-spring'
 import PropTypes from 'prop-types'
 import { Portal } from '../Portal'
 import { callAll, stopPropagation } from '../../utils'
-import { space, device, sizes, fontWeight, easingFunctions } from '../../theme'
+import {
+  space,
+  device,
+  sizes,
+  fontWeight,
+  easingFunctions,
+  radius,
+} from '../../theme'
 
 const Overlay = styled.div`
   position: fixed;
@@ -29,11 +36,11 @@ const Overlay = styled.div`
 const Content = styled.div`
   width: 100%;
   background-color: white;
-  border-radius: ${space[8]} ${space[8]} 0 0;
+  border-radius: ${radius.lg} ${radius.lg} 0 0;
 
   @media ${device.mobileL} {
     width: ${sizes.mobileL / 16}em;
-    border-radius: ${space[8]};
+    border-radius: ${radius.lg};
   }
 `
 

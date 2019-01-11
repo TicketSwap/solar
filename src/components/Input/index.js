@@ -11,6 +11,7 @@ import {
   transition,
   fontSize,
   lineHeight,
+  radius,
 } from '../../theme'
 
 const InputWrapper = styled.div`
@@ -66,7 +67,7 @@ const FieldWrapper = styled.div`
 const Field = styled.input`
   font-family: inherit;
   background-color: ${color.stardust};
-  border-radius: ${props => (props.rounded ? space[32] : space[4])};
+  border-radius: ${props => (props.rounded ? space[32] : radius.md)};
   width: 100%;
   font-size: ${fontSize[18]};
   line-height: ${props =>

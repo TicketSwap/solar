@@ -87,6 +87,12 @@ export const space = {
   768: '48rem',
 }
 
+export const radius = {
+  sm: space[4],
+  md: space[8],
+  lg: space[16],
+}
+
 export const easing = {
   easeInQuad: 'cubic-bezier(.55, .085, .68, .53)',
   easeInCubic: 'cubic-bezier(.550, .055, .675, .19)',
