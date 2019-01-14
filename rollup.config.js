@@ -5,7 +5,7 @@ import progress from 'rollup-plugin-progress'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
 import visualizer from 'rollup-plugin-visualizer'
-import minify from 'rollup-plugin-babel-minify'
+import { terser } from 'rollup-plugin-terser'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -55,7 +55,7 @@ export default {
         process.env.NODE_ENV || 'development'
       ),
     }),
-    isProduction && minify(),
+    isProduction && terser(),
     visualizer(),
     filesize(),
   ],
