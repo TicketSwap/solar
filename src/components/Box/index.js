@@ -314,18 +314,18 @@ export const Box = styled.div`
 
   ${props =>
     generateResponsiveStyles('max-width', {
-      base: props.maxWidth,
-      small: props.maxWidthSm,
-      medium: props.maxWidthMd,
-      large: props.maxWidthLg,
+      base: props.maxWidth && space[props.maxWidth],
+      small: props.maxWidthSm && space[props.maxWidthSm],
+      medium: props.maxWidthMd && space[props.maxWidthMd],
+      large: props.maxWidthLg && space[props.maxWidthLg],
     })}
 
   ${props =>
     generateResponsiveStyles('min-width', {
-      base: props.minWidth,
-      small: props.minWidthSm,
-      medium: props.minWidthMd,
-      large: props.minWidthLg,
+      base: props.minWidth && space[props.minWidth],
+      small: props.minWidthSm && space[props.minWidthSm],
+      medium: props.minWidthMd && space[props.minWidthMd],
+      large: props.minWidthLg && space[props.minWidthLg],
     })}
 `
 
