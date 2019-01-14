@@ -106,8 +106,8 @@ const Field = styled.input`
 
   :-webkit-autofill,
   &.webkit-autofill {
-    background-color: #fefde5 !important;
-    border: 1px solid #fffb97 !important;
+    background-color: ${color.stardust} !important;
+    border: 1px solid ${color.stardust} !important;
   }
 `
 
