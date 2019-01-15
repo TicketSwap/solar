@@ -140,6 +140,7 @@ export class Dialog extends Component {
   static propTypes = {
     showOnMount: PropTypes.bool,
     defaultOn: PropTypes.bool,
+    persist: PropTypes.bool,
     on: PropTypes.bool,
     onToggle: PropTypes.func,
     children: PropTypes.oneOfType([PropTypes.func, PropTypes.array]).isRequired,
@@ -174,12 +175,11 @@ export class Dialog extends Component {
   getWindowProps = (props = {}) => ({
     on: this.getOn(),
     hide: this.hide,
-    onClick: callAll(props.onClick, this.toggle),
-    onKeyDown: callAll(
-      props.onKeyDown,
-      ({ keyCode }) => keyCode === 27 && this.hide()
-    ),
+    persist: this.props.persist,
     ...props,
+    onClick: this.props.persist
+      ? props.onClick
+      : callAll(props.onClick, this.toggle),
   })
 
   getStateAndHelpers() {
@@ -225,10 +225,12 @@ export class DialogWindow extends Component {
   handleHide = ({ keyCode }) => keyCode === 27 && this.props.hide()
 
   componentDidMount() {
+    if (this.props.persist) return false
     document.addEventListener('keydown', this.handleHide, false)
   }
 
   componentWillUnmount() {
+    if (this.props.persist) return false
     document.removeEventListener('keydown', this.handleHide, false)
   }
 
