@@ -105,11 +105,13 @@ const MyDialog = ({ children, ...props }) => (
         <DialogWindow {...getWindowProps()}>
           <DialogHeader>
             Dialog Title
-            <DialogAdornment right>
-              <button onClick={hide}>
-                <Icon glyph="close" size={24} />
-              </button>
-            </DialogAdornment>
+            {!props.persist && (
+              <DialogAdornment right>
+                <button onClick={hide}>
+                  <Icon glyph="close" size={24} />
+                </button>
+              </DialogAdornment>
+            )}
           </DialogHeader>
           <DialogBody>{children}</DialogBody>
         </DialogWindow>
@@ -122,6 +124,11 @@ storiesOf('Dialog', module)
   .add('basic', () => <MyDialog>Body</MyDialog>)
   .add('default on', () => <MyDialog defaultOn>Body</MyDialog>)
   .add('show on mount', () => <MyDialog showOnMount>Body</MyDialog>)
+  .add('show on mount and persist', () => (
+    <MyDialog showOnMount persist>
+      Body
+    </MyDialog>
+  ))
   .add('with long body', () => (
     <MyDialog>
       <Box display="grid" gridGap={16}>
