@@ -53,6 +53,7 @@ storiesOf('Input', module)
   ))
   .add('with clear button', () => (
     <Input
+      type="search"
       value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       id="id"
       label="Label"

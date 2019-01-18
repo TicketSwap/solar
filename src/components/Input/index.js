@@ -85,6 +85,14 @@ const Field = styled.input`
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
 
+  &[type='search'] {
+    appearance: textfield;
+  }
+
+  &[type='search']::-webkit-search-decoration {
+    appearance: none;
+  }
+
   &:focus,
   &.focus {
     outline: none;
@@ -93,18 +101,21 @@ const Field = styled.input`
   }
 
   &::placeholder {
-    color: ${color.spaceLighter};
+    color: ${color.spaceLight};
   }
 
   &.invalid {
     color: ${color.mars} !important;
   }
 
-  ::-webkit-search-cancel-button {
+  &::-webkit-search-cancel-button {
     display: none;
   }
 
-  :-webkit-autofill,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active,
   &.webkit-autofill {
     background-color: ${color.stardust} !important;
     border: 1px solid ${color.stardust} !important;
@@ -118,7 +129,7 @@ const Label = styled.label`
 const LabelText = styled.span`
   display: inline-block;
   color: ${color.spaceMedium};
-  margin-bottom: ${space[8]};
+  margin-bottom: ${space[4]};
 `
 
 export const Adornment = styled.span`
