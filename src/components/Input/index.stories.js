@@ -5,6 +5,15 @@ import { Icon } from '../Icon'
 
 storiesOf('Input', module)
   .add('basic', () => <Input id="fname" label="First name" />)
+  .add('webkit-autofill', () => (
+    <Input
+      className="webkit-autofill"
+      id="fname"
+      label="First name"
+      value="Philipp"
+      onReset={() => console.log('onClear')}
+    />
+  ))
   .add('with hidden label', () => (
     <Input id="fname" label="First name" hideLabel />
   ))

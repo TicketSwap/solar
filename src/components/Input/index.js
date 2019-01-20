@@ -21,49 +21,6 @@ const InputWrapper = styled.div`
   align-items: center;
 `
 
-const FieldWrapper = styled.div`
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    pointer-events: none;
-    width: ${space[96]};
-    position: absolute;
-    border-radius: ${space[32]};
-    top: 1px;
-    right: 1px;
-    bottom: 1px;
-    transition: opacity ${transition};
-    display: ${props => (props.showTextMask ? 'block' : 'none')};
-  }
-
-  &::before {
-    opacity: 1;
-    background-image: linear-gradient(
-      to right,
-      rgba(245, 245, 246, 0),
-      rgba(245, 245, 246, 1) 50%,
-      rgba(245, 245, 246, 1) 100%
-    );
-  }
-
-  &::after {
-    opacity: 0;
-    background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 1) 100%
-    );
-  }
-
-  &:focus-within::after {
-    opacity: 1;
-  }
-`
-
 const Field = styled.input`
   font-family: inherit;
   background-color: ${color.stardust};
@@ -76,7 +33,8 @@ const Field = styled.input`
   padding-top: ${props => (props.as === 'textarea' ? space[12] : 0)};
   padding-bottom: ${props => (props.as === 'textarea' ? space[12] : 0)};
   padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
-  padding-right: ${space[16]};
+  padding-right: ${props =>
+    props.onReset || props.loading ? space[48] : space[16]};
   color: ${props => (props.invalid ? color.mars : color.space)};
   border: 1px solid ${color.stardust};
   box-shadow: none;
@@ -84,10 +42,6 @@ const Field = styled.input`
   appearance: none;
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
-
-  &[type='search'] {
-    appearance: textfield;
-  }
 
   &[type='search']::-webkit-search-decoration {
     appearance: none;
@@ -117,8 +71,8 @@ const Field = styled.input`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active,
   &.webkit-autofill {
-    background-color: ${color.stardust} !important;
-    border: 1px solid ${color.stardust} !important;
+    background-color: #fefde5 !important;
+    border: 1px solid #fffb97 !important;
   }
 `
 
@@ -160,7 +114,7 @@ const ResetButton = styled.button`
 `
 
 export const Input = React.forwardRef(
-  ({ id, label, hideLabel, labelProps, onReset, ...props }, ref) => (
+  ({ id, label, hideLabel, labelProps, ...props }, ref) => (
     <Label htmlFor={!labelProps && id} {...labelProps}>
       {hideLabel ? (
         <VisuallyHidden>
@@ -173,17 +127,15 @@ export const Input = React.forwardRef(
         {props.leftAdornment ? (
           <Adornment left>{props.leftAdornment}</Adornment>
         ) : null}
-        <FieldWrapper showTextMask={props.loading || onReset}>
-          <Field ref={ref} id={id} {...props} />
-        </FieldWrapper>
+        <Field ref={ref} id={id} {...props} />
         {props.loading ? (
           <Adornment right>
             <Spinner size={24} />
           </Adornment>
-        ) : props.value && props.value.length && onReset ? (
+        ) : props.value && props.value.length && props.onReset ? (
           <Adornment right>
             <ResetButton
-              onClick={onReset}
+              onClick={props.onReset}
               type="button"
               data-testid="reset-button"
             >
