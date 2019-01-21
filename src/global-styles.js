@@ -77,6 +77,8 @@ export const GlobalStyles = createGlobalStyle`
   abbr,
   acronym,
   blockquote,
+  input,
+  textarea,
   q {
     hyphens: none;
   }
