@@ -38,6 +38,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-plugin-styled-components": "^1.10.0",
     "commitizen": "^3.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "downshift": "^3.1.12",
