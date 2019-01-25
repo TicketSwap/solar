@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
+import { Image } from '../Image'
 
 const Wrapper = styled.div`
   vertical-align: middle;
@@ -25,10 +26,7 @@ const imageStyles = css`
   width: 100%;
 `
 
-const Image = styled.img.attrs({
-  alt: 'Avatar',
-  'data-testid': 'image',
-})`
+const StyledImage = styled(Image)`
   ${imageStyles};
 `
 
@@ -61,7 +59,11 @@ export const Placeholder = () => (
 
 export const Avatar = ({ size, src, ...props }) => (
   <Wrapper size={size} {...props}>
-    {src ? <Image src={src} /> : <Placeholder />}
+    {src ? (
+      <StyledImage src={src} alt="Avatar" data-testid="image" />
+    ) : (
+      <Placeholder />
+    )}
   </Wrapper>
 )
 
