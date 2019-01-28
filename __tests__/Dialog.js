@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
-import 'jest-dom/extend-expect'
 import { Button } from '../src/components/Button'
 import { Icon } from '../src/components/Icon'
 import {
@@ -44,7 +43,7 @@ describe('Dialog', () => {
     expect(getByText(/show dialog/i)).toBeInTheDocument()
   })
 
-  it('renders overlay, window, header, body and footer when clicking the toggle', async () => {
+  it('renders overlay, window, header, body and footer when clicking the toggle', () => {
     const { getByText, getByTestId } = render(<MyDialog>Body</MyDialog>)
     fireEvent.click(getByText(/show dialog/i))
     expect(getByTestId('dialog-overlay')).toBeInTheDocument()
