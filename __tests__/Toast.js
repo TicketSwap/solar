@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
-import 'jest-dom/extend-expect'
 import { Button } from '../src/components/Button'
 import { ToastProvider, ToastConsumer, Toast } from '../src/components/Toast'
 

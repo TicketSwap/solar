@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-testing-library'
-import 'jest-dom/extend-expect'
 import { BasicCard } from '../src/components/BasicCard'
 
 describe('BasicCard', () => {
