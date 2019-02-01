@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
          url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff') format('woff');
     font-weight: ${fontWeight.regular};
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
   }
 
   @font-face {
@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
          url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff') format('woff');
     font-weight: ${fontWeight.regular};
     font-style: italic;
-    font-display: fallback;
+    font-display: swap;
   }
 
   @font-face {
@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
          url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff') format('woff');
     font-weight: ${fontWeight.semiBold};
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
   }
 
   @font-face {
@@ -35,7 +35,7 @@ export const GlobalStyles = createGlobalStyle`
          url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff') format('woff');
     font-weight: ${fontWeight.bold};
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
   }
 
   *, *:before, *:after {
@@ -44,13 +44,10 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* https://twitter.com/LeaVerou/status/1045768279753666562 */
-  *:focus:not(:focus-visible) { outline: none }
-
   body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
     font-weight: ${fontWeight.regular};
     line-height: ${lineHeight.copy};
     font-size: ${fontSize[16]};
@@ -59,10 +56,6 @@ export const GlobalStyles = createGlobalStyle`
     @media ${device.tablet} {
       font-size: ${fontSize[18]};
     }
-  }
-
-  .fonts-loaded body {
-    font-family: 'Proxima Nova', sans-serif;
   }
 
   code,
