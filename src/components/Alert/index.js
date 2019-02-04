@@ -45,7 +45,6 @@ const Main = styled.div`
 `
 
 const Message = styled.p`
-  margin: 0;
   color: ${color.space};
   padding-top: ${space[16]};
   padding-bottom: ${space[16]};

@@ -26,7 +26,7 @@ export {
   DialogFooter,
 } from './components/Dialog'
 export { Flag } from './components/Flag'
-export { GlobalStyles } from './global-styles'
+export { globalStyles } from './global-styles'
 export { H1, H2, H3, H4, H5, H6 } from './components/Heading'
 export { HorizontalScroll } from './components/HorizontalScroll'
 export { Icon } from './components/Icon'

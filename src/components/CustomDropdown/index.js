@@ -15,9 +15,7 @@ import {
 export const Menu = styled.ul`
   position: absolute;
   z-index: 2;
-  margin: 0;
   padding: ${space[16]};
-  list-style: none;
   left: 50%;
   transform: translateX(-50%);
   border-radius: ${radius.md};
