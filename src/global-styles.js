@@ -1,53 +1,66 @@
-import { createGlobalStyle } from 'styled-components'
-import { fontWeight, device, space, fontSize, lineHeight, color } from './theme'
+import { css } from 'styled-components'
+import { fontWeight, device, fontSize, lineHeight, color } from './theme'
 
-export const GlobalStyles = createGlobalStyle`
+export const globalStyles = css`
   @font-face {
-    font-family: "Proxima Nova";
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff2') format('woff2'),
-         url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff') format('woff');
+    font-family: 'Proxima Nova';
+    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff2')
+        format('woff2'),
+      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff')
+        format('woff');
     font-weight: ${fontWeight.regular};
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "Proxima Nova";
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff2') format('woff2'),
-         url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff') format('woff');
+    font-family: 'Proxima Nova';
+    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff2')
+        format('woff2'),
+      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff')
+        format('woff');
     font-weight: ${fontWeight.regular};
     font-style: italic;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "Proxima Nova";
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff2') format('woff2'),
-         url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff') format('woff');
+    font-family: 'Proxima Nova';
+    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff2')
+        format('woff2'),
+      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff')
+        format('woff');
     font-weight: ${fontWeight.semiBold};
     font-style: normal;
     font-display: swap;
   }
 
   @font-face {
-    font-family: "Proxima Nova";
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff2') format('woff2'),
-         url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff') format('woff');
+    font-family: 'Proxima Nova';
+    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff2')
+        format('woff2'),
+      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff')
+        format('woff');
     font-weight: ${fontWeight.bold};
     font-style: normal;
     font-display: swap;
   }
 
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 
   body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont,
+      'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto,
+      'segoe ui', arial, sans-serif;
     font-weight: ${fontWeight.regular};
     line-height: ${lineHeight.copy};
     font-size: ${fontSize[16]};
@@ -81,11 +94,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${color.earth};
   }
 
-  p {
-    margin-top: 0;
-    margin-bottom: ${space[32]};
-  }
-
   button {
     padding: 0;
     margin: 0;
@@ -94,5 +102,37 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  img {
+    border-style: none;
+  }
+
+  blockquote,
+  q {
+    quotes: none;
+  }
+
+  blockquote:after,
+  blockquote:before,
+  q:after,
+  q:before {
+    content: '';
+    content: none;
   }
 `

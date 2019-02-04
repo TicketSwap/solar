@@ -44,17 +44,11 @@ const StyledBanner = styled.a`
   }
 `
 
-const ChildrenContainer = styled(Box)`
-  & * {
-    margin: 0;
-  }
-`
-
 export const Banner = ({ backgroundImageUrl, children, url, ...props }) => {
   return (
     <StyledBanner backgroundImageUrl={backgroundImageUrl} href={url} {...props}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <ChildrenContainer>{children}</ChildrenContainer>
+        <div>{children}</div>
         <Box display="flex" justifyContent="flex-end" alignItems="center">
           <Icon glyph="arrow-right" />
         </Box>
