@@ -82,6 +82,7 @@ export const DialogAdornment = styled.span`
 
 const BodyContainer = styled.div`
   position: relative;
+  min-height: 0;
   flex-shrink: 1;
   display: flex;
   flex-direction: column;
@@ -124,7 +125,6 @@ export const Body = styled.div`
   position: relative;
   padding: ${space[16]};
   overflow-y: scroll;
-  flex-shrink: 1;
   -webkit-overflow-scrolling: touch;
 
   ::-webkit-scrollbar {
