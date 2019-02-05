@@ -135,15 +135,6 @@ storiesOf('Dialog', module)
         <Input id="email" type="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
-        <Input id="lname" label="Last name" />
       </Box>
     </MyDialog>
   ))
