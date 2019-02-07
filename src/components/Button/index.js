@@ -89,6 +89,7 @@ const StyledButton = styled.button`
 
   &:hover,
   &:focus {
+    color: white;
     background-color: ${color.earthLight};
 
     ${props =>
@@ -104,7 +105,6 @@ const StyledButton = styled.button`
       props.variant === 'inverted' &&
       css`
         background-color: ${color.earth};
-        color: white;
       `};
 
     ${props =>
