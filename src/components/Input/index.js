@@ -80,6 +80,7 @@ const Field = styled.input`
 
 const Label = styled.label`
   position: relative;
+  display: block;
 `
 
 const LabelText = styled.span`
