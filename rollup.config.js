@@ -5,23 +5,20 @@ import progress from 'rollup-plugin-progress'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
 import visualizer from 'rollup-plugin-visualizer'
+import { terser } from 'rollup-plugin-terser'
+
+const isProduction = process.env.NODE_ENV === 'production'
 
 export default {
   input: 'src/index.js',
   output: [
     {
+      file: 'dist/solar.js',
+      format: 'cjs',
+    },
+    {
       file: 'dist/solar.es.js',
-      name: '@ticketswap/solar',
-      exports: 'named',
-      globals: {
-        react: 'React',
-        'react-dom': 'ReactDOM',
-        'prop-types': 'PropTypes',
-        'styled-components': 'styled',
-        'react-spring': 'ReactSpring',
-        downshift: 'Downshift',
-      },
-      format: 'es',
+      format: 'esm',
     },
   ],
   plugins: [
@@ -36,6 +33,7 @@ export default {
         process.env.NODE_ENV || 'development'
       ),
     }),
+    isProduction && terser(),
     visualizer(),
     filesize(),
   ],
