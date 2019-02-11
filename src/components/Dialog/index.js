@@ -34,9 +34,11 @@ const Overlay = styled.div`
 `
 
 const Content = styled.div`
+  position: relative;
   width: 100%;
   background-color: white;
   border-radius: ${radius.lg} ${radius.lg} 0 0;
+  overflow: hidden;
 
   @media ${device.mobileL} {
     width: ${sizes.mobileL / 16}em;
@@ -53,27 +55,6 @@ export const DialogHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &::after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    bottom: calc(-${space[16]} - 1px);
-    height: ${space[16]};
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
-    );
-
-    @media ${device.tablet} {
-      bottom: calc(-${space[32]} - 1px);
-      height: ${space[32]};
-    }
-  }
 `
 
 export const DialogAdornment = styled.span`
@@ -92,9 +73,53 @@ export const DialogAdornment = styled.span`
   }
 `
 
-export const DialogBody = styled.div`
-  padding: ${space[16]};
+const BodyWrapper = styled.div`
+  position: relative;
+  border-radius: ${radius.lg} ${radius.lg} 0 0;
+  overflow: hidden;
+
+  @media ${device.mobileL} {
+    border-radius: ${radius.lg};
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    height: ${space[16]};
+
+    @media ${device.tablet} {
+      height: ${space[32]};
+    }
+  }
+
+  &::before {
+    top: 0;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  &::after {
+    bottom: 0;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1)
+    );
+  }
+`
+
+const Body = styled.div`
   max-height: 65vh;
+  padding: ${space[16]};
+  padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
@@ -103,38 +128,31 @@ export const DialogBody = styled.div`
   }
 
   @media ${device.mobileL} {
-    max-height: 45vh;
     padding: ${space[32]};
+    max-height: calc(80vh - ${144 / 16}rem);
+  }
+
+  @media (min-height: ${sizes.tablet}) and (min-width: ${sizes.tablet}) {
+    max-height: calc(65vh - ${144 / 16}rem);
   }
 `
 
+export const DialogBody = ({ children }) => (
+  <BodyWrapper>
+    <Body>{children}</Body>
+  </BodyWrapper>
+)
+
 export const DialogFooter = styled.footer`
-  position: relative;
-  padding: ${space[16]};
+  padding-left: ${space[16]};
+  padding-right: ${space[16]};
+  padding-bottom: ${space[16]};
+  padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
 
   @media ${device.mobileL} {
-    padding: ${space[32]};
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-    left: 0;
-    right: 0;
-    top: -${space[16]};
-    height: ${space[16]};
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1)
-    );
-
-    @media ${device.tablet} {
-      top: -${space[32]};
-      height: ${space[32]};
-    }
+    padding-left: ${space[32]};
+    padding-right: ${space[32]};
+    padding-bottom: ${space[32]};
   }
 `
 

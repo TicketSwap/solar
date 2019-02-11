@@ -1,6 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
+import Measure from 'react-measure'
+import { Transition, Spring, animated } from 'react-spring'
 import {
   Dialog,
   DialogWindow,
@@ -9,12 +11,17 @@ import {
   DialogBody,
   DialogFooter,
 } from './'
-import { color } from '../../theme'
+import { color, easingFunctions } from '../../theme'
 import { Button } from '../Button'
 import { Box } from '../Box'
 import { Input } from '../Input'
 import { TabsGroup } from '../TabsGroup'
 import { Icon } from '../Icon'
+
+const ViewContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+`
 
 const Login = props => (
   <DialogBody>
@@ -33,22 +40,16 @@ const Login = props => (
   </DialogBody>
 )
 
-Login.propTypes = {
-  select: PropTypes.func,
-}
-
 const LoginEmail = props => (
   <DialogBody>
-    <Box display="grid" gridGap={8} marginBottom={32}>
+    <Box display="grid" gridGap={8} marginBottom={16}>
       <Input type="email" id="email" label="Email address" hideLabel />
     </Box>
-    <Button variant="success">Log in</Button>
+    <Button variant="success" width="full">
+      Log in
+    </Button>
   </DialogBody>
 )
-
-LoginEmail.propTypes = {
-  select: PropTypes.func,
-}
 
 const Signup = props => (
   <DialogBody>
@@ -67,28 +68,23 @@ const Signup = props => (
   </DialogBody>
 )
 
-Signup.propTypes = {
-  select: PropTypes.func,
-}
-
 const SignupEmail = props => (
   <>
     <DialogBody>
-      <Box display="grid" gridGap={8} marginBottom={32}>
+      <Box display="grid" gridGap={8}>
         <Input type="email" id="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
+        <Input id="message" label="Message" as="textarea" rows="4" />
       </Box>
     </DialogBody>
     <DialogFooter>
-      <Button variant="success">Sign up</Button>
+      <Button variant="success" width="full">
+        Sign up
+      </Button>
     </DialogFooter>
   </>
 )
-
-SignupEmail.propTypes = {
-  select: PropTypes.func,
-}
 
 const views = [
   { title: 'Login', component: Login, back: false },
@@ -135,6 +131,7 @@ storiesOf('Dialog', module)
         <Input id="email" type="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
+        <Input id="message" label="Message" as="textarea" rows="4" />
       </Box>
     </MyDialog>
   ))
@@ -142,7 +139,7 @@ storiesOf('Dialog', module)
     <Dialog>
       {({ hide, getToggleProps, getWindowProps }) => (
         <TabsGroup>
-          {({ activeIndex, select, getPanelProps }) => (
+          {({ activeIndex, previousIndex, select, getPanelProps }) => (
             <>
               <Button
                 {...getToggleProps({
@@ -150,14 +147,6 @@ storiesOf('Dialog', module)
                 })}
               >
                 Login
-              </Button>
-
-              <Button
-                {...getToggleProps({
-                  onClick: () => select(1),
-                })}
-              >
-                Signup
               </Button>
 
               <DialogWindow {...getWindowProps()}>
@@ -182,13 +171,65 @@ storiesOf('Dialog', module)
                     </button>
                   </DialogAdornment>
                 </DialogHeader>
-
-                {views.map(
-                  ({ title, component: Component }, index) =>
-                    index === activeIndex && (
-                      <Component key={title} {...getPanelProps()} />
-                    )
-                )}
+                <Measure bounds>
+                  {({ measureRef, contentRect }) => (
+                    <Spring
+                      native
+                      config={{ tension: 2000, friction: 100, precision: 1 }}
+                      from={{ height: contentRect.bounds.height || -1 }}
+                      to={{ height: contentRect.bounds.height || -1 }}
+                      // Disable on initial render
+                      immediate={activeIndex === previousIndex}
+                    >
+                      {props => (
+                        <animated.div style={props}>
+                          <ViewContainer ref={measureRef}>
+                            <Transition
+                              native
+                              items={views[activeIndex]}
+                              keys={item => item.component}
+                              initial={{ x: 0 }}
+                              from={{
+                                opacity: 0,
+                                x: previousIndex < activeIndex ? 16 : -16,
+                              }}
+                              enter={{ opacity: 1, x: 0 }}
+                              leave={{
+                                opacity: 0,
+                                position: 'absolute',
+                                x: previousIndex < activeIndex ? -16 : 16,
+                                width: '100%',
+                                zIndex: 0,
+                                pointerEvents: 'none',
+                              }}
+                              config={{
+                                duration: 400,
+                                easing: easingFunctions.easeOutCubic,
+                              }}
+                            >
+                              {({ title, component: Component }) => ({
+                                x,
+                                ...props
+                              }) => (
+                                <animated.div
+                                  key={Component}
+                                  style={{
+                                    transform: x.interpolate(
+                                      val => `translate3d(${val}rem,0,0)`
+                                    ),
+                                    ...props,
+                                  }}
+                                >
+                                  <Component key={title} {...getPanelProps()} />
+                                </animated.div>
+                              )}
+                            </Transition>
+                          </ViewContainer>
+                        </animated.div>
+                      )}
+                    </Spring>
+                  )}
+                </Measure>
               </DialogWindow>
             </>
           )}
