@@ -11,6 +11,16 @@ export default {
   output: [
     {
       file: 'dist/solar.es.js',
+      name: '@ticketswap/solar',
+      exports: 'named',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+        'prop-types': 'PropTypes',
+        'styled-components': 'styled',
+        'react-spring': 'ReactSpring',
+        downshift: 'Downshift',
+      },
       format: 'es',
     },
   ],
