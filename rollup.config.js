@@ -5,19 +5,17 @@ import progress from 'rollup-plugin-progress'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
 import visualizer from 'rollup-plugin-visualizer'
-import { terser } from 'rollup-plugin-terser'
-
-const isProduction = process.env.NODE_ENV === 'production'
+import pkg from './package.json'
 
 export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/solar.js',
+      file: pkg.main,
       format: 'cjs',
     },
     {
-      file: 'dist/solar.es.js',
+      file: pkg.module,
       format: 'esm',
     },
   ],
@@ -33,7 +31,6 @@ export default {
         process.env.NODE_ENV || 'development'
       ),
     }),
-    isProduction && terser(),
     visualizer(),
     filesize(),
   ],
