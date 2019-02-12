@@ -10,6 +10,7 @@ import {
   DialogAdornment,
   DialogBody,
   DialogFooter,
+  useDialog,
 } from './'
 import { color, easingFunctions } from '../../theme'
 import { Button } from '../Button'
@@ -40,7 +41,7 @@ const Login = props => (
   </DialogBody>
 )
 
-const LoginEmail = props => (
+const LoginEmail = () => (
   <DialogBody>
     <Box display="grid" gridGap={8} marginBottom={16}>
       <Input type="email" id="email" label="Email address" hideLabel />
@@ -68,7 +69,7 @@ const Signup = props => (
   </DialogBody>
 )
 
-const SignupEmail = props => (
+const SignupEmail = () => (
   <>
     <DialogBody>
       <Box display="grid" gridGap={8}>
@@ -115,6 +116,25 @@ const MyDialog = ({ children, ...props }) => (
     )}
   </Dialog>
 )
+
+function MyNewDialog() {
+  const { hide, getToggleProps, getWindowProps } = useDialog({
+    onToggle: val => console.log(val),
+  })
+
+  return (
+    <>
+      <Button {...getToggleProps()}>Show dialog</Button>
+      <DialogWindow {...getWindowProps()}>
+        <DialogHeader>Dialog Title</DialogHeader>
+        <DialogBody>Body</DialogBody>
+        <DialogFooter>
+          <Button onClick={hide}>Discard</Button>
+        </DialogFooter>
+      </DialogWindow>
+    </>
+  )
+}
 
 storiesOf('Dialog', module)
   .add('basic', () => <MyDialog>Body</MyDialog>)
@@ -237,3 +257,4 @@ storiesOf('Dialog', module)
       )}
     </Dialog>
   ))
+  .add('useDialog', () => <MyNewDialog />)

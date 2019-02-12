@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { Transition } from 'react-spring'
 import PropTypes from 'prop-types'
@@ -12,14 +12,14 @@ import {
   easingFunctions,
   radius,
 } from '../../theme'
+import { useLockBodyScroll } from '../../hooks'
 
-const Overlay = styled.div`
+const DialogOverlay = styled.div`
   position: fixed;
   z-index: 2147483647; /* largest accepted z-index value as integer */
   left: 0;
   top: 0;
   right: 0;
-  pointer-events: ${props => (props.clickable ? 'auto' : 'none')};
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -33,7 +33,7 @@ const Overlay = styled.div`
   }
 `
 
-const Content = styled.div`
+const DialogContent = styled.div`
   position: relative;
   width: 100%;
   background-color: white;
@@ -137,11 +137,16 @@ const Body = styled.div`
   }
 `
 
-export const DialogBody = ({ children }) => (
-  <BodyWrapper>
-    <Body>{children}</Body>
-  </BodyWrapper>
-)
+export function DialogBody({ children }) {
+  const bodyRef = useRef(null)
+  useLockBodyScroll(bodyRef)
+
+  return (
+    <BodyWrapper>
+      <Body ref={bodyRef}>{children}</Body>
+    </BodyWrapper>
+  )
+}
 
 export const DialogFooter = styled.footer`
   padding-left: ${space[16]};
@@ -236,76 +241,107 @@ export class Dialog extends Component {
   }
 }
 
-export class DialogWindow extends Component {
-  static propTypes = {
-    on: PropTypes.bool.isRequired,
-    hide: PropTypes.func.isRequired,
+export function useDialog(props = {}) {
+  const { persist, showOnMount, defaultOn, onToggle } = props
+  const [on, setOn] = useState(defaultOn)
+  const show = () => setOn(true)
+  const hide = () => setOn(false)
+  const toggle = () => setOn(!on)
+
+  useEffect(() => {
+    showOnMount && setOn(true)
+  }, [])
+
+  useEffect(() => {
+    onToggle && onToggle(on)
+  }, [on])
+
+  const getToggleProps = (props = {}) => ({
+    'aria-controls': 'target',
+    'aria-expanded': Boolean(on),
+    ...props,
+    onClick: callAll(props.onClick, toggle),
+  })
+
+  const getWindowProps = (props = {}) => ({
+    on,
+    hide,
+    persist,
+    ...props,
+    onClick: persist ? props.onClick : callAll(props.onClick, toggle),
+  })
+
+  return {
+    on,
+    show,
+    hide,
+    toggle,
+    getToggleProps,
+    getWindowProps,
   }
+}
 
-  handleHide = ({ keyCode }) => keyCode === 27 && this.props.hide()
+export function DialogWindow({ children, on, hide, ...props }) {
+  const handleHide = ({ keyCode }) => keyCode === 27 && hide()
 
-  componentDidMount() {
-    if (this.props.persist) return false
-    document.addEventListener('keydown', this.handleHide, false)
-  }
+  useEffect(() => {
+    if (props.persist) return false
+    document.addEventListener('keydown', handleHide, false)
+    return () => document.removeEventListener('keydown', handleHide, false)
+  }, [])
 
-  componentWillUnmount() {
-    if (this.props.persist) return false
-    document.removeEventListener('keydown', this.handleHide, false)
-  }
-
-  render() {
-    const { children, on, ...props } = this.props
-
-    return (
-      <Portal>
-        <Transition
-          items={on}
-          from={{
-            transform: `translate3d(0,${
-              typeof window !== 'undefined' &&
-              window.matchMedia(device.mobileL).matches
-                ? -1
-                : 1
-            }rem,0)`,
-            opacity: 0,
-          }}
-          enter={{
-            transform: 'translate3d(0,0rem,0)',
-            opacity: 1,
-          }}
-          leave={{
-            transform: 'translate3d(0,1rem,0)',
-            opacity: 0,
-          }}
-          config={{
-            duration: 300,
-            easing: easingFunctions.easeInOutCubic,
-          }}
-        >
-          {show =>
-            show &&
-            (styles => (
-              <Overlay
-                aria-modal="true"
-                clickable={on}
-                tabIndex="-1"
-                style={{ opacity: styles.opacity }}
-                data-testid="dialog-overlay"
-                {...props}
+  return (
+    <Portal>
+      <Transition
+        items={on}
+        from={{
+          transform: `translate3d(0,${
+            typeof window !== 'undefined' &&
+            window.matchMedia(device.mobileL).matches
+              ? -1
+              : 1
+          }rem,0)`,
+          opacity: 0,
+        }}
+        enter={{
+          transform: 'translate3d(0,0rem,0)',
+          opacity: 1,
+        }}
+        leave={{
+          transform: 'translate3d(0,1rem,0)',
+          opacity: 0,
+        }}
+        config={{
+          duration: 300,
+          easing: easingFunctions.easeInOutCubic,
+        }}
+      >
+        {show =>
+          show &&
+          (styles => (
+            <DialogOverlay
+              aria-modal="true"
+              tabIndex="-1"
+              style={{ opacity: styles.opacity }}
+              data-testid="dialog-overlay"
+              {...props}
+            >
+              <DialogContent
+                onClick={stopPropagation}
+                data-testid="dialog-content"
+                style={styles}
               >
-                <Content
-                  onClick={stopPropagation}
-                  data-testid="dialog-content"
-                  style={styles}
-                >
-                  {children}
-                </Content>
-              </Overlay>
-            ))
-          }
-        </Transition>
-      </Portal>
-    )
-  }
+                {children}
+              </DialogContent>
+            </DialogOverlay>
+          ))
+        }
+      </Transition>
+    </Portal>
+  )
+}
+
+DialogWindow.propTypes = {
+  on: PropTypes.bool.isRequired,
+  hide: PropTypes.func.isRequired,
 }

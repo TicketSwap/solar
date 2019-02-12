@@ -1,4 +1,5 @@
 export * from './theme'
+export * from './hooks'
 export { Alert } from './components/Alert'
 export { Avatar } from './components/Avatar'
 export { Banner } from './components/Banner'
@@ -24,6 +25,7 @@ export {
   DialogAdornment,
   DialogBody,
   DialogFooter,
+  useDialog,
 } from './components/Dialog'
 export { Flag } from './components/Flag'
 export { globalStyles } from './global-styles'
