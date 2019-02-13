@@ -3,9 +3,8 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { color, space, device, radius } from '../../theme'
 import { Icon } from '../Icon'
-import { Box } from '../Box'
 
-const StyledBanner = styled.a`
+const Container = styled.a`
   position: relative;
   background-color: ${color.space};
   background-position: center;
@@ -44,16 +43,20 @@ const StyledBanner = styled.a`
   }
 `
 
+const Content = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const Banner = ({ backgroundImageUrl, children, url, ...props }) => {
   return (
-    <StyledBanner backgroundImageUrl={backgroundImageUrl} href={url} {...props}>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Container backgroundImageUrl={backgroundImageUrl} href={url} {...props}>
+      <Content>
         <div>{children}</div>
-        <Box display="flex" justifyContent="flex-end" alignItems="center">
-          <Icon glyph="arrow-right" />
-        </Box>
-      </Box>
-    </StyledBanner>
+        <Icon glyph="arrow-right" />
+      </Content>
+    </Container>
   )
 }
 

@@ -1,7 +1,17 @@
 import React from 'react'
+import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 import { BasicCard } from './'
-import { Box } from '../Box'
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+
+  @media (min-width: 48em) {
+    grid-gap: 2rem;
+  }
+`
 
 const cards = [
   {
@@ -29,7 +39,7 @@ const cards = [
 
 storiesOf('BasicCard', module)
   .add('basic', () => (
-    <Box display="grid" gridTemplateColumnsMd="3" gridGap={16} gridGapMd={32}>
+    <Container>
       {cards.map(card => (
         <a href="/">
           <BasicCard
@@ -39,10 +49,10 @@ storiesOf('BasicCard', module)
           />
         </a>
       ))}
-    </Box>
+    </Container>
   ))
   .add('basic loading', () => (
-    <Box display="grid" gridTemplateColumnsMd="3" gridGap={16} gridGapMd={32}>
+    <Container>
       {cards.map(card => (
         <a href="/">
           <BasicCard
@@ -53,10 +63,10 @@ storiesOf('BasicCard', module)
           />
         </a>
       ))}
-    </Box>
+    </Container>
   ))
   .add('with image', () => (
-    <Box display="grid" gridTemplateColumnsMd="3" gridGap={16} gridGapMd={32}>
+    <Container>
       {cards.map(card => (
         <a href="/">
           <BasicCard
@@ -67,10 +77,10 @@ storiesOf('BasicCard', module)
           />
         </a>
       ))}
-    </Box>
+    </Container>
   ))
   .add('with image loading', () => (
-    <Box display="grid" gridTemplateColumnsMd="3" gridGap={16} gridGapMd={32}>
+    <Container>
       {cards.map(card => (
         <a href="/">
           <BasicCard
@@ -82,5 +92,5 @@ storiesOf('BasicCard', module)
           />
         </a>
       ))}
-    </Box>
+    </Container>
   ))

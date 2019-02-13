@@ -2,7 +2,6 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button } from './'
 import { Icon } from '../Icon'
-import { Box } from '../Box'
 
 storiesOf('Button', module)
   .add('default with text', () => <Button>Default Button</Button>)
@@ -15,14 +14,20 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('full width with icon', () => (
-    <Box display="grid" gridGap={8} marginBottom={32}>
+    <div
+      css={`
+        display: grid;
+        grid-gap: 0.5rem;
+        margin-bottom: 2rem;
+      `}
+    >
       <Button width="full" icon="facebook" variant="facebook">
         Log in with Facebook
       </Button>
       <Button width="full" icon="email-solid" variant="secondary">
         Log in with email
       </Button>
-    </Box>
+    </div>
   ))
   .add('as hyperlink', () => (
     <Button as="a" href="https://www.ticketswap.com">
