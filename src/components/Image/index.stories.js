@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Box } from '../Box'
 import { Image } from './'
 
 storiesOf('Image', module)
@@ -30,7 +29,13 @@ storiesOf('Image', module)
     />
   ))
   .add('lazyload', () => (
-    <Box display="grid" gridGap={32} padding={64}>
+    <div
+      css={`
+        display: grid;
+        grid-gap: 2rem;
+        padding: 4rem;
+      `}
+    >
       <Image
         src="https://images.unsplash.com/photo-1539550298564-8a06769aa728?auto=format&fit=crop&w=1200&q=80"
         width={300}
@@ -56,5 +61,5 @@ storiesOf('Image', module)
         width={300}
         height={200}
       />
-    </Box>
+    </div>
   ))

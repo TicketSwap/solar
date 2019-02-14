@@ -1,6 +1,5 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Box } from '../Box'
 import { MenuButton } from '../MenuButton'
 
 const items = [
@@ -11,7 +10,11 @@ const items = [
 
 storiesOf('MenuButton', module)
   .add('default', () => (
-    <Box padding={32}>
+    <div
+      css={`
+        padding: 2rem;
+      `}
+    >
       <span>
         Language:{' '}
         <MenuButton
@@ -24,10 +27,17 @@ storiesOf('MenuButton', module)
           }}
         />
       </span>
-    </Box>
+    </div>
   ))
   .add('top', () => (
-    <Box display="flex" alignItems="flex-end" padding={32} height="100vh">
+    <div
+      css={`
+        display: flex;
+        align-items: flex-end;
+        padding: 2rem;
+        height: 100vh;
+      `}
+    >
       <span>
         Language:{' '}
         <MenuButton
@@ -41,5 +51,5 @@ storiesOf('MenuButton', module)
           }}
         />
       </span>
-    </Box>
+    </div>
   ))

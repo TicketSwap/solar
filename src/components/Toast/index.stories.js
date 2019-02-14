@@ -2,7 +2,6 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { ToastProvider, ToastConsumer, Toast } from './'
 import { Button } from '../Button'
-import { Box } from '../Box'
 
 const wrapper = story => <ToastProvider>{story()}</ToastProvider>
 
@@ -24,17 +23,19 @@ storiesOf('Toasts', module)
           onClick={() =>
             add(
               <Toast persist>
-                <Box
-                  display="flex"
-                  flexDirection="row"
-                  alignItems="center"
-                  justifyContent="space-between"
+                <div
+                  css={`
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                  `}
                 >
                   <span>Payment failed</span>
                   <Button onClick={remove} size="small" variant="inverted">
                     Discard
                   </Button>
-                </Box>
+                </div>
               </Toast>
             )
           }

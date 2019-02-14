@@ -13,7 +13,6 @@ import {
 } from './'
 import { color, easingFunctions } from '../../theme'
 import { Button } from '../Button'
-import { Box } from '../Box'
 import { Input } from '../Input'
 import { TabsGroup } from '../TabsGroup'
 import { Icon } from '../Icon'
@@ -25,12 +24,18 @@ const ViewContainer = styled.div`
 
 const Login = props => (
   <DialogBody>
-    <Box display="grid" gridGap={8} marginBottom={32}>
+    <div
+      css={`
+        display: grid;
+        grid-gap: 0.5rem;
+        margin-bottom: 2rem;
+      `}
+    >
       <Button variant="facebook">Log in with Facebook</Button>
       <Button variant="secondary" onClick={() => props.select(2)}>
         Log in with email
       </Button>
-    </Box>
+    </div>
     <div>
       Don’t have an account yet?{' '}
       <button style={{ color: color.earth }} onClick={() => props.select(1)}>
@@ -42,9 +47,13 @@ const Login = props => (
 
 const LoginEmail = props => (
   <DialogBody>
-    <Box display="grid" gridGap={8} marginBottom={16}>
+    <div
+      css={`
+        margin-bottom: 1rem;
+      `}
+    >
       <Input type="email" id="email" label="Email address" hideLabel />
-    </Box>
+    </div>
     <Button variant="success" width="full">
       Log in
     </Button>
@@ -53,12 +62,18 @@ const LoginEmail = props => (
 
 const Signup = props => (
   <DialogBody>
-    <Box display="grid" gridGap={8} marginBottom={32}>
+    <div
+      css={`
+        display: grid;
+        grid-gap: 0.5rem;
+        margin-bottom: 2rem;
+      `}
+    >
       <Button variant="facebook">Sign up with Facebook</Button>
       <Button variant="secondary" onClick={() => props.select(3)}>
         Sign up with email
       </Button>
-    </Box>
+    </div>
     <div>
       Already have an account{' '}
       <button style={{ color: color.earth }} onClick={() => props.select(0)}>
@@ -71,12 +86,17 @@ const Signup = props => (
 const SignupEmail = props => (
   <>
     <DialogBody>
-      <Box display="grid" gridGap={8}>
+      <div
+        css={`
+          display: grid;
+          grid-gap: 0.5rem;
+        `}
+      >
         <Input type="email" id="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
         <Input id="message" label="Message" as="textarea" rows="4" />
-      </Box>
+      </div>
     </DialogBody>
     <DialogFooter>
       <Button variant="success" width="full">
@@ -127,12 +147,17 @@ storiesOf('Dialog', module)
   ))
   .add('with long body', () => (
     <MyDialog>
-      <Box display="grid" gridGap={16}>
+      <div
+        css={`
+          display: grid;
+          grid-gap: 1rem;
+        `}
+      >
         <Input id="email" type="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
         <Input id="message" label="Message" as="textarea" rows="4" />
-      </Box>
+      </div>
     </MyDialog>
   ))
   .add('with tabs', () => (
