@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { device } from '../../theme'
 import { debounce, callAll, clamp } from '../../utils'
 
 export class Carousel extends Component {
@@ -67,6 +68,8 @@ export class Carousel extends Component {
   setNextButtonRef = element => (this.nextButton = element)
 
   handleResize = () => {
+    if (typeof window !== 'undefined') return false
+    if (!window.matchMedia(device.tablet).matches) return false
     if (!this._isMounted) return false
     this.setState(this.initialState)
     if (!this.outerContainer) return false
