@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { color, space, transition } from '../../theme'
+import { color, space, transition, duration } from '../../theme'
+import { fetchImage } from './fetchImage'
+import { fadeIn } from '../Flag'
 
 const Container = styled.div`
   position: relative;
@@ -9,6 +11,9 @@ const Container = styled.div`
   overflow: hidden;
   background-color: ${color.spaceLightest};
   border-radius: ${props => (props.rounded ? space[8] : 0)};
+  animation-duration: ${duration}ms;
+  animation-fill-mode: both;
+  animation-name: ${fadeIn};
 `
 
 const Placeholder = styled.img`
@@ -55,8 +60,10 @@ export class Image extends Component {
     return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"%3E%3C/svg%3E`
   }
 
-  handleLoad = () => {
-    this.setState({ loaded: true, src: this.props.src })
+  handleLoad = async () => {
+    const { src } = this.props
+    await fetchImage(src)
+    this.setState({ loaded: true, src })
   }
 
   handleLazyLoad = entries => {
