@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
-import { color } from '../../theme'
+import { color, duration } from '../../theme'
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
   }
@@ -45,7 +45,7 @@ const Image = styled.img`
   bottom: 0;
   height: 100%;
   width: 100%;
-  animation-duration: 200ms;
+  animation-duration: ${duration}ms;
   animation-fill-mode: both;
   animation-name: ${fadeIn};
   z-index: 2;
