@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
 import Measure from 'react-measure'
-import { Transition, Spring, animated } from 'react-spring/renderprops'
+import { Transition, Spring, animated } from 'react-spring'
 import {
   Dialog,
   DialogWindow,

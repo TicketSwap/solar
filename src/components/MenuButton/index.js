@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Transition, animated, config } from 'react-spring/renderprops'
+import { Transition, animated, config } from 'react-spring'
 import Downshift from 'downshift'
 import styled from 'styled-components'
 import { CustomDropdown, Item } from '../CustomDropdown'
