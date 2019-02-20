@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { Spring, animated } from 'react-spring'
+import { Spring, animated } from 'react-spring/renderprops'
 import { Gesture } from '../Gesture'
 import { space, device, color, transition } from '../../theme'
 import { Carousel } from '../Carousel'
