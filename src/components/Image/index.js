@@ -34,6 +34,11 @@ const StyledImage = styled.img`
 `
 
 export class Image extends Component {
+  constructor(props) {
+    super(props)
+    this.handleLoad = this.handleLoad.bind(this)
+  }
+
   observer = null
   initialState = {
     loaded: false,
@@ -60,10 +65,10 @@ export class Image extends Component {
     return `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}"%3E%3C/svg%3E`
   }
 
-  handleLoad = async () => {
+  async handleLoad() {
     const { src } = this.props
     await fetchImage(src)
-    this.setState({ loaded: true, src })
+    return this.setState({ loaded: true, src })
   }
 
   handleLazyLoad = entries => {
