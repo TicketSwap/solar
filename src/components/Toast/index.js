@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Transition, Spring, animated } from 'react-spring'
+import { Transition, Spring, animated } from 'react-spring/renderprops'
 import { Portal } from '../Portal'
 import { space, shadow, device, color, radius } from '../../theme'
 

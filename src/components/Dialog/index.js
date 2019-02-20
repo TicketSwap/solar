@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { Transition } from 'react-spring'
+import { Transition } from 'react-spring/renderprops'
 import PropTypes from 'prop-types'
 import { Portal } from '../Portal'
 import { callAll, stopPropagation } from '../../utils'
