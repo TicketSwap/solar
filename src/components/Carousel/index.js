@@ -69,6 +69,7 @@ export class Carousel extends Component {
 
   handleResize = () => {
     if (typeof window === 'undefined') return false
+    if (!window.matchMedia) return false
     if (!window.matchMedia(device.tablet).matches) return false
     if (!this._isMounted) return false
     this.setState(this.initialState)
