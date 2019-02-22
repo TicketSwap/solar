@@ -243,7 +243,7 @@ export class Dialog extends Component {
 
 export function useDialog(props = {}) {
   const { persist, showOnMount, defaultOn, onToggle } = props
-  const [on, setOn] = useState(defaultOn)
+  const [on, setOn] = useState(defaultOn || false)
   const show = () => setOn(true)
   const hide = () => setOn(false)
   const toggle = () => setOn(!on)
