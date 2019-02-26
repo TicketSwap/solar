@@ -95,7 +95,7 @@ const SecondaryActionAdornment = styled.span`
 export const Alert = props => {
   return (
     <Container {...props}>
-      <Adornment {...props}>
+      <Adornment>
         <Icon
           glyph={
             props.variant === 'success'
@@ -109,7 +109,7 @@ export const Alert = props => {
         />
       </Adornment>
       <Main>
-        <Message {...props}>{props.children}</Message>
+        <Message primaryAction={props.primaryAction}>{props.children}</Message>
         {props.secondaryAction && (
           <SecondaryAction onClick={props.secondaryAction.onClick}>
             {props.secondaryAction.label}
@@ -120,7 +120,10 @@ export const Alert = props => {
         )}
       </Main>
       {props.primaryAction && (
-        <PrimaryAction {...props} onClick={props.primaryAction.onClick}>
+        <PrimaryAction
+          variant={props.variant}
+          onClick={props.primaryAction.onClick}
+        >
           {props.primaryAction.label}
         </PrimaryAction>
       )}
