@@ -41,23 +41,22 @@ export const Menu = styled.ul`
     `};
 `
 
-export const Item = styled.li`
+export const CustomDropdownItem = styled.li`
   font-size: ${fontSize[24]};
   line-height: ${lineHeight.title};
   padding: ${space[4]} ${space[8]};
   border-radius: ${radius.sm};
   font-weight: ${fontWeight.regular};
   white-space: nowrap;
-  color: ${props =>
-    props.highlighted
-      ? color.space
-      : props.active
-      ? color.earth
-      : color.spaceLight};
-  background-color: ${props =>
-    props.highlighted ? color.stardust : 'transparent'};
+  color: ${props => (props.active ? color.earth : color.spaceLight)};
   cursor: pointer;
   transition: color ${transition};
+
+  &:focus,
+  &:hover {
+    color: ${color.space};
+    background-color: ${color.stardust};
+  }
 `
 
 const Arrow = styled.svg`
