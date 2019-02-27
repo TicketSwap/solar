@@ -17,15 +17,7 @@ storiesOf('MenuButton', module)
     >
       <span>
         Language:{' '}
-        <MenuButton
-          items={items}
-          itemKey={'name'}
-          downShiftProps={{
-            itemToString: item => (item ? item.name : ''),
-            onChange: item => console.log(item),
-            initialSelectedItem: items[0],
-          }}
-        />
+        <MenuButton items={items} onChange={item => console.log(item)} />
       </span>
     </div>
   ))
@@ -42,13 +34,9 @@ storiesOf('MenuButton', module)
         Language:{' '}
         <MenuButton
           items={items}
-          itemKey={'name'}
           dropdownPosition="top"
-          onSelect={index => console.log(items[index].value)}
-          downShiftProps={{
-            itemToString: item => (item ? item.name : ''),
-            initialSelectedItem: items[0],
-          }}
+          onChange={item => console.log(item)}
+          initialSelectedItem={items[1]}
         />
       </span>
     </div>
