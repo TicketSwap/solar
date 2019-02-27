@@ -11,12 +11,8 @@ const handleChange = jest.fn()
 const MyMenuButton = () => (
   <MenuButton
     items={items}
-    itemKey={'name'}
-    downShiftProps={{
-      itemToString: item => (item ? item.name : ''),
-      onChange: item => handleChange(item),
-      initialSelectedItem: items[0],
-    }}
+    onChange={item => handleChange(item)}
+    initialSelectedItem={items[0]}
   />
 )
 

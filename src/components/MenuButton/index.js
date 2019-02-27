@@ -1,17 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Transition, animated, config } from 'react-spring'
-import Downshift from 'downshift'
 import styled from 'styled-components'
-import { CustomDropdown, Item } from '../CustomDropdown'
+import { CustomDropdown, CustomDropdownItem as Item } from '../CustomDropdown'
 import { color } from '../../theme'
+import { useKeyPress, useOnClickOutside, usePrevious } from '../../hooks'
 
 const Wrapper = styled.div`
   display: inline-block;
-  position: relative;
-`
-
-const Label = styled.label`
   position: relative;
 `
 
@@ -19,101 +15,114 @@ const Button = styled.button`
   font-size: inherit;
   color: ${color.spaceLight};
   outline: 0;
+  pointer-events: ${props => (props.clickThrough ? 'none' : 'false')};
 `
 
 const Menu = styled.div`
   display: inline-block;
 `
 
-export const MenuButton = ({
-  downShiftProps,
-  dropdownPosition,
-  itemKey,
+export function MenuButton({
   items,
+  dropdownPosition,
+  onChange,
+  initialSelectedItem,
   ...props
-}) => (
-  <Downshift {...downShiftProps}>
-    {({
-      getRootProps,
-      getToggleButtonProps,
-      getLabelProps,
-      getMenuProps,
-      highlightedIndex,
-      getItemProps,
-      isOpen,
-      selectedItem,
-    }) => (
-      <Wrapper {...getRootProps({ refKey: 'ref', role: null })} {...props}>
-        <Label {...getLabelProps()}>
-          <Button {...getToggleButtonProps()}>
-            {selectedItem[itemKey]} <span aria-hidden>▾</span>
-          </Button>
+}) {
+  const [selectedItem, setSelectedItem] = useState(
+    initialSelectedItem || items[0]
+  )
+  const previousItem = usePrevious(selectedItem)
+  const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef()
+  useOnClickOutside(ref, () => setIsOpen(false))
+  const esc = useKeyPress('Escape')
 
-          <Transition
-            native
-            items={isOpen}
-            from={{
-              position: 'absolute',
-              zIndex: 2,
-              left: '50%',
-              bottom: 0,
-              transform: `translate3d(-50%,${
-                dropdownPosition === 'top' ? -1 : 1
-              }rem,0)`,
-              opacity: 0,
-            }}
-            enter={{
-              transform: 'translate3d(-50%,0rem,0)',
-              opacity: 1,
-            }}
-            leave={{
-              transform: 'translate3d(-50%,0rem,0)',
-              opacity: 0,
-            }}
-            config={{
-              ...config.default,
-              velocity: 10,
-            }}
-          >
-            {show =>
-              show &&
-              (props => (
-                <animated.div style={props}>
-                  <Menu {...getMenuProps()}>
-                    <CustomDropdown
-                      withArrow
-                      position={dropdownPosition}
-                      distance={4}
+  useEffect(() => {
+    // Close menu with Esc key
+    if (isOpen && esc) setIsOpen(false)
+  }, [isOpen, esc])
+
+  useEffect(() => {
+    if (
+      previousItem &&
+      previousItem !== selectedItem &&
+      selectedItem !== initialSelectedItem
+    ) {
+      onChange && onChange(selectedItem)
+    }
+  }, [selectedItem, previousItem, initialSelectedItem, onChange])
+
+  return (
+    <Wrapper {...props}>
+      <Button onClick={() => setIsOpen(true)} clickThrough={isOpen}>
+        {selectedItem.name} <span aria-hidden>▾</span>
+      </Button>
+
+      <Transition
+        native
+        items={isOpen}
+        from={{
+          position: 'absolute',
+          zIndex: 2,
+          left: '50%',
+          bottom: 0,
+          transform: `translate3d(-50%,${
+            dropdownPosition === 'top' ? -1 : 1
+          }rem,0)`,
+          opacity: 0,
+        }}
+        enter={{
+          transform: 'translate3d(-50%,0rem,0)',
+          opacity: 1,
+        }}
+        leave={{
+          transform: 'translate3d(-50%,0rem,0)',
+          opacity: 0,
+        }}
+        config={{
+          ...config.default,
+          velocity: 10,
+        }}
+      >
+        {show =>
+          show &&
+          (styles => (
+            <animated.div style={styles} ref={ref}>
+              <Menu>
+                <CustomDropdown
+                  withArrow
+                  position={dropdownPosition}
+                  distance={4}
+                >
+                  {items.map(item => (
+                    <Item
+                      key={item.value}
+                      active={selectedItem && selectedItem.value === item.value}
+                      onClick={() => {
+                        setSelectedItem(item)
+                        setIsOpen(false)
+                      }}
                     >
-                      {items.map((item, index) => (
-                        <Item
-                          {...getItemProps({
-                            key: item[itemKey],
-                            index,
-                            item,
-                            highlighted:
-                              highlightedIndex === index ? 'true' : undefined,
-                            active: selectedItem === item,
-                          })}
-                        >
-                          {item[itemKey]}
-                        </Item>
-                      ))}
-                    </CustomDropdown>
-                  </Menu>
-                </animated.div>
-              ))
-            }
-          </Transition>
-        </Label>
-      </Wrapper>
-    )}
-  </Downshift>
-)
+                      {item.name}
+                    </Item>
+                  ))}
+                </CustomDropdown>
+              </Menu>
+            </animated.div>
+          ))
+        }
+      </Transition>
+    </Wrapper>
+  )
+}
 
 MenuButton.propTypes = {
-  downShiftProps: PropTypes.object,
   dropdownPosition: PropTypes.string,
-  itemKey: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 }
