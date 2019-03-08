@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from '../Icon'
 import { Spinner } from '../Spinner'
 import { VisuallyHidden } from '../VisuallyHidden'
@@ -45,6 +45,13 @@ const Field = styled.input`
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
 
+  ${props =>
+    props.as === 'textarea' &&
+    css`
+      resize: vertical;
+      min-height: ${space[96]};
+    `};
+
   &[type='search']::-webkit-search-decoration {
     appearance: none;
   }
@@ -66,15 +73,6 @@ const Field = styled.input`
 
   &::-webkit-search-cancel-button {
     display: none;
-  }
-
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active,
-  &.webkit-autofill {
-    background-color: #fefde5 !important;
-    border: 1px solid #fffb97 !important;
   }
 `
 
