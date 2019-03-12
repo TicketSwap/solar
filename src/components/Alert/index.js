@@ -95,7 +95,7 @@ const SecondaryActionAdornment = styled.span`
 export const Alert = props => {
   return (
     <Container {...props}>
-      <Adornment>
+      <Adornment variant={props.variant}>
         <Icon
           glyph={
             props.variant === 'success'
