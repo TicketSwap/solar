@@ -281,14 +281,6 @@ export function useDialog(props = {}) {
   }
 }
 
-function matchMediaSupported() {
-  return (
-    typeof window !== 'undefined' ||
-    typeof window.matchMedia !== 'undefined' ||
-    typeof window.msMatchMedia !== 'undefined'
-  )
-}
-
 export function DialogWindow({ children, on, hide, ...props }) {
   const handleHide = ({ keyCode }) => keyCode === 27 && hide()
 
@@ -304,7 +296,9 @@ export function DialogWindow({ children, on, hide, ...props }) {
         items={on}
         from={{
           transform: `translate3d(0,${
-            matchMediaSupported() && window.matchMedia(device.mobileL).matches
+            typeof window !== 'undefined' &&
+            typeof window.matchMedia !== 'undefined' &&
+            window.matchMedia(device.mobileL).matches
               ? -1
               : 1
           }rem,0)`,
