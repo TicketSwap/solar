@@ -87,12 +87,7 @@ const Signup = props => (
 const SignupEmail = () => (
   <>
     <DialogBody>
-      <div
-        css={`
-          display: grid;
-          grid-gap: 0.5rem;
-        `}
-      >
+      <div>
         <Input type="email" id="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
@@ -167,12 +162,7 @@ storiesOf('Dialog', module)
   ))
   .add('with long body', () => (
     <MyDialog>
-      <div
-        css={`
-          display: grid;
-          grid-gap: 1rem;
-        `}
-      >
+      <div>
         <Input id="email" type="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
