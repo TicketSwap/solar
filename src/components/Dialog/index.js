@@ -11,6 +11,7 @@ import {
   fontWeight,
   easingFunctions,
   radius,
+  color,
 } from '../../theme'
 import { useLockBodyScroll } from '../../hooks'
 
@@ -50,6 +51,7 @@ export const DialogHeader = styled.header`
   position: relative;
   height: ${space[56]};
   border-bottom: 1px solid #eee;
+  color: ${color.space};
   font-weight: ${fontWeight.semiBold};
   text-align: center;
   display: flex;
