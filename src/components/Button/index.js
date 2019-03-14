@@ -46,7 +46,7 @@ const StyledButton = styled.button`
     props.variant === 'secondary' &&
     css`
       background-color: ${props.active ? color.earth : color.stardustLight};
-      color: ${props.active ? 'white' : color.spaceMedium};
+      color: ${props.active ? 'white' : color.space};
     `};
 
   ${props =>
