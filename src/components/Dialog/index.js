@@ -299,7 +299,7 @@ export function DialogWindow({ children, on, hide, ...props }) {
         from={{
           transform: `translate3d(0,${
             typeof window !== 'undefined' &&
-            typeof window.matchMedia !== 'undefined' &&
+            window.matchMedia &&
             window.matchMedia(device.mobileL).matches
               ? -1
               : 1
