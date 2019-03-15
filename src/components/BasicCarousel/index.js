@@ -198,75 +198,79 @@ export const BasicCarousel = ({
       hasNext,
       position,
       onDrag,
-    }) => (
-      <Wrapper>
-        {props.prevNextButtons && hasPrev ? (
-          <PrevButton {...getPrevButtonProps()}>
-            <Icon glyph="arrow-left" />
-          </PrevButton>
-        ) : null}
-        {props.prevNextButtons && hasNext ? (
-          <NextButton {...getNextButtonProps()}>
-            <Icon glyph="arrow-right" />
-          </NextButton>
-        ) : null}
-        <Gesture
-          onAction={({ down, xDelta }) =>
-            props.draggable && !down && xDelta !== 0 ? onDrag(xDelta) : null
-          }
-          touch={false}
-        >
-          {({ down, xDelta }) => (
-            <OuterContainer
-              {...getOuterContainerProps({
-                // Disable left blind for variable width carousels
-                leftBlind:
-                  !itemWidth && !hasPrev && props.blinds ? false : props.blinds,
-                rightBlind: props.blinds,
-                // Called `isdraggable` because `draggable`
-                // would trigger native browser behaviour.
-                isdraggable: props.draggable ? 'true' : 'false',
-              })}
-            >
-              <Spring
-                native
-                to={{
-                  x: props.draggable
-                    ? down
-                      ? position + xDelta
-                      : position
-                    : position * -1 || 0,
-                }}
+    }) => {
+      return (
+        <Wrapper>
+          {props.prevNextButtons && hasPrev ? (
+            <PrevButton {...getPrevButtonProps()}>
+              <Icon glyph="arrow-left" />
+            </PrevButton>
+          ) : null}
+          {props.prevNextButtons && hasNext ? (
+            <NextButton {...getNextButtonProps()}>
+              <Icon glyph="arrow-right" />
+            </NextButton>
+          ) : null}
+          <Gesture
+            onAction={({ down, xDelta }) =>
+              props.draggable && !down && xDelta !== 0 ? onDrag(xDelta) : null
+            }
+            touch={false}
+          >
+            {({ down, xDelta }) => (
+              <OuterContainer
+                {...getOuterContainerProps({
+                  // Disable left blind for variable width carousels
+                  leftBlind:
+                    !itemWidth && !hasPrev && props.blinds
+                      ? false
+                      : props.blinds,
+                  rightBlind: props.blinds,
+                  // Called `isdraggable` because `draggable`
+                  // would trigger native browser behaviour.
+                  isdraggable: props.draggable ? 'true' : 'false',
+                })}
               >
-                {({ x }) => (
-                  <InnerContainer
-                    {...getInnerContainerProps({
-                      isdraggable: props.draggable ? 'true' : 'false',
-                      style: {
-                        transform: x.interpolate(
-                          x => `translate3d(${x}px, 0, 0)`
-                        ),
-                      },
-                    })}
-                  >
-                    {items.map((item, i) => (
-                      <ItemContainer
-                        key={i}
-                        itemWidth={itemWidth}
-                        itemWidthSm={itemWidthSm}
-                        itemWidthMd={itemWidthMd}
-                      >
-                        {item}
-                      </ItemContainer>
-                    ))}
-                  </InnerContainer>
-                )}
-              </Spring>
-            </OuterContainer>
-          )}
-        </Gesture>
-      </Wrapper>
-    )}
+                <Spring
+                  native
+                  to={{
+                    x: props.draggable
+                      ? down
+                        ? position + xDelta
+                        : position
+                      : position * -1 || 0,
+                  }}
+                >
+                  {({ x }) => (
+                    <InnerContainer
+                      {...getInnerContainerProps({
+                        isdraggable: props.draggable ? 'true' : 'false',
+                        style: {
+                          transform: x.interpolate(
+                            x => `translate3d(${x}px, 0, 0)`
+                          ),
+                        },
+                      })}
+                    >
+                      {items.map((item, i) => (
+                        <ItemContainer
+                          key={i}
+                          itemWidth={itemWidth}
+                          itemWidthSm={itemWidthSm}
+                          itemWidthMd={itemWidthMd}
+                        >
+                          {item}
+                        </ItemContainer>
+                      ))}
+                    </InnerContainer>
+                  )}
+                </Spring>
+              </OuterContainer>
+            )}
+          </Gesture>
+        </Wrapper>
+      )
+    }}
   </Carousel>
 )
 
