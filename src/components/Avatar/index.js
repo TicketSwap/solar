@@ -14,6 +14,8 @@ const Wrapper = styled.div`
   border-radius: 100%;
   position: relative;
   overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 `
 
 const imageStyles = css`
