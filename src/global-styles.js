@@ -1,5 +1,12 @@
 import { css } from 'styled-components'
-import { fontWeight, device, fontSize, lineHeight, color } from './theme'
+import {
+  fontWeight,
+  device,
+  fontSize,
+  lineHeight,
+  color,
+  radius,
+} from './theme'
 
 export const globalStyles = css`
   @font-face {
@@ -65,6 +72,7 @@ export const globalStyles = css`
     line-height: ${lineHeight.copy};
     font-size: ${fontSize[16]};
     hyphens: auto;
+    color: ${color.space};
 
     @media ${device.tablet} {
       font-size: ${fontSize[18]};
@@ -102,6 +110,12 @@ export const globalStyles = css`
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+    border-radius: ${radius.md};
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.earthFocus};
+    }
   }
 
   table {
