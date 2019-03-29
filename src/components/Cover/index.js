@@ -18,14 +18,20 @@ const Container = styled.div`
   width: 100%;
   height: ${props => (props.height === 'full' ? '100vh' : 'auto')};
   color: ${props => (props.theme === 'dark' ? 'white' : 'inherit')};
-  background-size: cover;
-  background-position: center;
-  background-image: ${props =>
-    props.imageUrl ? `url(${props.imageUrl})` : 'none'};
+`
+
+const BackgroundImage = styled.div`
+  position: absolute;
+  z-index: -2;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
 
   &::before {
     position: absolute;
-    z-index: -1;
+    z-index: 2;
     content: '';
     left: 0;
     top: 0;
@@ -44,6 +50,20 @@ const Container = styled.div`
       rgba(0, 0, 0, 0) 50%,
       rgba(0, 0, 0, 0) 100%
     )`};
+  }
+
+  &::after {
+    position: absolute;
+    z-index: 1;
+    content: '';
+    left: ${props => (props.blurred ? '-32px' : 0)};
+    top: ${props => (props.blurred ? '-32px' : 0)};
+    right: ${props => (props.blurred ? '-32px' : 0)};
+    bottom: ${props => (props.blurred ? '-32px' : 0)};
+    filter: ${props => (props.blurred ? 'blur(16px)' : 'none')};
+    background-size: cover;
+    background-position: center;
+    background-image: ${props => (props.src ? `url(${props.src})` : 'none')};
   }
 `
 
@@ -96,7 +116,15 @@ const Caption = styled.span`
   }
 `
 
-export const Cover = ({ children, caption, captionUrl, ...props }) => (
+export const Cover = ({
+  children,
+  caption,
+  captionUrl,
+  imageUrl,
+  blurred,
+  tinted,
+  ...props
+}) => (
   <Container {...props}>
     <Content height={props.height}>{children}</Content>
 
@@ -107,6 +135,8 @@ export const Cover = ({ children, caption, captionUrl, ...props }) => (
     ) : null}
 
     {caption && !captionUrl ? <Caption>{caption}</Caption> : null}
+
+    <BackgroundImage src={imageUrl} blurred={blurred} tinted={tinted} />
   </Container>
 )
 

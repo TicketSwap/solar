@@ -1,6 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Cover } from './'
+import { Avatar } from '../Avatar'
 import { H1 } from '../Heading'
 
 storiesOf('Cover', module)
@@ -19,6 +20,19 @@ storiesOf('Cover', module)
       imageUrl="https://cdn.ticketswap.com/public/201810/b8010445-f7dd-4a7a-86ec-96748d742d58.64738ee46de91a6a52866112dc7b17d85e3453c6.jpeg"
     >
       <H1>Awakenings Festival 2019</H1>
+    </Cover>
+  ))
+  .add('basic blurred', () => (
+    <Cover
+      theme="dark"
+      blurred
+      imageUrl="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
+    >
+      <Avatar
+        src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
+        size={128}
+      />
+      <H1>Drake</H1>
     </Cover>
   ))
   .add('full height', () => (
