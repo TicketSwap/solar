@@ -39,11 +39,7 @@ storiesOf('Button', module)
   .add('warning', () => <Button variant="warning">Warning</Button>)
   .add('danger', () => <Button variant="danger">Danger</Button>)
   .add('loading', () => <Button loading>Loading</Button>)
-  .add('disabled', () => (
-    <Button variant="success" disabled>
-      Button
-    </Button>
-  ))
+  .add('disabled', () => <Button disabled>Button</Button>)
   .add('facebook', () => <Button variant="facebook">Facebook</Button>)
   .add('rounded', () => <Button rounded>Rounded</Button>)
   .add('rounded square with icon as child', () => (

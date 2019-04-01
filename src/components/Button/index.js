@@ -221,10 +221,16 @@ const StyledButton = styled.button`
 
   &:active {
     outline: 0;
-    background-image: none;
-    background-color: ${color.earthLight};
 
     ${props =>
+      !props.disabled &&
+      css`
+        background-image: none;
+        background-color: ${color.earthLight};
+      `};
+
+    ${props =>
+      !props.disabled &&
       props.variant === 'secondary' &&
       css`
         background-color: ${props.active
@@ -234,30 +240,35 @@ const StyledButton = styled.button`
       `};
 
     ${props =>
+      !props.disabled &&
       props.variant === 'success' &&
       css`
         background-color: ${color.titanLight};
       `};
 
     ${props =>
+      !props.disabled &&
       props.variant === 'warning' &&
       css`
         background-color: ${color.sunLight};
       `};
 
     ${props =>
+      !props.disabled &&
       props.variant === 'danger' &&
       css`
         background-color: ${color.marsLight};
       `};
 
     ${props =>
+      !props.disabled &&
       props.variant === 'facebook' &&
       css`
         background-color: rgb(98, 122, 173);
       `};
 
     ${props =>
+      !props.disabled &&
       props.variant === 'inverted' &&
       css`
         color: ${color.earth};
