@@ -16,6 +16,10 @@ const Button = styled.button`
   color: ${color.spaceLight};
   outline: 0;
   pointer-events: ${props => (props.clickThrough ? 'none' : 'false')};
+
+  &:focus {
+    box-shadow: none;
+  }
 `
 
 const Menu = styled.div`

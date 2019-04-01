@@ -41,7 +41,7 @@ const Wrapper = styled.div`
 
 const PrevNextButton = styled.button`
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   display: none;
   color: ${color.spaceMedium};
   transition: color ${transition};
@@ -51,6 +51,7 @@ const PrevNextButton = styled.button`
   &:hover,
   &:focus {
     color: ${color.space};
+    box-shadow: none;
   }
 
   @media ${device.tablet} {
