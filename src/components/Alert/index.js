@@ -59,6 +59,10 @@ const PrimaryAction = styled.button`
   padding: ${space[16]};
   transition: color ${transition};
 
+  &:focus {
+    box-shadow: none;
+  }
+
   &:hover,
   &:focus {
     color: ${props =>
@@ -77,6 +81,10 @@ const SecondaryAction = styled.button`
   font-weight: ${fontWeight.bold};
   margin-bottom: ${space[16]};
   outline: 0;
+
+  &:focus {
+    box-shadow: none;
+  }
 `
 
 const SecondaryActionAdornment = styled.span`
