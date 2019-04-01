@@ -14,20 +14,9 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('full width with icon', () => (
-    <div
-      css={`
-        display: grid;
-        grid-gap: 0.5rem;
-        margin-bottom: 2rem;
-      `}
-    >
-      <Button width="full" icon="facebook" variant="facebook">
-        Log in with Facebook
-      </Button>
-      <Button width="full" icon="email-solid" variant="secondary">
-        Log in with email
-      </Button>
-    </div>
+    <Button width="full" icon="facebook" variant="facebook">
+      Log in with Facebook
+    </Button>
   ))
   .add('as hyperlink', () => (
     <Button as="a" href="https://www.ticketswap.com">
@@ -36,6 +25,16 @@ storiesOf('Button', module)
   ))
   .add('secondary', () => <Button variant="secondary">Secondary</Button>)
   .add('inverted', () => <Button variant="inverted">Inverted</Button>)
+  .add('inverted disabled', () => (
+    <Button variant="inverted" disabled>
+      Inverted
+    </Button>
+  ))
+  .add('inverted with icon', () => (
+    <Button variant="inverted" icon="plus-solid">
+      Inverted
+    </Button>
+  ))
   .add('success', () => <Button variant="success">Success</Button>)
   .add('warning', () => <Button variant="warning">Warning</Button>)
   .add('danger', () => <Button variant="danger">Danger</Button>)

@@ -7,6 +7,7 @@ import {
   color,
   space,
   radius,
+  shadow,
   fontSize,
   fontWeight,
   lineHeight,
@@ -26,7 +27,13 @@ const StyledButton = styled.button`
   align-items: center;
   text-decoration: none;
   background-color: ${color.earth};
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0)
+  );
   color: white;
+  text-shadow: ${shadow.text};
   line-height: ${lineHeight.solid};
   border-radius: ${props => (props.rounded ? space[32] : radius.md)};
   font-size: ${props => (props.size === 'small' ? fontSize[16] : fontSize[18])};
@@ -40,7 +47,12 @@ const StyledButton = styled.button`
       : 'auto'};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   height: ${props => (props.size === 'small' ? space[44] : space[56])};
-  transition: all ${transition};
+  transition: color ${transition}, background-color ${transition},
+    text-shadow ${transition};
+
+  svg {
+    filter: drop-shadow(${shadow.text});
+  }
 
   ${props =>
     props.variant === 'secondary' &&
@@ -52,8 +64,13 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'inverted' &&
     css`
+      text-shadow: none;
       background-color: white;
       color: ${color.earth};
+
+      svg {
+        filter: none;
+      }
     `};
 
   ${props =>
@@ -85,11 +102,49 @@ const StyledButton = styled.button`
     css`
       color: ${color.spaceLighter};
       background-color: ${color.spaceLightest};
+      text-shadow: none;
     `};
 
-  &:hover,
+  ${props =>
+    props.variant === 'inverted' &&
+    props.disabled &&
+    css`
+      background-color: white;
+      color: ${color.earthLighter};
+    `};
+
   &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.earthFocus};
+
+    ${props =>
+      props.variant === 'success' &&
+      css`
+        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.titanFocus};
+      `};
+
+    ${props =>
+      props.variant === 'warning' &&
+      css`
+        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.sunFocus};
+      `};
+
+    ${props =>
+      props.variant === 'danger' &&
+      css`
+        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.marsFocus};
+      `};
+
+    ${props =>
+      props.variant === 'facebook' &&
+      css`
+        box-shadow: 0 0 0 1px white, 0 0 0 5px rgba(59, 89, 152, 0.24);
+      `};
+  }
+
+  &:hover {
     color: white;
+    text-shadow: ${shadow.text};
     background-color: ${color.earthLight};
 
     ${props =>
@@ -97,14 +152,16 @@ const StyledButton = styled.button`
       css`
         background-color: ${props.active
           ? color.earthLight
-          : color.stardustLighter};
+          : color.stardustLight};
         color: ${props.active ? 'white' : color.spaceMedium};
       `};
 
     ${props =>
       props.variant === 'inverted' &&
       css`
-        background-color: ${color.earth};
+        text-shadow: none;
+        background-color: white;
+        color: ${color.earthLight};
       `};
 
     ${props =>
@@ -136,12 +193,62 @@ const StyledButton = styled.button`
       css`
         color: ${color.spaceLighter};
         background-color: ${color.spaceLightest};
+        text-shadow: none;
+      `};
+
+    ${props =>
+      props.variant === 'inverted' &&
+      props.disabled &&
+      css`
+        background-color: white;
+        color: ${color.earthLighter};
       `};
   }
 
-  &:active,
-  &:focus {
-    outline: none;
+  &:active {
+    outline: 0;
+    background-image: none;
+    background-color: ${color.earthLight};
+
+    ${props =>
+      props.variant === 'secondary' &&
+      css`
+        background-color: ${props.active
+          ? color.earthLight
+          : color.stardustLight};
+        color: ${props.active ? 'white' : color.space};
+      `};
+
+    ${props =>
+      props.variant === 'success' &&
+      css`
+        background-color: ${color.titanLight};
+      `};
+
+    ${props =>
+      props.variant === 'warning' &&
+      css`
+        background-color: ${color.sunLight};
+      `};
+
+    ${props =>
+      props.variant === 'danger' &&
+      css`
+        background-color: ${color.marsLight};
+      `};
+
+    ${props =>
+      props.variant === 'facebook' &&
+      css`
+        background-color: rgb(98, 122, 173);
+      `};
+
+    ${props =>
+      props.variant === 'inverted' &&
+      css`
+        color: ${color.earth};
+        background-color: white;
+      `};
   }
 `
 
