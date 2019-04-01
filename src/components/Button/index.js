@@ -114,31 +114,45 @@ const StyledButton = styled.button`
     `};
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.earthFocus};
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &:focus::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    background-color: transparent;
+    border-radius: ${props =>
+      props.rounded ? space[32] : `calc(${radius.md} + 1px)`};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthFocus};
+    pointer-events: none;
 
     ${props =>
       props.variant === 'success' &&
       css`
-        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.titanFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.titanFocus};
       `};
 
     ${props =>
       props.variant === 'warning' &&
       css`
-        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.sunFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.sunFocus};
       `};
 
     ${props =>
       props.variant === 'danger' &&
       css`
-        box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.marsFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.marsFocus};
       `};
 
     ${props =>
       props.variant === 'facebook' &&
       css`
-        box-shadow: 0 0 0 1px white, 0 0 0 5px rgba(59, 89, 152, 0.24);
+        box-shadow: 0 0 0 ${space[4]} rgba(59, 89, 152, 0.24);
       `};
   }
 

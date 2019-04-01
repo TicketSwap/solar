@@ -5,6 +5,7 @@ import {
   fontSize,
   lineHeight,
   color,
+  space,
   radius,
 } from './theme'
 
@@ -114,7 +115,7 @@ export const globalStyles = css`
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 1px white, 0 0 0 5px ${color.earthFocus};
+      box-shadow: 0 0 0 ${space[4]} ${color.earthFocus};
     }
   }
 
