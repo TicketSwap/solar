@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import { CountryInput } from './'
+import { CountrySelect } from './'
 
 const countries = [
   { value: 'nl', name: 'Netherlands' },
@@ -18,12 +18,12 @@ const countries = [
   { value: 'hu', name: 'Hungary' },
 ]
 
-storiesOf('CountryInput', module)
+storiesOf('CountrySelect', module)
   .add('basic', () => (
-    <CountryInput id="country" label="Country" items={countries} />
+    <CountrySelect id="country" label="Country" items={countries} />
   ))
   .add('with initial value', () => (
-    <CountryInput
+    <CountrySelect
       id="country"
       label="Country"
       items={countries}

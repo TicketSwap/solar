@@ -83,5 +83,8 @@
     "dist"
   ],
   "license": "MIT",
-  "repository": "https://github.com/TicketSwap/solar"
+  "repository": "https://github.com/TicketSwap/solar",
+  "dependencies": {
+    "compute-scroll-into-view": "^1.0.11"
+  }
 }

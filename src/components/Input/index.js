@@ -38,7 +38,6 @@ const Field = styled.input`
       ? space[48]
       : space[16]};
   color: ${props => (props.invalid ? color.mars : color.space)};
-  border: 1px solid ${color.stardust};
   box-shadow: none;
   text-align: left;
   appearance: none;
@@ -100,6 +99,11 @@ export const Adornment = styled.span`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  transition: color ${transition};
+
+  ${Label}:focus-within & {
+    color: ${color.space};
+  }
 `
 
 const ResetButton = styled.button`
@@ -143,6 +147,8 @@ export const Input = React.forwardRef(
               <Icon glyph="close-circle-solid" size={16} />
             </ResetButton>
           </Adornment>
+        ) : props.rightAdornment ? (
+          <Adornment right>{props.rightAdornment}</Adornment>
         ) : null}
       </InputWrapper>
     </Label>
