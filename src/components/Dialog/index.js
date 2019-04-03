@@ -151,15 +151,15 @@ export function DialogBody({ children }) {
 }
 
 export const DialogFooter = styled.footer`
-  padding-left: ${space[16]};
-  padding-right: ${space[16]};
-  padding-bottom: ${space[16]};
+  position: relative;
+  z-index: 1;
+  margin-top: -${space[16]};
+  padding: ${space[16]};
   padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
 
   @media ${device.mobileL} {
-    padding-left: ${space[32]};
-    padding-right: ${space[32]};
-    padding-bottom: ${space[32]};
+    margin-top: -${space[32]};
+    padding: ${space[32]};
   }
 `
 
