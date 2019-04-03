@@ -71,7 +71,14 @@ export const Item = React.forwardRef(({ children, ...props }, ref) => (
   </ItemContainer>
 ))
 
-export function Select({ items, onChange, initialSelectedItem, id, label }) {
+export function Select({
+  items,
+  onChange,
+  initialSelectedItem,
+  id,
+  label,
+  ...props
+}) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
     initialSelectedItem || items[0]
@@ -132,6 +139,7 @@ export function Select({ items, onChange, initialSelectedItem, id, label }) {
   return (
     <Container ref={containerRef}>
       <StyledInput
+        {...props}
         id={id}
         ref={inputRef}
         label={label}
