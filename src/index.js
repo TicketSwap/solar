@@ -8,7 +8,8 @@ export { BasicCarousel } from './components/BasicCarousel'
 export { Button } from './components/Button'
 export { Card } from './components/Card'
 export { Carousel } from './components/Carousel'
-export { CountryInput } from './components/CountryInput'
+export { Select } from './components/Select'
+export { CountrySelect } from './components/CountrySelect'
 export {
   ToastProvider,
   ToastConsumer,
