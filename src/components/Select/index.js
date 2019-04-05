@@ -148,7 +148,7 @@ export function Select({
         labelProps={{ id: labelId, htmlFor: id }}
         onFocus={() => setIsOpen(true)}
         onBlur={() => setIsOpen(false)}
-        rightAdornment={<Icon glyph="arrow-down-solid" size={24} />}
+        rightAdornment={<Icon glyph="arrow-down-alt" size={16} />}
         onKeyDown={e => {
           if (!isOpen) return false
           if (e.key === 'ArrowUp') {
