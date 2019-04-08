@@ -20,7 +20,13 @@ const StyledButton = styled.button`
   font-weight: ${fontWeight.semiBold};
   text-align: center;
   border: none;
-  padding: 0 ${props => (props.square ? 0 : space[24])};
+  padding: 0
+    ${props =>
+      props.square
+        ? 0
+        : props.icon && props.width === 'full'
+        ? space[48]
+        : space[24]};
   display: inline-flex;
   vertical-align: middle;
   justify-content: center;
@@ -291,14 +297,14 @@ const Adornment = styled.span`
     `};
 `
 
-export const Button = ({ icon, children, ...props }) => (
+export const Button = ({ children, ...props }) => (
   <StyledButton {...props}>
-    {props.loading || icon ? (
+    {props.loading || props.icon ? (
       <Adornment position={props.width === 'full' ? 'absolute' : null}>
         {props.loading ? (
           <Spinner size={24} />
-        ) : icon ? (
-          <Icon glyph={icon} size={24} />
+        ) : props.icon ? (
+          <Icon glyph={props.icon} size={24} />
         ) : null}
       </Adornment>
     ) : null}
