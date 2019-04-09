@@ -55,6 +55,13 @@ const Field = styled.input`
     appearance: none;
   }
 
+  &[type='date']::-webkit-clear-button,
+  &[type='date']::-webkit-inner-spin-button,
+  &[type='date']::-webkit-calendar-picker-indicator {
+    appearance: none;
+    display: none;
+  }
+
   &:focus,
   &.focus {
     outline: none;
@@ -86,7 +93,9 @@ const LabelText = styled.span`
   margin-bottom: ${space[4]};
 `
 
-export const Adornment = styled.span`
+export const Adornment = styled.span.attrs({
+  className: 'adornment',
+})`
   position: absolute;
   z-index: 1;
   top: 0;
