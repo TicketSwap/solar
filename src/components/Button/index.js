@@ -297,15 +297,19 @@ const Adornment = styled.span`
     `};
 `
 
-export const Button = ({ children, ...props }) => (
-  <StyledButton {...props}>
-    {props.loading || props.icon ? (
+export const Button = ({ children, onClick, loading, ...props }) => (
+  <StyledButton
+    onClick={loading ? () => null : onClick}
+    loading={loading}
+    {...props}
+  >
+    {loading || props.icon ? (
       <Adornment position={props.width === 'full' ? 'absolute' : null}>
-        {props.loading ? (
+        {loading ? (
           <Spinner size={24} />
-        ) : props.icon ? (
+        ) : (
           <Icon glyph={props.icon} size={24} />
-        ) : null}
+        )}
       </Adornment>
     ) : null}
     {children}
