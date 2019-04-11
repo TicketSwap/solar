@@ -71,18 +71,6 @@ storiesOf('BasicCarousel', module)
       />
     </ContentWrapper>
   ))
-  .add('draggable without arrows', () => (
-    <ContentWrapper>
-      <BasicCarousel
-        items={items}
-        prevNextButtons={false}
-        draggable
-        itemWidth={1}
-        itemWidthSm={0.75}
-        itemWidthMd={0.25}
-      />
-    </ContentWrapper>
-  ))
   .add('with variable-width items', () => (
     <ContentWrapper>
       <BasicCarousel
