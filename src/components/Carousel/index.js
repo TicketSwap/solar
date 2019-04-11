@@ -128,23 +128,6 @@ export class Carousel extends Component {
     this.setState({ position: newPos }, this.hasNext)
   }
 
-  onDrag = val => {
-    const container = this.innerContainer
-    if (!container) return false
-    const containerWidth = container.getBoundingClientRect().width
-    const children = Array.from(container.childNodes)
-    if (!children.length) return false
-    const totalWidth = children
-      .map(child => Math.ceil(child.getBoundingClientRect().width))
-      .reduce((acc, cur) => acc + cur)
-
-    this.setState(state => {
-      const newPos =
-        val < 0 ? state.position - Math.abs(val) : state.position + val
-      return { position: clamp(newPos, 0, containerWidth - totalWidth) }
-    })
-  }
-
   getOuterContainerProps = (props = {}) => ({
     ...props,
     ref: this.setOuterContainerRef,
@@ -175,7 +158,6 @@ export class Carousel extends Component {
       getNextButtonProps: this.getNextButtonProps,
       hasPrev: this.state.activeIndex !== 0,
       hasNext: this.state.hasNext,
-      onDrag: this.onDrag,
       position: this.state.position,
     }
   }

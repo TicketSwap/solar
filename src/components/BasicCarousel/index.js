@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Spring, animated } from 'react-spring'
-import { Gesture } from '../Gesture'
 import { space, device, color, transition } from '../../theme'
 import { Carousel } from '../Carousel'
 import { Icon } from '../Icon'
@@ -115,17 +114,6 @@ const OuterContainer = styled.div`
     display: none;
   }
 
-  ${props =>
-    props.isdraggable === 'true' &&
-    css`
-      cursor: move; /* fallback if grab cursor is unsupported */
-      cursor: grab;
-
-      &:active {
-        cursor: grabbing;
-      }
-    `};
-
   @media ${device.tablet} {
     padding-left: 0;
     overflow: hidden;
@@ -136,7 +124,6 @@ const OuterContainer = styled.div`
 `
 
 const InnerContainer = styled(animated.div)`
-  pointer-events: ${props => (props.isdraggable === 'true' ? 'none' : 'auto')};
   position: relative;
   display: flex;
 `
@@ -198,7 +185,6 @@ export const BasicCarousel = ({
       hasPrev,
       hasNext,
       position,
-      onDrag,
     }) => {
       return (
         <Wrapper>
@@ -212,63 +198,44 @@ export const BasicCarousel = ({
               <Icon glyph="arrow-right" />
             </NextButton>
           ) : null}
-          <Gesture
-            onAction={({ down, xDelta }) =>
-              props.draggable && !down && xDelta !== 0 ? onDrag(xDelta) : null
-            }
-            touch={false}
+          <OuterContainer
+            {...getOuterContainerProps({
+              // Disable left blind for variable width carousels
+              leftBlind:
+                !itemWidth && !hasPrev && props.blinds ? false : props.blinds,
+              rightBlind: props.blinds,
+            })}
           >
-            {({ down, xDelta }) => (
-              <OuterContainer
-                {...getOuterContainerProps({
-                  // Disable left blind for variable width carousels
-                  leftBlind:
-                    !itemWidth && !hasPrev && props.blinds
-                      ? false
-                      : props.blinds,
-                  rightBlind: props.blinds,
-                  // Called `isdraggable` because `draggable`
-                  // would trigger native browser behaviour.
-                  isdraggable: props.draggable ? 'true' : 'false',
-                })}
-              >
-                <Spring
-                  native
-                  to={{
-                    x: props.draggable
-                      ? down
-                        ? position + xDelta
-                        : position
-                      : position * -1 || 0,
-                  }}
+            <Spring
+              native
+              to={{
+                x: position * -1 || 0,
+              }}
+            >
+              {({ x }) => (
+                <InnerContainer
+                  {...getInnerContainerProps({
+                    style: {
+                      transform: x.interpolate(
+                        x => `translate3d(${x}px, 0, 0)`
+                      ),
+                    },
+                  })}
                 >
-                  {({ x }) => (
-                    <InnerContainer
-                      {...getInnerContainerProps({
-                        isdraggable: props.draggable ? 'true' : 'false',
-                        style: {
-                          transform: x.interpolate(
-                            x => `translate3d(${x}px, 0, 0)`
-                          ),
-                        },
-                      })}
+                  {items.map((item, i) => (
+                    <ItemContainer
+                      key={i}
+                      itemWidth={itemWidth}
+                      itemWidthSm={itemWidthSm}
+                      itemWidthMd={itemWidthMd}
                     >
-                      {items.map((item, i) => (
-                        <ItemContainer
-                          key={i}
-                          itemWidth={itemWidth}
-                          itemWidthSm={itemWidthSm}
-                          itemWidthMd={itemWidthMd}
-                        >
-                          {item}
-                        </ItemContainer>
-                      ))}
-                    </InnerContainer>
-                  )}
-                </Spring>
-              </OuterContainer>
-            )}
-          </Gesture>
+                      {item}
+                    </ItemContainer>
+                  ))}
+                </InnerContainer>
+              )}
+            </Spring>
+          </OuterContainer>
         </Wrapper>
       )
     }}
@@ -280,13 +247,11 @@ BasicCarousel.propTypes = {
   itemWidth: PropTypes.number,
   itemWidthSm: PropTypes.number,
   itemWidthMd: PropTypes.number,
-  draggable: PropTypes.bool,
   prevNextButtons: PropTypes.bool,
   blinds: PropTypes.bool,
 }
 
 BasicCarousel.defaultProps = {
-  draggable: false,
   prevNextButtons: true,
   blinds: true,
 }
