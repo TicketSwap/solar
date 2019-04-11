@@ -34,7 +34,9 @@ const Field = styled.input`
   padding-bottom: ${props => (props.as === 'textarea' ? space[12] : 0)};
   padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
   padding-right: ${props =>
-    (props.value && props.value.length && props.onReset) || props.loading
+    (props.value && props.value.length && props.onReset) ||
+    props.loading ||
+    props.rightAdornment
       ? space[48]
       : space[16]};
   color: ${props => (props.invalid ? color.mars : color.space)};
