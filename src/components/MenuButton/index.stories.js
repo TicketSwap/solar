@@ -10,11 +10,7 @@ const items = [
 
 storiesOf('MenuButton', module)
   .add('default', () => (
-    <div
-      css={`
-        padding: 2rem;
-      `}
-    >
+    <div style={{ padding: '2rem' }}>
       <span>
         Language:{' '}
         <MenuButton items={items} onChange={item => console.log(item)} />
@@ -23,12 +19,12 @@ storiesOf('MenuButton', module)
   ))
   .add('top', () => (
     <div
-      css={`
-        display: flex;
-        align-items: flex-end;
-        padding: 2rem;
-        height: 100vh;
-      `}
+      style={{
+        display: 'flex',
+        alignItems: 'flex-end',
+        padding: '2rem',
+        height: '100vh',
+      }}
     >
       <span>
         Language:{' '}

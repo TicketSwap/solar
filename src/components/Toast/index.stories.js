@@ -24,12 +24,12 @@ storiesOf('Toasts', module)
             add(
               <Toast persist>
                 <div
-                  css={`
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                  `}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
                 >
                   <span>Payment failed</span>
                   <Button onClick={remove} size="small" variant="inverted">

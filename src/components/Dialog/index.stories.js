@@ -25,13 +25,7 @@ const ViewContainer = styled.div`
 
 const Login = props => (
   <DialogBody>
-    <div
-      css={`
-        display: grid;
-        grid-gap: 0.5rem;
-        margin-bottom: 2rem;
-      `}
-    >
+    <div style={{ display: 'grid', gridGap: '0.5rem', marginBottom: '2rem' }}>
       <Button variant="facebook">Log in with Facebook</Button>
       <Button variant="secondary" onClick={() => props.select(2)}>
         Log in with email
@@ -48,11 +42,7 @@ const Login = props => (
 
 const LoginEmail = () => (
   <DialogBody>
-    <div
-      css={`
-        margin-bottom: 1rem;
-      `}
-    >
+    <div style={{ marginBottom: '1rem' }}>
       <Input type="email" id="email" label="Email address" hideLabel />
     </div>
     <Button variant="success" width="full">
@@ -63,13 +53,7 @@ const LoginEmail = () => (
 
 const Signup = props => (
   <DialogBody>
-    <div
-      css={`
-        display: grid;
-        grid-gap: 0.5rem;
-        margin-bottom: 2rem;
-      `}
-    >
+    <div style={{ display: 'grid', gridGap: '0.5rem', marginBottom: '2rem' }}>
       <Button variant="facebook">Sign up with Facebook</Button>
       <Button variant="secondary" onClick={() => props.select(3)}>
         Sign up with email
