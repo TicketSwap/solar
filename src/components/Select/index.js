@@ -16,6 +16,10 @@ import { useOnClickOutside, useKeyPress } from '../../hooks'
 
 const Container = styled.div`
   position: relative;
+
+  .adornment {
+    pointer-events: none;
+  }
 `
 
 const StyledInput = styled(Input)`
@@ -71,20 +75,13 @@ export const Item = React.forwardRef(({ children, ...props }, ref) => (
   </ItemContainer>
 ))
 
-export function Select({
-  items,
-  onChange,
-  initialSelectedItem,
-  id,
-  label,
-  ...props
-}) {
+export function Select({ items, onChange, id, label, ...props }) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
-    initialSelectedItem || items[0]
+    props.initialSelectedItem || items[0]
   )
   const [highlightedIndex, setHighlightedIndex] = React.useState(
-    items.indexOf(initialSelectedItem)
+    items.indexOf(props.initialSelectedItem)
   )
   const containerRef = React.useRef()
   const inputRef = React.useRef()
@@ -92,6 +89,7 @@ export function Select({
   let itemRefs = []
   const labelId = `${id}-label`
   const menuId = `${id}-menu`
+  const isControlled = typeof props.selectedItem !== 'undefined'
   const esc = useKeyPress('Escape')
   const arrowUp = useKeyPress('ArrowUp')
   const arrowDown = useKeyPress('ArrowDown')
@@ -107,6 +105,10 @@ export function Select({
   function setItemRef(el) {
     return (itemRefs = [...itemRefs, el])
   }
+
+  React.useEffect(() => {
+    if (isControlled) setSelectedItem(props.selectedItem)
+  }, [props.selectedItem])
 
   React.useEffect(() => {
     if (esc) handleClose()
@@ -163,7 +165,8 @@ export function Select({
               prev !== items.length - 1 ? prev + 1 : 0
             )
           }
-          if (e.key === 'Enter') {
+          // Select with Enter or Space keys
+          if (e.key === 'Enter' || e.keyCode === 32) {
             onChange(items[highlightedIndex])
             setSelectedItem(items[highlightedIndex])
             handleClose()
@@ -218,4 +221,5 @@ Select.propTypes = {
     })
   ).isRequired,
   initialSelectedItem: PropTypes.object,
+  selectedItem: PropTypes.object,
 }

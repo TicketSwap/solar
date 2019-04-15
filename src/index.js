@@ -9,6 +9,7 @@ export { Button } from './components/Button'
 export { Card } from './components/Card'
 export { Carousel } from './components/Carousel'
 export { Select } from './components/Select'
+export { DateInput } from './components/DateInput'
 export { CountrySelect } from './components/CountrySelect'
 export {
   ToastProvider,
