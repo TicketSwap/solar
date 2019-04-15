@@ -75,6 +75,7 @@ export const shadow = {
 export const space = {
   0: '0',
   4: '0.25rem',
+  6: '0.375rem',
   8: '0.5rem',
   12: '0.75rem',
   14: '0.875rem',

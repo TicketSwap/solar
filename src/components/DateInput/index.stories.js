@@ -24,6 +24,12 @@ storiesOf('DateInput', module)
       label="Date of birth"
       months={months}
       onChange={date => console.log(date)}
+      dayInputProps={{
+        placeholder: 'Tag',
+      }}
+      yearInputProps={{
+        placeholder: 'Jahr',
+      }}
     />
   ))
   .add('with initial date (string)', () => (

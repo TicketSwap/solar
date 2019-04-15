@@ -120,10 +120,9 @@ export function DateInput({ id, label, hideLabel, ...props }) {
         <InputGroup>
           <InputWrapper>
             <Input
+              {...props.dayInputProps}
               id="day"
-              label="Day"
               hideLabel
-              placeholder="Day"
               value={day.toString()}
               onChange={e => setDay(e.target.value)}
             />
@@ -140,10 +139,9 @@ export function DateInput({ id, label, hideLabel, ...props }) {
           </SelectWrapper>
           <InputWrapper>
             <Input
+              {...props.yearInputProps}
               id="year"
-              label="Year"
               hideLabel
-              placeholder="Year"
               value={year.toString()}
               onChange={e =>
                 e.target.value.length < 5 && setYear(e.target.value)
@@ -158,12 +156,22 @@ export function DateInput({ id, label, hideLabel, ...props }) {
 
 DateInput.defaultProps = {
   onChange: () => {},
+  dayInputProps: {
+    label: 'Day',
+    placeholder: 'Day',
+  },
+  yearInputProps: {
+    label: 'Year',
+    placeholder: 'Year',
+  },
 }
 
 DateInput.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  dayInputProps: PropTypes.object,
+  yearInputProps: PropTypes.object,
   months: PropTypes.arrayOf(PropTypes.string).isRequired,
   initialSelectedDate: PropTypes.oneOfType([
     PropTypes.object,

@@ -12,6 +12,7 @@ import {
   fontSize,
   lineHeight,
   radius,
+  device,
 } from '../../theme'
 
 const InputWrapper = styled.div`
@@ -41,6 +42,7 @@ const Field = styled.input`
       : space[16]};
   color: ${props => (props.invalid ? color.mars : color.space)};
   box-shadow: none;
+  border: 0;
   text-align: left;
   appearance: none;
   transition: box-shadow ${transition}, background-color ${transition};
@@ -129,6 +131,17 @@ const ResetButton = styled.button`
   }
 `
 
+const Help = styled.p`
+  font-size: ${fontSize[14]};
+  margin-bottom: 0;
+  margin-top: ${space[6]};
+  color: ${color.spaceLight};
+
+  @media ${device.tablet} {
+    font-size: ${fontSize[16]};
+  }
+`
+
 export const Input = React.forwardRef(
   ({ id, label, hideLabel, labelProps, ...props }, ref) => (
     <Label htmlFor={!labelProps && id} {...labelProps}>
@@ -162,6 +175,7 @@ export const Input = React.forwardRef(
           <Adornment right>{props.rightAdornment}</Adornment>
         ) : null}
       </InputWrapper>
+      {props.help && <Help>{props.help}</Help>}
     </Label>
   )
 )
