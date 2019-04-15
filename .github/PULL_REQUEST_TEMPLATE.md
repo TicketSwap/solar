@@ -10,7 +10,7 @@ A brief summary of the changes in this pull request.
 ## How to test
 
 - Checkout this branch
-- `$ npm run storybook`
+- `$ npm run dev`
 
 ## Screenshots
 

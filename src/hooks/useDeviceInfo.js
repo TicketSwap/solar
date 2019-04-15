@@ -2,7 +2,7 @@ import { isServer } from '../utils'
 
 export function useDeviceInfo() {
   if (isServer()) return {}
-  const userAgent = window.navigator.userAgent
+  const userAgent = global.navigator.userAgent
   const isAndroid = () => Boolean(userAgent.match(/Android/i))
   const isIOS = () => Boolean(userAgent.match(/iPhone|iPad|iPod/i))
   const isOpera = () => Boolean(userAgent.match(/Opera Mini/i))

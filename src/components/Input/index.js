@@ -176,7 +176,7 @@ Input.propTypes = {
   hideLabel: PropTypes.bool,
   labelProps: PropTypes.object,
   leftAdornment: PropTypes.node,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   type: PropTypes.string,
   onChange: PropTypes.func,
   onReset: PropTypes.func,
