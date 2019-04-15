@@ -8,7 +8,7 @@
     "build": "rollup -c --environment NODE_ENV:production",
     "prepublishOnly": "npm run build",
     "lint": "eslint src",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "dev": "start-storybook -p 9001 -c .storybook",
     "storybook:deploy": "storybook-to-ghpages",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|scss|ts|tsx|md|mdx|graphql)\"",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
