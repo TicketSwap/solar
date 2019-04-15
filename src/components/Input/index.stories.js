@@ -8,6 +8,9 @@ storiesOf('Input', module)
   .add('with hidden label', () => (
     <Input id="fname" label="First name" hideLabel />
   ))
+  .add('with helper text', () => (
+    <Input id="fname" label="First name" help="Lorem ipsum dolor sit amet" />
+  ))
   .add('loading', () => (
     <Input
       placeholder="Search our docs"
