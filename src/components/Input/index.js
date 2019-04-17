@@ -134,7 +134,7 @@ const ResetButton = styled.button`
 const Help = styled.p`
   font-size: ${fontSize[14]};
   margin-bottom: 0;
-  margin-top: 0.375rem; /* 6px */
+  margin-top: ${6 / 16}rem;
   color: ${color.spaceLight};
 
   @media ${device.tablet} {
