@@ -1,7 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
-import { color, space, fontWeight, transition, radius } from '../../theme'
+import {
+  color,
+  space,
+  fontWeight,
+  transition,
+  radius,
+  device,
+} from '../../theme'
 import { Icon } from '../Icon'
 
 const Container = styled.div`
@@ -14,9 +21,13 @@ const Container = styled.div`
       ? color.sunLightest
       : color.earthLightest};
   border-radius: ${radius.md};
-  min-height: ${space[56]};
+  min-height: ${space[44]};
   display: flex;
   align-items: flex-start;
+
+  @media ${device.tablet} {
+    min-height: ${space[56]};
+  }
 `
 
 const textColor = css`
@@ -32,12 +43,17 @@ const textColor = css`
 
 const Adornment = styled.span`
   ${textColor};
-  width: ${space[64]};
-  height: ${space[56]};
+  width: ${space[44]};
+  height: ${space[44]};
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+
+  @media ${device.tablet} {
+    width: ${space[56]};
+    height: ${space[56]};
+  }
 `
 
 const Main = styled.div`
@@ -46,9 +62,14 @@ const Main = styled.div`
 
 const Message = styled.p`
   color: ${color.space};
-  padding-top: ${space[16]};
-  padding-bottom: ${space[16]};
+  padding-top: 0.625rem; /* 10px */
+  padding-bottom: 0.625rem;
   padding-right: ${props => (!props.primaryAction ? space[16] : 0)};
+
+  @media ${device.tablet} {
+    padding-top: 0.875rem; /* 14px */
+    padding-bottom: 0.875rem;
+  }
 `
 
 const PrimaryAction = styled.button`
@@ -56,8 +77,16 @@ const PrimaryAction = styled.button`
   outline: 0;
   font-weight: ${fontWeight.bold};
   flex-shrink: 0;
-  padding: ${space[16]};
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: ${space[16]};
+  padding-right: ${space[16]};
   transition: color ${transition};
+
+  @media ${device.tablet} {
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
 
   &:focus {
     box-shadow: none;
@@ -79,8 +108,12 @@ const PrimaryAction = styled.button`
 const SecondaryAction = styled.button`
   color: ${color.space};
   font-weight: ${fontWeight.bold};
-  margin-bottom: ${space[16]};
+  margin-bottom: 0.625rem;
   outline: 0;
+
+  @media ${device.tablet} {
+    margin-bottom: 0.875rem;
+  }
 
   &:focus {
     box-shadow: none;
@@ -105,6 +138,7 @@ export const Alert = props => {
     <Container {...props}>
       <Adornment variant={props.variant}>
         <Icon
+          size={24}
           glyph={
             props.variant === 'success'
               ? 'checkmark-solid'
