@@ -62,13 +62,13 @@ const Main = styled.div`
 
 const Message = styled.p`
   color: ${color.space};
-  padding-top: 0.625rem; /* 10px */
-  padding-bottom: 0.625rem;
+  padding-top: ${10 / 16}rem;
+  padding-bottom: ${10 / 16}rem;
   padding-right: ${props => (!props.primaryAction ? space[16] : 0)};
 
   @media ${device.tablet} {
-    padding-top: 0.875rem; /* 14px */
-    padding-bottom: 0.875rem;
+    padding-top: ${14 / 16}rem;
+    padding-bottom: ${14 / 16}rem;
   }
 `
 
@@ -77,15 +77,15 @@ const PrimaryAction = styled.button`
   outline: 0;
   font-weight: ${fontWeight.bold};
   flex-shrink: 0;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding-top: ${10 / 16}rem;
+  padding-bottom: ${10 / 16}rem;
   padding-left: ${space[16]};
   padding-right: ${space[16]};
   transition: color ${transition};
 
   @media ${device.tablet} {
-    padding-top: 0.875rem;
-    padding-bottom: 0.875rem;
+    padding-top: ${14 / 16}rem;
+    padding-bottom: ${14 / 16}rem;
   }
 
   &:focus {
@@ -108,11 +108,11 @@ const PrimaryAction = styled.button`
 const SecondaryAction = styled.button`
   color: ${color.space};
   font-weight: ${fontWeight.bold};
-  margin-bottom: 0.625rem;
+  margin-bottom: ${10 / 16}rem;
   outline: 0;
 
   @media ${device.tablet} {
-    margin-bottom: 0.875rem;
+    margin-bottom: ${14 / 16}rem;
   }
 
   &:focus {

@@ -9,8 +9,8 @@ export const Switch = styled.button`
   box-sizing: initial;
   display: inline-block;
   outline: 0;
-  width: 3.25rem; /* 52px */
-  height: 1.75rem; /* 28px */
+  width: ${52 / 16}rem;
+  height: ${28 / 16}rem;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -35,7 +35,7 @@ export const Switch = styled.button`
     position: relative;
     display: block;
     content: '';
-    width: 1.75rem;
+    width: ${28 / 16}rem;
     height: 100%;
     border-radius: ${space[32]};
     background: white;
