@@ -27,30 +27,27 @@ const Container = styled.div`
 const InputGroup = styled.div`
   position: relative;
   display: flex;
-  grid-auto-flow: row;
+  flex-direction: column;
 
   @media ${device.mobile} {
-    grid-auto-flow: column;
-  }
-
-  @supports (display: grid) {
-    display: grid;
-    grid-gap: ${space[8]};
-    justify-items: center;
-    margin: auto;
+    flex-direction: row;
   }
 `
 
 const InputWrapper = styled.div`
   width: 100%;
+  flex-shrink: 2;
+  flex-basis: 40%;
 `
 
 const SelectWrapper = styled.div`
   width: 100%;
-  padding: 0 ${space[8]};
+  padding: ${space[8]} 0;
+  flex-shrink: 1;
+  flex-basis: 60%;
 
-  @supports (display: grid) {
-    padding: 0;
+  @media ${device.mobile} {
+    padding: 0 ${space[8]};
   }
 `
 
@@ -85,7 +82,7 @@ function splitDateString(str) {
 }
 
 export function DateInput({ id, label, hideLabel, ...props }) {
-  const { isMobile } = useDeviceInfo()
+  const { isIOS } = useDeviceInfo()
   const dateInputRef = React.useRef()
   const months = createSelectOptions(props.months)
   const [initialYear, initialMonth, initialDay] = splitDateString(
@@ -100,7 +97,7 @@ export function DateInput({ id, label, hideLabel, ...props }) {
   }, [year, month, day])
 
   return (
-    <Container input={isMobile() ? 'native' : 'custom'}>
+    <Container input={isIOS() ? 'native' : 'custom'}>
       <Input
         type="date"
         label={label}
