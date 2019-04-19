@@ -1,8 +1,8 @@
 export function fetchImage(src) {
   const image = new Image()
-  return new Promise((resolve, error) => {
+  return new Promise((resolve, reject) => {
     image.src = src
     image.onload = resolve
-    image.onerror = error
+    image.onerror = reject
   })
 }

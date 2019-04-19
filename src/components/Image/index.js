@@ -67,8 +67,12 @@ export class Image extends Component {
 
   async handleLoad() {
     const { src } = this.props
-    await fetchImage(src)
-    return this.setState({ loaded: true, src })
+    try {
+      await fetchImage(src)
+      return this.setState({ loaded: true, src })
+    } catch (error) {
+      return this.setState({ loaded: true })
+    }
   }
 
   handleLazyLoad = entries => {
