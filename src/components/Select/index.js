@@ -14,7 +14,9 @@ import { Input, Adornment } from '../Input'
 import { Icon } from '../Icon'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
-const Container = styled.div`
+const Container = styled.div.attrs({
+  className: 'select',
+})`
   position: relative;
 
   .adornment {
@@ -55,7 +57,7 @@ const ItemContainer = styled.div`
   z-index: 1;
   padding-left: ${props => (props.adornment ? space[48] : space[16])};
   padding-right: ${space[16]};
-  height: ${props => (props.as === 'textarea' ? 'auto' : space[56])};
+  min-height: ${space[56]};
   background-color: ${props => (props.highlighted ? color.stardust : 'white')};
   font-weight: ${props =>
     props.selected ? fontWeight.semiBold : fontWeight.regular};
@@ -157,7 +159,7 @@ export function Select({ items, onChange, id, label, ...props }) {
         >
           {items.map((item, index) => (
             <option key={item.value} value={index}>
-              {item.name}
+              {item.displayName || item.name}
             </option>
           ))}
         </Input>
@@ -170,7 +172,7 @@ export function Select({ items, onChange, id, label, ...props }) {
             id={id}
             ref={inputRef}
             label={label}
-            value={selectedItem.name}
+            value={selectedItem.displayName || selectedItem.name}
             readOnly
             labelProps={{ id: labelId, htmlFor: id }}
             onFocus={() => setIsOpen(true)}
@@ -215,7 +217,7 @@ export function Select({ items, onChange, id, label, ...props }) {
                     key={item.value}
                     role="option"
                     ref={setItemRef}
-                    selected={selectedItem === item}
+                    selected={selectedItem.value === item.value}
                     highlighted={highlightedIndex === index}
                     onMouseMove={() => setHighlightedIndex(index)}
                     onMouseDown={() => {
@@ -249,6 +251,7 @@ Select.propTypes = {
     PropTypes.shape({
       value: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      displayName: PropTypes.string,
     })
   ).isRequired,
   initialSelectedItem: PropTypes.object,
