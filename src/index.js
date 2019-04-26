@@ -11,6 +11,7 @@ export { Card } from './components/Card'
 export { Carousel } from './components/Carousel'
 export { Select } from './components/Select'
 export { DateInput } from './components/DateInput'
+export { MoneyInput } from './components/MoneyInput'
 export { CountrySelect } from './components/CountrySelect'
 export {
   ToastProvider,
