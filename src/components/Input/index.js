@@ -59,6 +59,8 @@ const Field = styled.input`
     appearance: none;
   }
 
+  &[type='number']::-webkit-outer-spin-button,
+  &[type='number']::-webkit-inner-spin-button,
   &[type='date']::-webkit-clear-button,
   &[type='date']::-webkit-inner-spin-button,
   &[type='date']::-webkit-calendar-picker-indicator {
@@ -86,12 +88,12 @@ const Field = styled.input`
   }
 `
 
-const Label = styled.label`
+export const Label = styled.label`
   position: relative;
   display: block;
 `
 
-const LabelText = styled.span`
+export const LabelText = styled.span`
   display: inline-block;
   color: ${color.spaceMedium};
   margin-bottom: ${space[4]};
@@ -131,7 +133,7 @@ const ResetButton = styled.button`
   }
 `
 
-const Help = styled.p`
+export const Help = styled.p`
   font-size: ${fontSize[14]};
   margin-bottom: 0;
   margin-top: ${6 / 16}rem;
