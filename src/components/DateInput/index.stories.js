@@ -26,9 +26,11 @@ storiesOf('DateInput', module)
       onChange={date => console.log(date)}
       dayInputProps={{
         placeholder: 'Tag',
+        label: 'Tag',
       }}
       yearInputProps={{
         placeholder: 'Jahr',
+        label: 'Jahr',
       }}
     />
   ))
