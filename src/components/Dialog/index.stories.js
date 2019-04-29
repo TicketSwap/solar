@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { storiesOf } from '@storybook/react'
-import Measure from 'react-measure'
-import { Transition, Spring, animated } from 'react-spring'
+import { Transition, animated } from 'react-spring'
 import {
   Dialog,
   DialogWindow,
@@ -190,65 +189,45 @@ storiesOf('Dialog', module)
                     </button>
                   </DialogAdornment>
                 </DialogHeader>
-                <Measure bounds>
-                  {({ measureRef, contentRect }) => (
-                    <Spring
-                      native
-                      config={{ tension: 2000, friction: 100, precision: 1 }}
-                      from={{ height: contentRect.bounds.height || -1 }}
-                      to={{ height: contentRect.bounds.height || -1 }}
-                      // Disable on initial render
-                      immediate={activeIndex === previousIndex}
-                    >
-                      {props => (
-                        <animated.div style={props}>
-                          <ViewContainer ref={measureRef}>
-                            <Transition
-                              native
-                              items={views[activeIndex]}
-                              keys={item => item.component}
-                              initial={{ x: 0 }}
-                              from={{
-                                opacity: 0,
-                                x: previousIndex < activeIndex ? 16 : -16,
-                              }}
-                              enter={{ opacity: 1, x: 0 }}
-                              leave={{
-                                opacity: 0,
-                                position: 'absolute',
-                                x: previousIndex < activeIndex ? -16 : 16,
-                                width: '100%',
-                                zIndex: 0,
-                                pointerEvents: 'none',
-                              }}
-                              config={{
-                                duration: 400,
-                                easing: easingFunctions.easeOutCubic,
-                              }}
-                            >
-                              {({ title, component: Component }) => ({
-                                x,
-                                ...props
-                              }) => (
-                                <animated.div
-                                  key={Component}
-                                  style={{
-                                    transform: x.interpolate(
-                                      val => `translate3d(${val}rem,0,0)`
-                                    ),
-                                    ...props,
-                                  }}
-                                >
-                                  <Component key={title} {...getPanelProps()} />
-                                </animated.div>
-                              )}
-                            </Transition>
-                          </ViewContainer>
-                        </animated.div>
-                      )}
-                    </Spring>
-                  )}
-                </Measure>
+                <ViewContainer>
+                  <Transition
+                    native
+                    items={views[activeIndex]}
+                    keys={item => item.component}
+                    initial={{ x: 0 }}
+                    from={{
+                      opacity: 0,
+                      x: previousIndex < activeIndex ? 16 : -16,
+                    }}
+                    enter={{ opacity: 1, x: 0 }}
+                    leave={{
+                      opacity: 0,
+                      position: 'absolute',
+                      x: previousIndex < activeIndex ? -16 : 16,
+                      width: '100%',
+                      zIndex: 0,
+                      pointerEvents: 'none',
+                    }}
+                    config={{
+                      duration: 400,
+                      easing: easingFunctions.easeOutCubic,
+                    }}
+                  >
+                    {({ title, component: Component }) => ({ x, ...props }) => (
+                      <animated.div
+                        key={Component}
+                        style={{
+                          transform: x.interpolate(
+                            val => `translate3d(${val}rem,0,0)`
+                          ),
+                          ...props,
+                        }}
+                      >
+                        <Component key={title} {...getPanelProps()} />
+                      </animated.div>
+                    )}
+                  </Transition>
+                </ViewContainer>
               </DialogWindow>
             </>
           )}
