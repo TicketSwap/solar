@@ -62,13 +62,13 @@ const Main = styled.div`
 
 const Message = styled.p`
   color: ${color.space};
-  padding-top: ${10 / 16}rem;
-  padding-bottom: ${10 / 16}rem;
+  margin-top: ${10 / 16}rem;
+  margin-bottom: ${10 / 16}rem;
   padding-right: ${props => (!props.primaryAction ? space[16] : 0)};
 
   @media ${device.tablet} {
-    padding-top: ${14 / 16}rem;
-    padding-bottom: ${14 / 16}rem;
+    margin-top: ${14 / 16}rem;
+    margin-bottom: ${14 / 16}rem;
   }
 `
 
