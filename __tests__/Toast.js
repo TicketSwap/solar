@@ -19,7 +19,6 @@ describe('Toast', () => {
     expect(getByText(/show toast/i)).toBeInTheDocument()
     fireEvent.click(getByText(/show toast/i))
     fireEvent.click(getByText(/show toast/i))
-    expect(getByText(/notification/i)).toBeInTheDocument()
     expect(getAllByText(/notification/i)).toHaveLength(2)
   })
 
