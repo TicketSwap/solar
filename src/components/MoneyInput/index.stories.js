@@ -82,7 +82,7 @@ storiesOf('MoneyInput', module)
       currencies={currencies}
       onChange={e => console.log(e)}
       initialSelectedCurrency={currencies[2]}
-      initialValue="25"
+      initialAmount={2500}
       help="Leave blank for no maximum price"
     />
   ))

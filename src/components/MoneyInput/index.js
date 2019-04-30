@@ -5,6 +5,7 @@ import { space } from '../../theme'
 import { Label, LabelText, Input, Help } from '../Input'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { Select } from '../Select'
+import { usePrevious } from '../../hooks'
 
 const InputGroup = styled.div`
   position: relative;
@@ -52,16 +53,21 @@ export function MoneyInput({
   const [currency, setCurrency] = React.useState(
     currencies[intialSelectedIndex]
   )
-  const [value, setValue] = React.useState(props.initialValue || '')
+  const [value, setValue] = React.useState(
+    props.initialAmount ? props.initialAmount / 100 : ''
+  )
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef()
+  const previousValue = usePrevious(value)
 
   React.useEffect(() => {
-    onChange({
-      currency,
-      value: Math.round(parseFloat(value) * 100) || 0,
-    })
-  }, [onChange, currency, value])
+    if (typeof previousValue !== 'undefined') {
+      onChange({
+        currency,
+        amount: Math.round(parseFloat(value) * 100) || 0,
+      })
+    }
+  }, [onChange, currency, previousValue, value])
 
   return (
     <Label htmlFor={id}>
