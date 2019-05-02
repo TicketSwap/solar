@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Spring, animated } from 'react-spring'
 import { space, device, color, transition } from '../../theme'
 import { Carousel } from '../Carousel'
@@ -128,6 +129,30 @@ const InnerContainer = styled(animated.div)`
   display: flex;
 `
 
+const width = props =>
+  props.itemWidth &&
+  css`
+    width: ${props.itemWidth * 100}%;
+    width: ${`calc(${props.itemWidth * 100}% - ${
+      space[16 * props.itemWidth]
+    })`};
+  `
+
+const widthSm = props =>
+  props.itemWidthSm &&
+  css`
+    width: ${props.itemWidthSm * 100}%;
+    width: ${`calc(${props.itemWidthSm * 100}% - ${
+      space[16 * props.itemWidthSm]
+    })`};
+  `
+
+const widthMd = props =>
+  props.itemWidthMd &&
+  css`
+    width: ${props.itemWidthMd * 100}%;
+  `
+
 const ItemContainer = styled.div`
   scroll-snap-align: start;
   display: inline-block;
@@ -137,35 +162,16 @@ const ItemContainer = styled.div`
   padding-right: ${space[16]};
   vertical-align: middle;
 
-  ${props =>
-    props.itemWidth &&
-    css`
-      width: ${props => props.itemWidth * 100}%;
-      width: ${props =>
-        `calc(${props.itemWidth * 100}% - ${space[16 * props.itemWidth]})`};
-    `};
+  ${width};
 
   @media ${device.mobileL} {
-    ${props =>
-      props.itemWidthSm &&
-      css`
-        width: ${props => props.itemWidth * 100}%;
-        width: ${props =>
-          `calc(${props.itemWidthSm * 100}% - ${
-            space[16 * props.itemWidthSm]
-          })`};
-      `};
+    ${widthSm};
   }
 
   @media ${device.tablet} {
+    ${widthMd};
     padding-left: ${space[8]};
     padding-right: ${space[8]};
-
-    ${props =>
-      props.itemWidthMd &&
-      css`
-        width: ${props => props.itemWidthMd * 100}%;
-      `};
   }
 `
 

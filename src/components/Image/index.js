@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { color, space, transition, duration } from '../../theme'
 import { fetchImage } from './fetchImage'
 import { fadeIn } from '../Flag'

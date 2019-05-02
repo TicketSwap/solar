@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Transition, animated, config } from 'react-spring'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { CustomDropdown, CustomDropdownItem as Item } from '../CustomDropdown'
 import { color } from '../../theme'
 import { useKeyPress, useOnClickOutside, usePrevious } from '../../hooks'

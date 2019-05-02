@@ -1,6 +1,6 @@
 import { Component } from 'react'
 import { device } from '../../theme'
-import { debounce, callAll, clamp } from '../../utils'
+import { debounce, callAll } from '../../utils'
 
 export class Carousel extends Component {
   _isMounted = false

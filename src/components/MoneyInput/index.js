@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { space } from '../../theme'
 import { Label, LabelText, Input, Help } from '../Input'
 import { VisuallyHidden } from '../VisuallyHidden'

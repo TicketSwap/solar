@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import computeScrollIntoView from 'compute-scroll-into-view'
 import {
   color,
@@ -14,15 +14,15 @@ import { Input, Adornment } from '../Input'
 import { Icon } from '../Icon'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
-const Container = styled.div.attrs({
-  className: 'select',
-})`
+const Container = styled.div`
   position: relative;
 
   .adornment {
     pointer-events: none;
   }
 `
+
+Container.defaultProps = { className: 'select' }
 
 const StyledInput = styled(Input)`
   color: transparent;
@@ -65,7 +65,7 @@ const ItemContainer = styled.div`
   cursor: pointer;
   transition: color ${transition};
 
-  & + & {
+  & + ${() => ItemContainer} {
     border-top: 1px solid ${color.spaceLightest};
   }
 `

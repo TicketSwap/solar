@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { space, color } from '../../theme'
 
 // Toggle styles copied and modified from

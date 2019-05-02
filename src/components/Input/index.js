@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import { Icon } from '../Icon'
 import { Spinner } from '../Spinner'
 import { VisuallyHidden } from '../VisuallyHidden'
@@ -99,9 +100,7 @@ export const LabelText = styled.span`
   margin-bottom: ${space[4]};
 `
 
-export const Adornment = styled.span.attrs({
-  className: 'adornment',
-})`
+export const Adornment = styled.span`
   position: absolute;
   z-index: 1;
   top: 0;
@@ -120,6 +119,8 @@ export const Adornment = styled.span.attrs({
     color: ${color.space};
   }
 `
+
+Adornment.defaultProps = { className: 'adornment' }
 
 const ResetButton = styled.button`
   line-height: 0;

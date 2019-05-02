@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { Transition } from 'react-spring'
 import PropTypes from 'prop-types'
 import { Portal } from '../Portal'

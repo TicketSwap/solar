@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import {
   color,
   space,
@@ -30,15 +31,14 @@ const Container = styled.div`
   }
 `
 
-const textColor = css`
-  color: ${props =>
-    props.variant === 'success'
-      ? color.titan
-      : props.variant === 'error'
-      ? color.mars
-      : props.variant === 'warning'
-      ? color.sun
-      : color.earth};
+const textColor = props => css`
+  color: ${props.variant === 'success'
+    ? color.titan
+    : props.variant === 'error'
+    ? color.mars
+    : props.variant === 'warning'
+    ? color.sun
+    : color.earth};
 `
 
 const Adornment = styled.span`
