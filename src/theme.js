@@ -22,7 +22,7 @@ export const color = {
   earthLightAlpha: 'rgba(0,182,240,0.8)',
   earthLighterAlpha: 'rgba(0,182,240,0.4)',
   earthLightestAlpha: 'rgba(0,182,240,0.16)',
-  earthFocus: 'rgba(0,182,240,0.24)',
+  earthFocusAlpha: 'rgba(0,182,240,0.24)',
 
   titan: 'rgb(0,206,92)',
   titanLight: 'rgb(51,216,125)',
@@ -31,7 +31,7 @@ export const color = {
   titanLightAlpha: 'rgba(0,206,92,0.8)',
   titanLighterAlpha: 'rgba(0,206,92,0.4)',
   titanLightestAlpha: 'rgba(0,206,92,0.16)',
-  titanFocus: 'rgba(0,206,92,0.24)',
+  titanFocusAlpha: 'rgba(0,206,92,0.24)',
 
   mars: 'rgb(254,74,73)',
   marsLight: 'rgb(254,110,109)',
@@ -40,7 +40,7 @@ export const color = {
   marsLightAlpha: 'rgba(254,74,73,0.8)',
   marsLighterAlpha: 'rgba(254,74,73,0.4)',
   marsLightestAlpha: 'rgba(254,74,73,0.16)',
-  marsFocus: 'rgba(254,74,73,0.24)',
+  marsFocusAlpha: 'rgba(254,74,73,0.24)',
 
   sun: 'rgb(255,166,0)',
   sunLight: 'rgb(255,184,51)',
@@ -49,7 +49,11 @@ export const color = {
   sunLightAlpha: 'rgba(255,166,0,0.8)',
   sunLighterAlpha: 'rgba(255,166,0,0.4)',
   sunLightestAlpha: 'rgba(255,166,0,0.16)',
-  sunFocus: 'rgba(255,166,0,0.24)',
+  sunFocusAlpha: 'rgba(255,166,0,0.24)',
+
+  facebook: 'rgb(23, 119, 242)',
+  facebookLight: 'rgb(69,146,245)',
+  facebookFocusAlpha: 'rgba(23, 119, 242,0.24)',
 }
 
 export const fontSize = {

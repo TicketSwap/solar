@@ -100,7 +100,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'facebook' &&
     css`
-      background-color: rgb(59, 89, 152);
+      background-color: ${color.facebook};
     `};
 
   ${props =>
@@ -134,31 +134,31 @@ const StyledButton = styled.button`
     background-color: transparent;
     border-radius: ${props =>
       props.rounded ? space[32] : `calc(${radius.md} + 1px)`};
-    box-shadow: 0 0 0 ${space[4]} ${color.earthFocus};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     pointer-events: none;
 
     ${props =>
       props.variant === 'success' &&
       css`
-        box-shadow: 0 0 0 ${space[4]} ${color.titanFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.titanFocusAlpha};
       `};
 
     ${props =>
       props.variant === 'warning' &&
       css`
-        box-shadow: 0 0 0 ${space[4]} ${color.sunFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.sunFocusAlpha};
       `};
 
     ${props =>
       props.variant === 'danger' &&
       css`
-        box-shadow: 0 0 0 ${space[4]} ${color.marsFocus};
+        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
       `};
 
     ${props =>
       props.variant === 'facebook' &&
       css`
-        box-shadow: 0 0 0 ${space[4]} rgba(59, 89, 152, 0.24);
+        box-shadow: 0 0 0 ${space[4]} ${color.facebookFocusAlpha};
       `};
   }
 
@@ -205,7 +205,7 @@ const StyledButton = styled.button`
     ${props =>
       props.variant === 'facebook' &&
       css`
-        background-color: rgb(98, 122, 173);
+        background-color: ${color.facebookLight};
       `};
 
     ${props =>
@@ -270,7 +270,7 @@ const StyledButton = styled.button`
       !props.disabled &&
       props.variant === 'facebook' &&
       css`
-        background-color: rgb(98, 122, 173);
+        background-color: ${color.facebookLight};
       `};
 
     ${props =>
@@ -297,23 +297,26 @@ const Adornment = styled.span`
     `};
 `
 
-export const Button = ({ children, onClick, loading, ...props }) => (
-  <StyledButton
-    onClick={loading ? () => null : onClick}
-    loading={loading}
-    {...props}
-  >
-    {loading || props.icon ? (
-      <Adornment position={props.width === 'full' ? 'absolute' : null}>
-        {loading ? (
-          <Spinner size={24} />
-        ) : (
-          <Icon glyph={props.icon} size={24} />
-        )}
-      </Adornment>
-    ) : null}
-    {children}
-  </StyledButton>
+export const Button = React.forwardRef(
+  ({ children, onClick, loading, ...props }, ref) => (
+    <StyledButton
+      ref={ref}
+      onClick={loading ? () => null : onClick}
+      loading={loading}
+      {...props}
+    >
+      {loading || props.icon ? (
+        <Adornment position={props.width === 'full' ? 'absolute' : null}>
+          {loading ? (
+            <Spinner size={24} />
+          ) : (
+            <Icon glyph={props.icon} size={24} />
+          )}
+        </Adornment>
+      ) : null}
+      {children}
+    </StyledButton>
+  )
 )
 
 Button.propTypes = {

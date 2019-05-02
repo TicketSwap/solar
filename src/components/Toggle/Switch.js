@@ -58,7 +58,7 @@ export const Switch = styled.button`
     bottom: -1px;
     background-color: transparent;
     border-radius: ${space[32]};
-    box-shadow: 0 0 0 ${space[4]} ${color.earthFocus};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     pointer-events: none;
   }
 `

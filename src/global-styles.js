@@ -115,7 +115,7 @@ export const globalStyles = css`
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 ${space[4]} ${color.earthFocus};
+      box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     }
   }
 
