@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { Transition, Spring, animated } from 'react-spring'
 import { Portal } from '../Portal'
 import { space, shadow, device, color, radius } from '../../theme'

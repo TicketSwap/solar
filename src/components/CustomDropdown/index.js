@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 import {
   color,
   space,
@@ -11,6 +12,18 @@ import {
   transition,
   radius,
 } from '../../theme'
+
+const bottomPos = props =>
+  props.position === 'bottom' &&
+  css`
+    top: calc(100% ${props.distance ? ` + ${space[props.distance]}` : null});
+  `
+
+const topPos = props =>
+  props.position === 'top' &&
+  css`
+    bottom: calc(100% ${props.distance ? ` + ${space[props.distance]}` : null});
+  `
 
 export const Menu = styled.ul`
   position: absolute;
@@ -23,22 +36,8 @@ export const Menu = styled.ul`
   box-shadow: ${shadow.strong};
   background-color: white;
   color: white;
-
-  ${props =>
-    props.position === 'bottom' &&
-    css`
-      top: calc(
-        100% ${props => (props.distance ? ` + ${space[props.distance]}` : null)}
-      );
-    `};
-
-  ${props =>
-    props.position === 'top' &&
-    css`
-      bottom: calc(
-        100% ${props => (props.distance ? ` + ${space[props.distance]}` : null)}
-      );
-    `};
+  ${bottomPos};
+  ${topPos};
 `
 
 export const CustomDropdownItem = styled.li`
@@ -59,6 +58,22 @@ export const CustomDropdownItem = styled.li`
   }
 `
 
+const bottomArrow = props =>
+  props.position === 'bottom' &&
+  css`
+    bottom: -8px;
+    transform: translateX(-50%) rotate(180deg);
+    filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.125));
+  `
+
+const topArrow = props =>
+  props.position === 'top' &&
+  css`
+    top: -8px;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.05));
+  `
+
 const Arrow = styled.svg`
   position: absolute;
   pointer-events: none;
@@ -67,22 +82,8 @@ const Arrow = styled.svg`
   left: 50%;
   color: inherit;
   fill: currentColor;
-
-  ${props =>
-    props.position === 'top' &&
-    css`
-      top: -8px;
-      transform: translateX(-50%);
-      filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.05));
-    `};
-
-  ${props =>
-    props.position === 'bottom' &&
-    css`
-      bottom: -8px;
-      transform: translateX(-50%) rotate(180deg);
-      filter: drop-shadow(0 -2px 1px rgba(0, 0, 0, 0.125));
-    `};
+  ${bottomArrow};
+  ${topArrow};
 `
 
 export const CustomDropdown = ({ children, position, withArrow, ...props }) => (

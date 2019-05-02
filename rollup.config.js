@@ -34,4 +34,6 @@ export default {
     visualizer(),
     filesize(),
   ],
+  external: id =>
+    !id.startsWith('\0') && !id.startsWith('.') && !id.startsWith('/'),
 }

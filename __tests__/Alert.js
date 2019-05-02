@@ -1,7 +1,10 @@
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
+import { matchers } from 'jest-emotion'
 import { Alert } from '../src/components/Alert'
 import { color } from '../src/theme'
+
+expect.extend(matchers)
 
 describe('Alert', () => {
   it('renders without crashing and calls action handlers', () => {

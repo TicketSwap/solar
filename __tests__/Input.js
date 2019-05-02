@@ -1,7 +1,10 @@
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
+import { matchers } from 'jest-emotion'
 import { Input } from '../src/components/Input'
 import { space } from '../src/theme'
+
+expect.extend(matchers)
 
 describe('Input', () => {
   const handleReset = jest.fn()

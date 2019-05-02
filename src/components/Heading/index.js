@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled'
 import { color, device, fontSize, fontWeight, lineHeight } from '../../theme'
 
 export const H1 = styled.h1`
