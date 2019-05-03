@@ -13,6 +13,7 @@ export { Select } from './components/Select'
 export { DateInput } from './components/DateInput'
 export { MoneyInput } from './components/MoneyInput'
 export { CountrySelect } from './components/CountrySelect'
+export { ContentTransition } from './components/ContentTransition'
 export {
   ToastProvider,
   ToastConsumer,
