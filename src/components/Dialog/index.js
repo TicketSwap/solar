@@ -252,11 +252,11 @@ export function useDialog(props = {}) {
 
   useEffect(() => {
     showOnMount && setOn(true)
-  }, [])
+  }, [showOnMount])
 
   useEffect(() => {
     onToggle && onToggle(on)
-  }, [on])
+  }, [on, onToggle])
 
   const getToggleProps = (props = {}) => ({
     'aria-controls': 'target',
@@ -284,13 +284,16 @@ export function useDialog(props = {}) {
 }
 
 export function DialogWindow({ children, on, hide, ...props }) {
-  const handleHide = ({ keyCode }) => keyCode === 27 && hide()
+  const handleHide = React.useCallback(
+    ({ keyCode }) => keyCode === 27 && hide(),
+    [hide]
+  )
 
   useEffect(() => {
     if (props.persist) return false
     document.addEventListener('keydown', handleHide, false)
     return () => document.removeEventListener('keydown', handleHide, false)
-  }, [])
+  }, [handleHide, props.persist])
 
   return (
     <Portal>

@@ -221,5 +221,5 @@ export function useLockBodyScroll(targetRef) {
       reserveScrollBarGap: true,
     })
     return () => clearAllBodyScrollLocks()
-  }, [])
+  }, [targetRef])
 }
