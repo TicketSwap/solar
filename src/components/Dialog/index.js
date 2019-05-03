@@ -256,7 +256,7 @@ export function useDialog(props = {}) {
   }, [showOnMount])
 
   useEffect(() => {
-    if (on !== previousOn) {
+    if (typeof previousOn !== 'undefined' && on !== previousOn) {
       onToggle && onToggle(on)
     }
   }, [on, previousOn, onToggle])
