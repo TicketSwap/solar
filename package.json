@@ -19,6 +19,14 @@
     "validate": "npm run test && npm run prettier -- --list-different",
     "semantic-release": "semantic-release"
   },
+  "greenkeeper": {
+    "ignore": [
+      "babel-core",
+      "babel-eslint",
+      "eslint-plugin-flowtype",
+      "react-spring"
+    ]
+  },
   "peerDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
@@ -40,7 +48,7 @@
     "@storybook/react": "^5.0.11",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "10.0.1",
+    "babel-eslint": "9.0.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-emotion": "^10.0.9",
     "commitizen": "^3.1.1",
@@ -49,7 +57,7 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-react-app": "^4.0.0",
-    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-flowtype": "2.50.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
@@ -67,7 +75,7 @@
     "prettier": "^1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-spring": "^8.0.19",
+    "react-spring": "7.2.10",
     "react-testing-library": "^7.0.0",
     "rollup": "^1.10.1",
     "rollup-plugin-babel": "^4.3.2",
