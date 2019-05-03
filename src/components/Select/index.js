@@ -99,11 +99,11 @@ export function Select({ items, onChange, id, label, ...props }) {
 
   useOnClickOutside(containerRef, () => setIsOpen(false))
 
-  function handleClose() {
+  const handleClose = React.useCallback(() => {
     if (!isOpen) return false
     setIsOpen(false)
     inputRef.current.blur()
-  }
+  }, [isOpen, setIsOpen, inputRef])
 
   function setItemRef(el) {
     return (itemRefs = [...itemRefs, el])
@@ -111,11 +111,11 @@ export function Select({ items, onChange, id, label, ...props }) {
 
   React.useEffect(() => {
     if (isControlled) setSelectedItem(props.selectedItem)
-  }, [props.selectedItem])
+  }, [isControlled, props.selectedItem])
 
   React.useEffect(() => {
     if (esc) handleClose()
-  }, [esc])
+  }, [esc, handleClose])
 
   function scrollIntoView(node, menuNode) {
     if (node === null) return false
@@ -130,16 +130,16 @@ export function Select({ items, onChange, id, label, ...props }) {
     })
   }
 
-  function scrollHighlightedItemIntoView() {
+  const scrollHighlightedItemIntoView = React.useCallback(() => {
     const node = itemRefs[highlightedIndex] || null
     scrollIntoView(node, menuRef)
-  }
+  }, [highlightedIndex, itemRefs])
 
   React.useEffect(() => {
     if (arrowUp || arrowDown) {
       scrollHighlightedItemIntoView()
     }
-  }, [arrowUp, arrowDown])
+  }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
   return (
     <Container ref={containerRef}>

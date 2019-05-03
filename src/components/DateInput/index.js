@@ -82,7 +82,7 @@ function splitDateString(str) {
   return str.split('-')
 }
 
-export function DateInput({ id, label, hideLabel, ...props }) {
+export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const { isIOS } = useDeviceInfo()
   const dateInputRef = React.useRef()
   const months = createSelectOptions(props.months)
@@ -94,8 +94,8 @@ export function DateInput({ id, label, hideLabel, ...props }) {
   const [day, setDay] = React.useState(initialDay || '')
 
   React.useEffect(() => {
-    props.onChange(dateInputRef.current.value)
-  }, [year, month, day])
+    onChange(dateInputRef.current.value)
+  }, [year, month, day, onChange])
 
   return (
     <Container input={isIOS() ? 'native' : 'custom'}>
