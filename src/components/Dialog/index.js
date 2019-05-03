@@ -13,7 +13,7 @@ import {
   radius,
   color,
 } from '../../theme'
-import { useLockBodyScroll } from '../../hooks'
+import { useLockBodyScroll, usePrevious } from '../../hooks'
 
 const DialogOverlay = styled.div`
   position: fixed;
@@ -246,6 +246,7 @@ export class Dialog extends Component {
 export function useDialog(props = {}) {
   const { persist, showOnMount, defaultOn, onToggle } = props
   const [on, setOn] = useState(defaultOn || false)
+  const previousOn = usePrevious(on)
   const show = () => setOn(true)
   const hide = () => setOn(false)
   const toggle = () => setOn(!on)
@@ -255,8 +256,10 @@ export function useDialog(props = {}) {
   }, [showOnMount])
 
   useEffect(() => {
-    onToggle && onToggle(on)
-  }, [on, onToggle])
+    if (on !== previousOn) {
+      onToggle && onToggle(on)
+    }
+  }, [on, previousOn, onToggle])
 
   const getToggleProps = (props = {}) => ({
     'aria-controls': 'target',
