@@ -5,7 +5,6 @@ import { space } from '../../theme'
 import { Label, LabelText, Input, Help } from '../Input'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { Select } from '../Select'
-import { usePrevious } from '../../hooks'
 
 const InputGroup = styled.div`
   position: relative;
@@ -58,16 +57,7 @@ export function MoneyInput({
   )
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef()
-  const previousValue = usePrevious(value)
-
-  React.useEffect(() => {
-    if (typeof previousValue !== 'undefined') {
-      onChange({
-        currency,
-        amount: Math.round(parseFloat(value) * 100) || 0,
-      })
-    }
-  }, [onChange, currency, previousValue, value])
+  const parseAmount = value => Math.round(parseFloat(value) * 100) || 0
 
   return (
     <Label htmlFor={id}>
@@ -87,7 +77,14 @@ export function MoneyInput({
             hideLabel
             initialSelectedItem={options[intialSelectedIndex]}
             onChange={e => {
-              setCurrency(currencies.filter(c => c.code === e.value)[0])
+              const selectedCurrency = currencies.filter(
+                c => c.code === e.value
+              )[0]
+              setCurrency(selectedCurrency)
+              onChange({
+                currency: selectedCurrency,
+                amount: parseAmount(value),
+              })
               // Not sure this is the way to go, but it
               // won’t work otherwise ಠ_ಠ
               if (typeof requestAnimationFrame === 'undefined') return false
@@ -104,7 +101,13 @@ export function MoneyInput({
             type="number"
             value={value}
             {...props}
-            onChange={e => setValue(e.target.value)}
+            onChange={e => {
+              setValue(e.target.value)
+              onChange({
+                currency,
+                amount: parseAmount(e.target.value),
+              })
+            }}
           />
         </InputWrapper>
       </InputGroup>
