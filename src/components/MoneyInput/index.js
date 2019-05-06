@@ -44,6 +44,8 @@ export function MoneyInput({
   currencies,
   onChange,
   help,
+  validateAmount,
+  validateCurrency,
   ...props
 }) {
   const intialSelectedIndex = props.initialSelectedCurrency
@@ -75,6 +77,7 @@ export function MoneyInput({
             id="currency"
             label="Currency"
             hideLabel
+            validate={validateCurrency}
             initialSelectedItem={options[intialSelectedIndex]}
             onChange={e => {
               const selectedCurrency = currencies.filter(
@@ -100,6 +103,7 @@ export function MoneyInput({
             hideLabel
             type="number"
             value={value}
+            validate={validateAmount}
             {...props}
             onChange={e => {
               setValue(e.target.value)
@@ -136,4 +140,6 @@ MoneyInput.propTypes = {
     name: PropTypes.string.isRequired,
   }),
   initialAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  validateAmount: PropTypes.bool,
+  validateCurrency: PropTypes.bool,
 }

@@ -86,3 +86,17 @@ storiesOf('MoneyInput', module)
       help="Leave blank for no maximum price"
     />
   ))
+  .add('with error', () => (
+    <MoneyInput
+      id="maximum-price"
+      label="Maximum price"
+      placeholder="Enter an amount"
+      currencies={currencies}
+      onChange={e => console.log(e)}
+      initialSelectedCurrency={currencies[2]}
+      initialAmount={2500}
+      help="Leave blank for no maximum price"
+      validateAmount={false}
+      validateCurrency={false}
+    />
+  ))
