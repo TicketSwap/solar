@@ -24,6 +24,7 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('secondary', () => <Button variant="secondary">Secondary</Button>)
+  .add('caution', () => <Button variant="caution">Turn off alerts</Button>)
   .add('inverted', () => <Button variant="inverted">Inverted</Button>)
   .add('inverted disabled', () => (
     <Button variant="inverted" disabled>

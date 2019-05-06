@@ -69,6 +69,13 @@ const StyledButton = styled.button`
     `};
 
   ${props =>
+    props.variant === 'caution' &&
+    css`
+      background-color: ${color.stardustLight};
+      color: ${color.mars};
+    `};
+
+  ${props =>
     props.variant === 'inverted' &&
     css`
       text-shadow: none;
@@ -145,6 +152,12 @@ const StyledButton = styled.button`
       `};
 
     ${props =>
+      props.variant === 'caution' &&
+      css`
+        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
+      `};
+
+    ${props =>
       props.variant === 'warning' &&
       css`
         box-shadow: 0 0 0 ${space[4]} ${color.sunFocusAlpha};
@@ -175,6 +188,13 @@ const StyledButton = styled.button`
           ? color.earthLight
           : color.stardustLight};
         color: ${props.active ? 'white' : color.spaceMedium};
+      `};
+
+    ${props =>
+      props.variant === 'caution' &&
+      css`
+        background-color: ${color.stardustLight};
+        color: ${color.marsLight};
       `};
 
     ${props =>
@@ -244,6 +264,14 @@ const StyledButton = styled.button`
           ? color.earthLight
           : color.stardustLight};
         color: ${props.active ? 'white' : color.space};
+      `};
+
+    ${props =>
+      !props.disabled &&
+      props.variant === 'caution' &&
+      css`
+        background-color: ${color.stardustLight};
+        color: ${color.mars};
       `};
 
     ${props =>
