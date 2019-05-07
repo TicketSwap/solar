@@ -77,6 +77,7 @@ storiesOf('Input', module)
       onReset={() => console.log('onClear')}
     />
   ))
+  .add('with error', () => <Input id="id" label="Label" validate={false} />)
   .add('as textarea', () => (
     <Input as="textarea" id="message" label="Message" rows="6" />
   ))

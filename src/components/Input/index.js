@@ -25,7 +25,8 @@ const InputWrapper = styled.div`
 
 const Field = styled.input`
   font-family: inherit;
-  background-color: ${color.stardust};
+  background-color: ${props =>
+    props.invalid ? color.marsLightestAlpha : color.stardust};
   border-radius: ${props => (props.rounded ? space[32] : radius.md)};
   width: 100%;
   font-size: ${fontSize[18]};
@@ -41,7 +42,7 @@ const Field = styled.input`
     props.rightAdornment
       ? space[48]
       : space[16]};
-  color: ${props => (props.invalid ? color.mars : color.space)};
+  color: ${color.space};
   box-shadow: none;
   border: 0;
   text-align: left;
@@ -72,8 +73,9 @@ const Field = styled.input`
   &:focus,
   &.focus {
     outline: none;
-    background-color: white;
     box-shadow: ${shadow.strong};
+    background-color: ${props =>
+      props.invalid ? color.marsLightestAlpha : 'white'};
   }
 
   &::placeholder {
@@ -146,41 +148,50 @@ export const Help = styled.p`
 `
 
 export const Input = React.forwardRef(
-  ({ id, label, hideLabel, labelProps, ...props }, ref) => (
-    <Label htmlFor={!labelProps && id} {...labelProps}>
-      {hideLabel ? (
-        <VisuallyHidden>
+  ({ id, label, hideLabel, labelProps, validate, ...props }, ref) => {
+    const invalid =
+      typeof validate === 'undefined'
+        ? false
+        : typeof validate === 'function'
+        ? !validate(props.value)
+        : !validate
+
+    return (
+      <Label htmlFor={!labelProps && id} {...labelProps}>
+        {hideLabel ? (
+          <VisuallyHidden>
+            <LabelText>{label}</LabelText>
+          </VisuallyHidden>
+        ) : (
           <LabelText>{label}</LabelText>
-        </VisuallyHidden>
-      ) : (
-        <LabelText>{label}</LabelText>
-      )}
-      <InputWrapper>
-        {props.leftAdornment ? (
-          <Adornment left>{props.leftAdornment}</Adornment>
-        ) : null}
-        <Field ref={ref} id={id} {...props} />
-        {props.loading ? (
-          <Adornment right>
-            <Spinner size={24} />
-          </Adornment>
-        ) : props.value && props.value.length && props.onReset ? (
-          <Adornment right>
-            <ResetButton
-              onClick={props.onReset}
-              type="button"
-              data-testid="reset-button"
-            >
-              <Icon glyph="close-circle-solid" size={16} />
-            </ResetButton>
-          </Adornment>
-        ) : props.rightAdornment ? (
-          <Adornment right>{props.rightAdornment}</Adornment>
-        ) : null}
-      </InputWrapper>
-      {props.help && <Help>{props.help}</Help>}
-    </Label>
-  )
+        )}
+        <InputWrapper>
+          {props.leftAdornment ? (
+            <Adornment left>{props.leftAdornment}</Adornment>
+          ) : null}
+          <Field ref={ref} id={id} invalid={invalid} {...props} />
+          {props.loading ? (
+            <Adornment right>
+              <Spinner size={24} />
+            </Adornment>
+          ) : props.value && props.value.length && props.onReset ? (
+            <Adornment right>
+              <ResetButton
+                onClick={props.onReset}
+                type="button"
+                data-testid="reset-button"
+              >
+                <Icon glyph="close-circle-solid" size={16} />
+              </ResetButton>
+            </Adornment>
+          ) : props.rightAdornment ? (
+            <Adornment right>{props.rightAdornment}</Adornment>
+          ) : null}
+        </InputWrapper>
+        {props.help && <Help>{props.help}</Help>}
+      </Label>
+    )
+  }
 )
 
 Input.defaultProps = {
@@ -196,6 +207,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   type: PropTypes.string,
   onChange: PropTypes.func,
+  validate: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   onReset: PropTypes.func,
   placeholder: PropTypes.string,
 }
