@@ -1,20 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { keyframes } from '@emotion/core'
-import { color, duration } from '../../theme'
+import { color } from '../../theme'
+import { Image } from '../Image'
 
-export const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`
-
-const Container = styled.span`
+const StyledImage = styled(Image)`
   position: relative;
   display: inline-block;
   vertical-align: middle;
@@ -38,30 +28,14 @@ const Container = styled.span`
   }
 `
 
-const Image = styled.img`
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  animation-duration: ${duration}ms;
-  animation-fill-mode: both;
-  animation-name: ${fadeIn};
-  z-index: 2;
-`
-
 export const Flag = ({ countryCode }) => {
   const country = countryCode.toUpperCase()
 
   return (
-    <Container className="flag">
-      <Image
-        src={`https://unpkg.com/flagkit-web@0.0.3/svgs/${country}.svg`}
-        alt={`Flag of ${country}`}
-      />
-    </Container>
+    <StyledImage
+      src={`https://unpkg.com/flagkit-web@0.0.3/svgs/${country}.svg`}
+      alt={`Flag of ${country}`}
+    />
   )
 }
 
