@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { keyframes } from '@emotion/core'
 import { color, space, transition, duration } from '../../theme'
 import { fetchImage } from './fetchImage'
-import { fadeIn } from '../Flag'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
 
 const Container = styled.div`
   position: relative;
+  line-height: 0;
   z-index: 1;
   overflow: hidden;
   background-color: ${color.spaceLightest};
