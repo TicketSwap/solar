@@ -6,6 +6,7 @@ import { space, device } from '../../theme'
 import { Input } from '../Input'
 import { Select } from '../Select'
 import { useDeviceInfo } from '../../hooks'
+import { usePrevious } from '../../hooks'
 
 const Container = styled.div`
   input[type='date'] {
@@ -92,10 +93,16 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const [year, setYear] = React.useState(initialYear || '')
   const [month, setMonth] = React.useState(initialMonth - 1 || 0)
   const [day, setDay] = React.useState(initialDay || '')
+  const previousValue = usePrevious(dateInputRef.current.value)
 
   React.useEffect(() => {
-    onChange(dateInputRef.current.value)
-  }, [year, month, day, onChange])
+    if (
+      typeof previousValue !== 'undefined' &&
+      previousValue !== dateInputRef.current.value
+    ) {
+      onChange(dateInputRef.current.value)
+    }
+  }, [year, month, day, onChange, previousValue])
 
   return (
     <Container input={isIOS() ? 'native' : 'custom'}>
