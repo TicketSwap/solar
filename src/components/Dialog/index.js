@@ -28,9 +28,13 @@ const DialogOverlay = styled.div`
   align-items: flex-end;
 
   @media ${device.mobileL} {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     align-items: flex-start;
     padding-top: ${space[64]};
     padding-top: 10vmin;
+    padding-bottom: ${space[64]};
+    padding-bottom: 10vmin;
   }
 `
 
@@ -44,6 +48,7 @@ const DialogContent = styled.div`
   @media ${device.mobileL} {
     width: ${sizes.mobileL / 16}em;
     border-radius: ${radius.lg};
+    overflow: unset;
   }
 `
 
@@ -82,6 +87,7 @@ const BodyWrapper = styled.div`
 
   @media ${device.mobileL} {
     border-radius: ${radius.lg};
+    overflow: unset;
   }
 
   &::before,
@@ -94,8 +100,8 @@ const BodyWrapper = styled.div`
     right: 0;
     height: ${space[16]};
 
-    @media ${device.tablet} {
-      height: ${space[32]};
+    @media ${device.mobileL} {
+      display: none;
     }
   }
 
@@ -119,7 +125,7 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
-  max-height: 65vh;
+  max-height: 50vh;
   padding: ${space[16]};
   padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
   overflow-y: scroll;
@@ -129,13 +135,15 @@ const Body = styled.div`
     display: none;
   }
 
-  @media ${device.mobileL} {
-    padding: ${space[32]};
-    max-height: calc(80vh - ${144 / 16}rem);
+  @media (min-height: 32em) {
+    max-height: 65vh;
   }
 
-  @media (min-height: ${sizes.tablet}) and (min-width: ${sizes.tablet}) {
-    max-height: calc(65vh - ${144 / 16}rem);
+  @media ${device.mobileL} {
+    padding: ${space[32]};
+    max-height: none;
+    overflow-y: unset;
+    -webkit-overflow-scrolling: auto;
   }
 `
 
