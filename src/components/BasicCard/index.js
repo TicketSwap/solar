@@ -4,10 +4,23 @@ import styled from '@emotion/styled'
 import { H4, H5 } from '../Heading'
 import { Image } from '../Image'
 import { Card } from '../Card'
-import { color, fontWeight, fontSize, device, space } from '../../theme'
+import {
+  color,
+  fontWeight,
+  fontSize,
+  device,
+  space,
+  transition,
+} from '../../theme'
 
 const StyledH4 = styled(H4)`
   color: ${props => (props.colored ? color.earth : color.space)};
+  transition: color ${transition};
+
+  a:hover &,
+  a:focus & {
+    color: ${props => (props.colored ? color.earthLight : color.spaceMedium)};
+  }
 `
 
 const StyledH5 = styled(H5)`
