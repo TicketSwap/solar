@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon } from '../Icon'
 import { Input } from '../Input'
 import { Button } from '../Button'
+import { Select } from '../Select'
 import {
   DialogHeader,
   DialogBody,
@@ -14,6 +15,16 @@ import { storiesOf } from '@storybook/react'
 import { ContentTransition } from './'
 import { color } from '../../theme'
 
+const items = [
+  { value: 'de', name: 'German' },
+  { value: 'it', name: 'Italian' },
+  { value: 'nl', name: 'Dutch' },
+  { value: 'en', name: 'English' },
+  { value: 'hu', name: 'Hungarian' },
+  { value: 'fr', name: 'French' },
+  { value: 'es', name: 'Spanish' },
+]
+
 const Login = props => (
   <DialogBody>
     <div style={{ display: 'grid', gridGap: '0.5rem', marginBottom: '2rem' }}>
@@ -21,6 +32,14 @@ const Login = props => (
       <Button variant="secondary" onClick={props.showLoginEmailView}>
         Log in with email
       </Button>
+
+      <Select
+        items={items}
+        id="language"
+        label="Language"
+        onChange={selection => console.log(selection)}
+        initialSelectedItem={items[1]}
+      />
     </div>
     <div>
       Don’t have an account yet?{' '}
