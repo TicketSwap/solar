@@ -15,7 +15,7 @@ import {
 } from '../../theme'
 import { useLockBodyScroll, usePrevious } from '../../hooks'
 
-const DialogOverlay = styled.div`
+const Backdrop = styled.div`
   position: fixed;
   z-index: 2147483647; /* largest accepted z-index value as integer */
   left: 0;
@@ -37,6 +37,17 @@ const DialogOverlay = styled.div`
     padding-bottom: 10vmin;
   }
 `
+
+export function DialogOverlay({ children, ...props }) {
+  const ref = useRef(null)
+  useLockBodyScroll(ref)
+
+  return (
+    <div {...props}>
+      <Backdrop ref={ref}>{children}</Backdrop>
+    </div>
+  )
+}
 
 const DialogContent = styled.div`
   position: relative;
@@ -148,12 +159,9 @@ const Body = styled.div`
 `
 
 export function DialogBody({ children }) {
-  const bodyRef = useRef(null)
-  useLockBodyScroll(bodyRef)
-
   return (
     <BodyWrapper>
-      <Body ref={bodyRef}>{children}</Body>
+      <Body>{children}</Body>
     </BodyWrapper>
   )
 }
