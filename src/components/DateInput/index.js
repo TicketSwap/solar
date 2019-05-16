@@ -93,7 +93,9 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const [year, setYear] = React.useState(initialYear || '')
   const [month, setMonth] = React.useState(initialMonth - 1 || 0)
   const [day, setDay] = React.useState(initialDay || '')
-  const previousValue = usePrevious(dateInputRef.current.value)
+  const previousValue = usePrevious(
+    dateInputRef.current && dateInputRef.current.value
+  )
 
   React.useEffect(() => {
     if (
