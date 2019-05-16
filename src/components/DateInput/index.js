@@ -130,7 +130,7 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
               {...props.dayInputProps}
               id="day"
               hideLabel
-              value={day.toString()}
+              value={day ? parseInt(day).toString() : ''}
               onChange={e => setDay(e.target.value)}
             />
           </InputWrapper>
