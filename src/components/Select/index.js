@@ -72,7 +72,7 @@ const ItemContainer = styled.div`
 
 export const Item = React.forwardRef(({ children, ...props }, ref) => (
   <ItemContainer {...props} ref={ref}>
-    <Adornment left>{props.adornment}</Adornment>
+    {props.adornment && <Adornment left>{props.adornment}</Adornment>}
     {children}
   </ItemContainer>
 ))
