@@ -50,6 +50,7 @@ export class Image extends Component {
     this.handleLoad = this.handleLoad.bind(this)
   }
 
+  _isMounted = false
   observer = null
   initialState = {
     loaded: false,
@@ -80,9 +81,9 @@ export class Image extends Component {
     const { src } = this.props
     try {
       await fetchImage(src)
-      return this.setState({ loaded: true, src })
+      this._isMounted && this.setState({ loaded: true, src })
     } catch (error) {
-      return this.setState({ loaded: true })
+      this._isMounted && this.setState({ loaded: true })
     }
   }
 
@@ -117,6 +118,7 @@ export class Image extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true
     this.initObserver()
   }
 
@@ -132,6 +134,8 @@ export class Image extends Component {
   }
 
   componentWillUnmount() {
+    this._isMounted = false
+
     if (this.observer) {
       this.observer.disconnect()
     }
