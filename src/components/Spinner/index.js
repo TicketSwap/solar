@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
-import { Icon } from '../Icon'
+import { Spinner as SpinnerIcon } from '@ticketswap/comets'
 
 const rotate = keyframes`
   from {
@@ -23,7 +23,7 @@ const Rotate = styled.div`
 
 export const Spinner = ({ size, ...props }) => (
   <Rotate {...props}>
-    <Icon glyph="spinner" size={size} />
+    <SpinnerIcon size={size} />
   </Rotate>
 )
 
