@@ -1711,6 +1711,11 @@
     "@svgr/plugin-svgo" "^4.2.0"
     loader-utils "^1.2.3"
 
+"@ticketswap/comets@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-1.0.2.tgz#4f676ef691a5e1f752d0b053eb95fbdad0b30e97"
+  integrity sha512-AkKs7Bag0u3RMo2zMD4/SXMZXkszrXnIXeAyidvbVSzjXbP4dky+RJsKt6dq9nz6J8L4R63KL2fIQazAn/nKKg==
+
 "@types/babel__core@^7.1.0":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.1.tgz#ce9a9e5d92b7031421e1d0d74ae59f572ba48be6"
