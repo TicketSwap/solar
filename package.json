@@ -95,6 +95,7 @@
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
+    "@ticketswap/comets": "^1.1.0",
     "compute-scroll-into-view": "^1.0.11"
   }
 }

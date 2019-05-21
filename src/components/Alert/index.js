@@ -10,7 +10,13 @@ import {
   radius,
   device,
 } from '../../theme'
-import { Icon } from '../Icon'
+import {
+  Error,
+  Info,
+  WarningAlt,
+  Checkmark,
+  ChevronRight,
+} from '@ticketswap/comets'
 
 const Container = styled.div`
   background-color: ${props =>
@@ -137,18 +143,15 @@ export const Alert = props => {
   return (
     <Container {...props}>
       <Adornment variant={props.variant}>
-        <Icon
-          size={24}
-          glyph={
-            props.variant === 'success'
-              ? 'checkmark-solid'
-              : props.variant === 'error'
-              ? 'error-solid'
-              : props.variant === 'warning'
-              ? 'warning-solid'
-              : 'info-solid'
-          }
-        />
+        {props.variant === 'success' ? (
+          <Checkmark size={24} />
+        ) : props.variant === 'error' ? (
+          <Error size={24} />
+        ) : props.variant === 'warning' ? (
+          <WarningAlt size={24} />
+        ) : (
+          <Info size={24} />
+        )}
       </Adornment>
       <Main>
         <Message primaryAction={props.primaryAction}>{props.children}</Message>
@@ -156,7 +159,7 @@ export const Alert = props => {
           <SecondaryAction onClick={props.secondaryAction.onClick}>
             {props.secondaryAction.label}
             <SecondaryActionAdornment>
-              <Icon glyph="arrow-right-solid" size={16} />
+              <ChevronRight size={16} />
             </SecondaryActionAdornment>
           </SecondaryAction>
         )}
