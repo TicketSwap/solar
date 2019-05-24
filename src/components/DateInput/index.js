@@ -131,7 +131,11 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
               id="day"
               hideLabel
               value={day ? parseInt(day).toString() : ''}
-              onChange={e => setDay(parseInt(e.target.value) || '')}
+              onChange={e => {
+                const d = parseInt(e.target.value)
+
+                setDay(d ? '' + d : '')
+              }}
             />
           </InputWrapper>
           <SelectWrapper>
@@ -150,10 +154,13 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
               id="year"
               hideLabel
               value={year.toString()}
-              onChange={e =>
-                e.target.value.length < 5 &&
-                setYear(parseInt(e.target.value) || '')
-              }
+              onChange={e => {
+                if (e.target.value.length >= 5) return
+
+                const y = parseInt(e.target.value)
+
+                setYear(y ? '' + y : '')
+              }}
             />
           </InputWrapper>
         </InputGroup>
