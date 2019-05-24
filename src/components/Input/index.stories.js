@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Input } from './'
-import { MagnifyingGlass } from '@ticketswap/comets'
+import { Icon } from '../Icon'
 
 storiesOf('Input', module)
   .add('basic', () => <Input id="fname" label="First name" />)
@@ -28,7 +28,7 @@ storiesOf('Input', module)
       id="search"
       label="Search"
       hideLabel
-      leftAdornment={<MagnifyingGlass size={24} />}
+      leftAdornment={<Icon glyph="loupe-solid" size={24} />}
     />
   ))
   .add('with icon loading', () => (
@@ -37,7 +37,7 @@ storiesOf('Input', module)
       id="search"
       label="Search"
       hideLabel
-      leftAdornment={<MagnifyingGlass size={24} />}
+      leftAdornment={<Icon glyph="loupe-solid" size={24} />}
       loading
     />
   ))
@@ -49,7 +49,7 @@ storiesOf('Input', module)
       id="fname"
       type="search"
       label="Search"
-      leftAdornment={<MagnifyingGlass size={24} />}
+      leftAdornment={<Icon glyph="loupe-solid" size={24} />}
       hideLabel
       rounded
     />

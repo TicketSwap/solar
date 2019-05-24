@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+import { Icon } from '../Icon'
 import { Spinner } from '../Spinner'
 import { VisuallyHidden } from '../VisuallyHidden'
 import {
@@ -14,7 +15,6 @@ import {
   radius,
   device,
 } from '../../theme'
-import { CloseRounded } from '@ticketswap/comets'
 
 const InputWrapper = styled.div`
   position: relative;
@@ -181,7 +181,7 @@ export const Input = React.forwardRef(
                 type="button"
                 data-testid="reset-button"
               >
-                <CloseRounded size={16} />
+                <Icon glyph="close-circle-solid" size={16} />
               </ResetButton>
             </Adornment>
           ) : props.rightAdornment ? (

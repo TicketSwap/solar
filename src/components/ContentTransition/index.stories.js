@@ -1,8 +1,8 @@
 import React from 'react'
+import { Icon } from '../Icon'
 import { Input } from '../Input'
 import { Button } from '../Button'
 import { Select } from '../Select'
-import { ChevronLeftAlt, CloseAlt } from '@ticketswap/comets'
 import {
   DialogHeader,
   DialogBody,
@@ -113,14 +113,14 @@ function Dialog() {
           {back && (
             <DialogAdornment left>
               <button onClick={() => setActiveView(back)}>
-                <ChevronLeftAlt size={24} />
+                <Icon glyph="arrow-left" size={24} />
               </button>
             </DialogAdornment>
           )}
           {title}
           <DialogAdornment right>
             <button onClick={hide}>
-              <CloseAlt size={24} />
+              <Icon glyph="close" size={24} />
             </button>
           </DialogAdornment>
         </DialogHeader>

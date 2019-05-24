@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 import { Spring, animated } from 'react-spring'
 import { space, device, color, transition } from '../../theme'
 import { Carousel } from '../Carousel'
-import { ChevronLeftAlt, ChevronRightAlt } from '@ticketswap/comets'
+import { Icon } from '../Icon'
 
 /**
  * Currently this works with a gutter of `1rem`.
@@ -196,12 +196,12 @@ export const BasicCarousel = ({
         <Wrapper>
           {props.prevNextButtons && hasPrev ? (
             <PrevButton {...getPrevButtonProps()}>
-              <ChevronLeftAlt />
+              <Icon glyph="arrow-left" />
             </PrevButton>
           ) : null}
           {props.prevNextButtons && hasNext ? (
             <NextButton {...getNextButtonProps()}>
-              <ChevronRightAlt />
+              <Icon glyph="arrow-right" />
             </NextButton>
           ) : null}
           <OuterContainer
