@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { color, space, device, radius } from '../../theme'
-import { ChevronRightAlt } from '@ticketswap/comets'
+import { Icon } from '../Icon'
 
 const Container = styled.a`
   position: relative;
@@ -55,7 +55,7 @@ export const Banner = ({ backgroundImageUrl, children, url, ...props }) => {
     <Container backgroundImageUrl={backgroundImageUrl} href={url} {...props}>
       <Content>
         <div>{children}</div>
-        <ChevronRightAlt />
+        <Icon glyph="arrow-right" />
       </Content>
     </Container>
   )

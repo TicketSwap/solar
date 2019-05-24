@@ -11,7 +11,7 @@ import {
   transition,
 } from '../../theme'
 import { Input, Adornment } from '../Input'
-import { ArrowDown } from '@ticketswap/comets'
+import { Icon } from '../Icon'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
 const Container = styled.div`
@@ -150,7 +150,7 @@ export function Select({ items, onChange, id, label, ...props }) {
           id={id}
           label={label}
           value={highlightedIndex}
-          rightAdornment={<ArrowDown size={16} />}
+          rightAdornment={<Icon glyph="arrow-down-alt" size={16} />}
           onChange={e => {
             setSelectedItem(items[e.target.value])
             setHighlightedIndex(e.target.value)
@@ -177,7 +177,7 @@ export function Select({ items, onChange, id, label, ...props }) {
             labelProps={{ id: labelId, htmlFor: id }}
             onFocus={() => setIsOpen(true)}
             onBlur={() => setIsOpen(false)}
-            rightAdornment={<ArrowDown size={16} />}
+            rightAdornment={<Icon glyph="arrow-down-alt" size={16} />}
             onKeyDown={e => {
               if (!isOpen) return false
               if (e.key === 'ArrowUp') {

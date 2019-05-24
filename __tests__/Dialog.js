@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from 'react-testing-library'
 import { Button } from '../src/components/Button'
-import { Close } from '@ticketswap/comets'
+import { Icon } from '../src/components/Icon'
 import {
   Dialog,
   DialogWindow,
@@ -21,7 +21,7 @@ const MyDialog = ({ children, ...props }) => (
             Dialog Title
             <DialogAdornment right>
               <button onClick={hide} data-testid="close-button">
-                <Close size={24} />
+                <Icon glyph="close" size={24} />
               </button>
             </DialogAdornment>
           </DialogHeader>
