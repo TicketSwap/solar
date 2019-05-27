@@ -12,7 +12,7 @@ import {
 import { Select } from '../Select'
 import { Button } from '../Button'
 import { Input } from '../Input'
-import { Icon } from '../Icon'
+import { CloseAlt } from '@ticketswap/comets'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -35,7 +35,7 @@ const MyDialog = ({ children, ...props }) => (
             {!props.persist && (
               <DialogAdornment right>
                 <button onClick={hide}>
-                  <Icon glyph="close" size={24} />
+                  <CloseAlt size={24} />
                 </button>
               </DialogAdornment>
             )}

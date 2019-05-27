@@ -426,24 +426,33 @@ export const Glyph = ({ handle }) => {
   }
 }
 
-export const Icon = ({ size = 32, glyph, ...props }) => (
-  <SvgWrapper size={size} className="icon" {...props}>
-    <InlineSvg
-      fillRule="evenodd"
-      clipRule="evenodd"
-      strokeLinejoin="round"
-      strokeMiterlimit="1.414"
-      xmlns="http://www.w3.org/2000/svg"
-      role="presentation"
-      focusable="false"
-      viewBox="0 0 32 32"
-      preserveAspectRatio="xMidYMid meet"
-      fit
-    >
-      <Glyph handle={glyph} />
-    </InlineSvg>
-  </SvgWrapper>
-)
+export const Icon = ({ size = 32, glyph, ...props }) => {
+  React.useEffect(() => {
+    process.env.NODE_ENV === 'development' &&
+      console.warn(
+        'The `<Icon />` component is deprecated and will be removed in a future version. Please use Comets instead! Install Comets via `npm install @ticketswap/comets` or `yarn add @ticketswap/comets`.'
+      )
+  }, [])
+
+  return (
+    <SvgWrapper size={size} className="icon" {...props}>
+      <InlineSvg
+        fillRule="evenodd"
+        clipRule="evenodd"
+        strokeLinejoin="round"
+        strokeMiterlimit="1.414"
+        xmlns="http://www.w3.org/2000/svg"
+        role="presentation"
+        focusable="false"
+        viewBox="0 0 32 32"
+        preserveAspectRatio="xMidYMid meet"
+        fit
+      >
+        <Glyph handle={glyph} />
+      </InlineSvg>
+    </SvgWrapper>
+  )
+}
 
 Icon.propTypes = {
   size: PropTypes.number,

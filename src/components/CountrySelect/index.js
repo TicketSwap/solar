@@ -4,7 +4,7 @@ import Downshift from 'downshift'
 import { Input } from '../Input'
 import { MenuContainer, Menu, Item } from '../Select'
 import { Flag } from '../Flag'
-import { Icon } from '../Icon'
+import { MagnifyingGlass } from '@ticketswap/comets'
 
 export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
   <Downshift
@@ -34,7 +34,7 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
             leftAdornment: selectedItem ? (
               <Flag countryCode={selectedItem.value} />
             ) : (
-              <Icon glyph="loupe-solid" size={24} />
+              <MagnifyingGlass size={24} />
             ),
             ...props,
           })}
