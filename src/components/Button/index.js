@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { Icon } from '../Icon'
 import { Spinner } from '../Spinner'
 import {
   color,
@@ -334,13 +333,9 @@ export const Button = React.forwardRef(
       loading={loading}
       {...props}
     >
-      {loading || props.icon ? (
+      {loading || props.leftAdornment ? (
         <Adornment position={props.width === 'full' ? 'absolute' : null}>
-          {loading ? (
-            <Spinner size={24} />
-          ) : (
-            <Icon glyph={props.icon} size={24} />
-          )}
+          {loading ? <Spinner size={24} /> : props.leftAdornment}
         </Adornment>
       ) : null}
       {children}

@@ -1,20 +1,26 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button } from './'
-import { Icon } from '../Icon'
+import { Checkmark, Facebook, MagnifyingGlass } from '@ticketswap/comets'
 
 storiesOf('Button', module)
   .add('default with text', () => <Button>Default Button</Button>)
   .add('full width', () => <Button width="full">Default Button</Button>)
   .add('small with text', () => <Button size="small">Small Button</Button>)
-  .add('with icon', () => <Button icon="checkmark-solid">Save changes</Button>)
+  .add('with icon', () => (
+    <Button leftAdornment={<Checkmark size={24} />}>Save changes</Button>
+  ))
   .add('with icon loading', () => (
-    <Button icon="checkmark-solid" loading>
+    <Button loading leftAdornment={<Checkmark size={24} />}>
       Save changes
     </Button>
   ))
   .add('full width with icon', () => (
-    <Button width="full" icon="facebook" variant="facebook">
+    <Button
+      width="full"
+      variant="facebook"
+      leftAdornment={<Facebook size={24} />}
+    >
       Log in with Facebook
     </Button>
   ))
@@ -45,12 +51,12 @@ storiesOf('Button', module)
   .add('rounded', () => <Button rounded>Rounded</Button>)
   .add('rounded square with icon as child', () => (
     <Button rounded square>
-      <Icon glyph="loupe-solid" size={24} />
+      <MagnifyingGlass size={24} />
     </Button>
   ))
   .add('rounded small square with icon as child', () => (
     <Button size="small" rounded square>
-      <Icon glyph="loupe-solid" size={24} />
+      <MagnifyingGlass size={24} />
     </Button>
   ))
   .add('regular', () => <button>Button</button>)
