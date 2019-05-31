@@ -57,7 +57,7 @@
     "husky": "^2.3.0",
     "is-ci-cli": "^1.1.1",
     "jest": "^24.8.0",
-    "jest-dom": "^3.1.4",
+    "jest-dom": "^3.4.0",
     "jest-emotion": "^10.0.11",
     "jest-runner-eslint": "^0.7.3",
     "jest-watch-select-projects": "^0.1.1",
