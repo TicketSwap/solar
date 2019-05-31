@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 import { Button } from '../src/components/Button'
 import { ToastProvider, ToastConsumer, Toast } from '../src/components/Toast'
 

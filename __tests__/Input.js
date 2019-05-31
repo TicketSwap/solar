@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 import { matchers } from 'jest-emotion'
 import { Input } from '../src/components/Input'
 import { space } from '../src/theme'
