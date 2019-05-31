@@ -14,6 +14,7 @@ export { DateInput } from './components/DateInput'
 export { MoneyInput } from './components/MoneyInput'
 export { CountrySelect } from './components/CountrySelect'
 export { ContentTransition } from './components/ContentTransition'
+export { SkeletonPulse, SkeletonLine } from './components/Skeleton'
 export {
   ToastProvider,
   ToastConsumer,
