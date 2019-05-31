@@ -19,14 +19,6 @@
     "validate": "npm run test && npm run prettier -- --list-different",
     "semantic-release": "semantic-release"
   },
-  "greenkeeper": {
-    "ignore": [
-      "babel-core",
-      "babel-eslint",
-      "eslint-plugin-flowtype",
-      "react-spring"
-    ]
-  },
   "peerDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.10",
