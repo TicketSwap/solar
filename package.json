@@ -58,7 +58,7 @@
     "is-ci-cli": "^1.1.1",
     "jest": "^24.8.0",
     "jest-dom": "^3.1.4",
-    "jest-emotion": "^10.0.10",
+    "jest-emotion": "^10.0.11",
     "jest-runner-eslint": "^0.7.3",
     "jest-watch-select-projects": "^0.1.1",
     "jest-watch-typeahead": "^0.3.0",
