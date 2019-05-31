@@ -62,7 +62,7 @@
     "jest-runner-eslint": "^0.7.3",
     "jest-watch-select-projects": "^0.1.1",
     "jest-watch-typeahead": "^0.3.1",
-    "lint-staged": "^8.1.5",
+    "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
