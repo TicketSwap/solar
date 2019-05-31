@@ -18,7 +18,7 @@ const Container = styled.div`
   background-color: ${color.space};
   width: 100%;
   height: ${props => (props.height === 'full' ? '100vh' : 'auto')};
-  color: ${props => (props.theme === 'dark' ? 'white' : 'inherit')};
+  color: white;
 `
 
 const BackgroundImage = styled.div`
@@ -41,16 +41,16 @@ const BackgroundImage = styled.div`
     background-image: ${props =>
       props.tinted
         ? `linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.75) 0%,
-      rgba(0, 0, 0, 0.25) 100%
-    )`
+            to bottom,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.25) 100%
+          )`
         : `linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.25) 0%,
-      rgba(0, 0, 0, 0) 50%,
-      rgba(0, 0, 0, 0) 100%
-    )`};
+            to bottom,
+            rgba(0, 0, 0, 0.25) 0%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0) 100%
+          )`};
   }
 
   &::after {
@@ -64,7 +64,58 @@ const BackgroundImage = styled.div`
     filter: ${props => (props.blurred ? 'blur(16px)' : 'none')};
     background-size: cover;
     background-position: center;
-    background-image: ${props => (props.src ? `url(${props.src})` : 'none')};
+    background-image: ${props =>
+      props.imageUrl ? `url(${props.imageUrl})` : 'none'};
+
+    ${props =>
+      props.images &&
+      props.images.mobileLandscape &&
+      css`
+        background-image: ${props.images.mobileLandscape
+          ? `url(${props.images.mobileLandscape})`
+          : props.imageUrl
+          ? `url(${props.imageUrl})`
+          : 'none'};
+      `};
+
+    ${props =>
+      props.images &&
+      props.images.mobilePortrait &&
+      css`
+        @media ${device.mobileM} and (orientation: portrait) {
+          background-image: ${props.images.mobilePortrait
+            ? `url(${props.images.mobilePortrait})`
+            : props.imageUrl
+            ? `url(${props.imageUrl})`
+            : 'none'};
+        }
+      `};
+
+    ${props =>
+      props.images &&
+      props.images.tablet &&
+      css`
+        @media ${device.tablet} and (orientation: portrait) {
+          background-image: ${props.images.tablet
+            ? `url(${props.images.tablet})`
+            : props.imageUrl
+            ? `url(${props.imageUrl})`
+            : 'none'};
+        }
+      `};
+
+    ${props =>
+      props.images &&
+      props.images.desktop &&
+      css`
+        @media ${device.tablet} {
+          background-image: ${props.images.desktop
+            ? `url(${props.images.desktop})`
+            : props.imageUrl
+            ? `url(${props.imageUrl})`
+            : 'none'};
+        }
+      `};
   }
 `
 
@@ -122,6 +173,7 @@ export const Cover = ({
   caption,
   captionUrl,
   imageUrl,
+  images,
   blurred,
   tinted,
   ...props
@@ -137,12 +189,23 @@ export const Cover = ({
 
     {caption && !captionUrl ? <Caption>{caption}</Caption> : null}
 
-    <BackgroundImage src={imageUrl} blurred={blurred} tinted={tinted} />
+    <BackgroundImage
+      imageUrl={imageUrl}
+      images={images}
+      blurred={blurred}
+      tinted={tinted}
+    />
   </Container>
 )
 
 Cover.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  images: PropTypes.shape({
+    desktop: PropTypes.string,
+    tablet: PropTypes.string,
+    mobilePortrait: PropTypes.string,
+    mobileLandscape: PropTypes.string,
+  }),
   caption: PropTypes.string,
   captionUrl: PropTypes.string,
 }

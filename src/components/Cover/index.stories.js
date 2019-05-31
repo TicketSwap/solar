@@ -4,27 +4,36 @@ import { Cover } from './'
 import { Avatar } from '../Avatar'
 import { H1 } from '../Heading'
 
+const data = {
+  randomBackgroundImage: {
+    copyrightText: 'Geza Talaber',
+    copyrightLink: 'https://www.facebook.com/gezatalaberphotography',
+    imageSizes: {
+      desktop:
+        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/80afc84b-2091-4359-9fd7-9126d684182c.jpeg',
+      tablet:
+        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/87dc40a0-2c46-4130-9881-42779bcd3215.jpeg',
+      mobileLandscape:
+        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/3154ef01-2e6b-4e50-99c9-91edc13f3f6a.jpeg',
+      mobilePortrait:
+        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/904e600a-4994-40cf-8ea2-792e6d6d7a9b.jpeg',
+    },
+  },
+}
+
 storiesOf('Cover', module)
   .add('basic', () => (
-    <Cover
-      theme="dark"
-      imageUrl="https://cdn.ticketswap.com/public/201810/b8010445-f7dd-4a7a-86ec-96748d742d58.64738ee46de91a6a52866112dc7b17d85e3453c6.jpeg"
-    >
+    <Cover images={data.randomBackgroundImage.imageSizes}>
       <H1>Awakenings Festival 2019</H1>
     </Cover>
   ))
   .add('basic tinted', () => (
-    <Cover
-      theme="dark"
-      tinted
-      imageUrl="https://cdn.ticketswap.com/public/201810/b8010445-f7dd-4a7a-86ec-96748d742d58.64738ee46de91a6a52866112dc7b17d85e3453c6.jpeg"
-    >
+    <Cover tinted images={data.randomBackgroundImage.imageSizes}>
       <H1>Awakenings Festival 2019</H1>
     </Cover>
   ))
   .add('basic blurred', () => (
     <Cover
-      theme="dark"
       blurred
       imageUrl="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
     >
@@ -38,21 +47,9 @@ storiesOf('Cover', module)
   .add('full height', () => (
     <Cover
       height="full"
-      theme="dark"
-      caption="Photo &copy; Vincent van den Boogaard"
-      captionUrl="https://www.facebook.com/vincentvandenboogaard"
-      imageUrl="https://cdn.ticketswap.com/public/201810/b8010445-f7dd-4a7a-86ec-96748d742d58.64738ee46de91a6a52866112dc7b17d85e3453c6.jpeg"
-    >
-      <H1>The safest way to buy and sell e-tickets</H1>
-    </Cover>
-  ))
-  .add('full height with light image', () => (
-    <Cover
-      height="full"
-      theme="dark"
-      caption="Photo &copy; Vincent van den Boogaard"
-      captionUrl="https://www.facebook.com/vincentvandenboogaard"
-      imageUrl="https://cdn.ticketswap.com/public/201810/7ee778ad-d732-4c18-94ba-b610f4dcb7e0.9ebfa223802beac137fe1eed63136b6ab22ab11c.jpeg"
+      caption={data.randomBackgroundImage.copyrightText}
+      captionUrl={data.randomBackgroundImage.copyrightLink}
+      images={data.randomBackgroundImage.imageSizes}
     >
       <H1>The safest way to buy and sell e-tickets</H1>
     </Cover>
