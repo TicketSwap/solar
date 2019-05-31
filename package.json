@@ -41,7 +41,7 @@
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.0.6",
     "babel-plugin-emotion": "^10.0.9",
     "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0",
