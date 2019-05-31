@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
-import { color, space, transition, duration } from '../../theme'
+import { SkeletonPulse } from '../Skeleton'
+import { space, transition, duration } from '../../theme'
 import { fetchImage } from './fetchImage'
 
 const fadeIn = keyframes`
@@ -20,7 +21,7 @@ const Container = styled.div`
   line-height: 0;
   z-index: 1;
   overflow: hidden;
-  background-color: ${color.spaceLightest};
+  background-color: transparent;
   border-radius: ${props => (props.rounded ? space[8] : 0)};
   animation-duration: ${duration}ms;
   animation-fill-mode: both;
@@ -146,17 +147,19 @@ export class Image extends Component {
 
     return (
       <Container {...props}>
-        <Placeholder
-          src={this.placeholderSrc(width, height)}
-          aria-hidden="true"
-          alt="Placeholder image"
-        />
-        <StyledImage
-          src={this.state.src}
-          ref={this.setImageElementRef}
-          show={this.state.loaded}
-          alt={alt}
-        />
+        <SkeletonPulse>
+          <Placeholder
+            src={this.placeholderSrc(width, height)}
+            aria-hidden="true"
+            alt="Placeholder image"
+          />
+          <StyledImage
+            src={this.state.src}
+            ref={this.setImageElementRef}
+            show={this.state.loaded}
+            alt={alt}
+          />
+        </SkeletonPulse>
       </Container>
     )
   }
