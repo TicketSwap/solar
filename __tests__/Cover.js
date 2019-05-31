@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-testing-library'
+import { render } from '@testing-library/react'
 import { Cover } from '../src/components/Cover'
 import { H1 } from '../src/components/Heading'
 
