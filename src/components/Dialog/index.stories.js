@@ -82,9 +82,8 @@ function MyNewDialog() {
 storiesOf('Dialog', module)
   .add('basic', () => <MyDialog>Body</MyDialog>)
   .add('default on', () => <MyDialog defaultOn>Body</MyDialog>)
-  .add('show on mount', () => <MyDialog showOnMount>Body</MyDialog>)
-  .add('show on mount and persist', () => (
-    <MyDialog showOnMount persist>
+  .add('default on and persist', () => (
+    <MyDialog defaultOn persist>
       Body
     </MyDialog>
   ))

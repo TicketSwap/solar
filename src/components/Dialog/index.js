@@ -181,7 +181,6 @@ export const DialogFooter = styled.footer`
 
 export class Dialog extends Component {
   static propTypes = {
-    showOnMount: PropTypes.bool,
     defaultOn: PropTypes.bool,
     persist: PropTypes.bool,
     on: PropTypes.bool,
@@ -195,7 +194,7 @@ export class Dialog extends Component {
   }
 
   componentDidMount() {
-    if (this.props.showOnMount) {
+    if (!this.getOn() && this.props.defaultOn) {
       this.setOnState()
     }
   }
@@ -251,7 +250,7 @@ export class Dialog extends Component {
   toggle = this.setOnState.bind(this, undefined)
 
   state = {
-    on: this.getOn({ on: this.props.defaultOn }),
+    on: this.getOn({ on: false }),
   }
 
   render() {
@@ -260,16 +259,18 @@ export class Dialog extends Component {
 }
 
 export function useDialog(props = {}) {
-  const { persist, showOnMount, defaultOn, onToggle } = props
-  const [on, setOn] = useState(defaultOn || false)
+  const { persist, defaultOn, onToggle } = props
+  const [on, setOn] = useState(false)
   const previousOn = usePrevious(on)
   const show = () => setOn(true)
   const hide = () => setOn(false)
   const toggle = () => setOn(!on)
 
   useEffect(() => {
-    showOnMount && setOn(true)
-  }, [showOnMount])
+    if (typeof previousOn === 'undefined' && defaultOn) {
+      setOn(true)
+    }
+  }, [previousOn, defaultOn])
 
   useEffect(() => {
     if (typeof previousOn !== 'undefined' && on !== previousOn) {
@@ -309,9 +310,15 @@ export function DialogWindow({ children, on, hide, ...props }) {
   )
 
   useEffect(() => {
-    if (props.persist) return false
-    document.addEventListener('keydown', handleHide, false)
-    return () => document.removeEventListener('keydown', handleHide, false)
+    if (!props.persist) {
+      document.addEventListener('keydown', handleHide, false)
+    }
+
+    return () => {
+      if (!props.persist) {
+        document.removeEventListener('keydown', handleHide, false)
+      }
+    }
   }, [handleHide, props.persist])
 
   return (
