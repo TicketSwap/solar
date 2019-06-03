@@ -44,14 +44,9 @@ const CustomCheckbox = styled.div`
   ${NativeCheckbox}:focus + &,
   ${NativeCheckbox}:active + & {
     outline: 0;
-    box-shadow: ${props =>
-      !props.disabled ? `0 0 0 ${space[4]} ${color.earthFocusAlpha}` : 'none'};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     background-color: ${props =>
-      props.checked
-        ? color.earth
-        : props.disabled
-        ? color.spaceLightest
-        : color.stardust};
+      props.checked ? color.earth : color.stardust};
   }
 `
 
@@ -87,7 +82,7 @@ export const Checkbox = React.forwardRef(
             }
           }}
         />
-        <CustomCheckbox checked={getOn()} disabled={isOnControlled()}>
+        <CustomCheckbox checked={getOn()}>
           {getOn() && (
             <IconContainer>
               <Checkmark size={20} />
