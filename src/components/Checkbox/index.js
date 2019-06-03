@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import { Checkmark } from '@ticketswap/comets'
 import { space, color, radius } from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { usePrevious } from '../../hooks'
 
 const Label = styled.label`
   display: inline-flex;
@@ -65,13 +64,6 @@ const IconContainer = styled.span`
 export const Checkbox = React.forwardRef(
   ({ className, defaultOn, onChange, label, hideLabel, ...props }, ref) => {
     const [on, setOn] = React.useState(defaultOn || false)
-    const previousOn = usePrevious(on)
-
-    React.useEffect(() => {
-      if (typeof previousOn !== 'undefined' && previousOn !== on) {
-        return onChange(on)
-      }
-    }, [onChange, on, previousOn])
 
     return (
       <Label htmlFor={props.id} className={className}>
@@ -80,7 +72,10 @@ export const Checkbox = React.forwardRef(
           ref={ref}
           checked={on}
           {...props}
-          onChange={() => setOn(!on)}
+          onChange={e => {
+            setOn(!on)
+            onChange(e)
+          }}
         />
         <CustomCheckbox checked={on}>
           {on && (

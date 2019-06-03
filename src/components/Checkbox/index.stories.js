@@ -6,23 +6,26 @@ storiesOf('Checkbox', module)
   .add('basic', () => (
     <Checkbox
       id="remember-me"
+      name="remember-me"
       label="Remember me"
-      onChange={on => console.log(on)}
+      onChange={e => console.log(e.target.checked)}
     />
   ))
   .add('default on', () => (
     <Checkbox
       id="remember-me"
+      name="remember-me"
       label="Remember me"
-      onChange={on => console.log(on)}
+      onChange={e => console.log(e.target.checked)}
       defaultOn
     />
   ))
   .add('without label', () => (
     <Checkbox
       id="remember-me"
+      name="remember-me"
       label="Remember me"
-      onChange={on => console.log(on)}
+      onChange={e => console.log(e.target.checked)}
       hideLabel
     />
   ))
