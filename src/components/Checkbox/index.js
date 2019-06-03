@@ -31,11 +31,9 @@ const NativeCheckbox = styled.input`
 `
 
 const CustomCheckbox = styled.div`
+  position: relative;
   color: white;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
+  line-height: 1;
   width: ${space[24]};
   height: ${space[24]};
   background-color: ${props =>
@@ -51,6 +49,17 @@ const CustomCheckbox = styled.div`
     background-color: ${props =>
       props.checked ? color.earth : color.stardust};
   }
+`
+
+const IconContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 `
 
 export const Checkbox = React.forwardRef(
@@ -74,7 +83,11 @@ export const Checkbox = React.forwardRef(
           onChange={() => setOn(!on)}
         />
         <CustomCheckbox checked={on}>
-          {on && <Checkmark size={20} />}
+          {on && (
+            <IconContainer>
+              <Checkmark size={20} />
+            </IconContainer>
+          )}
         </CustomCheckbox>
         {hideLabel ? (
           <VisuallyHidden>
@@ -87,3 +100,7 @@ export const Checkbox = React.forwardRef(
     )
   }
 )
+
+Checkbox.defaultProps = {
+  onChange: () => {},
+}
