@@ -57,9 +57,9 @@ export function DialogContent({ children, ...props }) {
   useLockBodyScroll(ref)
 
   return (
-    <div {...props}>
-      <Content ref={ref}>{children}</Content>
-    </div>
+    <Content ref={ref} {...props}>
+      {children}
+    </Content>
   )
 }
 
