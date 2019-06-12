@@ -71,9 +71,7 @@ export const fontSize = {
 export const shadow = {
   text: `0 1px 0 ${color.spaceLightestAlpha}`,
   light: `0 1px 4px ${color.spaceLightestAlpha}`,
-  strong: `0 1px 2px ${color.spaceLighterAlpha}, 0 4px 12px ${
-    color.spaceLightestAlpha
-  }`,
+  strong: `0 1px 2px ${color.spaceLighterAlpha}, 0 4px 12px ${color.spaceLightestAlpha}`,
 }
 
 export const space = {
