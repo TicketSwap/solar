@@ -54,6 +54,8 @@ export const color = {
   facebook: 'rgb(23, 119, 242)',
   facebookLight: 'rgb(69,146,245)',
   facebookFocusAlpha: 'rgba(23, 119, 242,0.24)',
+
+  twitter: 'rgb(56, 161, 243)',
 }
 
 export const fontSize = {
