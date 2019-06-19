@@ -63,6 +63,7 @@ const Field = styled.input`
 
   &[type='number']::-webkit-outer-spin-button,
   &[type='number']::-webkit-inner-spin-button,
+  &[type='time']::-webkit-inner-spin-button,
   &[type='date']::-webkit-clear-button,
   &[type='date']::-webkit-inner-spin-button,
   &[type='date']::-webkit-calendar-picker-indicator {
