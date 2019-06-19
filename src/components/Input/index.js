@@ -188,6 +188,7 @@ export const Input = React.forwardRef(
           ) : props.rightAdornment ? (
             <Adornment right>{props.rightAdornment}</Adornment>
           ) : null}
+          {props.menu && props.menu}
         </InputWrapper>
         {props.help && <Help>{props.help}</Help>}
       </Label>

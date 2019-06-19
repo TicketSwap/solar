@@ -2,15 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import computeScrollIntoView from 'compute-scroll-into-view'
-import {
-  color,
-  space,
-  shadow,
-  fontWeight,
-  radius,
-  transition,
-} from '../../theme'
-import { Input, Adornment } from '../Input'
+import { color } from '../../theme'
+import { Input } from '../Input'
+import { ComboboxMenu, ComboboxList, ComboboxItem } from '../Combobox'
 import { ArrowDown } from '@ticketswap/comets'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
@@ -29,53 +23,6 @@ const StyledInput = styled(Input)`
   text-shadow: 0 0 0 ${color.space};
   cursor: pointer;
 `
-
-export const MenuContainer = styled.div`
-  text-align: left;
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: calc(100% + ${space[4]});
-  border-radius: ${radius.md};
-  background-color: white;
-  box-shadow: ${shadow.strong};
-  overflow: hidden;
-`
-
-export const Menu = styled.div`
-  max-height: ${space[256]};
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-`
-
-const ItemContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  padding-left: ${props => (props.adornment ? space[48] : space[16])};
-  padding-right: ${space[16]};
-  min-height: ${space[56]};
-  background-color: ${props => (props.highlighted ? color.stardust : 'white')};
-  font-weight: ${props =>
-    props.selected ? fontWeight.semiBold : fontWeight.regular};
-  color: ${props => (props.selected ? color.earth : props.space)};
-  cursor: pointer;
-  transition: color ${transition};
-
-  & + ${() => ItemContainer} {
-    border-top: 1px solid ${color.spaceLightest};
-  }
-`
-
-export const Item = React.forwardRef(({ children, ...props }, ref) => (
-  <ItemContainer {...props} ref={ref}>
-    {props.adornment && <Adornment left>{props.adornment}</Adornment>}
-    {children}
-  </ItemContainer>
-))
 
 export function Select({ items, onChange, id, label, ...props }) {
   const { isMobile } = useDeviceInfo()
@@ -205,14 +152,14 @@ export function Select({ items, onChange, id, label, ...props }) {
             aria-activedescendant={`${id}-item-${selectedItem.value}`}
           />
           {isOpen && (
-            <MenuContainer
+            <ComboboxMenu
               tabindex="-1"
               role="listbox"
               aria-labelledby={labelId}
             >
-              <Menu id={menuId} ref={menuRef}>
+              <ComboboxList id={menuId} ref={menuRef}>
                 {items.map((item, index) => (
-                  <Item
+                  <ComboboxItem
                     id={`${id}-item-${item.value}`}
                     key={item.value}
                     role="option"
@@ -228,10 +175,10 @@ export function Select({ items, onChange, id, label, ...props }) {
                     aria-selected={selectedItem === item ? 'true' : 'false'}
                   >
                     {item.name}
-                  </Item>
+                  </ComboboxItem>
                 ))}
-              </Menu>
-            </MenuContainer>
+              </ComboboxList>
+            </ComboboxMenu>
           )}
         </>
       )}

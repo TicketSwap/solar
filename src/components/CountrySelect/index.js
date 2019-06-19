@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import { Input } from '../Input'
-import { MenuContainer, Menu, Item } from '../Select'
+import { ComboboxMenu, ComboboxList, ComboboxItem } from '../Combobox'
 import { Flag } from '../Flag'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
@@ -40,8 +40,8 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
           })}
         />
         {isOpen && (
-          <MenuContainer>
-            <Menu {...getMenuProps()}>
+          <ComboboxMenu {...getMenuProps()}>
+            <ComboboxList>
               {items
                 .filter(
                   item =>
@@ -49,7 +49,7 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
                     item.name.toLowerCase().includes(inputValue.toLowerCase())
                 )
                 .map((item, index) => (
-                  <Item
+                  <ComboboxItem
                     {...getItemProps({
                       key: item.name,
                       index,
@@ -61,10 +61,10 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
                     })}
                   >
                     {item.name}
-                  </Item>
+                  </ComboboxItem>
                 ))}
-            </Menu>
-          </MenuContainer>
+            </ComboboxList>
+          </ComboboxMenu>
         )}
       </div>
     )}

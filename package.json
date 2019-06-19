@@ -39,6 +39,7 @@
     "@emotion/styled": "^10.0.12",
     "@storybook/react": "^5.1.8",
     "@storybook/storybook-deployer": "^2.8.1",
+    "@testing-library/react": "^8.0.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-loader": "^8.0.6",
@@ -67,7 +68,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "7.2.10",
-    "@testing-library/react": "^8.0.1",
     "rollup": "^1.15.6",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.1.1",
@@ -87,6 +87,7 @@
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
+    "@reach/auto-id": "^0.2.0",
     "@ticketswap/comets": "^1.2.0",
     "compute-scroll-into-view": "^1.0.11"
   }
