@@ -39,7 +39,12 @@ export { H1, H2, H3, H4, H5, H6 } from './components/Heading'
 export { HorizontalScroll } from './components/HorizontalScroll'
 export { Icon } from './components/Icon'
 export { Image } from './components/Image'
-export { Input } from './components/Input'
+export {
+  Input,
+  InputMenu,
+  InputMenuList,
+  InputMenuItem,
+} from './components/Input'
 export { Logo } from './components/Logo'
 export { MenuButton } from './components/MenuButton'
 export { Portal } from './components/Portal'
