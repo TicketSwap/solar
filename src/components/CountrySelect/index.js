@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
-import { Input } from '../Input'
-import { MenuContainer, Menu, Item } from '../Select'
+import { Input, InputMenu, InputMenuList, InputMenuItem } from '../Input'
 import { Flag } from '../Flag'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
@@ -25,7 +24,7 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
       highlightedIndex,
       selectedItem,
     }) => (
-      <div style={{ position: 'relative' }}>
+      <div>
         <Input
           {...getInputProps({
             onChange: clearSelection,
@@ -36,36 +35,38 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
             ) : (
               <MagnifyingGlass size={24} />
             ),
+            menu: isOpen && (
+              <InputMenu {...getMenuProps()}>
+                <InputMenuList>
+                  {items
+                    .filter(
+                      item =>
+                        !inputValue ||
+                        item.name
+                          .toLowerCase()
+                          .includes(inputValue.toLowerCase())
+                    )
+                    .map((item, index) => (
+                      <InputMenuItem
+                        {...getItemProps({
+                          key: item.name,
+                          index,
+                          item,
+                          highlighted:
+                            highlightedIndex === index ? 'true' : undefined,
+                          selected: selectedItem === item ? 'true' : undefined,
+                          adornment: <Flag countryCode={item.value} />,
+                        })}
+                      >
+                        {item.name}
+                      </InputMenuItem>
+                    ))}
+                </InputMenuList>
+              </InputMenu>
+            ),
             ...props,
           })}
         />
-        {isOpen && (
-          <MenuContainer>
-            <Menu {...getMenuProps()}>
-              {items
-                .filter(
-                  item =>
-                    !inputValue ||
-                    item.name.toLowerCase().includes(inputValue.toLowerCase())
-                )
-                .map((item, index) => (
-                  <Item
-                    {...getItemProps({
-                      key: item.name,
-                      index,
-                      item,
-                      highlighted:
-                        highlightedIndex === index ? 'true' : undefined,
-                      selected: selectedItem === item ? 'true' : undefined,
-                      adornment: <Flag countryCode={item.value} />,
-                    })}
-                  >
-                    {item.name}
-                  </Item>
-                ))}
-            </Menu>
-          </MenuContainer>
-        )}
       </div>
     )}
   </Downshift>

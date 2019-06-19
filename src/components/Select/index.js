@@ -2,15 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import computeScrollIntoView from 'compute-scroll-into-view'
-import {
-  color,
-  space,
-  shadow,
-  fontWeight,
-  radius,
-  transition,
-} from '../../theme'
-import { Input, Adornment } from '../Input'
+import { color } from '../../theme'
+import { Input, InputMenu, InputMenuList, InputMenuItem } from '../Input'
 import { ArrowDown } from '@ticketswap/comets'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
@@ -29,53 +22,6 @@ const StyledInput = styled(Input)`
   text-shadow: 0 0 0 ${color.space};
   cursor: pointer;
 `
-
-export const MenuContainer = styled.div`
-  text-align: left;
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  top: calc(100% + ${space[4]});
-  border-radius: ${radius.md};
-  background-color: white;
-  box-shadow: ${shadow.strong};
-  overflow: hidden;
-`
-
-export const Menu = styled.div`
-  max-height: ${space[256]};
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-`
-
-const ItemContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-  padding-left: ${props => (props.adornment ? space[48] : space[16])};
-  padding-right: ${space[16]};
-  min-height: ${space[56]};
-  background-color: ${props => (props.highlighted ? color.stardust : 'white')};
-  font-weight: ${props =>
-    props.selected ? fontWeight.semiBold : fontWeight.regular};
-  color: ${props => (props.selected ? color.earth : props.space)};
-  cursor: pointer;
-  transition: color ${transition};
-
-  & + ${() => ItemContainer} {
-    border-top: 1px solid ${color.spaceLightest};
-  }
-`
-
-export const Item = React.forwardRef(({ children, ...props }, ref) => (
-  <ItemContainer {...props} ref={ref}>
-    {props.adornment && <Adornment left>{props.adornment}</Adornment>}
-    {children}
-  </ItemContainer>
-))
 
 export function Select({ items, onChange, id, label, ...props }) {
   const { isMobile } = useDeviceInfo()
@@ -166,74 +112,70 @@ export function Select({ items, onChange, id, label, ...props }) {
       )}
 
       {!isMobile() && (
-        <>
-          <StyledInput
-            {...props}
-            id={id}
-            ref={inputRef}
-            label={label}
-            value={selectedItem.displayName || selectedItem.name}
-            readOnly
-            labelProps={{ id: labelId, htmlFor: id }}
-            onFocus={() => setIsOpen(true)}
-            onBlur={() => setIsOpen(false)}
-            rightAdornment={<ArrowDown size={16} />}
-            onKeyDown={e => {
-              if (!isOpen) return false
-              if (e.key === 'ArrowUp') {
-                e.preventDefault()
-                setHighlightedIndex(prev =>
-                  prev === 0 ? items.length - 1 : prev - 1
-                )
-              }
-              if (e.key === 'ArrowDown') {
-                e.preventDefault()
-                setHighlightedIndex(prev =>
-                  prev !== items.length - 1 ? prev + 1 : 0
-                )
-              }
-              // Select with Enter or Space keys
-              if (e.key === 'Enter' || e.keyCode === 32) {
-                onChange(items[highlightedIndex])
-                setSelectedItem(items[highlightedIndex])
-                handleClose()
-              }
-            }}
-            aria-haspopup="listbox"
-            aria-labelledby={labelId}
-            aria-controls={menuId}
-            aria-activedescendant={`${id}-item-${selectedItem.value}`}
-          />
-          {isOpen && (
-            <MenuContainer
-              tabindex="-1"
-              role="listbox"
-              aria-labelledby={labelId}
-            >
-              <Menu id={menuId} ref={menuRef}>
-                {items.map((item, index) => (
-                  <Item
-                    id={`${id}-item-${item.value}`}
-                    key={item.value}
-                    role="option"
-                    ref={setItemRef}
-                    selected={selectedItem.value === item.value}
-                    highlighted={highlightedIndex === index}
-                    onMouseMove={() => setHighlightedIndex(index)}
-                    onMouseDown={() => {
-                      onChange(item)
-                      setSelectedItem(item)
-                      handleClose()
-                    }}
-                    aria-selected={selectedItem === item ? 'true' : 'false'}
-                  >
-                    {item.name}
-                  </Item>
-                ))}
-              </Menu>
-            </MenuContainer>
-          )}
-        </>
+        <StyledInput
+          {...props}
+          id={id}
+          ref={inputRef}
+          label={label}
+          value={selectedItem.displayName || selectedItem.name}
+          readOnly
+          labelProps={{ id: labelId, htmlFor: id }}
+          onFocus={() => setIsOpen(true)}
+          onBlur={() => setIsOpen(false)}
+          rightAdornment={<ArrowDown size={16} />}
+          onKeyDown={e => {
+            if (!isOpen) return false
+            if (e.key === 'ArrowUp') {
+              e.preventDefault()
+              setHighlightedIndex(prev =>
+                prev === 0 ? items.length - 1 : prev - 1
+              )
+            }
+            if (e.key === 'ArrowDown') {
+              e.preventDefault()
+              setHighlightedIndex(prev =>
+                prev !== items.length - 1 ? prev + 1 : 0
+              )
+            }
+            // Select with Enter or Space keys
+            if (e.key === 'Enter' || e.keyCode === 32) {
+              onChange(items[highlightedIndex])
+              setSelectedItem(items[highlightedIndex])
+              handleClose()
+            }
+          }}
+          aria-haspopup="listbox"
+          aria-labelledby={labelId}
+          aria-controls={menuId}
+          aria-activedescendant={`${id}-item-${selectedItem.value}`}
+          menu={
+            isOpen && (
+              <InputMenu tabindex="-1" role="listbox" aria-labelledby={labelId}>
+                <InputMenuList id={menuId} ref={menuRef}>
+                  {items.map((item, index) => (
+                    <InputMenuItem
+                      id={`${id}-item-${item.value}`}
+                      key={item.value}
+                      role="option"
+                      ref={setItemRef}
+                      selected={selectedItem.value === item.value}
+                      highlighted={highlightedIndex === index}
+                      onMouseMove={() => setHighlightedIndex(index)}
+                      onMouseDown={() => {
+                        onChange(item)
+                        setSelectedItem(item)
+                        handleClose()
+                      }}
+                      aria-selected={selectedItem === item ? 'true' : 'false'}
+                    >
+                      {item.name}
+                    </InputMenuItem>
+                  ))}
+                </InputMenuList>
+              </InputMenu>
+            )
+          }
+        />
       )}
     </Container>
   )

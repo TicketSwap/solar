@@ -13,6 +13,7 @@ import {
   lineHeight,
   radius,
   device,
+  fontWeight,
 } from '../../theme'
 import { CloseRounded } from '@ticketswap/comets'
 
@@ -148,6 +149,53 @@ export const Help = styled.p`
   }
 `
 
+export const InputMenu = styled.div`
+  text-align: left;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: calc(100% + ${space[4]});
+  border-radius: ${radius.md};
+  background-color: white;
+  box-shadow: ${shadow.strong};
+  overflow: hidden;
+`
+
+export const InputMenuList = styled.ul`
+  max-height: ${space[256]};
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+`
+
+const InputMenuItemContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding-left: ${props => (props.adornment ? space[48] : space[16])};
+  padding-right: ${space[16]};
+  min-height: ${space[56]};
+  background-color: ${props => (props.highlighted ? color.stardust : 'white')};
+  font-weight: ${props =>
+    props.selected ? fontWeight.semiBold : fontWeight.regular};
+  color: ${props => (props.selected ? color.earth : props.space)};
+  cursor: pointer;
+  transition: color ${transition};
+
+  & + ${() => InputMenuItemContainer} {
+    border-top: 1px solid ${color.spaceLightest};
+  }
+`
+
+export const InputMenuItem = React.forwardRef(({ children, ...props }, ref) => (
+  <InputMenuItemContainer {...props} ref={ref}>
+    {props.adornment && <Adornment left>{props.adornment}</Adornment>}
+    {children}
+  </InputMenuItemContainer>
+))
+
 export const Input = React.forwardRef(
   ({ id, label, hideLabel, labelProps, validate, ...props }, ref) => {
     const invalid =
@@ -188,6 +236,7 @@ export const Input = React.forwardRef(
           ) : props.rightAdornment ? (
             <Adornment right>{props.rightAdornment}</Adornment>
           ) : null}
+          {props.menu && props.menu}
         </InputWrapper>
         {props.help && <Help>{props.help}</Help>}
       </Label>
@@ -208,6 +257,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   type: PropTypes.string,
   onChange: PropTypes.func,
+  menu: PropTypes.oneOfType([PropTypes.boolean, PropTypes.object]),
   validate: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   onReset: PropTypes.func,
   placeholder: PropTypes.string,
