@@ -257,7 +257,7 @@ Input.propTypes = {
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   type: PropTypes.string,
   onChange: PropTypes.func,
-  menu: PropTypes.oneOfType([PropTypes.boolean, PropTypes.object]),
+  menu: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   validate: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   onReset: PropTypes.func,
   placeholder: PropTypes.string,
