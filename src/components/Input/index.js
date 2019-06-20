@@ -168,7 +168,7 @@ export const InputMenuList = styled.ul`
   -webkit-overflow-scrolling: touch;
 `
 
-const InputMenuItemContainer = styled.div`
+const InputMenuItemContainer = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: center;
