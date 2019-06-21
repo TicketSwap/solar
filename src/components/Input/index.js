@@ -162,6 +162,12 @@ export const InputMenu = styled.div`
   overflow: hidden;
 `
 
+export const InputMenuFooter = styled.footer`
+  text-align: right;
+  padding: ${space[4]} ${space[16]};
+  border-top: 1px solid ${color.spaceLightest};
+`
+
 export const InputMenuList = styled.ul`
   max-height: ${space[256]};
   overflow-y: scroll;

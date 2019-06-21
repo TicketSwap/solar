@@ -42,6 +42,7 @@ export { Image } from './components/Image'
 export {
   Input,
   InputMenu,
+  InputMenuFooter,
   InputMenuList,
   InputMenuItem,
 } from './components/Input'
