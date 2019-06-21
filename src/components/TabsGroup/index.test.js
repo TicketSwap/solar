@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { TabsGroup } from '../src/components/TabsGroup'
+import { TabsGroup } from './'
 
 const items = [
   { name: 'Front-end', contents: 'Lucas' },

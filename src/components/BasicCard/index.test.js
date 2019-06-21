@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { BasicCard } from '../src/components/BasicCard'
+import { BasicCard } from './'
 
 describe('BasicCard', () => {
   it('renders without crashing', () => {

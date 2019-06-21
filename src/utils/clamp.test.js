@@ -1,4 +1,4 @@
-import { clamp } from '../src/utils'
+import { clamp } from './'
 
 describe('clamp()', () => {
   const min = 1

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { MenuButton } from '../src/components/MenuButton'
+import { MenuButton } from './'
 
 const items = [
   { name: 'English', value: 'en' },

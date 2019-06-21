@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { CountrySelect } from '../src/components/CountrySelect'
+import { CountrySelect } from './'
 
 const countries = [
   { value: 'nl', name: 'Netherlands' },

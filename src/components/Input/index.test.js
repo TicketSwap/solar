@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { matchers } from 'jest-emotion'
-import { Input } from '../src/components/Input'
-import { space } from '../src/theme'
+import { Input } from './'
+import { space } from '../../theme'
 
 expect.extend(matchers)
 
