@@ -17,6 +17,7 @@ storiesOf('Select', module).add('basic', () => (
     items={items}
     id="language"
     label="Language"
+    help="Select a language"
     onChange={selection => console.log(selection)}
     initialSelectedItem={items[1]}
   />

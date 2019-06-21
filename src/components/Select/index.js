@@ -23,7 +23,7 @@ const StyledInput = styled(Input)`
   cursor: pointer;
 `
 
-export function Select({ items, onChange, id, label, ...props }) {
+export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
   const { isMobile } = useDeviceInfo()
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
@@ -87,6 +87,34 @@ export function Select({ items, onChange, id, label, ...props }) {
     }
   }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
+  function Menu() {
+    return (
+      <InputMenu tabindex="-1" role="listbox" aria-labelledby={labelId}>
+        <InputMenuList id={menuId} ref={menuRef}>
+          {items.map((item, index) => (
+            <InputMenuItem
+              id={`${id}-item-${item.value}`}
+              key={item.value}
+              role="option"
+              ref={setItemRef}
+              selected={selectedItem.value === item.value}
+              highlighted={highlightedIndex === index}
+              onMouseMove={() => setHighlightedIndex(index)}
+              onMouseDown={() => {
+                onChange(item)
+                setSelectedItem(item)
+                handleClose()
+              }}
+              aria-selected={selectedItem === item ? 'true' : 'false'}
+            >
+              {item.name}
+            </InputMenuItem>
+          ))}
+        </InputMenuList>
+      </InputMenu>
+    )
+  }
+
   return (
     <Container ref={containerRef}>
       {isMobile() && (
@@ -112,70 +140,48 @@ export function Select({ items, onChange, id, label, ...props }) {
       )}
 
       {!isMobile() && (
-        <StyledInput
-          {...props}
-          id={id}
-          ref={inputRef}
-          label={label}
-          value={selectedItem.displayName || selectedItem.name}
-          readOnly
-          labelProps={{ id: labelId, htmlFor: id }}
-          onFocus={() => setIsOpen(true)}
-          onBlur={() => setIsOpen(false)}
-          rightAdornment={<ArrowDown size={16} />}
-          onKeyDown={e => {
-            if (!isOpen) return false
-            if (e.key === 'ArrowUp') {
-              e.preventDefault()
-              setHighlightedIndex(prev =>
-                prev === 0 ? items.length - 1 : prev - 1
-              )
-            }
-            if (e.key === 'ArrowDown') {
-              e.preventDefault()
-              setHighlightedIndex(prev =>
-                prev !== items.length - 1 ? prev + 1 : 0
-              )
-            }
-            // Select with Enter or Space keys
-            if (e.key === 'Enter' || e.keyCode === 32) {
-              onChange(items[highlightedIndex])
-              setSelectedItem(items[highlightedIndex])
-              handleClose()
-            }
-          }}
-          aria-haspopup="listbox"
-          aria-labelledby={labelId}
-          aria-controls={menuId}
-          aria-activedescendant={`${id}-item-${selectedItem.value}`}
-          menu={
-            isOpen && (
-              <InputMenu tabindex="-1" role="listbox" aria-labelledby={labelId}>
-                <InputMenuList id={menuId} ref={menuRef}>
-                  {items.map((item, index) => (
-                    <InputMenuItem
-                      id={`${id}-item-${item.value}`}
-                      key={item.value}
-                      role="option"
-                      ref={setItemRef}
-                      selected={selectedItem.value === item.value}
-                      highlighted={highlightedIndex === index}
-                      onMouseMove={() => setHighlightedIndex(index)}
-                      onMouseDown={() => {
-                        onChange(item)
-                        setSelectedItem(item)
-                        handleClose()
-                      }}
-                      aria-selected={selectedItem === item ? 'true' : 'false'}
-                    >
-                      {item.name}
-                    </InputMenuItem>
-                  ))}
-                </InputMenuList>
-              </InputMenu>
-            )
-          }
-        />
+        <>
+          <StyledInput
+            {...props}
+            id={id}
+            ref={inputRef}
+            label={label}
+            value={selectedItem.displayName || selectedItem.name}
+            readOnly
+            labelProps={{ id: labelId, htmlFor: id }}
+            onFocus={() => setIsOpen(true)}
+            onBlur={() => setIsOpen(false)}
+            rightAdornment={<ArrowDown size={16} />}
+            onKeyDown={e => {
+              if (!isOpen) return false
+              if (e.key === 'ArrowUp') {
+                e.preventDefault()
+                setHighlightedIndex(prev =>
+                  prev === 0 ? items.length - 1 : prev - 1
+                )
+              }
+              if (e.key === 'ArrowDown') {
+                e.preventDefault()
+                setHighlightedIndex(prev =>
+                  prev !== items.length - 1 ? prev + 1 : 0
+                )
+              }
+              // Select with Enter or Space keys
+              if (e.key === 'Enter' || e.keyCode === 32) {
+                onChange(items[highlightedIndex])
+                setSelectedItem(items[highlightedIndex])
+                handleClose()
+              }
+            }}
+            aria-haspopup="listbox"
+            aria-labelledby={labelId}
+            aria-controls={menuId}
+            aria-activedescendant={`${id}-item-${selectedItem.value}`}
+            menu={!floatingMenu && isOpen && <Menu />}
+          />
+
+          {floatingMenu && isOpen && <Menu />}
+        </>
       )}
     </Container>
   )
@@ -189,6 +195,7 @@ Select.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  floatingMenu: PropTypes.bool,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

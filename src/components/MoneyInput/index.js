@@ -77,6 +77,7 @@ export function MoneyInput({
             id="currency"
             label="Currency"
             hideLabel
+            floatingMenu
             validate={validateCurrency}
             initialSelectedItem={options[intialSelectedIndex]}
             onChange={e => {
