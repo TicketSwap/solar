@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { space } from '../../theme'
 import { Label, LabelText, Input, Help } from '../Input'
+import { ArrowDown } from '@ticketswap/comets'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { Select } from '../Select'
+import { useDeviceInfo } from '../../hooks'
 
 const InputGroup = styled.div`
   position: relative;
@@ -18,15 +20,27 @@ const InputWrapper = styled.div`
   flex-shrink: 1;
 `
 
+const selectWidth = `${112 / 16}rem`
 const SelectWrapper = styled.div`
   padding-right: ${space[8]};
   flex-grow: 0;
   flex-shrink: 0;
-  flex-basis: ${112 / 16}rem;
+  flex-basis: ${selectWidth};
 
   .select {
     position: initial;
   }
+`
+
+const FauxSelectWrapper = styled.span`
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: ${selectWidth};
+  padding-right: ${space[8]};
 `
 
 function createSelectOptions(currencies) {
@@ -54,12 +68,14 @@ export function MoneyInput({
   const [currency, setCurrency] = React.useState(
     currencies[intialSelectedIndex]
   )
+
   const [value, setValue] = React.useState(
     props.initialAmount ? props.initialAmount / 100 : ''
   )
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef()
   const parseAmount = value => Math.round(parseFloat(value) * 100) || 0
+  const { isMobile } = useDeviceInfo()
 
   return (
     <Label htmlFor={id}>
@@ -72,6 +88,16 @@ export function MoneyInput({
       )}
       <InputGroup id={id}>
         <SelectWrapper>
+          {isMobile() && (
+            <FauxSelectWrapper>
+              <Input
+                label="Currency"
+                hideLabel
+                value={currency.symbol}
+                rightAdornment={<ArrowDown size={16} />}
+              />
+            </FauxSelectWrapper>
+          )}
           <Select
             items={options}
             id="currency"
@@ -89,8 +115,6 @@ export function MoneyInput({
                 currency: selectedCurrency,
                 amount: parseAmount(value),
               })
-              // Not sure this is the way to go, but it
-              // won’t work otherwise ಠ_ಠ
               if (typeof requestAnimationFrame === 'undefined') return false
               requestAnimationFrame(() => inputRef.current.focus())
             }}

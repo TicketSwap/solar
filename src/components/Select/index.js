@@ -22,8 +22,19 @@ const StyledInput = styled(Input)`
   text-shadow: 0 0 0 ${color.space};
   cursor: pointer;
 `
+const LeftAdornment = styled.span`
+  margin-right: 10px;
+`
 
-export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
+export function Select({
+  items,
+  onChange,
+  id,
+  label,
+  leftAdornment,
+  floatingMenu,
+  ...props
+}) {
   const { isMobile } = useDeviceInfo()
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
@@ -106,6 +117,9 @@ export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
             }}
             aria-selected={selectedItem === item ? 'true' : 'false'}
           >
+            {item.leftAdornment && (
+              <LeftAdornment>{item.leftAdornment}</LeftAdornment>
+            )}
             {item.name}
           </InputMenuItem>
         ))}
@@ -131,7 +145,7 @@ export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
         >
           {items.map((item, index) => (
             <option key={item.value} value={index}>
-              {item.displayName || item.name}
+              {item.name}
             </option>
           ))}
         </Input>
@@ -150,6 +164,7 @@ export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
             onFocus={() => setIsOpen(true)}
             onBlur={() => setIsOpen(false)}
             rightAdornment={<ArrowDown size={16} />}
+            leftAdornment={leftAdornment}
             onKeyDown={e => {
               if (!isOpen) return false
               if (e.key === 'ArrowUp') {
@@ -194,6 +209,7 @@ Select.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   floatingMenu: PropTypes.bool,
+  leftAdornment: PropTypes.object,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
