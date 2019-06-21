@@ -87,33 +87,31 @@ export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
     }
   }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
-  function Menu() {
-    return (
-      <InputMenu tabindex="-1" role="listbox" aria-labelledby={labelId}>
-        <InputMenuList id={menuId} ref={menuRef}>
-          {items.map((item, index) => (
-            <InputMenuItem
-              id={`${id}-item-${item.value}`}
-              key={item.value}
-              role="option"
-              ref={setItemRef}
-              selected={selectedItem.value === item.value}
-              highlighted={highlightedIndex === index}
-              onMouseMove={() => setHighlightedIndex(index)}
-              onMouseDown={() => {
-                onChange(item)
-                setSelectedItem(item)
-                handleClose()
-              }}
-              aria-selected={selectedItem === item ? 'true' : 'false'}
-            >
-              {item.name}
-            </InputMenuItem>
-          ))}
-        </InputMenuList>
-      </InputMenu>
-    )
-  }
+  const menu = isOpen && (
+    <InputMenu tabindex="-1" role="listbox" aria-labelledby={labelId}>
+      <InputMenuList id={menuId} ref={menuRef}>
+        {items.map((item, index) => (
+          <InputMenuItem
+            id={`${id}-item-${item.value}`}
+            key={item.value}
+            role="option"
+            ref={setItemRef}
+            selected={selectedItem.value === item.value}
+            highlighted={highlightedIndex === index}
+            onMouseMove={() => setHighlightedIndex(index)}
+            onMouseDown={() => {
+              onChange(item)
+              setSelectedItem(item)
+              handleClose()
+            }}
+            aria-selected={selectedItem === item ? 'true' : 'false'}
+          >
+            {item.name}
+          </InputMenuItem>
+        ))}
+      </InputMenuList>
+    </InputMenu>
+  )
 
   return (
     <Container ref={containerRef}>
@@ -177,10 +175,10 @@ export function Select({ items, floatingMenu, onChange, id, label, ...props }) {
             aria-labelledby={labelId}
             aria-controls={menuId}
             aria-activedescendant={`${id}-item-${selectedItem.value}`}
-            menu={!floatingMenu && isOpen && <Menu />}
+            menu={!floatingMenu && menu}
           />
 
-          {floatingMenu && isOpen && <Menu />}
+          {floatingMenu && menu}
         </>
       )}
     </Container>
