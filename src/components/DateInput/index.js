@@ -107,7 +107,7 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   }, [year, month, day, onChange, previousValue])
 
   return (
-    <Container input={isIOS() ? 'native' : 'custom'}>
+    <Container input={isIOS() ? 'native' : 'custom'} {...props}>
       <Input
         type="date"
         label={label}
