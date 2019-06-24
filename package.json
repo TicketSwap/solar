@@ -69,7 +69,7 @@
     "react-spring": "7.2.10",
     "@testing-library/react": "^8.0.1",
     "rollup": "^1.15.6",
-    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-node-resolve": "^5.0.3",
     "rollup-plugin-peer-deps-external": "^2.2.0",
