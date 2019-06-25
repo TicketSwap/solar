@@ -54,7 +54,7 @@ function createSelectOptions(countries) {
   }))
 }
 
-export function PhoneDetailsInput({
+export function PhoneInput({
   countries,
   help,
   hideLabel,
@@ -144,11 +144,11 @@ export function PhoneDetailsInput({
   )
 }
 
-PhoneDetailsInput.defaultProps = {
+PhoneInput.defaultProps = {
   onChange: () => {},
 }
 
-PhoneDetailsInput.propTypes = {
+PhoneInput.propTypes = {
   countries: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number.isRequired,
