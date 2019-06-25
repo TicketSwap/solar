@@ -16,6 +16,7 @@ const InputGroup = styled.div`
 `
 
 const selectWidth = `${144 / 16}rem`
+
 const FauxSelectWrapper = styled.span`
   display: block;
   pointer-events: none;

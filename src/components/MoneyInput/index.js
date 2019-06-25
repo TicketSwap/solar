@@ -21,6 +21,7 @@ const InputWrapper = styled.div`
 `
 
 const selectWidth = `${112 / 16}rem`
+
 const SelectWrapper = styled.div`
   padding-right: ${space[8]};
   flex-grow: 0;
