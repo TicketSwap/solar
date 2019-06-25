@@ -53,7 +53,7 @@ function createSelectOptions(countries) {
   }))
 }
 
-export default function PhoneDetailsInput({
+export function PhoneDetailsInput({
   countries,
   help,
   hideLabel,
