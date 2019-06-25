@@ -51,11 +51,13 @@ export const color = {
   sunLightestAlpha: 'rgba(255,166,0,0.16)',
   sunFocusAlpha: 'rgba(255,166,0,0.24)',
 
-  facebook: 'rgb(23, 119, 242)',
+  facebook: 'rgb(23,119,242)',
   facebookLight: 'rgb(69,146,245)',
-  facebookFocusAlpha: 'rgba(23, 119, 242,0.24)',
+  facebookFocusAlpha: 'rgba(23,119,242,0.24)',
 
-  twitter: 'rgb(56, 161, 243)',
+  twitter: 'rgb(56,161,243)',
+  twitterLight: 'rgb(96,180,245)',
+  twitterFocusAlpha: 'rgba(56,161,243,0.24)',
 }
 
 export const fontSize = {
