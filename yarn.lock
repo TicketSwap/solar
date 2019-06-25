@@ -8409,10 +8409,10 @@ jest-validate@^24.8.0:
     leven "^2.1.0"
     pretty-format "^24.8.0"
 
-jest-watch-select-projects@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/jest-watch-select-projects/-/jest-watch-select-projects-0.1.1.tgz#08acd5df2ba5328f3183277d5c9f18acfc69a02a"
-  integrity sha512-v2XRjCnOi+O4PjbMX/lLIkZET2itXd8jGbaL8GewaJf+l52PpSu1U2EOOnO+hd9am+x5jb5rL86lsUJDWW7OKw==
+jest-watch-select-projects@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/jest-watch-select-projects/-/jest-watch-select-projects-0.1.2.tgz#f9b5369df7a0ea46613f7405617afbe22b602586"
+  integrity sha512-zL8XsbefHg6b2RllnJg7et7bakYznyNMtrI4pK6oV2IBF2dXh/wGP3qs8fSmVx/McUHhdlUuVzhQG6NoO8qyQA==
   dependencies:
     ansi-escapes "^3.1.0"
     chalk "^2.4.1"
