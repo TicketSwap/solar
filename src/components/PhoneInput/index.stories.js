@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import PhoneDetailsInput from '.'
+import { PhoneInput } from './'
 
 const countries = [
   {
@@ -32,7 +32,7 @@ const countries = [
 
 storiesOf('PhoneInput', module)
   .add('basic', () => (
-    <PhoneDetailsInput
+    <PhoneInput
       id="phonenumber"
       label="Phone number"
       countries={countries}
@@ -40,7 +40,7 @@ storiesOf('PhoneInput', module)
     />
   ))
   .add('with initial values', () => (
-    <PhoneDetailsInput
+    <PhoneInput
       id="phonenumber"
       label="Phone number"
       countries={countries}
@@ -51,7 +51,7 @@ storiesOf('PhoneInput', module)
     />
   ))
   .add('with error', () => (
-    <PhoneDetailsInput
+    <PhoneInput
       id="phonenumber"
       label="Phone number"
       countries={countries}
