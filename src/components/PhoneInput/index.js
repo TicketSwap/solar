@@ -128,7 +128,7 @@ export function PhoneInput({
             label="Number"
             ref={inputRef}
             hideLabel
-            type="tel"
+            type="number"
             value={number}
             validate={validateNumber}
             {...props}

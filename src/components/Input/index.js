@@ -170,8 +170,10 @@ export const InputMenuFooter = styled.footer`
 
 export const InputMenuList = styled.ul`
   max-height: ${space[256]};
+  margin: 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  padding: 0;
 `
 
 const InputMenuItemContainer = styled.li`
@@ -189,6 +191,7 @@ const InputMenuItemContainer = styled.li`
   color: ${props => (props.selected ? color.earth : props.space)};
   cursor: pointer;
   transition: color ${transition};
+  margin: 0;
 
   & + ${() => InputMenuItemContainer} {
     border-top: 1px solid ${color.spaceLightest};
