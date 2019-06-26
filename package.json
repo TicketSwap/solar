@@ -20,7 +20,7 @@
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "@emotion/core": "^10.0.10",
+    "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.12",
     "downshift": "^3.2.10",
     "prop-types": "^15.7.2",
@@ -35,7 +35,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "@emotion/core": "^10.0.10",
+    "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.12",
     "@storybook/react": "^5.1.9",
     "@storybook/storybook-deployer": "^2.8.1",
