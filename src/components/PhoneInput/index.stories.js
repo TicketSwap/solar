@@ -4,6 +4,11 @@ import { PhoneInput } from './'
 
 const countries = [
   {
+    code: 1684,
+    name: 'American Samoa',
+    value: 'as',
+  },
+  {
     code: 1441,
     name: 'Bermuda',
     value: 'bm',

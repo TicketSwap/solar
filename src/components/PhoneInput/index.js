@@ -15,7 +15,7 @@ const InputGroup = styled.div`
   flex-direction: row;
 `
 
-const selectWidth = `${144 / 16}rem`
+const selectWidth = `${152 / 16}rem`
 
 const FauxSelectWrapper = styled.span`
   display: block;
