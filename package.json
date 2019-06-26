@@ -42,7 +42,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-emotion": "^10.0.13",
+    "babel-plugin-emotion": "^10.0.14",
     "commitizen": "^3.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "downshift": "^3.2.10",
