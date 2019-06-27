@@ -77,7 +77,7 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-visualizer": "^2.4.3",
     "rollup-watch": "^4.3.1",
-    "semantic-release": "^15.13.17"
+    "semantic-release": "^15.13.18"
   },
   "main": "dist/solar.js",
   "module": "dist/solar.es.js",
