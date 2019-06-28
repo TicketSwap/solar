@@ -81,3 +81,6 @@ storiesOf('Input', module)
   .add('as textarea', () => (
     <Input as="textarea" id="message" label="Message" rows="6" />
   ))
+  .add('with max length', () => (
+    <Input id="max" label="Input with max length" maxLength="6" />
+  ))
