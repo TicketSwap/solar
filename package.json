@@ -21,7 +21,7 @@
   },
   "peerDependencies": {
     "@emotion/core": "^10.0.14",
-    "@emotion/styled": "^10.0.12",
+    "@emotion/styled": "^10.0.14",
     "downshift": "^3.2.10",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -36,7 +36,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@emotion/core": "^10.0.14",
-    "@emotion/styled": "^10.0.12",
+    "@emotion/styled": "^10.0.14",
     "@storybook/react": "^5.1.9",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-core": "^7.0.0-bridge.0",
