@@ -8,6 +8,7 @@ export const H1 = styled.h1`
 
   @media ${device.tablet} {
     font-size: ${fontSize[56]};
+    line-height: ${lineHeight.titleLg};
   }
 `
 
