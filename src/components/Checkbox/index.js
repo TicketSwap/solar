@@ -8,7 +8,7 @@ const Label = styled.label`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  line-height: 0;
+  line-height: 1;
 `
 
 const LabelText = styled.span`
