@@ -171,7 +171,7 @@ export const InputMenuFooter = styled.footer`
 export const InputMenuList = styled.ul`
   max-height: ${space[256]};
   margin: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0;
 `
