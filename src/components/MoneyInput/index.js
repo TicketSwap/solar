@@ -139,7 +139,13 @@ export function MoneyInput({
             ref={inputRef}
             hideLabel
             type="number"
-            value={isAmountControlled ? props.amount / 100 : amount}
+            value={
+              isAmountControlled
+                ? props.amount
+                  ? props.amount / 100
+                  : ''
+                : amount
+            }
             validate={validateAmount}
             {...props}
             onChange={e => {

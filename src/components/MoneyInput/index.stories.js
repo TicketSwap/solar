@@ -82,22 +82,22 @@ function ControlledMoneyInput() {
       <div
         style={{
           display: 'grid',
-          gridGap: '1rem',
+          gridGap: '0.5rem',
           gridAutoFlow: 'column',
           marginBottom: '0.25rem',
         }}
       >
         <Button size="small" onClick={() => setCurrency(currencies[0])}>
-          Euro
+          Set Euro
         </Button>
         <Button size="small" onClick={() => setCurrency(currencies[2])}>
-          Pounds
+          Set Pounds
         </Button>
         <Button size="small" variant="success" onClick={() => setAmount(2000)}>
-          20
+          Set 20
         </Button>
         <Button size="small" variant="success" onClick={() => setAmount(4000)}>
-          40
+          Set 40
         </Button>
       </div>
       <MoneyInput
