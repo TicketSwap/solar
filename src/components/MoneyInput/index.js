@@ -63,14 +63,16 @@ export function MoneyInput({
   validateCurrency,
   ...props
 }) {
-  const intialSelectedIndex = props.initialSelectedCurrency
-    ? currencies.indexOf(props.initialSelectedCurrency)
-    : 0
+  const isCurrencyControlled = typeof props.currency !== 'undefined'
+  const isAmountControlled = typeof props.amount !== 'undefined'
+  const intialSelectedIndex =
+    isCurrencyControlled || props.initialSelectedCurrency
+      ? currencies.indexOf(props.currency || props.initialSelectedCurrency)
+      : 0
   const [currency, setCurrency] = React.useState(
     currencies[intialSelectedIndex]
   )
-
-  const [value, setValue] = React.useState(
+  const [amount, setAmount] = React.useState(
     props.initialAmount ? props.initialAmount / 100 : ''
   )
   const options = createSelectOptions(currencies)
@@ -94,7 +96,9 @@ export function MoneyInput({
               <Input
                 label="Currency"
                 hideLabel
-                value={currency.symbol}
+                value={
+                  isCurrencyControlled ? props.currency.symbol : currency.symbol
+                }
                 rightAdornment={<ArrowDown size={16} />}
               />
             </FauxSelectWrapper>
@@ -106,6 +110,13 @@ export function MoneyInput({
             hideLabel
             floatingMenu
             validate={validateCurrency}
+            selectedItem={
+              isCurrencyControlled
+                ? options.filter(
+                    option => option.value === props.currency.code
+                  )[0]
+                : undefined
+            }
             initialSelectedItem={options[intialSelectedIndex]}
             onChange={e => {
               const selectedCurrency = currencies.filter(
@@ -114,7 +125,7 @@ export function MoneyInput({
               setCurrency(selectedCurrency)
               onChange({
                 currency: selectedCurrency,
-                amount: parseAmount(value),
+                amount: isAmountControlled ? props.amount : parseAmount(amount),
               })
               if (typeof requestAnimationFrame === 'undefined') return false
               requestAnimationFrame(() => inputRef.current.focus())
@@ -128,11 +139,11 @@ export function MoneyInput({
             ref={inputRef}
             hideLabel
             type="number"
-            value={value}
+            value={isAmountControlled ? props.amount / 100 : amount}
             validate={validateAmount}
             {...props}
             onChange={e => {
-              setValue(e.target.value)
+              setAmount(e.target.value)
               onChange({
                 currency,
                 amount: parseAmount(e.target.value),
@@ -161,10 +172,17 @@ MoneyInput.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
-  initialSelectedCurrency: PropTypes.shape({
+  currency: PropTypes.shape({
+    code: PropTypes.string,
     symbol: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }),
+  initialSelectedCurrency: PropTypes.shape({
+    code: PropTypes.string,
+    symbol: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
+  amount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   initialAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   validateAmount: PropTypes.bool,
   validateCurrency: PropTypes.bool,
