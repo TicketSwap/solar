@@ -27,6 +27,19 @@ storiesOf('Checkbox', module)
       onChange={e => console.log(e.target)}
     />
   ))
+  .add('with long label', () => (
+    <Checkbox
+      id="agree"
+      name="agree"
+      label={
+        <p>
+          I understand I will be paid out <strong>after</strong> the event has
+          taken place.
+        </p>
+      }
+      onChange={e => console.log(e.target)}
+    />
+  ))
   .add('default on', () => (
     <Checkbox
       id="remember-me"

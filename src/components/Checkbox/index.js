@@ -1,20 +1,25 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Checkmark } from '@ticketswap/comets'
-import { space, color, radius } from '../../theme'
+import { space, color, radius, fontWeight } from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
 
 const Label = styled.label`
   display: inline-flex;
   justify-content: center;
-  align-items: center;
-  line-height: 1;
+  align-items: flex-start;
 `
 
 const LabelText = styled.span`
+  flex-shrink: 1;
   display: inline-block;
   color: ${color.spaceMedium};
   margin-left: ${space[8]};
+
+  strong {
+    color: ${color.space};
+    font-weight: ${fontWeight.semiBold};
+  }
 `
 
 const NativeCheckbox = styled.input`
@@ -30,9 +35,9 @@ const NativeCheckbox = styled.input`
 `
 
 const CustomCheckbox = styled.div`
+  flex-shrink: 0;
   position: relative;
   color: white;
-  line-height: 1;
   width: ${space[24]};
   height: ${space[24]};
   background-color: ${props =>
