@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Button } from '../src/components/Button'
+import { Button } from '../Button'
 import { Close } from '@ticketswap/comets'
 import {
   Dialog,
@@ -9,7 +9,7 @@ import {
   DialogAdornment,
   DialogBody,
   DialogFooter,
-} from '../src/components/Dialog'
+} from './'
 
 const MyDialog = ({ children, ...props }) => (
   <Dialog {...props}>

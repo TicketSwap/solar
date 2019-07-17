@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Select } from '../src/components/Select'
+import { Select } from './'
 
 const languages = [
   { value: 'de', name: 'German' },

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { StarRating } from '../src/components/StarRating'
+import { StarRating } from './'
 
 describe('StarRating', () => {
   it('renders without crashing', () => {
