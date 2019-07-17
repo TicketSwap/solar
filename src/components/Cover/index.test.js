@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Cover } from '../src/components/Cover'
-import { H1 } from '../src/components/Heading'
+import { Cover } from './'
+import { H1 } from '../Heading'
 
 describe('Cover', () => {
   it('renders without crashing', () => {

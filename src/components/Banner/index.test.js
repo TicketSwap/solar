@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Banner } from '../src/components/Banner'
-import { H2 } from '../src/components/Heading'
+import { Banner } from './'
+import { H2 } from '../Heading'
 
 describe('Banner', () => {
   it('renders without crashing', () => {
