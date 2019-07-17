@@ -18,6 +18,16 @@ import {
   ChevronRight,
 } from '@ticketswap/comets'
 
+const textColor = props => css`
+  color: ${props.variant === 'success'
+    ? color.titan
+    : props.variant === 'error'
+    ? color.mars
+    : props.variant === 'warning'
+    ? color.sun
+    : color.earth};
+`
+
 const Container = styled.div`
   background-color: ${props =>
     props.variant === 'success'
@@ -35,16 +45,10 @@ const Container = styled.div`
   @media ${device.tablet} {
     min-height: ${space[56]};
   }
-`
 
-const textColor = props => css`
-  color: ${props.variant === 'success'
-    ? color.titan
-    : props.variant === 'error'
-    ? color.mars
-    : props.variant === 'warning'
-    ? color.sun
-    : color.earth};
+  a {
+    ${textColor};
+  }
 `
 
 const Adornment = styled.span`

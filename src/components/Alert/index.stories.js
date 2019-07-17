@@ -3,7 +3,11 @@ import { storiesOf } from '@storybook/react'
 import { Alert } from './'
 
 storiesOf('Alert', module)
-  .add('info', () => <Alert>Paypal is not activated yet.</Alert>)
+  .add('info', () => (
+    <Alert>
+      <a href="https://example.com">Paypal</a> is not activated yet.
+    </Alert>
+  ))
   .add('info with primary action', () => (
     <Alert
       primaryAction={{
@@ -34,7 +38,7 @@ storiesOf('Alert', module)
         onClick: () => console.log('primaryAction clicked'),
       }}
     >
-      Wanted listing created!
+      Wanted <a href="https://example.com">listing</a> created!
     </Alert>
   ))
   .add('error', () => (
@@ -45,7 +49,7 @@ storiesOf('Alert', module)
         onClick: () => console.log('primaryAction clicked'),
       }}
     >
-      There’s a currency mismatch
+      There’s a currency <a href="https://example.com">mismatch</a>
     </Alert>
   ))
   .add('warning', () => (
@@ -56,6 +60,6 @@ storiesOf('Alert', module)
         onClick: () => console.log('primaryAction clicked'),
       }}
     >
-      Notifications are disabled
+      <a href="https://example.com">Notifications</a> are disabled
     </Alert>
   ))
