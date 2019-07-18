@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/core'
 import { SkeletonPulse } from '../Skeleton'
-import { space, transition, duration } from '../../theme'
+import { transition, duration, radius } from '../../theme'
 import { fetchImage } from './fetchImage'
 
 const fadeIn = keyframes`
@@ -22,7 +22,7 @@ const Container = styled.div`
   z-index: 1;
   overflow: hidden;
   background-color: transparent;
-  border-radius: ${props => (props.rounded ? space[8] : 0)};
+  border-radius: ${props => (props.rounded ? radius.lg : 0)};
   animation-duration: ${duration}ms;
   animation-fill-mode: both;
   animation-name: ${fadeIn};
