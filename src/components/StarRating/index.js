@@ -1,8 +1,8 @@
 import React from 'react'
-import { number, func } from 'prop-types'
+import { number, func, string, bool } from 'prop-types'
 import styled from '@emotion/styled'
 import { Star } from '@ticketswap/comets'
-import { color } from '../../theme'
+import { color, space } from '../../theme'
 import { visuallyHidden } from '../VisuallyHidden'
 
 const Label = styled.label`
@@ -15,19 +15,27 @@ const Input = styled.input`
   ${visuallyHidden};
 `
 
-const Text = styled.span`
+const LabelText = styled.span`
+  color: ${color.spaceMedium};
+`
+
+const VisuallyHiddenLabelText = styled.span`
   ${visuallyHidden};
 `
 
-const VisuallyHiddenStar = styled(Star)`
-  ${visuallyHidden};
+const Stars = styled.div`
+  transform: translateX(-${space[4]});
+  margin-bottom: -${space[4]};
 `
 
-const Button = styled.button`
-  ${visuallyHidden};
-`
-
-export function StarRating({ initialRating, starCount, onChange, ...props }) {
+export function StarRating({
+  label,
+  hideLabel,
+  initialRating,
+  starCount,
+  onChange,
+  ...props
+}) {
   const [rating, setRating] = React.useState(initialRating)
   const [tempRating, setTempRating] = React.useState(initialRating)
   const stars = Array.from(new Array(starCount + 1)).map((_, i) => i)
@@ -47,36 +55,38 @@ export function StarRating({ initialRating, starCount, onChange, ...props }) {
     setRating(tempRating)
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    onChange(rating)
-  }
-
   return (
-    <form onSubmit={handleSubmit} {...props}>
-      {stars.map(i => (
-        <Label
-          key={i}
-          isActive={rating >= i && rating !== null}
-          onMouseDown={() => rate(i)}
-          onMouseOver={() => handleMouseOver(i)}
-          onMouseOut={() => handleMouseOut(i)}
-          onFocus={() => handleMouseOver(i)}
-          onBlur={() => handleMouseOut(i)}
-        >
-          <Input
-            value={i}
-            checked={rating === i}
-            type="radio"
-            name="rating"
-            onChange={() => rate(i)}
-          />
-          <Text>{i} stars</Text>
-          {i === 0 ? <VisuallyHiddenStar /> : <Star />}
-        </Label>
-      ))}
-      <Button type="submit">Submit rating</Button>
-    </form>
+    <div {...props}>
+      {hideLabel ? (
+        <VisuallyHiddenLabelText>{label}</VisuallyHiddenLabelText>
+      ) : (
+        <LabelText>{label}</LabelText>
+      )}
+      <Stars>
+        {stars.map(i => (
+          <Label
+            key={i}
+            isActive={rating >= i && rating !== null}
+            onMouseDown={() => rate(i)}
+            onKeyDown={e => e.keyCode === 13 && rate(i)}
+            onMouseOver={() => handleMouseOver(i)}
+            onMouseOut={() => handleMouseOut(i)}
+            onFocus={() => handleMouseOver(i)}
+            onBlur={() => handleMouseOut(i)}
+          >
+            <Input
+              value={i}
+              checked={rating === i}
+              type="radio"
+              name="rating"
+              onChange={() => rate(i)}
+            />
+            <VisuallyHiddenLabelText>{i} stars</VisuallyHiddenLabelText>
+            {i !== 0 && <Star />}
+          </Label>
+        ))}
+      </Stars>
+    </div>
   )
 }
 
@@ -87,6 +97,8 @@ StarRating.defaultProps = {
 }
 
 StarRating.propTypes = {
+  label: string.isRequired,
+  hideLabel: bool,
   starCount: number.isRequired,
   initialRating: number.isRequired,
   onChange: func.isRequired,
