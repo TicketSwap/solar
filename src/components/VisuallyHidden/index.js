@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
-export const VisuallyHidden = styled.div`
+export const visuallyHidden = css`
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -9,4 +10,8 @@ export const VisuallyHidden = styled.div`
   padding: 0;
   overflow: hidden;
   position: absolute;
+`
+
+export const VisuallyHidden = styled.div`
+  ${visuallyHidden};
 `
