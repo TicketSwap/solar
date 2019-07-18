@@ -3,12 +3,28 @@ import { number, func } from 'prop-types'
 import styled from '@emotion/styled'
 import { Star } from '@ticketswap/comets'
 import { color } from '../../theme'
-import { VisuallyHidden } from '../VisuallyHidden'
+import { visuallyHidden } from '../VisuallyHidden'
 
 const Label = styled.label`
   display: inline-block;
   color: ${props => (props.isActive ? color.earth : color.spaceLightest)};
   cursor: pointer;
+`
+
+const Input = styled.input`
+  ${visuallyHidden};
+`
+
+const Text = styled.span`
+  ${visuallyHidden};
+`
+
+const VisuallyHiddenStar = styled(Star)`
+  ${visuallyHidden};
+`
+
+const Button = styled.button`
+  ${visuallyHidden};
 `
 
 export function StarRating({ initialRating, starCount, onChange, ...props }) {
@@ -48,29 +64,18 @@ export function StarRating({ initialRating, starCount, onChange, ...props }) {
           onFocus={() => handleMouseOver(i)}
           onBlur={() => handleMouseOut(i)}
         >
-          <VisuallyHidden>
-            <input
-              value={i}
-              checked={rating === i}
-              type="radio"
-              name="rating"
-              onChange={() => rate(i)}
-            />
-            {i} stars
-          </VisuallyHidden>
-          {i === 0 ? (
-            <VisuallyHidden>
-              <Star />
-            </VisuallyHidden>
-          ) : (
-            <Star />
-          )}
+          <Input
+            value={i}
+            checked={rating === i}
+            type="radio"
+            name="rating"
+            onChange={() => rate(i)}
+          />
+          <Text>{i} stars</Text>
+          {i === 0 ? <VisuallyHiddenStar /> : <Star />}
         </Label>
       ))}
-
-      <VisuallyHidden>
-        <button type="submit">Submit rating</button>
-      </VisuallyHidden>
+      <Button type="submit">Submit rating</Button>
     </form>
   )
 }
