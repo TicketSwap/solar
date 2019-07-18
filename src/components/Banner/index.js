@@ -35,7 +35,7 @@ const Container = styled.a`
   @media ${device.tablet} {
     padding-left: ${space[32]};
     padding-right: ${space[16]};
-    border-radius: ${radius.md};
+    border-radius: ${radius.lg};
     width: auto;
     left: auto;
     right: auto;
