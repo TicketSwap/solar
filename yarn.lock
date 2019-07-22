@@ -12471,10 +12471,10 @@ rollup-plugin-replace@^2.2.0:
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
-rollup-plugin-visualizer@^2.4.4:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-2.4.4.tgz#14265b86f9df392ed65f90a787088019de51188d"
-  integrity sha512-QMDrJfMwl8koU2IH8A/hb7zcE1Q+174uwjd9gtQ+ITbbmoGu9ro1pXoxGnTNXwkaAdlaRVECmfcAOga078Y+Qw==
+rollup-plugin-visualizer@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-2.5.3.tgz#0e6245aef8cfdaf345631d51a8121585c74a2783"
+  integrity sha512-DIEN4EL/a1S6zq2AnoD8gkzN0jUR+rhQCKjyHFtocYWiaghOsXEtG+EPxp+4iGCoMvvvVUHrt4FK/inmktuyBQ==
   dependencies:
     mkdirp "^0.5.1"
     open "^6.3.0"
