@@ -69,11 +69,16 @@ export function MoneyInput({
     isCurrencyControlled || props.initialSelectedCurrency
       ? currencies.indexOf(props.currency || props.initialSelectedCurrency)
       : 0
+  const initialValue = props.initialAmount ? props.initialAmount / 100 : 0
+  const [amount, setAmount] = React.useState(
+    props.initialAmount
+      ? Number.isInteger(initialValue)
+        ? initialValue
+        : initialValue.toFixed(2)
+      : ''
+  )
   const [currency, setCurrency] = React.useState(
     currencies[intialSelectedIndex]
-  )
-  const [amount, setAmount] = React.useState(
-    props.initialAmount ? props.initialAmount / 100 : ''
   )
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef()
