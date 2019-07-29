@@ -46,7 +46,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-emotion": "^10.0.14",
     "commitizen": "^4.0.3",
-    "cz-conventional-changelog": "^2.1.0",
+    "cz-conventional-changelog": "^3.0.2",
     "downshift": "^3.2.10",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.0.0",
