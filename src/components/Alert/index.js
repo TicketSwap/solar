@@ -11,10 +11,10 @@ import {
   device,
 } from '../../theme'
 import {
-  Error,
-  Info,
-  WarningAlt,
-  Checkmark,
+  CloseRounded,
+  InfoRounded,
+  WarningRounded,
+  CheckmarkRounded,
   ChevronRight,
 } from '@ticketswap/comets'
 
@@ -148,13 +148,13 @@ export const Alert = props => {
     <Container {...props}>
       <Adornment variant={props.variant}>
         {props.variant === 'success' ? (
-          <Checkmark size={24} />
+          <CheckmarkRounded size={24} />
         ) : props.variant === 'error' ? (
-          <Error size={24} />
+          <CloseRounded size={24} />
         ) : props.variant === 'warning' ? (
-          <WarningAlt size={24} />
+          <WarningRounded size={24} />
         ) : (
-          <Info size={24} />
+          <InfoRounded size={24} />
         )}
       </Adornment>
       <Main>
