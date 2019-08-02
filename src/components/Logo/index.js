@@ -29,7 +29,7 @@ export const InlineSvg = styled.svg`
   fill: currentColor;
 `
 
-export const Logo = props => (
+export const Logo = ({ variant, ...props }) => (
   <SvgWrapper {...props}>
     <InlineSvg
       viewBox="0 0 244 40"
@@ -41,7 +41,7 @@ export const Logo = props => (
       role="presentation"
       focusable="false"
     >
-      <Path />
+      <Path variant={variant} />
     </InlineSvg>
   </SvgWrapper>
 )
