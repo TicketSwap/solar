@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 import { color, space, device, radius } from '../../theme'
 import { ChevronRightAlt } from '@ticketswap/comets'
 
-const Container = styled.a`
+const Container = styled.div`
   position: relative;
   background-color: ${color.space};
   background-position: center;
@@ -50,9 +50,9 @@ const Content = styled.div`
   align-items: center;
 `
 
-export const Banner = ({ backgroundImageUrl, children, url, ...props }) => {
+export const Banner = ({ backgroundImageUrl, children, ...props }) => {
   return (
-    <Container backgroundImageUrl={backgroundImageUrl} href={url} {...props}>
+    <Container backgroundImageUrl={backgroundImageUrl} {...props}>
       <Content>
         <div>{children}</div>
         <ChevronRightAlt />
@@ -63,5 +63,4 @@ export const Banner = ({ backgroundImageUrl, children, url, ...props }) => {
 
 Banner.propTypes = {
   backgroundImageUrl: PropTypes.string,
-  url: PropTypes.string,
 }
