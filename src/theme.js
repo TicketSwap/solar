@@ -60,6 +60,10 @@ export const color = {
   twitterFocusAlpha: 'rgba(56,161,243,0.24)',
 }
 
+export const fontStack = `'Proxima Nova', -apple-system, BlinkMacSystemFont,
+'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto,
+'segoe ui', arial, sans-serif`
+
 export const fontSize = {
   12: '0.75rem',
   14: '0.875rem',
