@@ -1,13 +1,6 @@
 import { css } from '@emotion/core'
-import {
-  fontWeight,
-  device,
-  fontSize,
-  lineHeight,
-  color,
-  space,
-  radius,
-} from './theme'
+import { fontWeight, color, space, radius } from './theme'
+import { baseTextStyles } from './components/Text'
 
 export const globalStyles = css`
   @font-face {
@@ -66,18 +59,7 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont,
-      'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto,
-      'segoe ui', arial, sans-serif;
-    font-weight: ${fontWeight.regular};
-    line-height: ${lineHeight.copy};
-    font-size: ${fontSize[16]};
-    hyphens: auto;
-    color: ${color.space};
-
-    @media ${device.tablet} {
-      font-size: ${fontSize[18]};
-    }
+    ${baseTextStyles};
   }
 
   code,
