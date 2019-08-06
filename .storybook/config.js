@@ -1,6 +1,5 @@
 import React from 'react'
-import { Global } from '@emotion/core'
-import { globalStyles } from '../src/global-styles'
+import { BaseStyles } from '../src/components/BaseStyles'
 import { configure, addDecorator } from '@storybook/react'
 
 const req = require.context('../src/components', true, /\.stories\.js$/)
@@ -11,7 +10,7 @@ function loadStories() {
 
 addDecorator(story => (
   <div>
-    <Global styles={globalStyles} />
+    <BaseStyles />
     {story()}
   </div>
 ))
