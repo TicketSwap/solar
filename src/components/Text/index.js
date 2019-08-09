@@ -4,7 +4,6 @@ import {
   fontWeight,
   lineHeight,
   fontSize,
-  color,
   device,
   fontStack,
 } from '../../theme'
@@ -14,7 +13,7 @@ export const baseTextStyles = css`
   font-weight: ${fontWeight.regular};
   line-height: ${lineHeight.copy};
   font-size: ${fontSize[16]};
-  color: ${color.space};
+  color: inherit;
 
   @media ${device.tablet} {
     font-size: ${fontSize[18]};
