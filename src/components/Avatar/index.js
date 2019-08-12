@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Image } from '../Image'
+import { color } from '../../theme'
 
 const Wrapper = styled.div`
   vertical-align: middle;
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
   height: ${props => props.size && `${props.size}px`};
   min-width: ${props => props.size && `${props.size}px`};
   min-height: ${props => props.size && `${props.size}px`};
+  background-color: ${color.stardust};
   border-radius: 100%;
   position: relative;
   overflow: hidden;
