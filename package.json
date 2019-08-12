@@ -24,7 +24,7 @@
     "@emotion/styled": "^10.0.15",
     "downshift": "^3.2.10",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-spring": "^7.2.10"
   },
@@ -65,7 +65,7 @@
     "jest-watch-typeahead": "^0.3.1",
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
-    "react": "^16.8.6",
+    "react": "^16.9.0",
     "react-dom": "^16.8.6",
     "react-spring": "7.2.10",
     "rollup": "^1.19.4",
