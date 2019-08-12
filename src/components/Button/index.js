@@ -330,7 +330,7 @@ export const Button = React.forwardRef(
     <StyledButton
       ref={ref}
       onClick={loading ? () => null : onClick}
-      loading={loading}
+      isLoading={loading}
       {...props}
     >
       {loading || props.leftAdornment ? (
@@ -345,4 +345,5 @@ export const Button = React.forwardRef(
 
 Button.propTypes = {
   icon: PropTypes.string,
+  loading: PropTypes.bool,
 }

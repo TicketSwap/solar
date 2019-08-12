@@ -206,7 +206,7 @@ export const InputMenuItem = React.forwardRef(({ children, ...props }, ref) => (
 ))
 
 export const Input = React.forwardRef(
-  ({ id, label, hideLabel, labelProps, validate, ...props }, ref) => {
+  ({ id, label, hideLabel, labelProps, validate, loading, ...props }, ref) => {
     const invalid =
       typeof validate === 'undefined'
         ? false
@@ -227,8 +227,14 @@ export const Input = React.forwardRef(
           {props.leftAdornment ? (
             <Adornment left>{props.leftAdornment}</Adornment>
           ) : null}
-          <Field ref={ref} id={id} invalid={invalid} {...props} />
-          {props.isLoading ? (
+          <Field
+            ref={ref}
+            id={id}
+            invalid={invalid}
+            isLoading={loading}
+            {...props}
+          />
+          {loading ? (
             <Adornment right>
               <Spinner size={24} />
             </Adornment>
@@ -261,6 +267,7 @@ Input.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   hideLabel: PropTypes.bool,
+  loading: PropTypes.bool,
   labelProps: PropTypes.object,
   leftAdornment: PropTypes.node,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),

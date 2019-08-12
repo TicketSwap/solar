@@ -19,7 +19,7 @@ storiesOf('Input', module)
       label="Search"
       hideLabel
       onReset={() => console.log('onClear')}
-      isLoading
+      loading
     />
   ))
   .add('with icon', () => (
@@ -38,7 +38,7 @@ storiesOf('Input', module)
       label="Search"
       hideLabel
       leftAdornment={<MagnifyingGlass size={24} />}
-      isLoading
+      loading
     />
   ))
   .add('rounded', () => (
