@@ -68,7 +68,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "7.2.10",
-    "rollup": "^1.18.0",
+    "rollup": "^1.19.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-filesize": "^6.1.1",
     "rollup-plugin-node-resolve": "^5.2.0",
