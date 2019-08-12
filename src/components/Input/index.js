@@ -39,7 +39,7 @@ const Field = styled.input`
   padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
   padding-right: ${props =>
     (props.value && props.value.length && props.onReset) ||
-    props.loading ||
+    props.isLoading ||
     props.rightAdornment
       ? space[48]
       : space[16]};
@@ -228,7 +228,7 @@ export const Input = React.forwardRef(
             <Adornment left>{props.leftAdornment}</Adornment>
           ) : null}
           <Field ref={ref} id={id} invalid={invalid} {...props} />
-          {props.loading ? (
+          {props.isLoading ? (
             <Adornment right>
               <Spinner size={24} />
             </Adornment>
