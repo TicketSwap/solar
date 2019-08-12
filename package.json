@@ -70,7 +70,7 @@
     "react-spring": "7.2.10",
     "rollup": "^1.19.4",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-filesize": "^6.1.1",
+    "rollup-plugin-filesize": "^6.2.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-progress": "^1.1.1",
