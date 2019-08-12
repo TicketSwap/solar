@@ -33,6 +33,7 @@ const StyledStrong = styled.strong`
 
 export const BasicCard = ({
   loading,
+  adornment,
   imageUrl,
   imageWidth,
   imageHeight,
@@ -43,6 +44,7 @@ export const BasicCard = ({
 }) => (
   <Card
     {...props}
+    adornment={adornment}
     image={
       imageUrl && (
         <Image

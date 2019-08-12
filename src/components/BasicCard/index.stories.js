@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { storiesOf } from '@storybook/react'
+import { Loudspeaker } from '@ticketswap/comets'
 import { BasicCard } from './'
 
 const Container = styled.div`
@@ -15,22 +16,19 @@ const Container = styled.div`
 
 const cards = [
   {
-    image:
-      'https://images.unsplash.com/photo-1539550298564-8a06769aa728?auto=format&fit=crop&w=400&q=80',
+    image: 'https://source.unsplash.com/user/vanschneider/likes/600x400',
     title: 'Dockyard Festival #ade I am a very long title',
     info: 'Sat, 20th October • Havenpark',
     tickets: '34 tickets',
   },
   {
-    image:
-      'https://images.unsplash.com/photo-1539550298564-8a06769aa728?auto=format&fit=crop&w=400&q=80',
+    image: 'https://source.unsplash.com/user/vanschneider/likes/600x400',
     title: 'Dockyard Festival #ade',
     info: 'Sat, 20th October • Havenpark',
     tickets: '34 tickets',
   },
   {
-    image:
-      'https://images.unsplash.com/photo-1539550298564-8a06769aa728?auto=format&fit=crop&w=400&q=80',
+    image: 'https://source.unsplash.com/user/vanschneider/likes/600x400',
     title: 'Dockyard Festival #ade',
     info: 'Sat, 20th October • Havenpark',
     tickets: '34 tickets',
@@ -71,6 +69,21 @@ storiesOf('BasicCard', module)
         <a href="/">
           <BasicCard
             imageUrl={card.image}
+            title={card.title}
+            subtitle={card.info}
+            info={card.tickets}
+          />
+        </a>
+      ))}
+    </Container>
+  ))
+  .add('with image and icon', () => (
+    <Container>
+      {cards.map(card => (
+        <a href="/">
+          <BasicCard
+            imageUrl={card.image}
+            adornment={<Loudspeaker size={48} />}
             title={card.title}
             subtitle={card.info}
             info={card.tickets}
