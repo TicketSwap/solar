@@ -1896,10 +1896,10 @@
     "@babel/runtime" "^7.5.4"
     "@testing-library/dom" "^5.5.4"
 
-"@ticketswap/comets@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.0.1.tgz#346def94fa05be9a5586102c73870dbee7914184"
-  integrity sha512-KcqLrszjfzo29yykbpaEYYwQ4R/Evl+3y3q2ZyYHxVsXmXOSZol1FhtDLFUBTYUUz3m4J6B5GuEXNh4Meo/x9g==
+"@ticketswap/comets@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.1.0.tgz#3e46ebd47dcee8fd4750180ce4623a2ff273c0f6"
+  integrity sha512-4oN32EyiKz6C3rNTuDdJ9CCbs9SpHFOV+mycjdLSNgbHByJsybQF4VdurPvgk8J4pzZrJRKtxfMH51OL5Me9kw==
 
 "@types/babel__core@^7.1.0":
   version "7.1.1"
