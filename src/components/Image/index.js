@@ -68,6 +68,7 @@ export class Image extends Component {
   static defaultProps = {
     width: 1200,
     height: 800,
+    lazyLoad: true,
   }
 
   state = this.initialState
@@ -98,7 +99,7 @@ export class Image extends Component {
   }
 
   initObserver = () => {
-    if (this.props.loading) return false
+    if (!this.props.lazyLoad) return false
 
     const config = {
       root: null, // Specifying `null` watches the document’s viewport
@@ -129,7 +130,7 @@ export class Image extends Component {
       this.setState(this.initialState, this.initObserver)
     }
 
-    if (prevProps.loading !== this.props.loading && !this.observer) {
+    if (prevProps.lazyLoad !== this.props.lazyLoad && !this.observer) {
       this.initObserver()
     }
   }
