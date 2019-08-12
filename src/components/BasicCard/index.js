@@ -52,7 +52,7 @@ export const BasicCard = ({
           width={imageWidth}
           height={imageHeight}
           alt={title}
-          loading={loading}
+          lazyLoad={loading ? false : true}
           rounded
         />
       )
