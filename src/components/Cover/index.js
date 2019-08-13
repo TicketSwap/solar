@@ -21,7 +21,7 @@ const Container = styled.div`
   color: white;
 `
 
-const BackgroundImage = styled.div`
+const Background = styled.div`
   position: absolute;
   z-index: -2;
   left: 0;
@@ -52,71 +52,18 @@ const BackgroundImage = styled.div`
             rgba(0, 0, 0, 0) 100%
           )`};
   }
+`
 
-  &::after {
-    position: absolute;
-    z-index: 1;
-    content: '';
-    left: ${props => (props.blurred ? '-32px' : 0)};
-    top: ${props => (props.blurred ? '-32px' : 0)};
-    right: ${props => (props.blurred ? '-32px' : 0)};
-    bottom: ${props => (props.blurred ? '-32px' : 0)};
-    filter: ${props => (props.blurred ? 'blur(16px)' : 'none')};
-    background-size: cover;
-    background-position: center;
-    background-image: ${props =>
-      props.imageUrl ? `url(${props.imageUrl})` : 'none'};
-
-    ${props =>
-      props.images &&
-      props.images.mobileLandscape &&
-      css`
-        background-image: ${props.images.mobileLandscape
-          ? `url(${props.images.mobileLandscape})`
-          : props.imageUrl
-          ? `url(${props.imageUrl})`
-          : 'none'};
-      `};
-
-    ${props =>
-      props.images &&
-      props.images.mobilePortrait &&
-      css`
-        @media ${device.mobileM} and (orientation: portrait) {
-          background-image: ${props.images.mobilePortrait
-            ? `url(${props.images.mobilePortrait})`
-            : props.imageUrl
-            ? `url(${props.imageUrl})`
-            : 'none'};
-        }
-      `};
-
-    ${props =>
-      props.images &&
-      props.images.tablet &&
-      css`
-        @media ${device.tablet} and (orientation: portrait) {
-          background-image: ${props.images.tablet
-            ? `url(${props.images.tablet})`
-            : props.imageUrl
-            ? `url(${props.imageUrl})`
-            : 'none'};
-        }
-      `};
-
-    ${props =>
-      props.images &&
-      props.images.desktop &&
-      css`
-        @media ${device.tablet} {
-          background-image: ${props.images.desktop
-            ? `url(${props.images.desktop})`
-            : props.imageUrl
-            ? `url(${props.imageUrl})`
-            : 'none'};
-        }
-      `};
-  }
+const Image = styled.img`
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  left: ${props => (props.blurred ? '-32px' : 0)};
+  top: ${props => (props.blurred ? '-32px' : 0)};
+  right: ${props => (props.blurred ? '-32px' : 0)};
+  bottom: ${props => (props.blurred ? '-32px' : 0)};
+  filter: ${props => (props.blurred ? 'blur(16px)' : 'none')};
 `
 
 const Content = styled.div`
@@ -189,12 +136,35 @@ export const Cover = ({
 
     {caption && !captionUrl ? <Caption>{caption}</Caption> : null}
 
-    <BackgroundImage
-      imageUrl={imageUrl}
-      images={images}
-      blurred={blurred}
-      tinted={tinted}
-    />
+    <Background tinted={tinted}>
+      <picture>
+        {images && (
+          <>
+            {images.desktop && (
+              <source srcset={images.desktop} media={device.tablet} />
+            )}
+            {images.tablet && (
+              <source
+                srcset={images.tablet}
+                media={`${device.tablet} and (orientation: portrait)`}
+              />
+            )}
+            {images.mobilePortrait && (
+              <source
+                srcset={images.mobilePortrait}
+                media={`${device.mobileM} and (orientation: portrait)`}
+              />
+            )}
+          </>
+        )}
+        <Image
+          src={(images && images.mobileLandscape) || imageUrl}
+          alt="TicketSwap cover background"
+          loading="lazy"
+          blurred={blurred}
+        />
+      </picture>
+    </Background>
   </Container>
 )
 
