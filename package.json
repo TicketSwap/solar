@@ -56,7 +56,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "husky": "^3.0.3",
+    "husky": "^3.0.4",
     "is-ci-cli": "^1.1.1",
     "jest": "^24.8.0",
     "jest-emotion": "^10.0.14",
