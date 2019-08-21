@@ -24,6 +24,28 @@ const items = [
   { value: 'es', name: 'Spanish' },
 ]
 
+function ControlledDialog() {
+  const [show, setShow] = React.useState(false)
+  return (
+    <>
+      <Button
+        onClick={() => setShow(!show)}
+        style={{ position: 'absolute', zIndex: 2147483647 }}
+      >
+        Toggle
+      </Button>
+      <Dialog on={show} onToggle={console.log}>
+        {({ getWindowProps }) => (
+          <DialogWindow {...getWindowProps()}>
+            <DialogHeader>Hi</DialogHeader>
+            <DialogBody>I am a controlled dialog</DialogBody>
+          </DialogWindow>
+        )}
+      </Dialog>
+    </>
+  )
+}
+
 const MyDialog = ({ children, ...props }) => (
   <Dialog {...props}>
     {({ hide, getToggleProps, getWindowProps }) => (
@@ -60,11 +82,10 @@ const MyDialog = ({ children, ...props }) => (
   </Dialog>
 )
 
-function MyNewDialog() {
+function HooksDialog() {
   const { hide, getToggleProps, getWindowProps } = useDialog({
-    onToggle: val => console.log(val),
+    onToggle: on => console.log(on),
   })
-
   return (
     <>
       <Button {...getToggleProps()}>Show dialog</Button>
@@ -104,4 +125,5 @@ storiesOf('Dialog', module)
       </div>
     </MyDialog>
   ))
-  .add('useDialog', () => <MyNewDialog />)
+  .add('useDialog', () => <HooksDialog />)
+  .add('on-controlled', () => <ControlledDialog />)

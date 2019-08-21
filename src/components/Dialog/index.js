@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import { Transition } from 'react-spring'
 import PropTypes from 'prop-types'
@@ -17,7 +17,7 @@ import { useLockBodyScroll, usePrevious } from '../../hooks'
 
 const DialogOverlay = styled.div`
   position: fixed;
-  z-index: 2147483647; /* largest accepted z-index value as integer */
+  z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
   left: 0;
   top: 0;
   right: 0;
@@ -179,104 +179,49 @@ export const DialogFooter = styled.footer`
   }
 `
 
-export class Dialog extends Component {
-  static propTypes = {
-    defaultOn: PropTypes.bool,
-    persist: PropTypes.bool,
-    on: PropTypes.bool,
-    onToggle: PropTypes.func,
-    children: PropTypes.oneOfType([PropTypes.func, PropTypes.array]).isRequired,
-  }
-
-  static defaultProps = {
-    defaultOn: false,
-    onToggle: () => {},
-  }
-
-  componentDidMount() {
-    if (!this.getOn() && this.props.defaultOn) {
-      this.setOnState()
-    }
-  }
-
-  isOnControlled() {
-    return this.props.on !== undefined
-  }
-
-  getOn(state = this.state) {
-    return this.isOnControlled() ? this.props.on : state.on
-  }
-
-  getToggleProps = (props = {}) => ({
-    'aria-controls': 'target',
-    'aria-expanded': Boolean(this.getOn()),
-    ...props,
-    onClick: callAll(props.onClick, this.toggle),
-  })
-
-  getWindowProps = (props = {}) => ({
-    on: this.getOn(),
-    hide: this.hide,
-    persist: this.props.persist,
-    ...props,
-    onClick: this.props.persist
-      ? props.onClick
-      : callAll(props.onClick, this.toggle),
-  })
-
-  getStateAndHelpers() {
-    return {
-      on: this.getOn(),
-      getToggleProps: this.getToggleProps,
-      getWindowProps: this.getWindowProps,
-      show: this.show,
-      hide: this.hide,
-      toggle: this.toggle,
-    }
-  }
-
-  setOnState = (state = !this.getOn()) => {
-    if (this.isOnControlled()) {
-      this.props.onToggle(state, this.getStateAndHelpers())
-    } else {
-      this.setState({ on: state }, () => {
-        this.props.onToggle(this.getOn(), this.getStateAndHelpers())
-      })
-    }
-  }
-
-  show = this.setOnState.bind(this, true)
-  hide = this.setOnState.bind(this, false)
-  toggle = this.setOnState.bind(this, undefined)
-
-  state = {
-    on: this.getOn({ on: false }),
-  }
-
-  render() {
-    return this.props.children(this.getStateAndHelpers())
-  }
+export function Dialog({ children, ...props }) {
+  const stateAndHelpers = useDialog(props)
+  return children(stateAndHelpers)
 }
 
-export function useDialog(props = {}) {
-  const { persist, defaultOn, onToggle } = props
-  const [on, setOn] = useState(false)
-  const previousOn = usePrevious(on)
-  const show = () => setOn(true)
-  const hide = () => setOn(false)
-  const toggle = () => setOn(!on)
+Dialog.propTypes = {
+  defaultOn: PropTypes.bool,
+  persist: PropTypes.bool,
+  onToggle: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.func, PropTypes.array]).isRequired,
+}
+
+Dialog.defaultProps = {
+  defaultOn: false,
+  onToggle: () => {},
+}
+
+export function useDialog({ persist, defaultOn, onToggle, ...props }) {
+  const isOnControlled = React.useCallback(() => {
+    return props.on !== undefined
+  }, [props.on])
+
+  const [on, setOn] = useState(isOnControlled() ? props.on : false)
+  const previousOn = usePrevious(isOnControlled() ? props.on : on)
+  const show = () => !isOnControlled() && setOn(true)
+  const hide = () => !isOnControlled() && setOn(false)
+  const toggle = () => !isOnControlled() && setOn(!on)
+
+  const getOn = React.useCallback(() => {
+    return isOnControlled() ? props.on : on
+  }, [on, props.on, isOnControlled])
 
   useEffect(() => {
-    if (typeof previousOn === 'undefined' && defaultOn) {
+    if (!isOnControlled() && typeof previousOn === 'undefined' && defaultOn) {
       setOn(true)
     }
-  }, [previousOn, defaultOn])
+  }, [previousOn, defaultOn, isOnControlled])
 
   useEffect(() => {
-    if (typeof previousOn !== 'undefined' && on !== previousOn) {
-      onToggle && onToggle(on)
+    if (typeof previousOn !== 'undefined' && getOn() !== previousOn) {
+      onToggle && onToggle(isOnControlled() ? props.on : on)
     }
-  }, [on, previousOn, onToggle])
+  }, [props.on, on, previousOn, onToggle, getOn, isOnControlled])
 
   const getToggleProps = (props = {}) => ({
     'aria-controls': 'target',
@@ -286,7 +231,7 @@ export function useDialog(props = {}) {
   })
 
   const getWindowProps = (props = {}) => ({
-    on,
+    on: getOn(),
     hide,
     persist,
     ...props,
@@ -294,7 +239,7 @@ export function useDialog(props = {}) {
   })
 
   return {
-    on,
+    on: getOn(),
     show,
     hide,
     toggle,
