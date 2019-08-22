@@ -5,6 +5,7 @@ import { space } from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { Help, Input, Label, LabelText } from '../Input'
 import { ArrowDown } from '@ticketswap/comets'
+import { useId } from '@reach/auto-id'
 import { Select } from '../Select'
 import { Flag } from '../Flag'
 import { useDeviceInfo } from '../../hooks'
@@ -77,6 +78,7 @@ export function PhoneInput({
   )
   const [number, setNumber] = React.useState(initialNumber ? initialNumber : '')
   const { isMobile } = useDeviceInfo()
+  const inputId = `phone-input-${useId()}`
 
   return (
     <Label htmlFor={id}>
@@ -92,7 +94,7 @@ export function PhoneInput({
           {isMobile() && (
             <FauxSelectWrapper>
               <Input
-                id="faux-country"
+                id={`${inputId}-faux-country`}
                 label="Country"
                 hideLabel
                 value={`+${country.code}`}
@@ -103,7 +105,7 @@ export function PhoneInput({
             </FauxSelectWrapper>
           )}
           <Select
-            id="country"
+            id={`${inputId}-country`}
             label="Country"
             hideLabel
             items={options}
@@ -124,7 +126,7 @@ export function PhoneInput({
         </SelectWrapper>
         <InputWrapper>
           <Input
-            id="number"
+            id={`${inputId}-number`}
             label="Number"
             ref={inputRef}
             hideLabel
