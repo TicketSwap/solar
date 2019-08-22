@@ -196,7 +196,8 @@ Dialog.defaultProps = {
   onToggle: () => {},
 }
 
-export function useDialog({ persist, defaultOn, onToggle, ...props }) {
+export function useDialog(config = {}) {
+  const { persist, defaultOn, onToggle, ...props } = config
   const isOnControlled = React.useCallback(() => {
     return props.on !== undefined
   }, [props.on])
