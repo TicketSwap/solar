@@ -26,6 +26,8 @@ export {
   ToastConsumer,
   Toast,
   withToastContext,
+  ToastContext,
+  useToast,
 } from './components/Toast'
 export { Cover } from './components/Cover'
 export { CustomDropdown, CustomDropdownItem } from './components/CustomDropdown'
