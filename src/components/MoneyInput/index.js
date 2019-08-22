@@ -7,6 +7,7 @@ import { ArrowDown } from '@ticketswap/comets'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { Select } from '../Select'
 import { useDeviceInfo } from '../../hooks'
+import { useId } from '@reach/auto-id'
 
 const InputGroup = styled.div`
   position: relative;
@@ -84,6 +85,7 @@ export function MoneyInput({
   const inputRef = React.useRef()
   const parseAmount = value => Math.round(parseFloat(value) * 100) || 0
   const { isMobile } = useDeviceInfo()
+  const inputId = `money-input-${useId()}`
 
   return (
     <Label htmlFor={id}>
@@ -99,6 +101,7 @@ export function MoneyInput({
           {isMobile() && (
             <FauxSelectWrapper>
               <Input
+                id={`${inputId}-faux-currency`}
                 label="Currency"
                 hideLabel
                 value={
@@ -110,7 +113,7 @@ export function MoneyInput({
           )}
           <Select
             items={options}
-            id="currency"
+            id={`${inputId}-currency`}
             label="Currency"
             hideLabel
             floatingMenu
@@ -139,7 +142,7 @@ export function MoneyInput({
         </SelectWrapper>
         <InputWrapper>
           <Input
-            id="value"
+            id={`${inputId}-amount`}
             label="Amount"
             ref={inputRef}
             hideLabel

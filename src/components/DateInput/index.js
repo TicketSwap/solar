@@ -7,6 +7,7 @@ import { Input } from '../Input'
 import { Select } from '../Select'
 import { useDeviceInfo } from '../../hooks'
 import { usePrevious } from '../../hooks'
+import { useId } from '@reach/auto-id'
 
 const Container = styled.div`
   input[type='date'] {
@@ -96,6 +97,7 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const previousValue = usePrevious(
     dateInputRef.current && dateInputRef.current.value
   )
+  const inputId = `date-input-${useId()}`
 
   React.useEffect(() => {
     if (
@@ -128,12 +130,11 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
           <InputWrapper>
             <Input
               {...props.dayInputProps}
-              id="day"
+              id={`${inputId}-day`}
               hideLabel
               value={day ? parseInt(day).toString() : ''}
               onChange={e => {
                 const d = parseInt(e.target.value)
-
                 setDay(d ? '' + d : '')
               }}
             />
@@ -141,7 +142,7 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
           <SelectWrapper>
             <Select
               items={months}
-              id="month"
+              id={`${inputId}-month`}
               label="Month"
               hideLabel
               selectedItem={months[month]}
@@ -151,14 +152,12 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
           <InputWrapper>
             <Input
               {...props.yearInputProps}
-              id="year"
+              id={`${inputId}-year`}
               hideLabel
               value={year.toString()}
               onChange={e => {
                 if (e.target.value.length >= 5) return
-
                 const y = parseInt(e.target.value)
-
                 setYear(y ? '' + y : '')
               }}
             />
