@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Transition, Spring, animated } from 'react-spring'
@@ -37,9 +37,8 @@ Toast.propTypes = {
   persist: PropTypes.bool,
 }
 
-const { Provider, Consumer } = React.createContext()
-
-export const ToastConsumer = Consumer
+export const ToastContext = React.createContext()
+export const ToastConsumer = ToastContext.Consumer
 
 export function withToastContext(Component) {
   return function WrapperComponent(props) {
@@ -51,7 +50,7 @@ export function withToastContext(Component) {
   }
 }
 
-export class ToastProvider extends PureComponent {
+export class ToastProvider extends React.Component {
   itemTimers = []
   cleanupTimer = null
   delay = 3000
@@ -110,7 +109,7 @@ export class ToastProvider extends PureComponent {
 
   render() {
     return (
-      <Provider value={this.getStateAndHelpers()}>
+      <ToastContext.Provider value={this.getStateAndHelpers()}>
         {this.props.children}
         <Portal>
           <Transition
@@ -163,7 +162,15 @@ export class ToastProvider extends PureComponent {
             )}
           </Transition>
         </Portal>
-      </Provider>
+      </ToastContext.Provider>
     )
   }
+}
+
+export function useToast() {
+  const context = React.useContext(ToastContext)
+  if (!context) {
+    throw new Error('useToast() must be used within a ToastProvider')
+  }
+  return context
 }
