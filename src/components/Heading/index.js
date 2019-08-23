@@ -13,7 +13,7 @@ export const H1 = styled.h1`
 `
 
 export const H2 = styled.h2`
-  font-weight: ${fontWeight.semiBold};
+  font-weight: ${fontWeight.bold};
   font-size: ${fontSize[24]};
   line-height: ${lineHeight.title};
 
