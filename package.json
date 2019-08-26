@@ -22,11 +22,11 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.16",
     "@emotion/styled": "^10.0.15",
-    "downshift": "^3.2.10",
+    "downshift": "^3.2.12",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-spring": "^7.2.10"
+    "react-spring": "7.2.10"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -43,20 +43,20 @@
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.1.3",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "10.0.3",
     "babel-loader": "^8.0.6",
     "babel-plugin-emotion": "^10.0.16",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "downshift": "^3.2.12",
-    "eslint": "^5.16.0",
+    "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
-    "eslint-config-react-app": "^4.0.1",
-    "eslint-plugin-flowtype": "2.50.3",
+    "eslint-config-react-app": "^5.0.1",
+    "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-react-hooks": "^2.0.1",
     "husky": "^3.0.4",
     "is-ci-cli": "^1.1.1",
     "jest": "^25.0.0",
@@ -69,7 +69,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-spring": "7.2.10",
-    "rollup": "^1.19.4",
+    "rollup": "^1.20.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-filesize": "^6.2.0",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -89,7 +89,7 @@
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
     "@reach/auto-id": "^0.2.0",
-    "@ticketswap/comets": "^2.1.0",
+    "@ticketswap/comets": "^2.2.0",
     "compute-scroll-into-view": "^1.0.11"
   }
 }
