@@ -14,7 +14,7 @@ import {
 
 const Container = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 4;
   background-color: ${color.space};
   width: 100%;
   height: ${props => (props.height === 'full' ? '100vh' : 'auto')};
