@@ -37,7 +37,7 @@
     "@babel/preset-react": "^7.0.0",
     "@emotion/core": "^10.0.16",
     "@emotion/styled": "^10.0.15",
-    "@storybook/addon-docs": "^5.2.0-beta.39",
+    "@storybook/addon-docs": "^5.2.0-beta.40",
     "@storybook/react": "^5.2.0-beta.39",
     "@storybook/storybook-deployer": "^2.8.1",
     "@testing-library/jest-dom": "^4.1.0",
