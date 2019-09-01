@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
-import { Transition } from 'react-spring'
 import PropTypes from 'prop-types'
 import { Portal } from '../Portal'
 import { callAll, stopPropagation } from '../../utils'
@@ -9,11 +8,13 @@ import {
   device,
   sizes,
   fontWeight,
-  easingFunctions,
   radius,
   color,
+  easing,
 } from '../../theme'
-import { useLockBodyScroll, usePrevious } from '../../hooks'
+import { useLockBodyScroll, usePrevious, useTransition } from '../../hooks'
+
+const duration = 200
 
 const DialogOverlay = styled.div`
   position: fixed;
@@ -26,6 +27,9 @@ const DialogOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  opacity: ${props =>
+    props.state === 'mounting' || props.state === 'mounted' ? 1 : 0};
+  transition: opacity ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.mobileL} {
     overflow-y: scroll;
@@ -44,11 +48,26 @@ const Content = styled.div`
   background-color: white;
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
+  transform: ${props =>
+    props.state === 'mounting' || props.state === 'mounted'
+      ? 'translate3d(0,0,0)'
+      : 'translate3d(0,1rem,0)'};
+  transition: transform ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.mobileL} {
     width: ${sizes.mobileL / 16}em;
     border-radius: ${radius.lg};
     overflow: unset;
+    transform: ${props => {
+      switch (props.state) {
+        case 'unmounted':
+          return 'translate3d(0,-1rem,0)'
+        case 'unmounting':
+          return 'translate3d(0,1rem,0)'
+        default:
+          return 'translate3d(0,0,0)'
+      }
+    }};
   }
 `
 
@@ -250,6 +269,7 @@ export function useDialog(config = {}) {
 }
 
 export function DialogWindow({ children, on, hide, ...props }) {
+  const { state, show } = useTransition({ on, duration })
   const handleHide = React.useCallback(
     ({ keyCode }) => keyCode === 27 && hide(),
     [hide]
@@ -269,52 +289,23 @@ export function DialogWindow({ children, on, hide, ...props }) {
 
   return (
     <Portal>
-      <Transition
-        items={on}
-        from={{
-          transform: `translate3d(0,${
-            typeof window !== 'undefined' &&
-            window.matchMedia &&
-            window.matchMedia(device.mobileL).matches
-              ? -1
-              : 1
-          }rem,0)`,
-          opacity: 0,
-        }}
-        enter={{
-          transform: 'translate3d(0,0rem,0)',
-          opacity: 1,
-        }}
-        leave={{
-          transform: 'translate3d(0,1rem,0)',
-          opacity: 0,
-        }}
-        config={{
-          duration: 300,
-          easing: easingFunctions.easeInOutCubic,
-        }}
-      >
-        {show =>
-          show &&
-          (styles => (
-            <DialogOverlay
-              aria-modal="true"
-              tabIndex="-1"
-              style={{ opacity: styles.opacity }}
-              data-testid="dialog-overlay"
-              {...props}
-            >
-              <DialogContent
-                onClick={stopPropagation}
-                data-testid="dialog-content"
-                style={styles}
-              >
-                {children}
-              </DialogContent>
-            </DialogOverlay>
-          ))
-        }
-      </Transition>
+      {show && (
+        <DialogOverlay
+          aria-modal="true"
+          tabIndex="-1"
+          state={state}
+          data-testid="dialog-overlay"
+          {...props}
+        >
+          <DialogContent
+            onClick={stopPropagation}
+            data-testid="dialog-content"
+            state={state}
+          >
+            {children}
+          </DialogContent>
+        </DialogOverlay>
+      )}
     </Portal>
   )
 }
