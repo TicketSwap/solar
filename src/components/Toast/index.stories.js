@@ -5,31 +5,70 @@ import { Button } from '../Button'
 
 const wrapper = story => <ToastProvider>{story()}</ToastProvider>
 
-function ComponentWithHook() {
-  const { add } = useToast()
+function NetworkStatus() {
+  const { notify } = useToast()
+  const reset = React.useRef(null)
+
+  React.useEffect(() => {
+    function handleStatusChange({ type }) {
+      if (type === 'offline') {
+        notify(remove => {
+          reset.current = remove
+          return <Toast persist>You are offline</Toast>
+        })
+      } else {
+        reset.current()
+      }
+    }
+
+    window.addEventListener('online', handleStatusChange)
+    window.addEventListener('offline', handleStatusChange)
+
+    return () => {
+      window.removeEventListener('online', handleStatusChange)
+      window.removeEventListener('offline', handleStatusChange)
+    }
+  }, [notify])
+
+  return null
+}
+
+function UseToast() {
+  const { notify } = useToast()
   return (
-    <Button onClick={() => add(<Toast>Notification</Toast>)}>Show toast</Button>
+    <Button
+      onClick={() =>
+        notify(remove => (
+          <Toast>
+            Notification<button onClick={remove}>Close</button>
+          </Toast>
+        ))
+      }
+    >
+      Show toast
+    </Button>
   )
 }
 
-storiesOf('Toasts', module)
+storiesOf('Toast', module)
   .addDecorator(wrapper)
   .add('basic', () => (
     <ToastConsumer>
-      {({ add }) => (
-        <Button onClick={() => add(<Toast>Notification</Toast>)}>
+      {({ notify }) => (
+        <Button onClick={() => notify(() => <Toast>Notification</Toast>)}>
           Show toast
         </Button>
       )}
     </ToastConsumer>
   ))
-  .add('useToast()', () => <ComponentWithHook />)
+  .add('useToast()', () => <UseToast />)
+  .add('NetworkStatus', () => <NetworkStatus />)
   .add('persistent', () => (
     <ToastConsumer>
-      {({ add, remove }) => (
+      {({ notify }) => (
         <Button
           onClick={() =>
-            add(
+            notify(remove => (
               <Toast persist>
                 <div
                   style={{
@@ -45,7 +84,7 @@ storiesOf('Toasts', module)
                   </Button>
                 </div>
               </Toast>
-            )
+            ))
           }
         >
           Show toast

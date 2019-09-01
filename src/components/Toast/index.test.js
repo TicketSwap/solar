@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { Button } from '../Button'
 import { ToastProvider, ToastConsumer, Toast } from './'
 
 describe('Toast', () => {
@@ -8,10 +7,10 @@ describe('Toast', () => {
     const { getByText, getAllByText } = render(
       <ToastProvider>
         <ToastConsumer>
-          {({ add }) => (
-            <Button onClick={() => add(<Toast>Notification</Toast>)}>
+          {({ notify }) => (
+            <button onClick={() => notify(() => <Toast>Notification</Toast>)}>
               Show toast
-            </Button>
+            </button>
           )}
         </ToastConsumer>
       </ToastProvider>
@@ -26,28 +25,26 @@ describe('Toast', () => {
     const { getByText, queryByText } = render(
       <ToastProvider>
         <ToastConsumer>
-          {({ add, remove }) => (
-            <Button
+          {({ notify }) => (
+            <button
               onClick={() =>
-                add(
+                notify(remove => (
                   <Toast persist>
-                    Notification
-                    <Button onClick={remove} size="small" variant="inverted">
-                      Discard
-                    </Button>
+                    Payment failed
+                    <button onClick={remove}>Discard</button>
                   </Toast>
-                )
+                ))
               }
             >
               Show toast
-            </Button>
+            </button>
           )}
         </ToastConsumer>
       </ToastProvider>
     )
     fireEvent.click(getByText(/show toast/i))
-    expect(getByText(/notification/i)).toBeInTheDocument()
+    expect(getByText(/payment failed/i)).toBeInTheDocument()
     fireEvent.click(getByText(/discard/i))
-    expect(queryByText(/notification/i)).toBeNull()
+    expect(queryByText(/payment failed/i)).toBeNull()
   })
 })
