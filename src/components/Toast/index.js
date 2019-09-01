@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { Transition, Spring, animated } from 'react-spring'
 import { Portal } from '../Portal'
-import { space, shadow, device, color, radius } from '../../theme'
+import { space, shadow, device, color, radius, easing } from '../../theme'
+import { useTransition } from '../../hooks'
 
-const Container = styled.div`
+const duration = 400
+
+const ItemListContainer = styled.ul`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -13,16 +15,47 @@ const Container = styled.div`
   max-width: 100%;
   flex-direction: column-reverse;
   pointer-events: none;
+
+  @media ${device.tablet} {
+    left: ${space[16]};
+    bottom: ${space[16]};
+  }
 `
 
-const Item = styled(animated.div)`
+const ItemContainer = styled.li`
   position: absolute;
   width: 100%;
   pointer-events: auto;
   padding: 0 ${space[16]} ${space[16]};
+  opacity: 0;
+  transform: ${props =>
+    props.state === 'entering' || props.state === 'entered'
+      ? 'translate3d(0,0,0)'
+      : 'translate3d(0,1rem,0)'};
+  transition-duration: ${duration}ms;
+  transition-timing-function: ${easing.easeOutCubic};
+  transition-property: opacity, transform;
 
-  @media ${device.tablet} {
-    padding: 0 ${space[32]} ${space[32]};
+  &:nth-last-of-type(4) {
+    transform: translate3d(0, -1.8rem, 0) scale(0.94);
+  }
+
+  &:nth-last-of-type(3) {
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 0.6 : 0};
+    transform: translate3d(0, -1.2rem, 0) scale(0.96);
+  }
+
+  &:nth-last-of-type(2) {
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 0.8 : 0};
+    transform: translate3d(0, -0.6rem, 0) scale(0.98);
+  }
+
+  &:last-of-type {
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    position: relative;
   }
 `
 
@@ -50,121 +83,76 @@ export function withToastContext(Component) {
   }
 }
 
-export class ToastProvider extends React.Component {
-  itemTimers = []
-  cleanupTimer = null
-  delay = 3000
-  initialState = { id: 0, items: [] }
-  state = this.initialState
+export function ToastProvider(props) {
+  const [items, setItems] = React.useState([])
+  const [cancellations, setCancellations] = React.useState([])
 
-  // TODO: Figure out proper key handling
-
-  addItem = component => {
+  function notify(renderCallback) {
+    const component = renderCallback()
     const { persist } = component.props
-
-    this.setState(state => ({
-      id: state.id + 1,
-      items: [
-        { key: persist ? state.items.length : state.id, component, persist },
-        ...state.items,
-      ],
-    }))
+    const key = performance.now()
+    setItems([...items, { key, renderCallback, persist }])
   }
 
-  clearAllTimers = () => {
-    for (let i = 0; i < this.itemTimers.length; i++) {
-      clearTimeout(this.itemTimers[i])
-    }
-
-    if (this.cleanupTimer) {
-      clearTimeout(this.cleanupTimer)
-    }
+  function cancel(key) {
+    setCancellations([...cancellations, key])
   }
 
-  clearItems = () =>
-    (this.cleanupTimer = setTimeout(
-      () =>
-        this.setState(state => ({
-          items: state.items.filter(item => item.persist),
-        })),
-      this.delay
-    ))
+  function remove(key) {
+    setCancellations(cancellations.filter(i => i !== key))
+    requestAnimationFrame(() => {
+      setItems(items.filter(item => item.key !== key))
+    })
+  }
 
-  removeItem = key =>
-    this.setState(state => ({
-      items: state.items.filter(item => item.key !== key),
-    }))
-
-  getStateAndHelpers() {
+  function getStateAndHelpers() {
     return {
-      add: this.addItem,
-      remove: () => this.removeItem(this.state.items.length - 1),
-      clearAll: () => this.setState(this.initialState),
+      notify,
     }
   }
 
-  componentWillUnmount() {
-    this.clearAllTimers()
-  }
+  return (
+    <ToastContext.Provider value={getStateAndHelpers()}>
+      {props.children}
+      <Portal>
+        <ItemList on={items.length > 0}>
+          {items.map(item => (
+            <Item
+              key={item.key}
+              on={cancellations.indexOf(item.key) === -1}
+              cancel={() => cancel(item.key)}
+              remove={() => remove(item.key)}
+              persist={item.persist}
+            >
+              {item.renderCallback(() => cancel(item.key))}
+            </Item>
+          ))}
+        </ItemList>
+      </Portal>
+    </ToastContext.Provider>
+  )
+}
 
-  render() {
-    return (
-      <ToastContext.Provider value={this.getStateAndHelpers()}>
-        {this.props.children}
-        <Portal>
-          <Transition
-            items={this.state.items}
-            keys={item => item.key}
-            from={{ opacity: 0, y: 100 }}
-            enter={{ opacity: 1, y: 0 }}
-            leave={{ opacity: 0, y: 0 }}
-          >
-            {(item, state, index) => ({ opacity, y }) => (
-              <Container
-                style={{
-                  zIndex: index < 4 ? 16 - index : 16,
-                  display: index < 4 ? 'flex' : 'none',
-                }}
-                onMouseEnter={this.clearAllTimers}
-                onMouseLeave={this.clearItems}
-              >
-                <Spring
-                  native
-                  to={{
-                    o: index === 3 ? 0 : opacity - index * 0.16,
-                    ys: [y - index * 16, 1 - index / 16],
-                  }}
-                  onRest={e =>
-                    e.o === 0 && state === 'enter' && !item.persist
-                      ? this.itemTimers.push(
-                          setTimeout(
-                            () => this.removeItem(item.key),
-                            this.delay
-                          )
-                        )
-                      : null
-                  }
-                >
-                  {({ o, ys }) => (
-                    <Item
-                      style={{
-                        opacity: o,
-                        transform: ys.interpolate(
-                          (y, s) => `translate3d(0,${y}%, 0) scale(${s})`
-                        ),
-                      }}
-                    >
-                      {item.component}
-                    </Item>
-                  )}
-                </Spring>
-              </Container>
-            )}
-          </Transition>
-        </Portal>
-      </ToastContext.Provider>
-    )
-  }
+function ItemList({ on, children }) {
+  const [, mounted] = useTransition({ in: on, timeout: duration })
+  return mounted && <ItemListContainer>{children}</ItemListContainer>
+}
+
+function Item({ on, remove, cancel, persist, children }) {
+  let timer = null
+  const [state, mounted] = useTransition({
+    in: on,
+    timeout: duration,
+    onEntered: () => {
+      if (persist) return false
+      timer = setTimeout(cancel, 3000)
+    },
+    onExited: () => {
+      timer && clearTimeout(timer)
+      remove()
+    },
+  })
+  return mounted && <ItemContainer state={state}>{children}</ItemContainer>
 }
 
 export function useToast() {
