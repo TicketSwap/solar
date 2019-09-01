@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { Transition, animated, config } from 'react-spring'
 import styled from '@emotion/styled'
 import { CustomDropdown, CustomDropdownItem as Item } from '../CustomDropdown'
 import { color } from '../../theme'
-import { useKeyPress, useOnClickOutside, usePrevious } from '../../hooks'
+import {
+  useKeyPress,
+  useOnClickOutside,
+  usePrevious,
+  useTransition,
+} from '../../hooks'
+
+const duration = 200
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -20,6 +26,22 @@ const Button = styled.button`
   &:focus {
     box-shadow: none;
   }
+`
+
+const MenuContainer = styled.div`
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 0;
+  opacity: ${props =>
+    props.state === 'mounting' || props.state === 'mounted' ? 1 : 0};
+  transform: ${props =>
+    props.state === 'mounting' ||
+    props.state === 'mounted' ||
+    props.state === 'unmounting'
+      ? 'translate3d(-50%,0,0)'
+      : `translate3d(-50%,${props.dropdownPosition === 'top' ? -1 : 1}rem,0)`};
+  transition: opacity ${duration}ms ease-out, transform ${duration}ms ease-out;
 `
 
 const Menu = styled.div`
@@ -41,6 +63,7 @@ export function MenuButton({
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
   const esc = useKeyPress('Escape')
+  const { state, show } = useTransition({ on: isOpen, duration })
 
   useEffect(() => {
     // Close menu with Esc key
@@ -63,60 +86,30 @@ export function MenuButton({
         {selectedItem.name} <span aria-hidden>▾</span>
       </Button>
 
-      <Transition
-        native
-        items={isOpen}
-        from={{
-          position: 'absolute',
-          zIndex: 2,
-          left: '50%',
-          bottom: 0,
-          transform: `translate3d(-50%,${
-            dropdownPosition === 'top' ? -1 : 1
-          }rem,0)`,
-          opacity: 0,
-        }}
-        enter={{
-          transform: 'translate3d(-50%,0rem,0)',
-          opacity: 1,
-        }}
-        leave={{
-          transform: 'translate3d(-50%,0rem,0)',
-          opacity: 0,
-        }}
-        config={{
-          ...config.default,
-          velocity: 10,
-        }}
-      >
-        {show =>
-          show &&
-          (styles => (
-            <animated.div style={styles} ref={ref}>
-              <Menu>
-                <CustomDropdown
-                  withArrow
-                  position={dropdownPosition}
-                  distance={4}
+      {show && (
+        <MenuContainer
+          state={state}
+          ref={ref}
+          dropdownPosition={dropdownPosition}
+        >
+          <Menu>
+            <CustomDropdown withArrow position={dropdownPosition} distance={4}>
+              {items.map(item => (
+                <Item
+                  key={item.value}
+                  active={selectedItem && selectedItem.value === item.value}
+                  onClick={() => {
+                    setSelectedItem(item)
+                    setIsOpen(false)
+                  }}
                 >
-                  {items.map(item => (
-                    <Item
-                      key={item.value}
-                      active={selectedItem && selectedItem.value === item.value}
-                      onClick={() => {
-                        setSelectedItem(item)
-                        setIsOpen(false)
-                      }}
-                    >
-                      {item.name}
-                    </Item>
-                  ))}
-                </CustomDropdown>
-              </Menu>
-            </animated.div>
-          ))
-        }
-      </Transition>
+                  {item.name}
+                </Item>
+              ))}
+            </CustomDropdown>
+          </Menu>
+        </MenuContainer>
+      )}
     </Wrapper>
   )
 }
