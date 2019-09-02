@@ -49,7 +49,7 @@
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "downshift": "^3.2.12",
-    "eslint": "^6.2.2",
+    "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-config-react-app": "^5.0.1",
     "eslint-plugin-flowtype": "3.x",
