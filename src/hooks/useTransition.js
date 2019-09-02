@@ -1,9 +1,9 @@
 import React from 'react'
 import { usePrevious } from './usePrevious'
 
-const UNMOUNTED = 'unmounted'
+export const UNMOUNTED = 'unmounted'
 const MOUNTING = 'mounting'
-const MOUNTED = 'mounted'
+export const MOUNTED = 'mounted'
 const UNMOUNTING = 'unmounting'
 
 export function useTransition({ on = false, duration = 500 }) {
@@ -15,6 +15,7 @@ export function useTransition({ on = false, duration = 500 }) {
   React.useEffect(() => {
     function handleMount() {
       if (transitioning) return false
+      setTransitioning(true)
       setState(MOUNTING)
       function tick() {
         setState(MOUNTED)
@@ -25,7 +26,6 @@ export function useTransition({ on = false, duration = 500 }) {
     }
 
     function handleUnmount() {
-      if (transitioning) return false
       setTransitioning(true)
       setState(UNMOUNTING)
       function tick() {
@@ -38,7 +38,6 @@ export function useTransition({ on = false, duration = 500 }) {
     }
 
     if (on && !prevOn) {
-      setTransitioning(true)
       setShow(true)
       requestAnimationFrame(() => {
         requestAnimationFrame(handleMount)

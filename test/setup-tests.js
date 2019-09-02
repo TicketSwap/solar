@@ -2,7 +2,7 @@
 jest.mock('../src/hooks/useTransition', () => {
   return {
     useTransition: ({ on }) => ({
-      state: 'mockedState',
+      state: on ? 'mounted' : 'unmounted',
       show: on,
     }),
   }
