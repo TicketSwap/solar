@@ -1,57 +1,63 @@
 import React from 'react'
 import { usePrevious } from './usePrevious'
 
-export const UNMOUNTED = 'unmounted'
+const UNMOUNTED = 'unmounted'
 const MOUNTING = 'mounting'
-export const MOUNTED = 'mounted'
+const MOUNTED = 'mounted'
 const UNMOUNTING = 'unmounting'
 
-export function useTransition({ on = false, duration = 500 }) {
-  const [state, setState] = React.useState(UNMOUNTED)
-  const [show, setShow] = React.useState(false)
+export function useTransition({ on, duration }) {
+  if (typeof on !== 'boolean') throwError('on')
+  if (typeof duration !== 'number') throwError('duration')
+  const [status, setStatus] = React.useState(UNMOUNTED)
+  const [mounted, setMounted] = React.useState(false)
   const [transitioning, setTransitioning] = React.useState(false)
   const prevOn = usePrevious(on)
 
+  function handleMounted() {
+    setStatus(MOUNTED)
+    setTransitioning(false)
+  }
+
+  const handleMounting = React.useCallback(() => {
+    if (transitioning) return false
+    setTransitioning(true)
+    setStatus(MOUNTING)
+    let id = setTimeout(handleMounted, duration)
+    return () => clearTimeout(id)
+  }, [duration, transitioning])
+
+  function handleUnmounted() {
+    setStatus(UNMOUNTED)
+    setTransitioning(false)
+    setMounted(false)
+  }
+
+  const handleUnmounting = React.useCallback(() => {
+    setTransitioning(true)
+    setStatus(UNMOUNTING)
+    let id = setTimeout(handleUnmounted, duration)
+    return () => clearTimeout(id)
+  }, [duration])
+
   React.useEffect(() => {
-    function handleMount() {
-      if (transitioning) return false
-      setTransitioning(true)
-      setState(MOUNTING)
-      function tick() {
-        setState(MOUNTED)
-        setTransitioning(false)
-      }
-      let id = setTimeout(tick, duration)
-      return () => clearTimeout(id)
-    }
-
-    function handleUnmount() {
-      setTransitioning(true)
-      setState(UNMOUNTING)
-      function tick() {
-        setState(UNMOUNTED)
-        setShow(false)
-        setTransitioning(false)
-      }
-      let id = setTimeout(tick, duration)
-      return () => clearTimeout(id)
-    }
-
     if (on && !prevOn) {
-      setShow(true)
+      setMounted(true)
       requestAnimationFrame(() => {
-        requestAnimationFrame(handleMount)
+        requestAnimationFrame(handleMounting)
       })
     }
 
     if (prevOn && !on) {
-      handleUnmount()
+      handleUnmounting()
     }
-  }, [on, prevOn, duration, transitioning])
+  }, [on, prevOn, duration, transitioning, handleMounting, handleUnmounting])
 
-  return {
-    state,
-    show,
-    transitioning,
-  }
+  return [status, mounted, transitioning]
+}
+
+function throwError(arg) {
+  throw new Error(
+    `The useTransition hook is missing the required argument \`${arg}\`.`
+  )
 }

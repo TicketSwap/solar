@@ -28,7 +28,7 @@ const DialogOverlay = styled.div`
   justify-content: center;
   align-items: flex-end;
   opacity: ${props =>
-    props.state === 'mounting' || props.state === 'mounted' ? 1 : 0};
+    props.status === 'mounting' || props.status === 'mounted' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.mobileL} {
@@ -49,7 +49,7 @@ const Content = styled.div`
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
   transform: ${props =>
-    props.state === 'mounting' || props.state === 'mounted'
+    props.status === 'mounting' || props.status === 'mounted'
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
   transition: transform ${duration}ms ${easing.easeOutCubic};
@@ -59,7 +59,7 @@ const Content = styled.div`
     border-radius: ${radius.lg};
     overflow: unset;
     transform: ${props => {
-      switch (props.state) {
+      switch (props.status) {
         case 'unmounted':
           return 'translate3d(0,-1rem,0)'
         case 'unmounting':
@@ -269,7 +269,7 @@ export function useDialog(config = {}) {
 }
 
 export function DialogWindow({ children, on, hide, ...props }) {
-  const { state, show } = useTransition({ on, duration })
+  const [status, mounted] = useTransition({ on, duration })
   const handleHide = React.useCallback(
     ({ keyCode }) => keyCode === 27 && hide(),
     [hide]
@@ -289,18 +289,18 @@ export function DialogWindow({ children, on, hide, ...props }) {
 
   return (
     <Portal>
-      {show && (
+      {mounted && (
         <DialogOverlay
           aria-modal="true"
           tabIndex="-1"
-          state={state}
+          status={status}
           data-testid="dialog-overlay"
           {...props}
         >
           <DialogContent
             onClick={stopPropagation}
             data-testid="dialog-content"
-            state={state}
+            status={status}
           >
             {children}
           </DialogContent>
