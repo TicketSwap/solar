@@ -34,11 +34,11 @@ const MenuContainer = styled.div`
   left: 50%;
   bottom: 0;
   opacity: ${props =>
-    props.status === 'mounting' || props.status === 'mounted' ? 1 : 0};
+    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transform: ${props =>
-    props.status === 'mounting' ||
-    props.status === 'mounted' ||
-    props.status === 'unmounting'
+    props.state === 'entering' ||
+    props.state === 'entered' ||
+    props.state === 'exiting'
       ? 'translate3d(-50%,0,0)'
       : `translate3d(-50%,${props.dropdownPosition === 'top' ? -1 : 1}rem,0)`};
   transition: opacity ${duration}ms ease-out, transform ${duration}ms ease-out;
@@ -63,7 +63,7 @@ export function MenuButton({
   const ref = useRef()
   useOnClickOutside(ref, () => setIsOpen(false))
   const esc = useKeyPress('Escape')
-  const [status, mounted] = useTransition({ on: isOpen, duration })
+  const [state, mounted] = useTransition({ in: isOpen, timeout: duration })
 
   useEffect(() => {
     // Close menu with Esc key
@@ -88,7 +88,7 @@ export function MenuButton({
 
       {mounted && (
         <MenuContainer
-          status={status}
+          state={state}
           ref={ref}
           dropdownPosition={dropdownPosition}
         >

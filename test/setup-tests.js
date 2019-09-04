@@ -1,11 +1,11 @@
 // Mock custom useTransition hook
 jest.mock('../src/hooks/useTransition', () => {
   return {
-    useTransition: ({ on }) => {
-      const status = on ? 'mounted' : 'unmounted'
-      const mounted = on
+    useTransition: ({ in: on }) => {
+      const status = on ? 'entered' : 'exited'
+      const entered = on
       const transitioning = false
-      return [status, mounted, transitioning]
+      return [status, entered, transitioning]
     },
   }
 })

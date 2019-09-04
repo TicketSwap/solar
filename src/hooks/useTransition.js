@@ -1,59 +1,59 @@
 import React from 'react'
 import { usePrevious } from './usePrevious'
 
-const UNMOUNTED = 'unmounted'
-const MOUNTING = 'mounting'
-const MOUNTED = 'mounted'
-const UNMOUNTING = 'unmounting'
+const EXITED = 'exited'
+const ENTERING = 'entering'
+const ENTERED = 'entered'
+const EXITING = 'exiting'
 
-export function useTransition({ on, duration }) {
-  if (typeof on !== 'boolean') throwError('on')
-  if (typeof duration !== 'number') throwError('duration')
-  const [status, setStatus] = React.useState(UNMOUNTED)
+export function useTransition({ in: on, timeout }) {
+  if (typeof on !== 'boolean') throwError('in')
+  if (typeof timeout !== 'number') throwError('timeout')
+  const [state, setState] = React.useState(EXITED)
   const [mounted, setMounted] = React.useState(false)
   const [transitioning, setTransitioning] = React.useState(false)
   const prevOn = usePrevious(on)
 
-  function handleMounted() {
-    setStatus(MOUNTED)
+  function handleEntered() {
+    setState(ENTERED)
     setTransitioning(false)
   }
 
-  const handleMounting = React.useCallback(() => {
+  const handleEntering = React.useCallback(() => {
     if (transitioning) return false
     setTransitioning(true)
-    setStatus(MOUNTING)
-    let id = setTimeout(handleMounted, duration)
+    setState(ENTERING)
+    let id = setTimeout(handleEntered, timeout)
     return () => clearTimeout(id)
-  }, [duration, transitioning])
+  }, [timeout, transitioning])
 
-  function handleUnmounted() {
-    setStatus(UNMOUNTED)
+  function handleExited() {
+    setState(EXITED)
     setTransitioning(false)
     setMounted(false)
   }
 
-  const handleUnmounting = React.useCallback(() => {
+  const handleExiting = React.useCallback(() => {
     setTransitioning(true)
-    setStatus(UNMOUNTING)
-    let id = setTimeout(handleUnmounted, duration)
+    setState(EXITING)
+    let id = setTimeout(handleExited, timeout)
     return () => clearTimeout(id)
-  }, [duration])
+  }, [timeout])
 
   React.useEffect(() => {
     if (on && !prevOn) {
       setMounted(true)
       requestAnimationFrame(() => {
-        requestAnimationFrame(handleMounting)
+        requestAnimationFrame(handleEntering)
       })
     }
 
     if (prevOn && !on) {
-      handleUnmounting()
+      handleExiting()
     }
-  }, [on, prevOn, duration, transitioning, handleMounting, handleUnmounting])
+  }, [on, prevOn, timeout, transitioning, handleEntering, handleExiting])
 
-  return [status, mounted, transitioning]
+  return [state, mounted, transitioning]
 }
 
 function throwError(arg) {

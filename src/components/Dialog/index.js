@@ -28,7 +28,7 @@ const DialogOverlay = styled.div`
   justify-content: center;
   align-items: flex-end;
   opacity: ${props =>
-    props.status === 'mounting' || props.status === 'mounted' ? 1 : 0};
+    props.status === 'entering' || props.status === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.mobileL} {
@@ -49,7 +49,7 @@ const Content = styled.div`
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
   transform: ${props =>
-    props.status === 'mounting' || props.status === 'mounted'
+    props.status === 'entering' || props.status === 'entered'
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
   transition: transform ${duration}ms ${easing.easeOutCubic};
@@ -60,9 +60,9 @@ const Content = styled.div`
     overflow: unset;
     transform: ${props => {
       switch (props.status) {
-        case 'unmounted':
+        case 'exited':
           return 'translate3d(0,-1rem,0)'
-        case 'unmounting':
+        case 'exiting':
           return 'translate3d(0,1rem,0)'
         default:
           return 'translate3d(0,0,0)'
@@ -269,7 +269,7 @@ export function useDialog(config = {}) {
 }
 
 export function DialogWindow({ children, on, hide, ...props }) {
-  const [status, mounted] = useTransition({ on, duration })
+  const [status, mounted] = useTransition({ in: on, timeout: duration })
   const handleHide = React.useCallback(
     ({ keyCode }) => keyCode === 27 && hide(),
     [hide]

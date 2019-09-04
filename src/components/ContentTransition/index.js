@@ -13,16 +13,15 @@ const Container = styled.div`
 const SlideContainer = styled.div`
   width: 100%;
   top: 0;
-  z-index: ${props => (props.state === 'unmounting' ? 0 : 1)};
-  position: ${props =>
-    props.state === 'unmounting' ? 'absolute' : 'relative'};
+  z-index: ${props => (props.state === 'exiting' ? 0 : 1)};
+  position: ${props => (props.state === 'exiting' ? 'absolute' : 'relative')};
   opacity: ${props =>
-    props.state === 'mounting' || props.state === 'mounted' ? 1 : 0};
+    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transform: ${props => {
     switch (props.state) {
-      case 'unmounted':
+      case 'exited':
         return `translate3d(${props.initial ? 0 : props.from},0,0)`
-      case 'unmounting':
+      case 'exiting':
         return `translate3d(${props.to},0,0)`
       default:
         return 'translate3d(0,0,0)'
@@ -34,7 +33,10 @@ const SlideContainer = styled.div`
 `
 
 function Slide({ active, children, setTransitioning, ...props }) {
-  const [state, show, transitioning] = useTransition({ on: active, duration })
+  const [state, mounted, transitioning] = useTransition({
+    in: active,
+    timeout: duration,
+  })
 
   React.useEffect(() => {
     setTransitioning(transitioning)
@@ -42,7 +44,7 @@ function Slide({ active, children, setTransitioning, ...props }) {
 
   return (
     <>
-      {show && (
+      {mounted && (
         <SlideContainer state={state} {...props}>
           {children}
         </SlideContainer>
