@@ -34,7 +34,7 @@ const SlideContainer = styled.div`
 `
 
 function Slide({ active, children, setTransitioning, ...props }) {
-  const { state, show, transitioning } = useTransition({ on: active, duration })
+  const [state, show, transitioning] = useTransition({ on: active, duration })
 
   React.useEffect(() => {
     setTransitioning(transitioning)
