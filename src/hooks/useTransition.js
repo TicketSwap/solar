@@ -6,7 +6,14 @@ const ENTERING = 'entering'
 const ENTERED = 'entered'
 const EXITING = 'exiting'
 
-export function useTransition({ in: on, timeout }) {
+export function useTransition({
+  in: on,
+  timeout,
+  onExited,
+  onEntering,
+  onEntered,
+  onExiting,
+}) {
   if (typeof on !== 'boolean') throwError('in')
   if (typeof timeout !== 'number') throwError('timeout')
   const [state, setState] = React.useState(EXITED)
@@ -14,31 +21,35 @@ export function useTransition({ in: on, timeout }) {
   const [transitioning, setTransitioning] = React.useState(false)
   const prevOn = usePrevious(on)
 
-  function handleEntered() {
+  const handleEntered = React.useCallback(() => {
     setState(ENTERED)
+    if (typeof onEntered === 'function') onEntered()
     setTransitioning(false)
-  }
+  }, [onEntered])
 
   const handleEntering = React.useCallback(() => {
     if (transitioning) return false
     setTransitioning(true)
     setState(ENTERING)
+    if (typeof onEntering === 'function') onEntering()
     let id = setTimeout(handleEntered, timeout)
     return () => clearTimeout(id)
-  }, [timeout, transitioning])
+  }, [timeout, transitioning, onEntering, handleEntered])
 
-  function handleExited() {
+  const handleExited = React.useCallback(() => {
     setState(EXITED)
+    if (typeof onExited === 'function') onExited()
     setTransitioning(false)
     setMounted(false)
-  }
+  }, [onExited])
 
   const handleExiting = React.useCallback(() => {
     setTransitioning(true)
     setState(EXITING)
+    if (typeof onExiting === 'function') onExiting()
     let id = setTimeout(handleExited, timeout)
     return () => clearTimeout(id)
-  }, [timeout])
+  }, [timeout, handleExited, onExiting])
 
   React.useEffect(() => {
     if (on && !prevOn) {

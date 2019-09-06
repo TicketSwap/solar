@@ -7,7 +7,6 @@ const duration = 400
 
 const Container = styled.div`
   position: relative;
-  overflow: ${props => (props.transitioning ? 'hidden' : 'visible')};
 `
 
 const SlideContainer = styled.div`
@@ -30,22 +29,35 @@ const SlideContainer = styled.div`
   transition-duration: ${duration}ms;
   transition-timing-function: ${easing.easeOutCubic};
   transition-property: opacity, transform;
+  /* Make sure the exiting slide doesn’t reach outside the dialog */
+  overflow: ${props => (props.state === 'exiting' ? 'hidden' : 'visible')};
+  bottom: ${props => (props.state === 'exiting' ? 0 : 'auto')};
 `
 
-function Slide({ active, children, setTransitioning, ...props }) {
-  const [state, mounted, transitioning] = useTransition({
+function Slide({ active, children, initialActiveIndex, initialPreviousIndex }) {
+  const [activeIndex, setActiveIndex] = React.useState(initialActiveIndex)
+  const [previousIndex, setPreviousIndex] = React.useState(initialPreviousIndex)
+  const [state, mounted] = useTransition({
     in: active,
     timeout: duration,
   })
 
   React.useEffect(() => {
-    setTransitioning(transitioning)
-  }, [transitioning, setTransitioning])
+    if (initialActiveIndex !== initialPreviousIndex) {
+      setActiveIndex(initialActiveIndex)
+      setPreviousIndex(initialPreviousIndex)
+    }
+  }, [initialActiveIndex, initialPreviousIndex])
 
   return (
     <>
       {mounted && (
-        <SlideContainer state={state} {...props}>
+        <SlideContainer
+          state={state}
+          from={previousIndex < activeIndex ? '2rem' : '-2rem'}
+          to={previousIndex < activeIndex ? '-2rem' : '2rem'}
+          initial={typeof previousIndex === 'undefined'}
+        >
           {children}
         </SlideContainer>
       )}
@@ -53,14 +65,7 @@ function Slide({ active, children, setTransitioning, ...props }) {
   )
 }
 
-const compareSlide = function(prevProps, nextProps) {
-  return prevProps.active === nextProps.active
-}
-
-const MemoizedSlide = React.memo(Slide, compareSlide)
-
-function Component({ children, onChange, activeView }) {
-  const [transitioning, setTransitioning] = React.useState(false)
+export function ContentTransition({ children, onChange, activeView }) {
   const activeIndex = children.findIndex(item => item.key === activeView)
   const previousIndex = usePrevious(activeIndex)
 
@@ -69,25 +74,17 @@ function Component({ children, onChange, activeView }) {
   }, [children, onChange, activeIndex])
 
   return (
-    <Container transitioning={transitioning}>
+    <Container>
       {children.map(child => (
-        <MemoizedSlide
+        <Slide
           key={child.key}
           active={child.key === activeView}
-          initial={typeof previousIndex === 'undefined'}
-          from={previousIndex < activeIndex ? '2rem' : '-2rem'}
-          to={previousIndex < activeIndex ? '-2rem' : '2rem'}
-          setTransitioning={setTransitioning}
+          initialActiveIndex={activeIndex}
+          initialPreviousIndex={previousIndex}
         >
           {child}
-        </MemoizedSlide>
+        </Slide>
       ))}
     </Container>
   )
 }
-
-const compareComponent = function(prevProps, nextProps) {
-  return prevProps.activeView === nextProps.activeView
-}
-
-export const ContentTransition = React.memo(Component, compareComponent)
