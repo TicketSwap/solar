@@ -52,7 +52,7 @@ const Login = props => (
 
 const LoginEmail = () => (
   <DialogBody>
-    <div style={{ marginBottom: '1rem' }}>
+    <div style={{ marginBottom: '0.5rem' }}>
       <Input type="email" id="email" label="Email address" hideLabel />
     </div>
     <Button variant="success" width="full">
