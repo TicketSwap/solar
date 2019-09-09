@@ -62,7 +62,7 @@
     "jest": "^25.0.0",
     "jest-emotion": "^10.0.17",
     "jest-runner-eslint": "^0.7.4",
-    "jest-watch-select-projects": "^0.1.2",
+    "jest-watch-select-projects": "^1.0.0",
     "jest-watch-typeahead": "^0.4.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
