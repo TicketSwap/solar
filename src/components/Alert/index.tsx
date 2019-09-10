@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import {
@@ -18,7 +17,7 @@ import {
   ChevronRight,
 } from '@ticketswap/comets'
 
-const textColor = props => css`
+const textColor = (props: { variant: string }) => css`
   color: ${props.variant === 'success'
     ? color.titan
     : props.variant === 'error'
@@ -70,11 +69,16 @@ const Main = styled.div`
   flex-basis: 100%;
 `
 
+type MessageProps = {
+  primaryAction: boolean
+}
+
 const Message = styled.p`
   color: ${color.space};
   margin-top: ${10 / 16}rem;
   margin-bottom: ${10 / 16}rem;
-  padding-right: ${props => (!props.primaryAction ? space[16] : 0)};
+  padding-right: ${(props: MessageProps) =>
+    !props.primaryAction ? space[16] : 0};
 
   @media ${device.tablet} {
     margin-top: ${14 / 16}rem;
@@ -143,7 +147,20 @@ const SecondaryActionAdornment = styled.span`
   }
 `
 
-export const Alert = props => {
+interface AlertProps {
+  variant: string
+  children: any
+  primaryAction?: {
+    label: string
+    onClick: any
+  }
+  secondaryAction?: {
+    label: string
+    onClick: any
+  }
+}
+
+export const Alert = (props: AlertProps) => {
   return (
     <Container {...props}>
       <Adornment variant={props.variant}>
@@ -158,7 +175,9 @@ export const Alert = props => {
         )}
       </Adornment>
       <Main>
-        <Message primaryAction={props.primaryAction}>{props.children}</Message>
+        <Message primaryAction={Boolean(props.primaryAction)}>
+          {props.children}
+        </Message>
         {props.secondaryAction && (
           <SecondaryAction onClick={props.secondaryAction.onClick}>
             {props.secondaryAction.label}
@@ -178,18 +197,6 @@ export const Alert = props => {
       )}
     </Container>
   )
-}
-
-Alert.propTypes = {
-  variant: PropTypes.oneOf(['info', 'success', 'error', 'warning']),
-  primaryAction: PropTypes.shape({
-    label: PropTypes.string,
-    onClick: PropTypes.func,
-  }),
-  secondaryAction: PropTypes.shape({
-    label: PropTypes.string,
-    onClick: PropTypes.func,
-  }),
 }
 
 Alert.defaultProps = {

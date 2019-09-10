@@ -1,6 +1,6 @@
-import React from 'react'
+import * as React from 'react'
 import { storiesOf } from '@storybook/react'
-import { Alert } from './'
+import { Alert } from './index'
 
 storiesOf('Alert', module)
   .add('info', () => (
