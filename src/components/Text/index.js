@@ -12,8 +12,8 @@ export const baseTextStyles = css`
   font-family: ${fontStack};
   font-weight: ${fontWeight.regular};
   line-height: ${lineHeight.copy};
-  font-size: ${fontSize[16]};
   color: inherit;
+  font-size: ${fontSize[16]};
 
   @media ${device.tablet} {
     font-size: ${fontSize[18]};
@@ -50,5 +50,14 @@ export const baseTextStyles = css`
 `
 
 export const Text = styled.span`
-  ${baseTextStyles}
+  ${baseTextStyles};
+`
+
+export const SmallText = styled.span`
+  ${baseTextStyles};
+  font-size: ${fontSize[14]};
+
+  @media ${device.tablet} {
+    font-size: ${fontSize[16]};
+  }
 `

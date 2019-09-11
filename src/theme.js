@@ -1,3 +1,5 @@
+import { css } from '@emotion/core'
+
 export const color = {
   space: 'rgb(0,19,25)',
   spaceMedium: 'rgb(102,113,117)',
@@ -185,3 +187,21 @@ export const device = {
   laptopL: `(min-width: ${sizes.laptopL / 16}em)`,
   desktop: `(min-width: ${sizes.desktop / 16}em)`,
 }
+
+export const fullBleed = css`
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+`
+
+export const resetFullBleed = css`
+  width: auto;
+  position: relative;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+`
