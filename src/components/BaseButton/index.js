@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { space, color, fontWeight, radius } from '../../theme'
+import { space, color, fontWeight, radius, device } from '../../theme'
 import { baseTextStyles } from '../Text'
 
 export const BaseButton = styled.button`
@@ -38,9 +38,9 @@ export const BaseButton = styled.button`
     content: '';
     position: absolute;
     left: -4px;
-    top: -2px;
     right: -4px;
-    bottom: -2px;
+    top: -1px;
+    bottom: 0;
     background-color: transparent;
     border-radius: ${radius.md};
     box-shadow: 0 0 0 ${space[4]}
@@ -52,5 +52,9 @@ export const BaseButton = styled.button`
           : p.variant === 'warning'
           ? color.sunFocusAlpha
           : color.earthFocusAlpha};
+
+    @media ${device.tablet} {
+      top: -2px;
+    }
   }
 `
