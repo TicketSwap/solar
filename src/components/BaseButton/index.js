@@ -5,6 +5,7 @@ import { baseTextStyles } from '../Text'
 export const BaseButton = styled.button`
   ${baseTextStyles};
   position: relative;
+  display: inline-block;
   color: ${p =>
     p.disabled
       ? color.spaceLight
