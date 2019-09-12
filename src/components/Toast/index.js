@@ -9,6 +9,7 @@ const duration = 400
 
 const ItemListContainer = styled.ul`
   position: fixed;
+  z-index: 10;
   left: 0;
   bottom: 0;
   width: ${space[512]};
