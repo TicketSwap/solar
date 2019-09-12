@@ -5,7 +5,7 @@ import { Image } from '../Image'
 import { color } from '../../theme'
 
 type AvatarProps = {
-  size: number
+  size?: number
   src?: string
 }
 
