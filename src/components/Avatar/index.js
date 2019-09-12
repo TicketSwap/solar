@@ -1,19 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import { Image } from '../Image'
 import { color } from '../../theme'
 
-type AvatarProps = {
-  size?: number
-  src?: string
-}
-
-export const Avatar: FunctionComponent<AvatarProps> = ({
-  size,
-  src,
-  ...props
-}) => (
+export const Avatar = ({ size, src, ...props }) => (
   <Wrapper size={size} {...props}>
     {src ? (
       <StyledImage src={src} alt="Avatar" data-testid="image" />
@@ -50,7 +40,7 @@ export const Placeholder = () => (
   </InlineSvg>
 )
 
-const Wrapper = styled.div<AvatarProps>`
+const Wrapper = styled.div`
   vertical-align: middle;
   display: inline-block;
   flex: ${props => props.size && `${props.size}px`};
