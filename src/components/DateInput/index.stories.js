@@ -49,6 +49,6 @@ storiesOf('DateInput', module)
       label="Date of birth"
       months={months}
       onChange={date => console.log(date)}
-      initialSelectedDate={new Date()}
+      initialSelectedDate={new Date(1990, 8, 6)}
     />
   ))

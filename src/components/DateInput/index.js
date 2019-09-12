@@ -61,20 +61,6 @@ function pad(str) {
   return str
 }
 
-function createDateString(date) {
-  if (!date) return false
-  let d = date
-  if (typeof date.getMonth !== 'function') {
-    d = new Date(date)
-  }
-  let month = '' + (d.getMonth() + 1)
-  let day = '' + d.getDate()
-  const year = d.getFullYear()
-  month = pad(month)
-  day = pad(day)
-  return [year, month, day].join('-')
-}
-
 function createSelectOptions(months) {
   return months.map((name, i) => ({ value: i.toString(), name }))
 }
@@ -84,15 +70,29 @@ function splitDateString(str) {
   return str.split('-')
 }
 
+function getDate(input) {
+  if (!input) {
+    const now = new Date()
+    return [now.getFullYear(), now.getMonth(), now.getDate()]
+  }
+  if (typeof input === 'string') {
+    const [year, month, day] = input.split(/[^0-9]/)
+    return [parseInt(year), month - 1, parseInt(day)]
+  }
+  if (typeof input === 'object') {
+    return [input.getFullYear(), input.getMonth(), input.getDate()]
+  }
+}
+
 export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const { isIOS } = useDeviceInfo()
   const dateInputRef = React.useRef()
   const months = createSelectOptions(props.months)
-  const [initialYear, initialMonth, initialDay] = splitDateString(
-    createDateString(props.initialSelectedDate)
+  const [initialYear, initialMonth, initialDay] = getDate(
+    props.initialSelectedDate
   )
   const [year, setYear] = React.useState(initialYear || '')
-  const [month, setMonth] = React.useState(initialMonth - 1 || 0)
+  const [month, setMonth] = React.useState(initialMonth || 0)
   const [day, setDay] = React.useState(initialDay || '')
   const previousValue = usePrevious(
     dateInputRef.current && dateInputRef.current.value
