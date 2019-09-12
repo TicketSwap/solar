@@ -38,7 +38,6 @@
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
     "@storybook/addon-docs": "5.2.0-rc.9",
-    "@storybook/preset-typescript": "^1.1.0",
     "@storybook/react": "^5.2.0-rc.9",
     "@storybook/storybook-deployer": "^2.8.1",
     "@testing-library/jest-dom": "^4.1.0",
