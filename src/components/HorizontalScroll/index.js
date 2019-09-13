@@ -10,6 +10,10 @@ export const HorizontalScroll = styled.div`
   scroll-padding: ${space[16]};
   padding-left: ${space[16]};
   padding-right: ${space[16]};
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   @media ${device.tablet} {
     padding: 0;
