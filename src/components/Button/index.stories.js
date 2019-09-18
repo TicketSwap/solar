@@ -11,7 +11,7 @@ storiesOf('Button', module)
     <Button leftAdornment={<Checkmark size={24} />}>Save changes</Button>
   ))
   .add('with icon loading', () => (
-    <Button isLoading leftAdornment={<Checkmark size={24} />}>
+    <Button loading leftAdornment={<Checkmark size={24} />}>
       Save changes
     </Button>
   ))

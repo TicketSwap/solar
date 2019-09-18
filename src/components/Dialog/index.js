@@ -177,10 +177,10 @@ const Body = styled.div`
   }
 `
 
-export function DialogBody({ children }) {
+export function DialogBody({ children, ...props }) {
   return (
     <BodyWrapper>
-      <Body>{children}</Body>
+      <Body {...props}>{children}</Body>
     </BodyWrapper>
   )
 }
