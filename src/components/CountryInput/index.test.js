@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { CountrySelect } from './'
+import { CountryInput } from './'
 
 const countries = [
   { value: 'nl', name: 'Netherlands' },
@@ -8,10 +8,10 @@ const countries = [
   { value: 'de', name: 'Germany' },
 ]
 
-describe('CountrySelect', () => {
+describe('CountryInput', () => {
   it('renders without crashing', () => {
     const { container, queryByText } = render(
-      <CountrySelect id="country" label="Country" items={countries} />
+      <CountryInput id="country" label="Country" items={countries} />
     )
     expect(container.firstChild).toBeInTheDocument()
     expect(queryByText(/netherlands/i)).toBeNull()
@@ -19,7 +19,7 @@ describe('CountrySelect', () => {
 
   it('shows suggestions upon typing', () => {
     const { getByLabelText, getByText } = render(
-      <CountrySelect id="country" label="Country" items={countries} />
+      <CountryInput id="country" label="Country" items={countries} />
     )
     fireEvent.change(getByLabelText(/country/i), {
       target: { value: 'nether' },
@@ -29,7 +29,7 @@ describe('CountrySelect', () => {
 
   it('handles a passed initial value correctly', () => {
     const { getByLabelText } = render(
-      <CountrySelect
+      <CountryInput
         id="country"
         label="Country"
         items={countries}
@@ -41,7 +41,7 @@ describe('CountrySelect', () => {
 
   it('resets input upon clicking reset-button', () => {
     const { getByLabelText, getByTestId } = render(
-      <CountrySelect
+      <CountryInput
         id="country"
         label="Country"
         items={countries}
@@ -55,7 +55,7 @@ describe('CountrySelect', () => {
   it('calls onChange handler correctly', () => {
     const handler = jest.fn()
     const { getByText, getByLabelText } = render(
-      <CountrySelect
+      <CountryInput
         id="country"
         label="Country"
         items={countries}
