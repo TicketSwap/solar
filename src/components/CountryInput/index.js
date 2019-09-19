@@ -5,7 +5,7 @@ import { Input, InputMenu, InputMenuList, InputMenuItem } from '../Input'
 import { Flag } from '../Flag'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
-export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
+export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
   <Downshift
     onChange={selection => selection && onChange(selection)}
     itemToString={item => (item ? item.name : '')}
@@ -72,12 +72,12 @@ export const CountrySelect = ({ items, onChange, initialValue, ...props }) => (
   </Downshift>
 )
 
-CountrySelect.defaultProps = {
+CountryInput.defaultProps = {
   initialValue: '',
   onChange: () => {},
 }
 
-CountrySelect.propTypes = {
+CountryInput.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
