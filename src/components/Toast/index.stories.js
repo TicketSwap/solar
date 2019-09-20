@@ -79,7 +79,7 @@ storiesOf('Toast', module)
                   }}
                 >
                   <span>Payment failed</span>
-                  <Button onClick={remove} size="small" variant="inverted">
+                  <Button onClick={remove} size="small" variant="secondary">
                     Discard
                   </Button>
                 </div>
