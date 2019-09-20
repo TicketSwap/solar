@@ -1,12 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Button } from './'
-import { Checkmark, Facebook, MagnifyingGlass } from '@ticketswap/comets'
+import { Checkmark, Facebook, MagnifyingGlass, Plus } from '@ticketswap/comets'
 
 storiesOf('Button', module)
-  .add('default with text', () => <Button>Default Button</Button>)
+  .add('primary', () => <Button>Default Button</Button>)
   .add('full width', () => <Button width="full">Default Button</Button>)
-  .add('small with text', () => <Button size="small">Small Button</Button>)
+  .add('small', () => <Button size="small">Small Button</Button>)
   .add('with icon', () => (
     <Button leftAdornment={<Checkmark size={24} />}>Save changes</Button>
   ))
@@ -38,7 +38,7 @@ storiesOf('Button', module)
     </Button>
   ))
   .add('inverted with icon', () => (
-    <Button variant="inverted" icon="plus-solid">
+    <Button variant="inverted" leftAdornment={<Plus size={24} />}>
       Inverted
     </Button>
   ))
@@ -47,6 +47,36 @@ storiesOf('Button', module)
   .add('danger', () => <Button variant="danger">Danger</Button>)
   .add('loading', () => <Button loading>Loading</Button>)
   .add('disabled', () => <Button disabled>Button</Button>)
+  .add('disabled success', () => (
+    <Button variant="success" disabled>
+      Button
+    </Button>
+  ))
+  .add('disabled warning', () => (
+    <Button variant="warning" disabled>
+      Button
+    </Button>
+  ))
+  .add('disabled danger', () => (
+    <Button variant="danger" disabled>
+      Button
+    </Button>
+  ))
+  .add('disabled secondary', () => (
+    <Button variant="secondary" disabled>
+      Button
+    </Button>
+  ))
+  .add('disabled caution', () => (
+    <Button variant="caution" disabled>
+      Button
+    </Button>
+  ))
+  .add('disabled facebook', () => (
+    <Button variant="facebook" disabled>
+      Button
+    </Button>
+  ))
   .add('facebook', () => <Button variant="facebook">Facebook</Button>)
   .add('rounded', () => <Button rounded>Rounded</Button>)
   .add('rounded square with icon as child', () => (
