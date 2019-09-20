@@ -106,7 +106,7 @@ export const space = {
 export const radius = {
   sm: space[4],
   md: space[8],
-  lg: space[16],
+  lg: space[12],
 }
 
 export const easing = {
