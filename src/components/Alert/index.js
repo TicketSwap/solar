@@ -68,17 +68,43 @@ const Adornment = styled.span`
 
 const Main = styled.div`
   flex-basis: 100%;
+  padding: ${10 / 16}rem ${10 / 16}rem ${10 / 16}rem 0;
+
+  @media ${device.tablet} {
+    padding: ${14 / 16}rem ${14 / 16}rem ${14 / 16}rem 0;
+  }
 `
 
 const Message = styled.p`
   color: ${color.space};
-  margin-top: ${10 / 16}rem;
-  margin-bottom: ${10 / 16}rem;
-  padding-right: ${props => (!props.primaryAction ? space[16] : 0)};
+`
+
+const Action = styled.button`
+  ${textColor};
+  outline: 0;
+  font-weight: ${fontWeight.bold};
+  flex-shrink: 0;
+  transition: color ${transition};
+  margin-top: ${6 / 16}rem;
 
   @media ${device.tablet} {
-    margin-top: ${14 / 16}rem;
-    margin-bottom: ${14 / 16}rem;
+    margin-top: ${6 / 16}rem;
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: ${props =>
+      props.variant === 'success'
+        ? color.titanLight
+        : props.variant === 'error'
+        ? color.marsLight
+        : props.variant === 'warning'
+        ? color.sunLight
+        : color.earthLight};
   }
 `
 
@@ -118,11 +144,11 @@ const PrimaryAction = styled.button`
 const SecondaryAction = styled.button`
   color: ${color.space};
   font-weight: ${fontWeight.bold};
-  margin-bottom: ${10 / 16}rem;
   outline: 0;
+  margin-top: ${6 / 16}rem;
 
   @media ${device.tablet} {
-    margin-bottom: ${14 / 16}rem;
+    margin-top: ${6 / 16}rem;
   }
 
   &:focus {
@@ -159,6 +185,11 @@ export const Alert = props => {
       </Adornment>
       <Main>
         <Message primaryAction={props.primaryAction}>{props.children}</Message>
+        {props.action && (
+          <Action variant={props.variant} onClick={props.action.onClick}>
+            {props.action.label}
+          </Action>
+        )}
         {props.secondaryAction && (
           <SecondaryAction onClick={props.secondaryAction.onClick}>
             {props.secondaryAction.label}
@@ -187,6 +218,10 @@ Alert.propTypes = {
     onClick: PropTypes.func,
   }),
   secondaryAction: PropTypes.shape({
+    label: PropTypes.string,
+    onClick: PropTypes.func,
+  }),
+  action: PropTypes.shape({
     label: PropTypes.string,
     onClick: PropTypes.func,
   }),
