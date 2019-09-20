@@ -68,10 +68,10 @@ const Adornment = styled.span`
 
 const Main = styled.div`
   flex-basis: 100%;
-  padding: ${10 / 16}rem ${10 / 16}rem ${10 / 16}rem 0;
+  padding: ${11 / 16}rem ${10 / 16}rem ${10 / 16}rem 0;
 
   @media ${device.tablet} {
-    padding: ${14 / 16}rem ${14 / 16}rem ${14 / 16}rem 0;
+    padding: ${15 / 16}rem ${14 / 16}rem ${14 / 16}rem 0;
   }
 `
 
