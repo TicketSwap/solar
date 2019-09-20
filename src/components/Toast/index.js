@@ -62,7 +62,7 @@ const ItemContainer = styled.li`
 
 export const Toast = styled.div`
   border-radius: ${radius.lg};
-  background-color: ${color.stardustLight};
+  background-color: white;
   box-shadow: ${shadow.strong};
   padding: ${space[16]};
 `
