@@ -220,7 +220,6 @@ export function useDialog(config = {}) {
   const isOnControlled = React.useCallback(() => {
     return props.on !== undefined
   }, [props.on])
-
   const [on, setOn] = useState(isOnControlled() ? props.on : false)
   const previousOn = usePrevious(isOnControlled() ? props.on : on)
   const show = () => !isOnControlled() && setOn(true)
@@ -268,11 +267,16 @@ export function useDialog(config = {}) {
   }
 }
 
-export function DialogWindow({ children, on, hide, ...props }) {
+export function DialogWindow({ children, on, hide, onEscKeyDown, ...props }) {
   const [state, mounted] = useTransition({ in: on, timeout: duration })
   const handleHide = React.useCallback(
-    ({ keyCode }) => keyCode === 27 && hide(),
-    [hide]
+    ({ keyCode }) => {
+      if (keyCode === 27) {
+        onEscKeyDown && onEscKeyDown()
+        hide()
+      }
+    },
+    [onEscKeyDown, hide]
   )
 
   useEffect(() => {
