@@ -36,7 +36,12 @@ function ControlledDialog() {
       </Button>
       <Dialog on={show} onToggle={console.log}>
         {({ getWindowProps }) => (
-          <DialogWindow {...getWindowProps()}>
+          <DialogWindow
+            {...getWindowProps({
+              onClick: () => show && setShow(false),
+              onEscKeyDown: () => show && setShow(false),
+            })}
+          >
             <DialogHeader>Hi</DialogHeader>
             <DialogBody>I am a controlled dialog</DialogBody>
           </DialogWindow>
