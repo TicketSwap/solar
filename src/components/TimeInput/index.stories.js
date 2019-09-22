@@ -1,16 +1,23 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { TimeInput } from './'
 
-storiesOf('TimeInput', module)
-  .add('basic', () => (
-    <TimeInput id="time" label="Time" onChange={val => console.log(val)} />
-  ))
-  .add('with initial value', () => (
-    <TimeInput
-      id="time"
-      label="Time"
-      onChange={val => console.log(val)}
-      initialValue="15:00"
-    />
-  ))
+export default {
+  title: 'TimeInput',
+}
+
+export const Basic = () => (
+  <TimeInput id="time" label="Time" onChange={val => console.log(val)} />
+)
+
+export const WithInitialValue = () => (
+  <TimeInput
+    id="time"
+    label="Time"
+    onChange={val => console.log(val)}
+    initialValue="15:00"
+  />
+)
+
+WithInitialValue.story = {
+  name: 'With initial value',
+}

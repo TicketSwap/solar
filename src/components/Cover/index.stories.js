@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Cover } from './'
 import { Avatar } from '../Avatar'
 import { H1 } from '../Heading'
@@ -21,36 +20,54 @@ const data = {
   },
 }
 
-storiesOf('Cover', module)
-  .add('basic', () => (
-    <Cover images={data.randomBackgroundImage.imageSizes}>
-      <H1>Awakenings Festival 2019</H1>
-    </Cover>
-  ))
-  .add('basic tinted', () => (
-    <Cover tinted images={data.randomBackgroundImage.imageSizes}>
-      <H1>Awakenings Festival 2019</H1>
-    </Cover>
-  ))
-  .add('basic blurred', () => (
-    <Cover
-      blurred
-      imageUrl="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
-    >
-      <Avatar
-        src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
-        size={128}
-      />
-      <H1>Drake</H1>
-    </Cover>
-  ))
-  .add('full height', () => (
-    <Cover
-      height="full"
-      caption={data.randomBackgroundImage.copyrightText}
-      captionUrl={data.randomBackgroundImage.copyrightLink}
-      images={data.randomBackgroundImage.imageSizes}
-    >
-      <H1>The safest way to buy and sell e-tickets</H1>
-    </Cover>
-  ))
+export default {
+  title: 'Cover',
+}
+
+export const basic = () => (
+  <Cover images={data.randomBackgroundImage.imageSizes}>
+    <H1>Awakenings Festival 2019</H1>
+  </Cover>
+)
+
+export const basicTinted = () => (
+  <Cover tinted images={data.randomBackgroundImage.imageSizes}>
+    <H1>Awakenings Festival 2019</H1>
+  </Cover>
+)
+
+basicTinted.story = {
+  name: 'basic tinted',
+}
+
+export const basicBlurred = () => (
+  <Cover
+    blurred
+    imageUrl="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
+  >
+    <Avatar
+      src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
+      size={128}
+    />
+    <H1>Drake</H1>
+  </Cover>
+)
+
+basicBlurred.story = {
+  name: 'basic blurred',
+}
+
+export const fullHeight = () => (
+  <Cover
+    height="full"
+    caption={data.randomBackgroundImage.copyrightText}
+    captionUrl={data.randomBackgroundImage.copyrightLink}
+    images={data.randomBackgroundImage.imageSizes}
+  >
+    <H1>The safest way to buy and sell e-tickets</H1>
+  </Cover>
+)
+
+fullHeight.story = {
+  name: 'full height',
+}

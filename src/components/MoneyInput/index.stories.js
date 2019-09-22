@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { MoneyInput } from './'
 import { Button } from '../Button'
 
@@ -117,39 +116,53 @@ function ControlledMoneyInput() {
   )
 }
 
-storiesOf('MoneyInput', module)
-  .add('basic', () => (
-    <MoneyInput
-      id="maximum-price"
-      label="Maximum price"
-      currencies={currencies}
-      onChange={e => console.log(e)}
-    />
-  ))
-  .add('with initial values', () => (
-    <MoneyInput
-      id="maximum-price"
-      label="Maximum price"
-      placeholder="Enter an amount"
-      currencies={currencies}
-      onChange={e => console.log(e)}
-      initialSelectedCurrency={currencies[2]}
-      initialAmount={240050}
-      help="Leave blank for no maximum price"
-    />
-  ))
-  .add('controlled', () => <ControlledMoneyInput />)
-  .add('with error', () => (
-    <MoneyInput
-      id="maximum-price"
-      label="Maximum price"
-      placeholder="Enter an amount"
-      currencies={currencies}
-      onChange={e => console.log(e)}
-      initialSelectedCurrency={currencies[2]}
-      initialAmount={2500}
-      help="Leave blank for no maximum price"
-      validateAmount={false}
-      validateCurrency={false}
-    />
-  ))
+export default {
+  title: 'MoneyInput',
+}
+
+export const Basic = () => (
+  <MoneyInput
+    id="maximum-price"
+    label="Maximum price"
+    currencies={currencies}
+    onChange={e => console.log(e)}
+  />
+)
+
+export const WithInitialValues = () => (
+  <MoneyInput
+    id="maximum-price"
+    label="Maximum price"
+    placeholder="Enter an amount"
+    currencies={currencies}
+    onChange={e => console.log(e)}
+    initialSelectedCurrency={currencies[2]}
+    initialAmount={240050}
+    help="Leave blank for no maximum price"
+  />
+)
+
+WithInitialValues.story = {
+  name: 'With initial values',
+}
+
+export const Controlled = () => <ControlledMoneyInput />
+
+export const WithError = () => (
+  <MoneyInput
+    id="maximum-price"
+    label="Maximum price"
+    placeholder="Enter an amount"
+    currencies={currencies}
+    onChange={e => console.log(e)}
+    initialSelectedCurrency={currencies[2]}
+    initialAmount={2500}
+    help="Leave blank for no maximum price"
+    validateAmount={false}
+    validateCurrency={false}
+  />
+)
+
+WithError.story = {
+  name: 'With error',
+}

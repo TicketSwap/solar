@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { storiesOf } from '@storybook/react'
 import { BasicCarousel } from './'
 import { Image } from '../Image'
 import { Button } from '../Button'
@@ -60,32 +59,41 @@ const items = [
   />,
 ]
 
-storiesOf('BasicCarousel', module)
-  .add('default', () => (
-    <ContentWrapper>
-      <BasicCarousel
-        items={items}
-        itemWidth={1}
-        itemWidthSm={0.75}
-        itemWidthMd={0.25}
-      />
-    </ContentWrapper>
-  ))
-  .add('with variable-width items', () => (
-    <ContentWrapper>
-      <BasicCarousel
-        items={[
-          <Button rounded>Amsterdam</Button>,
-          <Button rounded>Utrecht</Button>,
-          <Button rounded>Zwolle</Button>,
-          <Button rounded>Rotterdam</Button>,
-          <Button rounded>Ghent</Button>,
-          <Button rounded>Antwerp</Button>,
-          <Button rounded>Paris</Button>,
-          <Button rounded>Copenhagen</Button>,
-          <Button rounded>Oslo</Button>,
-          <Button rounded>Stockholm</Button>,
-        ]}
-      />
-    </ContentWrapper>
-  ))
+export default {
+  title: 'BasicCarousel',
+  excludeStories: ['ContentWrapper'],
+}
+
+export const Basic = () => (
+  <ContentWrapper>
+    <BasicCarousel
+      items={items}
+      itemWidth={1}
+      itemWidthSm={0.75}
+      itemWidthMd={0.25}
+    />
+  </ContentWrapper>
+)
+
+export const WithVariableWidthItems = () => (
+  <ContentWrapper>
+    <BasicCarousel
+      items={[
+        <Button rounded>Amsterdam</Button>,
+        <Button rounded>Utrecht</Button>,
+        <Button rounded>Zwolle</Button>,
+        <Button rounded>Rotterdam</Button>,
+        <Button rounded>Ghent</Button>,
+        <Button rounded>Antwerp</Button>,
+        <Button rounded>Paris</Button>,
+        <Button rounded>Copenhagen</Button>,
+        <Button rounded>Oslo</Button>,
+        <Button rounded>Stockholm</Button>,
+      ]}
+    />
+  </ContentWrapper>
+)
+
+WithVariableWidthItems.story = {
+  name: 'With variable-width items',
+}

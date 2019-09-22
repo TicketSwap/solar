@@ -1,10 +1,12 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { BaseButton } from './'
 
-storiesOf('BaseButton', module)
-  .add('default', () => <BaseButton>Default</BaseButton>)
-  .add('success', () => <BaseButton variant="success">Success</BaseButton>)
-  .add('warning', () => <BaseButton variant="warning">Warning</BaseButton>)
-  .add('danger', () => <BaseButton variant="danger">Danger</BaseButton>)
-  .add('disabled', () => <BaseButton disabled>Disabled</BaseButton>)
+export default {
+  title: 'BaseButton',
+}
+
+export const Basic = () => <BaseButton>Default</BaseButton>
+export const Success = () => <BaseButton variant="success">Success</BaseButton>
+export const Warning = () => <BaseButton variant="warning">Warning</BaseButton>
+export const Danger = () => <BaseButton variant="danger">Danger</BaseButton>
+export const Disabled = () => <BaseButton disabled>Disabled</BaseButton>

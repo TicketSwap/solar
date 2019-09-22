@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Toggle } from './'
 
 function ControlledToggle() {
@@ -13,9 +12,18 @@ function ControlledToggle() {
   )
 }
 
-storiesOf('Toggle', module)
-  .add('basic', () => <Toggle onToggle={on => console.log(on)} />)
-  .add('default on', () => (
-    <Toggle onToggle={on => console.log(on)} defaultOn />
-  ))
-  .add('controlled', () => <ControlledToggle />)
+export default {
+  title: 'Toggle',
+}
+
+export const Basic = () => <Toggle onToggle={on => console.log(on)} />
+
+export const DefaultOn = () => (
+  <Toggle onToggle={on => console.log(on)} defaultOn />
+)
+
+DefaultOn.story = {
+  name: 'Default on',
+}
+
+export const Controlled = () => <ControlledToggle />
