@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Checkbox } from './'
 
 function ControlledCheckbox() {
@@ -18,44 +17,63 @@ function ControlledCheckbox() {
   )
 }
 
-storiesOf('Checkbox', module)
-  .add('basic', () => (
-    <Checkbox
-      id="remember-me"
-      name="remember-me"
-      label="Remember me"
-      onChange={e => console.log(e.target)}
-    />
-  ))
-  .add('with long label', () => (
-    <Checkbox
-      id="agree"
-      name="agree"
-      label={
-        <p>
-          I understand I will be paid out <strong>after</strong> the event has
-          taken place.
-        </p>
-      }
-      onChange={e => console.log(e.target)}
-    />
-  ))
-  .add('default on', () => (
-    <Checkbox
-      id="remember-me"
-      name="remember-me"
-      label="Remember me"
-      onChange={e => console.log(e.target)}
-      defaultOn
-    />
-  ))
-  .add('without label', () => (
-    <Checkbox
-      id="remember-me"
-      name="remember-me"
-      label="Remember me"
-      onChange={e => console.log(e.target)}
-      hideLabel
-    />
-  ))
-  .add('controlled', () => <ControlledCheckbox />)
+export default {
+  title: 'Checkbox',
+}
+
+export const Basic = () => (
+  <Checkbox
+    id="remember-me"
+    name="remember-me"
+    label="Remember me"
+    onChange={e => console.log(e.target)}
+  />
+)
+
+export const WithLongLabel = () => (
+  <Checkbox
+    id="agree"
+    name="agree"
+    label={
+      <p>
+        I understand I will be paid out <strong>after</strong> the event has
+        taken place.
+      </p>
+    }
+    onChange={e => console.log(e.target)}
+  />
+)
+
+WithLongLabel.story = {
+  name: 'With long label',
+}
+
+export const DefaultOn = () => (
+  <Checkbox
+    id="remember-me"
+    name="remember-me"
+    label="Remember me"
+    onChange={e => console.log(e.target)}
+    defaultOn
+  />
+)
+
+DefaultOn.story = {
+  name: 'Default on',
+}
+
+export const WithoutLabel = () => (
+  <Checkbox
+    id="remember-me"
+    name="remember-me"
+    label="Remember me"
+    onChange={e => console.log(e.target)}
+    hideLabel
+  />
+)
+
+WithoutLabel.story = {
+  name: 'Without label',
+}
+
+export const Controlled = () => <ControlledCheckbox />

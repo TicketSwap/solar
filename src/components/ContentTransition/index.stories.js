@@ -11,7 +11,6 @@ import {
   DialogAdornment,
   useDialog,
 } from '../Dialog'
-import { storiesOf } from '@storybook/react'
 import { ContentTransition } from './'
 import { color } from '../../theme'
 
@@ -155,4 +154,8 @@ function Dialog() {
   )
 }
 
-storiesOf('ContentTransition', module).add('basic', () => <Dialog />)
+export default {
+  title: 'ContentTransition',
+}
+
+export const Basic = () => <Dialog />

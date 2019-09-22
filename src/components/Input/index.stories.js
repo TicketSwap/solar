@@ -1,83 +1,132 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Input } from './'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
-storiesOf('Input', module)
-  .add('basic', () => <Input id="fname" label="First name" />)
-  .add('with hidden label', () => (
-    <Input id="fname" label="First name" hideLabel />
-  ))
-  .add('with helper text', () => (
-    <Input id="fname" label="First name" help="Lorem ipsum dolor sit amet" />
-  ))
-  .add('loading', () => (
-    <Input
-      placeholder="Search our docs"
-      value="Lorem ipsum"
-      id="search"
-      label="Search"
-      hideLabel
-      onReset={() => console.log('onClear')}
-      loading
-    />
-  ))
-  .add('with icon', () => (
-    <Input
-      placeholder="Search our docs"
-      id="search"
-      label="Search"
-      hideLabel
-      leftAdornment={<MagnifyingGlass size={24} />}
-    />
-  ))
-  .add('with icon loading', () => (
-    <Input
-      placeholder="Search our docs"
-      id="search"
-      label="Search"
-      hideLabel
-      leftAdornment={<MagnifyingGlass size={24} />}
-      loading
-    />
-  ))
-  .add('rounded', () => (
-    <Input id="fname" type="search" label="Search" hideLabel rounded />
-  ))
-  .add('rounded with icon', () => (
-    <Input
-      id="fname"
-      type="search"
-      label="Search"
-      leftAdornment={<MagnifyingGlass size={24} />}
-      hideLabel
-      rounded
-    />
-  ))
-  .add('with clear button', () => (
-    <Input
-      type="search"
-      value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      id="id"
-      label="Label"
-      onChange={() => console.log('onChange')}
-      onReset={() => console.log('onClear')}
-    />
-  ))
-  .add('with custom label props', () => (
-    <Input
-      value="Lorem ipsum"
-      id="id"
-      label="Label"
-      labelProps={{
-        for: 'id',
-        'aria-role': 'test',
-      }}
-      onChange={() => console.log('onChange')}
-      onReset={() => console.log('onClear')}
-    />
-  ))
-  .add('with error', () => <Input id="id" label="Label" validate={false} />)
-  .add('as textarea', () => (
-    <Input as="textarea" id="message" label="Message" rows="6" />
-  ))
+export default {
+  title: 'Input',
+}
+
+export const Basic = () => <Input id="fname" label="First name" />
+
+export const WithHiddenLabel = () => (
+  <Input id="fname" label="First name" hideLabel />
+)
+
+WithHiddenLabel.story = {
+  name: 'With hidden label',
+}
+
+export const WithHelperText = () => (
+  <Input id="fname" label="First name" help="Lorem ipsum dolor sit amet" />
+)
+
+WithHelperText.story = {
+  name: 'With helper text',
+}
+
+export const Loading = () => (
+  <Input
+    placeholder="Search our docs"
+    value="Lorem ipsum"
+    id="search"
+    label="Search"
+    hideLabel
+    onReset={() => console.log('onClear')}
+    loading
+  />
+)
+
+export const WithIcon = () => (
+  <Input
+    placeholder="Search our docs"
+    id="search"
+    label="Search"
+    hideLabel
+    leftAdornment={<MagnifyingGlass size={24} />}
+  />
+)
+
+WithIcon.story = {
+  name: 'With icon',
+}
+
+export const WithIconLoading = () => (
+  <Input
+    placeholder="Search our docs"
+    id="search"
+    label="Search"
+    hideLabel
+    leftAdornment={<MagnifyingGlass size={24} />}
+    loading
+  />
+)
+
+WithIconLoading.story = {
+  name: 'With icon loading',
+}
+
+export const Rounded = () => (
+  <Input id="fname" type="search" label="Search" hideLabel rounded />
+)
+
+export const RoundedWithIcon = () => (
+  <Input
+    id="fname"
+    type="search"
+    label="Search"
+    leftAdornment={<MagnifyingGlass size={24} />}
+    hideLabel
+    rounded
+  />
+)
+
+RoundedWithIcon.story = {
+  name: 'Rounded with icon',
+}
+
+export const WithClearButton = () => (
+  <Input
+    type="search"
+    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    id="id"
+    label="Label"
+    onChange={() => console.log('onChange')}
+    onReset={() => console.log('onClear')}
+  />
+)
+
+WithClearButton.story = {
+  name: 'With clear button',
+}
+
+export const WithCustomLabelProps = () => (
+  <Input
+    value="Lorem ipsum"
+    id="id"
+    label="Label"
+    labelProps={{
+      for: 'id',
+      'aria-role': 'test',
+    }}
+    onChange={() => console.log('onChange')}
+    onReset={() => console.log('onClear')}
+  />
+)
+
+WithCustomLabelProps.story = {
+  name: 'With custom label props',
+}
+
+export const WithError = () => <Input id="id" label="Label" validate={false} />
+
+WithError.story = {
+  name: 'With error',
+}
+
+export const AsTextarea = () => (
+  <Input as="textarea" id="message" label="Message" rows="6" />
+)
+
+AsTextarea.story = {
+  name: 'As textarea',
+}

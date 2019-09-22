@@ -1,5 +1,8 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Spinner } from './'
 
-storiesOf('Spinner', module).add('basic', () => <Spinner />)
+export default {
+  title: 'Spinner',
+}
+
+export const Basic = () => <Spinner />

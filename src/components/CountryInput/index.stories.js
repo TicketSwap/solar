@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { CountryInput } from './'
 
 const countries = [
@@ -18,17 +17,25 @@ const countries = [
   { value: 'hu', name: 'Hungary' },
 ]
 
-storiesOf('CountryInput', module)
-  .add('basic', () => (
-    <CountryInput id="country" label="Country" items={countries} />
-  ))
-  .add('with initial value', () => (
-    <CountryInput
-      id="country"
-      label="Country"
-      items={countries}
-      initialValue="at"
-      hideLabel
-      onChange={selection => alert(selection.name)}
-    />
-  ))
+export default {
+  title: 'CountryInput',
+}
+
+export const basic = () => (
+  <CountryInput id="country" label="Country" items={countries} />
+)
+
+export const withInitialValue = () => (
+  <CountryInput
+    id="country"
+    label="Country"
+    items={countries}
+    initialValue="at"
+    hideLabel
+    onChange={selection => alert(selection.name)}
+  />
+)
+
+withInitialValue.story = {
+  name: 'with initial value',
+}

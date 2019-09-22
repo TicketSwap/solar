@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import {
   Dialog,
   DialogWindow,
@@ -105,30 +104,53 @@ function HooksDialog() {
   )
 }
 
-storiesOf('Dialog', module)
-  .add('basic', () => <MyDialog>Body</MyDialog>)
-  .add('default on', () => <MyDialog defaultOn>Body</MyDialog>)
-  .add('default on and persist', () => (
-    <MyDialog defaultOn persist>
-      Body
-    </MyDialog>
-  ))
-  .add('with long body', () => (
-    <MyDialog>
-      <div style={{ display: 'grid', gridGap: 16 }}>
-        <Input id="email" type="email" label="Email address" />
-        <Input id="fname" label="First name" />
-        <Input id="lname" label="Last name" />
-        <Input id="message" label="Message" as="textarea" rows="4" />
-        <Select
-          items={items}
-          id="language"
-          label="Language"
-          onChange={selection => console.log(selection)}
-          initialSelectedItem={items[1]}
-        />
-      </div>
-    </MyDialog>
-  ))
-  .add('useDialog', () => <HooksDialog />)
-  .add('on-controlled', () => <ControlledDialog />)
+export default {
+  title: 'Dialog',
+}
+
+export const Basic = () => <MyDialog>Body</MyDialog>
+export const DefaultOn = () => <MyDialog defaultOn>Body</MyDialog>
+
+DefaultOn.story = {
+  name: 'Default on',
+}
+
+export const DefaultOnAndPersist = () => (
+  <MyDialog defaultOn persist>
+    Body
+  </MyDialog>
+)
+
+DefaultOnAndPersist.story = {
+  name: 'Default on and persist',
+}
+
+export const WithLongBody = () => (
+  <MyDialog>
+    <div style={{ display: 'grid', gridGap: 16 }}>
+      <Input id="email" type="email" label="Email address" />
+      <Input id="fname" label="First name" />
+      <Input id="lname" label="Last name" />
+      <Input id="message" label="Message" as="textarea" rows="4" />
+      <Select
+        items={items}
+        id="language"
+        label="Language"
+        onChange={selection => console.log(selection)}
+        initialSelectedItem={items[1]}
+      />
+    </div>
+  </MyDialog>
+)
+
+WithLongBody.story = {
+  name: 'With long body',
+}
+
+export const WithHook = () => <HooksDialog />
+
+WithHook.story = {
+  name: 'useDialog()',
+}
+
+export const Controlled = () => <ControlledDialog />

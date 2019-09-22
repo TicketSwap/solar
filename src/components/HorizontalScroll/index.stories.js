@@ -1,9 +1,12 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { HorizontalScroll } from './'
 import { Button } from '../Button'
 
-storiesOf('HorizontalScroll', module).add('basic', () => (
+export default {
+  title: 'HorizontalScroll',
+}
+
+export const Basic = () => (
   <HorizontalScroll>
     <Button rounded>Button</Button>
     <Button rounded>Button</Button>
@@ -18,4 +21,4 @@ storiesOf('HorizontalScroll', module).add('basic', () => (
     <Button rounded>Button</Button>
     <Button rounded>Button</Button>
   </HorizontalScroll>
-))
+)

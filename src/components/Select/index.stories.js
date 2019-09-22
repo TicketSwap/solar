@@ -1,5 +1,4 @@
 import React from 'react'
-import { storiesOf } from '@storybook/react'
 import { Select } from './'
 
 const items = [
@@ -12,7 +11,11 @@ const items = [
   { value: 'es', name: 'Spanish' },
 ]
 
-storiesOf('Select', module).add('basic', () => (
+export default {
+  title: 'Select',
+}
+
+export const Basic = () => (
   <Select
     items={items}
     id="language"
@@ -21,4 +24,4 @@ storiesOf('Select', module).add('basic', () => (
     onChange={selection => console.log(selection)}
     initialSelectedItem={items[1]}
   />
-))
+)

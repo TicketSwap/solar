@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { storiesOf } from '@storybook/react'
 import { Loudspeaker } from '@ticketswap/comets'
 import { BasicCard } from './'
 
@@ -35,75 +34,98 @@ const cards = [
   },
 ]
 
-storiesOf('BasicCard', module)
-  .add('basic', () => (
-    <Container>
-      {cards.map(card => (
-        <a href="/">
-          <BasicCard
-            title={card.title}
-            subtitle={card.info}
-            info={card.tickets}
-          />
-        </a>
-      ))}
-    </Container>
-  ))
-  .add('basic loading', () => (
-    <Container>
-      {cards.map(card => (
-        <a href="/">
-          <BasicCard
-            title={card.title}
-            subtitle={card.info}
-            info={card.tickets}
-            loading={true}
-          />
-        </a>
-      ))}
-    </Container>
-  ))
-  .add('with image', () => (
-    <Container>
-      {cards.map(card => (
-        <a href="/">
-          <BasicCard
-            imageUrl={card.image}
-            title={card.title}
-            subtitle={card.info}
-            info={card.tickets}
-          />
-        </a>
-      ))}
-    </Container>
-  ))
-  .add('with image and icon', () => (
-    <Container>
-      {cards.map(card => (
-        <a href="/">
-          <BasicCard
-            imageUrl={card.image}
-            adornment={<Loudspeaker size={48} />}
-            title={card.title}
-            subtitle={card.info}
-            info={card.tickets}
-          />
-        </a>
-      ))}
-    </Container>
-  ))
-  .add('with image loading', () => (
-    <Container>
-      {cards.map(card => (
-        <a href="/">
-          <BasicCard
-            imageUrl={'Image'}
-            title={card.title}
-            subtitle={card.info}
-            info={card.tickets}
-            loading={true}
-          />
-        </a>
-      ))}
-    </Container>
-  ))
+export default {
+  title: 'BasicCard',
+}
+
+export const Basic = () => (
+  <Container>
+    {cards.map(card => (
+      <a href="/">
+        <BasicCard
+          title={card.title}
+          subtitle={card.info}
+          info={card.tickets}
+        />
+      </a>
+    ))}
+  </Container>
+)
+
+export const BasicLoading = () => (
+  <Container>
+    {cards.map(card => (
+      <a href="/">
+        <BasicCard
+          title={card.title}
+          subtitle={card.info}
+          info={card.tickets}
+          loading={true}
+        />
+      </a>
+    ))}
+  </Container>
+)
+
+BasicLoading.story = {
+  name: 'Basic loading',
+}
+
+export const WithImage = () => (
+  <Container>
+    {cards.map(card => (
+      <a href="/">
+        <BasicCard
+          imageUrl={card.image}
+          title={card.title}
+          subtitle={card.info}
+          info={card.tickets}
+        />
+      </a>
+    ))}
+  </Container>
+)
+
+WithImage.story = {
+  name: 'With image',
+}
+
+export const WithImageAndIcon = () => (
+  <Container>
+    {cards.map(card => (
+      <a href="/">
+        <BasicCard
+          imageUrl={card.image}
+          adornment={<Loudspeaker size={48} />}
+          title={card.title}
+          subtitle={card.info}
+          info={card.tickets}
+        />
+      </a>
+    ))}
+  </Container>
+)
+
+WithImageAndIcon.story = {
+  name: 'With image and icon',
+}
+
+export const WithImageLoading = () => (
+  <Container>
+    {cards.map(card => (
+      <a href="/">
+        <BasicCard
+          imageUrl={'Image'}
+          title={card.title}
+          subtitle={card.info}
+          info={card.tickets}
+          loading={true}
+        />
+      </a>
+    ))}
+  </Container>
+)
+
+WithImageLoading.story = {
+  name: 'With image loading',
+}
