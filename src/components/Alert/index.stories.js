@@ -64,44 +64,12 @@ WithAction.story = {
   name: 'With action',
 }
 
-export const InfoWithPrimaryAction = () => (
-  <Alert
-    primaryAction={{
-      label: 'More info',
-      onClick: () => console.log('primaryAction clicked'),
-    }}
-  >
-    Last time you didn’t finish your listing. You can continue below or create a
-    new listing.
-  </Alert>
-)
-
-InfoWithPrimaryAction.story = {
-  name: 'Info with primary action',
-}
-
-export const InfoWithSecondaryAction = () => (
-  <Alert
-    secondaryAction={{
-      label: 'Create new listing',
-      onClick: () => console.log('secondaryAction clicked'),
-    }}
-  >
-    Last time you didn’t finish your listing. You can continue below or create a
-    new listing.
-  </Alert>
-)
-
-InfoWithSecondaryAction.story = {
-  name: 'Info with secondary action',
-}
-
 export const Success = () => (
   <Alert
     variant="success"
-    primaryAction={{
+    action={{
       label: 'View',
-      onClick: () => console.log('primaryAction clicked'),
+      onClick: () => console.log('action clicked'),
     }}
   >
     Wanted <a href="https://example.com">listing</a> created!
@@ -111,9 +79,9 @@ export const Success = () => (
 export const Error = () => (
   <Alert
     variant="error"
-    primaryAction={{
+    action={{
       label: 'Fix',
-      onClick: () => console.log('primaryAction clicked'),
+      onClick: () => console.log('action clicked'),
     }}
   >
     There’s a currency <a href="https://example.com">mismatch</a>
@@ -123,9 +91,9 @@ export const Error = () => (
 export const Warning = () => (
   <Alert
     variant="warning"
-    primaryAction={{
+    action={{
       label: 'Turn on',
-      onClick: () => console.log('primaryAction clicked'),
+      onClick: () => console.log('action clicked'),
     }}
   >
     <a href="https://example.com">Notifications</a> are disabled

@@ -15,7 +15,6 @@ import {
   InfoRounded,
   WarningRounded,
   CheckmarkRounded,
-  ChevronRight,
 } from '@ticketswap/comets'
 
 const textColor = props => css`
@@ -108,67 +107,6 @@ const Action = styled.button`
   }
 `
 
-const PrimaryAction = styled.button`
-  ${textColor};
-  outline: 0;
-  font-weight: ${fontWeight.bold};
-  flex-shrink: 0;
-  padding-top: ${10 / 16}rem;
-  padding-bottom: ${10 / 16}rem;
-  padding-left: ${space[16]};
-  padding-right: ${space[16]};
-  transition: color ${transition};
-
-  @media ${device.tablet} {
-    padding-top: ${14 / 16}rem;
-    padding-bottom: ${14 / 16}rem;
-  }
-
-  &:focus {
-    box-shadow: none;
-  }
-
-  &:hover,
-  &:focus {
-    color: ${props =>
-      props.variant === 'success'
-        ? color.titanLight
-        : props.variant === 'error'
-        ? color.marsLight
-        : props.variant === 'warning'
-        ? color.sunLight
-        : color.earthLight};
-  }
-`
-
-const SecondaryAction = styled.button`
-  color: ${color.space};
-  font-weight: ${fontWeight.bold};
-  outline: 0;
-  margin-top: ${6 / 16}rem;
-
-  @media ${device.tablet} {
-    margin-top: ${6 / 16}rem;
-  }
-
-  &:focus {
-    box-shadow: none;
-  }
-`
-
-const SecondaryActionAdornment = styled.span`
-  position: relative;
-  display: inline-block;
-  padding-left: ${space[4]};
-  top: -1px;
-  transition: transform ${transition};
-
-  ${SecondaryAction}:hover &,
-  ${SecondaryAction}:focus & {
-    transform: translate3d(0.25rem, 0, 0);
-  }
-`
-
 export const Alert = props => {
   return (
     <Container {...props}>
@@ -184,43 +122,19 @@ export const Alert = props => {
         )}
       </Adornment>
       <Main>
-        <Message primaryAction={props.primaryAction}>{props.children}</Message>
+        <Message>{props.children}</Message>
         {props.action && (
           <Action variant={props.variant} onClick={props.action.onClick}>
             {props.action.label}
           </Action>
         )}
-        {props.secondaryAction && (
-          <SecondaryAction onClick={props.secondaryAction.onClick}>
-            {props.secondaryAction.label}
-            <SecondaryActionAdornment>
-              <ChevronRight size={16} />
-            </SecondaryActionAdornment>
-          </SecondaryAction>
-        )}
       </Main>
-      {props.primaryAction && (
-        <PrimaryAction
-          variant={props.variant}
-          onClick={props.primaryAction.onClick}
-        >
-          {props.primaryAction.label}
-        </PrimaryAction>
-      )}
     </Container>
   )
 }
 
 Alert.propTypes = {
   variant: PropTypes.oneOf(['info', 'success', 'error', 'warning']),
-  primaryAction: PropTypes.shape({
-    label: PropTypes.string,
-    onClick: PropTypes.func,
-  }),
-  secondaryAction: PropTypes.shape({
-    label: PropTypes.string,
-    onClick: PropTypes.func,
-  }),
   action: PropTypes.shape({
     label: PropTypes.string,
     onClick: PropTypes.func,

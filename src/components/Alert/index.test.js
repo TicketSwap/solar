@@ -8,33 +8,26 @@ expect.extend(matchers)
 
 describe('Alert', () => {
   it('renders without crashing and calls action handlers', () => {
-    const primaryAction = jest.fn()
-    const secondaryAction = jest.fn()
+    const action = jest.fn()
     const { container, getByText } = render(
       <Alert
-        primaryAction={{
-          label: 'Primary Action',
-          onClick: primaryAction,
-        }}
-        secondaryAction={{
-          label: 'Secondary Action',
-          onClick: secondaryAction,
+        action={{
+          label: 'Action',
+          onClick: action,
         }}
       >
         Body
       </Alert>
     )
     expect(container.firstChild).toBeInTheDocument()
-    fireEvent.click(getByText(/primary action/i))
-    expect(primaryAction).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText(/secondary action/i))
-    expect(secondaryAction).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText(/action/i))
+    expect(action).toHaveBeenCalledTimes(1)
   })
 
   it('renders info colors correctly', () => {
     const { container, getByText } = render(
       <Alert
-        primaryAction={{
+        action={{
           label: 'Action',
           onClick: jest.fn(),
         }}
@@ -53,7 +46,7 @@ describe('Alert', () => {
     const { container, getByText } = render(
       <Alert
         variant="success"
-        primaryAction={{
+        action={{
           label: 'Action',
           onClick: jest.fn(),
         }}
@@ -72,7 +65,7 @@ describe('Alert', () => {
     const { container, getByText } = render(
       <Alert
         variant="error"
-        primaryAction={{
+        action={{
           label: 'Action',
           onClick: jest.fn(),
         }}
@@ -91,7 +84,7 @@ describe('Alert', () => {
     const { container, getByText } = render(
       <Alert
         variant="warning"
-        primaryAction={{
+        action={{
           label: 'Action',
           onClick: jest.fn(),
         }}
