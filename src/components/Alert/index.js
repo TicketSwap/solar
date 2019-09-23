@@ -107,7 +107,7 @@ const Action = styled.button`
   }
 `
 
-export const Alert = props => {
+export const Alert = ({ action, ...props }) => {
   return (
     <Container {...props}>
       <Adornment variant={props.variant}>
@@ -123,9 +123,9 @@ export const Alert = props => {
       </Adornment>
       <Main>
         <Message>{props.children}</Message>
-        {props.action && (
-          <Action variant={props.variant} onClick={props.action.onClick}>
-            {props.action.label}
+        {action && (
+          <Action variant={props.variant} onClick={action.onClick}>
+            {action.label}
           </Action>
         )}
       </Main>
