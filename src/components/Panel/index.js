@@ -38,6 +38,8 @@ export const PanelContent = styled.div`
 `
 
 export const PanelBody = styled.div`
+  width: 100%;
+
   > * + * {
     margin-top: ${space[8]};
   }
