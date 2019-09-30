@@ -7,8 +7,8 @@ export const Container = styled.span`
   position: relative;
   padding-left: ${p => (p.leftAdornment ? space[24] : space[8])};
   padding-right: ${space[8]};
-  padding-top: 6px;
-  padding-bottom: 4px;
+  padding-top: 5px;
+  padding-bottom: 3px;
   border-radius: ${space[32]};
   text-align: center;
   white-space: nowrap;
@@ -47,7 +47,9 @@ const LeftAdornment = styled.span`
 export function Pill({ children, ...props }) {
   return (
     <Container {...props}>
-      <LeftAdornment>{props.leftAdornment}</LeftAdornment>
+      {props.leftAdornment && (
+        <LeftAdornment>{props.leftAdornment}</LeftAdornment>
+      )}
       {children}
     </Container>
   )
@@ -58,6 +60,7 @@ Pill.defaultProps = {
 }
 
 Pill.propTypes = {
+  leftAdornment: PropTypes.element,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',
