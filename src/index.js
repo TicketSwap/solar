@@ -9,7 +9,13 @@ export { StarRating } from './components/StarRating'
 export { BasicCard } from './components/BasicCard'
 export { BasicCarousel } from './components/BasicCarousel'
 export { Button } from './components/Button'
-export { Panel } from './components/Panel'
+export {
+  Panel,
+  PanelContent,
+  PanelBody,
+  PanelText,
+  PanelFooter,
+} from './components/Panel'
 export { Pill } from './components/Pill'
 export { BaseButton } from './components/BaseButton'
 export { Toggle } from './components/Toggle'
