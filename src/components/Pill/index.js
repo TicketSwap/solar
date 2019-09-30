@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { color, fontSize, space, fontWeight, shadow } from '../../theme'
+import { color, fontSize, space, fontWeight } from '../../theme'
 
 export const Container = styled.span`
   position: relative;

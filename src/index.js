@@ -55,6 +55,7 @@ export {
   InputMenuFooter,
   InputMenuList,
   InputMenuItem,
+  fieldStyles,
 } from './components/Input'
 export { Logo } from './components/Logo'
 export { MenuButton } from './components/MenuButton'

@@ -24,25 +24,22 @@ const InputWrapper = styled.div`
   align-items: center;
 `
 
-const Field = styled.input`
+export const fieldStyles = props => css`
   font-family: inherit;
-  background-color: ${props =>
-    props.invalid ? color.marsLightestAlpha : color.stardust};
-  border-radius: ${props => (props.rounded ? space[32] : radius.md)};
+  background-color: ${props.invalid ? color.marsLightestAlpha : color.stardust};
+  border-radius: ${props.rounded ? space[32] : radius.md};
   width: 100%;
   font-size: ${fontSize[18]};
-  line-height: ${props =>
-    props.as === 'textarea' ? lineHeight.copy : lineHeight.solid};
-  height: ${props => (props.as === 'textarea' ? 'auto' : space[56])};
-  padding-top: ${props => (props.as === 'textarea' ? space[12] : 0)};
-  padding-bottom: ${props => (props.as === 'textarea' ? space[12] : 0)};
-  padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
-  padding-right: ${props =>
-    (props.value && props.value.length && props.onReset) ||
-    props.isLoading ||
-    props.rightAdornment
-      ? space[48]
-      : space[16]};
+  line-height: ${props.as === 'textarea' ? lineHeight.copy : lineHeight.solid};
+  height: ${props.as === 'textarea' ? 'auto' : space[56]};
+  padding-top: ${props.as === 'textarea' ? space[12] : 0};
+  padding-bottom: ${props.as === 'textarea' ? space[12] : 0};
+  padding-left: ${props.leftAdornment ? space[48] : space[16]};
+  padding-right: ${(props.value && props.value.length && props.onReset) ||
+  props.isLoading ||
+  props.rightAdornment
+    ? space[48]
+    : space[16]};
   color: ${color.space};
   box-shadow: none;
   border: 0;
@@ -51,8 +48,7 @@ const Field = styled.input`
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
 
-  ${props =>
-    props.as === 'textarea' &&
+  ${props.as === 'textarea' &&
     css`
       resize: vertical;
       min-height: ${space[96]};
@@ -76,8 +72,7 @@ const Field = styled.input`
   &.focus {
     outline: none;
     box-shadow: ${shadow.strong};
-    background-color: ${props =>
-      props.invalid ? color.marsLightestAlpha : 'white'};
+    background-color: ${props.invalid ? color.marsLightestAlpha : 'white'};
   }
 
   &::placeholder {
@@ -91,6 +86,10 @@ const Field = styled.input`
   &::-webkit-search-cancel-button {
     display: none;
   }
+`
+
+const Field = styled.input`
+  ${fieldStyles};
 `
 
 export const Label = styled.label`

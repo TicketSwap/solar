@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
-import { space, shadow, device, color, radius, easing } from '../../theme'
+import { space, shadow, device, radius, easing } from '../../theme'
 import { useTransition } from '../../hooks'
 
 const duration = 400
