@@ -26,7 +26,7 @@ export const PanelContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: white;
+  background-color: ${p => (p.bgColor ? p.bgColor : 'white')};
 
   & + ${() => PanelContent} {
     border-top: 1px solid ${color.spaceLightest};
