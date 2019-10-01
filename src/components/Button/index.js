@@ -54,7 +54,7 @@ const StyledButton = styled.button`
     background-color 100ms ${easing.easeInOutCubic},
     text-shadow 100ms ${easing.easeInOutCubic};
 
-  svg {
+  svg:not([aria-label='Spinner']) {
     filter: drop-shadow(${shadow.text});
   }
 
