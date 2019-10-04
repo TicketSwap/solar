@@ -54,9 +54,13 @@ const StyledButton = styled.button`
     background-color 100ms ${easing.easeInOutCubic},
     text-shadow 100ms ${easing.easeInOutCubic};
 
-  svg:not([aria-label='Spinner']) {
-    filter: drop-shadow(${shadow.text});
-  }
+  ${props =>
+    props.variant !== 'secondary' &&
+    css`
+      svg:not([aria-label='Spinner']) {
+        filter: drop-shadow(${shadow.text});
+      }
+    `};
 
   ${props =>
     props.variant === 'primary' &&

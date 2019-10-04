@@ -58,6 +58,16 @@ AsHyperlink.story = {
 }
 
 export const Secondary = () => <Button variant="secondary">Secondary</Button>
+export const SecondaryWithIcon = () => (
+  <Button variant="secondary" leftAdornment={<Facebook size={24} />}>
+    Secondary
+  </Button>
+)
+
+SecondaryWithIcon.story = {
+  name: 'Secondary with icon',
+}
+
 export const Caution = () => <Button variant="caution">Turn off alerts</Button>
 export const Inverted = () => <Button variant="inverted">Inverted</Button>
 
