@@ -90,6 +90,7 @@
   "dependencies": {
     "@reach/auto-id": "^0.2.0",
     "@ticketswap/comets": "^2.2.0",
-    "compute-scroll-into-view": "^1.0.11"
+    "compute-scroll-into-view": "^1.0.11",
+    "react-dropzone": "^10.1.9"
   }
 }
