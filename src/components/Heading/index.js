@@ -35,7 +35,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
   font-weight: ${fontWeight.regular};
   font-size: ${fontSize[18]};
-  line-height: ${lineHeight.title};
+  line-height: ${lineHeight.copy};
 
   @media ${device.tablet} {
     font-size: ${fontSize[20]};
