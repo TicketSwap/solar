@@ -55,7 +55,7 @@
     "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.1",
     "husky": "^3.0.7",
     "is-ci-cli": "^1.1.1",
