@@ -1477,6 +1477,11 @@
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.2.0.tgz#97f9e48fe736aa5c6f4f32cf73c1f19d005f8550"
   integrity sha512-lVK/svL2HuQdp7jgvlrLkFsUx50Az9chAhxpiPwBqcS83I2pVWvXp98FOcSCCJCV++l115QmzHhFd+ycw1zLBg==
 
+"@reach/auto-id@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.3.0.tgz#c66b2fc29b5f7e8a7fe1a379dacf33b9b4e27fb1"
+  integrity sha512-FANI91t71NpexgYwMwQ9tm6mJinsVtgXJEVGhs1bf6ZN2Kf8gA9hRSlFXU+W19F1WXFkJQPjRLUE0ASAbUZADw==
+
 "@reach/router@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.2.1.tgz#34ae3541a5ac44fa7796e5506a5d7274a162be4e"
