@@ -34,7 +34,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-react": "^7.6.3",
     "@emotion/core": "^10.0.21",
     "@emotion/styled": "^10.0.17",
     "@storybook/addon-docs": "^5.2.1",
