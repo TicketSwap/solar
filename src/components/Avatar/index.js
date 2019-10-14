@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   min-width: ${props => props.size && `${props.size}px`};
   min-height: ${props => props.size && `${props.size}px`};
   background-color: ${color.stardust};
-  border-radius: 100%;
+  border-radius: 50%;
   position: relative;
   overflow: hidden;
   backface-visibility: hidden;
@@ -29,6 +29,7 @@ const imageStyles = css`
   bottom: 0;
   height: 100%;
   width: 100%;
+  border-radius: 50%;
 `
 
 const StyledImage = styled(Image)`
