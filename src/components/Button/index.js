@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'secondary' &&
     css`
-      background-color: ${props.active ? color.earth : '#F0FBFE'};
+      background-color: ${props.active ? color.earth : color.sky};
       color: ${props.active ? 'white' : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
     `};
