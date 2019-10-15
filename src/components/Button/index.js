@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'secondary' &&
     css`
-      background-color: ${props.active ? color.earth : color.sky};
+      background-color: ${props.active ? color.earth : color.skyLighter};
       color: ${props.active ? 'white' : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
     `};
@@ -219,7 +219,7 @@ const StyledButton = styled.button`
     ${props =>
       props.variant === 'secondary' &&
       css`
-        background-color: ${props.active ? color.earthLight : '#E0F6FD'};
+        background-color: ${props.active ? color.earthLight : color.sky};
         color: ${props.active ? 'white' : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
       `};
@@ -297,7 +297,7 @@ const StyledButton = styled.button`
       props.disabled &&
       css`
         color: ${color.earthLighterAlpha};
-        background-color: #f0fbfe;
+        background-color: ${color.skyLighter};
       `};
 
     ${props =>

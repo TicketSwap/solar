@@ -25,7 +25,7 @@ export const Container = styled.span`
     p.variant === 'danger'
       ? color.mars
       : p.variant === 'secondary'
-      ? color.sky
+      ? color.skyLighter
       : p.variant === 'success'
       ? color.titan
       : p.variant === 'warning'
