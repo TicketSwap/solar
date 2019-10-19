@@ -3,9 +3,38 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { H4, H5 } from '../Heading'
 import { Image } from '../Image'
-import { Card } from '../Card'
 import { SkeletonLine } from '../Skeleton'
-import { color, fontWeight, fontSize, device, transition } from '../../theme'
+import {
+  color,
+  space,
+  fontWeight,
+  fontSize,
+  device,
+  transition,
+} from '../../theme'
+
+const Container = styled.div`
+  white-space: normal;
+  color: ${color.space};
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+  margin-bottom: ${space[8]};
+`
+
+const Adornment = styled.div`
+  position: absolute;
+  z-index: 2;
+  color: white;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const StyledH4 = styled(H4)`
   color: ${props => (props.colored ? color.earth : color.space)};
@@ -30,6 +59,18 @@ const StyledStrong = styled.strong`
     font-size: ${fontSize[16]};
   }
 `
+
+const Card = ({ image, adornment, children, ...props }) => (
+  <Container {...props}>
+    {image && (
+      <ImageWrapper>
+        {adornment && <Adornment>{adornment}</Adornment>}
+        {image}
+      </ImageWrapper>
+    )}
+    {children}
+  </Container>
+)
 
 export const BasicCard = ({
   loading,
