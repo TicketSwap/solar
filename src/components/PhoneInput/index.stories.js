@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { PhoneInput } from './'
 
 const countries = [
@@ -46,6 +46,24 @@ export const Basic = () => (
     onChange={e => console.log(e)}
   />
 )
+
+export const BasicWithRef = () => {
+  const inputRef = useRef()
+
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
+  return (
+    <PhoneInput
+      id="phonenumber"
+      label="Phone number"
+      countries={countries}
+      ref={inputRef}
+      onChange={e => console.log(e)}
+    />
+  )
+}
 
 export const WithInitialValues = () => (
   <PhoneInput
