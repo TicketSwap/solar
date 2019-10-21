@@ -55,96 +55,105 @@ function createSelectOptions(countries) {
   }))
 }
 
-export function PhoneInput({
-  countries,
-  help,
-  hideLabel,
-  id,
-  initialNumber,
-  initialSelectedCountry,
-  label,
-  onChange,
-  validateCountry,
-  validateNumber,
-  ...props
-}) {
-  const inputRef = React.useRef()
-  const options = createSelectOptions(countries)
-  const intialSelectedIndex = initialSelectedCountry
-    ? countries.indexOf(initialSelectedCountry)
-    : 0
-  const [country, setCountry] = React.useState(
-    countries[intialSelectedIndex || 0]
-  )
-  const [number, setNumber] = React.useState(initialNumber ? initialNumber : '')
-  const { isMobile } = useDeviceInfo()
-  const inputId = `phone-input-${useId()}`
+export const PhoneInput = React.forwardRef(
+  (
+    {
+      countries,
+      help,
+      hideLabel,
+      id,
+      initialNumber,
+      initialSelectedCountry,
+      label,
+      onChange,
+      validateCountry,
+      validateNumber,
+      ...props
+    },
+    ref
+  ) => {
+    const inputRef = ref ? ref : React.useRef()
+    const options = createSelectOptions(countries)
+    const intialSelectedIndex = initialSelectedCountry
+      ? countries.indexOf(initialSelectedCountry)
+      : 0
+    const [country, setCountry] = React.useState(
+      countries[intialSelectedIndex || 0]
+    )
+    const [number, setNumber] = React.useState(
+      initialNumber ? initialNumber : ''
+    )
+    const { isMobile } = useDeviceInfo()
+    const inputId = `phone-input-${useId()}`
 
-  return (
-    <Label htmlFor={id}>
-      {hideLabel ? (
-        <VisuallyHidden>
+    return (
+      <Label htmlFor={id}>
+        {hideLabel ? (
+          <VisuallyHidden>
+            <LabelText>{label}</LabelText>
+          </VisuallyHidden>
+        ) : (
           <LabelText>{label}</LabelText>
-        </VisuallyHidden>
-      ) : (
-        <LabelText>{label}</LabelText>
-      )}
-      <InputGroup id={id}>
-        <SelectWrapper>
-          {isMobile() && (
-            <FauxSelectWrapper>
-              <Input
-                id={`${inputId}-faux-country`}
-                label="Country"
-                hideLabel
-                value={`+${country.code}`}
-                leftAdornment={<Flag countryCode={country && country.value} />}
-                rightAdornment={<ArrowDown size={16} />}
-                onChange={() => {}}
-              />
-            </FauxSelectWrapper>
-          )}
-          <Select
-            id={`${inputId}-country`}
-            label="Country"
-            hideLabel
-            items={options}
-            floatingMenu
-            validate={validateCountry}
-            initialSelectedItem={options[intialSelectedIndex]}
-            leftAdornment={<Flag countryCode={country && country.value} />}
-            onChange={e => {
-              const selectedCountry = countries.filter(
-                c => c.value === e.value
-              )[0]
-              setCountry(selectedCountry)
-              onChange({ country: selectedCountry, number })
-              if (typeof requestAnimationFrame === 'undefined') return false
-              requestAnimationFrame(() => inputRef.current.focus())
-            }}
-          />
-        </SelectWrapper>
-        <InputWrapper>
-          <Input
-            id={`${inputId}-number`}
-            label="Number"
-            ref={inputRef}
-            hideLabel
-            type="number"
-            value={number}
-            validate={validateNumber}
-            {...props}
-            onChange={e => {
-              setNumber(e.target.value)
-              onChange({ country, number: e.target.value })
-            }}
-          />
-        </InputWrapper>
-      </InputGroup>
-      {help && <Help>{help}</Help>}
-    </Label>
-  )
-}
+        )}
+        <InputGroup id={id}>
+          <SelectWrapper>
+            {isMobile() && (
+              <FauxSelectWrapper>
+                <Input
+                  id={`${inputId}-faux-country`}
+                  label="Country"
+                  hideLabel
+                  value={`+${country.code}`}
+                  leftAdornment={
+                    <Flag countryCode={country && country.value} />
+                  }
+                  rightAdornment={<ArrowDown size={16} />}
+                  onChange={() => {}}
+                />
+              </FauxSelectWrapper>
+            )}
+            <Select
+              id={`${inputId}-country`}
+              label="Country"
+              hideLabel
+              items={options}
+              floatingMenu
+              validate={validateCountry}
+              initialSelectedItem={options[intialSelectedIndex]}
+              leftAdornment={<Flag countryCode={country && country.value} />}
+              onChange={e => {
+                const selectedCountry = countries.filter(
+                  c => c.value === e.value
+                )[0]
+                setCountry(selectedCountry)
+                onChange({ country: selectedCountry, number })
+                if (typeof requestAnimationFrame === 'undefined') return false
+                requestAnimationFrame(() => inputRef.current.focus())
+              }}
+            />
+          </SelectWrapper>
+          <InputWrapper>
+            <Input
+              id={`${inputId}-number`}
+              label="Number"
+              ref={inputRef}
+              hideLabel
+              type="number"
+              value={number}
+              validate={validateNumber}
+              {...props}
+              onChange={e => {
+                setNumber(e.target.value)
+                onChange({ country, number: e.target.value })
+              }}
+            />
+          </InputWrapper>
+        </InputGroup>
+        {help && <Help>{help}</Help>}
+      </Label>
+    )
+  }
+)
 
 PhoneInput.defaultProps = {
   onChange: () => {},
