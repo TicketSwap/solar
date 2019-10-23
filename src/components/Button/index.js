@@ -73,7 +73,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'secondary' &&
     css`
-      background-color: ${props.active ? color.earth : color.skyLighter};
+      background-color: ${props.active ? color.earth : color.skyLight};
       color: ${props.active ? 'white' : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
     `};
@@ -297,7 +297,7 @@ const StyledButton = styled.button`
       props.disabled &&
       css`
         color: ${color.earthLighterAlpha};
-        background-color: ${color.skyLighter};
+        background-color: ${color.skyLight};
       `};
 
     ${props =>

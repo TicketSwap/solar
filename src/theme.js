@@ -27,7 +27,7 @@ export const color = {
   earthFocusAlpha: 'rgba(0,182,240,0.24)',
 
   sky: 'rgb(224,246,253)',
-  skyLighter: 'rgb(240,251,254)',
+  skyLight: 'rgb(240,251,254)',
 
   titan: 'rgb(0,206,92)',
   titanLight: 'rgb(51,216,125)',
