@@ -42,34 +42,6 @@ WithToast.story = {
   name: 'useToast()',
 }
 
-export const NetworkStatus = () => {
-  const { notify } = useToast()
-  const reset = React.useRef(null)
-
-  React.useEffect(() => {
-    function handleStatusChange({ type }) {
-      if (type === 'offline') {
-        notify(remove => {
-          reset.current = remove
-          return <Toast persist>You are offline</Toast>
-        })
-      } else {
-        reset.current()
-      }
-    }
-
-    window.addEventListener('online', handleStatusChange)
-    window.addEventListener('offline', handleStatusChange)
-
-    return () => {
-      window.removeEventListener('online', handleStatusChange)
-      window.removeEventListener('offline', handleStatusChange)
-    }
-  }, [notify])
-
-  return null
-}
-
 export const Persistent = () => (
   <ToastConsumer>
     {({ notify }) => (
