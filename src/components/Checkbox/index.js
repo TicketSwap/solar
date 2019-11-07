@@ -72,6 +72,7 @@ export const Checkbox = React.forwardRef(
     const [on, setOn] = React.useState(defaultOn || false)
     const isOnControlled = () => props.on !== undefined
     const getOn = () => (isOnControlled() ? props.on : on)
+    const { on: _, ...otherProps } = props
 
     return (
       <Label htmlFor={props.id} className={className}>
@@ -79,7 +80,7 @@ export const Checkbox = React.forwardRef(
           type="checkbox"
           ref={ref}
           checked={getOn()}
-          {...props}
+          {...otherProps}
           onChange={e => {
             if (!isOnControlled()) {
               setOn(e.target.checked)
