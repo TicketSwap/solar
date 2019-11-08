@@ -12,16 +12,14 @@ export const HorizontalScroll = styled.div`
   padding-left: ${space[16]};
   padding-right: ${space[16]};
   scrollbar-width: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
   ::-webkit-scrollbar {
     display: none;
   }
 
   @media ${device.tablet} {
     padding: 0;
-  }
-
-  ::-webkit-scrollbar {
-    display: none;
   }
 
   > * + * {
