@@ -76,7 +76,11 @@ const Content = styled.div`
 const Header = styled.header`
   padding: 0;
   flex-grow: 0;
-  margin-right: ${space[16]};
+  margin-right: ${space[12]};
+
+  @media ${device.mobileL} {
+    margin-right: ${space[16]};
+  }
 `
 
 const Body = styled.div`
@@ -90,7 +94,11 @@ const Body = styled.div`
 const Footer = styled.footer`
   padding: 0;
   flex-grow: 0;
-  margin-left: ${space[16]};
+  margin-left: ${space[12]};
+
+  @media ${device.mobileL} {
+    margin-left: ${space[16]};
+  }
 `
 
 const textStyles = css`
@@ -129,7 +137,7 @@ const Subtitle = styled.h5`
 const Text = styled.span`
   ${textStyles};
   font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
-  opacity: 0.5;
+  opacity: 0.6;
   margin-top: 0.125rem;
 
   @media ${device.mobileL} {
