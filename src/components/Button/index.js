@@ -133,29 +133,8 @@ const StyledButton = styled.button`
   ${props =>
     props.disabled &&
     css`
-      color: rgba(255, 255, 255, 0.6);
-    `};
-
-  ${props =>
-    props.variant === 'secondary' &&
-    props.disabled &&
-    css`
-      color: ${color.earthLighterAlpha};
-    `};
-
-  ${props =>
-    props.variant === 'caution' &&
-    props.disabled &&
-    css`
-      color: ${color.marsLighterAlpha};
-    `};
-
-  ${props =>
-    props.variant === 'inverted' &&
-    props.disabled &&
-    css`
-      background-color: white;
-      color: ${color.earthLighter};
+      opacity: 0.5;
+      pointer-events: none;
     `};
 
   &:focus {
@@ -263,79 +242,14 @@ const StyledButton = styled.button`
       css`
         background-color: ${color.facebookLight};
       `};
-
-    ${props =>
-      props.disabled &&
-      css`
-        color: rgba(255, 255, 255, 0.6);
-        background-color: ${color.earth};
-      `};
-
-    ${props =>
-      props.variant === 'success' &&
-      props.disabled &&
-      css`
-        background-color: ${color.titan};
-      `};
-
-    ${props =>
-      props.variant === 'warning' &&
-      props.disabled &&
-      css`
-        background-color: ${color.sun};
-      `};
-
-    ${props =>
-      props.variant === 'danger' &&
-      props.disabled &&
-      css`
-        background-color: ${color.mars};
-      `};
-
-    ${props =>
-      props.variant === 'secondary' &&
-      props.disabled &&
-      css`
-        color: ${color.earthLighterAlpha};
-        background-color: ${color.skyLight};
-      `};
-
-    ${props =>
-      props.variant === 'caution' &&
-      props.disabled &&
-      css`
-        color: ${color.marsLighterAlpha};
-        background-color: #fff4f4;
-      `};
-
-    ${props =>
-      props.variant === 'facebook' &&
-      props.disabled &&
-      css`
-        background-color: ${color.facebook};
-      `};
-
-    ${props =>
-      props.variant === 'inverted' &&
-      props.disabled &&
-      css`
-        background-color: white;
-        color: ${color.earthLighter};
-      `};
   }
 
   &:active {
     outline: 0;
+    background-image: none;
+    background-color: ${color.earthLight};
 
     ${props =>
-      !props.disabled &&
-      css`
-        background-image: none;
-        background-color: ${color.earthLight};
-      `};
-
-    ${props =>
-      !props.disabled &&
       props.variant === 'secondary' &&
       css`
         background-color: ${props.active
@@ -346,7 +260,6 @@ const StyledButton = styled.button`
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'caution' &&
       css`
         background-color: ${color.marsLightest};
@@ -355,35 +268,30 @@ const StyledButton = styled.button`
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'success' &&
       css`
         background-color: ${color.titanLight};
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'warning' &&
       css`
         background-color: ${color.sunLight};
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'danger' &&
       css`
         background-color: ${color.marsLight};
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'facebook' &&
       css`
         background-color: ${color.facebookLight};
       `};
 
     ${props =>
-      !props.disabled &&
       props.variant === 'inverted' &&
       css`
         color: ${color.earth};
