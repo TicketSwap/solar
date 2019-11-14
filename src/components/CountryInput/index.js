@@ -42,9 +42,11 @@ export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
                     .filter(
                       item =>
                         !inputValue ||
-                        item.name
-                          .toLowerCase()
-                          .includes(inputValue.toLowerCase())
+                        (item &&
+                          item.name &&
+                          item.name
+                            .toLowerCase()
+                            .includes(inputValue.toLowerCase()))
                     )
                     .map((item, index) => (
                       <InputMenuItem
