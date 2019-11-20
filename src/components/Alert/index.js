@@ -124,7 +124,11 @@ export const Alert = ({ action, ...props }) => {
       <Main>
         <Message>{props.children}</Message>
         {action && (
-          <Action variant={props.variant} onClick={action.onClick}>
+          <Action
+            variant={props.variant}
+            onClick={action.onClick}
+            type="button"
+          >
             {action.label}
           </Action>
         )}
