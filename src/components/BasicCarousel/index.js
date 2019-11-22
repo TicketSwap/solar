@@ -228,16 +228,17 @@ export const BasicCarousel = ({
                     },
                   })}
                 >
-                  {items.map((item, i) => (
-                    <ItemContainer
-                      key={i}
-                      itemWidth={itemWidth}
-                      itemWidthSm={itemWidthSm}
-                      itemWidthMd={itemWidthMd}
-                    >
-                      {item}
-                    </ItemContainer>
-                  ))}
+                  {items &&
+                    items.map((item, i) => (
+                      <ItemContainer
+                        key={i}
+                        itemWidth={itemWidth}
+                        itemWidthSm={itemWidthSm}
+                        itemWidthMd={itemWidthMd}
+                      >
+                        {item}
+                      </ItemContainer>
+                    ))}
                 </InnerContainer>
               )}
             </Spring>
