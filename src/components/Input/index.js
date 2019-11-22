@@ -212,6 +212,9 @@ export const Input = React.forwardRef(
         : typeof validate === 'function'
         ? !validate(props.value)
         : !validate
+    const showResetButton =
+      (props.value && props.value.length && props.onReset) ||
+      (!props.value && ref && props.onReset)
 
     return (
       <Label htmlFor={!labelProps && id} {...labelProps}>
@@ -237,7 +240,7 @@ export const Input = React.forwardRef(
             <Adornment right>
               <Spinner size={24} />
             </Adornment>
-          ) : props.value && props.value.length && props.onReset ? (
+          ) : showResetButton ? (
             <Adornment right>
               <ResetButton
                 onClick={props.onReset}
