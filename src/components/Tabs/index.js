@@ -1,26 +1,20 @@
 import React from 'react'
-import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
 import {
   Tabs as ReachTabs,
   TabList as ReachTabList,
   Tab as ReachTab,
 } from '@reach/tabs'
-import { reachStyles } from './reach-styles'
 import { color, radius, space, fontSize, fontWeight } from '../../theme'
 
 export { TabPanels, TabPanel } from '@reach/tabs'
 
 export function Tabs({ children, ...props }) {
-  return (
-    <>
-      <Global styles={reachStyles} />
-      <ReachTabs {...props}>{children}</ReachTabs>
-    </>
-  )
+  return <ReachTabs {...props}>{children}</ReachTabs>
 }
 
 export const TabList = styled(ReachTabList)`
+  display: flex;
   border-radius: ${radius.lg};
   background-color: ${color.stardust};
   padding-top: ${space[8]};
@@ -50,12 +44,23 @@ export const TabList = styled(ReachTabList)`
 `
 
 export const Tab = styled(ReachTab)`
+  display: inline-block;
+  appearance: none;
+  cursor: pointer;
   border: 0;
   background-color: transparent;
   color: ${color.space};
   padding: ${space[4]} ${space[16]};
   font-size: ${fontSize[16]};
   font-weight: ${fontWeight.semiBold};
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:active {
+    background: hsla(0, 0%, 0%, 0.05);
+  }
 
   &[data-selected] {
     color: white;
@@ -68,5 +73,10 @@ export const Tab = styled(ReachTab)`
 
   &[data-selected]:hover {
     background-color: ${color.earth};
+  }
+
+  &:disabled {
+    opacity: 0.25;
+    cursor: default;
   }
 `
