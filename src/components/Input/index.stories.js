@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Input } from './'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
@@ -97,6 +97,31 @@ export const WithClearButton = () => (
 
 WithClearButton.story = {
   name: 'With clear button',
+}
+
+export const UncontrolledInput = () => {
+  const [query, setQuery] = useState('')
+  const inputRef = useRef()
+
+  function handleReset() {
+    setQuery('')
+    inputRef.current.value = ''
+  }
+
+  return (
+    <Input
+      type="search"
+      ref={inputRef}
+      id="id"
+      label="Label"
+      onChange={event => setQuery(event.target.value)}
+      {...(query.length > 0 && { onReset: handleReset })}
+    />
+  )
+}
+
+UncontrolledInput.story = {
+  name: 'Uncontrolled input',
 }
 
 export const WithCustomLabelProps = () => (
