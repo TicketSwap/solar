@@ -48,7 +48,7 @@ const StyledButton = styled.button`
         ? space[44]
         : space[56]
       : 'auto'};
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   height: ${props => (props.size === 'small' ? space[44] : space[56])};
   transition: color 100ms ${easing.easeInOutCubic},
     background-color 100ms ${easing.easeInOutCubic},
@@ -134,7 +134,6 @@ const StyledButton = styled.button`
     props.disabled &&
     css`
       opacity: 0.5;
-      pointer-events: none;
     `};
 
   &:focus {
@@ -186,7 +185,7 @@ const StyledButton = styled.button`
       `};
   }
 
-  &:hover {
+  &:hover:not[disabled] {
     ${props =>
       props.variant === 'primary' &&
       css`
