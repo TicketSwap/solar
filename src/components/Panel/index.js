@@ -11,7 +11,6 @@ import {
 
 export const Panel = styled.div`
   ${fullBleed};
-  overflow: hidden;
   background-color: white;
   box-shadow: ${shadow.strong};
 
@@ -27,6 +26,16 @@ export const PanelContent = styled.div`
   flex-direction: row;
   justify-content: space-between;
   background-color: ${p => (p.bgColor ? p.bgColor : 'white')};
+
+  &:first-of-type {
+    border-top-left-radius: ${radius.lg};
+    border-top-right-radius: ${radius.lg};
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: ${radius.lg};
+    border-bottom-right-radius: ${radius.lg};
+  }
 
   & + ${() => PanelContent} {
     border-top: 1px solid ${color.spaceLightest};
