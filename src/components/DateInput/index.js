@@ -70,9 +70,9 @@ function splitDateString(str) {
   return str.split('-')
 }
 
-function getDate(input, months) {
+function getDate(input) {
   if (!input) {
-    return [null, months[0], null]
+    return [null, null, null]
   }
   if (typeof input === 'string') {
     const [year, month, day] = input.split(/[^0-9]/)
@@ -88,8 +88,7 @@ export function DateInput({ id, label, hideLabel, onChange, ...props }) {
   const dateInputRef = React.useRef()
   const months = createSelectOptions(props.months)
   const [initialYear, initialMonth, initialDay] = getDate(
-    props.initialSelectedDate,
-    months
+    props.initialSelectedDate
   )
   const [year, setYear] = React.useState(initialYear || '')
   const [month, setMonth] = React.useState(initialMonth || 0)
