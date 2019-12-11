@@ -63,10 +63,10 @@ export const Placeholder = () => (
   </InlineSvg>
 )
 
-export const Avatar = ({ size, src, ...props }) => (
+export const Avatar = ({ size, src, alt, ...props }) => (
   <Wrapper size={size} {...props}>
     {src ? (
-      <StyledImage src={src} alt="Avatar" data-testid="image" />
+      <StyledImage src={src} alt={alt} data-testid="image" />
     ) : (
       <Placeholder />
     )}
@@ -75,6 +75,7 @@ export const Avatar = ({ size, src, ...props }) => (
 
 Avatar.defaultProps = {
   size: 32,
+  alt: 'Avatar',
 }
 
 Avatar.propTypes = {
