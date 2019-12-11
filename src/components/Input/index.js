@@ -212,9 +212,13 @@ export const Input = React.forwardRef(
         : typeof validate === 'function'
         ? !validate(props.value)
         : !validate
-    const showResetButton =
-      (props.value && props.value.length && props.onReset) ||
-      (!props.value && ref && props.onReset)
+    const isControlled = typeof props.value !== 'undefined'
+    const value = isControlled
+      ? props.value
+      : ref && ref.current
+      ? ref.current.value
+      : ''
+    const showResetButton = props.onReset && value.length
 
     return (
       <Label htmlFor={!labelProps && id} {...labelProps}>
