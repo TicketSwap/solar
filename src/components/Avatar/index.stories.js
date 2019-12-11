@@ -12,7 +12,10 @@ WithoutImage.story = {
 }
 
 export const WithImage = () => (
-  <Avatar src="https://cdn.ticketswap.com/public/testimonials/201810/0946ce7a-5863-4f9f-9636-5ba8bb8414c3.jpeg" />
+  <Avatar
+    src="https://cdn.ticketswap.com/public/testimonials/201810/0946ce7a-5863-4f9f-9636-5ba8bb8414c3.jpeg"
+    alt="Avatar of Glenn"
+  />
 )
 
 WithImage.story = {
