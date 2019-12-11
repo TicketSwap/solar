@@ -84,16 +84,25 @@ RoundedWithIcon.story = {
   name: 'Rounded with icon',
 }
 
-export const WithClearButton = () => (
-  <Input
-    type="search"
-    value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    id="id"
-    label="Label"
-    onChange={() => console.log('onChange')}
-    onReset={() => console.log('onClear')}
-  />
-)
+export const WithClearButton = () => {
+  const [value, setValue] = React.useState(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  )
+
+  return (
+    <Input
+      type="search"
+      value={value}
+      id="id"
+      label="Label"
+      onChange={event => {
+        setValue(event.target.value)
+        console.log('onChange')
+      }}
+      onReset={() => console.log('onClear')}
+    />
+  )
+}
 
 WithClearButton.story = {
   name: 'With clear button',
@@ -105,6 +114,7 @@ export const UncontrolledInput = () => {
 
   function handleReset() {
     setQuery('')
+    console.log(query)
     inputRef.current.value = ''
   }
 
@@ -115,7 +125,7 @@ export const UncontrolledInput = () => {
       id="id"
       label="Label"
       onChange={event => setQuery(event.target.value)}
-      {...(query.length > 0 && { onReset: handleReset })}
+      onReset={handleReset}
     />
   )
 }
