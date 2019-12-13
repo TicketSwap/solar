@@ -16,6 +16,7 @@ export {
 } from './components/Panel'
 export { Pill } from './components/Pill'
 export { BaseButton } from './components/BaseButton'
+export { Collapsible } from './components/Collapsible'
 export { Toggle } from './components/Toggle'
 export { Checkbox } from './components/Checkbox'
 export { Select } from './components/Select'
