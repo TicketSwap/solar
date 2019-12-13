@@ -17,13 +17,50 @@ const Container = styled.div`
   position: relative;
   border-radius: ${radius.lg};
   padding: ${p =>
-    p.size === 'large' ? p.pad && space[16] : p.pad && space[12]};
+    p.size === 'large' ? !p.hasImage && space[16] : !p.hasImage && space[12]};
   background-color: ${color.stardust};
-  backface-visibility: hidden;
+
+  ${props =>
+    props.hasImage &&
+    css`
+      &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        height: 65%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: ${radius.lg};
+        background-image: linear-gradient(
+          to top,
+          hsla(0, 0%, 0%) 0%,
+          hsla(0, 0%, 0%, 0.738) 19%,
+          hsla(0, 0%, 0%, 0.541) 34%,
+          hsla(0, 0%, 0%, 0.382) 47%,
+          hsla(0, 0%, 0%, 0.278) 56.5%,
+          hsla(0, 0%, 0%, 0.194) 65%,
+          hsla(0, 0%, 0%, 0.126) 73%,
+          hsla(0, 0%, 0%, 0.075) 80.2%,
+          hsla(0, 0%, 0%, 0.042) 86.1%,
+          hsla(0, 0%, 0%, 0.021) 91%,
+          hsla(0, 0%, 0%, 0.008) 95.2%,
+          hsla(0, 0%, 0%, 0.002) 98.2%,
+          hsla(0, 0%, 0%, 0) 100%
+        );
+      }
+    `};
 
   @media ${device.mobileL} {
     padding: ${p =>
-      p.size === 'large' ? p.pad && space[24] : p.pad && space[16]};
+      p.size === 'large' ? !p.hasImage && space[24] : !p.hasImage && space[16]};
+  }
+
+  @media ${device.tablet} {
+    img {
+      object-fit: cover;
+      max-height: ${space[256]};
+    }
   }
 
   &:hover,
@@ -33,30 +70,39 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
+  position: ${props => (props.hasImage ? 'absolute' : 'relative')};
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 4;
+`
+
+const Body = styled.div`
+  flex-grow: 0;
   font-size: ${fontSize[20]};
   font-weight: ${fontWeight.regular};
   display: flex;
   flex-direction: row;
-  align-items: ${props => props.alignItems};
   justify-content: space-between;
+  align-items: ${props =>
+    props.verticalAlign === 'top'
+      ? 'flex-start'
+      : props.verticalAlign === 'bottom'
+      ? 'flex-end'
+      : 'center'};
 
   ${props =>
-    props.floating &&
+    props.hasImage &&
     css`
       padding: ${space[12]};
-      background-image: linear-gradient(
-        to bottom,
-        rgba(0, 19, 25, 0),
-        rgba(0, 19, 25, 0.8)
-      );
-      backdrop-filter: blur(0.5rem);
       border-bottom-left-radius: ${radius.lg};
       border-bottom-right-radius: ${radius.lg};
-      position: absolute;
-      z-index: 1;
-      left: 0;
-      bottom: 0;
-      right: 0;
+      z-index: 3;
+      
 
       @media ${device.mobileL} {
         padding: ${space[16]};
@@ -66,14 +112,14 @@ const Content = styled.div`
       ${Container}:focus & {
         background-image: linear-gradient(
           to bottom,
-          rgba(0, 19, 25, 0.25),
-          rgba(0, 19, 25, 1)
+          rgba(0, 19, 25, 0.1),
+          rgba(0, 19, 25, .5)
         );
       }
     `};
 `
 
-const Header = styled.header`
+const LeftAdornment = styled.header`
   padding: 0;
   flex-grow: 0;
   margin-right: ${space[12]};
@@ -83,7 +129,7 @@ const Header = styled.header`
   }
 `
 
-const Body = styled.div`
+const TextContent = styled.div`
   color: ${props => (props.theme === 'light' ? 'white' : color.space)};
   display: flex;
   flex-direction: column;
@@ -93,7 +139,7 @@ const Body = styled.div`
   overflow: hidden;
 `
 
-const Footer = styled.footer`
+const RightAdornment = styled.footer`
   padding: 0;
   flex-grow: 0;
   margin-left: ${space[12]};
@@ -103,10 +149,7 @@ const Footer = styled.footer`
   }
 `
 
-const textStyles = css`
-  display: block;
-  line-height: ${lineHeight.title};
-
+const truncate = css`
   @media ${device.mobileL} {
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -114,11 +157,22 @@ const textStyles = css`
   }
 `
 
+const clamp = css`
+  @media ${device.mobileL} {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* Limit the text block to two lines */
+    -webkit-line-clamp: 2;
+  }
+`
+
 const Title = styled.h4`
-  ${textStyles};
+  ${props => (props.hasImage ? clamp : truncate)};
   font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
   font-weight: ${fontWeight.semiBold};
-  margin-top: -0.125rem;
+  line-height: ${lineHeight.title};
 
   @media ${device.mobileL} {
     font-size: ${p => (p.size === 'large' ? fontSize[20] : fontSize[18])};
@@ -126,7 +180,7 @@ const Title = styled.h4`
 `
 
 const Subtitle = styled.h5`
-  ${textStyles};
+  ${props => !props.hasImage && truncate};
   font-size: ${p => (p.size === 'large' ? fontSize[16] : fontSize[14])};
   font-weight: ${fontWeight.regular};
 
@@ -136,10 +190,10 @@ const Subtitle = styled.h5`
 `
 
 const Text = styled.span`
-  ${textStyles};
+  ${props => !props.hasImage && truncate};
+  display: block;
   font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
   opacity: 0.6;
-  margin-top: 0.125rem;
 
   @media ${device.mobileL} {
     font-size: ${p => (p.size === 'large' ? fontSize[16] : fontSize[14])};
@@ -147,12 +201,16 @@ const Text = styled.span`
 `
 
 const Description = styled.span`
-  ${textStyles};
+  display: block;
+  line-height: ${lineHeight.title};
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  width: 100%;
   font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
   opacity: 0.6;
   margin-top: 0.75rem;
-  text-overflow: initial;
-  white-space: initial;
 
   @media ${device.mobileL} {
     margin-top: 1rem;
@@ -166,8 +224,10 @@ export function Card({
   text,
   description,
   image,
+  header,
   leftAdornment,
   rightAdornment,
+  verticalAlign,
   size,
   ...props
 }) {
@@ -175,30 +235,48 @@ export function Card({
   const theme = hasImage ? 'light' : props.appearance
 
   return (
-    <Container pad={!hasImage} size={size} {...props}>
+    <Container hasImage={hasImage} size={size} {...props}>
       {hasImage && <Image src={image} alt={title} rounded />}
-      <Content floating={hasImage} alignItems={props.verticalAlign}>
-        {leftAdornment && <Header>{leftAdornment}</Header>}
-        <Body theme={theme}>
-          {title && <Title size={size}>{title}</Title>}
-          {subtitle && <Subtitle size={size}>{subtitle}</Subtitle>}
-          {text && (
-            <Text size={size} theme={theme}>
-              {text}
-            </Text>
-          )}
-          {description && <Description size={size}>{description}</Description>}
+
+      <Content hasImage={hasImage}>
+        <Body hasImage={hasImage} verticalAlign={verticalAlign}>
+          {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
+
+          <TextContent theme={theme}>
+            {title && (
+              <Title size={size} hasImage={hasImage}>
+                {title}
+              </Title>
+            )}
+
+            {subtitle && (
+              <Subtitle size={size} hasImage={hasImage}>
+                {subtitle}
+              </Subtitle>
+            )}
+
+            {text && (
+              <Text size={size} theme={theme} hasImage={hasImage}>
+                {text}
+              </Text>
+            )}
+
+            {description && (
+              <Description size={size}>{description}</Description>
+            )}
+          </TextContent>
+
+          {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}
         </Body>
-        {rightAdornment && <Footer>{rightAdornment}</Footer>}
       </Content>
     </Container>
   )
 }
 
 Card.defaultProps = {
-  verticalAlign: 'center',
   appearance: 'dark',
   size: 'default',
+  verticalAlign: 'center',
 }
 
 Card.propTypes = {
