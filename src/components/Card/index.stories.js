@@ -1,10 +1,27 @@
 import React from 'react'
-import { Card } from './'
 import styled from '@emotion/styled'
+import { Card } from './'
 import { Avatar } from '../Avatar'
-import { color } from '../../theme'
+import { Pill } from '../Pill'
+import { Ticket } from '@ticketswap/comets'
+import { color, space, device, fontSize, lineHeight, radius } from '../../theme'
 
-const Wrapper = story => <div style={{ maxWidth: 400 }}>{story()}</div>
+const Container = styled.div`
+  padding: ${space[16]};
+`
+
+const Grid = styled.div`
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: ${space[8]};
+
+  @media ${device.tablet} {
+    grid-gap: ${space[16]};
+    grid-auto-flow: column;
+  }
+`
+
+const Wrapper = story => <Container>{story()}</Container>
 
 export default {
   title: 'Card',
@@ -12,83 +29,135 @@ export default {
 }
 
 export const Basic = () => (
-  <a href="/">
-    <Card title="Title" />
-  </a>
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" />
+    </a>
+  </Grid>
 )
 
+const Adornment = styled.div`
+  display: block;
+  border-radius: ${radius.sm};
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+`
+
+export const WithAdornment = () => (
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" leftAdornment={<Adornment />} />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" leftAdornment={<Adornment />} />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card title="Title" leftAdornment={<Adornment />} />
+    </a>
+  </Grid>
+)
+
+WithAdornment.story = {
+  name: 'With adornment',
+}
+
 export const WithText = () => (
-  <a href="/">
-    <Card
-      title="EuroVision Song Contest"
-      text="Tuesday, 18 Feb 2020, 08:13 to Wednesday, 19 Feb 2020, 08:13"
-    />
-  </a>
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Jury Show"
+        text="Lorem ipsum dolor sit amet."
+        verticalAlign="top"
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Family Show"
+        text="Lorem ipsum dolor sit amet."
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        verticalAlign="top"
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - Grand Final Live Show"
+        text="Lorem ipsum dolor sit amet."
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+        verticalAlign="top"
+      />
+    </a>
+  </Grid>
 )
 
 WithText.story = {
   name: 'With text',
 }
 
-export const WithAdornments = () => (
-  <a href="/">
-    <Card
-      title="EuroVision Song Contest"
-      text="Tuesday, 18 Feb 2020, 08:13 to Wednesday, 19 Feb 2020, 08:13"
-      leftAdornment={
-        <Avatar size={36} src="https://www.placecage.com/200/200" />
-      }
-      verticalAlign="top"
-    />
-  </a>
-)
-
-WithAdornments.story = {
-  name: 'With adornment',
-}
-
 export const WithImage = () => (
-  <a href="/">
-    <Card
-      image="https://images.unsplash.com/photo-1539550298564-8a06769aa728?auto=format&fit=crop&w=400&q=80"
-      title="Title"
-    />
-  </a>
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Jury Show"
+        text="May 11, 2020"
+        image="https://images.unsplash.com/photo-1532452119098-a3650b3c46d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80"
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        verticalAlign="top"
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Family Show"
+        text="May 12, 2020"
+        header={<Avatar size={64} src="https://www.placecage.com/200/200" />}
+        image="https://images.unsplash.com/photo-1508854710579-5cecc3a9ff17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&h=600&q=80"
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+        verticalAlign="top"
+      />
+    </a>
+  </Grid>
 )
 
 WithImage.story = {
   name: 'With image',
 }
 
-export const WithDescription = () => (
-  <a href="/">
-    <Card
-      size="large"
-      title="Title"
-      subtitle="Subtitle"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      rightAdornment={
-        <strong style={{ lineHeight: 1, display: 'block' }}>£25</strong>
-      }
-      verticalAlign="top"
-    />
-  </a>
-)
+const RightAdornment = styled.h4`
+  font-size: ${fontSize[18]};
+  line-height: ${lineHeight.title};
 
-WithDescription.story = {
-  name: 'With description',
-}
+  @media ${device.mobileL} {
+    font-size: ${fontSize[20]};
+  }
+`
 
 export const Large = () => (
-  <a href="/">
+  <a href="/" style={{ minWidth: 0 }}>
     <Card
       size="large"
       title="Title"
       subtitle="Subtitle"
       text="Lorem ipsum dolor sit amet"
-      rightAdornment={
-        <strong style={{ lineHeight: 1, display: 'block' }}>£25</strong>
-      }
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      rightAdornment={<RightAdornment>£25</RightAdornment>}
       verticalAlign="top"
     />
   </a>
@@ -108,7 +177,7 @@ const StyledCard = styled(Card)`
 `
 
 export const Styled = () => (
-  <a href="/">
+  <a href="/" style={{ minWidth: 0 }}>
     <StyledCard
       title="Show more"
       text="Events in your area"
