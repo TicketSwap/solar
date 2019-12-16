@@ -55,7 +55,7 @@ const Content = styled.div`
 const IconContainer = styled.span`
   display: inline-block;
   pointer-events: none;
-  transform: rotate(${props => props.isOn && '180deg'});
+  transform: rotate(${props => (props.isOn ? '180deg' : '0deg')});
 `
 
 export function Collapsible({ buttonLabel, defaultOn, children, ...props }) {
