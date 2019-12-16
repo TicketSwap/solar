@@ -7,6 +7,7 @@ export { Text, SmallText } from './components/Text'
 export { BaseStyles } from './components/BaseStyles'
 export { StarRating } from './components/StarRating'
 export { Button } from './components/Button'
+export { Card } from './components/Card'
 export {
   Panel,
   PanelContent,
