@@ -99,7 +99,7 @@ export const Label = styled.label`
 
 export const LabelText = styled.span`
   display: inline-block;
-  color: ${color.spaceMedium};
+  color: ${color.space};
   margin-bottom: ${space[4]};
 `
 
