@@ -76,6 +76,7 @@ const Main = styled.div`
 
 const Message = styled.p`
   color: ${color.space};
+  margin: 0;
 `
 
 const Action = styled.button`
