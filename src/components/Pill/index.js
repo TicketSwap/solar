@@ -48,7 +48,7 @@ const LeftAdornment = styled.span`
 
 export function Pill({ children, ...props }) {
   return (
-    <Container {...props}>
+    <Container className="pill" {...props}>
       {props.leftAdornment && (
         <LeftAdornment>{props.leftAdornment}</LeftAdornment>
       )}
