@@ -66,7 +66,13 @@ export const Placeholder = () => (
 export const Avatar = ({ size, src, alt, ...props }) => (
   <Wrapper size={size} {...props}>
     {src ? (
-      <StyledImage src={src} alt={alt} data-testid="image" />
+      <StyledImage
+        src={src}
+        alt={alt}
+        data-testid="image"
+        width={size}
+        height={size}
+      />
     ) : (
       <Placeholder />
     )}
