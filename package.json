@@ -87,7 +87,7 @@
     "@reach/auto-id": "^0.7.0",
     "@reach/tabs": "^0.7.0",
     "@ticketswap/comets": "^2.3.0",
-    "compute-scroll-into-view": "^1.0.11",
+    "compute-scroll-into-view": "^1.0.12",
     "downshift": "^4.0.2"
   }
 }
