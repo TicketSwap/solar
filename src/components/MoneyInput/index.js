@@ -62,6 +62,7 @@ export function MoneyInput({
   help,
   validateAmount,
   validateCurrency,
+  disabled,
   ...props
 }) {
   const isCurrencyControlled = typeof props.currency !== 'undefined'
@@ -104,6 +105,7 @@ export function MoneyInput({
                 id={`${inputId}-faux-currency`}
                 label="Currency"
                 hideLabel
+                disabled={disabled}
                 value={
                   isCurrencyControlled ? props.currency.symbol : currency.symbol
                 }
@@ -116,6 +118,7 @@ export function MoneyInput({
             id={`${inputId}-currency`}
             label="Currency"
             hideLabel
+            disabled={disabled}
             floatingMenu
             validate={validateCurrency}
             selectedItem={
@@ -154,6 +157,7 @@ export function MoneyInput({
                   : ''
                 : amount
             }
+            disabled={disabled}
             validate={validateAmount}
             {...props}
             onChange={e => {
@@ -173,6 +177,7 @@ export function MoneyInput({
 
 MoneyInput.defaultProps = {
   onChange: () => {},
+  disabled: false,
 }
 
 MoneyInput.propTypes = {
@@ -200,4 +205,5 @@ MoneyInput.propTypes = {
   initialAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   validateAmount: PropTypes.bool,
   validateCurrency: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
