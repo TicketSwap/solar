@@ -21,6 +21,10 @@ const StyledInput = styled(Input)`
   color: transparent;
   text-shadow: 0 0 0 ${color.space};
   cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
 `
 const LeftAdornment = styled.span`
   margin-right: 10px;

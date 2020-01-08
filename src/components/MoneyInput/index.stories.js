@@ -146,6 +146,24 @@ WithInitialValues.story = {
   name: 'With initial values',
 }
 
+export const WithDisabled = () => (
+  <MoneyInput
+    id="maximum-price"
+    label="Maximum price"
+    placeholder="Enter an amount"
+    currencies={currencies}
+    onChange={e => console.log(e)}
+    initialSelectedCurrency={currencies[2]}
+    initialAmount={240050}
+    help="Leave blank for no maximum price"
+    disabled={true}
+  />
+)
+
+WithDisabled.story = {
+  name: 'Disabled',
+}
+
 export const Controlled = () => <ControlledMoneyInput />
 
 export const WithError = () => (
