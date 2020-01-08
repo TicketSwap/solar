@@ -161,7 +161,7 @@ export function Card({
 
   return (
     <Container pad={!hasImage} size={size} {...props}>
-      {hasImage && <Image src={image} rounded />}
+      {hasImage && <Image src={image} alt={title} rounded />}
       <Content floating={hasImage} alignItems={props.verticalAlign}>
         {leftAdornment && <Header>{leftAdornment}</Header>}
         <Body theme={theme}>
