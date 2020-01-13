@@ -85,7 +85,7 @@
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
     "@reach/auto-id": "^0.7.0",
-    "@reach/tabs": "^0.7.0",
+    "@reach/tabs": "^0.7.2",
     "@ticketswap/comets": "^2.3.0",
     "compute-scroll-into-view": "^1.0.12",
     "downshift": "^4.0.2"
