@@ -1567,10 +1567,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@reach/auto-id@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.0.tgz#da7f11c11bc5aff809ccec9706a9f5d8da6052dd"
-  integrity sha512-8NU8NKItNBBscC7qsTvRFCxtHMzBy/wFTrPkAVqraUxfEhNc4UnA4vr1XsduTNfHRwr262+NbDTSeO9EqTRIjA==
+"@reach/auto-id@^0.7.0", "@reach/auto-id@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.2.tgz#1f3aa4c2f09630e90863d4ed90bb23050289ba9c"
+  integrity sha512-9jBoMUnwB4ijh2w9wWQ3oW5oV0NMr2VW3tYDXI8xbd8BW25Bsqvjv8Y3Vp035HwJoLq3I7afA2i+jjBrsJtYAQ==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
