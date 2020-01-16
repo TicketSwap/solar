@@ -7,7 +7,7 @@ import { visuallyHidden } from '../VisuallyHidden'
 
 const Label = styled.label`
   display: inline-block;
-  color: ${props => (props.isActive ? color.earth : color.spaceLightest)};
+  color: ${props => (props.isActive ? color.sun : color.spaceLightest)};
   cursor: pointer;
 `
 
