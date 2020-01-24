@@ -1957,10 +1957,10 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@reach/auto-id@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.0.tgz#da7f11c11bc5aff809ccec9706a9f5d8da6052dd"
-  integrity sha512-8NU8NKItNBBscC7qsTvRFCxtHMzBy/wFTrPkAVqraUxfEhNc4UnA4vr1XsduTNfHRwr262+NbDTSeO9EqTRIjA==
+"@reach/auto-id@^0.7.0", "@reach/auto-id@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.3.tgz#4456640b223452c2e5cc527c4c74cb98d4dc45ca"
+  integrity sha512-5TUE7x7/WYgUaQZ3rrAfpo9L2PeuF45SEXfezQztUZZ0Pao/MuyLlPxUG8NgnibobjsE9l/JpB1Tp06narz3ug==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
