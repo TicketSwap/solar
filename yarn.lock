@@ -1419,10 +1419,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/auto-id@^0.7.3":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.3.tgz#4456640b223452c2e5cc527c4c74cb98d4dc45ca"
-  integrity sha512-5TUE7x7/WYgUaQZ3rrAfpo9L2PeuF45SEXfezQztUZZ0Pao/MuyLlPxUG8NgnibobjsE9l/JpB1Tp06narz3ug==
+"@reach/auto-id@^0.7.3", "@reach/auto-id@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.4.tgz#c20bf6db87ef2f34b1bfb4bf450d675524a368c1"
+  integrity sha512-Om3A3FSyQW2nfkskgNLhItdoCOPCRCsmzlwu26qemu6DwiJLNVUBWlBuXhWgMmys/q3hRx3eRYFrzSLl8uheTA==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
