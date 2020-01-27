@@ -1,11 +1,20 @@
+import React from 'react'
 import styled from '@emotion/styled'
 import { space, color } from '../../theme'
+
+export function Switch({ on, ...props }) {
+  return (
+    <Button isOn={on ? true : false} {...props}>
+      {props.adornment && <Adornment isOn={on}>{props.adornment}</Adornment>}
+    </Button>
+  )
+}
 
 // Toggle styles copied and modified from
 // https://codepen.io/mallendeo/pen/eLIiG by Mauricio Allende
 // (https://mallendeo.com/)
 
-export const Switch = styled.button`
+const Button = styled.button`
   box-sizing: initial;
   display: inline-block;
   outline: 0;
@@ -14,7 +23,7 @@ export const Switch = styled.button`
   position: relative;
   cursor: pointer;
   user-select: none;
-  background: ${props => (props.on ? color.titanLight : color.spaceLightest)};
+  background: ${props => (props.isOn ? color.titanLight : color.spaceLightest)};
   border-radius: ${space[32]};
   padding: ${space[4]};
   transition: all 0.4s ease;
@@ -26,12 +35,12 @@ export const Switch = styled.button`
   }
 
   &:active::before {
-    margin-left: -${props => (props.on ? space[4] : 0)};
+    margin-left: -${props => (props.isOn ? space[4] : 0)};
     padding-right: ${space[4]};
   }
 
   &::before {
-    left: ${props => (props.on ? space[24] : 0)};
+    left: ${props => (props.isOn ? space[24] : 0)};
     position: relative;
     display: block;
     content: '';
@@ -61,4 +70,12 @@ export const Switch = styled.button`
     box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     pointer-events: none;
   }
+`
+
+const Adornment = styled.span`
+  position: absolute;
+  top: 3px;
+  left: ${props => (props.isOn ? 34 : 10)}px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: ${props => (props.isOn ? color.titan : color.spaceLight)};
 `

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Toggle } from './'
+import { Alert } from '@ticketswap/comets'
 
 function ControlledToggle() {
   const [on, setOn] = React.useState(false)
@@ -17,6 +18,13 @@ export default {
 }
 
 export const Basic = () => <Toggle onToggle={on => console.log(on)} />
+export const WithAdornment = () => (
+  <Toggle adornment={<Alert size={16} />} onToggle={on => console.log(on)} />
+)
+
+WithAdornment.story = {
+  name: 'With adornment',
+}
 
 export const DefaultOn = () => (
   <Toggle onToggle={on => console.log(on)} defaultOn />

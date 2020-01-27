@@ -12,7 +12,7 @@ export function Toggle(props) {
     // its `onChange` handler.
     checkboxRef.current.click()
   }
-  const isOnControlled = () => props.on !== undefined
+  const isOnControlled = () => typeof props.on !== 'undefined'
   const getOn = () => (isOnControlled() ? props.on : on)
 
   return (
