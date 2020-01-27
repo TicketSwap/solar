@@ -56,7 +56,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "husky": "^4.2.1",
     "is-ci-cli": "^2.0.0",
-    "jest": "^25.0.0",
+    "jest": "^25.1.0",
     "jest-emotion": "^10.0.27",
     "jest-runner-eslint": "^0.7.5",
     "jest-watch-select-projects": "^1.0.0",
