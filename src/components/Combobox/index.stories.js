@@ -64,5 +64,5 @@ export const withInitialValue = () => (
 )
 
 withInitialValue.story = {
-  name: 'with initial value',
+  name: 'With initial value',
 }
