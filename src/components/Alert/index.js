@@ -9,6 +9,7 @@ import {
   transition,
   radius,
   device,
+  lineHeight,
 } from '../../theme'
 import {
   CloseRounded,
@@ -16,6 +17,7 @@ import {
   WarningRounded,
   CheckmarkRounded,
 } from '@ticketswap/comets'
+import { H4 } from '../Heading'
 
 const textColor = props => css`
   color: ${props.variant === 'success'
@@ -74,6 +76,16 @@ const Main = styled.div`
   }
 `
 
+const Title = styled(H4)`
+  line-height: ${lineHeight.title};
+  font-weight: ${fontWeight.semiBold};
+  margin-bottom: ${6 / 16}rem;
+
+  @media ${device.tablet} {
+    line-height: 1.4;
+  }
+`
+
 const Message = styled.p`
   color: ${color.space};
   margin: 0;
@@ -108,7 +120,7 @@ const Action = styled.button`
   }
 `
 
-export const Alert = ({ action, ...props }) => {
+export const Alert = ({ title, action, ...props }) => {
   return (
     <Container {...props}>
       <Adornment variant={props.variant}>
@@ -123,6 +135,7 @@ export const Alert = ({ action, ...props }) => {
         )}
       </Adornment>
       <Main>
+        {title && <Title as="h4">{title}</Title>}
         <Message>{props.children}</Message>
         {action && (
           <Action

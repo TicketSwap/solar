@@ -5,11 +5,27 @@ export default {
   title: 'Alert',
 }
 
-export const Info = () => (
+export const Basic = () => (
   <Alert>
-    <a href="https://example.com">Paypal</a> is not activated yet.
+    <a href="https://example.com">PayPal</a> is not activated yet.
   </Alert>
 )
+
+export const WithTitleAndAction = () => (
+  <Alert
+    title="Friendly reminder"
+    action={{
+      label: 'Activate PayPal',
+      onClick: () => console.log('action default clicked'),
+    }}
+  >
+    We’ve noticed that your PayPal is not activated yet.
+  </Alert>
+)
+
+WithTitleAndAction.story = {
+  name: 'With title and action',
+}
 
 export const WithAction = () => (
   <>
