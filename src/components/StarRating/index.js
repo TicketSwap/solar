@@ -16,7 +16,7 @@ const Input = styled.input`
 `
 
 const LabelText = styled.span`
-  color: ${color.spaceMedium};
+  color: ${color.space};
 `
 
 const VisuallyHiddenLabelText = styled.span`
