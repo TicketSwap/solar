@@ -4,12 +4,7 @@ import Downshift from 'downshift'
 import { Input, InputMenu, InputMenuList, InputMenuItem } from '../Input'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
-export const SelectWithSearch = ({
-  items,
-  onChange,
-  initialValue,
-  ...props
-}) => (
+export const Combobox = ({ items, onChange, initialValue, ...props }) => (
   <Downshift
     onChange={selection => selection && onChange(selection)}
     itemToString={item => (item ? item.name : '')}
@@ -78,12 +73,12 @@ export const SelectWithSearch = ({
   </Downshift>
 )
 
-SelectWithSearch.defaultProps = {
+Combobox.defaultProps = {
   initialValue: '',
   onChange: () => null,
 }
 
-SelectWithSearch.propTypes = {
+Combobox.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

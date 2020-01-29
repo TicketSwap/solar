@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import { SelectWithSearch } from './'
+import { Combobox } from './'
 
 const countries = [
   { value: 'nl', name: 'Netherlands' },
@@ -8,10 +8,10 @@ const countries = [
   { value: 'de', name: 'Germany' },
 ]
 
-describe('CountryInput', () => {
+describe('ComboboxInput', () => {
   it('renders without crashing', () => {
     const { container, queryByText } = render(
-      <SelectWithSearch id="country" label="Country" items={countries} />
+      <Combobox id="country" label="Country" items={countries} />
     )
     expect(container.firstChild).toBeInTheDocument()
     expect(queryByText(/netherlands/i)).toBeNull()
@@ -19,7 +19,7 @@ describe('CountryInput', () => {
 
   it('shows suggestions upon typing', () => {
     const { getByLabelText, getByText } = render(
-      <SelectWithSearch id="country" label="Country" items={countries} />
+      <Combobox id="country" label="Country" items={countries} />
     )
     fireEvent.change(getByLabelText(/country/i), {
       target: { value: 'nether' },
@@ -29,7 +29,7 @@ describe('CountryInput', () => {
 
   it('handles a passed initial value correctly', () => {
     const { getByLabelText } = render(
-      <SelectWithSearch
+      <Combobox
         id="country"
         label="Country"
         items={countries}
@@ -41,7 +41,7 @@ describe('CountryInput', () => {
 
   it('resets input upon clicking reset-button', () => {
     const { getByLabelText, getByTestId } = render(
-      <SelectWithSearch
+      <Combobox
         id="country"
         label="Country"
         items={countries}
@@ -55,7 +55,7 @@ describe('CountryInput', () => {
   it('calls onChange handler correctly', () => {
     const handler = jest.fn()
     const { getByText, getByLabelText } = render(
-      <SelectWithSearch
+      <Combobox
         id="country"
         label="Country"
         items={countries}
