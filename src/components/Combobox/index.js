@@ -86,7 +86,7 @@ Combobox.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
-      adornment: PropTypes.func,
+      adornment: PropTypes.object,
     })
   ).isRequired,
   initialValue: PropTypes.string,
