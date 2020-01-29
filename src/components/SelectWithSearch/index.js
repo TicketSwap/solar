@@ -2,10 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import { Input, InputMenu, InputMenuList, InputMenuItem } from '../Input'
-import { Flag } from '../Flag'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
-export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
+export const SelectWithSearch = ({
+  items,
+  onChange,
+  initialValue,
+  ...props
+}) => (
   <Downshift
     onChange={selection => selection && onChange(selection)}
     itemToString={item => (item ? item.name : '')}
@@ -30,8 +34,8 @@ export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
             onChange: clearSelection,
             onReset: clearSelection,
             onFocus: !selectedItem ? openMenu : null,
-            leftAdornment: selectedItem ? (
-              <Flag countryCode={selectedItem.value} />
+            leftAdornment: selectedItem?.adornment ? (
+              selectedItem.adornment
             ) : (
               <MagnifyingGlass size={24} />
             ),
@@ -57,7 +61,7 @@ export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
                           highlighted:
                             highlightedIndex === index ? 'true' : undefined,
                           selected: selectedItem === item ? 'true' : undefined,
-                          adornment: <Flag countryCode={item.value} />,
+                          adornment: item.adornment,
                         })}
                       >
                         {item.name}
@@ -74,19 +78,20 @@ export const CountryInput = ({ items, onChange, initialValue, ...props }) => (
   </Downshift>
 )
 
-CountryInput.defaultProps = {
+SelectWithSearch.defaultProps = {
   initialValue: '',
-  onChange: () => {},
+  onChange: () => null,
 }
 
-CountryInput.propTypes = {
+SelectWithSearch.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+      adornment: PropTypes.func,
     })
   ).isRequired,
   initialValue: PropTypes.string,

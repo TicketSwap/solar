@@ -25,7 +25,7 @@ export { DateInput } from './components/DateInput'
 export { MoneyInput } from './components/MoneyInput'
 export { PhoneInput } from './components/PhoneInput'
 export { TimeInput } from './components/TimeInput'
-export { CountryInput } from './components/CountryInput'
+export { SelectWithSearch } from './components/SelectWithSearch'
 export { ContentTransition } from './components/ContentTransition'
 export { SkeletonPulse, SkeletonLine } from './components/Skeleton'
 export {
