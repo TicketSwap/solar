@@ -1,5 +1,5 @@
 import React from 'react'
-import { SelectWithSearch } from './'
+import { Combobox } from './'
 import { Flag } from '../Flag'
 import { Envelope, Messenger, Phone } from '@ticketswap/comets'
 
@@ -37,35 +37,23 @@ const countries = [
 ]
 
 export default {
-  title: 'SelectWithSearch',
+  title: 'Combobox',
 }
 
 export const basic = () => (
-  <SelectWithSearch
-    id="selectWithSearch"
-    label="SelectWithSearch"
-    items={tickets}
-  />
+  <Combobox id="Combobox" label="Combobox" items={tickets} />
 )
 
 export const withAdornment = () => (
-  <SelectWithSearch
-    id="selectWithSearch"
-    label="SelectWithSearch"
-    items={countries}
-  />
+  <Combobox id="Combobox" label="Combobox" items={countries} />
 )
 
 export const mixed = () => (
-  <SelectWithSearch
-    id="selectedWithSearch"
-    label="SelectedWithSearch"
-    items={communicationMethods}
-  />
+  <Combobox id="Combobox" label="Combobox" items={communicationMethods} />
 )
 
 export const withInitialValue = () => (
-  <SelectWithSearch
+  <Combobox
     id="country"
     label="Country"
     items={countries}
