@@ -38,7 +38,7 @@
     "@storybook/addon-docs": "^5.2.8",
     "@storybook/react": "^5.3.9",
     "@storybook/storybook-deployer": "^2.8.1",
-    "@testing-library/jest-dom": "^5.0.2",
+    "@testing-library/jest-dom": "^5.1.0",
     "@testing-library/react": "^9.4.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.3",
