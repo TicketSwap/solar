@@ -207,16 +207,20 @@ Dialog.propTypes = {
   defaultOn: PropTypes.bool,
   persist: PropTypes.bool,
   onToggle: PropTypes.func,
+  onEntered: PropTypes.func,
+  onExited: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.array]).isRequired,
 }
 
 Dialog.defaultProps = {
   defaultOn: false,
   onToggle: () => {},
+  onEntered: () => {},
+  onExited: () => {},
 }
 
 export function useDialog(config = {}) {
-  const { persist, defaultOn, onToggle, ...props } = config
+  const { persist, defaultOn, onToggle, onEntered, onExited, ...props } = config
   const isOnControlled = React.useCallback(() => {
     return props.on !== undefined
   }, [props.on])
@@ -255,6 +259,8 @@ export function useDialog(config = {}) {
     persist,
     ...props,
     onClick: persist ? props.onClick : callAll(props.onClick, toggle),
+    onEntered,
+    onExited,
   })
 
   return {
@@ -267,8 +273,21 @@ export function useDialog(config = {}) {
   }
 }
 
-export function DialogWindow({ children, on, hide, onEscKeyDown, ...props }) {
-  const [state, mounted] = useTransition({ in: on, timeout: duration })
+export function DialogWindow({
+  children,
+  on,
+  hide,
+  onEscKeyDown,
+  onEntered,
+  onExited,
+  ...props
+}) {
+  const [state, mounted] = useTransition({
+    in: on,
+    timeout: duration,
+    onEntered,
+    onExited,
+  })
   const handleHide = React.useCallback(
     ({ keyCode }) => {
       if (keyCode === 27) {

@@ -89,6 +89,8 @@ const MyDialog = ({ children, ...props }) => (
 function HooksDialog() {
   const { hide, getToggleProps, getWindowProps } = useDialog({
     onToggle: on => console.log(on),
+    onEntered: () => console.log('entered'),
+    onExited: () => console.log('exited'),
   })
   return (
     <>
