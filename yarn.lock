@@ -1419,11 +1419,6 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/auto-id@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.7.4.tgz#c20bf6db87ef2f34b1bfb4bf450d675524a368c1"
-  integrity sha512-Om3A3FSyQW2nfkskgNLhItdoCOPCRCsmzlwu26qemu6DwiJLNVUBWlBuXhWgMmys/q3hRx3eRYFrzSLl8uheTA==
-
 "@reach/auto-id@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.0.tgz#13a73facfa42e78eea7f97aba675e15f386ec801"
@@ -1440,20 +1435,20 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@reach/tabs@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.7.4.tgz#b30b19649daa020f27a2eda4830b0b657ebfe15e"
-  integrity sha512-20tRT03yX1W1aVxWZHs9NlYmGzMK7XMoXhDRoui/CMkZt4SNaBsi9KX5g5cie3twfxaF05UGnXEWlzWk4gl5Zg==
+"@reach/tabs@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.8.0.tgz#4808f7a6b74d75645e68780055d8f709ab650534"
+  integrity sha512-QW8wiN11/BjZvlVeIeFauFndzH8uBzjjlirA0ghUHfs0JsSgW6tcrQy9yDISfrNaxFfhEs8ADiSMd1ia9j4Chg==
   dependencies:
-    "@reach/auto-id" "^0.7.4"
-    "@reach/utils" "^0.7.4"
+    "@reach/auto-id" "^0.8.0"
+    "@reach/utils" "^0.8.0"
     prop-types "^15.7.2"
     warning "^4.0.3"
 
-"@reach/utils@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.7.4.tgz#cdd0cff8c57445ce9c2b11204e6a62868f1093a1"
-  integrity sha512-RFhWmeaEfcu+xATfGPH4yjTlgD01ek0D8bVhtP4CgCqV2gnyS0KLAlWshzlAlSrBvr7zmpkA5QZJ1g43vFBSww==
+"@reach/utils@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.0.tgz#8610590a42bf713d5686e357271609c713bb5c24"
+  integrity sha512-NjOjrFdf7VS6zyTAyXzYgRwLfluECrWe7XLb5Nh9HQA81+9lkvzkR5U9TP07lDDBCup/rFIF56S1XNB/StRrfA==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
