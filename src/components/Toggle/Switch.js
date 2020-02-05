@@ -3,15 +3,15 @@ import styled from '@emotion/styled'
 import { Spinner } from '../Spinner'
 import { space, color } from '../../theme'
 
-export function Switch({ on, ...props }) {
+export function Switch({ on, loading, adornment, ...props }) {
   return (
     <Button isOn={on ? true : false} {...props}>
-      {props.loading ? (
+      {loading ? (
         <FlexAdornment isOn={on}>
           <Spinner size={16} />
         </FlexAdornment>
-      ) : props.adornment ? (
-        <Adornment isOn={on}>{props.adornment}</Adornment>
+      ) : adornment ? (
+        <Adornment isOn={on}>{adornment}</Adornment>
       ) : null}
     </Button>
   )
