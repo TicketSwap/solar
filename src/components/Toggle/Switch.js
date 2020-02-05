@@ -6,12 +6,10 @@ import { space, color } from '../../theme'
 export function Switch({ on, loading, adornment, ...props }) {
   return (
     <Button isOn={on ? true : false} {...props}>
-      {loading ? (
-        <FlexAdornment isOn={on}>
-          <Spinner size={16} />
-        </FlexAdornment>
-      ) : adornment ? (
-        <Adornment isOn={on}>{adornment}</Adornment>
+      {loading || adornment ? (
+        <Adornment isOn={on}>
+          {loading ? <StyledSpinner size={16} /> : adornment ? adornment : null}
+        </Adornment>
       ) : null}
     </Button>
   )
@@ -87,6 +85,7 @@ const Adornment = styled.span`
   color: ${props => (props.isOn ? color.titan : color.spaceLight)};
 `
 
-const FlexAdornment = styled(Adornment)`
-  top: 10px;
+const StyledSpinner = styled(Spinner)`
+  position: relative;
+  top: 7px;
 `
