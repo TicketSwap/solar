@@ -1,11 +1,18 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Spinner } from '../Spinner'
 import { space, color } from '../../theme'
 
 export function Switch({ on, ...props }) {
   return (
     <Button isOn={on ? true : false} {...props}>
-      {props.adornment && <Adornment isOn={on}>{props.adornment}</Adornment>}
+      {props.loading ? (
+        <FlexAdornment isOn={on}>
+          <Spinner size={16} />
+        </FlexAdornment>
+      ) : props.adornment ? (
+        <Adornment isOn={on}>{props.adornment}</Adornment>
+      ) : null}
     </Button>
   )
 }
@@ -78,4 +85,8 @@ const Adornment = styled.span`
   left: ${props => (props.isOn ? 34 : 10)}px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   color: ${props => (props.isOn ? color.titan : color.spaceLight)};
+`
+
+const FlexAdornment = styled(Adornment)`
+  top: 10px;
 `

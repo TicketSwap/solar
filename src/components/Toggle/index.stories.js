@@ -26,6 +26,18 @@ WithAdornment.story = {
   name: 'With adornment',
 }
 
+export const WithAdornmentLoading = () => (
+  <Toggle
+    adornment={<Alert size={16} />}
+    loading={true}
+    onToggle={on => console.log(on)}
+  />
+)
+
+WithAdornmentLoading.story = {
+  name: 'With adornment loading',
+}
+
 export const DefaultOn = () => (
   <Toggle onToggle={on => console.log(on)} defaultOn />
 )
