@@ -1,25 +1,42 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Checkmark } from '@ticketswap/comets'
-import { space, color, radius, fontWeight } from '../../theme'
+import {
+  space,
+  color,
+  radius,
+  fontWeight,
+  device,
+  lineHeight,
+} from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
+import { Help } from '../Input'
 
 const Label = styled.label`
   display: inline-flex;
   justify-content: center;
   align-items: flex-start;
+  line-height: ${lineHeight.solid};
 `
 
 const LabelText = styled.span`
   flex-shrink: 1;
   display: inline-block;
   color: ${color.spaceMedium};
-  margin-left: ${space[8]};
+  margin-top: 4px;
+
+  @media ${device.tablet} {
+    margin-top: 3px;
+  }
 
   strong {
     color: ${color.space};
     font-weight: ${fontWeight.semiBold};
   }
+`
+
+const LabelTextContainer = styled.span`
+  margin-left: ${space[8]};
 `
 
 const NativeCheckbox = styled.input`
@@ -68,7 +85,10 @@ const IconContainer = styled.span`
 `
 
 export const Checkbox = React.forwardRef(
-  ({ className, defaultOn, onChange, label, hideLabel, ...props }, ref) => {
+  (
+    { className, defaultOn, onChange, label, hideLabel, help, ...props },
+    ref
+  ) => {
     const [on, setOn] = React.useState(defaultOn || false)
     const isOnControlled = () => props.on !== undefined
     const getOn = () => (isOnControlled() ? props.on : on)
@@ -100,7 +120,10 @@ export const Checkbox = React.forwardRef(
             <LabelText>{label}</LabelText>
           </VisuallyHidden>
         ) : (
-          <LabelText>{label}</LabelText>
+          <LabelTextContainer>
+            <LabelText>{label}</LabelText>
+            {help && <Help>{help}</Help>}
+          </LabelTextContainer>
         )}
       </Label>
     )
