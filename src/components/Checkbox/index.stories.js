@@ -30,6 +30,20 @@ export const Basic = () => (
   />
 )
 
+export const WithHelperText = () => (
+  <Checkbox
+    id="remember-me"
+    name="remember-me"
+    label="Regular"
+    help="Including 5 drink tokens"
+    onChange={e => console.log(e.target)}
+  />
+)
+
+WithHelperText.story = {
+  name: 'With helper text',
+}
+
 export const WithLongLabel = () => (
   <Checkbox
     id="agree"
