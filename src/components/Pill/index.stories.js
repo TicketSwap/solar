@@ -11,6 +11,7 @@ export const Secondary = () => <Pill variant="secondary">Secondary</Pill>
 export const Success = () => <Pill variant="success">Success</Pill>
 export const Danger = () => <Pill variant="danger">Danger</Pill>
 export const Warning = () => <Pill variant="warning">Warning</Pill>
+export const Disabled = () => <Pill variant="disabled">Disabled</Pill>
 export const WithIcon = () => (
   <Pill leftAdornment={<Ticket size={16} />}>124</Pill>
 )

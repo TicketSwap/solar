@@ -30,6 +30,8 @@ export const Container = styled.span`
       ? color.titan
       : p.variant === 'warning'
       ? color.sun
+      : p.variant === 'disabled'
+      ? color.spaceLighter
       : color.earth};
 `
 
@@ -67,5 +69,6 @@ Pill.propTypes = {
     'success',
     'danger',
     'warning',
+    'disabled',
   ]),
 }
