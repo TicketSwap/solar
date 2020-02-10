@@ -1419,11 +1419,19 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/auto-id@^0.8.0", "@reach/auto-id@^0.8.2":
+"@reach/auto-id@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.2.tgz#ea33a29dd08d186585650754f983129492cd86ce"
   integrity sha512-yVsU0NZa1xjw9dM8+emYLxvpO7QCPnKqZDUNJl5djuAKantaGzTDIoozViI9FdIy965O1XDKHswuAi64utboMQ==
   dependencies:
+    tslib "^1.10.0"
+
+"@reach/descendants@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.8.2.tgz#ffb87d18be4e62f344429dd5c7293f386e3da8a2"
+  integrity sha512-2pky3FWngEXpqrQ9RJ+ZHSW8r9TmIffD+dXo9LDXfSUbSbXtUdWekzuLb+0JLIpN2ijGOp9Rwu9UF3ZWHq86Xg==
+  dependencies:
+    "@reach/utils" "^0.8.2"
     tslib "^1.10.0"
 
 "@reach/router@^1.2.1":
@@ -1437,20 +1445,25 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@reach/tabs@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.8.0.tgz#4808f7a6b74d75645e68780055d8f709ab650534"
-  integrity sha512-QW8wiN11/BjZvlVeIeFauFndzH8uBzjjlirA0ghUHfs0JsSgW6tcrQy9yDISfrNaxFfhEs8ADiSMd1ia9j4Chg==
+"@reach/tabs@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.8.2.tgz#043b2ce1f118251c4b21f44755a29b5c243a6735"
+  integrity sha512-RsMZaVmpw7CT/3xLLC4MDMyxss3ow+0HD0k8N1ZMs/MBSiIZ6fVefye2AFeFj1v9sgZcOqKjFJl1+gvzUAuA5w==
   dependencies:
-    "@reach/auto-id" "^0.8.0"
-    "@reach/utils" "^0.8.0"
+    "@reach/auto-id" "^0.8.2"
+    "@reach/descendants" "^0.8.2"
+    "@reach/utils" "^0.8.2"
     prop-types "^15.7.2"
+    tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/utils@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.0.tgz#8610590a42bf713d5686e357271609c713bb5c24"
-  integrity sha512-NjOjrFdf7VS6zyTAyXzYgRwLfluECrWe7XLb5Nh9HQA81+9lkvzkR5U9TP07lDDBCup/rFIF56S1XNB/StRrfA==
+"@reach/utils@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.2.tgz#0adb27de5038a9c9d1c302aee7ae7de4260a36b8"
+  integrity sha512-JrQC5nTr0pS0FR9qLKinBViRhQ75hdjr+rLROfqtT8QljnalvlmN6hkibap5YJRe4cOQtpjUplioCErQ4zBxJw==
+  dependencies:
+    tslib "^1.10.0"
+    warning "^4.0.3"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
