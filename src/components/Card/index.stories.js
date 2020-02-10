@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from './'
 import styled from '@emotion/styled'
 import { Avatar } from '../Avatar'
-import { color } from '../../theme'
+import { color, space } from '../../theme'
 
 const Wrapper = story => <div style={{ maxWidth: 400 }}>{story()}</div>
 
@@ -54,6 +54,25 @@ export const WithImage = () => (
 
 WithImage.story = {
   name: 'With image',
+}
+
+export const WithDescription = () => (
+  <a href="/">
+    <Card
+      size="large"
+      title="Title"
+      subtitle="Subtitle"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      rightAdornment={
+        <strong style={{ lineHeight: 1, display: 'block' }}>£25</strong>
+      }
+      verticalAlign="top"
+    />
+  </a>
+)
+
+WithDescription.story = {
+  name: 'With description',
 }
 
 export const Large = () => (

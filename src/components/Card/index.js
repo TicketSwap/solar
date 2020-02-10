@@ -85,6 +85,8 @@ const Header = styled.header`
 
 const Body = styled.div`
   color: ${props => (props.theme === 'light' ? 'white' : color.space)};
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
   text-align: left;
   position: relative;
@@ -146,10 +148,25 @@ const Text = styled.span`
   }
 `
 
+const Description = styled.span`
+  ${textStyles};
+  font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
+  opacity: 0.6;
+  margin-top: 0.75rem;
+  text-overflow: initial;
+  white-space: initial;
+
+  @media ${device.mobileL} {
+    margin-top: 1rem;
+    font-size: ${p => (p.size === 'large' ? fontSize[16] : fontSize[14])};
+  }
+`
+
 export function Card({
   title,
   subtitle,
   text,
+  description,
   image,
   leftAdornment,
   rightAdornment,
@@ -172,6 +189,7 @@ export function Card({
               {text}
             </Text>
           )}
+          {description && <Description size={size}>{description}</Description>}
         </Body>
         {rightAdornment && <Footer>{rightAdornment}</Footer>}
       </Content>
@@ -189,6 +207,7 @@ Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   text: PropTypes.string,
+  description: PropTypes.string,
   image: PropTypes.string,
   leftAdornment: PropTypes.element,
   rightAdornment: PropTypes.element,
