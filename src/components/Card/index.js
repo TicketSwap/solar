@@ -129,7 +129,7 @@ const Subtitle = styled.h5`
   font-weight: ${fontWeight.regular};
 
   @media ${device.mobileL} {
-    margin-top: ${space[4]};
+    margin-top: 0.375rem;
     font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
   }
 `
