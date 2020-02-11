@@ -1419,6 +1419,17 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@reach/accordion@^0.8.2":
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.8.2.tgz#93df1f6c0084956d1d2105acc8b68ae37d5f5ea8"
+  integrity sha512-bcVi9Kxr+FDgWWOu1GUJhNc098bhXYB6VFqlUYqgUMfjQ2mceYMa7AiNh0hNnb2s7iyrsnuczQPlZcroFU4VCQ==
+  dependencies:
+    "@reach/auto-id" "^0.8.2"
+    "@reach/descendants" "^0.8.2"
+    "@reach/utils" "^0.8.2"
+    tslib "^1.10.0"
+    warning "^4.0.3"
+
 "@reach/auto-id@^0.8.2":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.2.tgz#ea33a29dd08d186585650754f983129492cd86ce"
