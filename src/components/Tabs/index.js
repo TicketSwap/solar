@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { Global, css } from '@emotion/core'
 import {
   Tabs as ReachTabs,
   TabList as ReachTabList,
@@ -10,7 +11,18 @@ import { color, radius, space, fontSize, fontWeight } from '../../theme'
 export { TabPanels, TabPanel } from '@reach/tabs'
 
 export function Tabs({ children, ...props }) {
-  return <ReachTabs {...props}>{children}</ReachTabs>
+  return (
+    <ReachTabs {...props}>
+      {children}
+      <Global
+        styles={css`
+          :root {
+            --reach-tabs: 1;
+          }
+        `}
+      />
+    </ReachTabs>
+  )
 }
 
 export const TabList = styled(ReachTabList)`
