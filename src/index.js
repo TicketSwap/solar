@@ -2,6 +2,12 @@ export * from './theme'
 export * from './hooks'
 export { Alert } from './components/Alert'
 export { Avatar } from './components/Avatar'
+export {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from './components/Accordion'
 export { Banner } from './components/Banner'
 export { Text, SmallText } from './components/Text'
 export { BaseStyles } from './components/BaseStyles'
