@@ -73,7 +73,7 @@ const Content = styled.div`
     `};
 `
 
-const Header = styled.header`
+const LeftAdornment = styled.div`
   padding: 0;
   flex-grow: 0;
   margin-right: ${space[12]};
@@ -93,7 +93,7 @@ const Body = styled.div`
   overflow: hidden;
 `
 
-const Footer = styled.footer`
+const RightAdornment = styled.div`
   padding: 0;
   flex-grow: 0;
   margin-left: ${space[12]};
@@ -148,7 +148,7 @@ const Text = styled.span`
   }
 `
 
-const Description = styled.span`
+const Footer = styled.footer`
   ${textStyles};
   font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
   opacity: 0.6;
@@ -166,7 +166,7 @@ export function Card({
   title,
   subtitle,
   text,
-  description,
+  footer,
   image,
   leftAdornment,
   rightAdornment,
@@ -180,7 +180,7 @@ export function Card({
     <Container pad={!hasImage} size={size} {...props}>
       {hasImage && <Image src={image} alt={title} rounded />}
       <Content floating={hasImage} alignItems={props.verticalAlign}>
-        {leftAdornment && <Header>{leftAdornment}</Header>}
+        {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
         <Body theme={theme}>
           {title && <Title size={size}>{title}</Title>}
           {subtitle && <Subtitle size={size}>{subtitle}</Subtitle>}
@@ -189,9 +189,9 @@ export function Card({
               {text}
             </Text>
           )}
-          {description && <Description size={size}>{description}</Description>}
+          {footer && <Footer size={size}>{footer}</Footer>}
         </Body>
-        {rightAdornment && <Footer>{rightAdornment}</Footer>}
+        {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}
       </Content>
     </Container>
   )
@@ -207,7 +207,7 @@ Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   text: PropTypes.string,
-  description: PropTypes.string,
+  footer: PropTypes.element,
   image: PropTypes.string,
   leftAdornment: PropTypes.element,
   rightAdornment: PropTypes.element,

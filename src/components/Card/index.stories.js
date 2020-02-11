@@ -56,13 +56,13 @@ WithImage.story = {
   name: 'With image',
 }
 
-export const WithDescription = () => (
+export const WithFooter = () => (
   <a href="/">
     <Card
       size="large"
       title="Title"
       subtitle="Subtitle"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      footer="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       rightAdornment={
         <strong style={{ lineHeight: 1, display: 'block' }}>£25</strong>
       }
@@ -71,8 +71,8 @@ export const WithDescription = () => (
   </a>
 )
 
-WithDescription.story = {
-  name: 'With description',
+WithFooter.story = {
+  name: 'With footer',
 }
 
 export const Large = () => (
