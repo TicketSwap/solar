@@ -207,7 +207,7 @@ Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   text: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   image: PropTypes.string,
   leftAdornment: PropTypes.element,
   rightAdornment: PropTypes.element,
