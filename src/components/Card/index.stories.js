@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from './'
 import styled from '@emotion/styled'
 import { Avatar } from '../Avatar'
-import { color, space } from '../../theme'
+import { color } from '../../theme'
 
 const Wrapper = story => <div style={{ maxWidth: 400 }}>{story()}</div>
 
@@ -19,7 +19,10 @@ export const Basic = () => (
 
 export const WithText = () => (
   <a href="/">
-    <Card title="Title" text="Lorem ipsum dolor sit amet." />
+    <Card
+      title="EuroVision Song Contest"
+      text="Tuesday, 18 Feb 2020, 08:13 to Wednesday, 19 Feb 2020, 08:13"
+    />
   </a>
 )
 
@@ -30,11 +33,12 @@ WithText.story = {
 export const WithAdornments = () => (
   <a href="/">
     <Card
-      title="Title"
-      text="Lorem ipsum dolor sit amet"
+      title="EuroVision Song Contest"
+      text="Tuesday, 18 Feb 2020, 08:13 to Wednesday, 19 Feb 2020, 08:13"
       leftAdornment={
         <Avatar size={36} src="https://www.placecage.com/200/200" />
       }
+      verticalAlign="top"
     />
   </a>
 )

@@ -106,12 +106,11 @@ const Footer = styled.footer`
 const textStyles = css`
   display: block;
   line-height: ${lineHeight.title};
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 
   @media ${device.mobileL} {
-    line-height: ${lineHeight.solid};
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 `
 
@@ -119,6 +118,7 @@ const Title = styled.h4`
   ${textStyles};
   font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
   font-weight: ${fontWeight.semiBold};
+  margin-top: -0.125rem;
 
   @media ${device.mobileL} {
     font-size: ${p => (p.size === 'large' ? fontSize[20] : fontSize[18])};
@@ -131,7 +131,6 @@ const Subtitle = styled.h5`
   font-weight: ${fontWeight.regular};
 
   @media ${device.mobileL} {
-    margin-top: 0.375rem;
     font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
   }
 `
@@ -143,7 +142,6 @@ const Text = styled.span`
   margin-top: 0.125rem;
 
   @media ${device.mobileL} {
-    margin-top: 0.375rem;
     font-size: ${p => (p.size === 'large' ? fontSize[16] : fontSize[14])};
   }
 `
