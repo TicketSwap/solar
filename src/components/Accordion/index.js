@@ -42,6 +42,21 @@ export const Button = styled(Reach.AccordionButton)`
   &[data-disabled] {
     cursor: not-allowed;
   }
+
+  &:focus {
+    box-shadow: none;
+
+    > span:last-of-type {
+      box-shadow: 0 0 0 0.25rem rgba(0, 182, 240, 0.24);
+      outline: 0;
+    }
+  }
+
+  &:hover {
+    > span:first-of-type {
+      opacity: 0.6;
+    }
+  }
 `
 
 const ButtonAdornment = styled.span`
