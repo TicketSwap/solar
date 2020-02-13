@@ -28,7 +28,8 @@ export function Toggle(props) {
       <Switch
         on={on}
         aria-label="Toggle"
-        aria-expanded={getOn()}
+        role="switch"
+        aria-checked={getOn()}
         tabIndex="0"
         {...props}
         onClick={toggle}
