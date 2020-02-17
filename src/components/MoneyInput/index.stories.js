@@ -95,8 +95,8 @@ function ControlledMoneyInput() {
         <Button size="small" variant="success" onClick={() => setAmount(2000)}>
           Set 20
         </Button>
-        <Button size="small" variant="success" onClick={() => setAmount(4000)}>
-          Set 40
+        <Button size="small" variant="success" onClick={() => setAmount(4050)}>
+          Set 40,50
         </Button>
       </div>
       <MoneyInput
