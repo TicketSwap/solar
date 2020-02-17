@@ -1,5 +1,5 @@
 import React from 'react'
-import { space, color, fontWeight } from '../../theme'
+import { device, space, color, fontWeight } from '../../theme'
 import { ChevronDown } from '@ticketswap/comets'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/core'
@@ -34,8 +34,8 @@ export const Button = styled(Reach.AccordionButton)`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-top: ${space[8]};
-  padding-bottom: ${space[8]};
+  padding-top: ${space[12]};
+  padding-bottom: ${space[12]};
   position: relative;
   z-index: 1;
 
@@ -56,6 +56,11 @@ export const Button = styled(Reach.AccordionButton)`
     > span:first-of-type {
       opacity: 0.6;
     }
+  }
+
+  @media ${device.tablet} {
+    padding-bottom: ${space[16]};
+    padding-top: ${space[16]};
   }
 `
 
