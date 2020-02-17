@@ -1,8 +1,10 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { space, color, fontWeight, radius, device } from '../../theme'
 import { baseTextStyles } from '../Text'
 
-export const BaseButton = styled.button`
+const StyledButton = styled.button`
   ${baseTextStyles};
   position: relative;
   display: inline-block;
@@ -59,3 +61,24 @@ export const BaseButton = styled.button`
     }
   }
 `
+
+const Adornment = styled.span`
+  margin-left: -${space[4]};
+  margin-right: ${space[4]};
+
+  & > span {
+    margin-top: -2px;
+  }
+`
+
+export const BaseButton = React.forwardRef(({ children, ...props }, ref) => (
+  <StyledButton ref={ref} {...props}>
+    {props.leftAdornment && <Adornment>{props.leftAdornment}</Adornment>}
+    {children}
+  </StyledButton>
+))
+
+BaseButton.propTypes = {
+  variant: PropTypes.oneOf(['success', 'danger', 'warning']),
+  leftAdornment: PropTypes.object,
+}
