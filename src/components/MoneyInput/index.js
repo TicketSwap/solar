@@ -87,6 +87,9 @@ export function MoneyInput({
   const parseAmount = value => Math.round(parseFloat(value) * 100) || 0
   const { isMobile } = useDeviceInfo()
   const inputId = `money-input-${useId()}`
+  const controlledAmount = props.amount
+    ? (props.amount / 100).toFixed(2).replace(/\.00$/, '')
+    : ''
 
   return (
     <Label htmlFor={id}>
@@ -150,13 +153,7 @@ export function MoneyInput({
             ref={inputRef}
             hideLabel
             type="number"
-            value={
-              isAmountControlled
-                ? props.amount
-                  ? props.amount / 100
-                  : ''
-                : amount
-            }
+            value={isAmountControlled ? controlledAmount : amount}
             disabled={disabled}
             validate={validateAmount}
             {...props}
