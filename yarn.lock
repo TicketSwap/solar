@@ -1419,14 +1419,14 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/accordion@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.8.2.tgz#93df1f6c0084956d1d2105acc8b68ae37d5f5ea8"
-  integrity sha512-bcVi9Kxr+FDgWWOu1GUJhNc098bhXYB6VFqlUYqgUMfjQ2mceYMa7AiNh0hNnb2s7iyrsnuczQPlZcroFU4VCQ==
+"@reach/accordion@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.8.4.tgz#3894e6919c289e97b49152c5b45453bf63ea253b"
+  integrity sha512-82YfbMIZ0WzeU3kumuGn2XrEAc+10S8MXEqyiwVSiikmSwJ7eJagDCeqoanYQ9IaWqjam05ACYvU8NlvYMcscw==
   dependencies:
     "@reach/auto-id" "^0.8.2"
-    "@reach/descendants" "^0.8.2"
-    "@reach/utils" "^0.8.2"
+    "@reach/descendants" "^0.8.4"
+    "@reach/utils" "^0.8.4"
     tslib "^1.10.0"
     warning "^4.0.3"
 
@@ -1437,12 +1437,12 @@
   dependencies:
     tslib "^1.10.0"
 
-"@reach/descendants@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.8.2.tgz#ffb87d18be4e62f344429dd5c7293f386e3da8a2"
-  integrity sha512-2pky3FWngEXpqrQ9RJ+ZHSW8r9TmIffD+dXo9LDXfSUbSbXtUdWekzuLb+0JLIpN2ijGOp9Rwu9UF3ZWHq86Xg==
+"@reach/descendants@^0.8.2", "@reach/descendants@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.8.4.tgz#b193129e653c474a42c289ba185fd1e1360ffa72"
+  integrity sha512-vCGiX5IX+qTwZUMDlE4cdsiAjdgxCyJxdNSeJrzu1d/+joJ089AEgDnKiVvynUwcNBYwzKC2CJSGQqRD3v4nzw==
   dependencies:
-    "@reach/utils" "^0.8.2"
+    "@reach/utils" "^0.8.4"
     tslib "^1.10.0"
 
 "@reach/router@^1.2.1":
@@ -1468,10 +1468,10 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/utils@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.2.tgz#0adb27de5038a9c9d1c302aee7ae7de4260a36b8"
-  integrity sha512-JrQC5nTr0pS0FR9qLKinBViRhQ75hdjr+rLROfqtT8QljnalvlmN6hkibap5YJRe4cOQtpjUplioCErQ4zBxJw==
+"@reach/utils@^0.8.2", "@reach/utils@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.4.tgz#c5045637401beff8fa5e8e278fafc5af226c2fee"
+  integrity sha512-RZq5Y5K5+CakM5zzecNypP28U60/9sm3PraZznCsfcB/O3+3O0kgg5X+a7IHD3GnRqJVYTzAjA6sral6kPYLKQ==
   dependencies:
     tslib "^1.10.0"
     warning "^4.0.3"
