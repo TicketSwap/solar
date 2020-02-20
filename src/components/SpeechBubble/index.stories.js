@@ -15,38 +15,35 @@ export const BottomLeft = () => (
       <Button variant="success">Yes</Button>
       <Button variant="secondary">No</Button>
     </div>
-    <SpeechBubble label={<p>Great, thanks for your feedback!</p>} />
+    <SpeechBubble>
+      <p>Great, thanks for your feedback!</p>
+    </SpeechBubble>
   </>
 )
 
 export const BottomRight = () => (
-  <SpeechBubble
-    label={<p>Great, thanks for your feedback!</p>}
-    position="bottom-right"
-  />
+  <SpeechBubble position="bottom-right">
+    <p>Great, thanks for your feedback!</p>
+  </SpeechBubble>
 )
 
 export const TopLeft = () => (
-  <SpeechBubble
-    label={<p>Great, thanks for your feedback!</p>}
-    position="top-left"
-  />
+  <SpeechBubble position="top-left">
+    <p>Great, thanks for your feedback!</p>
+  </SpeechBubble>
 )
 
 export const TopRight = () => (
-  <SpeechBubble
-    label={<p>Great, thanks for your feedback!</p>}
-    position="top-right"
-  />
+  <SpeechBubble position="top-right">
+    <p>Great, thanks for your feedback!</p>
+  </SpeechBubble>
 )
 
 export const WithOffset = () => (
   <>
-    <SpeechBubble
-      label={<p>Great, thanks for your feedback!</p>}
-      position="top-left"
-      tailOffset={80}
-    />
+    <SpeechBubble position="top-left" tailOffset={80}>
+      <p>Great, thanks for your feedback!</p>
+    </SpeechBubble>
     <p>
       The tail is <strong>here</strong>
     </p>
