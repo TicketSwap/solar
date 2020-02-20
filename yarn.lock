@@ -1437,7 +1437,7 @@
   dependencies:
     tslib "^1.10.0"
 
-"@reach/descendants@^0.8.2", "@reach/descendants@^0.8.4":
+"@reach/descendants@^0.8.4":
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.8.4.tgz#b193129e653c474a42c289ba185fd1e1360ffa72"
   integrity sha512-vCGiX5IX+qTwZUMDlE4cdsiAjdgxCyJxdNSeJrzu1d/+joJ089AEgDnKiVvynUwcNBYwzKC2CJSGQqRD3v4nzw==
@@ -1468,7 +1468,7 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/utils@^0.8.2", "@reach/utils@^0.8.4":
+"@reach/utils@^0.8.4":
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.4.tgz#c5045637401beff8fa5e8e278fafc5af226c2fee"
   integrity sha512-RZq5Y5K5+CakM5zzecNypP28U60/9sm3PraZznCsfcB/O3+3O0kgg5X+a7IHD3GnRqJVYTzAjA6sral6kPYLKQ==
@@ -2199,10 +2199,10 @@
     "@testing-library/dom" "^6.11.0"
     "@types/testing-library__react" "^9.1.2"
 
-"@ticketswap/comets@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.3.0.tgz#1718d0df4d2ef1e6301322138e283013eaee29c1"
-  integrity sha512-S4tCbbMgU+S9H11uh6lkMcdJnAqaJWFFBVma2BJNHLzUELtDlc4HMwm4k3O/PvMZXVELCq1Ub4X6PqmyV3kdPA==
+"@ticketswap/comets@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.4.0.tgz#0103de274e4a563415b49a0e92c7ac4dfafeb56b"
+  integrity sha512-gHRqCt2qnAajXDBco94lhkyFRt3kMh3EKjXGxz/s5kVeT4Mg1fvxa5Z/0IfSPQ1snIS+WTnWPlmSO3sK6wtmqw==
   dependencies:
     react "^16.11.0"
     react-dom "^16.11.0"
