@@ -68,7 +68,7 @@ const SpeechBubbleContent = styled.div`
   }
 `
 
-export const SpeechBubble = ({ position, label, tailOffset, ...props }) => {
+export const SpeechBubble = ({ children, position, tailOffset, ...props }) => {
   const [verticalPosition, horizontalPosition] = position.split('-')
 
   return (
@@ -78,7 +78,7 @@ export const SpeechBubble = ({ position, label, tailOffset, ...props }) => {
       tailOffset={tailOffset}
       {...props}
     >
-      {label}
+      {children}
     </SpeechBubbleContent>
   )
 }
@@ -95,6 +95,5 @@ SpeechBubble.propTypes = {
     'bottom-right',
     'bottom-left',
   ]),
-  label: PropTypes.object.isRequired,
   tailOffset: PropTypes.number,
 }
