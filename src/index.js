@@ -69,6 +69,7 @@ export {
 export { Logo } from './components/Logo'
 export { MenuButton } from './components/MenuButton'
 export { Portal } from './components/Portal'
+export { SpeechBubble } from './components/SpeechBubble'
 export { Spinner } from './components/Spinner'
 export { Tabs, TabList, Tab, TabPanels, TabPanel } from './components/Tabs'
 export { VisuallyHidden } from './components/VisuallyHidden'
