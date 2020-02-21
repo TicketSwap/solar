@@ -92,5 +92,5 @@ export function AccordionButton({ children, ...props }) {
 
 export const AccordionPanel = styled(Reach.AccordionPanel)`
   outline: none;
-  padding-bottom: ${space[8]};
+  padding-bottom: ${space[12]};
 `
