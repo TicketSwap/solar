@@ -1430,10 +1430,10 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/auto-id@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.2.tgz#ea33a29dd08d186585650754f983129492cd86ce"
-  integrity sha512-yVsU0NZa1xjw9dM8+emYLxvpO7QCPnKqZDUNJl5djuAKantaGzTDIoozViI9FdIy965O1XDKHswuAi64utboMQ==
+"@reach/auto-id@^0.8.2", "@reach/auto-id@^0.8.5":
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.5.tgz#940500d4c93624852efa5ecbed29c5d7015eb6e9"
+  integrity sha512-FmyoQ5Mvw+WXLd3JOlDmHDQKqhTiZ+BwtEq9HW6pgzYMztq1wr5itv4lrSDqOYa/hJfNrkBC8iCtaIKcykuYnQ==
   dependencies:
     tslib "^1.10.0"
 
