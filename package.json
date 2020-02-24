@@ -84,7 +84,7 @@
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
-    "@reach/accordion": "^0.8.4",
+    "@reach/accordion": "^0.8.5",
     "@reach/auto-id": "^0.8.2",
     "@reach/tabs": "^0.8.5",
     "@ticketswap/comets": "^2.4.0",
