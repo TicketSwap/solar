@@ -70,9 +70,10 @@ export const PhoneInput = React.forwardRef(
       validateNumber,
       ...props
     },
-    ref
+    forwardedRef
   ) => {
-    const inputRef = ref ? ref : React.useRef()
+    const ref = React.useRef()
+    const inputRef = forwardedRef ? forwardedRef : ref
     const options = createSelectOptions(countries)
     const intialSelectedIndex = initialSelectedCountry
       ? countries.indexOf(initialSelectedCountry)
