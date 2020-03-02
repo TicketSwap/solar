@@ -1437,7 +1437,7 @@
   dependencies:
     tslib "^1.10.0"
 
-"@reach/descendants@^0.8.4", "@reach/descendants@^0.8.5":
+"@reach/descendants@^0.8.5":
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.8.5.tgz#084b2410bd13be4a76ac663d5957a54325301df0"
   integrity sha512-L1zGSeOtpK8m/SA/CyJsKBnk+z+kvraEJUq1u/apkw1n47j1Byu40nA7TwKvUxuZtEVaK1CdsGFRGeyHRfU/kg==
@@ -1468,7 +1468,7 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/utils@^0.8.4", "@reach/utils@^0.8.5":
+"@reach/utils@^0.8.5":
   version "0.8.5"
   resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.5.tgz#6675d6f81054c8dce1b9d535280b0e3c5174fe7d"
   integrity sha512-nc84exIqBa+EohJPBFjePQP88dBAP4l+tChxwWszzZ+R6tTtSgOg40WyQ5EjPYJFbltnbZIbASHefcEBrFxqng==
@@ -1970,10 +1970,10 @@
     prop-types "^15.7.2"
     regenerator-runtime "^0.12.1"
 
-"@storybook/storybook-deployer@^2.8.2":
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.2.tgz#347408bf33ee14dac0bade7497dcede983b3c3d5"
-  integrity sha512-4D2wDti0RZFBm+iWeLqcK63n/bZ3o+pjVqfTMHPvN9H+kO9aWT0lA7j95M+uoT9ZpapgdoGEzHf2HMe1M0ic6Q==
+"@storybook/storybook-deployer@^2.8.3":
+  version "2.8.3"
+  resolved "https://registry.yarnpkg.com/@storybook/storybook-deployer/-/storybook-deployer-2.8.3.tgz#0bed6fef981ba4dc521b180627e8d68c7f7c1646"
+  integrity sha512-IDix3V37Ufbcu6XRNV+b/nUETeD86oo9ll3DEja3h9aDeydBFEfA60BO6q6L80IRejNMr8R+RaSNRFl5ddwqkQ==
   dependencies:
     git-url-parse "^8.1.0"
     glob "^7.1.3"
