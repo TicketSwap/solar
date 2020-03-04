@@ -22,7 +22,10 @@ export function Toggle(props) {
           ref={checkboxRef}
           type="checkbox"
           defaultChecked={getOn()}
-          onChange={e => props.onToggle(e.target.checked)}
+          onChange={e => {
+            e.preventDefault()
+            props.onToggle(e.target.checked)
+          }}
         />
       </VisuallyHidden>
       <Switch
