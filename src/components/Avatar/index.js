@@ -13,7 +13,6 @@ const Wrapper = styled.div`
   height: ${props => props.size && `${props.size}px`};
   min-width: ${props => props.size && `${props.size}px`};
   min-height: ${props => props.size && `${props.size}px`};
-  background-color: ${color.stardust};
   border-radius: 50%;
   position: relative;
   overflow: hidden;
