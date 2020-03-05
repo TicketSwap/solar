@@ -6,11 +6,12 @@ import { Switch } from './Switch'
 export function Toggle(props) {
   const checkboxRef = React.useRef()
   const [on, setOn] = React.useState(props.defaultOn)
-  const toggle = () => {
+  const toggle = e => {
     setOn(!on)
     // Simulate a click on the DOM element to fire
     // its `onChange` handler.
     checkboxRef.current.click()
+    e.stopPropagation()
   }
   const isOnControlled = () => typeof props.on !== 'undefined'
   const getOn = () => (isOnControlled() ? props.on : on)
@@ -22,10 +23,8 @@ export function Toggle(props) {
           ref={checkboxRef}
           type="checkbox"
           defaultChecked={getOn()}
-          onChange={e => {
-            e.preventDefault()
-            props.onToggle(e.target.checked)
-          }}
+          onClick={e => e.stopPropagation()}
+          onChange={e => props.onToggle(e.target.checked)}
         />
       </VisuallyHidden>
       <Switch
@@ -35,7 +34,7 @@ export function Toggle(props) {
         aria-checked={getOn()}
         tabIndex="0"
         {...props}
-        onClick={toggle}
+        onClick={e => toggle(e)}
       />
     </div>
   )
