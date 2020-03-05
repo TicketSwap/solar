@@ -20,7 +20,6 @@ const Container = styled.div`
   line-height: 0;
   z-index: 1;
   overflow: hidden;
-  background-color: ${color.stardust};
   border-radius: ${props => (props.rounded ? radius.lg : 0)};
   animation-duration: ${duration}ms;
   animation-fill-mode: both;
@@ -30,6 +29,11 @@ const Container = styled.div`
 
 const Placeholder = styled.img`
   vertical-align: middle;
+  transition: opacity ${transition};
+  background-color: ${color.stardust};
+  opacity: ${props => (props.show ? 0 : 1)};
+  width: 100%;
+  height: 100%;
 `
 
 const StyledImage = styled.img`
@@ -152,6 +156,7 @@ export class Image extends Component {
           src={this.placeholderSrc(width, height)}
           aria-hidden="true"
           alt="Placeholder image"
+          show={this.state.loaded}
         />
         <StyledImage
           src={this.state.src}
