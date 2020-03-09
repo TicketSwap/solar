@@ -1447,11 +1447,12 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/auto-id@^0.8.2", "@reach/auto-id@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.5.tgz#940500d4c93624852efa5ecbed29c5d7015eb6e9"
-  integrity sha512-FmyoQ5Mvw+WXLd3JOlDmHDQKqhTiZ+BwtEq9HW6pgzYMztq1wr5itv4lrSDqOYa/hJfNrkBC8iCtaIKcykuYnQ==
+"@reach/auto-id@^0.8.5", "@reach/auto-id@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.8.6.tgz#34ecd120186960e3980dbc34cdace8e65405ea4e"
+  integrity sha512-lohwxy1uqj74p05WJDxMpo5paAQoM0r6MQYuVxR4U6piuGG67ggEPNVG7X4lQhi2jbeB6wvaPJiBVgikZJ/DIA==
   dependencies:
+    "@reach/utils" "^0.8.6"
     tslib "^1.10.0"
 
 "@reach/descendants@^0.8.5":
@@ -1485,10 +1486,10 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
-"@reach/utils@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.5.tgz#6675d6f81054c8dce1b9d535280b0e3c5174fe7d"
-  integrity sha512-nc84exIqBa+EohJPBFjePQP88dBAP4l+tChxwWszzZ+R6tTtSgOg40WyQ5EjPYJFbltnbZIbASHefcEBrFxqng==
+"@reach/utils@^0.8.5", "@reach/utils@^0.8.6":
+  version "0.8.6"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.8.6.tgz#41c7ac8b7699d0e663bda773398ae1c459679ee3"
+  integrity sha512-ec9Ea99LQhlBoMKsJ7n2GYD3u3a0IHDLcfbA50C6aDKnSFvVYSPkF2Iav3fQ07VGfe+FuNGi0iYi1qkE8uSmDw==
   dependencies:
     tslib "^1.10.0"
     warning "^4.0.3"
