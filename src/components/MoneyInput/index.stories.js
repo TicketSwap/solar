@@ -67,12 +67,13 @@ const currencies = [
 
 function ControlledMoneyInput() {
   const [currency, setCurrency] = React.useState(currencies[2])
-  const [amount, setAmount] = React.useState(2500)
+  const [amount, setAmount] = React.useState(25)
+  const parseAmount = value => Math.round(parseFloat(value) * 100) || 0
 
   React.useEffect(() => {
     console.log({
       currency,
-      amount,
+      amount: parseAmount(amount),
     })
   }, [currency, amount])
 
@@ -92,10 +93,14 @@ function ControlledMoneyInput() {
         <Button size="small" onClick={() => setCurrency(currencies[2])}>
           Set Pounds
         </Button>
-        <Button size="small" variant="success" onClick={() => setAmount(2000)}>
+        <Button size="small" variant="success" onClick={() => setAmount(20)}>
           Set 20
         </Button>
-        <Button size="small" variant="success" onClick={() => setAmount(4050)}>
+        <Button
+          size="small"
+          variant="success"
+          onClick={() => setAmount('40.50')}
+        >
           Set 40,50
         </Button>
       </div>
