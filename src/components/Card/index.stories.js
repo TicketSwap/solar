@@ -5,6 +5,7 @@ import { Avatar } from '../Avatar'
 import { Pill } from '../Pill'
 import { Ticket } from '@ticketswap/comets'
 import { color, space, device, fontSize, lineHeight, radius } from '../../theme'
+import { Flag } from '../Flag'
 
 const Container = styled.div`
   padding: ${space[16]};
@@ -130,6 +131,20 @@ export const WithImage = () => (
           <Avatar size={44} src="https://www.placecage.com/200/200" />
         }
         rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+        verticalAlign="top"
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final International Show"
+        text="May 13, 2020"
+        header={<Avatar size={64} src="https://www.placecage.com/200/200" />}
+        image="https://assets.imgix.net/unsplash/moon.jpg?fit=crop&crop=entropy&w=1678&h=1259&ixlib=imgixjs-3.4.1"
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+        topLeftAdornment={<Flag countryCode="nl" />}
         verticalAlign="top"
       />
     </a>
