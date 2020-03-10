@@ -206,10 +206,8 @@ const Description = styled.span`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-
   width: 100%;
   font-size: ${p => (p.size === 'large' ? fontSize[14] : fontSize[12])};
-  opacity: 0.6;
   margin-top: 0.75rem;
 
   @media ${device.mobileL} {
