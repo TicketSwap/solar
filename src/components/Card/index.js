@@ -168,6 +168,16 @@ const clamp = css`
   }
 `
 
+const TopLeftAdornment = styled.div`
+  display: flex;
+  margin-bottom: auto;
+  padding: ${space[12]};
+
+  @media ${device.mobileL} {
+    padding: ${space[16]};
+  }
+`
+
 const Title = styled.h4`
   ${props => (props.hasImage ? clamp : truncate)};
   font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
@@ -200,7 +210,7 @@ const Text = styled.span`
   }
 `
 
-const Description = styled.span`
+const Description = styled.div`
   display: block;
   line-height: ${lineHeight.title};
   text-overflow: ellipsis;
@@ -225,6 +235,7 @@ export function Card({
   header,
   leftAdornment,
   rightAdornment,
+  topLeftAdornment,
   verticalAlign,
   size,
   ...props
@@ -237,6 +248,10 @@ export function Card({
       {hasImage && <Image src={image} alt={title} rounded />}
 
       <Content hasImage={hasImage}>
+        {hasImage && topLeftAdornment && (
+          <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>
+        )}
+
         <Body hasImage={hasImage} verticalAlign={verticalAlign}>
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
 
@@ -285,6 +300,7 @@ Card.propTypes = {
   image: PropTypes.string,
   leftAdornment: PropTypes.element,
   rightAdornment: PropTypes.element,
+  topLeftAdornment: PropTypes.element,
   verticalAlign: PropTypes.oneOf(['top', 'center', 'bottom']),
   appearance: PropTypes.oneOf(['dark', 'light']),
   size: PropTypes.oneOf(['default', 'large']),
