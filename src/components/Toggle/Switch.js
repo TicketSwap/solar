@@ -79,21 +79,15 @@ const Button = styled.button`
 
 const Adornment = styled.span`
   position: absolute;
-  top: 5px;
   left: ${props => (props.isOn ? 34 : 10)}px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   color: ${props => (props.isOn ? color.titan : color.spaceLight)};
-
-  @media ${device.tablet} {
-    top: 3px;
-  }
+  display: flex;
+  top: 0;
+  bottom: 0;
+  align-items: center;
 `
 
 const StyledSpinner = styled(Spinner)`
   position: relative;
-  top: 5px;
-
-  @media ${device.tablet} {
-    top: 7px;
-  }
 `
