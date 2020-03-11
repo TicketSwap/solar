@@ -137,6 +137,7 @@ const TextContent = styled.div`
   text-align: left;
   position: relative;
   overflow: hidden;
+  word-break: break-all;
 `
 
 const RightAdornment = styled.footer`
@@ -150,7 +151,7 @@ const RightAdornment = styled.footer`
 `
 
 const truncate = css`
-  @media ${device.mobileL} {
+  @media ${device.mobile} {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -158,7 +159,7 @@ const truncate = css`
 `
 
 const clamp = css`
-  @media ${device.mobileL} {
+  @media ${device.mobile} {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -211,7 +212,7 @@ const Text = styled.span`
 `
 
 const Description = styled.div`
-  display: block;
+  display: flex;
   line-height: ${lineHeight.title};
   text-overflow: ellipsis;
   white-space: nowrap;
