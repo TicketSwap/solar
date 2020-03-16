@@ -2224,10 +2224,10 @@
     "@testing-library/dom" "^6.11.0"
     "@types/testing-library__react" "^9.1.2"
 
-"@ticketswap/comets@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.4.0.tgz#0103de274e4a563415b49a0e92c7ac4dfafeb56b"
-  integrity sha512-gHRqCt2qnAajXDBco94lhkyFRt3kMh3EKjXGxz/s5kVeT4Mg1fvxa5Z/0IfSPQ1snIS+WTnWPlmSO3sK6wtmqw==
+"@ticketswap/comets@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.5.0.tgz#ca19b68f5d908cb3a199cae7a0407d0319c4c383"
+  integrity sha512-yfsw6A3xHH1wyTDousTI1h7HlXv/pyaSeG+Zhe9GzdJ7gGbDKjA6+JW9tQOl2n/pucNKLcgBY7xMFsu3x5yDkg==
   dependencies:
     react "^16.11.0"
     react-dom "^16.11.0"
