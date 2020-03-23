@@ -18,17 +18,17 @@ describe('ComboboxInput', () => {
   })
 
   it('shows suggestions upon typing', () => {
-    const { getByLabelText, getByText } = render(
+    const { getAllByLabelText, getByText } = render(
       <Combobox id="country" label="Country" items={countries} />
     )
-    fireEvent.change(getByLabelText(/country/i), {
+    fireEvent.change(getAllByLabelText(/country/i)[0], {
       target: { value: 'nether' },
     })
     expect(getByText(/netherlands/i)).toBeInTheDocument()
   })
 
   it('handles a passed initial value correctly', () => {
-    const { getByLabelText } = render(
+    const { getAllByLabelText } = render(
       <Combobox
         id="country"
         label="Country"
@@ -36,11 +36,11 @@ describe('ComboboxInput', () => {
         initialValue={countries[1].value}
       />
     )
-    expect(getByLabelText(/country/i).value).toEqual(countries[1].name)
+    expect(getAllByLabelText(/country/i)[0].value).toEqual(countries[1].name)
   })
 
   it('resets input upon clicking reset-button', () => {
-    const { getByLabelText, getByTestId } = render(
+    const { getAllByLabelText, getByTestId } = render(
       <Combobox
         id="country"
         label="Country"
@@ -49,12 +49,12 @@ describe('ComboboxInput', () => {
       />
     )
     fireEvent.click(getByTestId('reset-button'))
-    expect(getByLabelText(/country/i).value).toEqual('')
+    expect(getAllByLabelText(/country/i)[0].value).toEqual('')
   })
 
   it('calls onChange handler correctly', () => {
     const handler = jest.fn()
-    const { getByText, getByLabelText } = render(
+    const { getByText, getAllByLabelText } = render(
       <Combobox
         id="country"
         label="Country"
@@ -63,7 +63,7 @@ describe('ComboboxInput', () => {
         onChange={selection => handler(selection.name)}
       />
     )
-    fireEvent.change(getByLabelText(/country/i), {
+    fireEvent.change(getAllByLabelText(/country/i)[0], {
       target: { value: 'nether' },
     })
     fireEvent.click(getByText(/netherlands/i))

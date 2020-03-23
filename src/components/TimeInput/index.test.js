@@ -16,11 +16,12 @@ describe('TimeInput', () => {
     const { getByLabelText } = render(
       <TimeInput id="time" label="Time" onChange={handleChange} />
     )
-    fireEvent.change(getByLabelText(/time/i), {
+    const input = getByLabelText(/time/i)
+    fireEvent.change(input, {
       target: { value: invalidInputValue },
     })
     expect(handleChange).toHaveBeenCalledTimes(0)
-    fireEvent.change(getByLabelText(/time/i), {
+    fireEvent.change(input, {
       target: { value: validInputValue },
     })
     expect(handleChange).toHaveBeenCalledTimes(1)
