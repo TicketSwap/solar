@@ -1,4 +1,4 @@
-import { useLayoutEffect } from 'react'
+import { useIsomorphicLayoutEffect as useLayoutEffect_SAFE_FOR_SSR } from '@reach/utils'
 
 // Adopted and modified implementation of `body-scroll-lock`
 // https://github.com/willmcpo/body-scroll-lock
@@ -216,7 +216,7 @@ export const clearAllBodyScrollLocks = () => {
 }
 
 export function useLockBodyScroll(targetRef) {
-  useLayoutEffect(() => {
+  useLayoutEffect_SAFE_FOR_SSR(() => {
     disableBodyScroll(targetRef.current, {
       reserveScrollBarGap: true,
     })
