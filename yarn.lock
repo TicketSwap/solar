@@ -946,15 +946,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@babel/types@^7.9.0":
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.9.0.tgz#00b064c3df83ad32b2dbf5ff07312b15c7f1efb5"
-  integrity sha512-BS9JKfXkzzJl8RluW4JGknzpiUV7ZrvTayM6yfqLTVBEnFtyowVIOu6rqxRd5cVO6yGoWf4T8u8dgK9oB+GCng==
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.9.0"
-    lodash "^4.17.13"
-    to-fast-properties "^2.0.0"
-
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
@@ -1473,14 +1464,14 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/accordion@^0.8.5":
-  version "0.8.5"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.8.5.tgz#6fcc79e255528d3ceb3b392279080358dab4a550"
-  integrity sha512-nxshbY2MTy7BLSxFmDcwQ/bQejkw5k+awvToZxrjRzsHiDmkn7lHAtr/GBUtp975I9ZXn9XpXANOlcOMd6OAXw==
+"@reach/accordion@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.9.1.tgz#c2a33a4eaabddd7216481e88d38b5be6b8a03bf1"
+  integrity sha512-zXSyTF7LJutWgnAPIb01w5bFdDObr0UlPtCErvo1pxUhY20NZAtzJAjsML5taCbNFkyJM97gIb84Yfr+BDajrg==
   dependencies:
-    "@reach/auto-id" "^0.8.5"
-    "@reach/descendants" "^0.8.5"
-    "@reach/utils" "^0.8.5"
+    "@reach/auto-id" "^0.9.0"
+    "@reach/descendants" "^0.9.1"
+    "@reach/utils" "^0.9.0"
     tslib "^1.10.0"
     warning "^4.0.3"
 
@@ -1505,6 +1496,14 @@
   integrity sha512-L1zGSeOtpK8m/SA/CyJsKBnk+z+kvraEJUq1u/apkw1n47j1Byu40nA7TwKvUxuZtEVaK1CdsGFRGeyHRfU/kg==
   dependencies:
     "@reach/utils" "^0.8.5"
+    tslib "^1.10.0"
+
+"@reach/descendants@^0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.9.1.tgz#f17eec0a245d3b6a7cccd020b8edf5b7d1115fc2"
+  integrity sha512-SIlCSzxmL7OVZVG6/9vICtawGZbpSOcEjxuUfZiVLs62QOSLINEUPgSnFKCOtGxIEQOEgNxQ/DMkpNkWEva2Tw==
+  dependencies:
+    "@reach/utils" "^0.9.0"
     tslib "^1.10.0"
 
 "@reach/router@^1.2.1":
