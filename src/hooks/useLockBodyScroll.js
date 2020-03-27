@@ -134,6 +134,7 @@ const handleScroll = (event, targetElement) => {
 
 export const disableBodyScroll = (targetElement, options) => {
   if (isIosDevice) {
+    return
     // targetElement must be provided, and disableBodyScroll must not have been
     // called on this targetElement before.
     if (!targetElement) {
@@ -190,6 +191,7 @@ export const disableBodyScroll = (targetElement, options) => {
 
 export const clearAllBodyScrollLocks = () => {
   if (isIosDevice) {
+    return
     // Clear all locks ontouchstart/ontouchmove handlers, and the references
     locks.forEach(lock => {
       lock.targetElement.ontouchstart = null
