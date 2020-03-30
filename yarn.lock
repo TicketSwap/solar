@@ -8422,6 +8422,11 @@ is-directory@^0.3.1:
   resolved "https://registry.yarnpkg.com/is-directory/-/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
   integrity sha1-YTObbyR1/Hcv2cnYP1yFddwVSuE=
 
+is-docker@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/is-docker/-/is-docker-2.0.0.tgz#2cb0df0e75e2d064fe1864c37cdeacb7b2dcf25b"
+  integrity sha512-pJEdRugimx4fBMra5z2/5iRdZ63OhYV0vr0Dwm5+xtW4D1FvRkB8hamMIhnWfyJeDdyr/aa7BDyNbtG38VxgoQ==
+
 is-dotfile@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/is-dotfile/-/is-dotfile-1.0.3.tgz#a6a2f32ffd2dfb04f5ca25ecd0f6b83cf798a1e1"
@@ -8734,7 +8739,7 @@ is-wsl@^1.1.0:
   resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
   integrity sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
 
-is-wsl@^2.1.0, is-wsl@^2.1.1:
+is-wsl@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-2.1.1.tgz#4a1c152d429df3d441669498e2486d3596ebaf1d"
   integrity sha512-umZHcSrwlDHo2TGMXv0DZ8dIUGunZ2Iv68YZnrmCiBPkZ4aaOhtv7pXJKeki9k3qJ3RJr0cDyitcl5wEH3AYog==
@@ -10855,10 +10860,10 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.13.2.tgz#f51dc7ae66ba7d5d55e1e6d4d8092e802c9aefe7"
   integrity sha512-TghvYc72wlMGMVMluVo9WRJc0mB8KxxF/gZ4YYFy7V2ZQX9l7rgbPg7vjS9mt6U5HXODVFVI2bOduCzwOMv/lw==
 
-nanoid@^2.1.6:
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.7.tgz#d775e3e7c6470bbaaae3da9a647a80e228e0abf7"
-  integrity sha512-fmS3qwDldm4bE01HCIRqNk+f255CNjnAoeV3Zzzv0KemObHKqYgirVaZA9DtKcjogicWjYcHkJs4D5A8CjnuVQ==
+nanoid@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.0.2.tgz#37e91e6f5277ce22335be473e2a5db1bd96dd026"
+  integrity sha512-WOjyy/xu3199NlQiQWlx7VbspSFlGtOxa1bRX9ebmXOnp1fje4bJfjPs1wLQ8jZbJUfD+yceJmw879ZSaVJkdQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -11536,19 +11541,13 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-open@^6.0.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-6.4.0.tgz#5c13e96d0dc894686164f18965ecfe889ecfc8a9"
-  integrity sha512-IFenVPgF70fSm1keSd2iDBIDIBZkroLeuffXq+wKTzTJlBpesFWojV9lb8mzOfaAzM1sr7HQHuO0vtV0zYekGg==
+open@^7.0.0, open@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.0.3.tgz#db551a1af9c7ab4c7af664139930826138531c48"
+  integrity sha512-sP2ru2v0P290WFfv49Ap8MF6PkzGNnGlAwHweB4WR4mr5d2d0woiCluUeJ218w7/+PmoBy9JmYgD5A4mLcWOFA==
   dependencies:
-    is-wsl "^1.1.0"
-
-open@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/open/-/open-7.0.0.tgz#7e52999b14eb73f90f0f0807fe93897c4ae73ec9"
-  integrity sha512-K6EKzYqnwQzk+/dzJAQSBORub3xlBTxMz+ntpZpH/LyCa1o6KjXhuN+2npAaI9jaSmU3R1Q8NWf4KUWcyytGsQ==
-  dependencies:
-    is-wsl "^2.1.0"
+    is-docker "^2.0.0"
+    is-wsl "^2.1.1"
 
 opencollective-postinstall@^2.0.2:
   version "2.0.2"
@@ -13722,14 +13721,13 @@ rollup-plugin-replace@^2.2.0:
     magic-string "^0.25.2"
     rollup-pluginutils "^2.6.0"
 
-rollup-plugin-visualizer@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-3.3.2.tgz#0778ef23785cbdf1d0f8dd8f697b5d211b8ced1e"
-  integrity sha512-jAJxpC97jHoWU5mQkGw5MroguV8fbZsLPxdV7MdE/fX7lAR+t1UDLpSH41rqdxyJCtqi2/UoDOBuADCyZdHaYA==
+rollup-plugin-visualizer@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-visualizer/-/rollup-plugin-visualizer-4.0.1.tgz#d13b5ee4a92bb3372f7285a2a977159d5f404864"
+  integrity sha512-hOGXCrPkFYOxAOQfVYrsby8ZVzshfI2fZWKlMMeCW4nHH5WnKc9W4qEAkf+1+GEPyQkGkFDibIegWGB1A0qjxw==
   dependencies:
-    mkdirp "^0.5.1"
-    nanoid "^2.1.6"
-    open "^6.0.0"
+    nanoid "^3.0.1"
+    open "^7.0.3"
     pupa "^2.0.0"
     source-map "^0.7.3"
     yargs "^15.0.0"
