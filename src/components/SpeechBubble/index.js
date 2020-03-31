@@ -11,15 +11,15 @@ const SpeechBubbleBottomContent = props => css`
     top: -10px;
 
     ${props.horizontalAlign === 'left' &&
-      css`
-        left: calc(8px + ${props.tailOffset}px);
-      `}
+    css`
+      left: calc(8px + ${props.tailOffset}px);
+    `}
 
     ${props.horizontalAlign === 'right' &&
-      css`
-        transform: scaleX(-1);
-        right: calc(8px + ${props.tailOffset}px);
-      `};
+    css`
+      transform: scaleX(-1);
+      right: calc(8px + ${props.tailOffset}px);
+    `};
   }
 `
 
@@ -30,16 +30,16 @@ const SpeechBubbleTopContent = props => css`
     bottom: -10px;
 
     ${props.horizontalAlign === 'left' &&
-      css`
-        left: calc(8px + ${props.tailOffset}px);
-        transform: rotate(180deg) scaleX(-1);
-      `}
+    css`
+      left: calc(8px + ${props.tailOffset}px);
+      transform: rotate(180deg) scaleX(-1);
+    `}
 
     ${props.horizontalAlign === 'right' &&
-      css`
-        transform: rotate(180deg);
-        right: calc(8px + ${props.tailOffset}px);
-      `};
+    css`
+      transform: rotate(180deg);
+      right: calc(8px + ${props.tailOffset}px);
+    `};
   }
 `
 
