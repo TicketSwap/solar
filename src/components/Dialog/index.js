@@ -72,14 +72,8 @@ const Content = styled.div`
 `
 
 export function DialogContent({ children, ...props }) {
-  const ref = useRef(null)
-  useLockBodyScroll(ref)
-
-  return (
-    <Content ref={ref} {...props}>
-      {children}
-    </Content>
-  )
+  useLockBodyScroll()
+  return <Content {...props}>{children}</Content>
 }
 
 export const DialogHeader = styled.header`
