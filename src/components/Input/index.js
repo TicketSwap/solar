@@ -49,10 +49,10 @@ export const fieldStyles = props => css`
   -webkit-font-smoothing: auto;
 
   ${props.as === 'textarea' &&
-    css`
-      resize: vertical;
-      min-height: ${space[96]};
-    `};
+  css`
+    resize: vertical;
+    min-height: ${space[96]};
+  `};
 
   &[type='search']::-webkit-search-decoration {
     appearance: none;
