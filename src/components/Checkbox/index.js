@@ -1,33 +1,25 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Checkmark } from '@ticketswap/comets'
-import {
-  space,
-  color,
-  radius,
-  fontWeight,
-  device,
-  lineHeight,
-} from '../../theme'
+import { space, color, radius, fontWeight } from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { Help } from '../Input'
+import { SmallText } from '../Text'
 
 const Label = styled.label`
   display: inline-flex;
   justify-content: center;
   align-items: flex-start;
-  line-height: ${lineHeight.solid};
+`
+
+const Help = styled(SmallText)`
+  color: ${color.spaceLight};
+  display: block;
 `
 
 const LabelText = styled.span`
   flex-shrink: 1;
   display: inline-block;
   color: ${color.spaceMedium};
-  margin-top: 4px;
-
-  @media ${device.tablet} {
-    margin-top: 3px;
-  }
 
   strong {
     color: ${color.space};
