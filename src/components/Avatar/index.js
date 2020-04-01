@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Image } from '../Image'
-import { color } from '../../theme'
 
 const Wrapper = styled.div`
   vertical-align: middle;
@@ -69,8 +68,7 @@ export const Avatar = ({ size, src, alt, ...props }) => (
         src={src}
         alt={alt}
         data-testid="image"
-        width={size}
-        height={size}
+        aspectRatio={1 / 1}
       />
     ) : (
       <Placeholder />
