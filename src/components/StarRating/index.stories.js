@@ -24,9 +24,9 @@ WithInitialRating.story = {
 
 export const WithinForm = () => (
   <form style={{ display: 'grid', gridGap: '1rem' }}>
-    <Input label="Email" />
+    <Input id="email" label="Email" />
     <StarRating label="Your rating" onChange={rating => console.log(rating)} />
-    <Input label="Message" as="textarea" />
+    <Input id="message" label="Message" as="textarea" />
   </form>
 )
 
