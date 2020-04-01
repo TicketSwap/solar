@@ -59,7 +59,7 @@ const Container = styled.div`
   @media ${device.tablet} {
     img {
       object-fit: cover;
-      max-height: ${space[256]};
+      max-height: ${space[272]};
     }
   }
 
