@@ -1710,6 +1710,14 @@
     tslib "^1.10.0"
     warning "^4.0.3"
 
+"@reach/auto-id@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.10.0.tgz#72b70b9bb3f7d0f39b9fae0dcb412168ee139762"
+  integrity sha512-Uwsd4eNFa5YteZ7DKCVIbhE3c8x9DYVwtLy6ZCl1jo6bXAF6Di1dYm/XnkTmo+OYoKOZlVTu7umONDeezY33rQ==
+  dependencies:
+    "@reach/utils" "^0.10.0"
+    tslib "^1.10.0"
+
 "@reach/auto-id@^0.9.0":
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.9.0.tgz#73b5d34bcf432f3e73b235b9dcaa89ea05a0d4db"
