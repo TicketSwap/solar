@@ -1699,14 +1699,14 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/accordion@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.9.1.tgz#c2a33a4eaabddd7216481e88d38b5be6b8a03bf1"
-  integrity sha512-zXSyTF7LJutWgnAPIb01w5bFdDObr0UlPtCErvo1pxUhY20NZAtzJAjsML5taCbNFkyJM97gIb84Yfr+BDajrg==
+"@reach/accordion@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.10.0.tgz#c3954d69beb53fc4e7176a7b4a4489d0fd994ff4"
+  integrity sha512-13dz8KttzZ+B9KgR0ph14lsqYd7n0fqyoF/vpQh/7LsE6Z2LIn62O1EeIqA6fucTlVFUo5Y7r0BqU1EFyXzVeQ==
   dependencies:
-    "@reach/auto-id" "^0.9.0"
-    "@reach/descendants" "^0.9.1"
-    "@reach/utils" "^0.9.0"
+    "@reach/auto-id" "^0.10.0"
+    "@reach/descendants" "^0.10.0"
+    "@reach/utils" "^0.10.0"
     tslib "^1.10.0"
     warning "^4.0.3"
 
