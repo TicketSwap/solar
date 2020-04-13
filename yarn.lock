@@ -1718,28 +1718,12 @@
     "@reach/utils" "^0.10.0"
     tslib "^1.10.0"
 
-"@reach/auto-id@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.9.0.tgz#73b5d34bcf432f3e73b235b9dcaa89ea05a0d4db"
-  integrity sha512-9/aXl+dT0pOenvpkB2kkmQnpMDlmSk8ZkBYmYFzFz3eA4PZFNuXcHVzQevFRhc0HVlskPjxwPNf92EkI9rdFOw==
-  dependencies:
-    "@reach/utils" "^0.9.0"
-    tslib "^1.10.0"
-
 "@reach/descendants@^0.10.0":
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.10.0.tgz#43eeba4aea10ffc62fe5144248c1455ab317964b"
   integrity sha512-G7wm0poMVR+aT9W5O8C6cnrZBYskIAfgBfPwByOY7F6TwEj7HqHDs7tZ/3Paj6UIZZ9lkVfhHPEGGvfOpEXhlg==
   dependencies:
     "@reach/utils" "^0.10.0"
-    tslib "^1.10.0"
-
-"@reach/descendants@^0.9.1":
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.9.1.tgz#f17eec0a245d3b6a7cccd020b8edf5b7d1115fc2"
-  integrity sha512-SIlCSzxmL7OVZVG6/9vICtawGZbpSOcEjxuUfZiVLs62QOSLINEUPgSnFKCOtGxIEQOEgNxQ/DMkpNkWEva2Tw==
-  dependencies:
-    "@reach/utils" "^0.9.0"
     tslib "^1.10.0"
 
 "@reach/router@^1.2.1":
@@ -1768,14 +1752,6 @@
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.10.0.tgz#480332433f9d0232aff2c36374cf9a2fe559990b"
   integrity sha512-qPiwjw8jcT7JYrVT+ZO7bLTVEdp9KyvY0RO1emyCxqpYVr4s9oSZ3XG6n7G+bvnKeyjpbpIfCVfxYvPF1Uq2DQ==
-  dependencies:
-    tslib "^1.10.0"
-    warning "^4.0.3"
-
-"@reach/utils@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.9.0.tgz#ee47c25c79eb2f98e6c0e728a2672075cc9991d5"
-  integrity sha512-cmiykRaxuCysVTsSY3PgrLjySnEIt1PLiSYKh5rAH8nYyEmaOCtw0vaNItFAiqQIjfrxkixmcUE8dyD8kqVuJA==
   dependencies:
     tslib "^1.10.0"
     warning "^4.0.3"
@@ -13443,10 +13419,10 @@ rollup-watch@^4.3.1:
     require-relative "0.8.7"
     rollup-pluginutils "^2.0.1"
 
-rollup@^2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.3.3.tgz#5982df700d7aae8907075ba68122bb57d98e9cd0"
-  integrity sha512-uJ9VNWk80mb4wDCSfd1AyHoSc9TrWbkZtnO6wbsMTp9muSWkT26Dvc99MX1yGCOTvUN1Skw/KpFzKdUDuZKTXA==
+rollup@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.6.1.tgz#8354e67caa7b8bf24c2488d9e2f64da2be62eebe"
+  integrity sha512-1RhFDRJeg027YjBO6+JxmVWkEZY0ASztHhoEUEWxOwkh4mjO58TFD6Uo7T7Y3FbmDpRTfKhM5NVxJyimCn0Elg==
   optionalDependencies:
     fsevents "~2.1.2"
 
