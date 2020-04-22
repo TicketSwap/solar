@@ -40,6 +40,7 @@ export function Select({
   ...props
 }) {
   const { isMobile } = useDeviceInfo()
+  const [showCustomSelect, setShowCustomSelect] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
     props.initialSelectedItem || items[0]
@@ -69,6 +70,16 @@ export function Select({
   function setItemRef(el) {
     return (itemRefs = [...itemRefs, el])
   }
+
+  React.useEffect(() => {
+    if (!isMobile()) {
+      // Component will render a native select element by default.
+      // Upon mounting, we check whether we’re on a mobile device. If
+      // not, render the custom select.
+      setShowCustomSelect(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   React.useEffect(() => {
     if (isControlled) setSelectedItem(props.selectedItem)
@@ -133,7 +144,7 @@ export function Select({
 
   return (
     <Container ref={containerRef}>
-      {isMobile() && (
+      {!showCustomSelect && (
         <Input
           {...props}
           as="select"
@@ -155,7 +166,7 @@ export function Select({
         </Input>
       )}
 
-      {!isMobile() && (
+      {showCustomSelect && (
         <>
           <StyledInput
             {...props}
