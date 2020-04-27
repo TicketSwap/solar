@@ -1674,16 +1674,16 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
-"@reach/tabs@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.10.0.tgz#cf5df6da6c32b346fce0734f847592a367987329"
-  integrity sha512-jdzj4i2IWTzFibfPZyrgJTIm0qyUXCzYvXC6w8Qn4UB5/+8DLn2SPYcDzKSfWKHEVhfMM37kiNV5eetmJPgJ6g==
+"@reach/tabs@^0.10.1":
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/@reach/tabs/-/tabs-0.10.1.tgz#35752444083427d19628344af02d051d1b7e0ea0"
+  integrity sha512-a3lpLU7KEZrvJJdzyqWB90Q50rPhBWAWBWcHAyewkm6uWTamSB/GNTHxylKo3B8fSkFMUL7r1e/odKsE+GB29w==
   dependencies:
-    "@reach/auto-id" "^0.10.0"
-    "@reach/descendants" "^0.10.0"
-    "@reach/utils" "^0.10.0"
+    "@reach/auto-id" "^0.10.1"
+    "@reach/descendants" "^0.10.1"
+    "@reach/utils" "^0.10.1"
     prop-types "^15.7.2"
-    tslib "^1.10.0"
+    tslib "^1.11.1"
 
 "@reach/utils@^0.10.0", "@reach/utils@^0.10.1":
   version "0.10.1"
