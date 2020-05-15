@@ -6,6 +6,7 @@ import { MagnifyingGlass } from '@ticketswap/comets'
 
 export const Combobox = ({ items, onChange, initialValue, ...props }) => (
   <Downshift
+    id={props.id}
     onChange={selection => selection && onChange(selection)}
     itemToString={item => (item ? item.name : '')}
     initialSelectedItem={
