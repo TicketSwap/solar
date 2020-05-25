@@ -1665,15 +1665,15 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/accordion@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.10.1.tgz#bf99eae9b343a33ac5df020b9c56da7e907021b2"
-  integrity sha512-hhiLp08dhce4OsEtoLhXsqtIqZi6W4us2wHsuvQUgf6w7h1UIGtAMXl2/k4lzynwBtYSIY4fuqktzGgFGVwa4w==
+"@reach/accordion@^0.10.3":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.10.3.tgz#6be590b6f8468a42f5727d1ff5ea03f7b36eb8be"
+  integrity sha512-GzRCJUPeDTGUdo+TMdwOFTTKc0GubkOEdBTQcOjKKMcLHxpOfZTx+hvkNREnXuqAyylyOfhxBKnuMWGS45+Weg==
   dependencies:
-    "@reach/auto-id" "^0.10.1"
-    "@reach/descendants" "^0.10.1"
-    "@reach/utils" "^0.10.1"
-    tslib "^1.11.1"
+    "@reach/auto-id" "^0.10.3"
+    "@reach/descendants" "^0.10.3"
+    "@reach/utils" "^0.10.3"
+    tslib "^1.11.2"
 
 "@reach/auto-id@^0.10.0", "@reach/auto-id@^0.10.1", "@reach/auto-id@^0.10.3":
   version "0.10.3"
