@@ -30,16 +30,6 @@ export const basic = () => (
   </Cover>
 )
 
-export const basicTinted = () => (
-  <Cover tinted images={data.randomBackgroundImage.imageSizes}>
-    <H1>Awakenings Festival 2019</H1>
-  </Cover>
-)
-
-basicTinted.story = {
-  name: 'basic tinted',
-}
-
 export const basicBlurred = () => (
   <Cover
     blurred
@@ -54,12 +44,12 @@ export const basicBlurred = () => (
 )
 
 basicBlurred.story = {
-  name: 'basic blurred',
+  name: 'Basic blurred',
 }
 
 export const fullHeight = () => (
   <Cover
-    height="full"
+    fullHeight
     caption={data.randomBackgroundImage.copyrightText}
     captionUrl={data.randomBackgroundImage.copyrightLink}
     images={data.randomBackgroundImage.imageSizes}
@@ -69,5 +59,15 @@ export const fullHeight = () => (
 )
 
 fullHeight.story = {
-  name: 'full height',
+  name: 'Full height',
+}
+
+export const withoutImage = () => (
+  <Cover fullHeight>
+    <H1>The safest way to buy and sell e-tickets</H1>
+  </Cover>
+)
+
+withoutImage.story = {
+  name: 'Without image',
 }
