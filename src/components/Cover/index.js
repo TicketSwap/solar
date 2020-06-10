@@ -19,6 +19,12 @@ const Container = styled.div`
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
   color: white;
   padding: ${space[16]};
+
+  ${props =>
+    props.blurred &&
+    css`
+      overflow: hidden;
+    `}
 `
 
 const BackgroundImage = styled.div`
@@ -35,6 +41,7 @@ const BackgroundImage = styled.div`
     props.blurred &&
     css`
       filter: blur(15px);
+      transform: scale(1.2);
     `}
 
   background-image: ${props =>
@@ -128,11 +135,10 @@ const BackgroundImage = styled.div`
 
 const Content = styled.div`
   padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
-  padding-bottom: ${space[24]};
+  padding-bottom: ${space[16]};
 
   @media ${device.tablet} {
     padding-top: ${144 / 16}rem;
-    padding-bottom: ${space[48]};
   }
 `
 
@@ -187,7 +193,7 @@ export const Cover = ({
   fullHeight,
   ...props
 }) => (
-  <Container fullHeight={fullHeight} {...props}>
+  <Container fullHeight={fullHeight} blurred={blurred} {...props}>
     <Content blurred={blurred}>{children}</Content>
 
     {caption && captionUrl && (
