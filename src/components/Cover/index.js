@@ -18,7 +18,6 @@ const Container = styled.div`
   width: 100%;
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
   color: white;
-  padding: ${space[16]};
 
   ${props =>
     props.blurred &&
@@ -135,10 +134,11 @@ const BackgroundImage = styled.div`
 
 const Content = styled.div`
   padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
-  padding-bottom: ${space[16]};
+  padding-bottom: ${space[24]};
 
   @media ${device.tablet} {
     padding-top: ${144 / 16}rem;
+    padding-bottom: ${space[48]};
   }
 `
 
