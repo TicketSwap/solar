@@ -2383,10 +2383,10 @@
     "@babel/runtime" "^7.10.2"
     "@testing-library/dom" "^7.9.0"
 
-"@ticketswap/comets@^2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.6.0.tgz#4c12db215f9538f339d3fcd61330a2a419ccf6d1"
-  integrity sha512-TW4mq+uvTEhgfAk10KtlyXnkKt5yHvJwRAtUXp3xF4iE9KnUSdE4OlJ2bbmA1KDCaDyWndEsz+ofz6GSWyDFvQ==
+"@ticketswap/comets@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.8.0.tgz#19de37822040651094ea067f19f506065395099e"
+  integrity sha512-sNfhjvjS8Z66bnzhJjRRP1XjmtgDNgBWBKVjO2Fbw8NJA+rXJg0616s0j2CtNqi3W0ZKeHBwR9fmPO1Wn726RA==
   dependencies:
     react "^16.11.0"
     react-dom "^16.11.0"
