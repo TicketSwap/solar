@@ -8,7 +8,7 @@ function ControlledToggle() {
   return (
     <>
       <input type="checkbox" onChange={e => setOn(e.target.checked)} />
-      <Toggle on={on} />
+      <Toggle on={on} onToggle={on => console.log(on)} />
     </>
   )
 }
