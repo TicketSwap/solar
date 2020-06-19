@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Image } from '../Image'
-import { color } from '../../theme'
 
 const Wrapper = styled.div`
   vertical-align: middle;
@@ -86,4 +85,5 @@ Avatar.defaultProps = {
 Avatar.propTypes = {
   size: PropTypes.number,
   src: PropTypes.string,
+  alt: PropTypes.string,
 }
