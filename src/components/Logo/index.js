@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Path } from './Path'
 import { device } from '../../theme'
@@ -45,3 +46,7 @@ export const Logo = ({ variant, ...props }) => (
     </InlineSvg>
   </SvgWrapper>
 )
+
+Logo.propTypes = {
+  variant: PropTypes.oneOf(['lgbt']),
+}
