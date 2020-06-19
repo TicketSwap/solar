@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Checkmark } from '@ticketswap/comets'
 import { space, color, radius, fontWeight } from '../../theme'
@@ -81,7 +82,7 @@ export const Checkbox = React.forwardRef(
     { className, defaultOn, onChange, label, hideLabel, help, ...props },
     ref
   ) => {
-    const [on, setOn] = React.useState(defaultOn || false)
+    const [on, setOn] = React.useState(defaultOn)
     const isOnControlled = () => props.on !== undefined
     const getOn = () => (isOnControlled() ? props.on : on)
     const { on: _, ...otherProps } = props
@@ -124,4 +125,17 @@ export const Checkbox = React.forwardRef(
 
 Checkbox.defaultProps = {
   onChange: () => {},
+  defaultOn: false,
+  hideLabel: false,
+  checked: false,
+}
+
+Checkbox.propTypes = {
+  defaultOn: PropTypes.bool,
+  onChange: PropTypes.func,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  hideLabel: PropTypes.bool,
+  help: PropTypes.string,
+  checked: PropTypes.bool,
+  on: PropTypes.bool,
 }
