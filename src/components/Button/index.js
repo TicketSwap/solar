@@ -330,4 +330,20 @@ Button.defaultProps = {
 Button.propTypes = {
   icon: PropTypes.string,
   loading: PropTypes.bool,
+  leftAdornment: PropTypes.object,
+  variant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'caution',
+    'success',
+    'warning',
+    'danger',
+    'facebook',
+    'inverted',
+  ]),
+  rounded: PropTypes.bool,
+  square: PropTypes.bool,
+  width: PropTypes.oneOf(['full']),
+  size: PropTypes.oneOf(['small']),
+  active: PropTypes.bool,
 }
