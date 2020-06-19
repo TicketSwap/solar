@@ -152,10 +152,11 @@ export const Alert = ({ title, action, ...props }) => {
 }
 
 Alert.propTypes = {
+  title: PropTypes.string,
   variant: PropTypes.oneOf(['info', 'success', 'error', 'warning']),
   action: PropTypes.shape({
-    label: PropTypes.string,
-    onClick: PropTypes.func,
+    label: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
   }),
 }
 
