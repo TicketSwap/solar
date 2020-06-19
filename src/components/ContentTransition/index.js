@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { easing } from '../../theme'
 import { usePrevious, useTransition } from '../../hooks'
@@ -87,4 +88,9 @@ export function ContentTransition({ children, onChange, activeView }) {
       ))}
     </Container>
   )
+}
+
+ContentTransition.propTypes = {
+  activeView: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
