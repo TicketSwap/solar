@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { radius, color, space } from '../../theme'
@@ -82,4 +83,8 @@ export function Tooltip({ children, label, 'aria-label': ariaLabel }) {
       />
     </>
   )
+}
+
+Tooltip.propTypes = {
+  label: PropTypes.string,
 }
