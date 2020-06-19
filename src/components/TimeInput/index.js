@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Input } from '../Input'
 
 export function TimeInput({ onChange, onReset, initialValue, ...props }) {
@@ -94,4 +95,21 @@ export function TimeInput({ onChange, onReset, initialValue, ...props }) {
 
 TimeInput.defaultProps = {
   initialValue: '',
+}
+
+TimeInput.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  hideLabel: PropTypes.bool,
+  loading: PropTypes.bool,
+  labelProps: PropTypes.object,
+  leftAdornment: PropTypes.node,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  type: PropTypes.string,
+  menu: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  validate: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onReset: PropTypes.func,
+  initialValue: PropTypes.string,
 }
