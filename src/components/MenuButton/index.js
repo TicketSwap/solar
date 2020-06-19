@@ -122,4 +122,9 @@ MenuButton.propTypes = {
       value: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onChange: PropTypes.func,
+  initialSelectedItem: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+  }),
 }
