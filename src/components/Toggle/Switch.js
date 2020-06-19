@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Spinner } from '../Spinner'
-import { space, color, device } from '../../theme'
+import { space, color } from '../../theme'
 
 export function Switch({ on, loading, adornment, ...props }) {
   return (
-    <Button isOn={on ? true : false} {...props}>
+    <Button isOn={Boolean(on)} {...props}>
       {loading || adornment ? (
         <Adornment isOn={on}>
           {loading ? <StyledSpinner size={16} /> : adornment ? adornment : null}
