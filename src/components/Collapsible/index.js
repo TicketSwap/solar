@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import {
   color,
@@ -80,4 +81,9 @@ export function Collapsible({ buttonLabel, defaultOn, children, ...props }) {
 Collapsible.defaultProps = {
   buttonLabel: 'Toggle',
   defaultOn: false,
+}
+
+Collapsible.propTypes = {
+  buttonLabel: PropTypes.string,
+  defaultOn: PropTypes.bool,
 }
