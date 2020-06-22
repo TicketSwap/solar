@@ -85,7 +85,7 @@
   "repository": "https://github.com/TicketSwap/solar",
   "dependencies": {
     "@reach/accordion": "^0.10.3",
-    "@reach/auto-id": "^0.10.0",
+    "@reach/auto-id": "^0.10.4",
     "@reach/tabs": "^0.10.3",
     "@reach/tooltip": "^0.10.3",
     "@reach/utils": "^0.10.0",
