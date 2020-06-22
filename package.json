@@ -86,7 +86,7 @@
   "dependencies": {
     "@reach/accordion": "^0.10.3",
     "@reach/auto-id": "^0.10.0",
-    "@reach/tabs": "^0.10.3",
+    "@reach/tabs": "^0.10.4",
     "@reach/tooltip": "^0.10.3",
     "@reach/utils": "^0.10.0",
     "@ticketswap/comets": "^2.8.0",
