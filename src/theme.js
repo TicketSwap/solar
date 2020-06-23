@@ -2,6 +2,7 @@ import { css } from '@emotion/core'
 
 export const color = {
   space: 'rgb(0,19,25)',
+  spaceDark: 'rgb(40,56,61)',
   spaceMedium: 'rgb(102,113,117)',
   spaceLight: 'rgb(153,161,163)',
   spaceLighter: 'rgb(204,208,209)',
