@@ -14,6 +14,7 @@ export { BaseStyles } from './components/BaseStyles'
 export { StarRating } from './components/StarRating'
 export { Button } from './components/Button'
 export { Card } from './components/Card'
+export { ContentDialog } from './components/ContentDialog'
 export {
   Panel,
   PanelContent,
