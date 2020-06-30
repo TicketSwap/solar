@@ -32,7 +32,7 @@ const BackgroundImage = styled.div`
   left: 0;
   top: 0;
   right: 0;
-  height: 65%;
+  height: 75%;
   background-size: cover;
   background-position: center;
 
