@@ -194,6 +194,7 @@ const Subtitle = styled.h5`
   ${props => !props.hasImage && truncate};
   font-size: ${p => (p.size === 'large' ? fontSize[16] : fontSize[14])};
   font-weight: ${fontWeight.regular};
+  color: ${color.spaceMedium};
 
   @media ${device.mobileL} {
     font-size: ${p => (p.size === 'large' ? fontSize[18] : fontSize[16])};
