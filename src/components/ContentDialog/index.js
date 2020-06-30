@@ -195,6 +195,10 @@ const StyledCover = styled(Cover)`
   @media ${device.tablet} {
     padding: 0 ${space[24]};
   }
+
+  > div {
+    padding-bottom: ${space[16]};
+  }
 `
 
 const CloseButton = styled.button`
