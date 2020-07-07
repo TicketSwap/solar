@@ -47,6 +47,11 @@ export const globalStyles = css`
     font-display: swap;
   }
 
+  ::selection {
+    background-color: ${color.earth};
+    color: white;
+  }
+
   *,
   *:before,
   *:after {
