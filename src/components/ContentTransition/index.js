@@ -90,7 +90,11 @@ export function ContentTransition({ children, onChange, activeView }) {
   )
 }
 
+ContentTransition.defaultProps = {
+  onChange: () => null,
+}
+
 ContentTransition.propTypes = {
   activeView: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
 }
