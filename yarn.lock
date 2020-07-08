@@ -1839,22 +1839,30 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@reach/accordion@^0.10.4":
-  version "0.10.4"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.10.4.tgz#553cd045fc1a0487fc442cbc84046cba9f6a4bcc"
-  integrity sha512-0zhv0ADGve4hhBW4zRA9Nbj1hcr0oZuu7eNHFKwTLMgIp2MQw6upF6rOSkdgcvJ1Mdd/HLnSDeQ0NA+vXKotJg==
+"@reach/accordion@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.10.5.tgz#991f766183fb4356a649d14d4c4508ffd5fa38aa"
+  integrity sha512-dwRt80FMEHxqBdiDkbF+k/mrLexGeBRZ2/k5XYsekfGrflP9y2nCVFjyaVJIigt4k6EJlykBIzdkOlOSlSS7vw==
   dependencies:
-    "@reach/auto-id" "0.10.4"
-    "@reach/descendants" "0.10.4"
-    "@reach/utils" "0.10.4"
+    "@reach/auto-id" "0.10.5"
+    "@reach/descendants" "0.10.5"
+    "@reach/utils" "0.10.5"
     tslib "^2.0.0"
 
-"@reach/auto-id@0.10.4", "@reach/auto-id@^0.10.0":
+"@reach/auto-id@0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.10.4.tgz#ba9c0c96c3fd037f2d3c70e9e2e6a784a83abfab"
   integrity sha512-hJIjqOBIYdIdrjefWYfuBAntrUSP2sRp5jj3rJNSXW/Txhv6NUhfk5z5Xwsi6HST9rBS15btM8YaQBvJYicZsQ==
   dependencies:
     "@reach/utils" "0.10.4"
+    tslib "^2.0.0"
+
+"@reach/auto-id@0.10.5", "@reach/auto-id@^0.10.0":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.10.5.tgz#fa78c71ce2f565ebed1ad91a8d9a685176d23c48"
+  integrity sha512-we4/bwjFxJ3F+2eaddQ1HltbKvJ7AB8clkN719El7Zugpn/vOjfPMOVUiBqTmPGLUvkYrq4tpuFwLvk2HyOVHg==
+  dependencies:
+    "@reach/utils" "0.10.5"
     tslib "^2.0.0"
 
 "@reach/descendants@0.10.4":
@@ -1863,6 +1871,14 @@
   integrity sha512-Oc0fiT2AKUZJs92qqqh6xcBA9lJkjvGtldm+Zh12K4elPoz7OVBCWFSzvKZM1WrCJGhmfczEiuYTnuB4TchBog==
   dependencies:
     "@reach/utils" "0.10.4"
+    tslib "^2.0.0"
+
+"@reach/descendants@0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.10.5.tgz#2611174e9e9b326dba548356221e2f8c8f5c8612"
+  integrity sha512-8HhN4DwS/HsPQ+Ym/Ft/XJ1spXBYdE8hqpnbYR9UcU7Nx3oDbTIdhjA6JXXt23t5avYIx2jRa8YHCtVKSHuiwA==
+  dependencies:
+    "@reach/utils" "0.10.5"
     tslib "^2.0.0"
 
 "@reach/dialog@^0.10.5":
