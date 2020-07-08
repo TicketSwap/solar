@@ -1,13 +1,14 @@
 import React from 'react'
 import { usePrevious } from './usePrevious'
 
-const EXITED = 'exited'
-const ENTERING = 'entering'
-const ENTERED = 'entered'
-const EXITING = 'exiting'
+export const EXITED = 'exited'
+export const ENTERING = 'entering'
+export const ENTERED = 'entered'
+export const EXITING = 'exiting'
 
 export function useTransition({
   in: on,
+  defaultTransitionState = EXITED,
   timeout,
   onExited,
   onEntering,
@@ -16,7 +17,7 @@ export function useTransition({
 }) {
   if (typeof on !== 'boolean') throwError('in')
   if (typeof timeout !== 'number') throwError('timeout')
-  const [state, setState] = React.useState(EXITED)
+  const [state, setState] = React.useState(defaultTransitionState)
   const [mounted, setMounted] = React.useState(false)
   const [transitioning, setTransitioning] = React.useState(false)
   const prevOn = usePrevious(on)

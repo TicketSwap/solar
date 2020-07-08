@@ -13,7 +13,9 @@ export const color = {
   spaceLightestAlpha: 'rgba(0,19,25,0.1)',
 
   nova: 'rgb(255, 255, 255)',
-  novaAlpha: 'rgba(255,255,255,0.8)',
+  novaLightAlpha: 'rgba(255,255,255,0.6)',
+  novaLighterAlpha: 'rgba(255,255,255,0.4)',
+  novaLightestAlpha: 'rgba(255,255,255,0.2)',
 
   stardust: 'rgb(245,245,246)',
   stardustLight: 'rgb(247,247,248)',
