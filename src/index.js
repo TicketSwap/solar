@@ -54,6 +54,12 @@ export {
   DialogFooter,
   useDialog,
 } from './components/Dialog'
+export {
+  OnboardingDialog,
+  OnboardingDialogBody,
+  useOnboarding,
+  OnboardingWrapper,
+} from './components/OnboardingDialog'
 export { Flag } from './components/Flag'
 export { globalStyles } from './global-styles'
 export { H1, H2, H3, H4, H5, H6 } from './components/Heading'
