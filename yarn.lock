@@ -1849,12 +1849,20 @@
     "@reach/utils" "0.10.4"
     tslib "^2.0.0"
 
-"@reach/auto-id@0.10.4", "@reach/auto-id@^0.10.0":
+"@reach/auto-id@0.10.4":
   version "0.10.4"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.10.4.tgz#ba9c0c96c3fd037f2d3c70e9e2e6a784a83abfab"
   integrity sha512-hJIjqOBIYdIdrjefWYfuBAntrUSP2sRp5jj3rJNSXW/Txhv6NUhfk5z5Xwsi6HST9rBS15btM8YaQBvJYicZsQ==
   dependencies:
     "@reach/utils" "0.10.4"
+    tslib "^2.0.0"
+
+"@reach/auto-id@^0.10.5":
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.10.5.tgz#fa78c71ce2f565ebed1ad91a8d9a685176d23c48"
+  integrity sha512-we4/bwjFxJ3F+2eaddQ1HltbKvJ7AB8clkN719El7Zugpn/vOjfPMOVUiBqTmPGLUvkYrq4tpuFwLvk2HyOVHg==
+  dependencies:
+    "@reach/utils" "0.10.5"
     tslib "^2.0.0"
 
 "@reach/descendants@0.10.4":
