@@ -117,6 +117,7 @@ const ContentWrapper = styled.div`
 export const ContentDialog = ({
   children,
   imageUrl,
+  logoUrl,
   blurred,
   title,
   subtitle,
@@ -154,6 +155,7 @@ export const ContentDialog = ({
           <ContentDialogHeader
             ref={headerRef}
             imageUrl={imageUrl}
+            logoUrl={logoUrl}
             blurred={blurred}
             title={title}
             subtitle={subtitle}
@@ -184,6 +186,7 @@ ContentDialog.propTypes = {
   isOpen: PropTypes.bool,
   onDismiss: PropTypes.func,
   imageUrl: PropTypes.string.isRequired,
+  logoUrl: PropTypes.string,
   blurred: PropTypes.bool,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
@@ -199,6 +202,16 @@ const StyledCover = styled(Cover)`
   > div {
     padding-bottom: ${space[16]};
   }
+`
+
+const LogoImage = styled.div`
+  height: ${space[96]};
+  margin-top: -${space[56]};
+  margin-bottom: ${space[24]};
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(${props => props.logoUrl});
 `
 
 const CloseButton = styled.button`
@@ -232,10 +245,11 @@ const Subtitle = styled(Text)`
 `
 
 const ContentDialogHeader = React.forwardRef(
-  ({ imageUrl, blurred, title, subtitle, onDismiss }, ref) => {
+  ({ imageUrl, logoUrl, blurred, title, subtitle, onDismiss }, ref) => {
     return (
       <div ref={ref}>
         <StyledCover imageUrl={imageUrl} blurred={blurred}>
+          {logoUrl && <LogoImage logoUrl={logoUrl} />}
           <H2>{title}</H2>
           {subtitle && <Subtitle>{subtitle}</Subtitle>}
           <CloseButton onClick={onDismiss}>
