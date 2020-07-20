@@ -69,6 +69,9 @@ export const color = {
   twitter: 'rgb(56,161,243)',
   twitterLight: 'rgb(96,180,245)',
   twitterFocusAlpha: 'rgba(56,161,243,0.24)',
+
+  whatsapp: 'rgb(37,211,102)',
+  whatsappFocusAlpha: 'rgba(37,211,102,0.24)',
 }
 
 export const fontStack = `'Proxima Nova', -apple-system, BlinkMacSystemFont,
