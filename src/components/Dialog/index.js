@@ -45,7 +45,7 @@ const DialogOverlay = styled.div`
 const Content = styled.div`
   position: relative;
   width: 100%;
-  background-color: white;
+  background-color: ${color.nova};
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
   transform: ${props =>

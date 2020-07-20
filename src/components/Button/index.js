@@ -66,7 +66,7 @@ const StyledButton = styled.button`
     props.variant === 'primary' &&
     css`
       background-color: ${color.earth};
-      color: white;
+      color: ${color.nova};
       text-shadow: ${shadow.text};
     `};
 
@@ -74,7 +74,7 @@ const StyledButton = styled.button`
     props.variant === 'secondary' &&
     css`
       background-color: ${props.active ? color.earth : color.skyLight};
-      color: ${props.active ? 'white' : color.earth};
+      color: ${props.active ? color.nova : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
     `};
 
@@ -90,7 +90,7 @@ const StyledButton = styled.button`
     props.variant === 'inverted' &&
     css`
       text-shadow: none;
-      background-color: white;
+      background-color: ${color.nova};
       color: ${color.earth};
 
       svg {
@@ -101,7 +101,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'success' &&
     css`
-      color: white;
+      color: ${color.nova};
       background-color: ${color.titan};
       text-shadow: ${shadow.text};
     `};
@@ -109,7 +109,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'warning' &&
     css`
-      color: white;
+      color: ${color.nova};
       background-color: ${color.sun};
       text-shadow: ${shadow.text};
     `};
@@ -117,7 +117,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'danger' &&
     css`
-      color: white;
+      color: ${color.nova};
       background-color: ${color.mars};
       text-shadow: ${shadow.text};
     `};
@@ -125,7 +125,7 @@ const StyledButton = styled.button`
   ${props =>
     props.variant === 'facebook' &&
     css`
-      color: white;
+      color: ${color.nova};
       background-color: ${color.facebook};
       text-shadow: ${shadow.text};
     `};
@@ -190,7 +190,7 @@ const StyledButton = styled.button`
     ${props =>
       props.variant === 'primary' &&
       css`
-        color: white;
+        color: ${color.nova};
         text-shadow: ${shadow.text};
         background-color: ${color.earthLight};
       `};
@@ -199,7 +199,7 @@ const StyledButton = styled.button`
       props.variant === 'secondary' &&
       css`
         background-color: ${props.active ? color.earthLight : color.sky};
-        color: ${props.active ? 'white' : color.earth};
+        color: ${props.active ? color.nova : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
       `};
 
@@ -215,7 +215,7 @@ const StyledButton = styled.button`
       props.variant === 'inverted' &&
       css`
         text-shadow: none;
-        background-color: white;
+        background-color: ${color.nova};
         color: ${color.earthLight};
       `};
 
@@ -255,7 +255,7 @@ const StyledButton = styled.button`
         background-color: ${props.active
           ? color.earthLight
           : color.earthLightestAlpha};
-        color: ${props.active ? 'white' : color.earth};
+        color: ${props.active ? color.nova : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
       `};
 
@@ -295,7 +295,7 @@ const StyledButton = styled.button`
       props.variant === 'inverted' &&
       css`
         color: ${color.earth};
-        background-color: white;
+        background-color: ${color.nova};
       `};
   }
 `

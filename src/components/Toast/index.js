@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
-import { space, shadow, device, radius, easing } from '../../theme'
+import { space, shadow, device, radius, easing, color } from '../../theme'
 import { useTransition } from '../../hooks'
 
 const duration = 400
@@ -62,7 +62,7 @@ const ItemContainer = styled.li`
 
 export const Toast = styled.div`
   border-radius: ${radius.lg};
-  background-color: white;
+  background-color: ${color.nova};
   box-shadow: ${shadow.strong};
   padding: ${space[16]};
 `

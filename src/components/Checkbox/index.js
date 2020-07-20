@@ -47,7 +47,7 @@ const NativeCheckbox = styled.input`
 const CustomCheckbox = styled.div`
   flex-shrink: 0;
   position: relative;
-  color: white;
+  color: ${color.nova};
   width: ${space[24]};
   height: ${space[24]};
   background-color: ${props =>

@@ -72,7 +72,7 @@ export const fieldStyles = props => css`
   &.focus {
     outline: none;
     box-shadow: ${shadow.strong};
-    background-color: ${props.invalid ? color.marsLightestAlpha : 'white'};
+    background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
   }
 
   &::placeholder {
@@ -156,7 +156,7 @@ export const InputMenu = styled.div`
   right: 0;
   top: calc(100% + ${space[4]});
   border-radius: ${radius.md};
-  background-color: white;
+  background-color: ${color.nova};
   box-shadow: ${shadow.strong};
   overflow: hidden;
 `
@@ -184,7 +184,8 @@ const InputMenuItemContainer = styled.li`
   padding-left: ${props => (props.adornment ? space[48] : space[16])};
   padding-right: ${space[16]};
   min-height: ${space[56]};
-  background-color: ${props => (props.highlighted ? color.stardust : 'white')};
+  background-color: ${props =>
+    props.highlighted ? color.stardust : color.nova};
   font-weight: ${props =>
     props.selected ? fontWeight.semiBold : fontWeight.regular};
   color: ${props => (props.selected ? color.earth : props.space)};

@@ -14,7 +14,7 @@ import { useTransition } from '../../hooks'
 import { EXITED, ENTERING, ENTERED, EXITING } from '../../hooks/useTransition'
 
 const BodyWrapper = styled.div`
-  background-color: white;
+  background-color: ${color.nova};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
   padding: ${space[32]};
