@@ -24,7 +24,7 @@ const Popup = styled(TooltipPopup)`
   box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
   white-space: nowrap;
   font-size: inherit;
-  color: white;
+  color: ${color.nova};
   border: 0;
   border-radius: ${radius.md};
   background: ${color.spaceMedium};

@@ -17,7 +17,7 @@ const Container = styled.div`
   background-color: ${color.space};
   width: 100%;
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
-  color: white;
+  color: ${color.nova};
 
   ${props =>
     props.blurred &&

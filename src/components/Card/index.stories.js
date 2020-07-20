@@ -47,7 +47,7 @@ const Adornment = styled.div`
   display: block;
   border-radius: ${radius.sm};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: ${color.nova};
   text-align: center;
   width: 40px;
   height: 40px;

@@ -49,7 +49,7 @@ export const globalStyles = css`
 
   ::selection {
     background-color: ${color.earth};
-    color: white;
+    color: ${color.nova};
   }
 
   *,

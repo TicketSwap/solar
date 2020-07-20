@@ -34,8 +34,8 @@ export const Menu = styled.ul`
   border-radius: ${radius.md};
   display: block;
   box-shadow: ${shadow.strong};
-  background-color: white;
-  color: white;
+  background-color: ${color.nova};
+  color: ${color.nova};
   ${bottomPos};
   ${topPos};
 `

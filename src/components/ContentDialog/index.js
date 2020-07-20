@@ -41,7 +41,7 @@ const StyledDialogContent = styled(DialogContent)`
   max-width: 44rem;
   margin: 0;
   min-height: 100vh;
-  background: white;
+  background: ${color.nova};
   outline: none;
   transform: ${props =>
     props.state === 'entering' || props.state === 'entered'

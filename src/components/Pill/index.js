@@ -20,7 +20,7 @@ export const Container = styled.span`
   align-items: center;
   line-height: 1;
   text-transform: uppercase;
-  color: ${p => (p.variant === 'secondary' ? color.earth : 'white')};
+  color: ${p => (p.variant === 'secondary' ? color.earth : color.nova)};
   background-color: ${p =>
     p.variant === 'danger'
       ? color.mars

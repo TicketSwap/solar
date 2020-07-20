@@ -75,7 +75,7 @@ export const Tab = styled(ReachTab)`
   }
 
   &[data-selected] {
-    color: white;
+    color: ${color.nova};
     background-color: ${color.earth};
   }
 

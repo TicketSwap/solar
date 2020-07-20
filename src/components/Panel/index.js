@@ -11,7 +11,7 @@ import {
 
 export const Panel = styled.div`
   ${fullBleed};
-  background-color: white;
+  background-color: ${color.nova};
   box-shadow: ${shadow.strong};
 
   @media ${device.mobileL} {
@@ -25,7 +25,7 @@ export const PanelContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${p => (p.bgColor ? p.bgColor : 'white')};
+  background-color: ${p => (p.bgColor ? p.bgColor : color.nova)};
 
   &:first-of-type {
     border-top-left-radius: ${radius.lg};

@@ -130,7 +130,7 @@ const LeftAdornment = styled.header`
 `
 
 const TextContent = styled.div`
-  color: ${props => (props.theme === 'light' ? 'white' : color.space)};
+  color: ${props => (props.theme === 'light' ? color.nova : color.space)};
   display: flex;
   flex-direction: column;
   flex-grow: 1;

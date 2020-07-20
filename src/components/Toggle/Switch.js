@@ -52,7 +52,7 @@ const Button = styled.button`
     width: ${28 / 16}rem;
     height: 100%;
     border-radius: ${space[32]};
-    background: white;
+    background: ${color.nova};
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       padding 0.3s ease, margin 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
