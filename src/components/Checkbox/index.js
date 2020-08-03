@@ -127,7 +127,6 @@ Checkbox.defaultProps = {
   onChange: () => {},
   defaultOn: false,
   hideLabel: false,
-  checked: false,
 }
 
 Checkbox.propTypes = {
@@ -136,6 +135,5 @@ Checkbox.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   hideLabel: PropTypes.bool,
   help: PropTypes.string,
-  checked: PropTypes.bool,
   on: PropTypes.bool,
 }
