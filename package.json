@@ -92,6 +92,6 @@
     "@reach/utils": "^0.10.0",
     "@ticketswap/comets": "^2.9.0",
     "compute-scroll-into-view": "^1.0.14",
-    "downshift": "^6.0.2"
+    "downshift": "^6.0.3"
   }
 }
