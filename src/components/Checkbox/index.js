@@ -10,6 +10,7 @@ const Label = styled.label`
   display: inline-flex;
   justify-content: center;
   align-items: flex-start;
+  user-select: none;
 `
 
 const Help = styled(SmallText)`
@@ -51,17 +52,28 @@ const CustomCheckbox = styled.div`
   width: ${space[24]};
   height: ${space[24]};
   background-color: ${props =>
-    props.checked ? color.earth : color.spaceLightest};
+    props.disabled
+      ? color.spaceLightest
+      : props.checked
+      ? color.earth
+      : color.spaceLightest};
   border-radius: ${radius.sm};
   transition: background-color 150ms ease-out;
-  cursor: pointer;
+  cursor: ${props => (props.disabled ? 'unset' : 'pointer')};
 
   ${NativeCheckbox}:focus + &,
   ${NativeCheckbox}:active + & {
     outline: 0;
-    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
+    box-shadow: ${props =>
+      props.disabled
+        ? 'unset'
+        : `0 0 0 ${space[4]} ${color.earthLightestAlpha}`};
     background-color: ${props =>
-      props.checked ? color.earth : color.stardust};
+      props.disabled
+        ? color.spaceLightest
+        : props.checked
+        ? color.earth
+        : color.stardust};
   }
 `
 
@@ -79,7 +91,16 @@ const IconContainer = styled.span`
 
 export const Checkbox = React.forwardRef(
   (
-    { className, defaultOn, onChange, label, hideLabel, help, ...props },
+    {
+      className,
+      defaultOn,
+      onChange,
+      label,
+      hideLabel,
+      help,
+      disabled,
+      ...props
+    },
     ref
   ) => {
     const [on, setOn] = React.useState(defaultOn)
@@ -92,6 +113,7 @@ export const Checkbox = React.forwardRef(
         <NativeCheckbox
           type="checkbox"
           ref={ref}
+          disabled={disabled}
           checked={getOn()}
           {...otherProps}
           onChange={e => {
@@ -101,7 +123,7 @@ export const Checkbox = React.forwardRef(
             }
           }}
         />
-        <CustomCheckbox checked={getOn()}>
+        <CustomCheckbox checked={getOn()} disabled={disabled}>
           {getOn() && (
             <IconContainer>
               <Checkmark size={20} />
@@ -127,11 +149,13 @@ Checkbox.defaultProps = {
   onChange: () => {},
   defaultOn: false,
   hideLabel: false,
+  disabled: false,
 }
 
 Checkbox.propTypes = {
   defaultOn: PropTypes.bool,
   onChange: PropTypes.func,
+  disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   hideLabel: PropTypes.bool,
   help: PropTypes.string,

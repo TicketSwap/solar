@@ -76,6 +76,21 @@ DefaultOn.story = {
   name: 'Default on',
 }
 
+export const Disabled = () => (
+  <Checkbox
+    id="remember-me"
+    name="remember-me"
+    label="Remember me"
+    onChange={e => console.log(e.target)}
+    defaultOn
+    disabled
+  />
+)
+
+Disabled.story = {
+  name: 'Disabled',
+}
+
 export const WithoutLabel = () => (
   <Checkbox
     id="remember-me"
