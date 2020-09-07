@@ -89,7 +89,7 @@
     "@reach/dialog": "^0.10.5",
     "@reach/tabs": "^0.10.5",
     "@reach/tooltip": "^0.10.5",
-    "@reach/utils": "^0.10.0",
+    "@reach/utils": "^0.11.2",
     "@ticketswap/comets": "^2.9.0",
     "compute-scroll-into-view": "^1.0.14",
     "downshift": "^6.0.5"
