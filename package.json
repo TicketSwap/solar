@@ -91,7 +91,7 @@
     "@reach/tooltip": "^0.10.5",
     "@reach/utils": "^0.10.0",
     "@ticketswap/comets": "^2.9.0",
-    "compute-scroll-into-view": "^1.0.14",
+    "compute-scroll-into-view": "^1.0.16",
     "downshift": "^6.0.5"
   }
 }
