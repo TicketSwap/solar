@@ -102,7 +102,6 @@ const Body = styled.div`
       border-bottom-left-radius: ${radius.lg};
       border-bottom-right-radius: ${radius.lg};
       z-index: 3;
-      
 
       @media ${device.mobileL} {
         padding: ${space[16]};
@@ -113,7 +112,7 @@ const Body = styled.div`
         background-image: linear-gradient(
           to bottom,
           rgba(0, 19, 25, 0.1),
-          rgba(0, 19, 25, .5)
+          rgba(0, 19, 25, 0.5)
         );
       }
     `};
