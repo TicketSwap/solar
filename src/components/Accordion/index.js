@@ -1,13 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { device, space, color, fontWeight } from '../../theme'
 import { ChevronDown } from '@ticketswap/comets'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/core'
 import * as Reach from '@reach/accordion'
 
-export function Accordion({ children, ...props }) {
+export function Accordion({ children, collapsible, ...props }) {
   return (
-    <Reach.Accordion {...props}>
+    <Reach.Accordion {...props} collapsible={collapsible}>
       {children}
       <Global
         styles={css`
@@ -18,6 +19,14 @@ export function Accordion({ children, ...props }) {
       />
     </Reach.Accordion>
   )
+}
+
+Accordion.defaultProps = {
+  collapsible: false,
+}
+
+Accordion.propTypes = {
+  collapsible: PropTypes.bool.isRequired,
 }
 
 export const AccordionItem = styled(Reach.AccordionItem)`
