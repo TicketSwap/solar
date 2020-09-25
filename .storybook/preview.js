@@ -8,3 +8,7 @@ addDecorator(storyFn => (
     {storyFn()}
   </div>
 ))
+
+export const parameters = {
+  passArgsFirst: false,
+}
