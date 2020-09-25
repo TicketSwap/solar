@@ -67,9 +67,7 @@ export const WithAdornment = () => (
   </Grid>
 )
 
-WithAdornment.story = {
-  name: 'With adornment',
-}
+WithAdornment.storyName = 'With adornment'
 
 export const WithText = () => (
   <Grid>
@@ -104,9 +102,7 @@ export const WithText = () => (
   </Grid>
 )
 
-WithText.story = {
-  name: 'With text',
-}
+WithText.storyName = 'With text'
 
 export const WithImage = () => (
   <Grid>
@@ -151,9 +147,7 @@ export const WithImage = () => (
   </Grid>
 )
 
-WithImage.story = {
-  name: 'With image',
-}
+WithImage.storyName = 'With image'
 
 const RightAdornment = styled.h4`
   font-size: ${fontSize[18]};

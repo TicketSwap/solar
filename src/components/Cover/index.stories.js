@@ -43,9 +43,7 @@ export const basicBlurred = () => (
   </Cover>
 )
 
-basicBlurred.story = {
-  name: 'Basic blurred',
-}
+basicBlurred.storyName = 'Basic blurred'
 
 export const fullHeight = () => (
   <Cover
@@ -58,9 +56,7 @@ export const fullHeight = () => (
   </Cover>
 )
 
-fullHeight.story = {
-  name: 'Full height',
-}
+fullHeight.storyName = 'Full height'
 
 export const withoutImage = () => (
   <Cover fullHeight>
@@ -68,6 +64,4 @@ export const withoutImage = () => (
   </Cover>
 )
 
-withoutImage.story = {
-  name: 'Without image',
-}
+withoutImage.storyName = 'Without image'

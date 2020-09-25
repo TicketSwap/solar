@@ -20,9 +20,7 @@ export const Basic = () => (
   </Text>
 )
 
-Basic.story = {
-  name: 'Text',
-}
+Basic.storyName = 'Text'
 
 export const Small = () => (
   <SmallText>
@@ -39,6 +37,4 @@ export const Small = () => (
   </SmallText>
 )
 
-Small.story = {
-  name: 'SmallText',
-}
+Small.storyName = 'SmallText'

@@ -13,9 +13,7 @@ export const Heading1 = () => (
   </H1>
 )
 
-Heading1.story = {
-  name: 'H1',
-}
+Heading1.storyName = 'H1'
 
 export const Heading2 = () => (
   <H2>
@@ -25,9 +23,7 @@ export const Heading2 = () => (
   </H2>
 )
 
-Heading2.story = {
-  name: 'H2',
-}
+Heading2.storyName = 'H2'
 
 export const Heading3 = () => (
   <H3>
@@ -37,9 +33,7 @@ export const Heading3 = () => (
   </H3>
 )
 
-Heading3.story = {
-  name: 'H3',
-}
+Heading3.storyName = 'H3'
 
 export const Heading4 = () => (
   <H4>
@@ -49,9 +43,7 @@ export const Heading4 = () => (
   </H4>
 )
 
-Heading4.story = {
-  name: 'H4',
-}
+Heading4.storyName = 'H4'
 
 export const Heading5 = () => (
   <H5>
@@ -61,9 +53,7 @@ export const Heading5 = () => (
   </H5>
 )
 
-Heading5.story = {
-  name: 'H5',
-}
+Heading5.storyName = 'H5'
 
 export const Heading6 = () => (
   <H6>
@@ -73,6 +63,4 @@ export const Heading6 = () => (
   </H6>
 )
 
-Heading6.story = {
-  name: 'H6',
-}
+Heading6.storyName = 'H6'

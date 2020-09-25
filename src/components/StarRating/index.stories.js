@@ -18,9 +18,7 @@ export const WithInitialRating = () => (
   />
 )
 
-WithInitialRating.story = {
-  name: 'With initial rating',
-}
+WithInitialRating.storyName = 'With initial rating'
 
 export const WithinForm = () => (
   <form style={{ display: 'grid', gridGap: '1rem' }}>
@@ -30,6 +28,4 @@ export const WithinForm = () => (
   </form>
 )
 
-WithinForm.story = {
-  name: 'Within form',
-}
+WithinForm.storyName = 'Within form'

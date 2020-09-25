@@ -15,6 +15,4 @@ export const Horizontal = () => <Logo />
 export const Blue = () => <StyledLogo />
 export const Lgbt = () => <Logo variant="lgbt" />
 
-Lgbt.story = {
-  name: 'LGBT',
-}
+Lgbt.storyName = 'LGBT'

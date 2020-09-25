@@ -9,9 +9,7 @@ export default {
 export const Primary = () => <Button>Default Button</Button>
 export const FullWidth = () => <Button width="full">Default Button</Button>
 
-FullWidth.story = {
-  name: 'Full-width',
-}
+FullWidth.storyName = 'Full-width'
 
 export const Small = () => <Button size="small">Small Button</Button>
 
@@ -19,9 +17,7 @@ export const WithIcon = () => (
   <Button leftAdornment={<Checkmark size={24} />}>Save changes</Button>
 )
 
-WithIcon.story = {
-  name: 'With icon',
-}
+WithIcon.storyName = 'With icon'
 
 export const WithIconLoading = () => (
   <Button loading leftAdornment={<Checkmark size={24} />}>
@@ -29,9 +25,7 @@ export const WithIconLoading = () => (
   </Button>
 )
 
-WithIconLoading.story = {
-  name: 'With icon loading',
-}
+WithIconLoading.storyName = 'With icon loading'
 
 export const FullWidthWithIcon = () => (
   <Button
@@ -43,9 +37,7 @@ export const FullWidthWithIcon = () => (
   </Button>
 )
 
-FullWidthWithIcon.story = {
-  name: 'Full-width with icon',
-}
+FullWidthWithIcon.storyName = 'Full-width with icon'
 
 export const AsHyperlink = () => (
   <Button as="a" href="https://www.ticketswap.com">
@@ -53,9 +45,7 @@ export const AsHyperlink = () => (
   </Button>
 )
 
-AsHyperlink.story = {
-  name: 'As hyperlink',
-}
+AsHyperlink.storyName = 'As hyperlink'
 
 export const Secondary = () => <Button variant="secondary">Secondary</Button>
 export const SecondaryWithIcon = () => (
@@ -64,9 +54,7 @@ export const SecondaryWithIcon = () => (
   </Button>
 )
 
-SecondaryWithIcon.story = {
-  name: 'Secondary with icon',
-}
+SecondaryWithIcon.storyName = 'Secondary with icon'
 
 export const Caution = () => <Button variant="caution">Turn off alerts</Button>
 export const Inverted = () => <Button variant="inverted">Inverted</Button>
@@ -77,9 +65,7 @@ export const InvertedDisabled = () => (
   </Button>
 )
 
-InvertedDisabled.story = {
-  name: 'Inverted disabled',
-}
+InvertedDisabled.storyName = 'Inverted disabled'
 
 export const InvertedWithIcon = () => (
   <Button variant="inverted" leftAdornment={<Plus size={24} />}>
@@ -87,9 +73,7 @@ export const InvertedWithIcon = () => (
   </Button>
 )
 
-InvertedWithIcon.story = {
-  name: 'Inverted with icon',
-}
+InvertedWithIcon.storyName = 'Inverted with icon'
 
 export const Success = () => <Button variant="success">Success</Button>
 export const Warning = () => <Button variant="warning">Warning</Button>
@@ -103,9 +87,7 @@ export const DisabledSuccess = () => (
   </Button>
 )
 
-DisabledSuccess.story = {
-  name: 'Disabled success',
-}
+DisabledSuccess.storyName = 'Disabled success'
 
 export const DisabledWarning = () => (
   <Button variant="warning" disabled>
@@ -113,9 +95,7 @@ export const DisabledWarning = () => (
   </Button>
 )
 
-DisabledWarning.story = {
-  name: 'Disabled warning',
-}
+DisabledWarning.storyName = 'Disabled warning'
 
 export const DisabledDanger = () => (
   <Button variant="danger" disabled>
@@ -123,9 +103,7 @@ export const DisabledDanger = () => (
   </Button>
 )
 
-DisabledDanger.story = {
-  name: 'Disabled danger',
-}
+DisabledDanger.storyName = 'Disabled danger'
 
 export const DisabledSecondary = () => (
   <Button variant="secondary" disabled>
@@ -133,9 +111,7 @@ export const DisabledSecondary = () => (
   </Button>
 )
 
-DisabledSecondary.story = {
-  name: 'Disabled secondary',
-}
+DisabledSecondary.storyName = 'Disabled secondary'
 
 export const DisabledCaution = () => (
   <Button variant="caution" disabled>
@@ -143,9 +119,7 @@ export const DisabledCaution = () => (
   </Button>
 )
 
-DisabledCaution.story = {
-  name: 'Disabled caution',
-}
+DisabledCaution.storyName = 'Disabled caution'
 
 export const DisabledFacebook = () => (
   <Button variant="facebook" disabled>
@@ -153,15 +127,11 @@ export const DisabledFacebook = () => (
   </Button>
 )
 
-DisabledFacebook.story = {
-  name: 'Disabled facebook',
-}
+DisabledFacebook.storyName = 'Disabled facebook'
 
 export const FacebookButton = () => <Button variant="facebook">Facebook</Button>
 
-FacebookButton.story = {
-  name: 'Facebook',
-}
+FacebookButton.storyName = 'Facebook'
 
 export const Rounded = () => <Button rounded>Rounded</Button>
 
@@ -171,9 +141,7 @@ export const RoundedSquareWithIconAsChild = () => (
   </Button>
 )
 
-RoundedSquareWithIconAsChild.story = {
-  name: 'Rounded square with icon as child',
-}
+RoundedSquareWithIconAsChild.storyName = 'Rounded square with icon as child'
 
 export const RoundedSmallSquareWithIconAsChild = () => (
   <Button size="small" rounded square>
@@ -181,8 +149,7 @@ export const RoundedSmallSquareWithIconAsChild = () => (
   </Button>
 )
 
-RoundedSmallSquareWithIconAsChild.story = {
-  name: 'Rounded small square with icon as child',
-}
+RoundedSmallSquareWithIconAsChild.storyName =
+  'Rounded small square with icon as child'
 
 export const Regular = () => <button>Button</button>

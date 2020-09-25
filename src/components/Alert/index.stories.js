@@ -23,9 +23,7 @@ export const WithTitleAndAction = () => (
   </Alert>
 )
 
-WithTitleAndAction.story = {
-  name: 'With title and action',
-}
+WithTitleAndAction.storyName = 'With title and action'
 
 export const WithAction = () => (
   <>
@@ -76,9 +74,7 @@ export const WithAction = () => (
   </>
 )
 
-WithAction.story = {
-  name: 'With action',
-}
+WithAction.storyName = 'With action'
 
 export const Success = () => (
   <Alert

@@ -77,9 +77,7 @@ export const WithInitialValues = () => (
   />
 )
 
-WithInitialValues.story = {
-  name: 'With initial values',
-}
+WithInitialValues.storyName = 'With initial values'
 
 export const WithError = () => (
   <PhoneInput
@@ -95,6 +93,4 @@ export const WithError = () => (
   />
 )
 
-WithError.story = {
-  name: 'With error',
-}
+WithError.storyName = 'With error'

@@ -40,9 +40,7 @@ export const WithHelperText = () => (
   />
 )
 
-WithHelperText.story = {
-  name: 'With helper text',
-}
+WithHelperText.storyName = 'With helper text'
 
 export const WithLongLabel = () => (
   <Checkbox
@@ -58,9 +56,7 @@ export const WithLongLabel = () => (
   />
 )
 
-WithLongLabel.story = {
-  name: 'With long label',
-}
+WithLongLabel.storyName = 'With long label'
 
 export const DefaultOn = () => (
   <Checkbox
@@ -72,9 +68,7 @@ export const DefaultOn = () => (
   />
 )
 
-DefaultOn.story = {
-  name: 'Default on',
-}
+DefaultOn.storyName = 'Default on'
 
 export const Disabled = () => (
   <Checkbox
@@ -87,9 +81,7 @@ export const Disabled = () => (
   />
 )
 
-Disabled.story = {
-  name: 'Disabled',
-}
+Disabled.storyName = 'Disabled'
 
 export const WithoutLabel = () => (
   <Checkbox
@@ -101,8 +93,6 @@ export const WithoutLabel = () => (
   />
 )
 
-WithoutLabel.story = {
-  name: 'Without label',
-}
+WithoutLabel.storyName = 'Without label'
 
 export const Controlled = () => <ControlledCheckbox />

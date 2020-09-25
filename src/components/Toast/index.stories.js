@@ -38,9 +38,7 @@ export const Basic = () => (
 
 export const WithToast = () => <UseToast />
 
-WithToast.story = {
-  name: 'useToast()',
-}
+WithToast.storyName = 'useToast()'
 
 export const Persistent = () => (
   <ToastConsumer>

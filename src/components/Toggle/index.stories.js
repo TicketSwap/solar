@@ -22,9 +22,7 @@ export const WithAdornment = () => (
   <Toggle adornment={<Alert size={16} />} onToggle={on => console.log(on)} />
 )
 
-WithAdornment.story = {
-  name: 'With adornment',
-}
+WithAdornment.storyName = 'With adornment'
 
 export const WithAdornmentLoading = () => (
   <Toggle
@@ -34,16 +32,12 @@ export const WithAdornmentLoading = () => (
   />
 )
 
-WithAdornmentLoading.story = {
-  name: 'With adornment loading',
-}
+WithAdornmentLoading.storyName = 'With adornment loading'
 
 export const DefaultOn = () => (
   <Toggle onToggle={on => console.log(on)} defaultOn />
 )
 
-DefaultOn.story = {
-  name: 'Default on',
-}
+DefaultOn.storyName = 'Default on'
 
 export const Controlled = () => <ControlledToggle />

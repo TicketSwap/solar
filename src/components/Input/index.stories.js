@@ -12,17 +12,13 @@ export const WithHiddenLabel = () => (
   <Input id="fname" label="First name" hideLabel />
 )
 
-WithHiddenLabel.story = {
-  name: 'With hidden label',
-}
+WithHiddenLabel.storyName = 'With hidden label'
 
 export const WithHelperText = () => (
   <Input id="fname" label="First name" help="Lorem ipsum dolor sit amet" />
 )
 
-WithHelperText.story = {
-  name: 'With helper text',
-}
+WithHelperText.storyName = 'With helper text'
 
 export const Loading = () => (
   <Input
@@ -46,9 +42,7 @@ export const WithIcon = () => (
   />
 )
 
-WithIcon.story = {
-  name: 'With icon',
-}
+WithIcon.storyName = 'With icon'
 
 export const WithIconLoading = () => (
   <Input
@@ -61,9 +55,7 @@ export const WithIconLoading = () => (
   />
 )
 
-WithIconLoading.story = {
-  name: 'With icon loading',
-}
+WithIconLoading.storyName = 'With icon loading'
 
 export const Rounded = () => (
   <Input id="fname" type="search" label="Search" hideLabel rounded />
@@ -80,9 +72,7 @@ export const RoundedWithIcon = () => (
   />
 )
 
-RoundedWithIcon.story = {
-  name: 'Rounded with icon',
-}
+RoundedWithIcon.storyName = 'Rounded with icon'
 
 export const WithClearButton = () => {
   const [value, setValue] = React.useState(
@@ -104,9 +94,7 @@ export const WithClearButton = () => {
   )
 }
 
-WithClearButton.story = {
-  name: 'With clear button',
-}
+WithClearButton.storyName = 'With clear button'
 
 export const UncontrolledInput = () => {
   const [query, setQuery] = useState('')
@@ -130,9 +118,7 @@ export const UncontrolledInput = () => {
   )
 }
 
-UncontrolledInput.story = {
-  name: 'Uncontrolled input',
-}
+UncontrolledInput.storyName = 'Uncontrolled input'
 
 export const WithCustomLabelProps = () => (
   <Input
@@ -148,20 +134,14 @@ export const WithCustomLabelProps = () => (
   />
 )
 
-WithCustomLabelProps.story = {
-  name: 'With custom label props',
-}
+WithCustomLabelProps.storyName = 'With custom label props'
 
 export const WithError = () => <Input id="id" label="Label" validate={false} />
 
-WithError.story = {
-  name: 'With error',
-}
+WithError.storyName = 'With error'
 
 export const AsTextarea = () => (
   <Input as="textarea" id="message" label="Message" rows="6" />
 )
 
-AsTextarea.story = {
-  name: 'As textarea',
-}
+AsTextarea.storyName = 'As textarea'
