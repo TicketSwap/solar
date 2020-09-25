@@ -7,9 +7,7 @@ export default {
 
 export const WithoutImage = () => <Avatar />
 
-WithoutImage.story = {
-  name: 'Without image',
-}
+WithoutImage.storyName = 'Without image'
 
 export const WithImage = () => (
   <Avatar
@@ -18,9 +16,7 @@ export const WithImage = () => (
   />
 )
 
-WithImage.story = {
-  name: 'With image',
-}
+WithImage.storyName = 'With image'
 
 export const WithImageAndCustomSize = () => (
   <Avatar
@@ -29,6 +25,4 @@ export const WithImageAndCustomSize = () => (
   />
 )
 
-WithImageAndCustomSize.story = {
-  name: 'With image and custom size',
-}
+WithImageAndCustomSize.storyName = 'With image and custom size'

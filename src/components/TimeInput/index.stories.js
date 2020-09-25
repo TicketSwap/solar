@@ -18,6 +18,4 @@ export const WithInitialValue = () => (
   />
 )
 
-WithInitialValue.story = {
-  name: 'With initial value',
-}
+WithInitialValue.storyName = 'With initial value'

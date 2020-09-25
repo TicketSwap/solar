@@ -17,9 +17,7 @@ export const FourByThree = () => (
   />
 )
 
-FourByThree.story = {
-  name: '4x3',
-}
+FourByThree.storyName = '4x3'
 
 export const Square = () => (
   <Image

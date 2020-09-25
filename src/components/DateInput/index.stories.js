@@ -47,9 +47,7 @@ export const WithInitialDateString = () => (
   />
 )
 
-WithInitialDateString.story = {
-  name: 'With initial date (string)',
-}
+WithInitialDateString.storyName = 'With initial date (string)'
 
 export const WithInitialDateObject = () => (
   <DateInput
@@ -61,6 +59,4 @@ export const WithInitialDateObject = () => (
   />
 )
 
-WithInitialDateObject.story = {
-  name: 'With initial date (object)',
-}
+WithInitialDateObject.storyName = 'With initial date (object)'

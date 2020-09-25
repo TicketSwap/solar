@@ -113,9 +113,7 @@ export default {
 export const Basic = () => <MyDialog>Body</MyDialog>
 export const DefaultOn = () => <MyDialog defaultOn>Body</MyDialog>
 
-DefaultOn.story = {
-  name: 'Default on',
-}
+DefaultOn.storyName = 'Default on'
 
 export const DefaultOnAndPersist = () => (
   <MyDialog defaultOn persist>
@@ -123,9 +121,7 @@ export const DefaultOnAndPersist = () => (
   </MyDialog>
 )
 
-DefaultOnAndPersist.story = {
-  name: 'Default on and persist',
-}
+DefaultOnAndPersist.storyName = 'Default on and persist'
 
 export const WithLongBody = () => (
   <MyDialog>
@@ -145,14 +141,10 @@ export const WithLongBody = () => (
   </MyDialog>
 )
 
-WithLongBody.story = {
-  name: 'With long body',
-}
+WithLongBody.storyName = 'With long body'
 
 export const WithHook = () => <HooksDialog />
 
-WithHook.story = {
-  name: 'useDialog()',
-}
+WithHook.storyName = 'useDialog()'
 
 export const Controlled = () => <ControlledDialog />
