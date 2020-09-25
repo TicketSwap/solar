@@ -26,6 +26,7 @@ export const Combobox = ({ items, onChange, initialValue, ...props }) => (
     }) => (
       <div>
         <Input
+          data-testid="combobox"
           {...getInputProps({
             onChange: clearSelection,
             onReset: clearSelection,
