@@ -45,9 +45,7 @@ const SpeechBubbleTopContent = props => css`
 
 const SpeechBubbleContent = styled.div`
   ${props => props.verticalAlign === 'bottom' && SpeechBubbleBottomContent}
-  ${props =>
-    props.verticalAlign === 'top' &&
-    SpeechBubbleTopContent}
+  ${props => props.verticalAlign === 'top' && SpeechBubbleTopContent}
 
   position: relative;
   display: inline-block;
