@@ -1,13 +1,14 @@
 import React from 'react'
-import { addDecorator } from '@storybook/react'
 import { BaseStyles } from '../src/components/BaseStyles'
 
-addDecorator(storyFn => (
-  <div>
-    <BaseStyles />
-    {storyFn()}
-  </div>
-))
+export const decorators = [
+  Story => (
+    <div>
+      <BaseStyles />
+      <Story />
+    </div>
+  ),
+]
 
 export const parameters = {
   passArgsFirst: false,
