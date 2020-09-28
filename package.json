@@ -35,7 +35,7 @@
     "@babel/preset-react": "^7.10.4",
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
-    "@storybook/addons": "^6.0.21",
+    "@storybook/addons": "^6.0.22",
     "@storybook/react": "^6.0.21",
     "@storybook/storybook-deployer": "^2.8.6",
     "@storybook/theming": "^6.0.21",
