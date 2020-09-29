@@ -1,6 +1,9 @@
 module.exports = {
   ...require('./test/jest-common'),
-  collectCoverageFrom: ['**/src/**/*.js', '!**/*.test.js'],
+  collectCoverageFrom: [
+    '**/src/**/*.(js|jsx|ts|tsx)',
+    '!**/*.test.(js|jsx|ts|tsx)',
+  ],
   coverageThreshold: {
     global: {
       statements: 25,
