@@ -5,10 +5,11 @@ import progress from 'rollup-plugin-progress'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import replace from 'rollup-plugin-replace'
 import visualizer from 'rollup-plugin-visualizer'
+import typescript from 'rollup-plugin-typescript2'
 import pkg from './package.json'
 
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -20,6 +21,7 @@ export default {
     },
   ],
   plugins: [
+    typescript(),
     peerDepsExternal(),
     babel({
       exclude: 'node_modules/**',
