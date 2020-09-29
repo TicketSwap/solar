@@ -78,6 +78,7 @@
     "semantic-release": "^17.2.1"
   },
   "main": "dist/solar.js",
+  "types": "dist/solar.d.ts",
   "module": "dist/solar.es.js",
   "files": [
     "dist"
@@ -92,7 +93,11 @@
     "@reach/tooltip": "^0.11.2",
     "@reach/utils": "^0.11.2",
     "@ticketswap/comets": "^2.9.0",
+    "@types/react": "^16.9.49",
     "compute-scroll-into-view": "^1.0.16",
-    "downshift": "^6.0.6"
+    "downshift": "^6.0.6",
+    "rollup-plugin-typescript2": "^0.27.3",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.3"
   }
 }
