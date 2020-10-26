@@ -15,20 +15,12 @@ export const SkeletonPulse = styled.span`
   display: inline-block;
   height: 100%;
   width: 100%;
-  background-image: ${props =>
-    props.theme === 'dark'
-      ? `linear-gradient(
-          -90deg, 
-          rgba(0,0,0,0.07) 0%, 
-          rgba(0,0,0,0.04) 50%, 
-          rgba(0,0,0,0.07) 100%
-        )`
-      : `linear-gradient(
-          -90deg, 
-          rgba(255,255,255,0.1) 0%, 
-          rgba(255,255,255,0.08) 50%, 
-          rgba(255,255,255,0.1) 100%
-        )`};
+  background-image: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 0.07) 0%,
+    rgba(0, 0, 0, 0.04) 50%,
+    rgba(0, 0, 0, 0.07) 100%
+  );
   background-size: 400% 400%;
   animation-duration: 1.2s;
   animation-timing-function: ease-in-out;
@@ -37,11 +29,11 @@ export const SkeletonPulse = styled.span`
   animation-name: ${pulse};
 `
 
-SkeletonPulse.defaultProps = {
-  theme: 'dark',
+export interface SkeletonLineProps {
+  width?: number
 }
 
-export const SkeletonLine = styled(SkeletonPulse)`
+export const SkeletonLine = styled(SkeletonPulse)<SkeletonLineProps>`
   width: ${props => (props.width ? props.width * 100 : 75)}%;
   border-radius: ${radius.md};
   line-height: 100%;
