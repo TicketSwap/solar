@@ -1,52 +1,8 @@
 import { css } from '@emotion/core'
-import { fontWeight, color, space, radius } from './theme'
+import { color, space, radius } from './theme'
 import { baseTextStyles } from './components/Text'
 
 export const globalStyles = css`
-  @font-face {
-    font-family: 'Proxima Nova';
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff2')
-        format('woff2'),
-      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularWeb.woff')
-        format('woff');
-    font-weight: ${fontWeight.regular};
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Proxima Nova';
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff2')
-        format('woff2'),
-      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-RegularItWeb.woff')
-        format('woff');
-    font-weight: ${fontWeight.regular};
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Proxima Nova';
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff2')
-        format('woff2'),
-      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-SemiboldWeb.woff')
-        format('woff');
-    font-weight: ${fontWeight.semiBold};
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Proxima Nova';
-    src: url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff2')
-        format('woff2'),
-      url('https://cdn.ticketswap.com/static/fonts/ProximaNova-BoldWeb.woff')
-        format('woff');
-    font-weight: ${fontWeight.bold};
-    font-style: normal;
-    font-display: swap;
-  }
-
   ::selection {
     background-color: ${color.earth};
     color: ${color.nova};
