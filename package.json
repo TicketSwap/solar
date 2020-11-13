@@ -21,7 +21,7 @@
     "test:coverage": "jest test --coverage",
     "test:watch": "jest test --watch",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepublishOnly": "tsdx build",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|scss|ts|tsx|md|mdx|graphql)\"",
     "size": "size-limit",
     "analyze": "size-limit --why",
