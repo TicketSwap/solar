@@ -8,11 +8,11 @@ import {
   InputProps,
 } from '../Input'
 import { MagnifyingGlass } from '@ticketswap/comets'
+import { normalizeChars } from '../../utils'
 
 type SelectItem = {
   value: string
   name: string
-  displayName?: string
   adornment?: ReactNode
 }
 
@@ -22,11 +22,13 @@ export interface ComboboxProps extends Omit<InputProps, 'onChange'> {
   label: string
   items: SelectItem[]
   initialValue?: string
+  normalize?: boolean
 }
 
 export const Combobox = ({
   items,
   onChange = () => null,
+  normalize = false,
   initialValue = '',
   ...props
 }: ComboboxProps) => (
@@ -69,11 +71,14 @@ export const Combobox = ({
                     .filter(
                       item =>
                         !inputValue ||
-                        (item &&
-                          item.name &&
+                        (!normalize &&
                           item.name
                             .toLowerCase()
-                            .includes(inputValue.toLowerCase()))
+                            .includes(inputValue.toLowerCase())) ||
+                        (normalize &&
+                          normalizeChars(item.name.toLowerCase()).includes(
+                            inputValue.toLowerCase()
+                          ))
                     )
                     .map((item, index) => (
                       <InputMenuItem
