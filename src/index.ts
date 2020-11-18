@@ -1,5 +1,6 @@
 export * from './theme'
 export * from './hooks'
+export { normalizeChars } from './utils'
 export { Alert } from './components/Alert'
 export { Avatar } from './components/Avatar'
 export {
