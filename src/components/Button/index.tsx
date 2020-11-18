@@ -329,15 +329,14 @@ const Adornment = styled.span`
 `
 
 const Button: React.FC<ButtonProps> = React.forwardRef(
-  ({ children, onClick, ...props }, ref: React.Ref<HTMLButtonElement>) => (
-    <StyledButton
-      ref={ref}
-      onClick={props.loading ? () => null : onClick}
-      {...props}
-    >
-      {props.loading || props.leftAdornment ? (
+  (
+    { children, onClick, loading, ...props },
+    ref: React.Ref<HTMLButtonElement>
+  ) => (
+    <StyledButton ref={ref} onClick={loading ? () => null : onClick} {...props}>
+      {loading || props.leftAdornment ? (
         <Adornment>
-          {props.loading ? <Spinner size={24} /> : props.leftAdornment}
+          {loading ? <Spinner size={24} /> : props.leftAdornment}
         </Adornment>
       ) : null}
       {children}
