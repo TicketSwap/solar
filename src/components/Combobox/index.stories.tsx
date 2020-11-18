@@ -3,6 +3,25 @@ import { Combobox } from './'
 import { Flag } from '../Flag'
 import { Envelope, Messenger, Phone } from '@ticketswap/comets'
 
+const banks = [
+  {
+    value: '492',
+    name: 'ING BANK N.V (492)',
+  },
+  {
+    value: '652',
+    name: 'ITAÚ UNIBANCO HOLDING BM S.A (652)',
+  },
+  {
+    value: '128',
+    name: 'MS BANK S.A BANCO DE CÂMBIO (128)',
+  },
+  {
+    value: '137',
+    name: 'MULTIMONEY CC LTDA (137)',
+  },
+]
+
 const tickets = [
   { value: '1', name: '1 ticket' },
   { value: '2', name: '2 tickets' },
@@ -50,6 +69,10 @@ export const withAdornment = () => (
 
 export const mixed = () => (
   <Combobox id="Combobox" label="Combobox" items={communicationMethods} />
+)
+
+export const normalized = () => (
+  <Combobox id="Combobox" label="Combobox" items={banks} normalize={true} />
 )
 
 export const withInitialValue = () => (
