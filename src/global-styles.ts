@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 import { color, space, radius } from './theme'
 import { baseTextStyles } from './components/Text'
 

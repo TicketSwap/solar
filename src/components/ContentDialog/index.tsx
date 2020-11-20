@@ -15,7 +15,7 @@ import {
 import { Text } from '../Text'
 import { H2, H4 } from '../Heading'
 import { Close } from '@ticketswap/comets'
-import { css, Global } from '@emotion/react'
+import { css, Global } from '@emotion/core'
 import { useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { Image } from '../Image'
 import {

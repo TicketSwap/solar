@@ -44,12 +44,7 @@ const NativeCheckbox = styled.input`
   width: 1px;
 `
 
-interface CustomCheckboxProps {
-  disabled?: boolean
-  checked?: boolean
-}
-
-const CustomCheckbox = styled.div<CustomCheckboxProps>`
+const CustomCheckbox = styled.div`
   flex-shrink: 0;
   position: relative;
   color: ${color.nova};

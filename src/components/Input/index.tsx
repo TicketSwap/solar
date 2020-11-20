@@ -1,6 +1,6 @@
 import React, { ReactNode, Ref } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 import { Spinner } from '../Spinner'
 import { VisuallyHidden } from '../VisuallyHidden'
 import {
@@ -33,7 +33,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   placeholder?: string
   help?: string
   rounded?: boolean
-  as?: React.ElementType
+  as?: string
   rows?: string
   ref?: Ref<HTMLInputElement>
   disabled?: boolean

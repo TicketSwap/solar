@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 
 export const visuallyHidden = css`
   border: 0;

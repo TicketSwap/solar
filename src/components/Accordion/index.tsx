@@ -2,7 +2,7 @@ import React from 'react'
 import { device, space, color, fontWeight } from '../../theme'
 import { ChevronDown } from '@ticketswap/comets'
 import styled from '@emotion/styled'
-import { Global, css } from '@emotion/react'
+import { Global, css } from '@emotion/core'
 import * as Reach from '@reach/accordion'
 
 export interface AccordionProps {

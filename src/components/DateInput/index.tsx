@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import { css } from '@emotion/core'
 import { space, device } from '../../theme'
 import { Input } from '../Input'
 import { Select } from '../Select'

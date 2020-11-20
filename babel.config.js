@@ -15,7 +15,7 @@ module.exports = {
     '@babel/preset-typescript',
   ],
   plugins: [
-    '@emotion',
+    'emotion',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',
