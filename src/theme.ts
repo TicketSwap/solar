@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 export const color = {
   space: 'rgb(0,19,25)',

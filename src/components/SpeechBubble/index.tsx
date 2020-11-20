@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { space, color, radius, fontSize, lineHeight } from '../../theme'
 
 export interface SpeechBubbleProps {
