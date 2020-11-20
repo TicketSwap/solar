@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { radius, color, space } from '../../theme'
-import { Global, css } from '@emotion/core'
+import { Global, css } from '@emotion/react'
 import { useTooltip, TooltipPopup } from '@reach/tooltip'
 
 export interface TooltipProps {

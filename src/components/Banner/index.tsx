@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 import { color, space, device, radius } from '../../theme'
 import { ChevronRightAlt } from '@ticketswap/comets'
 
