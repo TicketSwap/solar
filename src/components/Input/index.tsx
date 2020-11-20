@@ -33,7 +33,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   placeholder?: string
   help?: string
   rounded?: boolean
-  as?: string
+  as?: React.ElementType
   rows?: string
   ref?: Ref<HTMLInputElement>
   disabled?: boolean
