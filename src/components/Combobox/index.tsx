@@ -77,7 +77,7 @@ export const Combobox = ({
                             .includes(inputValue.toLowerCase())) ||
                         (normalize &&
                           normalizeChars(item.name.toLowerCase()).includes(
-                            inputValue.toLowerCase()
+                            normalizeChars(inputValue.toLowerCase())
                           ))
                     )
                     .map((item, index) => (
