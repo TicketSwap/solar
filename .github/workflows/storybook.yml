@@ -1,0 +1,26 @@
+name: Build and Deploy Storybook
+on:
+  push:
+    paths: ["src/components/**"]
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install and Build
+        run: |
+          yarn install
+          yarn build-storybook -o docs-build
+      - name: Deploy storybook to github pages
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: master
+          FOLDER: docs-build
