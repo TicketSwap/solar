@@ -157,6 +157,7 @@ const Alert: React.FC<AlertProps> = ({
           <InfoRounded size={24} />
         )}
       </Adornment>
+
       <Main>
         {/* Will be fixed in version 11 of emotion: https://github.com/emotion-js/emotion/pull/1874 */}
         {/* @ts-ignore */}
