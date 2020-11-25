@@ -11,8 +11,6 @@ export interface ToggleProps {
 }
 
 export const Toggle: React.FC<ToggleProps> = ({
-  loading,
-  adornment,
   defaultOn = false,
   onToggle = () => null,
   ...props
