@@ -1,14 +1,19 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import computeScrollIntoView from 'compute-scroll-into-view'
-import { color } from '../../theme'
+import { color, space, lineHeight, radius, fontSize } from '../../theme'
 import {
   Input,
   InputMenu,
   InputMenuList,
   InputMenuItem,
   InputProps,
+  Label,
+  LabelText,
+  Adornment,
+  Help,
 } from '../Input'
+import { VisuallyHidden } from '../VisuallyHidden'
 import { ArrowDown } from '@ticketswap/comets'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 
@@ -21,19 +26,6 @@ const Container = styled.div`
 `
 
 Container.defaultProps = { className: 'select' }
-
-const StyledInput = styled(Input)`
-  color: transparent;
-  text-shadow: 0 0 0 ${color.space};
-  cursor: pointer;
-
-  &:disabled {
-    cursor: default;
-  }
-`
-const LeftAdornment = styled.span`
-  margin-right: 10px;
-`
 
 type SelectItem = {
   value: string
@@ -53,6 +45,59 @@ export interface SelectProps extends Omit<InputProps, 'onChange'> {
   selectedItem?: SelectItem
 }
 
+interface StyledSelectProps {
+  leftAdornment?: ReactNode
+}
+
+const StyledInput = styled(Input)`
+  color: transparent;
+  text-shadow: 0 0 0 ${color.space};
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+`
+const LeftAdornment = styled.span`
+  margin-right: 10px;
+`
+
+const SelectContainer = styled.div`
+  position: relative;
+`
+
+const SelectWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+
+const StyledSelect = styled.select<StyledSelectProps>`
+  font-family: inherit;
+  background-color: ${color.stardust};
+  border-radius: ${radius.md};
+  width: 100%;
+  font-size: ${fontSize[18]};
+  line-height: ${lineHeight.solid};
+  height: ${space[56]};
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
+  padding-right: ${space[16]};
+  color: ${color.space};
+  box-shadow: none;
+  border: 0;
+  text-align: left;
+  appearance: none;
+  -webkit-font-smoothing: auto;
+
+  &:focus,
+  &.focus {
+    outline: none;
+  }
+`
+
 export const Select: React.FC<SelectProps> = ({
   items,
   onChange = () => {},
@@ -60,16 +105,17 @@ export const Select: React.FC<SelectProps> = ({
   label,
   leftAdornment,
   floatingMenu,
+  initialSelectedItem,
   ...props
 }) => {
   const { isMobile } = useDeviceInfo()
   const [showCustomSelect, setShowCustomSelect] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
   const [selectedItem, setSelectedItem] = React.useState(
-    props.initialSelectedItem || items[0]
+    initialSelectedItem || items[0]
   )
   const [highlightedIndex, setHighlightedIndex] = React.useState(
-    items.indexOf(props.initialSelectedItem || items[0])
+    items.indexOf(initialSelectedItem || items[0])
   )
   const containerRef = React.useRef<HTMLDivElement>(null)
   const inputRef = React.useRef<HTMLInputElement>(null)
@@ -178,30 +224,47 @@ export const Select: React.FC<SelectProps> = ({
   return (
     <Container ref={containerRef}>
       {!showCustomSelect && (
-        <>
-          <Input
-            {...props}
-            as="select"
-            id={id}
-            label={label}
-            value={highlightedIndex}
-            rightAdornment={<ArrowDown size={16} />}
-            onChange={e => {
-              setSelectedItem(
-                items[parseInt((e.target as HTMLInputElement).value)]
-              )
-              setHighlightedIndex(
-                parseInt((e.target as HTMLInputElement).value)
-              )
-              onChange(items[parseInt((e.target as HTMLInputElement).value)])
-            }}
-          />
-          {items.map((item, index) => (
-            <option key={item.value} value={index}>
-              {item.name}
-            </option>
-          ))}
-        </>
+        <SelectContainer {...props}>
+          {props.hideLabel ? (
+            <VisuallyHidden>
+              <LabelText>{label}</LabelText>
+            </VisuallyHidden>
+          ) : (
+            <Label htmlFor={id}>
+              <LabelText>{label}</LabelText>
+            </Label>
+          )}
+
+          <SelectWrapper>
+            {leftAdornment ? <Adornment left>{leftAdornment}</Adornment> : null}
+
+            <StyledSelect
+              leftAdornment={leftAdornment}
+              defaultValue={items
+                .map(item => item.value)
+                .indexOf(selectedItem.value)}
+              id={id}
+              onChange={(e: React.SyntheticEvent) => {
+                setSelectedItem(
+                  items[parseInt((e.target as HTMLInputElement).value)]
+                )
+                onChange(items[parseInt((e.target as HTMLInputElement).value)])
+              }}
+            >
+              {items.map((item, index) => (
+                <option key={item.value} value={index}>
+                  {item.name}
+                </option>
+              ))}
+            </StyledSelect>
+
+            <Adornment right>
+              <ArrowDown size={16} />
+            </Adornment>
+          </SelectWrapper>
+
+          {props.help && <Help>{props.help}</Help>}
+        </SelectContainer>
       )}
 
       {showCustomSelect && (
