@@ -27,3 +27,16 @@ export const Basic = () => (
     leftAdornment={<MagnifyingGlass size={24} />}
   />
 )
+
+export const HideLabel = () => (
+  <Select
+    items={items}
+    id="language"
+    label="Language"
+    help="Select a language"
+    onChange={selection => console.log(selection)}
+    initialSelectedItem={items[1]}
+    leftAdornment={<MagnifyingGlass size={24} />}
+    hideLabel
+  />
+)
