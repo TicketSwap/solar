@@ -1,5 +1,6 @@
 import React from 'react'
 import { Select } from './'
+import { MagnifyingGlass } from '@ticketswap/comets'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -23,5 +24,6 @@ export const Basic = () => (
     help="Select a language"
     onChange={selection => console.log(selection)}
     initialSelectedItem={items[1]}
+    leftAdornment={<MagnifyingGlass size={24} />}
   />
 )
