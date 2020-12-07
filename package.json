@@ -79,7 +79,7 @@
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@size-limit/preset-small-lib": "^4.7.0",
-    "@storybook/addon-essentials": "6.0.28",
+    "@storybook/addon-essentials": "6.1.10",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.1.2",
     "@storybook/addons": "^6.0.28",
