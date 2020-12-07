@@ -28,7 +28,6 @@ export interface CoverProps {
 
 const Container = styled.div<CoverProps>`
   position: relative;
-  z-index: 5;
   background-color: ${color.space};
   width: 100%;
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
@@ -43,7 +42,6 @@ const Container = styled.div<CoverProps>`
 
 const BackgroundImage = styled.div<CoverProps>`
   position: absolute;
-  z-index: -2;
   left: 0;
   top: 0;
   right: 0;
@@ -148,6 +146,7 @@ const BackgroundImage = styled.div<CoverProps>`
 `
 
 const Content = styled.div<CoverProps>`
+  position: relative;
   padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
   padding-bottom: ${space[24]};
 
@@ -215,6 +214,10 @@ export const Cover: React.FC<CoverProps> = ({
   ...props
 }) => (
   <Container fullHeight={fullHeight} blurred={blurred} {...props}>
+    {(imageUrl || images) && (
+      <BackgroundImage imageUrl={imageUrl} images={images} blurred={blurred} />
+    )}
+
     <Content blurred={blurred}>{children}</Content>
 
     {caption && captionUrl && (
@@ -226,9 +229,5 @@ export const Cover: React.FC<CoverProps> = ({
     )}
 
     {caption && !captionUrl && <Caption>{caption}</Caption>}
-
-    {(imageUrl || images) && (
-      <BackgroundImage imageUrl={imageUrl} images={images} blurred={blurred} />
-    )}
   </Container>
 )
