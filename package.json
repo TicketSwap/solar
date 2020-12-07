@@ -59,7 +59,7 @@
     "@reach/accordion": "^0.11.2",
     "@reach/auto-id": "^0.11.2",
     "@reach/dialog": "^0.11.2",
-    "@reach/tabs": "^0.11.2",
+    "@reach/tabs": "^0.12.1",
     "@reach/tooltip": "0.11.2",
     "@reach/utils": "^0.11.2",
     "@ticketswap/comets": "^2.11.1",
