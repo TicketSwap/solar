@@ -33,7 +33,7 @@
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.1",
+    "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
     "react": ">=16"
   },
@@ -76,7 +76,7 @@
     "@babel/preset-typescript": "^7.10.4",
     "@emotion/babel-plugin": "^11.0.0",
     "@emotion/jest": "^11.1.0",
-    "@emotion/react": "^11.1.1",
+    "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
     "@size-limit/preset-small-lib": "^4.7.0",
     "@storybook/addon-essentials": "6.0.28",
