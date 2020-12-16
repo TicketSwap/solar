@@ -1,34 +1,30 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { MenuButton } from './'
+import { render } from '@testing-library/react'
+import { Menu, MenuButton, MenuItem, MenuLink, MenuList } from './'
 
-const items = [
-  { name: 'English', value: 'en' },
-  { name: 'Nederlands', value: 'nl' },
-  { name: 'German', value: 'de' },
-]
-const handleChange = jest.fn()
+const handleOnSelect = jest.fn()
 const MyMenuButton = () => (
-  <MenuButton
-    items={items}
-    onChange={item => handleChange(item)}
-    initialSelectedItem={items[0]}
-  />
+  <Menu>
+    <MenuButton>
+      Actions <span aria-hidden>▾</span>
+    </MenuButton>
+    <MenuList>
+      <MenuItem onSelect={() => handleOnSelect('Download')}>Download</MenuItem>
+      <MenuItem onSelect={() => handleOnSelect('Copy')}>Create a Copy</MenuItem>
+      <MenuItem onSelect={() => handleOnSelect('Mark as Draft')}>
+        Mark as Draft
+      </MenuItem>
+      <MenuItem onSelect={() => handleOnSelect('Delete')}>Delete</MenuItem>
+      <MenuLink as="a" href="https://ticketswap.com/">
+        Visit TicketSwap
+      </MenuLink>
+    </MenuList>
+  </Menu>
 )
 
 describe('MenuButton', () => {
   it('renders without crashing', () => {
     const { container } = render(<MyMenuButton />)
     expect(container.firstChild).toBeInTheDocument()
-  })
-
-  it('handles selection correctly', () => {
-    const { getByText, queryByText } = render(<MyMenuButton />)
-    expect(queryByText(/nederlands/i)).toBeNull()
-    fireEvent.click(getByText(/english/i))
-    fireEvent.click(getByText(/nederlands/i))
-    expect(getByText(/nederlands/i)).toBeInTheDocument()
-    expect(handleChange).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledWith(items[1])
   })
 })
