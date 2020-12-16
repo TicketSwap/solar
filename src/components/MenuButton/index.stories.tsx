@@ -1,47 +1,44 @@
 import React from 'react'
-import { MenuButton } from '.'
-import { CustomDropdownPostion } from '../CustomDropdown'
-
-const items = [
-  { name: 'English', value: 'en' },
-  { name: 'Nederlands', value: 'nl' },
-  { name: 'German', value: 'de' },
-]
+import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from './'
 
 export default {
   title: 'MenuButton',
 }
 
 export const Basic = () => (
-  <div style={{ padding: '2rem' }}>
-    <span>
-      Language:{' '}
-      <MenuButton
-        items={items}
-        initialSelectedItem={items[0]}
-        onChange={item => console.log(item)}
-      />
-    </span>
-  </div>
+  <Menu>
+    <MenuButton>
+      Actions <span aria-hidden>▾</span>
+    </MenuButton>
+    <MenuList>
+      <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+      <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+      <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
+      <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+      <MenuLink as="a" href="https://ticketswap.com/">
+        Visit TicketSwap
+      </MenuLink>
+    </MenuList>
+  </Menu>
 )
 
 export const Top = () => (
-  <div
-    style={{
-      display: 'flex',
-      alignItems: 'flex-end',
-      padding: '2rem',
-      height: '100vh',
-    }}
-  >
-    <span>
-      Language:{' '}
-      <MenuButton
-        items={items}
-        dropdownPosition={CustomDropdownPostion.top}
-        onChange={item => console.log(item)}
-        initialSelectedItem={items[1]}
-      />
-    </span>
+  <div style={{ marginTop: '80vh' }}>
+    <Menu>
+      <MenuButton>
+        Actions <span aria-hidden>▾</span>
+      </MenuButton>
+      <MenuList>
+        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+        <MenuItem onSelect={() => alert('Mark as Draft')}>
+          Mark as Draft
+        </MenuItem>
+        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+        <MenuLink as="a" href="https://ticketswap.com/">
+          Visit TicketSwap
+        </MenuLink>
+      </MenuList>
+    </Menu>
   </div>
 )
