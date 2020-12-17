@@ -4,14 +4,17 @@ import {
   MenuItem as ReachMenuItem,
   MenuLink as ReachMenuLink,
   MenuProps,
-  MenuListProps,
+  MenuListProps as ReachMenuListProps,
   useMenuButtonContext,
+  MenuItemProps,
+  MenuLinkProps as ReachMenuLinkProps,
 } from '@reach/menu-button'
 import styled from '@emotion/styled'
 import { color, easing, radius, shadow, space } from '../../theme'
 import React from 'react'
 import { css, Global } from '@emotion/react'
 import { useTransition } from '../../hooks'
+import { TransitionState } from '../../hooks/useTransition'
 
 const DURATION = 200
 
@@ -30,8 +33,11 @@ export const Menu = ({ children, ...props }: MenuProps) => {
   )
 }
 
-// @ts-ignore
-const StyledMenuList = styled(ReachMenuList)`
+export interface MenuListProps extends ReachMenuListProps {
+  state: boolean | TransitionState
+}
+
+const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
   background-color: ${color.nova};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
@@ -70,7 +76,7 @@ const StyledMenuList = styled(ReachMenuList)`
     transform ${DURATION}ms ${easing.easeInOutCubic};
 `
 
-export const MenuList = ({ children, ...props }: MenuListProps) => {
+export const MenuList = ({ children, ...props }: ReachMenuListProps) => {
   const { isExpanded } = useMenuButtonContext()
   const [state] = useTransition({
     in: isExpanded,
@@ -84,14 +90,16 @@ export const MenuList = ({ children, ...props }: MenuListProps) => {
   )
 }
 
-// @ts-ignore
-export const MenuItem = styled(ReachMenuItem)`
+export const MenuItem = styled<React.FC<MenuItemProps>>(ReachMenuItem)`
   padding: ${space[8]} ${space[16]};
   cursor: pointer;
 `
 
-// @ts-ignore
-export const MenuLink = styled(ReachMenuLink)`
+export interface MenuLinkProps extends ReachMenuLinkProps {
+  href: string | undefined
+}
+
+export const MenuLink = styled<React.FC<MenuLinkProps>>(ReachMenuLink)`
   padding: ${space[8]} ${space[16]};
   display: block;
 `
