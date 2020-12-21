@@ -58,7 +58,7 @@
   "dependencies": {
     "@reach/accordion": "^0.11.2",
     "@reach/auto-id": "^0.11.2",
-    "@reach/dialog": "^0.11.2",
+    "@reach/dialog": "^0.12.1",
     "@reach/menu-button": "^0.12.1",
     "@reach/tabs": "^0.11.2",
     "@reach/tooltip": "0.11.2",
