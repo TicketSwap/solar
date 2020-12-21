@@ -65,7 +65,7 @@
     "@reach/utils": "^0.11.2",
     "@ticketswap/comets": "^2.11.1",
     "compute-scroll-into-view": "^1.0.16",
-    "downshift": "^6.0.6"
+    "downshift": "^6.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
