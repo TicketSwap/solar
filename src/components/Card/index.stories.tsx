@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Card, CardVerticalAlign, CardSize, CardAppearance } from '.'
+import { Card, CardVerticalAlign, CardSize } from '.'
 import { Avatar } from '../Avatar'
 import { Pill } from '../Pill'
 import { Ticket } from '@ticketswap/comets'
@@ -187,10 +187,6 @@ const StyledCard = styled(Card)`
 
 export const Styled = () => (
   <a href="/" style={{ minWidth: 0 }}>
-    <StyledCard
-      title="Show more"
-      text="Events in your area"
-      appearance={CardAppearance.light}
-    />
+    <StyledCard title="Show more" text="Events in your area" />
   </a>
 )

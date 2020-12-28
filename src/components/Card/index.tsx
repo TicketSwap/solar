@@ -18,11 +18,6 @@ export enum CardVerticalAlign {
   bottom = 'bottom',
 }
 
-export enum CardAppearance {
-  dark = 'dark',
-  light = 'light',
-}
-
 export enum CardSize {
   default = 'default',
   large = 'large',
@@ -38,13 +33,11 @@ export interface CardPropTypes {
   rightAdornment?: React.ReactNode
   topLeftAdornment?: React.ReactNode
   verticalAlign?: CardVerticalAlign
-  appearance?: CardAppearance
   size?: CardSize
 }
 
 export interface StyledCardProps extends CardPropTypes {
   hasImage?: boolean
-  cardAppearance?: CardAppearance
 }
 
 const Container = styled.div<StyledCardProps>`
@@ -167,8 +160,7 @@ const LeftAdornment = styled.header`
 `
 
 const TextContent = styled.div<StyledCardProps>`
-  color: ${props =>
-    props.cardAppearance === CardAppearance.light ? color.nova : color.space};
+  color: ${color.space};
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -176,6 +168,12 @@ const TextContent = styled.div<StyledCardProps>`
   position: relative;
   overflow: hidden;
   word-break: break-all;
+
+  ${props =>
+    props.hasImage &&
+    css`
+      color: ${color.spaceMedium};
+    `};
 `
 
 const RightAdornment = styled.footer`
@@ -227,6 +225,16 @@ const Title = styled.h4<StyledCardProps>`
     font-size: ${p =>
       p.size === CardSize.large ? fontSize[20] : fontSize[18]};
   }
+
+  ${props =>
+    props.hasImage &&
+    css`
+      color: ${color.nova};
+
+      [data-theme='dark'] & {
+        color: ${color.space};
+      }
+    `};
 `
 
 const Subtitle = styled.h5<StyledCardProps>`
@@ -251,6 +259,16 @@ const Text = styled.span<StyledCardProps>`
     font-size: ${p =>
       p.size === CardSize.large ? fontSize[16] : fontSize[14]};
   }
+
+  ${props =>
+    props.hasImage &&
+    css`
+      color: ${color.nova};
+
+      [data-theme='dark'] & {
+        color: ${color.space};
+      }
+    `};
 `
 
 const Description = styled.div<StyledCardProps>`
@@ -276,7 +294,6 @@ const Card: React.FC<CardPropTypes> = ({
   text,
   description,
   image,
-  appearance = CardAppearance.dark,
   leftAdornment,
   rightAdornment,
   topLeftAdornment,
@@ -285,7 +302,6 @@ const Card: React.FC<CardPropTypes> = ({
   ...props
 }) => {
   const hasImage = Boolean(image)
-  const cardAppearance = hasImage ? CardAppearance.light : appearance
 
   return (
     <Container hasImage={hasImage} {...props}>
@@ -299,18 +315,16 @@ const Card: React.FC<CardPropTypes> = ({
         <Body hasImage={hasImage}>
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
 
-          <TextContent cardAppearance={cardAppearance}>
+          <TextContent hasImage={hasImage}>
             {title && <Title hasImage={hasImage}>{title}</Title>}
 
             {subtitle && <Subtitle hasImage={hasImage}>{subtitle}</Subtitle>}
 
-            {text && (
-              <Text cardAppearance={cardAppearance} hasImage={hasImage}>
-                {text}
-              </Text>
-            )}
+            {text && <Text hasImage={hasImage}>{text}</Text>}
 
-            {description && <Description>{description}</Description>}
+            {description && (
+              <Description hasImage={hasImage}>{description}</Description>
+            )}
           </TextContent>
 
           {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}
