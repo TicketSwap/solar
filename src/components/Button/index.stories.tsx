@@ -1,6 +1,12 @@
 import React from 'react'
 import { Button, ButtonVariant } from '.'
-import { Checkmark, Facebook, MagnifyingGlass, Plus } from '@ticketswap/comets'
+import {
+  Checkmark,
+  Facebook,
+  MagnifyingGlass,
+  Plus,
+  Apple,
+} from '@ticketswap/comets'
 
 const Primary = () => <Button>Default Button</Button>
 const FullWidth = () => <Button width="full">Default Button</Button>
@@ -56,6 +62,12 @@ const SecondaryWithIcon = () => (
 )
 
 SecondaryWithIcon.storyName = 'Secondary with icon'
+
+const ApplePay = () => (
+  <Button variant={ButtonVariant.apple} leftAdornment={<Apple size={24} />}>
+    Continue with Apple
+  </Button>
+)
 
 const Caution = () => (
   <Button variant={ButtonVariant.caution}>Turn off alerts</Button>
@@ -162,6 +174,7 @@ RoundedSmallSquareWithIconAsChild.storyName =
 const Regular = () => <button>Button</button>
 
 export {
+  ApplePay,
   Regular,
   Primary,
   FullWidth,
