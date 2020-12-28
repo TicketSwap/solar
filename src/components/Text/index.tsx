@@ -6,13 +6,14 @@ import {
   fontSize,
   device,
   fontStack,
+  color,
 } from '../../theme'
 
 export const baseTextStyles = css`
   font-family: ${fontStack};
   font-weight: ${fontWeight.regular};
   line-height: ${lineHeight.copy};
-  color: inherit;
+  color: ${color.space};
   font-size: ${fontSize[16]};
 
   @media ${device.tablet} {

@@ -32,6 +32,10 @@ export const Container = styled.span<PillProps>`
       : p.variant === 'disabled'
       ? color.spaceLighter
       : color.earth};
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
 `
 
 const LeftAdornment = styled.span`

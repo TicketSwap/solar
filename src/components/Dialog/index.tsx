@@ -127,13 +127,17 @@ export const DialogContent: React.FC<any> = ({ children, ...props }) => {
 export const DialogHeader = styled.header`
   position: relative;
   height: ${space[56]};
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${color.stardust};
   color: ${color.space};
   font-weight: ${fontWeight.semiBold};
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  [data-theme='dark'] & {
+    border-bottom: 1px solid ${color.spaceLightest};
+  }
 `
 
 interface DialogAdornmentStyles {

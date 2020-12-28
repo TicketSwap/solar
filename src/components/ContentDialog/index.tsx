@@ -217,6 +217,10 @@ const StyledCover = styled(Cover)`
   > div {
     padding-bottom: ${space[16]};
   }
+
+  h2 {
+    color: ${color.nova};
+  }
 `
 
 interface StyledLogoImageProps {
@@ -254,6 +258,8 @@ const CloseButton = styled.button`
 `
 
 const StyledClose = styled(Close)`
+  color: ${color.nova};
+
   @media ${device.tablet} {
     transform: scale(1.5);
   }

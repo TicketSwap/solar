@@ -41,10 +41,32 @@ const Container = styled.div<BannerProps>`
   }
 `
 
+const StyledChevronRightAlt = styled(ChevronRightAlt)`
+  color: ${color.nova};
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
+`
+
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: ${color.nova};
+
+    [data-theme='dark'] & {
+      color: ${color.space};
+    }
+  }
 `
 
 export interface BannerProps {
@@ -60,7 +82,7 @@ const Banner: React.FC<BannerProps> = ({
     <Container backgroundImageUrl={backgroundImageUrl} {...props}>
       <Content>
         <div>{children}</div>
-        <ChevronRightAlt />
+        <StyledChevronRightAlt />
       </Content>
     </Container>
   )

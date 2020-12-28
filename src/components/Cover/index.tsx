@@ -32,7 +32,10 @@ const Container = styled.div<CoverProps>`
   background-color: ${color.space};
   width: 100%;
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
-  color: ${color.nova};
+
+  [data-theme='dark'] & {
+    background-color: ${color.nova};
+  }
 
   ${props =>
     props.blurred &&
@@ -123,6 +126,25 @@ const BackgroundImage = styled.div<CoverProps>`
       rgba(0, 19, 25, 0.002) 98.2%,
       rgba(0, 19, 25, 0) 100%
     );
+
+    [data-theme='dark'] & {
+      background-image: linear-gradient(
+        to bottom,
+        rgba(26, 33, 41, 1) 0%,
+        rgba(26, 33, 41, 0.738) 19%,
+        rgba(26, 33, 41, 0.541) 34%,
+        rgba(26, 33, 41, 0.382) 47%,
+        rgba(26, 33, 41, 0.278) 56.5%,
+        rgba(26, 33, 41, 0.194) 65%,
+        rgba(26, 33, 41, 0.126) 73%,
+        rgba(26, 33, 41, 0.075) 80.2%,
+        rgba(26, 33, 41, 0.042) 86.1%,
+        rgba(26, 33, 41, 0.021) 91%,
+        rgba(26, 33, 41, 0.008) 95.2%,
+        rgba(26, 33, 41, 0.002) 98.2%,
+        rgba(26, 33, 41, 0) 100%
+      );
+    }
   }
 
   &::after {
@@ -144,6 +166,25 @@ const BackgroundImage = styled.div<CoverProps>`
       rgba(0, 19, 25, 0.002) 98.2%,
       rgba(0, 19, 25, 0) 100%
     );
+
+    [data-theme='dark'] & {
+      background-image: linear-gradient(
+        to top,
+        rgba(26, 33, 41, 1) 0%,
+        rgba(26, 33, 41, 0.738) 19%,
+        rgba(26, 33, 41, 0.541) 34%,
+        rgba(26, 33, 41, 0.382) 47%,
+        rgba(26, 33, 41, 0.278) 56.5%,
+        rgba(26, 33, 41, 0.194) 65%,
+        rgba(26, 33, 41, 0.126) 73%,
+        rgba(26, 33, 41, 0.075) 80.2%,
+        rgba(26, 33, 41, 0.042) 86.1%,
+        rgba(26, 33, 41, 0.021) 91%,
+        rgba(26, 33, 41, 0.008) 95.2%,
+        rgba(26, 33, 41, 0.002) 98.2%,
+        rgba(26, 33, 41, 0) 100%
+      );
+    }
   }
 `
 
@@ -202,6 +243,10 @@ const Caption = styled.span<CaptionProps>`
   @media ${device.tablet} {
     font-size: ${fontSize[12]};
   }
+
+  [data-theme='dark'] & {
+    color: ${color.spaceMediumAlpha};
+  }
 `
 
 export const Cover: React.FC<CoverProps> = ({
@@ -213,22 +258,30 @@ export const Cover: React.FC<CoverProps> = ({
   blurred = false,
   fullHeight = false,
   ...props
-}) => (
-  <Container fullHeight={fullHeight} blurred={blurred} {...props}>
-    <Content blurred={blurred}>{children}</Content>
+}) => {
+  const hasImages = imageUrl || images
 
-    {caption && captionUrl && (
-      <CaptionContainer>
-        <Caption as="a" href={captionUrl} rel="noopener noreferrer">
-          {caption}
-        </Caption>
-      </CaptionContainer>
-    )}
+  return (
+    <Container fullHeight={fullHeight} blurred={blurred} {...props}>
+      <Content blurred={blurred}>{children}</Content>
 
-    {caption && !captionUrl && <Caption>{caption}</Caption>}
+      {caption && captionUrl && (
+        <CaptionContainer>
+          <Caption as="a" href={captionUrl} rel="noopener noreferrer">
+            {caption}
+          </Caption>
+        </CaptionContainer>
+      )}
 
-    {(imageUrl || images) && (
-      <BackgroundImage imageUrl={imageUrl} images={images} blurred={blurred} />
-    )}
-  </Container>
-)
+      {caption && !captionUrl && <Caption>{caption}</Caption>}
+
+      {hasImages && (
+        <BackgroundImage
+          imageUrl={imageUrl}
+          images={images}
+          blurred={blurred}
+        />
+      )}
+    </Container>
+  )
+}

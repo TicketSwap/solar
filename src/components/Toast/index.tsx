@@ -73,6 +73,10 @@ export const Toast = styled.div<ToastProps>`
   background-color: ${color.nova};
   box-shadow: ${shadow.strong};
   padding: ${space[16]};
+
+  [data-theme='dark'] & {
+    border: 1px solid ${color.spaceLightest};
+  }
 `
 
 export const ToastContext = React.createContext({
