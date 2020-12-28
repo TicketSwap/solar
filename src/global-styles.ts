@@ -161,6 +161,10 @@ export const globalStyles = css`
   ::selection {
     background-color: ${color.earth};
     color: ${color.nova};
+
+    [data-theme='dark'] & {
+      color: ${color.space};
+    }
   }
 
   *,
@@ -196,6 +200,17 @@ export const globalStyles = css`
     hyphens: none;
   }
 
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li {
+    color: ${color.space};
+  }
+
   a {
     text-decoration: none;
     color: ${color.earth};
@@ -206,7 +221,7 @@ export const globalStyles = css`
     margin: 0;
     border: none;
     font: inherit;
-    color: inherit;
+    color: ${color.space};
     background-color: transparent;
     cursor: pointer;
     border-radius: ${radius.md};

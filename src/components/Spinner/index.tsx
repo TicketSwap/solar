@@ -2,10 +2,17 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
 import { Spinner as SpinnerIcon } from '@ticketswap/comets'
+import { color } from '../../theme'
 
 export interface SpinnerProps {
   size?: number
 }
+
+const StyledSpinnerIcon = styled(SpinnerIcon)`
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
+`
 
 const rotate = keyframes`
   from {
@@ -26,6 +33,6 @@ const Rotate = styled.div`
 
 export const Spinner: React.FC<SpinnerProps> = ({ size = 32, ...props }) => (
   <Rotate {...props}>
-    <SpinnerIcon size={size} />
+    <StyledSpinnerIcon size={size} />
   </Rotate>
 )

@@ -9,7 +9,6 @@ export const SvgWrapper = styled.div`
   width: 152px;
   height: 25px;
   position: relative;
-  color: inherit;
 
   @media ${device.tablet} {
     width: 220px;

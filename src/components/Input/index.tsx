@@ -98,6 +98,11 @@ export const fieldStyles = (props: InputProps) => css`
   &.focus {
     outline: none;
     box-shadow: ${shadow.strong};
+
+    [data-theme='dark'] & {
+      border: 1px solid ${color.spaceLightest};
+    }
+
     background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
   }
 
@@ -188,6 +193,10 @@ export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   background-color: ${color.nova};
   box-shadow: ${shadow.strong};
   overflow: hidden;
+
+  [data-theme='dark'] & {
+    border: 1px solid ${color.spaceLightest};
+  }
 `
 
 export const InputMenuFooter = styled.footer`

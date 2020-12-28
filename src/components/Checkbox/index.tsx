@@ -79,6 +79,10 @@ const CustomCheckbox = styled.div<CustomCheckboxProps>`
         ? color.earth
         : color.stardust};
   }
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
 `
 
 const IconContainer = styled.span`

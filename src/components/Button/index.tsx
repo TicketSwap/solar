@@ -101,9 +101,10 @@ const StyledButton = styled.button<ButtonProps>`
   ${props =>
     props.variant === ButtonVariant.secondary &&
     css`
-      background-color: ${props.active ? color.earth : color.skyLight};
+      background-color: ${props.active ? color.earth : color.sky};
       color: ${props.active ? color.nova : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
+      background-image: unset;
     `};
 
   ${props =>
@@ -247,7 +248,7 @@ const StyledButton = styled.button<ButtonProps>`
     ${props =>
       props.variant === ButtonVariant.secondary &&
       css`
-        background-color: ${props.active ? color.earthLight : color.sky};
+        background-color: ${props.active ? color.earthLight : color.skyLight};
         color: ${props.active ? color.nova : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
 

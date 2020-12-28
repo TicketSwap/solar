@@ -13,18 +13,16 @@ export const Basic = () => (
       <Tab>Tres</Tab>
     </TabList>
 
-    <div>Random</div>
-
     <TabPanels>
-      <TabPanel>Uno</TabPanel>
-      <TabPanel>Dos</TabPanel>
-      <TabPanel>Tres</TabPanel>
+      <TabPanel>
+        <p>Uno</p>
+      </TabPanel>
+      <TabPanel>
+        <p>Dos</p>
+      </TabPanel>
+      <TabPanel>
+        <p>Tres</p>
+      </TabPanel>
     </TabPanels>
-
-    <TabList>
-      <Tab>Uno</Tab>
-      <Tab>Dos</Tab>
-      <Tab>Tres</Tab>
-    </TabList>
   </Tabs>
 )

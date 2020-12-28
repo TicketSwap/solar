@@ -2,6 +2,16 @@ import React from 'react'
 import { Cover } from '.'
 import { Avatar } from '../Avatar'
 import { H1 } from '../Heading'
+import styled from '@emotion/styled'
+import { color } from '../../theme'
+
+const Title = styled(H1)`
+  color: ${color.nova};
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
+`
 
 const data = {
   randomBackgroundImage: {
@@ -26,7 +36,7 @@ export default {
 
 export const basic = () => (
   <Cover images={data.randomBackgroundImage.imageSizes}>
-    <H1>Awakenings Festival 2019</H1>
+    <Title>Awakenings Festival 2019</Title>
   </Cover>
 )
 
@@ -39,7 +49,7 @@ export const basicBlurred = () => (
       src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
       size={128}
     />
-    <H1>Drake</H1>
+    <Title>Drake</Title>
   </Cover>
 )
 
@@ -52,7 +62,7 @@ export const fullHeight = () => (
     captionUrl={data.randomBackgroundImage.copyrightLink}
     images={data.randomBackgroundImage.imageSizes}
   >
-    <H1>The safest way to buy and sell e-tickets</H1>
+    <Title>The safest way to buy and sell e-tickets</Title>
   </Cover>
 )
 
@@ -60,7 +70,7 @@ fullHeight.storyName = 'Full height'
 
 export const withoutImage = () => (
   <Cover fullHeight>
-    <H1>The safest way to buy and sell e-tickets</H1>
+    <Title>The safest way to buy and sell e-tickets</Title>
   </Cover>
 )
 

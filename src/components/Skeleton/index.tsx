@@ -27,6 +27,15 @@ export const SkeletonPulse = styled.span`
   animation-iteration-count: infinite;
   animation-fill-mode: both;
   animation-name: ${pulse};
+
+  [data-theme='dark'] & {
+    background-image: linear-gradient(
+      -90deg,
+      rgba(255, 255, 255, 0.07) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.07) 100%
+    );
+  }
 `
 
 export interface SkeletonLineProps {

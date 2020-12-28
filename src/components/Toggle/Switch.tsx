@@ -39,6 +39,11 @@ const Button = styled.button<ButtonProps>`
   transition: all 0.4s ease;
   border: 0;
 
+  [data-theme='dark'] & {
+    background: ${props =>
+      props.isOn ? color.titanLight : color.spaceLighter};
+  }
+
   &:focus::before,
   &:active::before {
     box-sizing: initial;
@@ -61,6 +66,10 @@ const Button = styled.button<ButtonProps>`
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       padding 0.3s ease, margin 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+    [data-theme='dark'] & {
+      background: ${color.space};
+    }
   }
 
   &:focus {
