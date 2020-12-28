@@ -22,6 +22,7 @@ export enum ButtonVariant {
   danger = 'danger',
   facebook = 'facebook',
   inverted = 'inverted',
+  apple = 'apple',
 }
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
@@ -85,6 +86,10 @@ const StyledButton = styled.button<ButtonProps>`
   color: ${color.nova};
   text-shadow: ${shadow.text};
 
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
+
   ${props =>
     props.variant !== ButtonVariant.secondary &&
     css`
@@ -102,11 +107,26 @@ const StyledButton = styled.button<ButtonProps>`
     `};
 
   ${props =>
+    props.variant === ButtonVariant.apple &&
+    css`
+      background-color: ${color.space};
+      color: ${color.nova};
+
+      [data-theme='dark'] & {
+        color: ${color.nova};
+      }
+    `};
+
+  ${props =>
     props.variant === ButtonVariant.caution &&
     css`
       background-color: #fff4f4;
       color: ${color.mars};
       text-shadow: none;
+
+      [data-theme='dark'] & {
+        color: ${color.mars};
+      }
     `};
 
   ${props =>
@@ -185,6 +205,12 @@ const StyledButton = styled.button<ButtonProps>`
       `};
 
     ${props =>
+      props.variant === ButtonVariant.apple &&
+      css`
+        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
+      `};
+
+    ${props =>
       props.variant === ButtonVariant.caution &&
       css`
         box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
@@ -224,6 +250,16 @@ const StyledButton = styled.button<ButtonProps>`
         background-color: ${props.active ? color.earthLight : color.sky};
         color: ${props.active ? color.nova : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
+
+        [data-theme='dark'] & {
+          color: ${color.space};
+        }
+      `};
+
+    ${props =>
+      props.variant === ButtonVariant.apple &&
+      css`
+        background-color: ${color.spaceDark};
       `};
 
     ${props =>
@@ -280,6 +316,12 @@ const StyledButton = styled.button<ButtonProps>`
           : color.earthLightestAlpha};
         color: ${props.active ? color.nova : color.earth};
         text-shadow: ${props.active ? shadow.text : 'none'};
+      `};
+
+    ${props =>
+      props.variant === ButtonVariant.apple &&
+      css`
+        background-color: ${color.spaceDark};
       `};
 
     ${props =>
