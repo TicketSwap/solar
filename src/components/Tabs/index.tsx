@@ -5,6 +5,8 @@ import {
   Tabs as ReachTabs,
   TabList as ReachTabList,
   Tab as ReachTab,
+  TabProps,
+  TabListProps,
 } from '@reach/tabs'
 import { color, radius, space, fontSize, fontWeight } from '../../theme'
 
@@ -23,7 +25,7 @@ export const Tabs: React.FC = ({ children, ...props }) => {
   )
 }
 
-export const TabList = styled(ReachTabList)`
+export const TabList = styled<React.FC<TabListProps>>(ReachTabList)`
   display: flex;
   border-radius: ${radius.lg};
   background-color: ${color.stardust};
@@ -53,7 +55,7 @@ export const TabList = styled(ReachTabList)`
   }
 `
 
-export const Tab = styled(ReachTab)`
+export const Tab = styled<React.FC<TabProps>>(ReachTab)`
   display: inline-block;
   appearance: none;
   cursor: pointer;
