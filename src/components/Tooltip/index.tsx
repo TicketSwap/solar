@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { radius, color, space } from '../../theme'
 import { Global, css } from '@emotion/react'
-import { useTooltip, TooltipPopup } from '@reach/tooltip'
+import { useTooltip, TooltipPopup, TooltipPopupProps } from '@reach/tooltip'
 
 export interface TooltipProps {
   label?: string
@@ -34,7 +34,7 @@ const centered = (
   return { left: 0, top: 0 }
 }
 
-const Popup = styled(TooltipPopup)`
+const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
   z-index: 10;
   pointer-events: none;
   position: absolute;

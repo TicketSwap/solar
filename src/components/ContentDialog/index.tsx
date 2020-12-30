@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { DialogOverlay, DialogContent } from '@reach/dialog'
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogOverlayProps,
+  DialogContentProps,
+} from '@reach/dialog'
 import styled from '@emotion/styled'
 import { Cover } from '../Cover'
 import {
@@ -33,6 +38,7 @@ export interface ContentDialogProps {
 const duration = 200
 
 interface StyledTransitionProps {
+  onScroll?: Function
   state:
     | TransitionState.ENTERED
     | TransitionState.ENTERING
@@ -41,7 +47,9 @@ interface StyledTransitionProps {
     | boolean // @TODO: Why is `state` boolean | TransitionState?
 }
 
-const StyledDialogOverlay = styled(DialogOverlay)<StyledTransitionProps>`
+const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
+  DialogOverlay
+)<StyledTransitionProps>`
   position: fixed;
   top: 0;
   right: 0;
@@ -55,7 +63,9 @@ const StyledDialogOverlay = styled(DialogOverlay)<StyledTransitionProps>`
   transition: opacity ${duration}ms ${easing.easeOutCubic};
 `
 
-const StyledDialogContent = styled(DialogContent)<StyledTransitionProps>`
+const StyledDialogContent = styled<React.FC<DialogContentProps>>(
+  DialogContent
+)<StyledTransitionProps>`
   padding: 0;
   width: 100%;
   max-width: 44rem;

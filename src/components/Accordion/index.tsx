@@ -4,6 +4,11 @@ import { ChevronDown } from '@ticketswap/comets'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
 import * as Reach from '@reach/accordion'
+import {
+  AccordionItemProps,
+  AccordionPanelProps,
+  AccordionButtonProps,
+} from '@reach/accordion'
 
 export interface AccordionProps {
   collapsible?: boolean
@@ -28,7 +33,7 @@ const Accordion: React.FC<AccordionProps> = ({
   )
 }
 
-const AccordionItem = styled(Reach.AccordionItem)`
+const AccordionItem = styled<React.FC<AccordionItemProps>>(Reach.AccordionItem)`
   border-top: 1px solid ${color.spaceLightest};
 
   &:last-of-type {
@@ -36,7 +41,7 @@ const AccordionItem = styled(Reach.AccordionItem)`
   }
 `
 
-const Button = styled(Reach.AccordionButton)`
+const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   font-weight: ${fontWeight.semiBold};
   display: flex;
   width: 100%;
@@ -87,8 +92,6 @@ const ButtonAdornment = styled.span`
   }
 `
 
-export interface AccordionButtonProps {}
-
 const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
   ...props
@@ -103,7 +106,9 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   )
 }
 
-const AccordionPanel = styled(Reach.AccordionPanel)`
+const AccordionPanel = styled<React.FC<AccordionPanelProps>>(
+  Reach.AccordionPanel
+)`
   outline: none;
   padding-bottom: ${space[12]};
 `
