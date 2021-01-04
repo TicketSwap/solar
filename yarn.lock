@@ -1897,14 +1897,14 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.5.4.tgz#de25b5da9f727985a3757fd59b5d028aba75841a"
   integrity sha512-ZpKr+WTb8zsajqgDkvCEWgp6d5eJT6Q63Ng2neTbzBO76Lbe91vX/iVIW9dikq+Fs3yEo+ls4cxeXABD2LtcbQ==
 
-"@reach/accordion@^0.11.2":
-  version "0.11.2"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.11.2.tgz#c275315ad460f267d8f23eb98e6a6647159551f8"
-  integrity sha512-vbmDqM2yfAaWH+b37gNJi17tEEVDYkXDLN9++FASgEUJhzXEn8hJrouw+CKDtfXqTrasDpEsxPxw0Zix6ct1OQ==
+"@reach/accordion@^0.12.1":
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.12.1.tgz#952e2e355fe633f7b296aff74ba4e79327d9c929"
+  integrity sha512-XgL6o2qyRF1o4CFmGNmrJpg4SARTQ+VUESyj8lnVMQ7K71ZlAaWVo4D8ZpNhe6WjkvxoxKQ68suDccx4fA3CVA==
   dependencies:
-    "@reach/auto-id" "0.11.2"
-    "@reach/descendants" "0.11.2"
-    "@reach/utils" "0.11.2"
+    "@reach/auto-id" "0.12.1"
+    "@reach/descendants" "0.12.1"
+    "@reach/utils" "0.12.1"
     tslib "^2.0.0"
 
 "@reach/auto-id@0.11.2", "@reach/auto-id@^0.11.2":
