@@ -26,9 +26,7 @@ export const Portal: React.FC = ({ children }) => {
     // It's possible that the content of the portal has, itself, been portaled.
     // In that case, it's important to append to the correct document element.
     const ownerDocument = mountNode.current.ownerDocument
-    portalNode.current = ownerDocument
-      ? ownerDocument.createElement('ticketswap-portal')
-      : null
+    portalNode.current = ownerDocument?.createElement('ticketswap-portal')
 
     if (!portalNode.current) return
 
