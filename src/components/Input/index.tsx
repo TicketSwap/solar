@@ -98,12 +98,14 @@ export const fieldStyles = (props: InputProps) => css`
   &.focus {
     outline: none;
     box-shadow: ${shadow.strong};
+    background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
 
     [data-theme='dark'] & {
       border: 1px solid ${color.spaceLightest};
+      background-color: ${props.invalid
+        ? color.marsLightestAlpha
+        : color.stardust};
     }
-
-    background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
   }
 
   &::placeholder {
