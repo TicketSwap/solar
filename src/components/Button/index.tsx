@@ -105,6 +105,10 @@ const StyledButton = styled.button<ButtonProps>`
       color: ${props.active ? color.nova : color.earth};
       text-shadow: ${props.active ? shadow.text : 'none'};
       background-image: unset;
+
+      [data-theme='dark'] & {
+        color: ${color.earth};
+      }
     `};
 
   ${props =>
@@ -243,6 +247,10 @@ const StyledButton = styled.button<ButtonProps>`
         color: ${color.nova};
         text-shadow: ${shadow.text};
         background-color: ${color.earthLight};
+
+        [data-theme='dark'] & {
+          color: ${color.space};
+        }
       `};
 
     ${props =>
@@ -253,7 +261,7 @@ const StyledButton = styled.button<ButtonProps>`
         text-shadow: ${props.active ? shadow.text : 'none'};
 
         [data-theme='dark'] & {
-          color: ${color.space};
+          color: ${color.earth};
         }
       `};
 
