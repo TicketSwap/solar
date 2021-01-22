@@ -137,9 +137,15 @@ const StyledButton = styled.button<ButtonProps>`
   ${props =>
     props.variant === ButtonVariant.inverted &&
     css`
+      background-image: unset;
       text-shadow: none;
       background-color: ${color.nova};
       color: ${color.earth};
+
+      [data-theme='dark'] & {
+        background-color: unset;
+        color: ${color.earth};
+      }
 
       svg {
         filter: none;
