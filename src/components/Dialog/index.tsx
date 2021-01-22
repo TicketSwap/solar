@@ -75,6 +75,10 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
 
+  [data-theme='dark'] & {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   @media ${device.mobileL} {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
