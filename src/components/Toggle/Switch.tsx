@@ -100,6 +100,14 @@ const Adornment = styled.span<AdornmentProps>`
   top: 0;
   bottom: 0;
   align-items: center;
+
+  [data-theme='dark'] & {
+    > div {
+      > span {
+        color: ${props => (props.isOn ? color.titan : color.spaceLight)};
+      }
+    }
+  }
 `
 
 const StyledSpinner = styled(Spinner)`
