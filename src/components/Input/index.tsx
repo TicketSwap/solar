@@ -74,6 +74,10 @@ export const fieldStyles = (props: InputProps) => css`
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
 
+  [data-theme='dark'] & {
+    border: 1px solid ${color.stardust};
+  }
+
   ${props.as === 'textarea' &&
   css`
     resize: vertical;
