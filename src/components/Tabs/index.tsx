@@ -77,6 +77,10 @@ export const Tab = styled<React.FC<TabProps>>(ReachTab)`
   &[data-selected] {
     color: ${color.nova};
     background-color: ${color.earth};
+
+    [data-theme='dark'] & {
+      color: ${color.space};
+    }
   }
 
   &:hover {
