@@ -131,6 +131,8 @@ const StyledButton = styled.button<ButtonProps>`
 
       [data-theme='dark'] & {
         color: ${color.mars};
+        background-image: unset;
+        background-color: ${color.marsLightest};
       }
     `};
 
@@ -283,6 +285,11 @@ const StyledButton = styled.button<ButtonProps>`
         background-color: #fee9e9;
         color: ${color.mars};
         text-shadow: none;
+
+        [data-theme='dark'] & {
+          background-color: ${color.marsLightest};
+          color: ${color.marsLight};
+        }
       `};
 
     ${props =>
