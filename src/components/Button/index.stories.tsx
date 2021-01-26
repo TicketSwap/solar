@@ -1,210 +1,104 @@
-import React from 'react'
-import { Button, ButtonVariant } from '.'
-import {
-  Checkmark,
-  Facebook,
-  MagnifyingGlass,
-  Plus,
-  Apple,
-} from '@ticketswap/comets'
+import React, { Fragment } from 'react'
+import { Button, ButtonSize, ButtonVariant } from '.'
+import { Alert } from '@ticketswap/comets'
+import styled from '@emotion/styled'
+import { space } from '../../theme'
 
-const Primary = () => <Button>Default Button</Button>
-const FullWidth = () => <Button width="full">Default Button</Button>
+const VARIANTS = [
+  ButtonVariant.primary,
+  ButtonVariant.secondary,
+  ButtonVariant.caution,
+  ButtonVariant.success,
+  ButtonVariant.warning,
+  ButtonVariant.danger,
+  ButtonVariant.facebook,
+  ButtonVariant.inverted,
+  ButtonVariant.apple,
+]
 
-FullWidth.storyName = 'Full-width'
+const PresentationalWrapper = styled.div`
+  :not(:last-of-type) {
+    margin-bottom: ${space[16]};
+  }
 
-const Small = () => <Button size="small">Small Button</Button>
+  *:not(:last-of-type) {
+    margin-right: ${space[16]};
+  }
 
-const WithIcon = () => (
-  <Button leftAdornment={<Checkmark size={24} />}>Save changes</Button>
+  a {
+    margin-left: ${space[16]};
+  }
+`
+
+const WithVariants = () => (
+  <>
+    {VARIANTS.map(variant => (
+      <Fragment key={variant}>
+        <p>{`${variant.charAt(0).toUpperCase()}${variant.slice(1)}`}</p>
+        <PresentationalWrapper>
+          <Button size={ButtonSize.small} variant={variant}>
+            Small link
+          </Button>
+          <Button size={ButtonSize.medium} variant={variant}>
+            Medium link
+          </Button>
+          <Button size={ButtonSize.large} variant={variant}>
+            Large link
+          </Button>
+        </PresentationalWrapper>
+      </Fragment>
+    ))}
+  </>
 )
 
-WithIcon.storyName = 'With icon'
-
-const WithIconLoading = () => (
-  <Button loading leftAdornment={<Checkmark size={24} />}>
-    Save changes
-  </Button>
+const WithStates = () => (
+  <>
+    {VARIANTS.map(variant => (
+      <Fragment key={variant}>
+        <p>{`${variant.charAt(0).toUpperCase()}${variant.slice(1)}`}</p>
+        <PresentationalWrapper>
+          <Button variant={variant}>Default</Button>
+          <Button variant={variant} disabled>
+            Disabled
+          </Button>
+          <Button variant={variant} loading>
+            Loading
+          </Button>
+          <Button variant={variant} active>
+            Active
+          </Button>
+          <Button as="a" href="/" variant={variant}>
+            As anchor
+          </Button>
+        </PresentationalWrapper>
+      </Fragment>
+    ))}
+  </>
 )
 
-WithIconLoading.storyName = 'With icon loading'
-
-const FullWidthWithIcon = () => (
-  <Button
-    width="full"
-    variant={ButtonVariant.facebook}
-    leftAdornment={<Facebook size={24} />}
-  >
-    Log in with Facebook
-  </Button>
+const WithAdornment = () => (
+  <>
+    <PresentationalWrapper>
+      <Button size={ButtonSize.small} leftAdornment={<Alert size={16} />}>
+        Small link
+      </Button>
+      <Button size={ButtonSize.medium} leftAdornment={<Alert size={16} />}>
+        Medium link
+      </Button>
+      <Button size={ButtonSize.large} leftAdornment={<Alert size={24} />}>
+        Large link
+      </Button>
+    </PresentationalWrapper>
+    <PresentationalWrapper>
+      <Button size={ButtonSize.small} leftAdornment={<Alert size={16} />} />
+      <Button size={ButtonSize.medium} leftAdornment={<Alert size={16} />} />
+      <Button size={ButtonSize.large} leftAdornment={<Alert size={24} />} />
+    </PresentationalWrapper>
+  </>
 )
-
-FullWidthWithIcon.storyName = 'Full-width with icon'
-
-const AsHyperlink = () => (
-  <Button as="a" href="https://www.ticketswap.com">
-    Inspect me
-  </Button>
-)
-
-AsHyperlink.storyName = 'As hyperlink'
-
-const Secondary = () => (
-  <Button variant={ButtonVariant.secondary}>Secondary</Button>
-)
-const SecondaryWithIcon = () => (
-  <Button
-    variant={ButtonVariant.secondary}
-    leftAdornment={<Facebook size={24} />}
-  >
-    Secondary
-  </Button>
-)
-
-SecondaryWithIcon.storyName = 'Secondary with icon'
-
-const ApplePay = () => (
-  <Button variant={ButtonVariant.apple} leftAdornment={<Apple size={24} />}>
-    Continue with Apple
-  </Button>
-)
-
-const Caution = () => (
-  <Button variant={ButtonVariant.caution}>Turn off alerts</Button>
-)
-const Inverted = () => (
-  <Button variant={ButtonVariant.inverted}>Inverted</Button>
-)
-
-const InvertedDisabled = () => (
-  <Button variant={ButtonVariant.inverted} disabled>
-    Inverted
-  </Button>
-)
-
-InvertedDisabled.storyName = 'Inverted disabled'
-
-const InvertedWithIcon = () => (
-  <Button variant={ButtonVariant.inverted} leftAdornment={<Plus size={24} />}>
-    Inverted
-  </Button>
-)
-
-InvertedWithIcon.storyName = 'Inverted with icon'
-
-const Success = () => <Button variant={ButtonVariant.success}>Success</Button>
-const Warning = () => <Button variant={ButtonVariant.warning}>Warning</Button>
-const Danger = () => <Button variant={ButtonVariant.danger}>Danger</Button>
-const Loading = () => <Button loading>Loading</Button>
-const Disabled = () => <Button disabled>Button</Button>
-
-const DisabledSuccess = () => (
-  <Button variant={ButtonVariant.success} disabled>
-    Button
-  </Button>
-)
-
-DisabledSuccess.storyName = 'Disabled success'
-
-const DisabledWarning = () => (
-  <Button variant={ButtonVariant.warning} disabled>
-    Button
-  </Button>
-)
-
-DisabledWarning.storyName = 'Disabled warning'
-
-const DisabledDanger = () => (
-  <Button variant={ButtonVariant.danger} disabled>
-    Button
-  </Button>
-)
-
-DisabledDanger.storyName = 'Disabled danger'
-
-const DisabledSecondary = () => (
-  <Button variant={ButtonVariant.secondary} disabled>
-    Button
-  </Button>
-)
-
-DisabledSecondary.storyName = 'Disabled secondary'
-
-const DisabledCaution = () => (
-  <Button variant={ButtonVariant.caution} disabled>
-    Button
-  </Button>
-)
-
-DisabledCaution.storyName = 'Disabled caution'
-
-const DisabledFacebook = () => (
-  <Button variant={ButtonVariant.facebook} disabled>
-    Button
-  </Button>
-)
-
-DisabledFacebook.storyName = 'Disabled facebook'
-
-const FacebookButton = () => (
-  <Button variant={ButtonVariant.facebook}>Facebook</Button>
-)
-
-FacebookButton.storyName = 'Facebook'
-
-const Rounded = () => <Button rounded>Rounded</Button>
-
-const RoundedSquareWithIconAsChild = () => (
-  <Button rounded square>
-    <MagnifyingGlass size={24} />
-  </Button>
-)
-
-RoundedSquareWithIconAsChild.storyName = 'Rounded square with icon as child'
-
-const RoundedSmallSquareWithIconAsChild = () => (
-  <Button size="small" rounded square>
-    <MagnifyingGlass size={24} />
-  </Button>
-)
-
-RoundedSmallSquareWithIconAsChild.storyName =
-  'Rounded small square with icon as child'
-
-const Regular = () => <button>Button</button>
-
-export {
-  ApplePay,
-  Regular,
-  Primary,
-  FullWidth,
-  Small,
-  WithIconLoading,
-  FullWidthWithIcon,
-  AsHyperlink,
-  Secondary,
-  SecondaryWithIcon,
-  Caution,
-  Inverted,
-  InvertedDisabled,
-  InvertedWithIcon,
-  Success,
-  Warning,
-  Danger,
-  Loading,
-  Disabled,
-  DisabledSuccess,
-  DisabledWarning,
-  DisabledDanger,
-  DisabledSecondary,
-  DisabledCaution,
-  DisabledFacebook,
-  FacebookButton,
-  Rounded,
-  RoundedSquareWithIconAsChild,
-  RoundedSmallSquareWithIconAsChild,
-}
 
 export default {
   title: 'Button',
 }
+
+export { WithVariants, WithStates, WithAdornment }
