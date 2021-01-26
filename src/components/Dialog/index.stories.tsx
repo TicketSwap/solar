@@ -74,13 +74,13 @@ const MyDialog = ({ children, ...props }: MyDialogProps) => (
           </DialogHeader>
           <DialogBody>{children}</DialogBody>
           <DialogFooter>
-            <Button onClick={() => console.log('clicked')} width="full">
+            <Button onClick={() => console.log('clicked')} fullWidth>
               Save changes
             </Button>
             <Button
               onClick={hide}
               variant={ButtonVariant.caution}
-              width="full"
+              fullWidth
               style={{ marginTop: 8 }}
             >
               Cancel

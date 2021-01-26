@@ -63,7 +63,7 @@ const LoginEmail = ({}: { title: string; back: string }) => (
     <div style={{ marginBottom: '0.5rem' }}>
       <Input type="email" id="email" label="Email address" hideLabel />
     </div>
-    <Button variant={ButtonVariant.success} width="full">
+    <Button variant={ButtonVariant.success} fullWidth>
       Log in
     </Button>
   </DialogBody>
@@ -108,7 +108,7 @@ const SignupEmail = ({}: { title: string; back: string }) => (
       </div>
     </DialogBody>
     <DialogFooter>
-      <Button variant={ButtonVariant.success} width="full">
+      <Button variant={ButtonVariant.success} fullWidth>
         Sign up
       </Button>
     </DialogFooter>
