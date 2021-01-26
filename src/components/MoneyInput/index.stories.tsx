@@ -1,6 +1,6 @@
 import React from 'react'
 import { MoneyInput, MoneyInputCurrencyProp, parseAmount } from '.'
-import { Button, ButtonVariant } from '../Button'
+import { Button, ButtonSize, ButtonVariant } from '../Button'
 
 const currencies = [
   {
@@ -88,21 +88,27 @@ function ControlledMoneyInput() {
           marginBottom: '0.25rem',
         }}
       >
-        <Button size="small" onClick={() => setCurrency(currencies[0])}>
+        <Button
+          size={ButtonSize.medium}
+          onClick={() => setCurrency(currencies[0])}
+        >
           Set Euro
         </Button>
-        <Button size="small" onClick={() => setCurrency(currencies[2])}>
+        <Button
+          size={ButtonSize.medium}
+          onClick={() => setCurrency(currencies[2])}
+        >
           Set Pounds
         </Button>
         <Button
-          size="small"
+          size={ButtonSize.medium}
           variant={ButtonVariant.success}
           onClick={() => setAmount(20)}
         >
           Set 20
         </Button>
         <Button
-          size="small"
+          size={ButtonSize.medium}
           variant={ButtonVariant.success}
           onClick={() => setAmount('40.50')}
         >

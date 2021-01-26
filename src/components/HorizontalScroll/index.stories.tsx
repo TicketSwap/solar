@@ -8,17 +8,17 @@ export default {
 
 export const Basic = () => (
   <HorizontalScroll>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
-    <Button rounded>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
+    <Button>Button</Button>
   </HorizontalScroll>
 )

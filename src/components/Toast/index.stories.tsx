@@ -1,6 +1,6 @@
 import React from 'react'
 import { Toast, ToastConsumer, ToastProvider, useToast } from './'
-import { Button, ButtonVariant } from '../Button'
+import { Button, ButtonSize, ButtonVariant } from '../Button'
 
 const Wrapper = (story: () => React.ReactNode) => (
   <ToastProvider>{story()}</ToastProvider>
@@ -61,7 +61,7 @@ export const Persistent = () => (
                 <span>Payment failed</span>
                 <Button
                   onClick={remove}
-                  size="small"
+                  size={ButtonSize.medium}
                   variant={ButtonVariant.secondary}
                 >
                   Discard
