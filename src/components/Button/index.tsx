@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
-import { Spinner } from '../Spinner'
 import {
   color,
-  space,
-  radius,
-  shadow,
+  device,
   fontSize,
   fontWeight,
   lineHeight,
-  easing,
+  radius,
+  shadow,
+  space,
 } from '../../theme'
+import { css } from '@emotion/react'
+import { Spinner } from '../Spinner'
 
 export enum ButtonVariant {
   primary = 'primary',
@@ -25,173 +25,43 @@ export enum ButtonVariant {
   apple = 'apple',
 }
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  icon?: string
-  loading?: boolean
-  leftAdornment?: ReactNode
-  variant?: ButtonVariant
-  rounded?: boolean
-  square?: boolean
-  // @TODO: Refactor this to boolean
-  width?: 'full'
-  // @TODO: Refactor this to isSmall or smth like that
-  size?: 'small'
-  active?: boolean
-  disabled?: boolean
-  as?: 'a'
-  href?: string
-  type?: 'submit' | 'button'
+export enum ButtonSize {
+  large = 'large',
+  medium = 'medium',
+  small = 'small',
 }
 
-const StyledButton = styled.button<ButtonProps>`
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: ButtonVariant
+  leftAdornment?: ReactNode
+  size?: ButtonSize
+  fullWidth?: boolean
+  loading?: boolean
+  active?: boolean
+  as?: 'a'
+  href?: string
+}
+
+interface StyledButtonProps extends ButtonProps {
+  isSquare: boolean
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
-  font-family: inherit;
-  font-weight: ${fontWeight.semiBold};
-  text-align: center;
-  border: none;
-  padding: 0
-    ${props =>
-      props.square
-        ? 0
-        : props.icon && props.width === 'full'
-        ? space[48]
-        : space[24]};
   display: inline-flex;
   vertical-align: middle;
   justify-content: center;
-  align-items: center;
-  text-decoration: none;
+  font-family: inherit;
+  font-weight: ${fontWeight.semiBold};
   background-image: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.24),
     rgba(255, 255, 255, 0)
   );
-  line-height: ${lineHeight.solid};
-  border-radius: ${props => (props.rounded ? space[32] : radius.md)};
-  font-size: ${props => (props.size === 'small' ? fontSize[16] : fontSize[18])};
-  width: ${props =>
-    props.width === 'full'
-      ? '100%'
-      : props.square
-      ? props.size === 'small'
-        ? space[44]
-        : space[56]
-      : 'auto'};
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
-  height: ${props => (props.size === 'small' ? space[44] : space[56])};
-  transition: color 100ms ${easing.easeInOutCubic},
-    background-color 100ms ${easing.easeInOutCubic},
-    text-shadow 100ms ${easing.easeInOutCubic};
-  background-color: ${color.earth};
-  color: ${color.nova};
   text-shadow: ${shadow.text};
-
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
-
-  ${props =>
-    props.variant !== ButtonVariant.secondary &&
-    css`
-      svg:not([aria-label='Spinner']) {
-        filter: drop-shadow(${shadow.text});
-      }
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.secondary &&
-    css`
-      background-color: ${props.active ? color.earth : color.sky};
-      color: ${props.active ? color.nova : color.earth};
-      text-shadow: ${props.active ? shadow.text : 'none'};
-      background-image: unset;
-
-      [data-theme='dark'] & {
-        color: ${color.earth};
-      }
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.apple &&
-    css`
-      background-color: ${color.space};
-      color: ${color.nova};
-
-      [data-theme='dark'] & {
-        color: ${color.nova};
-      }
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.caution &&
-    css`
-      background-color: #fff4f4;
-      color: ${color.mars};
-      text-shadow: none;
-
-      [data-theme='dark'] & {
-        color: ${color.mars};
-        background-image: unset;
-        background-color: ${color.marsLightest};
-      }
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.inverted &&
-    css`
-      background-image: unset;
-      text-shadow: none;
-      background-color: ${color.nova};
-      color: ${color.earth};
-
-      [data-theme='dark'] & {
-        background-color: unset;
-        color: ${color.earth};
-      }
-
-      svg {
-        filter: none;
-      }
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.success &&
-    css`
-      color: ${color.nova};
-      background-color: ${color.titan};
-      text-shadow: ${shadow.text};
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.warning &&
-    css`
-      color: ${color.nova};
-      background-color: ${color.sun};
-      text-shadow: ${shadow.text};
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.danger &&
-    css`
-      color: ${color.nova};
-      background-color: ${color.mars};
-      text-shadow: ${shadow.text};
-    `};
-
-  ${props =>
-    props.variant === ButtonVariant.facebook &&
-    css`
-      color: ${color.nova};
-      background-color: ${color.facebook};
-      text-shadow: ${shadow.text};
-    `};
-
-  ${props =>
-    props.disabled &&
-    css`
-      opacity: 0.5;
-      pointer-events: none;
-    `};
+  line-height: ${lineHeight.solid};
+  align-items: center;
 
   &:focus {
     outline: 0;
@@ -206,206 +76,311 @@ const StyledButton = styled.button<ButtonProps>`
     right: -1px;
     bottom: -1px;
     background-color: transparent;
-    border-radius: ${props =>
-      props.rounded ? space[32] : `calc(${radius.md} + 1px)`};
+    border-radius: calc(${radius.md} + 1px);
     box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
     pointer-events: none;
-
-    ${props =>
-      props.variant === ButtonVariant.success &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.titanFocusAlpha};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.apple &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.caution &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.warning &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.sunFocusAlpha};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.danger &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.facebook &&
-      css`
-        box-shadow: 0 0 0 ${space[4]} ${color.facebookFocusAlpha};
-      `};
-  }
-
-  &:hover {
-    ${props =>
-      props.variant === ButtonVariant.primary &&
-      css`
-        color: ${color.nova};
-        text-shadow: ${shadow.text};
-        background-color: ${color.earthLight};
-
-        [data-theme='dark'] & {
-          color: ${color.space};
-        }
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.secondary &&
-      css`
-        background-color: ${props.active ? color.earthLight : color.skyLight};
-        color: ${props.active ? color.nova : color.earth};
-        text-shadow: ${props.active ? shadow.text : 'none'};
-
-        [data-theme='dark'] & {
-          color: ${color.earth};
-        }
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.apple &&
-      css`
-        background-color: ${color.spaceDark};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.caution &&
-      css`
-        background-color: #fee9e9;
-        color: ${color.mars};
-        text-shadow: none;
-
-        [data-theme='dark'] & {
-          background-color: ${color.marsLightest};
-          color: ${color.marsLight};
-        }
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.inverted &&
-      css`
-        text-shadow: none;
-        background-color: ${color.nova};
-        color: ${color.earthLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.success &&
-      css`
-        background-color: ${color.titanLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.warning &&
-      css`
-        background-color: ${color.sunLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.danger &&
-      css`
-        background-color: ${color.marsLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.facebook &&
-      css`
-        background-color: ${color.facebookLight};
-      `};
   }
 
   &:active {
     outline: 0;
     background-image: none;
     background-color: ${color.earthLight};
+  }
 
-    ${props =>
-      props.variant === ButtonVariant.secondary &&
+  &:hover {
+    ${({ variant }) =>
+      variant === ButtonVariant.primary &&
       css`
-        background-color: ${props.active
-          ? color.earthLight
-          : color.earthLightestAlpha};
-        color: ${props.active ? color.nova : color.earth};
-        text-shadow: ${props.active ? shadow.text : 'none'};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.apple &&
-      css`
-        background-color: ${color.spaceDark};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.caution &&
-      css`
-        background-color: ${color.marsLightest};
-        color: ${color.mars};
-        text-shadow: none;
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.success &&
-      css`
-        background-color: ${color.titanLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.warning &&
-      css`
-        background-color: ${color.sunLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.danger &&
-      css`
-        background-color: ${color.marsLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.facebook &&
-      css`
-        background-color: ${color.facebookLight};
-      `};
-
-    ${props =>
-      props.variant === ButtonVariant.inverted &&
-      css`
-        color: ${color.earth};
-        background-color: ${color.nova};
+        color: ${color.nova};
+        text-shadow: ${shadow.text};
+        background-color: ${color.earthLight};
       `};
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+    `};
+
+  ${({ size, isSquare, fullWidth }) =>
+    size === ButtonSize.small &&
+    css`
+      height: ${space[24]};
+      width: ${fullWidth ? '100%' : isSquare ? space[24] : 'auto'};
+      font-size: ${fontSize[16]};
+      padding: ${isSquare ? space[4] : `${space[4]} ${space[12]}`};
+      border-radius: ${space[32]};
+
+      &:focus::after {
+        border-radius: calc(${space[32]} + 1px);
+      }
+
+      @media ${device.tablet} {
+        height: ${space[32]};
+        width: ${isSquare ? space[32] : 'auto'};
+        padding: ${isSquare ? space[8] : `${space[8]} ${space[16]}`};
+      }
+    `}
+
+  ${({ size, isSquare, fullWidth }) =>
+    size === ButtonSize.medium &&
+    css`
+      height: ${space[44]};
+      width: ${fullWidth ? '100%' : isSquare ? space[44] : 'auto'};
+      font-size: ${fontSize[16]};
+      padding: ${isSquare ? space[12] : `${space[12]} ${space[24]}`};
+      border-radius: ${radius.md};
+    `}
+    
+    ${({ size, isSquare, fullWidth }) =>
+    size === ButtonSize.large &&
+    css`
+      height: ${space[56]};
+      width: ${fullWidth ? '100%' : isSquare ? space[56] : 'auto'};
+      font-size: ${fontSize[18]};
+      padding: ${isSquare ? space[16] : `${space[16]} ${space[32]}`};
+      border-radius: ${radius.md};
+    `}
+
+  background-color: ${color.earth};
+  color: ${color.nova};
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
+
+  ${({ variant, active }) =>
+    variant === ButtonVariant.secondary &&
+    css`
+      background-color: ${active ? color.earth : color.skyLightAlpha};
+      color: ${active ? color.nova : color.earth};
+      text-shadow: ${active ? shadow.text : 'none'};
+      background-image: unset;
+
+      [data-theme='dark'] & {
+        color: ${active ? color.space : color.earth};
+      }
+
+      &:hover {
+        background-color: ${active ? color.earthLight : color.skyAlpha};
+        color: ${active ? color.nova : color.earth};
+        text-shadow: ${active ? shadow.text : 'none'};
+
+        [data-theme='dark'] & {
+          color: ${color.space};
+        }
+      }
+
+      &:active {
+        background-color: ${active
+          ? color.earthLight
+          : color.earthLightestAlpha};
+        color: ${active ? color.nova : color.earth};
+        text-shadow: ${active ? shadow.text : 'none'};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.caution &&
+    css`
+      background-color: #fff4f4;
+      color: ${color.mars};
+      text-shadow: none;
+
+      [data-theme='dark'] & {
+        color: ${color.mars};
+      }
+
+      &:hover {
+        background-color: #fee9e9;
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
+      }
+
+      &:active {
+        background-color: ${color.marsLightest};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.success &&
+    css`
+      background-color: ${color.titan};
+
+      &:hover {
+        background-color: ${color.titanLight};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.titanFocusAlpha};
+      }
+
+      &:active {
+        background-color: ${color.titanLight};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.warning &&
+    css`
+      background-color: ${color.sun};
+
+      &:hover {
+        background-color: ${color.sunLight};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.sunFocusAlpha};
+      }
+
+      &:active {
+        background-color: ${color.sunLight};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.danger &&
+    css`
+      background-color: ${color.mars};
+
+      &:hover {
+        background-color: ${color.marsLight};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
+      }
+
+      &:active {
+        background-color: ${color.marsLight};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.facebook &&
+    css`
+      background-color: ${color.facebook};
+
+      &:hover {
+        background-color: ${color.facebookLight};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.facebookFocusAlpha};
+      }
+
+      &:active {
+        background-color: ${color.facebookLight};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.inverted &&
+    css`
+      text-shadow: none;
+      background-color: ${color.nova};
+      color: ${color.earth};
+
+      svg {
+        filter: none;
+      }
+
+      &:hover {
+        color: ${color.earthLight};
+        background-color: ${color.nova};
+      }
+
+      &:active {
+        color: ${color.earth};
+        background-color: ${color.nova};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.apple &&
+    css`
+      background-color: ${color.space};
+
+      [data-theme='dark'] & {
+        color: ${color.nova};
+      }
+
+      &:hover {
+        background-color: ${color.spaceDark};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
+      }
+
+      &:active {
+        background-color: ${color.spaceDark};
+      }
+    `};
 `
 
-const Adornment = styled.span`
-  margin-left: -${space[4]};
-  margin-right: ${space[12]};
+interface LeftAdornmentProps {
+  size: ButtonSize
+  isSquare: boolean
+}
+
+const LeftAdornment = styled.span<LeftAdornmentProps>`
+  margin-right: ${({ size }) =>
+    size === ButtonSize.small ? space[4] : space[8]};
+  line-height: 0;
+
+  ${({ isSquare }) =>
+    isSquare &&
+    css`
+      margin-right: 0;
+    `}
 `
 
-const Button: React.FC<ButtonProps> = React.forwardRef(
+export const Button: React.FC<ButtonProps> = React.forwardRef(
   (
-    { children, onClick, loading, ...props },
+    {
+      children,
+      leftAdornment,
+      size = ButtonSize.large,
+      variant = ButtonVariant.primary,
+      loading = false,
+      active = false,
+      fullWidth = false,
+      onClick,
+      ...props
+    },
     ref: React.Ref<HTMLButtonElement>
-  ) => (
-    <StyledButton ref={ref} onClick={loading ? () => null : onClick} {...props}>
-      {loading || props.leftAdornment ? (
-        <Adornment>
-          {loading ? <Spinner size={24} /> : props.leftAdornment}
-        </Adornment>
-      ) : null}
-      {children}
-    </StyledButton>
-  )
-)
+  ) => {
+    const isSquare = !Boolean(children)
+    const hasAdornment = leftAdornment || loading
+    const loadingIconSize = {
+      small: 16,
+      medium: 16,
+      large: 24,
+    }[size]
 
-export { Button }
+    return (
+      <StyledButton
+        ref={ref}
+        size={size}
+        isSquare={isSquare}
+        variant={variant}
+        active={active}
+        fullWidth={fullWidth}
+        onClick={loading ? () => {} : onClick}
+        {...props}
+      >
+        {hasAdornment && (
+          <LeftAdornment size={size} isSquare={isSquare}>
+            {leftAdornment || <Spinner size={loadingIconSize} />}
+          </LeftAdornment>
+        )}
+        {children}
+      </StyledButton>
+    )
+  }
+)
