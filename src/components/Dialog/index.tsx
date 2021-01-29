@@ -10,6 +10,7 @@ import {
   radius,
   color,
   easing,
+  gradients,
 } from '../../theme'
 import { useLockBodyScroll, usePrevious, useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
@@ -194,8 +195,8 @@ const BodyWrapper = styled.div`
     top: 0;
     background-image: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 0)
+      ${gradients.nova},
+      ${gradients.novaAlpha}
     );
   }
 
@@ -203,8 +204,8 @@ const BodyWrapper = styled.div`
     bottom: 0;
     background-image: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1)
+      ${gradients.novaAlpha},
+      ${gradients.nova}
     );
   }
 `
