@@ -172,6 +172,11 @@ export const sizes = {
   desktop: 2560,
 }
 
+export const gradients = {
+  nova: 'var(--gradientNova)',
+  novaAlpha: 'var(--gradientNovaAlpha)',
+}
+
 export const device = {
   mobile: `(min-width: ${sizes.mobile / 16}em)`,
   mobileM: `(min-width: ${sizes.mobileM / 16}em)`,

@@ -79,6 +79,9 @@ export const globalStyles = css`
 
     --shadowLighterAlpha: rgba(0, 19, 25, 0.2);
     --shadowLightestAlpha: rgba(0, 19, 25, 0.1);
+
+    --gradientNova: rgba(255, 255, 255, 1);
+    --gradientNovaAlpha: rgba(255, 255, 255, 0);
   }
 
   [data-theme='dark'] {
@@ -156,6 +159,9 @@ export const globalStyles = css`
 
     --shadowLighterAlpha: rgba(0, 19, 25, 0.2);
     --shadowLightestAlpha: rgba(0, 19, 25, 0.1);
+
+    --gradientNova: rgba(26, 33, 41, 1);
+    --gradientNovaAlpha: rgba(26, 33, 41, 0);
   }
 
   ::selection {
