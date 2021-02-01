@@ -37,7 +37,9 @@ export const globalStyles = css`
     --earthFocusAlpha: rgba(0, 182, 240, 0.24);
 
     --sky: rgb(224, 246, 253);
+    --skyAlpha: rgba(0, 182, 240, 0.12);
     --skyLight: rgb(240, 251, 254);
+    --skyLightAlpha: rgba(0, 182, 240, 0.06);
 
     --titan: rgb(0, 206, 92);
     --titanLight: rgb(51, 216, 125);

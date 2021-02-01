@@ -34,7 +34,9 @@ export const color = {
   earthFocusAlpha: 'var(--earthFocusAlpha)',
 
   sky: 'var(--sky)',
+  skyAlpha: 'var(--skyAlpha)',
   skyLight: 'var(--skyLight)',
+  skyLightAlpha: 'var(--skyLightAlpha)',
 
   titan: 'var(--titan)',
   titanLight: 'var(--titanLight)',
