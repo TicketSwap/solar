@@ -278,13 +278,12 @@ const Description = styled.div<StyledCardProps>`
   white-space: nowrap;
   overflow: hidden;
   width: 100%;
-  font-size: ${p => (p.size === CardSize.large ? fontSize[14] : fontSize[12])};
+  font-size: ${fontSize[14]};
   margin-top: 0.75rem;
 
   @media ${device.mobileL} {
     margin-top: 1rem;
-    font-size: ${p =>
-      p.size === CardSize.large ? fontSize[16] : fontSize[14]};
+    font-size: ${fontSize[16]};
   }
 `
 
