@@ -1857,14 +1857,14 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
   integrity sha512-cPqjjzuFWNK3BSKLm0abspP0sp/IGOli4p5I5fKFAzdS8fvjdOwDCfZqAaIiXd9lPkOWi3SUUfZof3hEb7J/uw==
 
-"@reach/accordion@^0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.12.1.tgz#952e2e355fe633f7b296aff74ba4e79327d9c929"
-  integrity sha512-XgL6o2qyRF1o4CFmGNmrJpg4SARTQ+VUESyj8lnVMQ7K71ZlAaWVo4D8ZpNhe6WjkvxoxKQ68suDccx4fA3CVA==
+"@reach/accordion@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.13.0.tgz#18de086a98ccd4c0b7b92506fe0f905042195508"
+  integrity sha512-ETDBnNoE+8cDa7V6AFy30bscTuUpNrJpqBQJiqavBh0FyDPZYi5DhnIwTTGlS3UQvprmD/HSmKb3nm6UJ9IAyw==
   dependencies:
-    "@reach/auto-id" "0.12.1"
-    "@reach/descendants" "0.12.1"
-    "@reach/utils" "0.12.1"
+    "@reach/auto-id" "0.13.0"
+    "@reach/descendants" "0.13.0"
+    "@reach/utils" "0.13.0"
     tslib "^2.0.0"
 
 "@reach/auto-id@0.12.1", "@reach/auto-id@^0.12.1":
@@ -1875,12 +1875,28 @@
     "@reach/utils" "0.12.1"
     tslib "^2.0.0"
 
+"@reach/auto-id@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.13.0.tgz#0dfa4c1af46d1ad68d8282c786c03362ae35e335"
+  integrity sha512-yU0Mp+xvbq8hmNz8UfvbJEmy6cHnPJ8SwlXg6WuPsJA9sOJdlCyMfkbwqyz1KFVs2ISCR+wVVLT3j/TuuvS60w==
+  dependencies:
+    "@reach/utils" "0.13.0"
+    tslib "^2.0.0"
+
 "@reach/descendants@0.12.1":
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.12.1.tgz#dd124e15ee66327692043fea798cc4b6232c1522"
   integrity sha512-lvpyQ2EixbN7GvT8LyjZfHWQZz/cKwa/p7E26YQOT8nvxm4ABKRGxaSTwUA7D+MLOX6NtHo2qyZ9wippaXB5sQ==
   dependencies:
     "@reach/utils" "0.12.1"
+    tslib "^2.0.0"
+
+"@reach/descendants@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.13.0.tgz#e4034aecfe529a6ef27be464932846636861fe5b"
+  integrity sha512-PYblNDc+oNu9weJqtB91DWS0g6xLeD4dpcxD/mJTI4Zzi4t6qRyepYmkKKs8fmUhm4jJNXSRH8TAFsA7T55OUA==
+  dependencies:
+    "@reach/utils" "0.13.0"
     tslib "^2.0.0"
 
 "@reach/dialog@^0.12.1":
@@ -1979,6 +1995,15 @@
   version "0.12.1"
   resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.12.1.tgz#02b9c15ba5cddf23e16f2d2ca77aef98a9702607"
   integrity sha512-5uH4OgO+GupAzZuf3b6Wv/9uC6NdMBlxS6FSKD6YqSxP4QJ0vjD34RVon6N/RMRORacCLyD/aaZIA7283YgeOg==
+  dependencies:
+    "@types/warning" "^3.0.0"
+    tslib "^2.0.0"
+    warning "^4.0.3"
+
+"@reach/utils@0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.13.0.tgz#2da775a910d8894bb34e1e94fe95842674f71844"
+  integrity sha512-dypxuyA1Qy3LHxzzyS7jFGPgCCR04b8UEn+Tv/aj6y9V578dULQqkcCyobrdEa+OI8lxH7dFFHa+jH8M/noBrQ==
   dependencies:
     "@types/warning" "^3.0.0"
     tslib "^2.0.0"
