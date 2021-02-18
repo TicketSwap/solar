@@ -298,6 +298,17 @@ const StyledButton = styled.button<StyledButtonProps>`
         color: ${color.earth};
         background-color: ${color.nova};
       }
+
+      [data-theme='dark'] & {
+        color: ${color.earth};
+        background-image: unset;
+
+        &:hover,
+        &:active {
+          color: ${color.earthLight};
+          background-image: unset;
+        }
+      }
     `};
 
   ${({ variant }) =>
