@@ -159,8 +159,8 @@ export const globalStyles = css`
     --whatsapp: rgb(37, 211, 102);
     --whatsappFocusAlpha: rgba(37, 211, 102, 0.24);
 
-    --shadowLighterAlpha: rgba(0, 19, 25, 0.2);
-    --shadowLightestAlpha: rgba(0, 19, 25, 0.1);
+    --shadowLighterAlpha: rgba(0, 19, 25, 0.9);
+    --shadowLightestAlpha: rgba(0, 19, 25, 0.9);
 
     --gradientNova: rgba(26, 33, 41, 1);
     --gradientNovaAlpha: rgba(26, 33, 41, 0);
