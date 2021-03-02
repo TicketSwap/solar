@@ -46,10 +46,6 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
   margin-top: ${space[8]};
   margin-bottom: ${space[8]};
 
-  [data-theme='dark'] & {
-    border: 1px solid ${color.spaceLightest};
-  }
-
   [data-reach-menu-item][data-selected] {
     background-color: ${color.stardust};
   }
