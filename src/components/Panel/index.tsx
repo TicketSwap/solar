@@ -18,10 +18,6 @@ export const Panel = styled.div`
   background-color: ${color.nova};
   box-shadow: ${shadow.strong};
 
-  [data-theme='dark'] & {
-    border: 1px solid ${color.spaceLightest};
-  }
-
   @media ${device.mobileL} {
     ${resetFullBleed};
     border-radius: ${radius.lg};

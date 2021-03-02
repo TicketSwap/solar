@@ -17,10 +17,6 @@ const BodyWrapper = styled.div`
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
   padding: ${space[32]};
-
-  [data-theme='dark'] & {
-    border: 1px solid ${color.spaceLightest};
-  }
 `
 
 const OnboardingDialogBody: React.FC = ({ children, ...props }) => (

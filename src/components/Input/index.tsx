@@ -105,6 +105,7 @@ export const fieldStyles = (props: InputProps) => css`
     background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
 
     [data-theme='dark'] & {
+      box-shadow: none;
       border: 1px solid ${color.spaceLightest};
       background-color: ${props.invalid
         ? color.marsLightestAlpha
