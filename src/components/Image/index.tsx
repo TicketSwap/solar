@@ -30,7 +30,6 @@ interface StyledContainerProps {
 const Container = styled.div<StyledContainerProps>`
   position: relative;
   line-height: 0;
-  z-index: 1;
   overflow: hidden;
   border-radius: ${props => (props.rounded ? radius.lg : 0)};
   animation-duration: ${duration}ms;
@@ -59,7 +58,6 @@ const StyledImage = styled.img<StyledImageProps>`
   transition: opacity ${transition};
   opacity: ${props => (props.show ? 1 : 0)};
   position: absolute;
-  z-index: 2;
   left: 0;
   top: 0;
   object-fit: cover;

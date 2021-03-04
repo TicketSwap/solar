@@ -49,8 +49,6 @@ const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   justify-content: space-between;
   padding-top: ${space[12]};
   padding-bottom: ${space[12]};
-  position: relative;
-  z-index: 1;
 
   &[data-disabled] {
     cursor: not-allowed;

@@ -35,7 +35,6 @@ const centered = (
 }
 
 const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
-  z-index: 10;
   pointer-events: none;
   position: absolute;
   padding: ${space[8]} ${space[12]};
@@ -54,7 +53,6 @@ interface TriangleStyleProps {
 
 const Triangle = styled.div<TriangleStyleProps>`
   position: absolute;
-  z-index: 11;
   width: 0;
   height: 0;
   border-left: ${props => props.size || 10}px solid transparent;
@@ -74,6 +72,12 @@ export const Tooltip = ({
   return (
     <>
       {React.cloneElement(children, trigger)}
+      <Popup
+        {...tooltip}
+        label={label}
+        aria-label={ariaLabel}
+        position={centered}
+      />
       {isVisible && (
         // Position the triangle relative to the trigger, not the
         // popup so that collisions don't have a triangle pointing off
@@ -93,12 +97,6 @@ export const Tooltip = ({
           />
         </Portal>
       )}
-      <Popup
-        {...tooltip}
-        label={label}
-        aria-label={ariaLabel}
-        position={centered}
-      />
       <Global
         styles={css`
           :root {
