@@ -15,10 +15,9 @@ const StyledImage = styled(Image)`
   min-width: 21px;
   min-height: 15px;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    z-index: 3;
     left: 0;
     top: 0;
     right: 0;

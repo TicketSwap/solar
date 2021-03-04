@@ -22,7 +22,6 @@ interface CollapsibleStyledProps {
 const Toggle = styled.button<CollapsibleStyledProps>`
   position: relative;
   text-align: left;
-  z-index: 2;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -40,8 +39,6 @@ const Toggle = styled.button<CollapsibleStyledProps>`
 `
 
 const Body = styled.div<CollapsibleStyledProps>`
-  position: relative;
-  z-index: 1;
   max-height: ${props => (props.isOn ? '100vh' : 0)};
   overflow: hidden;
   transition: max-height ${transition};
