@@ -387,7 +387,7 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       >
         {hasAdornment && (
           <LeftAdornment size={size} isSquare={isSquare}>
-            {leftAdornment || <Spinner size={loadingIconSize} />}
+            {loading ? <Spinner size={loadingIconSize} /> : leftAdornment}
           </LeftAdornment>
         )}
         {children}
