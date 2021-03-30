@@ -3293,13 +3293,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@ticketswap/comets@^2.11.1":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.12.0.tgz#0f7150786758fdb60f5c4601623e8f93bf445199"
-  integrity sha512-OS+nyj7IP53LIXtrF+NOZ87dduEydjcCgema+PshjO596ceUQr/FqZfJKZKqID7zDKvGtzGKv1UiU3hSruFLCw==
-  dependencies:
-    react "^16.11.0"
-    react-dom "^16.11.0"
+"@ticketswap/comets@^2.13.2":
+  version "2.13.2"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.13.2.tgz#21b28229e1c9e576d9fdf3e32552866fa32a4688"
+  integrity sha512-5BgON36Z+nWvVEqOhFOh0K895dOqWcxMPyMs5zbTXqCvsjZPFFFZ4AnOyOeCCMIiMPKmwV/Kr0lKNK4m+CIvWA==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -14288,7 +14285,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^16.11.0, react-dom@^16.8.3:
+react-dom@^16.8.3:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -14507,7 +14504,7 @@ react-textarea-autosize@^8.1.1:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react@^16.11.0, react@^16.8.3:
+react@^16.8.3:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
