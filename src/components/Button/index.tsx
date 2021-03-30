@@ -7,7 +7,6 @@ import {
   fontWeight,
   lineHeight,
   radius,
-  shadow,
   space,
 } from '../../theme'
 import { css } from '@emotion/react'
@@ -59,7 +58,6 @@ const StyledButton = styled.button<StyledButtonProps>`
     rgba(255, 255, 255, 0.24),
     rgba(255, 255, 255, 0)
   );
-  text-shadow: ${shadow.text};
   line-height: ${lineHeight.solid};
   align-items: center;
 
@@ -92,7 +90,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       variant === ButtonVariant.primary &&
       css`
         color: ${color.nova};
-        text-shadow: ${shadow.text};
+        text-shadow: 0px 1px 0px rgba(0, 19, 25, 0.08);
         background-color: ${color.earthLight};
       `};
   }
@@ -102,6 +100,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       opacity: 0.5;
       pointer-events: none;
+      text-shadow: none;
     `};
 
   ${({ size, isSquare, fullWidth }) =>
@@ -133,7 +132,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       padding: ${isSquare ? space[12] : `${space[12]} ${space[24]}`};
       border-radius: ${radius.md};
     `}
-    
+
     ${({ size, isSquare, fullWidth }) =>
     size === ButtonSize.large &&
     css`
@@ -156,7 +155,6 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${active ? color.earth : color.skyLightAlpha};
       color: ${active ? color.nova : color.earth};
-      text-shadow: ${active ? shadow.text : 'none'};
       background-image: unset;
 
       [data-theme='dark'] & {
@@ -166,7 +164,6 @@ const StyledButton = styled.button<StyledButtonProps>`
       &:hover {
         background-color: ${active ? color.earthLight : color.skyAlpha};
         color: ${active ? color.nova : color.earth};
-        text-shadow: ${active ? shadow.text : 'none'};
 
         [data-theme='dark'] & {
           color: ${color.space};
@@ -178,7 +175,6 @@ const StyledButton = styled.button<StyledButtonProps>`
           ? color.earthLight
           : color.earthLightestAlpha};
         color: ${active ? color.nova : color.earth};
-        text-shadow: ${active ? shadow.text : 'none'};
       }
     `};
 
