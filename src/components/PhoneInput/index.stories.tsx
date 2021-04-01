@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PhoneInput } from '.'
 
 const countries = [
@@ -67,13 +67,31 @@ export const BasicWithRef = () => {
   )
 }
 
+export const Controlled = () => {
+  const [number, setNumber] = useState('')
+
+  return (
+    <>
+      <button onClick={() => setNumber('')}>Clear input</button>
+
+      <PhoneInput
+        id="phonenumber"
+        label="Phone number"
+        countries={countries}
+        value={number}
+        onChange={event => setNumber(event.number)}
+      />
+    </>
+  )
+}
+
 export const WithInitialValues = () => (
   <PhoneInput
     id="phonenumber"
     label="Phone number"
     countries={countries}
     initialSelectedCountry={countries[4]}
-    initialNumber={2500}
+    initialNumber="2500"
     onChange={e => console.log(e)}
     help="Enter your phone number"
   />
@@ -87,7 +105,7 @@ export const WithError = () => (
     label="Phone number"
     countries={countries}
     initialSelectedCountry={countries[4]}
-    initialNumber={2500}
+    initialNumber="2500"
     // onChange={e => console.log(e)}
     help="Enter your phone number"
     validateCountry={false}
