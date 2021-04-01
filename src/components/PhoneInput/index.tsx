@@ -17,13 +17,13 @@ export interface PhoneCountryProp {
 
 export interface PhoneInputOnChangeType {
   country: PhoneCountryProp
-  number: string | number
+  number: string
 }
 
 export interface PhoneInputProps {
   countries: PhoneCountryProp[]
   id: string
-  initialNumber?: string | number
+  initialNumber?: string
   initialSelectedCountry?: PhoneCountryProp
   label: string
   onChange?: (value: PhoneInputOnChangeType) => void
@@ -31,6 +31,7 @@ export interface PhoneInputProps {
   validateNumber?: boolean
   hideLabel?: boolean
   help?: string
+  value?: string
 }
 
 const InputGroup = styled.div`
@@ -91,6 +92,7 @@ export const PhoneInput = React.forwardRef(
       onChange = () => {},
       validateCountry,
       validateNumber,
+      value,
       ...props
     }: PhoneInputProps,
     forwardedRef: React.Ref<HTMLInputElement>
@@ -109,6 +111,9 @@ export const PhoneInput = React.forwardRef(
     )
     const { isMobile } = useDeviceInfo()
     const inputId = `phone-input-${useId()}`
+
+    const isControlled = typeof value !== 'undefined'
+    const phoneNumber = isControlled ? value : number
 
     return (
       <Label htmlFor={id}>
@@ -171,7 +176,7 @@ export const PhoneInput = React.forwardRef(
               ref={inputRef}
               hideLabel
               type="number"
-              value={number}
+              value={phoneNumber}
               validate={validateNumber}
               {...props}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
