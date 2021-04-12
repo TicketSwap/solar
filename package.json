@@ -64,7 +64,7 @@
     "@reach/menu-button": "^0.12.1",
     "@reach/tabs": "^0.12.1",
     "@reach/tooltip": "^0.12.1",
-    "@reach/utils": "^0.12.1",
+    "@reach/utils": "^0.15.0",
     "compute-scroll-into-view": "^1.0.16",
     "downshift": "^6.1.0"
   },
