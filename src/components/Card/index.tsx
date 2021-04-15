@@ -34,6 +34,7 @@ export interface CardPropTypes {
   topLeftAdornment?: React.ReactNode
   verticalAlign?: CardVerticalAlign
   size?: CardSize
+  footer?: React.ReactNode
 }
 
 export interface StyledCardProps extends CardPropTypes {
@@ -287,6 +288,10 @@ const Description = styled.div<StyledCardProps>`
   }
 `
 
+const Footer = styled.div`
+  margin-top: ${space[24]};
+`
+
 const Card: React.FC<CardPropTypes> = ({
   title,
   subtitle,
@@ -296,6 +301,7 @@ const Card: React.FC<CardPropTypes> = ({
   leftAdornment,
   rightAdornment,
   topLeftAdornment,
+  footer,
   verticalAlign = CardVerticalAlign.center,
   size = CardSize.default,
   ...props
@@ -328,6 +334,8 @@ const Card: React.FC<CardPropTypes> = ({
 
           {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}
         </Body>
+
+        {footer && <Footer>{footer}</Footer>}
       </Content>
     </Container>
   )
