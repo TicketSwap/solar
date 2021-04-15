@@ -14,6 +14,7 @@ export { Text, SmallText } from './components/Text'
 export { BaseStyles } from './components/BaseStyles'
 export { StarRating } from './components/StarRating'
 export { Button } from './components/Button'
+export { CardCarousel } from './components/CardCarousel'
 export { Card } from './components/Card'
 export { ContentDialog } from './components/ContentDialog'
 export {
