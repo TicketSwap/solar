@@ -184,9 +184,19 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: #fff4f4;
       color: ${color.mars};
       text-shadow: none;
+      background-image: unset;
 
       [data-theme='dark'] & {
         color: ${color.mars};
+        background-color: rgba(254, 74, 73, 0.1);
+
+        &:hover {
+          background-color: rgba(254, 74, 73, 0.2);
+        }
+
+        &:active {
+          background-color: rgba(254, 74, 73, 0.3);
+        }
       }
 
       &:hover {
