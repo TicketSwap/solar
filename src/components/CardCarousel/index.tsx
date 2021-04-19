@@ -32,7 +32,7 @@ const Controls = styled.div`
 `
 
 const Control = styled.button`
-  background-color: ${color.skyLight};
+  background-color: ${color.skyLightAlpha};
   width: 56px;
   height: 56px;
   border-radius: ${radius.md};
@@ -41,7 +41,8 @@ const Control = styled.button`
   align-items: center;
 
   &:disabled {
-    background-color: ${color.stardustLighter};
+    background-color: ${color.skyLightAlpha};
+    opacity: 0.5;
     cursor: default;
   }
 `
