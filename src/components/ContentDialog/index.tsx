@@ -56,11 +56,16 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   bottom: 0;
   left: 0;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${color.spaceMediumAlpha};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
   opacity: ${props =>
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
+  backdrop-filter: blur(16px);
+
+  [data-theme='dark'] & {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 `
 
 const StyledDialogContent = styled<React.FC<DialogContentProps>>(
