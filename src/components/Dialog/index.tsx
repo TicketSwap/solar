@@ -68,16 +68,17 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${color.spaceMediumAlpha};
   display: flex;
   justify-content: center;
   align-items: flex-end;
   opacity: ${props =>
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
+  backdrop-filter: blur(16px);
 
   [data-theme='dark'] & {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
   }
 
   @media ${device.mobileL} {
