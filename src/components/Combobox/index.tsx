@@ -18,6 +18,7 @@ type SelectItem = {
 
 export interface ComboboxProps extends Omit<InputProps, 'onChange'> {
   onChange?: (event: SelectItem) => void
+  onReset?: () => void
   id: string
   label: string
   items: SelectItem[]
@@ -30,6 +31,7 @@ export const Combobox = ({
   onChange = () => null,
   normalize = false,
   initialValue = '',
+  onReset = () => null,
   ...props
 }: ComboboxProps) => (
   <Downshift
@@ -56,7 +58,10 @@ export const Combobox = ({
           data-testid="combobox"
           {...getInputProps({
             onChange: clearSelection,
-            onReset: clearSelection,
+            onReset: () => {
+              clearSelection()
+              onReset && onReset()
+            },
             onFocus: !selectedItem ? openMenu : null,
             leftAdornment:
               selectedItem && selectedItem.adornment ? (

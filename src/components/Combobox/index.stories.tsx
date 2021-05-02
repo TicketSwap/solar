@@ -86,4 +86,16 @@ export const withInitialValue = () => (
   />
 )
 
+export const withOnReset = () => (
+  <Combobox
+    id="country"
+    label="Country"
+    items={countries}
+    initialValue="at"
+    hideLabel
+    onReset={() => console.log('reset')}
+    onChange={selection => alert(selection.name)}
+  />
+)
+
 withInitialValue.storyName = 'With initial value'
