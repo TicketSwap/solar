@@ -32,6 +32,7 @@ type SelectItem = {
   name: string
   displayName?: string
   leftAdornment?: ReactNode
+  rightAdornment?: ReactNode
 }
 
 export interface SelectProps extends Omit<InputProps, 'onChange'> {
@@ -59,7 +60,12 @@ const StyledInput = styled(Input)`
   }
 `
 const LeftAdornment = styled.span`
-  margin-right: 10px;
+  margin-right: ${space[8]};
+`
+
+const RightAdornment = styled.span`
+  position: absolute;
+  right: ${space[16]};
 `
 
 const SelectContainer = styled.div`
@@ -215,6 +221,10 @@ export const Select: React.FC<SelectProps> = ({
               <LeftAdornment>{item.leftAdornment}</LeftAdornment>
             )}
             {item.name}
+
+            {item.rightAdornment && (
+              <RightAdornment>{item.rightAdornment}</RightAdornment>
+            )}
           </InputMenuItem>
         ))}
       </InputMenuList>
