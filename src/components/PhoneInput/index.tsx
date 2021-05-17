@@ -48,7 +48,6 @@ const FauxSelectWrapper = styled.span`
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
   width: ${selectWidth};
   padding-right: ${space[8]};
 `
@@ -126,21 +125,6 @@ export const PhoneInput = React.forwardRef(
         )}
         <InputGroup id={id}>
           <SelectWrapper>
-            {isMobile() && (
-              <FauxSelectWrapper>
-                <Input
-                  id={`${inputId}-faux-country`}
-                  label="Country"
-                  hideLabel
-                  value={`+${country.code}`}
-                  leftAdornment={
-                    <Flag countryCode={country && country.value} />
-                  }
-                  rightAdornment={<ArrowDown size={16} />}
-                  onChange={() => {}}
-                />
-              </FauxSelectWrapper>
-            )}
             <Select
               id={`${inputId}-country`}
               label="Country"
@@ -168,6 +152,21 @@ export const PhoneInput = React.forwardRef(
                 })
               }}
             />
+            {isMobile() && (
+              <FauxSelectWrapper>
+                <Input
+                  id={`${inputId}-faux-country`}
+                  label="Country"
+                  hideLabel
+                  value={`+${country.code}`}
+                  leftAdornment={
+                    <Flag countryCode={country && country.value} />
+                  }
+                  rightAdornment={<ArrowDown size={16} />}
+                  onChange={() => {}}
+                />
+              </FauxSelectWrapper>
+            )}
           </SelectWrapper>
           <InputWrapper>
             <Input

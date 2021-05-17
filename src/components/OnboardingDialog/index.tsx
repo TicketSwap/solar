@@ -32,7 +32,6 @@ const DialogWrapper = styled.div<DialogWrapperProps>`
   top: ${space[56]};
   left: 0;
   right: 0;
-  z-index: 1;
 
   @media ${device.tablet} {
     top: ${space[48]};
@@ -41,26 +40,30 @@ const DialogWrapper = styled.div<DialogWrapperProps>`
 
 export interface OnboardingDialogProps {
   show: boolean
+  state: TransitionState | boolean
+  active: boolean
 }
 
 const OnboardingDialog: React.FC<OnboardingDialogProps> = ({
   children,
   show,
+  state,
+  active,
   ...props
 }) => {
-  if (!show) return null
-
   return (
-    <DialogWrapper aria-modal="true" role="dialog" tabindex="-1" {...props}>
-      {children}
-    </DialogWrapper>
+    <>
+      {active && <Backdrop state={state} />}
+      {show && (
+        <DialogWrapper aria-modal="true" role="dialog" tabindex="-1" {...props}>
+          {children}
+        </DialogWrapper>
+      )}
+    </>
   )
 }
 
-export interface OnboardingWrapperProps {
-  active: boolean
-  state: TransitionState | boolean
-}
+export interface OnboardingWrapperProps {}
 
 const Container = styled.div`
   position: relative;
@@ -87,16 +90,9 @@ const Backdrop = styled.div<BackdropProps>`
 
 const OnboardingWrapper: React.FC<OnboardingWrapperProps> = ({
   children,
-  active,
-  state,
   ...props
 }) => {
-  return (
-    <Container {...props}>
-      {children}
-      {active && <Backdrop state={state} />}
-    </Container>
-  )
+  return <Container {...props}>{children}</Container>
 }
 
 export interface OnboardingProps {
@@ -143,6 +139,8 @@ function useOnboarding(config: useOnboardingProps = {}) {
     hide: () => setShow(false),
     getOnboardingProps: () => ({
       show,
+      state,
+      active,
     }),
     state,
     active,

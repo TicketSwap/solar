@@ -32,7 +32,7 @@ const Actions = styled.div`
 `
 
 const StorybookDialog = () => {
-  const { show, hide, getOnboardingProps, state, active } = useOnboarding({
+  const { show, hide, getOnboardingProps } = useOnboarding({
     defaultTransitionState: TransitionState.ENTERED,
   })
 
@@ -42,7 +42,7 @@ const StorybookDialog = () => {
     <Body>
       <H1>Onboarding page</H1>
 
-      <OnboardingWrapper state={state} active={active}>
+      <OnboardingWrapper>
         <Form>
           <Input label="Name" id="name" />
           <Input label="Email" id="email" />

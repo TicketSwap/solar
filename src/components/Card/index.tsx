@@ -50,37 +50,6 @@ const Container = styled.div<StyledCardProps>`
       : !props.hasImage && space[12]};
   background-color: ${color.stardust};
 
-  ${props =>
-    props.hasImage &&
-    css`
-      &::before {
-        content: '';
-        position: absolute;
-        z-index: 2;
-        height: 65%;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: ${radius.lg};
-        background-image: linear-gradient(
-          to top,
-          hsla(0, 0%, 0%) 0%,
-          hsla(0, 0%, 0%, 0.738) 19%,
-          hsla(0, 0%, 0%, 0.541) 34%,
-          hsla(0, 0%, 0%, 0.382) 47%,
-          hsla(0, 0%, 0%, 0.278) 56.5%,
-          hsla(0, 0%, 0%, 0.194) 65%,
-          hsla(0, 0%, 0%, 0.126) 73%,
-          hsla(0, 0%, 0%, 0.075) 80.2%,
-          hsla(0, 0%, 0%, 0.042) 86.1%,
-          hsla(0, 0%, 0%, 0.021) 91%,
-          hsla(0, 0%, 0%, 0.008) 95.2%,
-          hsla(0, 0%, 0%, 0.002) 98.2%,
-          hsla(0, 0%, 0%, 0) 100%
-        );
-      }
-    `};
-
   @media ${device.mobileL} {
     padding: ${p =>
       p.size === CardSize.large
@@ -110,7 +79,6 @@ const Content = styled.div<StyledCardProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  z-index: 4;
 `
 
 const Body = styled.div<StyledCardProps>`
@@ -133,7 +101,6 @@ const Body = styled.div<StyledCardProps>`
       padding: ${space[12]};
       border-bottom-left-radius: ${radius.lg};
       border-bottom-right-radius: ${radius.lg};
-      z-index: 3;
 
       @media ${device.mobileL} {
         padding: ${space[16]};
@@ -292,6 +259,34 @@ const Footer = styled.div`
   margin-top: ${space[24]};
 `
 
+const BackgroundImage = styled(Image)`
+  &::after {
+    content: '';
+    position: absolute;
+    height: 65%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: ${radius.lg};
+    background-image: linear-gradient(
+      to top,
+      hsla(0, 0%, 0%) 0%,
+      hsla(0, 0%, 0%, 0.738) 19%,
+      hsla(0, 0%, 0%, 0.541) 34%,
+      hsla(0, 0%, 0%, 0.382) 47%,
+      hsla(0, 0%, 0%, 0.278) 56.5%,
+      hsla(0, 0%, 0%, 0.194) 65%,
+      hsla(0, 0%, 0%, 0.126) 73%,
+      hsla(0, 0%, 0%, 0.075) 80.2%,
+      hsla(0, 0%, 0%, 0.042) 86.1%,
+      hsla(0, 0%, 0%, 0.021) 91%,
+      hsla(0, 0%, 0%, 0.008) 95.2%,
+      hsla(0, 0%, 0%, 0.002) 98.2%,
+      hsla(0, 0%, 0%, 0) 100%
+    );
+  }
+`
+
 const Card: React.FC<CardPropTypes> = ({
   title,
   subtitle,
@@ -310,7 +305,9 @@ const Card: React.FC<CardPropTypes> = ({
 
   return (
     <Container hasImage={hasImage} {...props}>
-      {!!image && <Image src={image} alt={title ? title : 'Image'} rounded />}
+      {!!image && (
+        <BackgroundImage src={image} alt={title ? title : 'Image'} rounded />
+      )}
 
       <Content hasImage={hasImage}>
         {hasImage && topLeftAdornment && (
