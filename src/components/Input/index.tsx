@@ -148,7 +148,6 @@ type AdornmentProps = {
 
 export const Adornment = styled.span<AdornmentProps>`
   position: absolute;
-  z-index: 1;
   top: 0;
   color: ${color.spaceMedium};
   left: ${props => (props.left ? 0 : 'auto')};
@@ -192,7 +191,6 @@ export const Help = styled.p`
 export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   text-align: left;
   position: absolute;
-  z-index: 2;
   left: 0;
   right: 0;
   top: calc(100% + ${space[4]});
@@ -232,7 +230,6 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  z-index: 1;
   padding-left: ${props => (props.adornment ? space[48] : space[16])};
   padding-right: ${space[16]};
   min-height: ${space[56]};
