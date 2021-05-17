@@ -198,6 +198,7 @@ export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   background-color: ${color.nova};
   box-shadow: ${shadow.strong};
   overflow: hidden;
+  z-index: 1;
 
   [data-theme='dark'] & {
     border: 1px solid ${color.spaceLightest};
