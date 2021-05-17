@@ -66,7 +66,6 @@ const FauxSelectWrapper = styled.span`
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 2;
   width: ${selectWidth};
   padding-right: ${space[8]};
 `
@@ -132,18 +131,6 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
       )}
       <InputGroup id={id}>
         <SelectWrapper>
-          {isMobile() && (
-            <FauxSelectWrapper>
-              <Input
-                id={`${inputId}-faux-currency`}
-                label="Currency"
-                hideLabel
-                disabled={disabled}
-                value={props.currency ? props.currency.symbol : currency.symbol}
-                rightAdornment={<ArrowDown size={16} />}
-              />
-            </FauxSelectWrapper>
-          )}
           <Select
             items={options}
             id={`${inputId}-currency`}
@@ -179,6 +166,18 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
               })
             }}
           />
+          {isMobile() && (
+            <FauxSelectWrapper>
+              <Input
+                id={`${inputId}-faux-currency`}
+                label="Currency"
+                hideLabel
+                disabled={disabled}
+                value={props.currency ? props.currency.symbol : currency.symbol}
+                rightAdornment={<ArrowDown size={16} />}
+              />
+            </FauxSelectWrapper>
+          )}
         </SelectWrapper>
         <InputWrapper>
           <Input

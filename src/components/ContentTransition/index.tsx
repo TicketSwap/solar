@@ -25,7 +25,6 @@ interface SlideContainerProps {
 const SlideContainer = styled.div<SlideContainerProps>`
   width: 100%;
   top: 0;
-  z-index: ${props => (props.state === 'exiting' ? 0 : 1)};
   position: ${props => (props.state === 'exiting' ? 'absolute' : 'relative')};
   opacity: ${props =>
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
