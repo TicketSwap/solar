@@ -68,6 +68,18 @@ export const fullHeight = () => (
 
 fullHeight.storyName = 'Full height'
 
+export const withoutInsetShadow = () => (
+  <Cover
+    fullHeight
+    caption={data.randomBackgroundImage.copyrightText}
+    captionUrl={data.randomBackgroundImage.copyrightLink}
+    images={data.randomBackgroundImage.imageSizes}
+    withInsetShadow={false}
+  >
+    <Title>The safest way to buy and sell e-tickets</Title>
+  </Cover>
+)
+
 export const withoutImage = () => (
   <Cover fullHeight>
     <Title>The safest way to buy and sell e-tickets</Title>

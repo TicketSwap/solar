@@ -24,17 +24,22 @@ export interface CoverProps {
   captionUrl?: string
   blurred?: boolean
   fullHeight?: boolean
+  withInsetShadow?: boolean
 }
 
 const Container = styled.div<CoverProps>`
   position: relative;
-  background-color: ${color.space};
   width: 100%;
   height: ${props => (props.fullHeight ? '100vh' : 'auto')};
 
-  [data-theme='dark'] & {
-    background-color: ${color.nova};
-  }
+  ${props =>
+    props.withInsetShadow &&
+    css`
+      background-color: ${color.space};
+      [data-theme='dark'] & {
+        background-color: ${color.nova};
+      }
+    `}
 
   ${props =>
     props.blurred &&
@@ -48,9 +53,15 @@ const BackgroundImage = styled.div<CoverProps>`
   left: 0;
   top: 0;
   right: 0;
-  height: 75%;
+  height: 100%;
   background-size: cover;
   background-position: center;
+
+  ${props =>
+    props.withInsetShadow &&
+    css`
+      height: 75%;
+    `}
 
   ${props =>
     props.blurred &&
@@ -150,39 +161,57 @@ const BackgroundImage = styled.div<CoverProps>`
     height: 75%;
     background-image: linear-gradient(
       to top,
-      rgba(0, 19, 25, 1) 0%,
-      rgba(0, 19, 25, 0.738) 19%,
-      rgba(0, 19, 25, 0.541) 34%,
-      rgba(0, 19, 25, 0.382) 47%,
-      rgba(0, 19, 25, 0.278) 56.5%,
-      rgba(0, 19, 25, 0.194) 65%,
-      rgba(0, 19, 25, 0.126) 73%,
-      rgba(0, 19, 25, 0.075) 80.2%,
-      rgba(0, 19, 25, 0.042) 86.1%,
-      rgba(0, 19, 25, 0.021) 91%,
-      rgba(0, 19, 25, 0.008) 95.2%,
-      rgba(0, 19, 25, 0.002) 98.2%,
+      rgba(0, 19, 25, 0.6) 0%,
       rgba(0, 19, 25, 0) 100%
     );
 
     [data-theme='dark'] & {
       background-image: linear-gradient(
         to top,
-        rgba(26, 33, 41, 1) 0%,
-        rgba(26, 33, 41, 0.738) 19%,
-        rgba(26, 33, 41, 0.541) 34%,
-        rgba(26, 33, 41, 0.382) 47%,
-        rgba(26, 33, 41, 0.278) 56.5%,
-        rgba(26, 33, 41, 0.194) 65%,
-        rgba(26, 33, 41, 0.126) 73%,
-        rgba(26, 33, 41, 0.075) 80.2%,
-        rgba(26, 33, 41, 0.042) 86.1%,
-        rgba(26, 33, 41, 0.021) 91%,
-        rgba(26, 33, 41, 0.008) 95.2%,
-        rgba(26, 33, 41, 0.002) 98.2%,
+        rgba(26, 33, 41, 0.6) 0%,
         rgba(26, 33, 41, 0) 100%
       );
     }
+
+    ${props =>
+      props.withInsetShadow &&
+      css`
+        background-image: linear-gradient(
+          to top,
+          rgba(0, 19, 25, 1) 0%,
+          rgba(0, 19, 25, 0.738) 19%,
+          rgba(0, 19, 25, 0.541) 34%,
+          rgba(0, 19, 25, 0.382) 47%,
+          rgba(0, 19, 25, 0.278) 56.5%,
+          rgba(0, 19, 25, 0.194) 65%,
+          rgba(0, 19, 25, 0.126) 73%,
+          rgba(0, 19, 25, 0.075) 80.2%,
+          rgba(0, 19, 25, 0.042) 86.1%,
+          rgba(0, 19, 25, 0.021) 91%,
+          rgba(0, 19, 25, 0.008) 95.2%,
+          rgba(0, 19, 25, 0.002) 98.2%,
+          rgba(0, 19, 25, 0) 100%
+        );
+
+        [data-theme='dark'] & {
+          background-image: linear-gradient(
+            to top,
+            rgba(26, 33, 41, 1) 0%,
+            rgba(26, 33, 41, 0.738) 19%,
+            rgba(26, 33, 41, 0.541) 34%,
+            rgba(26, 33, 41, 0.382) 47%,
+            rgba(26, 33, 41, 0.278) 56.5%,
+            rgba(26, 33, 41, 0.194) 65%,
+            rgba(26, 33, 41, 0.126) 73%,
+            rgba(26, 33, 41, 0.075) 80.2%,
+            rgba(26, 33, 41, 0.042) 86.1%,
+            rgba(26, 33, 41, 0.021) 91%,
+            rgba(26, 33, 41, 0.008) 95.2%,
+            rgba(26, 33, 41, 0.002) 98.2%,
+            rgba(26, 33, 41, 0) 100%
+          );
+        }
+      `};
   }
 `
 
@@ -256,17 +285,24 @@ export const Cover: React.FC<CoverProps> = ({
   images,
   blurred = false,
   fullHeight = false,
+  withInsetShadow = true,
   ...props
 }) => {
   const hasImages = imageUrl || images
 
   return (
-    <Container fullHeight={fullHeight} blurred={blurred} {...props}>
+    <Container
+      fullHeight={fullHeight}
+      blurred={blurred}
+      withInsetShadow={withInsetShadow}
+      {...props}
+    >
       {hasImages && (
         <BackgroundImage
           imageUrl={imageUrl}
           images={images}
           blurred={blurred}
+          withInsetShadow={withInsetShadow}
         />
       )}
 
