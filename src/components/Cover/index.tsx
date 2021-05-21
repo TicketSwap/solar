@@ -165,14 +165,6 @@ const BackgroundImage = styled.div<CoverProps>`
       rgba(0, 19, 25, 0) 100%
     );
 
-    [data-theme='dark'] & {
-      background-image: linear-gradient(
-        to top,
-        rgba(26, 33, 41, 0.6) 0%,
-        rgba(26, 33, 41, 0) 100%
-      );
-    }
-
     ${props =>
       props.withInsetShadow &&
       css`
@@ -192,8 +184,18 @@ const BackgroundImage = styled.div<CoverProps>`
           rgba(0, 19, 25, 0.002) 98.2%,
           rgba(0, 19, 25, 0) 100%
         );
+      `};
 
-        [data-theme='dark'] & {
+    [data-theme='dark'] & {
+      background-image: linear-gradient(
+        to top,
+        rgba(26, 33, 41, 0.6) 0%,
+        rgba(26, 33, 41, 0) 100%
+      );
+
+      ${props =>
+        props.withInsetShadow &&
+        css`
           background-image: linear-gradient(
             to top,
             rgba(26, 33, 41, 1) 0%,
@@ -210,8 +212,8 @@ const BackgroundImage = styled.div<CoverProps>`
             rgba(26, 33, 41, 0.002) 98.2%,
             rgba(26, 33, 41, 0) 100%
           );
-        }
-      `};
+        `};
+    }
   }
 `
 
