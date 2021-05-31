@@ -1,5 +1,5 @@
 import React from 'react'
-import { Logo, LogoVariants } from './'
+import { Logo, LogoVariant } from './'
 import styled from '@emotion/styled'
 import { color } from '../../theme'
 
@@ -13,7 +13,7 @@ export default {
 
 const Horizontal = () => <Logo />
 const Blue = () => <StyledLogo />
-const Lgbt = () => <Logo variant={LogoVariants.lgbt} />
+const Lgbt = () => <Logo variant={LogoVariant.lgbt} />
 
 Lgbt.storyName = 'LGBT'
 

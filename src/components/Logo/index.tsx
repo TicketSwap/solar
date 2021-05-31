@@ -28,17 +28,17 @@ export const InlineSvg = styled.svg`
   fill: currentColor;
 `
 
-export enum LogoVariants {
+export enum LogoVariant {
   default = 'default',
   lgbt = 'lgbt',
 }
 
 export interface LogoProps {
-  variant?: LogoVariants
+  variant?: LogoVariant
 }
 
 export const Logo = ({
-  variant = LogoVariants.default,
+  variant = LogoVariant.default,
   ...props
 }: LogoProps) => (
   <SvgWrapper {...props}>
