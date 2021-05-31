@@ -10,7 +10,7 @@ import {
 import { MagnifyingGlass } from '@ticketswap/comets'
 import { normalizeChars } from '../../utils'
 
-type SelectItem = {
+export type SelectItem = {
   value: string
   name: string
   adornment?: ReactNode
