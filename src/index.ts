@@ -1,7 +1,7 @@
 export * from './theme'
 export * from './hooks'
 export { normalizeChars } from './utils'
-export { Alert } from './components/Alert'
+export { Alert, AlertVariant, AlertAction } from './components/Alert'
 export { Avatar } from './components/Avatar'
 export {
   Accordion,
@@ -13,9 +13,9 @@ export { Banner } from './components/Banner'
 export { Text, SmallText } from './components/Text'
 export { BaseStyles } from './components/BaseStyles'
 export { StarRating } from './components/StarRating'
-export { Button } from './components/Button'
+export { Button, ButtonVariant, ButtonSize } from './components/Button'
 export { CardCarousel } from './components/CardCarousel'
-export { Card } from './components/Card'
+export { Card, CardVerticalAlign, CardSize } from './components/Card'
 export { ContentDialog } from './components/ContentDialog'
 export {
   Panel,
@@ -24,7 +24,7 @@ export {
   PanelText,
   PanelFooter,
 } from './components/Panel'
-export { Pill } from './components/Pill'
+export { Pill, PillVariant } from './components/Pill'
 export { BaseButton } from './components/BaseButton'
 export { Collapsible } from './components/Collapsible'
 export { Toggle } from './components/Toggle'
@@ -34,7 +34,7 @@ export { DateInput } from './components/DateInput'
 export { MoneyInput } from './components/MoneyInput'
 export { PhoneInput } from './components/PhoneInput'
 export { TimeInput } from './components/TimeInput'
-export { Combobox } from './components/Combobox'
+export { Combobox, SelectItem } from './components/Combobox'
 export { ContentTransition } from './components/ContentTransition'
 export { SkeletonPulse, SkeletonLine } from './components/Skeleton'
 export {
@@ -74,7 +74,7 @@ export {
   InputMenuItem,
   fieldStyles,
 } from './components/Input'
-export { Logo } from './components/Logo'
+export { Logo, LogoVariant } from './components/Logo'
 export {
   Menu,
   MenuList,
