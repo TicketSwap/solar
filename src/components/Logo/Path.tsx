@@ -1,12 +1,12 @@
 import React from 'react'
 
-export enum LogoVariants {
+export enum LogoVariant {
   default = 'default',
   lgbt = 'lgbt',
 }
 
 export interface PathProps {
-  variant: LogoVariants
+  variant: LogoVariant
 }
 
 export const Path = ({ variant }: PathProps) => (
