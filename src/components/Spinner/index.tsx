@@ -32,7 +32,7 @@ const Rotate = styled.div`
 `
 
 export const Spinner: React.FC<SpinnerProps> = ({ size = 32, ...props }) => (
-  <Rotate {...props}>
+  <Rotate {...props} role="status">
     <StyledSpinnerIcon size={size} />
   </Rotate>
 )
