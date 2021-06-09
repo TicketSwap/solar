@@ -156,7 +156,9 @@ export const DateInput: React.FC<DateInputProps> = ({
         <InputGroup>
           <InputWrapper>
             <Input
-              label={props.dayInputProps ? props.dayInputProps.label : label}
+              label={
+                props.dayInputProps ? props.dayInputProps.label : `${label}-day`
+              }
               placeholder={props.dayInputProps && props.dayInputProps.label}
               id={`${inputId}-day`}
               hideLabel
@@ -179,7 +181,11 @@ export const DateInput: React.FC<DateInputProps> = ({
           </SelectWrapper>
           <InputWrapper>
             <Input
-              label={props.yearInputProps ? props.yearInputProps.label : label}
+              label={
+                props.yearInputProps
+                  ? props.yearInputProps.label
+                  : `${label}-year`
+              }
               placeholder={props.yearInputProps && props.yearInputProps.label}
               id={`${inputId}-year`}
               hideLabel
