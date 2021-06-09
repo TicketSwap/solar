@@ -75,13 +75,13 @@ export const Collapsible: React.FC<CollapsibleProps> = ({
 
   return (
     <div {...props}>
-      <Toggle onClick={toggle} isOn={on}>
+      <Toggle onClick={toggle} isOn={on} aria-expanded={on}>
         {buttonLabel}
         <IconContainer isOn={on}>
           <ChevronDown size={24} />
         </IconContainer>
       </Toggle>
-      <Body isOn={on}>
+      <Body isOn={on} role="region" hidden={!on}>
         <Content>{children}</Content>
       </Body>
     </div>
