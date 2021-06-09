@@ -31,7 +31,7 @@ const Actions = styled.div`
   grid-gap: ${space[8]};
 `
 
-const StorybookDialog = () => {
+export const StorybookDialog = () => {
   const { show, hide, getOnboardingProps } = useOnboarding({
     defaultTransitionState: TransitionState.ENTERED,
   })
