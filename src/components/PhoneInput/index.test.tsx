@@ -57,7 +57,7 @@ describe('PhoneInput', () => {
     expect(getByText('Enter your phone number')).toBeInTheDocument()
   })
 
-  it('can change the number of the input', () => {
+  it('can change the country of the input', () => {
     const { getByLabelText, getByText } = render(
       <PhoneInput
         id="phonenumber"
