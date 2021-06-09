@@ -152,7 +152,7 @@ export const Image: React.FC<ImageProps> = ({
   }, [initObserver, lazyload, observer])
 
   return (
-    <Container rounded={rounded} {...props}>
+    <Container rounded={rounded} {...props} role="img" aria-label={alt}>
       <Placeholder
         src={placeholderSrc(width, height)}
         aria-hidden="true"
