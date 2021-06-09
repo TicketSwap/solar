@@ -7,6 +7,12 @@ jest.mock('../src/hooks/useTransition', () => {
       const transitioning = false
       return [status, entered, transitioning]
     },
+    TransitionState: {
+      EXITED: 'exited',
+      ENTERING: 'entering',
+      ENTERED: 'entered',
+      EXITING: 'exiting',
+    },
   }
 })
 
