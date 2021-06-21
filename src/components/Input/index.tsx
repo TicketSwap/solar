@@ -18,6 +18,8 @@ import { CloseRounded } from '@ticketswap/comets'
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string
+  name?: string
+  autocomplete?: string
   label: string
   hideLabel?: boolean
   loading?: boolean
@@ -269,6 +271,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       labelProps,
       validate,
       loading,
+      name,
+      autocomplete,
       disabled = false,
       ...props
     },
@@ -305,6 +309,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             isLoading={loading}
             disabled={disabled}
             label={label}
+            name={name}
+            autocomplete={autocomplete}
             {...props}
           />
           {loading ? (
