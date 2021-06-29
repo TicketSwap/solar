@@ -100,6 +100,10 @@ export const fieldStyles = (props: InputProps) => css`
     display: none;
   }
 
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   &:focus,
   &.focus {
     outline: none;
