@@ -1,4 +1,4 @@
-import React, { ReactNode, Ref } from 'react'
+import React, { ReactNode, Ref, useRef, useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Spinner } from '../Spinner'
@@ -194,23 +194,6 @@ export const Help = styled.p`
   }
 `
 
-export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
-  text-align: left;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(100% + ${space[4]});
-  border-radius: ${radius.md};
-  background-color: ${color.nova};
-  box-shadow: ${shadow.strong};
-  overflow: hidden;
-  z-index: 1;
-
-  [data-theme='dark'] & {
-    border: 1px solid ${color.spaceLightest};
-  }
-`
-
 export const InputMenuFooter = styled.footer`
   text-align: right;
   padding: ${space[4]} ${space[16]};
@@ -253,6 +236,78 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
     border-top: 1px solid ${color.spaceLightest};
   }
 `
+
+export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
+  text-align: left;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + ${space[4]});
+  border-radius: ${radius.md};
+  background-color: ${color.nova};
+  box-shadow: ${shadow.strong};
+  overflow: hidden;
+  z-index: 1;
+
+  [data-theme='dark'] & {
+    border: 1px solid ${color.spaceLightest};
+  }
+`
+
+export interface InputMenuProps extends React.HTMLAttributes<HTMLDivElement> {
+  isOutsideViewport?: boolean
+}
+
+export interface StyledSelectMenuProps extends InputMenuProps {
+  heightOfMenu: number
+  isOpen: boolean
+}
+
+const StyledSelectMenu = styled(InputMenu)<StyledSelectMenuProps>`
+  top: ${props =>
+    props.isOutsideViewport
+      ? `-${props.heightOfMenu + 4}px`
+      : 'calc(100% + 4px)'};
+  opacity: ${props => (props.isOpen ? 1 : 0)};
+`
+
+export const SelectMenu = ({ children, ...props }: InputMenuProps) => {
+  const [height, setHeight] = useState(0)
+  const [isOutsideViewport, setIsOutsideViewport] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setHeight(ref?.current?.clientHeight || 0)
+  }, [setHeight])
+
+  useEffect(() => {
+    setIsOpen(true)
+  }, [setIsOpen])
+
+  useEffect(() => {
+    const bottom = ref?.current?.getBoundingClientRect()?.bottom || 0
+    const viewportHeight = window?.innerHeight || 0
+
+    if (bottom > viewportHeight) {
+      setIsOutsideViewport(true)
+    } else {
+      setIsOutsideViewport(false)
+    }
+  }, [setIsOutsideViewport, setIsOpen])
+
+  return (
+    <StyledSelectMenu
+      {...props}
+      isOutsideViewport={isOutsideViewport}
+      ref={ref}
+      heightOfMenu={height}
+      isOpen={isOpen}
+    >
+      {children}
+    </StyledSelectMenu>
+  )
+}
 
 export const InputMenuItem = React.forwardRef(
   (
