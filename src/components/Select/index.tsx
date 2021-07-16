@@ -4,7 +4,7 @@ import computeScrollIntoView from 'compute-scroll-into-view'
 import { color, space, lineHeight, radius, fontSize } from '../../theme'
 import {
   Input,
-  InputMenu,
+  SelectMenu,
   InputMenuList,
   InputMenuItem,
   InputProps,
@@ -199,7 +199,7 @@ export const Select: React.FC<SelectProps> = ({
   }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
   const menu = isOpen && (
-    <InputMenu tabIndex={-1} role="listbox" aria-labelledby={labelId}>
+    <SelectMenu tabIndex={-1} role="listbox" aria-labelledby={labelId}>
       <InputMenuList id={menuId} ref={menuRef}>
         {items.map((item, index) => (
           <InputMenuItem
@@ -228,7 +228,7 @@ export const Select: React.FC<SelectProps> = ({
           </InputMenuItem>
         ))}
       </InputMenuList>
-    </InputMenu>
+    </SelectMenu>
   )
 
   return (
