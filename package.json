@@ -56,7 +56,7 @@
   },
   "module": "dist/solar.es.js",
   "dependencies": {
-    "@reach/accordion": "^0.12.1",
+    "@reach/accordion": "^0.15.3",
     "@reach/auto-id": "^0.15.3",
     "@reach/dialog": "^0.12.1",
     "@reach/menu-button": "^0.12.1",
