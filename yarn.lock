@@ -2881,10 +2881,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@ticketswap/comets@^2.13.2":
-  version "2.13.2"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.13.2.tgz#21b28229e1c9e576d9fdf3e32552866fa32a4688"
-  integrity sha512-5BgON36Z+nWvVEqOhFOh0K895dOqWcxMPyMs5zbTXqCvsjZPFFFZ4AnOyOeCCMIiMPKmwV/Kr0lKNK4m+CIvWA==
+"@ticketswap/comets@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.14.0.tgz#4c4163110fadb74fab8a108715302df39278f71e"
+  integrity sha512-fdOQh/ainHLfyQzWLHZFdfDg2gtV/zRTh9WvQjfW6BkxwBuYXZpyAVuGbchUCDnZ+wiQ5u4R+otMs0lzUlEu2g==
 
 "@tootallnate/once@1":
   version "1.1.2"
