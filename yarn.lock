@@ -2063,15 +2063,17 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
-"@reach/accordion@^0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.12.1.tgz#952e2e355fe633f7b296aff74ba4e79327d9c929"
-  integrity sha512-XgL6o2qyRF1o4CFmGNmrJpg4SARTQ+VUESyj8lnVMQ7K71ZlAaWVo4D8ZpNhe6WjkvxoxKQ68suDccx4fA3CVA==
+"@reach/accordion@^0.15.3":
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.15.3.tgz#bdd87844167c70a3c4a5477d403a047c36993c79"
+  integrity sha512-9y4VjSFOUTXOV8jowIYqV4PMsuqmbnuZL3FBfiBLx44/olY6OnvGzq2247P7DSoMo407S/zk5qSrd4ZnRbEUlA==
   dependencies:
-    "@reach/auto-id" "0.12.1"
-    "@reach/descendants" "0.12.1"
-    "@reach/utils" "0.12.1"
-    tslib "^2.0.0"
+    "@reach/auto-id" "0.15.3"
+    "@reach/descendants" "0.15.3"
+    "@reach/utils" "0.15.3"
+    prop-types "^15.7.2"
+    tiny-warning "^1.0.3"
+    tslib "^2.3.0"
 
 "@reach/auto-id@0.12.1":
   version "0.12.1"
@@ -2081,7 +2083,7 @@
     "@reach/utils" "0.12.1"
     tslib "^2.0.0"
 
-"@reach/auto-id@^0.15.3":
+"@reach/auto-id@0.15.3", "@reach/auto-id@^0.15.3":
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.15.3.tgz#23b6ae8de3bf7520044c95a85c992ae46cdcef9c"
   integrity sha512-lbLUI9mrn74qVis141ib0Rsyhgk+gzUMtpplRmjy06cUWDFZyiBATNWMUxN5T+0fU4tpfgcjkAuPeTCCGThKtQ==
@@ -2096,6 +2098,14 @@
   dependencies:
     "@reach/utils" "0.12.1"
     tslib "^2.0.0"
+
+"@reach/descendants@0.15.3":
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.15.3.tgz#818522e54a66e3e577970e25aa7226645e22aabc"
+  integrity sha512-vuCBG7Uru6IEJ2wvTd7L2xumbYzv2UYBduZ0E1FEABqyUo78eTIZbRcwIN73IxMcivjWipBPlcLLkpFtJKMPew==
+  dependencies:
+    "@reach/utils" "0.15.3"
+    tslib "^2.3.0"
 
 "@reach/dialog@^0.12.1":
   version "0.12.1"
