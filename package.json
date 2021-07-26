@@ -64,7 +64,7 @@
     "@reach/tooltip": "^0.12.1",
     "@reach/utils": "^0.15.0",
     "compute-scroll-into-view": "^1.0.16",
-    "downshift": "^6.1.0"
+    "downshift": "^6.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
