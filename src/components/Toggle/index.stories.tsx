@@ -13,6 +13,33 @@ function ControlledToggle() {
   )
 }
 
+function ControlledToggleWithDelay() {
+  const [on, setOn] = React.useState(false)
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setOn(true)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  return (
+    <>
+      <Toggle on={on} onToggle={on => setOn(on)} />
+    </>
+  )
+}
+
+function ControlledWithoutDelay() {
+  const [on, setOn] = React.useState(false)
+
+  return (
+    <>
+      <Toggle on={on} onToggle={on => setOn(on)} />
+    </>
+  )
+}
+
 export default {
   title: 'Toggle',
 }
@@ -41,3 +68,5 @@ export const DefaultOn = () => (
 DefaultOn.storyName = 'Default on'
 
 export const Controlled = () => <ControlledToggle />
+export const ControlledWithTimeout = () => <ControlledToggleWithDelay />
+export const ControlledWithoutTimeout = () => <ControlledWithoutDelay />

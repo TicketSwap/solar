@@ -17,6 +17,7 @@ export const Toggle: React.FC<ToggleProps> = ({
 }) => {
   const checkboxRef = React.useRef<HTMLInputElement>(null)
   const [on, setOn] = React.useState(defaultOn)
+  const [initialToggled, setInitialToggled] = React.useState(false)
 
   const toggle = (e: React.MouseEvent) => {
     setOn(!on)
@@ -29,10 +30,19 @@ export const Toggle: React.FC<ToggleProps> = ({
   const isOnControlled = () => typeof props.on !== 'undefined'
   const getOn = () => (isOnControlled() ? props.on : on)
 
+  React.useEffect(() => {
+    if (props.on && !initialToggled) {
+      const checkbox: any = document.getElementById('checkbox_hidden')
+      checkbox.checked = true
+      setInitialToggled(true)
+    }
+  }, [props.on, initialToggled])
+
   return (
     <div className="toggle">
       <VisuallyHidden>
         <input
+          id="checkbox_hidden"
           ref={checkboxRef}
           type="checkbox"
           defaultChecked={getOn()}
