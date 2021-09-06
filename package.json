@@ -37,14 +37,6 @@
     "react": ">=16",
     "react-dom": ">=16"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint-staged",
-      "post-merge": "yarn install --frozen-lockfile",
-      "post-checkout": "if [[ $HUSKY_GIT_PARAMS =~ l$ ]]; then yarn install --frozen-lockfile; fi",
-      "post-rebase": "yarn install"
-    }
-  },
   "prettier": {
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
@@ -98,7 +90,6 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "husky": "3.1.0",
     "is-ci-cli": "^2.1.2",
     "jest": "^26.6.3",
     "jest-runner-eslint": "^0.10.0",
