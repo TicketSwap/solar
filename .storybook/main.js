@@ -6,6 +6,7 @@ module.exports = {
   addons: [],
   typescript: {
     check: true, // type-check stories during Storybook build
+    reactDocgen: 'none',
   },
   webpackFinal: async config => {
     return {
