@@ -97,6 +97,7 @@ export const MenuItem = styled<React.FC<MenuItemProps>>(ReachMenuItem)`
 
 export interface MenuLinkProps extends ReachMenuLinkProps {
   href: string | undefined
+  as: string | undefined
 }
 
 export const MenuLink = styled<React.FC<MenuLinkProps>>(ReachMenuLink)`
