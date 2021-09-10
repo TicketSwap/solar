@@ -11,10 +11,8 @@ export default {
   title: 'Logo',
 }
 
-const Horizontal = () => <Logo />
-const Blue = () => <StyledLogo />
-const Lgbt = () => <Logo variant={LogoVariant.lgbt} />
+export const Horizontal = () => <Logo />
+export const Blue = () => <StyledLogo />
+export const Lgbt = () => <Logo variant={LogoVariant.lgbt} />
 
 Lgbt.storyName = 'LGBT'
-
-export { Horizontal, Blue, Lgbt }

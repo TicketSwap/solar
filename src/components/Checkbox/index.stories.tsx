@@ -12,7 +12,7 @@ function ControlledCheckbox() {
   )
 }
 
-const Basic = () => (
+export const Basic = () => (
   <Checkbox
     id="remember-me"
     label="Remember me"
@@ -20,7 +20,7 @@ const Basic = () => (
   />
 )
 
-const WithHelperText = () => (
+export const WithHelperText = () => (
   <Checkbox
     id="remember-me"
     label="Regular"
@@ -31,7 +31,7 @@ const WithHelperText = () => (
 
 WithHelperText.storyName = 'With helper text'
 
-const WithLongLabel = () => (
+export const WithLongLabel = () => (
   <Checkbox
     id="agree"
     label={
@@ -46,7 +46,7 @@ const WithLongLabel = () => (
 
 WithLongLabel.storyName = 'With long label'
 
-const DefaultOn = () => (
+export const DefaultOn = () => (
   <Checkbox
     id="remember-me"
     label="Remember me"
@@ -57,7 +57,7 @@ const DefaultOn = () => (
 
 DefaultOn.storyName = 'Default on'
 
-const Disabled = () => (
+export const Disabled = () => (
   <Checkbox
     id="remember-me"
     label="Remember me"
@@ -69,7 +69,7 @@ const Disabled = () => (
 
 Disabled.storyName = 'Disabled'
 
-const WithoutLabel = () => (
+export const WithoutLabel = () => (
   <Checkbox
     id="remember-me"
     label="Remember me"
@@ -80,17 +80,7 @@ const WithoutLabel = () => (
 
 WithoutLabel.storyName = 'Without label'
 
-const Controlled = () => <ControlledCheckbox />
-
-export {
-  Basic,
-  WithHelperText,
-  WithLongLabel,
-  DefaultOn,
-  Disabled,
-  WithoutLabel,
-  Controlled,
-}
+export const Controlled = () => <ControlledCheckbox />
 
 export default {
   title: 'Checkbox',

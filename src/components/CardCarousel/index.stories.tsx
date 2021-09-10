@@ -46,7 +46,7 @@ const Author = styled.div`
   gap: ${space[8]};
 `
 
-const Basic = () => (
+export const Basic = () => (
   <Container>
     <CardCarousel
       leftHeader={<H1>What other says</H1>}
@@ -68,8 +68,6 @@ const Basic = () => (
     />
   </Container>
 )
-
-export { Basic }
 
 export default {
   title: 'CardCarousel',
