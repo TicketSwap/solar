@@ -30,7 +30,7 @@ const PresentationalWrapper = styled.div`
   }
 `
 
-const WithVariants = () => (
+export const WithVariants = () => (
   <>
     {VARIANTS.map(variant => (
       <Fragment key={variant}>
@@ -51,7 +51,7 @@ const WithVariants = () => (
   </>
 )
 
-const WithStates = () => (
+export const WithStates = () => (
   <>
     {VARIANTS.map(variant => (
       <Fragment key={variant}>
@@ -76,7 +76,7 @@ const WithStates = () => (
   </>
 )
 
-const WithAdornment = () => (
+export const WithAdornment = () => (
   <>
     <PresentationalWrapper>
       <Button size={ButtonSize.small} leftAdornment={<Alert size={16} />}>
@@ -100,5 +100,3 @@ const WithAdornment = () => (
 export default {
   title: 'Button',
 }
-
-export { WithVariants, WithStates, WithAdornment }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Avatar } from './'
 
-const WithoutImage = () => <Avatar />
+export const WithoutImage = () => <Avatar />
 
 WithoutImage.storyName = 'Without image'
 
-const WithImage = () => (
+export const WithImage = () => (
   <Avatar
     src="https://cdn.ticketswap.com/public/testimonials/201810/0946ce7a-5863-4f9f-9636-5ba8bb8414c3.jpeg"
     alt="Avatar of Glenn"
@@ -14,7 +14,7 @@ const WithImage = () => (
 
 WithImage.storyName = 'With image'
 
-const WithImageAndCustomSize = () => (
+export const WithImageAndCustomSize = () => (
   <Avatar
     src="https://cdn.ticketswap.com/public/testimonials/201810/0946ce7a-5863-4f9f-9636-5ba8bb8414c3.jpeg"
     size={64}
@@ -22,8 +22,6 @@ const WithImageAndCustomSize = () => (
 )
 
 WithImageAndCustomSize.storyName = 'With image and custom size'
-
-export { WithoutImage, WithImage, WithImageAndCustomSize }
 
 export default {
   title: 'Avatar',

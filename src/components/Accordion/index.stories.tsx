@@ -6,7 +6,7 @@ import {
   AccordionPanel,
 } from './index'
 
-const Basic = () => (
+export const Basic = () => (
   <Accordion>
     <AccordionItem>
       <AccordionButton>Do a thing</AccordionButton>
@@ -32,7 +32,7 @@ const Basic = () => (
   </Accordion>
 )
 
-const Collapsible = () => (
+export const Collapsible = () => (
   <Accordion collapsible>
     <AccordionItem>
       <AccordionButton>Do a thing</AccordionButton>
@@ -57,8 +57,6 @@ const Collapsible = () => (
     </AccordionItem>
   </Accordion>
 )
-
-export { Basic, Collapsible }
 
 export default {
   title: 'Accordion',

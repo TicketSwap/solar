@@ -1,13 +1,13 @@
 import React from 'react'
 import { Alert, AlertVariant } from './'
 
-const Basic = () => (
+export const Basic = () => (
   <Alert>
     <a href="https://example.com">PayPal</a> is not activated yet.
   </Alert>
 )
 
-const WithTitleAndAction = () => (
+export const WithTitleAndAction = () => (
   <Alert
     title="Friendly reminder"
     action={{
@@ -21,7 +21,7 @@ const WithTitleAndAction = () => (
 
 WithTitleAndAction.storyName = 'With title and action'
 
-const WithAction = () => (
+export const WithAction = () => (
   <>
     <Alert
       action={{
@@ -72,7 +72,7 @@ const WithAction = () => (
 
 WithAction.storyName = 'With action'
 
-const Success = () => (
+export const Success = () => (
   <Alert
     variant={AlertVariant.success}
     action={{
@@ -84,7 +84,7 @@ const Success = () => (
   </Alert>
 )
 
-const Error = () => (
+export const Error = () => (
   <Alert
     variant={AlertVariant.error}
     action={{
@@ -96,7 +96,7 @@ const Error = () => (
   </Alert>
 )
 
-const Warning = () => (
+export const Warning = () => (
   <Alert
     variant={AlertVariant.warning}
     action={{
@@ -107,8 +107,6 @@ const Warning = () => (
     <a href="https://example.com">Notifications</a> are disabled
   </Alert>
 )
-
-export { Basic, WithTitleAndAction, WithAction, Success, Error, Warning }
 
 export default {
   title: 'Alert',
