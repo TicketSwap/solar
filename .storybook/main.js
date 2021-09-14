@@ -3,7 +3,7 @@ const toPath = _path => path.join(process.cwd(), _path)
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|js|tsx)'],
-  addons: [],
+  addons: ['@storybook/addon-essentials'],
   typescript: {
     check: true, // type-check stories during Storybook build
     reactDocgen: 'none',
@@ -15,6 +15,7 @@ module.exports = {
         ...config.resolve,
         alias: {
           ...config.resolve.alias,
+          '@emotion/core': toPath('node_modules/@emotion/react'),
           '@emotion/styled': toPath('node_modules/@emotion/styled'),
         },
       },
