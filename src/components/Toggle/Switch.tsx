@@ -86,7 +86,7 @@ const Button = styled.button<ButtonProps>`
     bottom: -1px;
     background-color: transparent;
     border-radius: ${space[32]};
-    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
     pointer-events: none;
   }
 `

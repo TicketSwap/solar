@@ -34,7 +34,6 @@ export const globalStyles = css`
     --earthLightAlpha: rgba(0, 182, 240, 0.8);
     --earthLighterAlpha: rgba(0, 182, 240, 0.4);
     --earthLightestAlpha: rgba(0, 182, 240, 0.16);
-    --earthFocusAlpha: rgba(0, 182, 240, 0.24);
 
     --sky: rgb(224, 246, 253);
     --skyAlpha: rgba(0, 182, 240, 0.12);
@@ -48,7 +47,6 @@ export const globalStyles = css`
     --titanLightAlpha: rgba(0, 206, 92, 0.8);
     --titanLighterAlpha: rgba(0, 206, 92, 0.4);
     --titanLightestAlpha: rgba(0, 206, 92, 0.16);
-    --titanFocusAlpha: rgba(0, 206, 92, 0.24);
 
     --mars: rgb(254, 74, 73);
     --marsLight: rgb(254, 110, 109);
@@ -57,7 +55,6 @@ export const globalStyles = css`
     --marsLightAlpha: rgba(254, 74, 73, 0.8);
     --marsLighterAlpha: rgba(254, 74, 73, 0.4);
     --marsLightestAlpha: rgba(254, 74, 73, 0.16);
-    --marsFocusAlpha: rgba(254, 74, 73, 0.24);
 
     --sun: rgb(255, 166, 0);
     --sunLight: rgb(255, 184, 51);
@@ -66,18 +63,14 @@ export const globalStyles = css`
     --sunLightAlpha: rgba(255, 166, 0, 0.8);
     --sunLighterAlpha: rgba(255, 166, 0, 0.4);
     --sunLightestAlpha: rgba(255, 166, 0, 0.16);
-    --sunFocusAlpha: rgba(255, 166, 0, 0.24);
 
     --facebook: rgb(23, 119, 242);
     --facebookLight: rgb(69, 146, 245);
-    --facebookFocusAlpha: rgba(23, 119, 242, 0.24);
 
     --twitter: rgb(56, 161, 243);
     --twitterLight: rgb(96, 180, 245);
-    --twitterFocusAlpha: rgba(56, 161, 243, 0.24);
 
     --whatsapp: rgb(37, 211, 102);
-    --whatsappFocusAlpha: rgba(37, 211, 102, 0.24);
 
     --shadowLighterAlpha: rgba(0, 19, 25, 0.2);
     --shadowLightestAlpha: rgba(0, 19, 25, 0.1);
@@ -116,7 +109,6 @@ export const globalStyles = css`
     --earthLightAlpha: rgba(0, 182, 240, 0.8);
     --earthLighterAlpha: rgba(0, 182, 240, 0.4);
     --earthLightestAlpha: rgba(0, 182, 240, 0.16);
-    --earthFocusAlpha: rgba(0, 182, 240, 0.24);
 
     --sky: rgb(20, 52, 67);
     --skyLight: rgb(24, 42, 53);
@@ -128,7 +120,6 @@ export const globalStyles = css`
     --titanLightAlpha: rgba(0, 206, 92, 0.8);
     --titanLighterAlpha: rgba(0, 206, 92, 0.4);
     --titanLightestAlpha: rgba(0, 206, 92, 0.16);
-    --titanFocusAlpha: rgba(0, 206, 92, 0.24);
 
     --mars: rgb(254, 74, 73);
     --marsLight: rgb(208, 66, 67);
@@ -137,7 +128,6 @@ export const globalStyles = css`
     --marsLightAlpha: rgba(254, 74, 73, 0.8);
     --marsLighterAlpha: rgba(254, 74, 73, 0.4);
     --marsLightestAlpha: rgba(254, 74, 73, 0.16);
-    --marsFocusAlpha: rgba(254, 74, 73, 0.24);
 
     --sun: rgb(255, 166, 0);
     --sunLight: rgb(209, 139, 8);
@@ -146,18 +136,14 @@ export const globalStyles = css`
     --sunLightAlpha: rgba(255, 166, 0, 0.8);
     --sunLighterAlpha: rgba(255, 166, 0, 0.4);
     --sunLightestAlpha: rgba(255, 166, 0, 0.16);
-    --sunFocusAlpha: rgba(255, 166, 0, 0.24);
 
     --facebook: rgb(23, 119, 242);
     --facebookLight: rgb(69, 146, 245);
-    --facebookFocusAlpha: rgba(23, 119, 242, 0.24);
 
     --twitter: rgb(56, 161, 243);
     --twitterLight: rgb(96, 180, 245);
-    --twitterFocusAlpha: rgba(56, 161, 243, 0.24);
 
     --whatsapp: rgb(37, 211, 102);
-    --whatsappFocusAlpha: rgba(37, 211, 102, 0.24);
 
     --shadowLighterAlpha: rgba(0, 19, 25, 0.9);
     --shadowLightestAlpha: rgba(0, 19, 25, 0.9);
@@ -236,7 +222,7 @@ export const globalStyles = css`
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
+      box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
     }
   }
 

@@ -75,7 +75,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     bottom: -1px;
     background-color: transparent;
     border-radius: calc(${radius.md} + 1px);
-    box-shadow: 0 0 0 ${space[4]} ${color.earthFocusAlpha};
+    box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
     pointer-events: none;
   }
 
@@ -204,7 +204,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
+        box-shadow: 0 0 0 ${space[4]} ${color.marsLighterAlpha};
       }
 
       &:active {
@@ -222,7 +222,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.titanFocusAlpha};
+        box-shadow: 0 0 0 ${space[4]} ${color.titanLighterAlpha};
       }
 
       &:active {
@@ -240,7 +240,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.sunFocusAlpha};
+        box-shadow: 0 0 0 ${space[4]} ${color.sunLighterAlpha};
       }
 
       &:active {
@@ -258,7 +258,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.marsFocusAlpha};
+        box-shadow: 0 0 0 ${space[4]} ${color.marsLighterAlpha};
       }
 
       &:active {
@@ -276,7 +276,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.facebookFocusAlpha};
+        box-shadow: 0 0 0 ${space[4]} ${color.facebookLighterAlpha};
       }
 
       &:active {
