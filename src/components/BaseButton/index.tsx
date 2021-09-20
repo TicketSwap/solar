@@ -60,12 +60,12 @@ const StyledButton = styled.button<ButtonProps>`
     box-shadow: 0 0 0 ${space[4]}
       ${p =>
         p.variant === ButtonVariant.success
-          ? color.titanFocusAlpha
+          ? color.titanLighterAlpha
           : p.variant === ButtonVariant.danger
-          ? color.marsFocusAlpha
+          ? color.marsLighterAlpha
           : p.variant === ButtonVariant.warning
-          ? color.sunFocusAlpha
-          : color.earthFocusAlpha};
+          ? color.sunLighterAlpha
+          : color.earthLighterAlpha};
 
     @media ${device.tablet} {
       top: -2px;
