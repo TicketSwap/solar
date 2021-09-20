@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 
+type colorType = { [variant: string]: string }
+
 export const color = {
   space: 'var(--space)',
   spaceDark: 'var(--spaceDark)',
@@ -68,7 +70,7 @@ export const color = {
   twitterLight: 'var(--twitterLight)',
 
   whatsapp: 'var(--whatsapp)',
-}
+} as colorType
 
 export const fontStack = `'Proxima Nova', -apple-system, BlinkMacSystemFont,
 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto,
