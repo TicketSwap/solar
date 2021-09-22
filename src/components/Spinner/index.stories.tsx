@@ -2,7 +2,7 @@ import React from 'react'
 import { Spinner } from '.'
 
 export default {
-  title: 'Spinner',
+  title: 'Components/Feedback/Spinner',
 }
 
 export const Basic = () => <Spinner />

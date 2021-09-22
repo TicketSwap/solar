@@ -3,7 +3,7 @@ import { ContentDialog } from '.'
 import { H1, H2 } from '../Heading'
 
 export default {
-  title: 'ContentDialog',
+  title: 'Components/Layout/ContentDialog',
 }
 
 export const Default = () => {

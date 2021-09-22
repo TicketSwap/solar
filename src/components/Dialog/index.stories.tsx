@@ -113,7 +113,7 @@ function HooksDialog() {
 }
 
 export default {
-  title: 'Dialog',
+  title: 'Components/Surfaces/Dialog',
 }
 
 export const Basic = () => <MyDialog>Body</MyDialog>

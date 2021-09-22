@@ -3,7 +3,7 @@ import { HorizontalScroll } from './'
 import { Button } from '../Button'
 
 export default {
-  title: 'HorizontalScroll',
+  title: 'Components/Layout/HorizontalScroll',
 }
 
 export const Basic = () => (

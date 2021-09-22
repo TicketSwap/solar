@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from './'
 
 export default {
-  title: 'MenuButton',
+  title: 'Components/Navigation/MenuButton',
 }
 
 export const Basic = () => (

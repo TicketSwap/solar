@@ -1,21 +1,29 @@
 import React from 'react'
-import { Toast, ToastConsumer, ToastProvider, useToast } from './'
+import { Toast, ToastProvider, useToast } from './'
 import { Button, ButtonSize, ButtonVariant } from '../Button'
 import { Select } from '../Select'
+import styled from '@emotion/styled'
+import { Text } from '../Text'
+
+const ToastContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 
 const Wrapper = (story: () => React.ReactNode) => (
   <ToastProvider>{story()}</ToastProvider>
 )
 
-function UseToast() {
+function Basic() {
   const { notify } = useToast()
+
   return (
     <Button
       onClick={() =>
-        notify(remove => (
+        notify(() => (
           <Toast>
-            Notification
-            <button onClick={remove}>Close</button>
+            <ToastContent>Notification</ToastContent>
           </Toast>
         ))
       }
@@ -24,21 +32,6 @@ function UseToast() {
     </Button>
   )
 }
-
-export default {
-  title: 'Toast',
-  decorators: [Wrapper],
-}
-
-export const Basic = () => (
-  <ToastConsumer>
-    {({ notify }) => (
-      <Button onClick={() => notify(() => <Toast>Notification</Toast>)}>
-        Show toast
-      </Button>
-    )}
-  </ToastConsumer>
-)
 
 const items = [
   { value: 'de', name: 'German' },
@@ -50,65 +43,67 @@ const items = [
   { value: 'es', name: 'Spanish' },
 ]
 
-export const WithInput = () => (
-  <ToastConsumer>
-    {({ notify }) => (
-      <Button
-        onClick={() =>
-          notify(() => (
-            <Toast persist>
-              <Select
-                items={items}
-                id="language"
-                label="Language"
-                help="Select a language"
-                onChange={selection => console.log(selection)}
-                initialSelectedItem={items[1]}
-              />
-            </Toast>
-          ))
-        }
-      >
-        Show toast
-      </Button>
-    )}
-  </ToastConsumer>
-)
+function WithInput() {
+  const { notify } = useToast()
 
-export const WithToast = () => <UseToast />
+  return (
+    <Button
+      onClick={() =>
+        notify(() => (
+          <Toast persist>
+            <Select
+              items={items}
+              id="language"
+              label="Language"
+              help="Select a language"
+              onChange={selection => console.log(selection)}
+              initialSelectedItem={items[1]}
+            />
+          </Toast>
+        ))
+      }
+    >
+      Show toast
+    </Button>
+  )
+}
 
-WithToast.storyName = 'useToast()'
+function Persistent() {
+  const { notify } = useToast()
 
-export const Persistent = () => (
-  <ToastConsumer>
-    {({ notify }) => (
-      <Button
-        onClick={() =>
-          notify(remove => (
-            <Toast persist>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
+  return (
+    <Button
+      onClick={() =>
+        notify(remove => (
+          <Toast persist>
+            <ToastContent>
+              <Text>Payment failed</Text>
+              <Button
+                onClick={remove}
+                size={ButtonSize.medium}
+                variant={ButtonVariant.secondary}
               >
-                <span>Payment failed</span>
-                <Button
-                  onClick={remove}
-                  size={ButtonSize.medium}
-                  variant={ButtonVariant.secondary}
-                >
-                  Discard
-                </Button>
-              </div>
-            </Toast>
-          ))
-        }
-      >
-        Show toast
-      </Button>
-    )}
-  </ToastConsumer>
-)
+                Discard
+              </Button>
+            </ToastContent>
+          </Toast>
+        ))
+      }
+    >
+      Show toast
+    </Button>
+  )
+}
+
+export const BasicToast = () => <Basic />
+export const WithInputToast = () => <WithInput />
+export const PersistentToast = () => <Persistent />
+
+BasicToast.storyName = 'Basic'
+WithInputToast.storyName = 'With Input'
+PersistentToast.storyName = 'Persistent'
+
+export default {
+  title: 'Toast',
+  decorators: [Wrapper],
+}

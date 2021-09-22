@@ -3,7 +3,7 @@ import { StarRating } from '.'
 import { Input } from '../Input'
 
 export default {
-  title: 'StarRating',
+  title: 'Components/Inputs/StarRating',
 }
 
 export const Basic = () => (

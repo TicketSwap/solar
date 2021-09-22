@@ -59,5 +59,5 @@ export const Collapsible = () => (
 )
 
 export default {
-  title: 'Accordion',
+  title: 'Components/Surfaces/Accordion',
 }

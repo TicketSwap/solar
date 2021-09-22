@@ -2,7 +2,7 @@ import React from 'react'
 import { Collapsible } from './index'
 
 export default {
-  title: 'Collapsible',
+  title: 'Components/Surfaces/Collapsible',
 }
 
 export const Basic = () => (

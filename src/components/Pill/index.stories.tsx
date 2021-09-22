@@ -3,7 +3,7 @@ import { Pill, PillVariant } from '.'
 import { Ticket } from '@ticketswap/comets'
 
 export default {
-  title: 'Pill',
+  title: 'Components/Data Display/Pill',
 }
 
 export const Primary = () => <Pill>Primary</Pill>

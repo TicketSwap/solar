@@ -31,7 +31,7 @@ const data = {
 }
 
 export default {
-  title: 'Cover',
+  title: 'Components/Content/Cover',
 }
 
 export const basic = () => (

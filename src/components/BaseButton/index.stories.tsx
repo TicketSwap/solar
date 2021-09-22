@@ -39,5 +39,5 @@ export const Disabled = () => (
 )
 
 export default {
-  title: 'BaseButton',
+  title: 'Components/Actions/BaseButton',
 }

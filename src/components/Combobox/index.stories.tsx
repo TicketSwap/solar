@@ -56,7 +56,7 @@ const countries = [
 ]
 
 export default {
-  title: 'Combobox',
+  title: 'Components/Inputs/Combobox',
 }
 
 export const basic = () => (
