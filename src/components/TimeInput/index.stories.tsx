@@ -2,7 +2,7 @@ import React from 'react'
 import { TimeInput } from '.'
 
 export default {
-  title: 'TimeInput',
+  title: 'Components/Inputs/TimeInput',
 }
 
 export const Basic = () => (

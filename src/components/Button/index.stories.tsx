@@ -98,5 +98,5 @@ export const WithAdornment = () => (
 )
 
 export default {
-  title: 'Button',
+  title: 'Components/Actions/Button',
 }

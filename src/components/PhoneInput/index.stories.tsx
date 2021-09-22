@@ -35,7 +35,7 @@ const countries = [
 ]
 
 export default {
-  title: 'PhoneInput',
+  title: 'Components/Inputs/PhoneInput',
 }
 
 export const Basic = () => (

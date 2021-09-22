@@ -109,5 +109,5 @@ export const Warning = () => (
 )
 
 export default {
-  title: 'Alert',
+  title: 'Components/Feedback/Alert',
 }

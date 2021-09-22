@@ -105,5 +105,5 @@ export const Basic = () => <StorybookDialog />
 
 /* Storybook */
 export default {
-  title: 'Onboarding Dialog',
+  title: 'Components/Layout/Onboarding Dialog',
 }

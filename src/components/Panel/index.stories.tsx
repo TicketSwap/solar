@@ -10,7 +10,7 @@ const Wrapper = (story: () => React.ReactNode) => (
 )
 
 export default {
-  title: 'Panel',
+  title: 'Components/Layout/Panel',
   decorators: [Wrapper],
 }
 

@@ -14,7 +14,7 @@ const items = [
 ]
 
 export default {
-  title: 'Select',
+  title: 'Components/Inputs/Select',
 }
 
 export const Basic = () => (

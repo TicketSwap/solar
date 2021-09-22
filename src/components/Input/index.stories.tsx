@@ -3,7 +3,7 @@ import { Input } from './'
 import { MagnifyingGlass } from '@ticketswap/comets'
 
 export default {
-  title: 'Input',
+  title: 'Components/Inputs/Input',
 }
 
 export const Basic = () => <Input id="fname" label="First name" />

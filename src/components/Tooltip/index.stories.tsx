@@ -2,7 +2,7 @@ import React from 'react'
 import { Tooltip } from '.'
 
 export default {
-  title: 'Tooltip',
+  title: 'Components/Data Display/Tooltip',
 }
 
 export const Basic = () => (

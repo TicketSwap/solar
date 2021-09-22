@@ -8,7 +8,7 @@ const StyledLogo = styled(Logo)`
 `
 
 export default {
-  title: 'Logo',
+  title: 'Components/Content/Logo',
 }
 
 export const Horizontal = () => <Logo />

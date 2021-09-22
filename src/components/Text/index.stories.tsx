@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, SmallText } from '.'
 
 export default {
-  title: 'Text',
+  title: 'Components/Typography/Text',
 }
 
 export const Basic = () => (

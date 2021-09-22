@@ -27,7 +27,7 @@ const Wrapper = (story: () => React.ReactNode) => (
 )
 
 export default {
-  title: 'Card',
+  title: 'Components/Surfaces/Card',
   decorators: [Wrapper],
 }
 

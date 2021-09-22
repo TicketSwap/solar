@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { color, radius, shadow, space } from '../../theme'
 
 export default {
-  title: 'Portal',
+  title: 'Components/Utilities/Portal',
 }
 
 const Container = styled.div`

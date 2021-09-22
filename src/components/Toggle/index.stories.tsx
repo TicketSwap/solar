@@ -14,7 +14,7 @@ function ControlledToggle() {
 }
 
 export default {
-  title: 'Toggle',
+  title: 'Components/Inputs/Toggle',
 }
 
 export const Basic = () => <Toggle onToggle={on => console.log(on)} />

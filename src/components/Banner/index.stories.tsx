@@ -10,5 +10,5 @@ export const Basic = () => (
 )
 
 export default {
-  title: 'Banner',
+  title: 'Components/Surfaces/Banner',
 }

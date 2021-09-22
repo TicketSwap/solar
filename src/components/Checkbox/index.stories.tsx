@@ -83,5 +83,5 @@ WithoutLabel.storyName = 'Without label'
 export const Controlled = () => <ControlledCheckbox />
 
 export default {
-  title: 'Checkbox',
+  title: 'Components/Inputs/Checkbox',
 }

@@ -132,7 +132,7 @@ function ControlledMoneyInput() {
 }
 
 export default {
-  title: 'MoneyInput',
+  title: 'Components/Inputs/MoneyInput',
 }
 
 export const Basic = () => (

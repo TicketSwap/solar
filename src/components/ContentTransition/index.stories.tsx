@@ -175,7 +175,7 @@ function Dialog() {
 }
 
 export default {
-  title: 'ContentTransition',
+  title: 'Components/Animation/ContentTransition',
 }
 
 export const Basic = () => <Dialog />

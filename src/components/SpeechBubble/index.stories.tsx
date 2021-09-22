@@ -4,7 +4,7 @@ import { Button, ButtonVariant } from '../Button'
 import { H6 } from '../Heading'
 
 export default {
-  title: 'SpeechBubble',
+  title: 'Components/Data Display/SpeechBubble',
   component: SpeechBubble,
 }
 

@@ -24,5 +24,5 @@ export const WithImageAndCustomSize = () => (
 WithImageAndCustomSize.storyName = 'With image and custom size'
 
 export default {
-  title: 'Avatar',
+  title: 'Components/Data Display/Avatar',
 }

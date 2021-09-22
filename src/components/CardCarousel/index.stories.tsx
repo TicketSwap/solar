@@ -70,5 +70,5 @@ export const Basic = () => (
 )
 
 export default {
-  title: 'CardCarousel',
+  title: 'Components/Layout/CardCarousel',
 }
