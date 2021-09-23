@@ -5,6 +5,7 @@
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
   "main": "dist/index.js",
+  "module": "dist/solar.es.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
@@ -15,13 +16,9 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "dev": "tsdx watch",
-    "build": "tsdx build --environment NODE_ENV:production",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest test --coverage",
     "test:watch": "jest test --watch",
-    "lint": "tsdx lint",
-    "prepublishOnly": "tsdx build",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|scss|ts|tsx|md|mdx|graphql)\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:deploy": "storybook-to-ghpages",
@@ -46,7 +43,6 @@
     "trailingComma": "es5",
     "arrowParens": "avoid"
   },
-  "module": "dist/solar.es.js",
   "dependencies": {
     "@reach/accordion": "^0.15.3",
     "@reach/auto-id": "^0.15.3",
@@ -104,7 +100,6 @@
     "size-limit": "^4.7.0",
     "storybook-addon-theme-toggle": "^0.0.1",
     "storybook-addon-themes": "^6.1.0",
-    "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
     "typescript": "^4.4.2"
   }
