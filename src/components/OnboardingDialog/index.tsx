@@ -117,10 +117,8 @@ export interface useOnboardingProps {
 }
 
 function useOnboarding(config: useOnboardingProps = {}) {
-  const {
-    defaultOn = true,
-    defaultTransitionState = TransitionState.EXITED,
-  } = config
+  const { defaultOn = true, defaultTransitionState = TransitionState.EXITED } =
+    config
 
   const [show, setShow] = useState(defaultOn)
   const [active, setActive] = useState(defaultOn)
