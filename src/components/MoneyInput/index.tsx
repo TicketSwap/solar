@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from '@emotion/styled'
 import { space } from '../../theme'
 import { Label, LabelText, Input, Help } from '../Input'
@@ -28,6 +28,7 @@ export interface MoneyInputProps {
   initialSelectedCurrency?: MoneyInputCurrencyProp
   amount?: number | string
   initialAmount?: number
+  maximumAmount?: number
   validateAmount?: boolean
   validateCurrency?: boolean
   disabled?: boolean
@@ -96,9 +97,16 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
   validateAmount,
   validateCurrency,
   disabled = false,
+  maximumAmount,
   ...props
 }) => {
   const isAmountControlled = typeof props.amount !== 'undefined'
+  const hasMaximumAmount = typeof maximumAmount !== 'undefined'
+
+  if (isAmountControlled && hasMaximumAmount) {
+    throw Error('Maximum amount is not supported with a controlled input')
+  }
+
   const selectedCurrency = props.currency || props.initialSelectedCurrency
   const initialSelectedIndex = selectedCurrency
     ? currencies.indexOf(selectedCurrency)
@@ -119,6 +127,29 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
 
   const { isMobile } = useDeviceInfo()
   const inputId = `money-input-${useId()}`
+
+  /*
+    This will make sure that when you define a maximum
+    amount, we're reseting the amount to the maxiumum
+    amount if the user is overflowing this. We're
+    only doing this for non-controlled inputs, so
+    if you're using a controlled input you should
+    handle this yourself.
+  */
+  useEffect(() => {
+    if (
+      !isAmountControlled &&
+      hasMaximumAmount &&
+      parseAmount(amount) > maximumAmount
+    ) {
+      setAmount(maximumAmount / 100)
+    } else {
+      onChange({
+        currency,
+        amount: isAmountControlled ? amount : parseAmount(amount),
+      })
+    }
+  }, [amount])
 
   return (
     <Label htmlFor={id}>
@@ -190,15 +221,9 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
             disabled={disabled}
             validate={validateAmount}
             {...props}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               setAmount(event.target.value)
-              onChange({
-                currency,
-                amount: isAmountControlled
-                  ? event.target.value
-                  : parseAmount(event.target.value),
-              })
-            }}
+            }
           />
         </InputWrapper>
       </InputGroup>

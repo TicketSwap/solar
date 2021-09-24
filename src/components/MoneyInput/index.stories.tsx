@@ -190,3 +190,18 @@ export const WithError = () => (
 )
 
 WithError.storyName = 'With error'
+
+export const WithMaximumValue = () => (
+  <MoneyInput
+    id="maximum-price"
+    label="Maximum price"
+    currencies={currencies}
+    onChange={e => console.log(e)}
+    initialSelectedCurrency={currencies[2]}
+    initialAmount={2500}
+    maximumAmount={3000}
+    help="The maximum amount is 30"
+  />
+)
+
+WithMaximumValue.storyName = 'With maximum value'
