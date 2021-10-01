@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Select } from '.'
 
 const languages = [
@@ -30,15 +31,42 @@ describe('Select', () => {
     expect(input.value).toEqual(languages[0].name)
   })
 
-  it('shows menu when focussed', () => {
-    const { getByLabelText, getByText } = render(
-      <Select id="language" label="Language" items={languages} />
-    )
-    fireEvent.focus(getByLabelText(/language/i))
-    expect(getByText(/italian/i)).toBeInTheDocument()
+  describe('when the select box is clicked', () => {
+    it('shows the dropdown', () => {
+      render(<Select id="language" label="Language" items={languages} />)
+
+      fireEvent.focus(screen.getByLabelText(/language/i))
+
+      expect(screen.getByText(/italian/i)).toBeInTheDocument()
+    })
+
+    describe('and a key is a pressed', () => {
+      it('highlights the correct option', () => {
+        render(<Select id="language" label="Language" items={languages} />)
+
+        fireEvent.focus(screen.getByLabelText(/language/i))
+
+        fireEvent.keyDown(screen.getByRole('textbox'), {
+          key: 'D',
+          code: 'D',
+          charCode: 68,
+        })
+
+        fireEvent.keyDown(screen.getByRole('textbox'), {
+          key: 'U',
+          code: 'U',
+          charCode: 85,
+        })
+
+        expect(screen.getByText(/Dutch/i)).toHaveAttribute(
+          'data-highlighted',
+          '2'
+        )
+      })
+    })
   })
 
-  it('handles a passed initial value correctly', () => {
+  it('handles a passed initial value correctly', async () => {
     const { getByLabelText } = render(
       <Select
         id="language"
@@ -48,6 +76,7 @@ describe('Select', () => {
       />
     )
     const input = getByLabelText(/language/i) as HTMLInputElement
+
     expect(input.value).toEqual(languages[1].name)
   })
 
