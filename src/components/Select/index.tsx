@@ -1,4 +1,13 @@
-import React, { ReactNode } from 'react'
+import React, {
+  ReactNode,
+  useRef,
+  useCallback,
+  useState,
+  useEffect,
+  SyntheticEvent,
+  KeyboardEvent,
+  FC,
+} from 'react'
 import styled from '@emotion/styled'
 import computeScrollIntoView from 'compute-scroll-into-view'
 import { color, space, lineHeight, radius, fontSize } from '../../theme'
@@ -16,6 +25,7 @@ import {
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ArrowDown } from '@ticketswap/comets'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
+import { debounce } from '../../utils/debounce'
 
 const Container = styled.div`
   position: relative;
@@ -104,7 +114,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 `
 
-export const Select: React.FC<SelectProps> = ({
+export const Select: FC<SelectProps> = ({
   items,
   onChange = () => {},
   id,
@@ -115,27 +125,30 @@ export const Select: React.FC<SelectProps> = ({
   ...props
 }) => {
   const { isMobile } = useDeviceInfo()
-  const [showCustomSelect, setShowCustomSelect] = React.useState(false)
-  const [isOpen, setIsOpen] = React.useState(false)
-  const [selectedItem, setSelectedItem] = React.useState(
+  const [showCustomSelect, setShowCustomSelect] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [query, setQuery] = useState('')
+  const [selectedItem, setSelectedItem] = useState(
     initialSelectedItem || items[0]
   )
-  const [highlightedIndex, setHighlightedIndex] = React.useState(
+  const [highlightedIndex, setHighlightedIndex] = useState(
     items.indexOf(initialSelectedItem || items[0])
   )
-  const containerRef = React.useRef<HTMLDivElement>(null)
-  const inputRef = React.useRef<HTMLInputElement>(null)
-  const menuRef = React.useRef<HTMLUListElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const menuRef = useRef<HTMLUListElement>(null)
   let itemRefs: HTMLLIElement[] = []
   const labelId = `${id}-label`
   const menuId = `${id}-menu`
   const esc = useKeyPress('Escape')
   const arrowUp = useKeyPress('ArrowUp')
   const arrowDown = useKeyPress('ArrowDown')
+  const typeAheadTimeout = 1000
+  const resetQuery = debounce(() => setQuery(''), typeAheadTimeout)
 
   useOnClickOutside(containerRef, () => setIsOpen(false))
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = useCallback(() => {
     if (!isOpen) return false
     setIsOpen(false)
 
@@ -149,7 +162,7 @@ export const Select: React.FC<SelectProps> = ({
     return (itemRefs = [...itemRefs, el])
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isMobile()) {
       // Component will render a native select element by default.
       // Upon mounting, we check whether we’re on a mobile device. If
@@ -159,13 +172,13 @@ export const Select: React.FC<SelectProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  React.useEffect(() => {
+  useEffect(() => {
     // Select is controlled
     if (typeof props.selectedItem !== 'undefined')
       setSelectedItem(props.selectedItem)
   }, [props.selectedItem])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (esc) handleClose()
   }, [esc, handleClose])
 
@@ -187,12 +200,16 @@ export const Select: React.FC<SelectProps> = ({
     return
   }
 
-  const scrollHighlightedItemIntoView = React.useCallback(() => {
+  useEffect(() => {
+    return () => resetQuery.cancel()
+  })
+
+  const scrollHighlightedItemIntoView = useCallback(() => {
     const node = itemRefs[highlightedIndex] || null
     scrollIntoView(node, menuRef.current)
   }, [highlightedIndex, itemRefs])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (arrowUp || arrowDown) {
       scrollHighlightedItemIntoView()
     }
@@ -216,6 +233,7 @@ export const Select: React.FC<SelectProps> = ({
               handleClose()
             }}
             aria-selected={selectedItem === item ? 'true' : 'false'}
+            data-highlighted={highlightedIndex}
           >
             {item.leftAdornment && (
               <LeftAdornment>{item.leftAdornment}</LeftAdornment>
@@ -230,6 +248,47 @@ export const Select: React.FC<SelectProps> = ({
       </InputMenuList>
     </SelectMenu>
   )
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!isOpen) return false
+
+    const inputIsALetter = /^[a-z\d]$/i.test(e.key)
+    const inputIsArrowUp = e.key === 'ArrowUp'
+    const inputIsArrowDown = e.key === 'ArrowDown'
+    const inputIsSpaceOrEnter = e.key === 'Space' || e.code === 'Enter'
+
+    if (inputIsALetter) {
+      resetQuery()
+
+      let input = query + e.key
+      setQuery(prevQuery => prevQuery + e.key)
+
+      const index = items.findIndex(item =>
+        item.name.toLowerCase().startsWith(input.toLowerCase())
+      )
+
+      scrollHighlightedItemIntoView()
+      return setHighlightedIndex(index === -1 ? highlightedIndex : index)
+    }
+
+    if (inputIsArrowUp) {
+      return setHighlightedIndex(prev =>
+        prev === 0 ? items.length - 1 : prev - 1
+      )
+    }
+    if (inputIsArrowDown) {
+      return setHighlightedIndex(prev =>
+        prev !== items.length - 1 ? prev + 1 : 0
+      )
+    }
+
+    if (inputIsSpaceOrEnter) {
+      setQuery('')
+      onChange(items[highlightedIndex])
+      setSelectedItem(items[highlightedIndex])
+      handleClose()
+    }
+  }
 
   return (
     <Container ref={containerRef}>
@@ -254,7 +313,7 @@ export const Select: React.FC<SelectProps> = ({
                 .map(item => item.value)
                 .indexOf(selectedItem.value)}
               id={id}
-              onChange={(e: React.SyntheticEvent) => {
+              onChange={(e: SyntheticEvent) => {
                 setSelectedItem(
                   items[parseInt((e.target as HTMLInputElement).value)]
                 )
@@ -292,27 +351,7 @@ export const Select: React.FC<SelectProps> = ({
             onBlur={() => setIsOpen(false)}
             rightAdornment={<ArrowDown size={16} />}
             leftAdornment={leftAdornment}
-            onKeyDown={e => {
-              if (!isOpen) return false
-              if (e.key === 'ArrowUp') {
-                e.preventDefault()
-                return setHighlightedIndex(prev =>
-                  prev === 0 ? items.length - 1 : prev - 1
-                )
-              }
-              if (e.key === 'ArrowDown') {
-                e.preventDefault()
-                return setHighlightedIndex(prev =>
-                  prev !== items.length - 1 ? prev + 1 : 0
-                )
-              }
-              // Select with Enter or Space keys
-              if (e.key === 'Enter' || e.keyCode === 32) {
-                onChange(items[highlightedIndex])
-                setSelectedItem(items[highlightedIndex])
-                handleClose()
-              }
-            }}
+            onKeyDown={handleKeyDown}
             aria-haspopup="listbox"
             aria-labelledby={labelId}
             aria-controls={menuId}
