@@ -104,6 +104,6 @@ WithInputToast.storyName = 'With Input'
 PersistentToast.storyName = 'Persistent'
 
 export default {
-  title: 'Toast',
+  title: 'Components/Feedback/Toast',
   decorators: [Wrapper],
 }
