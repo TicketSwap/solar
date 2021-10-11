@@ -48,7 +48,7 @@
   },
   "module": "dist/solar.es.js",
   "dependencies": {
-    "@reach/accordion": "^0.15.3",
+    "@reach/accordion": "^0.16.1",
     "@reach/auto-id": "^0.16.0",
     "@reach/dialog": "^0.12.1",
     "@reach/menu-button": "^0.12.1",
@@ -71,7 +71,7 @@
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.10",
     "@storybook/react": "^6.3.8",
     "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/jest-dom": "^5.14.1",
