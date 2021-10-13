@@ -144,6 +144,20 @@ export const Basic = () => (
   />
 )
 
+export const BasicForm = () => (
+  <form>
+    <MoneyInput
+      id="maximum-price"
+      label="Maximum price"
+      currencies={currencies}
+      onChange={e => console.log(e)}
+    />
+    <button type="submit">Save</button>
+  </form>
+)
+
+BasicForm.storyName = 'With form'
+
 export const WithInitialValues = () => (
   <MoneyInput
     id="maximum-price"

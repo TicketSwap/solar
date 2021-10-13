@@ -28,6 +28,7 @@ export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   rightAdornment?: ReactNode
   value?: number | string
   type?: string
+  step?: string
   onChange?: React.FormEventHandler<HTMLInputElement>
   menu?: boolean | object
   validate?: boolean

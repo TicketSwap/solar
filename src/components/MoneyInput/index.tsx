@@ -186,6 +186,7 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
             ref={inputRef}
             hideLabel
             type="number"
+            step="0.01"
             value={isAmountControlled ? props.amount : amount}
             disabled={disabled}
             validate={validateAmount}
