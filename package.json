@@ -4,24 +4,31 @@
   "version": "0.0.0-development",
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
   "files": [
-    "dist",
-    "src"
+    "dist/*"
   ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
     "commit": "git-cz",
-    "dev": "tsdx watch",
-    "build": "tsdx build --environment NODE_ENV:production",
+    "clean": "rm -rf dist && mkdir dist",
+    "prebuild": "yarn clean",
+    "type-check": "tsc",
+    "dev": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:esm": "BABEL_ENV=esm babel src --out-dir dist --extensions '.ts,.tsx' --ignore 'src/**/*.stories.tsx','src/**/*.test.tsx'",
+    "build:cjs": "BABEL_ENV=cjs babel src --out-dir dist/cjs --extensions '.ts,.tsx' --ignore 'src/**/*.stories.tsx','src/**/*.test.tsx'",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest test --coverage",
     "test:watch": "jest test --watch",
-    "lint": "tsdx lint",
-    "prepublishOnly": "tsdx build",
+    "lint": "eslint src",
+    "prepublishOnly": "yarn build",
     "prettier": "prettier \"**/*.+(js|jsx|json|yml|yaml|css|scss|ts|tsx|md|mdx|graphql)\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "storybook:deploy": "storybook-to-ghpages",
@@ -46,7 +53,6 @@
     "trailingComma": "es5",
     "arrowParens": "avoid"
   },
-  "module": "dist/solar.es.js",
   "dependencies": {
     "@reach/accordion": "^0.16.1",
     "@reach/auto-id": "^0.16.0",
@@ -59,6 +65,7 @@
     "downshift": "^6.1.7"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.14.6",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
@@ -76,7 +83,7 @@
     "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.2",
-    "@ticketswap/comets": "^2.14.0",
+    "@ticketswap/comets": "^2.14.1",
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
     "babel-loader": "^8.2.0",
@@ -104,7 +111,6 @@
     "size-limit": "^6.0.1",
     "storybook-addon-theme-toggle": "^0.0.1",
     "storybook-addon-themes": "^6.1.0",
-    "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3"
   }
