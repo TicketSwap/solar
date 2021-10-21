@@ -1,7 +1,6 @@
 import React from 'react'
 import { BaseStyles } from '../src/components/BaseStyles'
 import Theme from '../src/components/Theme'
-import { color } from '../src/theme'
 
 export const parameters = {
   backgrounds: {
