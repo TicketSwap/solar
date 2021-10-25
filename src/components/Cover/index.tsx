@@ -217,9 +217,9 @@ const BackgroundImage = styled.div<CoverProps>`
   }
 `
 
-const Content = styled.div<CoverProps>`
+export const CoverContent = styled.div<CoverProps>`
   position: relative;
-  padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
+  padding-top: ${space[128]};
   padding-bottom: ${space[24]};
 
   @media ${device.tablet} {
@@ -318,7 +318,7 @@ export const Cover: React.FC<CoverProps> = ({
 
       {caption && !captionUrl && <Caption>{caption}</Caption>}
 
-      <Content blurred={blurred}>{children}</Content>
+      {children}
     </Container>
   )
 }

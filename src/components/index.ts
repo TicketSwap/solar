@@ -36,7 +36,7 @@ export {
   ToastContext,
   useToast,
 } from './Toast'
-export { Cover } from './Cover'
+export { Cover, CoverContent } from './Cover'
 export {
   Dialog,
   DialogWindow,

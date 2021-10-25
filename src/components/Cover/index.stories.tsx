@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cover } from '.'
+import { Cover, CoverContent } from '.'
 import { Avatar } from '../Avatar'
 import { H1 } from '../Heading'
 import styled from '@emotion/styled'
@@ -36,7 +36,9 @@ export default {
 
 export const basic = () => (
   <Cover images={data.randomBackgroundImage.imageSizes}>
-    <Title>Awakenings Festival 2019</Title>
+    <CoverContent>
+      <Title>Awakenings Festival 2019</Title>
+    </CoverContent>
   </Cover>
 )
 
@@ -45,11 +47,13 @@ export const basicBlurred = () => (
     blurred
     imageUrl="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
   >
-    <Avatar
-      src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
-      size={128}
-    />
-    <Title>Drake</Title>
+    <CoverContent>
+      <Avatar
+        src="https://graph.facebook.com/83711079303/picture?redirect=true&type=large"
+        size={128}
+      />
+      <Title>Drake</Title>
+    </CoverContent>
   </Cover>
 )
 
@@ -62,7 +66,9 @@ export const fullHeight = () => (
     captionUrl={data.randomBackgroundImage.copyrightLink}
     images={data.randomBackgroundImage.imageSizes}
   >
-    <Title>The safest way to buy and sell e-tickets</Title>
+    <CoverContent>
+      <Title>The safest way to buy and sell e-tickets</Title>
+    </CoverContent>
   </Cover>
 )
 
@@ -76,13 +82,17 @@ export const withoutInsetShadow = () => (
     images={data.randomBackgroundImage.imageSizes}
     withInsetShadow={false}
   >
-    <Title>The safest way to buy and sell e-tickets</Title>
+    <CoverContent>
+      <Title>The safest way to buy and sell e-tickets</Title>
+    </CoverContent>
   </Cover>
 )
 
 export const withoutImage = () => (
   <Cover fullHeight>
-    <Title>The safest way to buy and sell e-tickets</Title>
+    <CoverContent>
+      <Title>The safest way to buy and sell e-tickets</Title>
+    </CoverContent>
   </Cover>
 )
 
