@@ -217,13 +217,13 @@ const BackgroundImage = styled.div<CoverProps>`
   }
 `
 
-const Content = styled.div<CoverProps>`
+const Content = styled.section<CoverProps>`
   position: relative;
   padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
   padding-bottom: ${space[24]};
 
   @media ${device.tablet} {
-    padding-top: ${144 / 16}rem;
+    padding-top: ${space[144]};
     padding-bottom: ${space[48]};
   }
 `
