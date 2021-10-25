@@ -111,6 +111,7 @@ export const space = {
   88: '5.5rem',
   96: '6rem',
   128: '8rem',
+  144: '9rem',
   256: '16rem',
   512: '32rem',
   768: '48rem',
