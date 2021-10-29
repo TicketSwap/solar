@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta
+  parameters={{
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  }}
+  title="Guidelines/Getting started"
+/>
+
+[![Actions Status](https://github.com/TicketSwap/solar/workflows/Continuous%20Integration/badge.svg)](https://github.com/TicketSwap/solar/actions)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+# Solar
+
+This documents the work on the Solar product, our TicketSwap Design System. Solar is set of UI components that form the foundation of TicketSwap’s design language. By utilising these building blocks we’re able to standardise the user experience across our platform.
+
+## Installation
+
+**The library assumes the consuming application uses:**
+
+- `@emotion/react: "^11.4.1"`
+- `@emotion/styled: "^11.3.0"`
+- `@ticketswap/comets: ">=2.10.0"`
+- `react: ">=16"`
+- `react-dom: ">=16"`
+
+#### 1. Install via yarn or npm
+
+`yarn add @ticketswap/solar` or `npm i @ticketswap/solar`
+
+#### 2. Run locally
+
+`yarn storybook`
