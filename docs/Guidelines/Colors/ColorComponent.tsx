@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { getColorsArray } from '../../utils/getColorsArray'
-import { space, radius, shadow } from '../../theme'
-import { H2, H3 } from '../../'
+import { getColorsArray } from '../../../src/utils/getColorsArray'
+import { space, radius, shadow, device } from '../../../src/theme'
+import { H2, H3 } from '../../../src/components/Heading'
 
-const StyledH2 = styled(H2)`
+const StyledHeading = styled(H2)`
   margin-bottom: ${space[16]};
   text-transform: capitalize;
+
+  @media ${device.tablet} {
+    font-size: ${space[24]};
+  }
 `
 
 const ColorsContainer = styled.div`
@@ -30,9 +34,12 @@ const StyledPanel = styled.div`
   }
 `
 
-const StyledH3 = styled(H3)`
+const ColorVariant = styled(H3)`
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
   color: white;
+  @media ${device.tablet} {
+    font-size: ${space[16]};
+  }
 `
 
 export interface ColorComponentProps {
@@ -50,12 +57,12 @@ export const ColorComponent = ({ name }: ColorComponentProps) => {
 
   return (
     <>
-      <StyledH2>{name}</StyledH2>
+      <StyledHeading>{name}</StyledHeading>
       <ColorsContainer>
         {colorsArray.map(({ name, color }: { name: string; color: string }) => {
           return (
             <StyledPanel color={color}>
-              <StyledH3>{name}</StyledH3>
+              <ColorVariant>{name}</ColorVariant>
             </StyledPanel>
           )
         })}

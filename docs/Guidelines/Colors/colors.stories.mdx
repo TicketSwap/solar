@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { ColorDefinitions } from './ColorDefinitions'
+import { PrintAndDigital } from './PrintAndDigital'
+import { Colors } from './Colors'
+import { Image } from '../../../src/components/Image'
+import { color } from '../../../src/theme'
+
+<Meta
+  parameters={{
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true,
+      },
+    },
+  }}
+  title="Guidelines/Colors"
+  decorators={[]}
+/>
+
+# Colors
+
+Color is an intrinsic element
+of our brand. Not only does it
+contribute to the look and feel
+of our brand identity, it also
+creates a canvas on which we
+can express ourselves.
+
+Even though we can never truly own any one
+of our brand colors, the way we apply them
+has become an ownable expression that is
+recognised by our community.
+
+TicketSwap uses colors purposefully to
+communicate how things function in the
+interface.
+
+Our color palette is created with the vision
+of feeling safe, be trusted, clear and friendly
+towards our users. Instead of hex codes we
+use human friendly names, so it’s clear for all
+employees what colour is used.
+
+# Definitions
+
+<ColorDefinitions />
+
+# Print & Digital
+
+<PrintAndDigital />
+
+# Variants
+
+Each color can have several variants.
+
+<Colors />

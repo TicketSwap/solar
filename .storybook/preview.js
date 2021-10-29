@@ -3,7 +3,6 @@ import { BaseStyles } from '../src/components/BaseStyles'
 import Theme from '../src/components/Theme'
 
 export const parameters = {
-  // layout: 'centered',
   backgrounds: {
     default: 'light',
     values: [
@@ -16,6 +15,15 @@ export const parameters = {
         value: '#1A212A',
       },
     ],
+  },
+  options: {
+    storySort: {
+      order: [
+        'Guidelines',
+        ['Getting started', 'Brand', 'Colors', 'Logo'],
+        'Components',
+      ],
+    },
   },
   passArgsFirst: false,
 }
