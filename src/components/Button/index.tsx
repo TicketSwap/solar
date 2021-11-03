@@ -22,6 +22,7 @@ export enum ButtonVariant {
   facebook = 'facebook',
   inverted = 'inverted',
   apple = 'apple',
+  google = 'google',
 }
 
 export enum ButtonSize {
@@ -336,6 +337,39 @@ const StyledButton = styled.button<StyledButtonProps>`
 
       &:active {
         background-color: ${color.spaceDark};
+      }
+    `};
+
+  ${({ variant }) =>
+    variant === ButtonVariant.google &&
+    css`
+      background-color: ${color.nova};
+      color: ${color.spaceMedium};
+      border: 1px solid ${color.spaceLightest};
+      background-image: unset;
+
+      &:hover {
+        background-color: ${color.spaceLightest};
+      }
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
+      }
+
+      &:active {
+        background-color: ${color.spaceLightest};
+      }
+
+      [data-theme='dark'] & {
+        background-color: ${color.space};
+        color: ${color.spaceLighter};
+
+        &:hover {
+          background-color: ${color.spaceDark};
+        }
+        &:active {
+          background-color: ${color.spaceDark};
+        }
       }
     `};
 `
