@@ -14,6 +14,7 @@ const VARIANTS = [
   ButtonVariant.facebook,
   ButtonVariant.inverted,
   ButtonVariant.apple,
+  ButtonVariant.google,
 ]
 
 const PresentationalWrapper = styled.div`
