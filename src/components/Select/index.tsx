@@ -125,7 +125,6 @@ export const Select: FC<SelectProps> = ({
   ...props
 }) => {
   const { isMobile } = useDeviceInfo()
-  const [showCustomSelect, setShowCustomSelect] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [selectedItem, setSelectedItem] = useState(
@@ -161,16 +160,6 @@ export const Select: FC<SelectProps> = ({
   function setItemRef(el: HTMLLIElement) {
     return (itemRefs = [...itemRefs, el])
   }
-
-  useEffect(() => {
-    if (!isMobile()) {
-      // Component will render a native select element by default.
-      // Upon mounting, we check whether we’re on a mobile device. If
-      // not, render the custom select.
-      setShowCustomSelect(true)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     // Select is controlled
@@ -215,40 +204,6 @@ export const Select: FC<SelectProps> = ({
     }
   }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
-  const menu = isOpen && (
-    <SelectMenu tabIndex={-1} role="listbox" aria-labelledby={labelId}>
-      <InputMenuList id={menuId} ref={menuRef}>
-        {items.map((item, index) => (
-          <InputMenuItem
-            id={`${id}-item-${item.value}`}
-            key={item.value}
-            role="option"
-            ref={setItemRef}
-            selected={selectedItem.value === item.value}
-            highlighted={highlightedIndex === index}
-            onMouseMove={() => setHighlightedIndex(index)}
-            onMouseDown={() => {
-              onChange(item)
-              setSelectedItem(item)
-              handleClose()
-            }}
-            aria-selected={selectedItem === item ? 'true' : 'false'}
-            data-highlighted={highlightedIndex}
-          >
-            {item.leftAdornment && (
-              <LeftAdornment>{item.leftAdornment}</LeftAdornment>
-            )}
-            {item.name}
-
-            {item.rightAdornment && (
-              <RightAdornment>{item.rightAdornment}</RightAdornment>
-            )}
-          </InputMenuItem>
-        ))}
-      </InputMenuList>
-    </SelectMenu>
-  )
-
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!isOpen) return false
 
@@ -290,9 +245,43 @@ export const Select: FC<SelectProps> = ({
     }
   }
 
-  return (
-    <Container ref={containerRef}>
-      {!showCustomSelect && (
+  const menu = isOpen && (
+    <SelectMenu tabIndex={-1} role="listbox" aria-labelledby={labelId}>
+      <InputMenuList id={menuId} ref={menuRef}>
+        {items.map((item, index) => (
+          <InputMenuItem
+            id={`${id}-item-${item.value}`}
+            key={item.value}
+            role="option"
+            ref={setItemRef}
+            selected={selectedItem.value === item.value}
+            highlighted={highlightedIndex === index}
+            onMouseMove={() => setHighlightedIndex(index)}
+            onMouseDown={() => {
+              onChange(item)
+              setSelectedItem(item)
+              handleClose()
+            }}
+            aria-selected={selectedItem === item ? 'true' : 'false'}
+            data-highlighted={highlightedIndex}
+          >
+            {item.leftAdornment && (
+              <LeftAdornment>{item.leftAdornment}</LeftAdornment>
+            )}
+            {item.name}
+
+            {item.rightAdornment && (
+              <RightAdornment>{item.rightAdornment}</RightAdornment>
+            )}
+          </InputMenuItem>
+        ))}
+      </InputMenuList>
+    </SelectMenu>
+  )
+
+  if (isMobile()) {
+    return (
+      <Container ref={containerRef}>
         <SelectContainer {...props}>
           {props.hideLabel ? (
             <VisuallyHidden>
@@ -334,34 +323,34 @@ export const Select: FC<SelectProps> = ({
 
           {props.help && <Help>{props.help}</Help>}
         </SelectContainer>
-      )}
+      </Container>
+    )
+  }
 
-      {showCustomSelect && (
-        <>
-          <StyledInput
-            {...props}
-            id={id}
-            ref={inputRef}
-            label={label}
-            value={selectedItem.displayName || selectedItem.name}
-            // @ts-ignore readOnly is not in the types
-            readOnly
-            labelProps={{ id: labelId, htmlFor: id }}
-            onFocus={() => setIsOpen(true)}
-            onBlur={() => setIsOpen(false)}
-            rightAdornment={<ArrowDown size={16} />}
-            leftAdornment={leftAdornment}
-            onKeyDown={handleKeyDown}
-            aria-haspopup="listbox"
-            aria-labelledby={labelId}
-            aria-controls={menuId}
-            aria-activedescendant={`${id}-item-${selectedItem.value}`}
-            menu={!floatingMenu && menu}
-          />
+  return (
+    <Container ref={containerRef}>
+      <StyledInput
+        {...props}
+        id={id}
+        ref={inputRef}
+        label={label}
+        value={selectedItem.displayName || selectedItem.name}
+        // @ts-ignore readOnly is not in the types
+        readOnly
+        labelProps={{ id: labelId, htmlFor: id }}
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setIsOpen(false)}
+        rightAdornment={<ArrowDown size={16} />}
+        leftAdornment={leftAdornment}
+        onKeyDown={handleKeyDown}
+        aria-haspopup="listbox"
+        aria-labelledby={labelId}
+        aria-controls={menuId}
+        aria-activedescendant={`${id}-item-${selectedItem.value}`}
+        menu={!floatingMenu && menu}
+      />
 
-          {floatingMenu && menu}
-        </>
-      )}
+      {floatingMenu && menu}
     </Container>
   )
 }
