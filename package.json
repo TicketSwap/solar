@@ -57,7 +57,7 @@
     "@reach/accordion": "^0.16.1",
     "@reach/auto-id": "^0.16.0",
     "@reach/dialog": "^0.16.2",
-    "@reach/menu-button": "^0.12.1",
+    "@reach/menu-button": "^0.16.2",
     "@reach/tabs": "^0.12.1",
     "@reach/tooltip": "^0.16.2",
     "@reach/utils": "^0.16.0",
