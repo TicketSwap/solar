@@ -1,7 +1,7 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import { Button, ButtonVariant } from '../Button'
-import { Close } from '@ticketswap/comets'
+import { Close } from '../../icons'
 import {
   Dialog,
   DialogAdornment,

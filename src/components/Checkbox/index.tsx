@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { Checkmark } from '@ticketswap/comets'
+import { Checkmark } from '../../icons'
 import { space, color, radius, fontWeight } from '../../theme'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { SmallText } from '../Text'

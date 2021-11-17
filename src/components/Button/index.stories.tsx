@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Button, ButtonSize, ButtonVariant } from '.'
-import { Alert } from '@ticketswap/comets'
+import { Alert } from '../../icons'
 import styled from '@emotion/styled'
 import { space } from '../../theme'
 

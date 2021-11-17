@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Input } from './'
-import { MagnifyingGlass } from '@ticketswap/comets'
+import { MagnifyingGlass } from '../../icons'
 
 export default {
   title: 'Components/Inputs/Input',

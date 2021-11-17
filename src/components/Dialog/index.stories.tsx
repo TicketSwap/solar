@@ -11,7 +11,7 @@ import {
 import { Select } from '../Select'
 import { Button, ButtonVariant } from '../Button'
 import { Input } from '../Input'
-import { CloseAlt } from '@ticketswap/comets'
+import { CloseAlt } from '../../icons'
 
 const items = [
   { value: 'de', name: 'German' },

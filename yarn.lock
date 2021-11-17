@@ -3314,11 +3314,6 @@
   dependencies:
     "@babel/runtime" "^7.12.5"
 
-"@ticketswap/comets@^2.14.1":
-  version "2.14.1"
-  resolved "https://registry.yarnpkg.com/@ticketswap/comets/-/comets-2.14.1.tgz#65397f90881e631ee09f8d797196e9c01d8a8c1b"
-  integrity sha512-qTHU6Fw7QpE1xBVIuKtpXoepIvzf7ASXte149pX/0kDvSS+aocfGkQNpZJR5/6RwLHgm9mNmEjEBnXiU8noxRA==
-
 "@tootallnate/once@1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"

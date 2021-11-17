@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { Star } from '@ticketswap/comets'
+import { Star } from '../../icons'
 import { color, space } from '../../theme'
 import { visuallyHidden } from '../VisuallyHidden'
 

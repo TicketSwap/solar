@@ -23,7 +23,7 @@ import {
   Help,
 } from '../Input'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { ArrowDown } from '@ticketswap/comets'
+import { ArrowDown } from '../../icons'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'
 import { debounce } from '../../utils/debounce'
 

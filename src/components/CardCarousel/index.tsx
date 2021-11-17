@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import { color, space, device, radius } from '../../theme'
-import { ChevronLeft, ChevronRight } from '@ticketswap/comets'
+import { ChevronLeft, ChevronRight } from '../../icons'
 
 export interface CardCarouselProps {
   cards: Array<React.ReactNode>

@@ -7,7 +7,7 @@ import {
   InputMenuItem,
   InputProps,
 } from '../Input'
-import { MagnifyingGlass } from '@ticketswap/comets'
+import { MagnifyingGlass } from '../../icons'
 import { normalizeChars } from '../../utils'
 
 export type SelectItem = {

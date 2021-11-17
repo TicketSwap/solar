@@ -14,7 +14,7 @@ import {
   device,
   fontWeight,
 } from '../../theme'
-import { CloseRounded } from '@ticketswap/comets'
+import { CloseRounded } from '../../icons'
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string
