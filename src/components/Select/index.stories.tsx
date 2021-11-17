@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select } from './'
-import { MagnifyingGlass } from '@ticketswap/comets'
+import { MagnifyingGlass } from '../../icons'
 import { Flag } from '../Flag'
 
 const items = [

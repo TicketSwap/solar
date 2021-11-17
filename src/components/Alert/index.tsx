@@ -15,7 +15,7 @@ import {
   InfoRounded,
   WarningRounded,
   CheckmarkRounded,
-} from '@ticketswap/comets'
+} from '../../icons'
 import { H4 } from '../Heading'
 
 export type AlertAction = {

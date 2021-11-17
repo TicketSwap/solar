@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { color, space, device, radius } from '../../theme'
-import { ChevronRightAlt } from '@ticketswap/comets'
+import { ChevronRightAlt } from '../../icons'
 
 const Container = styled.div<BannerProps>`
   position: relative;

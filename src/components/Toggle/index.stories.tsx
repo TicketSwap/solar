@@ -1,6 +1,6 @@
 import React from 'react'
 import { Toggle } from '.'
-import { Alert } from '@ticketswap/comets'
+import { Alert } from '../../icons'
 
 function ControlledToggle() {
   const [on, setOn] = React.useState(false)

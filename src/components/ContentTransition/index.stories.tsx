@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from '../Input'
 import { Button, ButtonVariant } from '../Button'
 import { Select } from '../Select'
-import { ChevronLeftAlt, CloseAlt } from '@ticketswap/comets'
+import { ChevronLeftAlt, CloseAlt } from '../../icons'
 import {
   DialogAdornment,
   DialogBody,

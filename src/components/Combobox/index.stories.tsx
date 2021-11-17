@@ -1,7 +1,7 @@
 import React from 'react'
 import { Combobox } from './'
 import { Flag } from '../Flag'
-import { Envelope, Messenger, Phone } from '@ticketswap/comets'
+import { Envelope, Messenger, Phone } from '../../icons'
 
 const banks = [
   {

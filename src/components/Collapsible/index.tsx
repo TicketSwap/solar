@@ -8,7 +8,7 @@ import {
   transition,
   device,
 } from '../../theme'
-import { ChevronDown } from '@ticketswap/comets'
+import { ChevronDown } from '../../icons'
 
 export interface CollapsibleProps {
   buttonLabel?: string

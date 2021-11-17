@@ -1,6 +1,6 @@
 import React from 'react'
 import { BaseButton, ButtonVariant } from './'
-import { File } from '@ticketswap/comets'
+import { File } from '../../icons'
 
 export const Basic = () => (
   <BaseButton id="baseButton" onClick={() => alert('Clicked')}>

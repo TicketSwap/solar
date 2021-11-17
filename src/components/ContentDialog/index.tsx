@@ -19,7 +19,7 @@ import {
 } from '../../theme'
 import { Text } from '../Text'
 import { H2, H4 } from '../Heading'
-import { Close } from '@ticketswap/comets'
+import { Close } from '../../icons'
 import { css, Global } from '@emotion/react'
 import { useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'

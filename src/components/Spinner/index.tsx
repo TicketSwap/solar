@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
-import { Spinner as SpinnerIcon } from '@ticketswap/comets'
+import { Spinner as SpinnerIcon } from '../../icons'
 import { color } from '../../theme'
 
 export interface SpinnerProps {

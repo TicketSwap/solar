@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { Card, CardVerticalAlign, CardSize } from '.'
 import { Avatar } from '../Avatar'
 import { Pill } from '../Pill'
-import { Ticket } from '@ticketswap/comets'
+import { Ticket } from '../../icons'
 import { color, space, device, fontSize, lineHeight, radius } from '../../theme'
 import { Flag } from '../Flag'
 

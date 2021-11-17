@@ -1,6 +1,6 @@
 import React from 'react'
 import { Pill, PillVariant } from '.'
-import { Ticket } from '@ticketswap/comets'
+import { Ticket } from '../../icons'
 
 export default {
   title: 'Components/Data Display/Pill',

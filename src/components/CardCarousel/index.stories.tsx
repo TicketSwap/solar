@@ -4,7 +4,7 @@ import { H1 } from '../Heading'
 import { Card } from '../Card'
 import styled from '@emotion/styled'
 import { color, space } from '../../theme'
-import { Avatar } from '@ticketswap/comets'
+import { Avatar } from '../../icons'
 
 const cards = [
   {
