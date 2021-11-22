@@ -4,15 +4,11 @@ import { space, device } from '../../theme'
 export const HorizontalScroll = styled.div`
   position: relative;
   overflow-x: scroll;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
   white-space: nowrap;
-  scroll-snap-type: x mandatory;
   scroll-padding: ${space[16]};
   padding-left: ${space[16]};
   padding-right: ${space[16]};
   scrollbar-width: none;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   ::-webkit-scrollbar {
     display: none;
