@@ -3,6 +3,7 @@ module.exports = {
   collectCoverageFrom: [
     '**/src/**/*.(js|jsx|ts|tsx)',
     '!**/*.test.(js|jsx|ts|tsx)',
+    '!**/*.stories.(js|jsx|ts|tsx)',
   ],
   coverageThreshold: {
     global: {
