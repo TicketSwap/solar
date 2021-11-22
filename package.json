@@ -88,7 +88,7 @@
     "@ticketswap/comets": "^2.14.1",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.9",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "babel-loader": "^8.2.3",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
