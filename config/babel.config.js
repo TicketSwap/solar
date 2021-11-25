@@ -1,14 +1,9 @@
-const isTest = String(process.env.NODE_ENV) === 'test'
-
 module.exports = {
   presets: [
     [
       '@babel/preset-env',
       {
-        modules: isTest ? 'commonjs' : false,
-        targets: {
-          node: 'current',
-        },
+        targets: '>0.2%, not dead, not op_mini all',
       },
     ],
     '@babel/preset-react',
@@ -16,6 +11,7 @@ module.exports = {
   ],
   plugins: [
     '@emotion',
+    '@babel/plugin-transform-runtime',
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-proposal-object-rest-spread',

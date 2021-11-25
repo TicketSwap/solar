@@ -1,4 +1,5 @@
-export { Alert, AlertVariant, AlertAction } from './Alert'
+export { Alert, AlertVariant } from './Alert'
+export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
 export {
   Accordion,
@@ -26,7 +27,8 @@ export { MoneyInput } from './MoneyInput'
 export { PhoneInput } from './PhoneInput'
 export { TimeInput } from './TimeInput'
 export { OneTimeCodeInput } from './OneTimeCodeInput'
-export { Combobox, SelectItem } from './Combobox'
+export { Combobox } from './Combobox'
+export type { SelectItem } from './Combobox'
 export { ContentTransition } from './ContentTransition'
 export { SkeletonPulse, SkeletonLine } from './Skeleton'
 export {
