@@ -1,4 +1,11 @@
 {
-  "pkgRoot": "dist",
-  "branches": ["main"]
+  "branches": ["main"],
+  "plugins": [
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "./dist"
+      }
+    ],
+  ]
 }
