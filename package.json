@@ -1,6 +1,6 @@
 {
   "name": "@ticketswap/solar",
-  "private": true,
+  "private": false,
   "version": "0.0.0-development",
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
