@@ -34,6 +34,7 @@ const distPackageJson =
 
 // Save the modified package.json to "dist"
 fs.writeFileSync(`${distRoot}/package.json`, distPackageJson)
+fs.copyFileSync(`${__dirname}/../README.md`, `${distRoot}/README.md`)
 
 // Create individual bundle package.json files, storing them in their
 // associated dist directory.
