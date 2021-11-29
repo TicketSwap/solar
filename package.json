@@ -35,7 +35,7 @@
     "format": "npm run prettier -- --write",
     "validate": "npm run test && npm run prettier -- --list-different",
     "pre-semantic-release": "mkdir dist && cp package.json dist/package.json",
-    "semantic-release": "yarn pre-semantic-release && semantic-release"
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "@emotion/react": "^11.4.1",
