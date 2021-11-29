@@ -4,6 +4,11 @@ const distRoot = `${__dirname}/../dist`
 
 const packageJson = require('../package.json')
 
+// The root package.json is marked as private to prevent publishing
+// from happening in the root of the project. This sets the package back to
+// public so it can be published from the "dist" directory.
+packageJson.private = false
+
 // Remove package.json items that we don't need to publish
 delete packageJson.scripts
 delete packageJson.prettier

@@ -1,6 +1,6 @@
 {
   "name": "@ticketswap/solar",
-  "private": false,
+  "private": true,
   "version": "0.0.0-development",
   "license": "MIT",
   "repository": "https://github.com/TicketSwap/solar",
@@ -34,7 +34,6 @@
     "build-storybook": "build-storybook",
     "format": "npm run prettier -- --write",
     "validate": "npm run test && npm run prettier -- --list-different",
-    "pre-semantic-release": "mkdir dist && cp package.json dist/package.json",
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
