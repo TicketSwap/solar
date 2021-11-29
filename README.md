@@ -5,3 +5,24 @@ Solar is set of UI components that form the foundation of TicketSwap’s design 
 ## Install
 
 `npm i @ticketswap/solar` or `yarn add @ticketswap/solar`
+
+## Development
+
+```
+git clone git@github.com:TicketSwap/solar.git
+cd solar
+yarn install
+yarn storybook
+```
+
+## Useful scripts
+
+```
+yarn dev        # Run type check in watch mode
+yarn build      # Builds all packages
+yarn storybook  # Starts storybook server
+```
+
+## Contributing
+
+See [the contributing guide](CONTRIBUTING.md) for detailed instructions on how to get started with our project
