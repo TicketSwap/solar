@@ -1,9 +1,9 @@
 import React from 'react'
-import { Icon } from './Icon'
+import { SvgWrapper } from './SvgWrapper'
 
 export const Money = (props: any) => (
-  <Icon a11yTitle="Money" {...props}>
+  <SvgWrapper a11yTitle="Money" {...props}>
     <path d="M24 10H8C8 11.6569 6.65686 13 5 13V19C6.65686 19 8 20.3431 8 22H24C24 20.3431 25.3431 19 27 19V13C25.3431 13 24 11.6569 24 10ZM19 16C19 17.6569 17.6569 19 16 19C14.3431 19 13 17.6569 13 16C13 14.3431 14.3431 13 16 13C17.6569 13 19 14.3431 19 16Z" />
     <path d="M6 7C3.79086 7 2 8.79086 2 11V21C2 23.2091 3.79086 25 6 25H26C28.2091 25 30 23.2091 30 21V11C30 8.79086 28.2091 7 26 7H6ZM6 9C4.89542 9 4 9.89542 4 11V21C4 22.1046 4.89542 23 6 23H26C27.1046 23 28 22.1046 28 21V11C28 9.89542 27.1046 9 26 9H6Z" />
-  </Icon>
+  </SvgWrapper>
 )

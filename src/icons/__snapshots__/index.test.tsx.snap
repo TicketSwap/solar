@@ -2,11 +2,11 @@
 
 exports[`Icon matches snapshot 1`] = `
 <span
-  class="icon css-yj93w3-SvgWrapper e192pjpu1"
+  class="icon css-1x3byhy-Wrapper e1ouvt3m1"
 >
   <svg
     aria-label="Download"
-    class="css-1dx98cs-InlineSvg e192pjpu0"
+    class="css-1dx98cs-InlineSvg e1ouvt3m0"
     clip-rule="evenodd"
     fill-rule="evenodd"
     focusable="false"

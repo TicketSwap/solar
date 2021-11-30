@@ -1,8 +1,8 @@
 import React from 'react'
-import { Icon } from './Icon'
+import { SvgWrapper } from './SvgWrapper'
 
 export const Questionmark = (props: any) => (
-  <Icon a11yTitle="Questionmark" {...props}>
+  <SvgWrapper a11yTitle="Questionmark" {...props}>
     <path d="M8 9.726C8.156 5.266 11.328 2 17.107 2 22.439 2 26 5 26 9.176c0 2.904-1.479 4.935-4.125 6.473-2.55 1.443-3.27 2.43-3.27 4.328v1.101h-4.514l-.02-1.348c-.175-2.81.954-4.518 3.64-6.055 2.412-1.424 3.23-2.45 3.23-4.329 0-2.012-1.635-3.473-4.087-3.473-2.51 0-4.125 1.5-4.281 3.853H8zM16.406 30c-1.576 0-2.84-1.196-2.84-2.696 0-1.5 1.264-2.676 2.84-2.676 1.577 0 2.822 1.177 2.822 2.676 0 1.5-1.245 2.696-2.822 2.696z" />
-  </Icon>
+  </SvgWrapper>
 )

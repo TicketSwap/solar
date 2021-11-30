@@ -1,8 +1,8 @@
 import React from 'react'
-import { Icon } from './Icon'
+import { SvgWrapper } from './SvgWrapper'
 
 export const AlertOff = (props: any) => (
-  <Icon a11yTitle="AlertOff" {...props}>
+  <SvgWrapper a11yTitle="AlertOff" {...props}>
     <path d="M7.51 20v-6.46l17.62 12.45c-.03 0-.06.01-.09.01H19c0 1.66-1.34 3-3 3s-3-1.34-3-3H6.98c-.96 0-1.77-.7-1.91-1.64-.17-1.09-.02-1.88.44-2.36 1-1.05 2-1 2-2zm21 3.31c.25.18.31.53.12.78l-.72 1.02a.56.56 0 0 1-.78.13L4.22 9.05a.56.56 0 0 1-.13-.78l.73-1.02c.17-.25.52-.31.78-.14l3.06 2.17a8.498 8.498 0 0 1 5.33-4.04V5c0-1.1.9-2 2-2s2 .9 2 2v.25c3.74.9 6.51 4.26 6.51 8.27v6.49c0 .27.08.46.21.62l3.8 2.68z" />
-  </Icon>
+  </SvgWrapper>
 )
