@@ -1,8 +1,8 @@
 import React from 'react'
-import { Icon } from './Icon'
+import { SvgWrapper } from './SvgWrapper'
 
 export const CloseRounded = (props: any) => (
-  <Icon a11yTitle="CloseRounded" {...props}>
+  <SvgWrapper a11yTitle="CloseRounded" {...props}>
     <path d="M22.361 19.586a2.011 2.011 0 0 1 0 2.828 1.967 1.967 0 0 1-2.804 0L16 18.828l-3.556 3.586a1.967 1.967 0 0 1-2.805 0 2.011 2.011 0 0 1 0-2.828L13.196 16l-3.557-3.586a2.011 2.011 0 0 1 0-2.828 1.972 1.972 0 0 1 2.805 0L16 13.172l3.557-3.586a1.972 1.972 0 0 1 2.804 0 2.011 2.011 0 0 1 0 2.828L18.805 16l3.556 3.586zm6.216-9.622C25.904 4.654 20.952 2 16 2S6.097 4.655 3.424 9.964a13.51 13.51 0 0 0 0 12.073C6.097 27.346 11.048 30 16 30c4.952 0 9.904-2.655 12.577-7.964a13.508 13.508 0 0 0 0-12.072z" />
-  </Icon>
+  </SvgWrapper>
 )

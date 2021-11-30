@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 
-export interface SvgWrapperProps {
+export interface WrapperProps {
   iconSize?: number
   color?: string
 }
 
-const SvgWrapper = styled.span<SvgWrapperProps>`
+const Wrapper = styled.span<WrapperProps>`
   display: inline-block;
   vertical-align: middle;
   width: ${props => `${props.iconSize || 32}px`};
@@ -34,21 +34,21 @@ const InlineSvg = styled.svg`
   fill: currentColor;
 `
 
-export interface IconProps {
+export interface SvgWrapperProps {
   size?: number
   children?: ReactNode
   a11yTitle: string
   color?: string
 }
 
-export const SvgWrapper: React.FC<IconProps> = ({
+export const SvgWrapper: React.FC<SvgWrapperProps> = ({
   size = 32,
   children,
   a11yTitle,
   color,
   ...props
 }) => (
-  <SvgWrapper iconSize={size} className="icon" color={color} {...props}>
+  <Wrapper iconSize={size} className="icon" color={color} {...props}>
     <InlineSvg
       aria-label={a11yTitle}
       fillRule="evenodd"
@@ -63,5 +63,5 @@ export const SvgWrapper: React.FC<IconProps> = ({
     >
       {children}
     </InlineSvg>
-  </SvgWrapper>
+  </Wrapper>
 )
