@@ -41,7 +41,7 @@ export interface IconProps {
   color?: string
 }
 
-export const Icon: React.FC<IconProps> = ({
+export const SvgWrapper: React.FC<IconProps> = ({
   size = 32,
   children,
   a11yTitle,
