@@ -39,6 +39,7 @@ export interface CardPropTypes {
 
 export interface StyledCardProps extends CardPropTypes {
   hasImage?: boolean
+  hasSubtitle?: boolean
 }
 
 const Container = styled.div<StyledCardProps>`
@@ -220,12 +221,23 @@ const Subtitle = styled.h5<StyledCardProps>`
 const Text = styled.span<StyledCardProps>`
   ${props => !props.hasImage && truncate};
   display: block;
-  font-size: ${p => (p.size === CardSize.large ? fontSize[14] : fontSize[12])};
+  font-size: ${p => {
+    if (p.hasSubtitle) {
+      return p.size === CardSize.large ? fontSize[18] : fontSize[16]
+    }
+
+    return p.size === CardSize.large ? fontSize[14] : fontSize[12]
+  }};
   opacity: 0.6;
 
   @media ${device.mobileL} {
-    font-size: ${p =>
-      p.size === CardSize.large ? fontSize[16] : fontSize[14]};
+    font-size: ${p => {
+      if (p.hasSubtitle) {
+        return p.size === CardSize.large ? fontSize[18] : fontSize[16]
+      }
+
+      return p.size === CardSize.large ? fontSize[16] : fontSize[14]
+    }};
   }
 
   ${props =>
@@ -302,6 +314,7 @@ const Card: React.FC<CardPropTypes> = ({
   ...props
 }) => {
   const hasImage = Boolean(image)
+  const hasSubtitle = Boolean(subtitle)
 
   return (
     <Container hasImage={hasImage} {...props}>
@@ -320,9 +333,13 @@ const Card: React.FC<CardPropTypes> = ({
           <TextContent hasImage={hasImage}>
             {title && <Title hasImage={hasImage}>{title}</Title>}
 
-            {subtitle && <Subtitle hasImage={hasImage}>{subtitle}</Subtitle>}
+            {hasSubtitle && <Subtitle hasImage={hasImage}>{subtitle}</Subtitle>}
 
-            {text && <Text hasImage={hasImage}>{text}</Text>}
+            {text && (
+              <Text hasSubtitle={hasSubtitle} hasImage={hasImage}>
+                {text}
+              </Text>
+            )}
 
             {description && (
               <Description hasImage={hasImage}>{description}</Description>

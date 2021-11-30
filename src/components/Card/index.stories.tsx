@@ -106,6 +106,44 @@ export const WithText = () => (
 
 WithText.storyName = 'With text'
 
+export const WithTextAndSubtitle = () => (
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Jury Show"
+        subtitle="I'm a subtitle"
+        text="Lorem ipsum dolor sit amet."
+        verticalAlign={CardVerticalAlign.top}
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - 1st Semi Final Family Show"
+        subtitle="I'm a subtitle"
+        text="Lorem ipsum dolor sit amet."
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        verticalAlign={CardVerticalAlign.top}
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        title="Eurovision Song Contest - Grand Final Live Show"
+        subtitle="I'm a subtitle"
+        text="Lorem ipsum dolor sit amet."
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+        verticalAlign={CardVerticalAlign.top}
+      />
+    </a>
+  </Grid>
+)
+
+WithText.storyName = 'With text and subtitle'
+
 export const WithImage = () => (
   <Grid>
     <a href="/" style={{ minWidth: 0 }}>
