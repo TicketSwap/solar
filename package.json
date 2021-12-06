@@ -79,7 +79,7 @@
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-essentials": "^6.4.7",
     "@storybook/react": "^6.3.12",
     "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/dom": "^8.11.1",
