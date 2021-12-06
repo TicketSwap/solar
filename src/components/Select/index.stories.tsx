@@ -1,7 +1,8 @@
 import React from 'react'
-import { Select } from './'
-import { MagnifyingGlass } from '../../icons'
+import { Select, SelectItemType } from './'
+import { MagnifyingGlass, Plus } from '../../icons'
 import { Flag } from '../Flag'
+import { color } from '../../theme'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -11,6 +12,18 @@ const items = [
   { value: 'hu', name: 'Hungarian' },
   { value: 'fr', name: 'French' },
   { value: 'es', name: 'Spanish' },
+]
+
+const itemsWithActions = [
+  { value: 'ideal', name: 'iDeal' },
+  { value: 'credit_card', name: 'Credit Card' },
+  {
+    value: null,
+    name: 'My prefered payment method is missing',
+    type: SelectItemType.action,
+    leftAdornment: <Plus size={20} color={color.spaceLighter} />,
+    onClick: () => alert('That is a bummer!'),
+  },
 ]
 
 export default {
@@ -25,6 +38,18 @@ export const Basic = () => (
     help="Select a language"
     onChange={selection => console.log(selection)}
     initialSelectedItem={items[1]}
+    leftAdornment={<MagnifyingGlass size={24} />}
+  />
+)
+
+export const withActions = () => (
+  <Select
+    items={itemsWithActions}
+    id="language"
+    label="Language"
+    help="Select a language"
+    onChange={selection => console.log(selection)}
+    initialSelectedItem={itemsWithActions[0]}
     leftAdornment={<MagnifyingGlass size={24} />}
   />
 )
