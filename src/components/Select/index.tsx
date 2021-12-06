@@ -37,12 +37,19 @@ const Container = styled.div`
 
 Container.defaultProps = { className: 'select' }
 
+export enum SelectItemType {
+  select = 'select',
+  action = 'action',
+}
+
 type SelectItem = {
   value: string
   name: string
   displayName?: string
   leftAdornment?: ReactNode
   rightAdornment?: ReactNode
+  type?: SelectItemType
+  onClick?: Function
 }
 
 export interface SelectProps extends Omit<InputProps, 'onChange'> {
@@ -136,6 +143,7 @@ export const Select: FC<SelectProps> = ({
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const menuRef = useRef<HTMLUListElement>(null)
+  const mobileSelectRef = useRef<HTMLSelectElement>(null)
   let itemRefs: HTMLLIElement[] = []
   const labelId = `${id}-label`
   const menuId = `${id}-menu`
@@ -238,6 +246,13 @@ export const Select: FC<SelectProps> = ({
     }
 
     if (inputIsSpaceOrEnter) {
+      const item = items[highlightedIndex]
+
+      if (item.type === SelectItemType.action && item.onClick) {
+        item.onClick()
+        return handleClose()
+      }
+
       setQuery('')
       onChange(items[highlightedIndex])
       setSelectedItem(items[highlightedIndex])
@@ -258,6 +273,10 @@ export const Select: FC<SelectProps> = ({
             highlighted={highlightedIndex === index}
             onMouseMove={() => setHighlightedIndex(index)}
             onMouseDown={() => {
+              if (item.type === SelectItemType.action && item.onClick) {
+                return item.onClick()
+              }
+
               onChange(item)
               setSelectedItem(item)
               handleClose()
@@ -297,16 +316,29 @@ export const Select: FC<SelectProps> = ({
             {leftAdornment ? <Adornment left>{leftAdornment}</Adornment> : null}
 
             <StyledSelect
+              ref={mobileSelectRef}
               leftAdornment={leftAdornment}
               defaultValue={items
                 .map(item => item.value)
                 .indexOf(selectedItem.value)}
               id={id}
               onChange={(e: SyntheticEvent) => {
-                setSelectedItem(
+                const selected = items
+                  .map(item => item.value)
+                  .indexOf(selectedItem.value)
+                const item =
                   items[parseInt((e.target as HTMLInputElement).value)]
-                )
-                onChange(items[parseInt((e.target as HTMLInputElement).value)])
+
+                if (item.type === SelectItemType.action && item.onClick) {
+                  if (mobileSelectRef.current) {
+                    mobileSelectRef.current.selectedIndex = selected
+                  }
+
+                  return item.onClick()
+                }
+
+                setSelectedItem(item)
+                onChange(item)
               }}
             >
               {items.map((item, index) => (
