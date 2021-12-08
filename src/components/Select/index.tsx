@@ -212,6 +212,12 @@ export const Select: FC<SelectProps> = ({
     }
   }, [arrowUp, arrowDown, scrollHighlightedItemIntoView])
 
+  useEffect(() => {
+    if (isOpen) {
+      scrollHighlightedItemIntoView()
+    }
+  }, [isOpen, scrollHighlightedItemIntoView])
+
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!isOpen) return false
 
