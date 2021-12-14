@@ -158,6 +158,7 @@ export const Icons = () => {
       <IconWrapper icon={<Icon.Clover title="Clover" />} name="Clover" />
       <IconWrapper icon={<Icon.Comment title="Comment" />} name="Comment" />
       <IconWrapper icon={<Icon.Copy title="Copy" />} name="Copy" />
+      <IconWrapper icon={<Icon.CopyLink title="CopyLink" />} name="CopyLink" />
       <IconWrapper
         icon={<Icon.CreditCard title="CreditCard" />}
         name="CreditCard"
