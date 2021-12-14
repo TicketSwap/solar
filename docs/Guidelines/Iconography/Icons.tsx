@@ -77,6 +77,10 @@ export const Icons = () => {
     <IconGrid>
       <IconWrapper icon={<Icon.Alert title="Alert" />} name="Alert" />
       <IconWrapper icon={<Icon.AlertOff title="AlertOff" />} name="AlertOff" />
+      <IconWrapper
+        icon={<Icon.AlertRounded title="AlertRounded" />}
+        name="AlertRounded"
+      />
       <IconWrapper icon={<Icon.Android title="Android" />} name="Android" />
       <IconWrapper icon={<Icon.Apple title="Apple" />} name="Apple" />
       <IconWrapper
@@ -92,6 +96,7 @@ export const Icons = () => {
         name="ArrowUpRounded"
       />
       <IconWrapper icon={<Icon.Avatar title="Avatar" />} name="Avatar" />
+      <IconWrapper icon={<Icon.Barcode title="Barcode" />} name="Barcode" />
       <IconWrapper icon={<Icon.Calendar title="Calendar" />} name="Calendar" />
       <IconWrapper
         icon={<Icon.CalendarClock title="CalendarClock" />}
@@ -157,8 +162,8 @@ export const Icons = () => {
       />
       <IconWrapper icon={<Icon.Clover title="Clover" />} name="Clover" />
       <IconWrapper icon={<Icon.Comment title="Comment" />} name="Comment" />
+      <IconWrapper icon={<Icon.Compass title="Compass" />} name="Compass" />
       <IconWrapper icon={<Icon.Copy title="Copy" />} name="Copy" />
-      <IconWrapper icon={<Icon.CopyLink title="CopyLink" />} name="CopyLink" />
       <IconWrapper
         icon={<Icon.CreditCard title="CreditCard" />}
         name="CreditCard"
@@ -170,6 +175,10 @@ export const Icons = () => {
       <IconWrapper icon={<Icon.Envelope title="Envelope" />} name="Envelope" />
       <IconWrapper icon={<Icon.Error title="Error" />} name="Error" />
       <IconWrapper icon={<Icon.Event title="Event" />} name="Event" />
+      <IconWrapper
+        icon={<Icon.EventType title="EventType" />}
+        name="EventType"
+      />
       <IconWrapper icon={<Icon.Eye title="Eye" />} name="Eye" />
       <IconWrapper icon={<Icon.Facebook title="Facebook" />} name="Facebook" />
       <IconWrapper icon={<Icon.File title="File" />} name="File" />
@@ -189,6 +198,7 @@ export const Icons = () => {
         icon={<Icon.Instagram title="Instagram" />}
         name="Instagram"
       />
+      <IconWrapper icon={<Icon.Link title="Link" />} name="Link" />
       <IconWrapper icon={<Icon.List title="List" />} name="List" />
       <IconWrapper icon={<Icon.ListAlt title="ListAlt" />} name="ListAlt" />
       <IconWrapper icon={<Icon.Location title="Location" />} name="Location" />
@@ -231,6 +241,7 @@ export const Icons = () => {
         icon={<Icon.Paperclip title="Paperclip" />}
         name="Paperclip"
       />
+      <IconWrapper icon={<Icon.Pause title="Pause" />} name="Pause" />
       <IconWrapper icon={<Icon.Pencil title="Pencil" />} name="Pencil" />
       <IconWrapper icon={<Icon.Phone title="Phone" />} name="Phone" />
       <IconWrapper
@@ -245,6 +256,7 @@ export const Icons = () => {
         icon={<Icon.PlusRounded title="PlusRounded" />}
         name="PlusRounded"
       />
+      <IconWrapper icon={<Icon.QrCode title="QrCode" />} name="QrCode" />
       <IconWrapper
         icon={<Icon.Questionmark title="Questionmark" />}
         name="Questionmark"
@@ -265,6 +277,8 @@ export const Icons = () => {
       <IconWrapper icon={<Icon.Share title="Share" />} name="Share" />
       <IconWrapper icon={<Icon.ShareAlt title="ShareAlt" />} name="ShareAlt" />
       <IconWrapper icon={<Icon.Shield title="Shield" />} name="Shield" />
+      <IconWrapper icon={<Icon.Shuffle title="Shuffle" />} name="Shuffle" />
+      <IconWrapper icon={<Icon.Snooze title="Snooze" />} name="Snooze" />
       <IconWrapper
         icon={<Icon.SoundCloud title="SoundCloud" />}
         name="SoundCloud"
@@ -272,6 +286,7 @@ export const Icons = () => {
       <IconWrapper icon={<Icon.Spinner title="Spinner" />} name="Spinner" />
       <IconWrapper icon={<Icon.Spotify title="Spotify" />} name="Spotify" />
       <IconWrapper icon={<Icon.Star title="Star" />} name="Star" />
+      <IconWrapper icon={<Icon.StarHalf title="StarHalf" />} name="StarHalf" />
       <IconWrapper icon={<Icon.Sun title="Sun" />} name="Sun" />
       <IconWrapper icon={<Icon.Tag title="Tag" />} name="Tag" />
       <IconWrapper
@@ -294,6 +309,7 @@ export const Icons = () => {
         icon={<Icon.WarningRounded title="WarningRounded" />}
         name="WarningRounded"
       />
+      <IconWrapper icon={<Icon.Watch title="Watch" />} name="Watch" />
       <IconWrapper icon={<Icon.WhatsApp title="WhatsApp" />} name="WhatsApp" />
     </IconGrid>
   )
