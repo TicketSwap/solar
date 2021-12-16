@@ -1,7 +1,7 @@
 import React from 'react'
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import DatePicker, { TimeFrame } from '.'
+import { DatePicker, TimeFrame } from '.'
 
 describe('DatePicker', () => {
   describe('when it has a placeholder set', () => {

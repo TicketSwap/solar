@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import DatePicker, { TimeFrame } from '.'
+import { DatePicker, TimeFrame } from '.'
 
 export default {
   title: 'Components/Inputs/DatePicker',

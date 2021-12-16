@@ -40,7 +40,7 @@ const ButtonText = styled(Text)<ButtonTextProps>`
   color: ${props => (props.hasDate ? color.space : color.spaceLight)};
 `
 
-const DatePicker = ({
+export const DatePicker = ({
   date = null,
   placeholder,
   title,
@@ -90,5 +90,3 @@ const DatePicker = ({
 }
 
 export { TimeFrame }
-
-export default DatePicker
