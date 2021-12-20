@@ -86,8 +86,8 @@ const CalendarDialog = ({
   locale,
   onChange,
 }: CalendarDialogProps) => {
-  const month = date?.getMonth() || new Date().getMonth()
-  const year = date?.getFullYear() || new Date().getFullYear()
+  const month = date ? date.getMonth() : new Date().getMonth()
+  const year = date ? date.getFullYear() : new Date().getFullYear()
 
   const [selectedMonth, setSelectedMonth] = useState(month)
   const [selectedYear, setSelectedYear] = useState(year)
