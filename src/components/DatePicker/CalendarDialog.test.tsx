@@ -138,6 +138,35 @@ describe('CalendarDialog', () => {
         })
       ).toHaveAttribute('aria-selected')
     })
+
+    describe('and the month is January (0)', () => {
+      it('renders the dialog correctly', async () => {
+        const date = new Date(2020, 0, 20)
+
+        render(
+          <CalendarDialog
+            date={date}
+            title="Pick a date"
+            timeFrame={TimeFrame.future}
+            monthLabel="Month"
+            yearLabel="Year"
+            info="Some important info"
+            isOpen={true}
+            close={jest.fn()}
+            locale="en-EN"
+            onChange={jest.fn()}
+          />
+        )
+
+        await dialogIsOpen()
+
+        expect(
+          screen.getByRole('textbox', {
+            name: /month arrowdown/i,
+          })
+        ).toHaveDisplayValue('January')
+      })
+    })
   })
 
   describe('when a date is not initially provided', () => {
