@@ -22,6 +22,7 @@ import {
   getYears,
   isPastDate,
   isFutureDate,
+  withTimezone,
 } from '../../utils/dates'
 
 const Selects = styled.div`
@@ -70,6 +71,7 @@ interface CalendarDialogProps {
   info?: string
   isOpen: boolean
   locale: string
+  timeZone: string
   close: () => void
   onChange: (date: Date) => void
 }
@@ -84,16 +86,28 @@ const CalendarDialog = ({
   isOpen,
   close,
   locale,
+  timeZone,
   onChange,
 }: CalendarDialogProps) => {
-  const month = date?.getMonth() || new Date().getMonth()
-  const year = date?.getFullYear() || new Date().getFullYear()
+  const initialDate = date || new Date()
+
+  const month = withTimezone(initialDate, timeZone, locale).getMonth()
+  const year = withTimezone(initialDate, timeZone, locale).getFullYear()
 
   const [selectedMonth, setSelectedMonth] = useState(month)
   const [selectedYear, setSelectedYear] = useState(year)
 
-  const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate()
-  const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1).getDay()
+  const daysInMonth = withTimezone(
+    new Date(selectedYear, selectedMonth + 1, 0),
+    timeZone,
+    locale
+  ).getDate()
+
+  const firstDayOfMonth = withTimezone(
+    new Date(selectedYear, selectedMonth, 1),
+    timeZone,
+    locale
+  ).getDay()
 
   const weekdays = getWeekdays(locale)
   const months = getMonths(locale)
@@ -102,10 +116,14 @@ const CalendarDialog = ({
   const days: Array<React.ReactNode> = []
 
   for (let i = 1; i < daysInMonth + 1; i++) {
-    const day = new Date(selectedYear, selectedMonth, i)
+    const day = withTimezone(
+      new Date(selectedYear, selectedMonth, i),
+      timeZone,
+      locale
+    )
     const isDisabled =
-      (timeFrame === TimeFrame.future && isPastDate(day)) ||
-      (timeFrame === TimeFrame.past && isFutureDate(day))
+      (timeFrame === TimeFrame.future && isPastDate(day, timeZone, locale)) ||
+      (timeFrame === TimeFrame.past && isFutureDate(day, timeZone, locale))
 
     days.push(
       <Day

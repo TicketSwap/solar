@@ -5,12 +5,16 @@ export enum TimeFrame {
 }
 
 const dateWithoutHours = (date: Date) => date.setHours(0, 0, 0, 0)
+const withTimezone = (date: Date, timeZone: string, locale: string) =>
+  new Date(date.toLocaleString(locale, { timeZone }))
 
 const isSameDate = (dateOne: Date, dateTwo: Date) =>
   dateWithoutHours(dateOne) === dateWithoutHours(dateTwo)
-const isPastDate = (date: Date) =>
-  dateWithoutHours(date) - dateWithoutHours(new Date()) < 0
-const isFutureDate = (date: Date) =>
+const isPastDate = (date: Date, timeZone: string, locale: string) =>
+  dateWithoutHours(date) -
+    dateWithoutHours(withTimezone(new Date(), timeZone, locale)) <
+  0
+const isFutureDate = (date: Date, timeZone: string, locale: string) =>
   dateWithoutHours(date) - dateWithoutHours(new Date()) > 0
 
 const getWeekdays = (locale: string) => {
@@ -77,6 +81,7 @@ const getYears = (
 }
 
 export {
+  withTimezone,
   isSameDate,
   isPastDate,
   isFutureDate,

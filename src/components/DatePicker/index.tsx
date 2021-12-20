@@ -20,6 +20,7 @@ interface DatePickerProps {
   monthLabel: string
   yearLabel: string
   locale?: string
+  timeZone?: string
   onChange: (date: Date) => void
 }
 
@@ -49,6 +50,7 @@ export const DatePicker = ({
   monthLabel,
   yearLabel,
   locale = 'en-US',
+  timeZone = 'CET',
   onChange,
 }: DatePickerProps) => {
   const [isOpen, setOpen] = useState(false)
@@ -66,6 +68,7 @@ export const DatePicker = ({
         monthLabel={monthLabel}
         yearLabel={yearLabel}
         locale={locale}
+        timeZone={timeZone}
         isOpen={isOpen}
         close={close}
         onChange={(date: Date) => {
@@ -81,6 +84,7 @@ export const DatePicker = ({
                 day: 'numeric',
                 month: 'short',
                 year: 'numeric',
+                timeZone,
               })
             : placeholder}
         </ButtonText>
