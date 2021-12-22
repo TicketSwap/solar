@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styled from '@emotion/styled'
 import { Text } from '../Text'
 import { Calendar } from '../../icons'
-import { space, radius, color } from '../../theme'
+import { space, radius, color, device } from '../../theme'
 import CalendarDialog from './CalendarDialog'
 import { TimeFrame } from '../../utils/dates'
 
@@ -36,8 +36,22 @@ const StyledButton = styled.button`
 `
 
 const ButtonText = styled(Text)<ButtonTextProps>`
-  margin-left: ${space[16]};
   color: ${props => (props.hasDate ? color.space : color.spaceLight)};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media ${device.mobileM} {
+    margin-left: ${space[16]};
+  }
+`
+
+const StyledCalendar = styled(Calendar)`
+  display: none;
+
+  @media ${device.mobileM} {
+    display: inline-block;
+  }
 `
 
 export const DatePicker = ({
@@ -74,7 +88,7 @@ export const DatePicker = ({
         }}
       />
       <StyledButton onClick={toggle}>
-        <Calendar size={24} color={color.spaceMedium} />
+        <StyledCalendar size={24} color={color.spaceMedium} />
         <ButtonText hasDate={!!date}>
           {!!date
             ? date.toLocaleString(locale, {
