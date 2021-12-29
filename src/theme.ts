@@ -108,6 +108,7 @@ export const space = {
   48: '3rem',
   56: '3.5rem',
   64: '4rem',
+  80: '5rem',
   88: '5.5rem',
   96: '6rem',
   128: '8rem',
