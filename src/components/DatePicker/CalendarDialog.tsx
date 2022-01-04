@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styled from '@emotion/styled'
 import {
@@ -100,6 +100,16 @@ const CalendarDialog = ({
   const years = getYears(timeFrame)
 
   const days: Array<React.ReactNode> = []
+
+  useEffect(() => {
+    if (!date) return
+
+    const month = date.getMonth()
+    const year = date.getFullYear()
+
+    setSelectedMonth(month)
+    setSelectedYear(year)
+  }, [date])
 
   for (let i = 1; i < daysInMonth + 1; i++) {
     const day = new Date(selectedYear, selectedMonth, i)
