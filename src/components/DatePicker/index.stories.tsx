@@ -87,6 +87,27 @@ export const All = () => {
 
 All.storyName = 'All dates'
 
+export const WithTimeRange = () => {
+  const [date, setDate] = useState(null)
+
+  return (
+    <DatePicker
+      date={date}
+      timeFrame={TimeFrame.custom}
+      dateRange={{
+        start: new Date('02-12-2023'),
+        end: new Date('04-20-2023'),
+      }}
+      monthLabel="Month"
+      yearLabel="Year"
+      placeholder="Pick a date"
+      onChange={date => setDate(date)}
+    />
+  )
+}
+
+WithTimeRange.storyName = 'With a time range'
+
 export const WithTitle = () => {
   const [date, setDate] = useState(null)
 

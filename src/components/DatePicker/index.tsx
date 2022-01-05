@@ -16,6 +16,7 @@ interface DatePickerProps {
   placeholder: string
   title?: string
   timeFrame?: TimeFrame
+  dateRange?: { start: Date; end: Date }
   info?: string
   monthLabel: string
   yearLabel: string
@@ -59,6 +60,7 @@ export const DatePicker = ({
   placeholder,
   title,
   timeFrame = TimeFrame.future,
+  dateRange,
   info,
   monthLabel,
   yearLabel,
@@ -76,6 +78,7 @@ export const DatePicker = ({
         date={date}
         title={title}
         timeFrame={timeFrame}
+        dateRange={dateRange}
         info={info}
         monthLabel={monthLabel}
         yearLabel={yearLabel}
