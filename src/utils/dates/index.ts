@@ -2,16 +2,17 @@ export enum TimeFrame {
   all = 'all',
   past = 'past',
   future = 'future',
+  custom = 'custom',
 }
 
 const dateWithoutHours = (date: Date) => date.setHours(0, 0, 0, 0)
 
 const isSameDate = (dateOne: Date, dateTwo: Date) =>
   dateWithoutHours(dateOne) === dateWithoutHours(dateTwo)
-const isPastDate = (date: Date) =>
-  dateWithoutHours(date) - dateWithoutHours(new Date()) < 0
-const isFutureDate = (date: Date) =>
-  dateWithoutHours(date) - dateWithoutHours(new Date()) > 0
+const isPastDate = (date: Date, dateOfReference: Date = new Date()) =>
+  dateWithoutHours(date) - dateWithoutHours(dateOfReference) < 0
+const isFutureDate = (date: Date, dateOfReference: Date = new Date()) =>
+  dateWithoutHours(date) - dateWithoutHours(dateOfReference) > 0
 
 const getWeekdays = (locale: string) => {
   const weekdays = []
@@ -27,7 +28,7 @@ const getWeekdays = (locale: string) => {
   return weekdays
 }
 
-const getMonths = (locale: string) => {
+const getMonths = (locale: string, dateRange?: { start: Date; end: Date }) => {
   const months = []
 
   for (let i = 0; i < 12; i++) {
@@ -39,6 +40,14 @@ const getMonths = (locale: string) => {
       name: String(month),
       value: String(i),
     })
+  }
+
+  if (dateRange) {
+    return months.filter(
+      month =>
+        Number(month.value) >= dateRange.start.getMonth() &&
+        Number(month.value) <= dateRange.end.getMonth()
+    )
   }
 
   return months
@@ -59,21 +68,26 @@ const generateYears = (startYear: number, endYear: number) => {
   return years
 }
 
-const getYears = (
-  timeFrame: TimeFrame = TimeFrame.future,
-  range: number = 10
-) => {
-  const currentYear = new Date().getFullYear()
+interface YearParams {
+  timeFrame: TimeFrame
+  range: number
+  yearOfReference: number
+}
 
+const getYears = ({ timeFrame, range, yearOfReference }: YearParams) => {
   if (timeFrame === TimeFrame.all) {
-    return generateYears(currentYear - range, currentYear + range)
+    return generateYears(yearOfReference - range, yearOfReference + range)
   }
 
   if (timeFrame === TimeFrame.past) {
-    return generateYears(currentYear - range, currentYear)
+    return generateYears(yearOfReference - range, yearOfReference)
   }
 
-  return generateYears(currentYear, currentYear + range)
+  if (timeFrame === TimeFrame.custom) {
+    return generateYears(yearOfReference - range, yearOfReference)
+  }
+
+  return generateYears(yearOfReference, yearOfReference + range)
 }
 
 export {
