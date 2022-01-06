@@ -95,8 +95,8 @@ export const WithTimeRange = () => {
       date={date}
       timeFrame={TimeFrame.custom}
       dateRange={{
-        start: new Date('02-12-2023'),
-        end: new Date('04-20-2023'),
+        start: new Date(2023, 2, 12),
+        end: new Date(2023, 4, 20),
       }}
       monthLabel="Month"
       yearLabel="Year"
