@@ -117,7 +117,11 @@ const CalendarDialog = ({
   const days: Array<React.ReactNode> = []
 
   useEffect(() => {
-    if (!date) return
+    if (!date) {
+      setSelectedMonth(initialMonth)
+      setSelectedYear(initialYear)
+      return
+    }
 
     const month = date.getMonth()
     const year = date.getFullYear()

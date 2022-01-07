@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import styled from '@emotion/styled'
 import { Text } from '../Text'
-import { Calendar } from '../../icons'
-import { space, radius, color, device } from '../../theme'
+import { Calendar, CloseRounded } from '../../icons'
+import { space, radius, color, device, transition } from '../../theme'
 import CalendarDialog from './CalendarDialog'
 import { TimeFrame } from '../../utils/dates'
 
@@ -22,6 +22,7 @@ interface DatePickerProps {
   yearLabel: string
   locale?: string
   onChange: (date: Date) => void
+  onReset?: () => void
 }
 
 const StyledButton = styled.button`
@@ -32,6 +33,7 @@ const StyledButton = styled.button`
   font-family: inherit;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: ${space[8]};
   width: 100%;
 `
@@ -55,6 +57,18 @@ const StyledCalendar = styled(Calendar)`
   }
 `
 
+const ResetButton = styled.button`
+  line-height: 0;
+  opacity: 0.35;
+  transition: opacity ${transition};
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+    outline: 0;
+  }
+`
+
 export const DatePicker = ({
   date = null,
   placeholder,
@@ -66,6 +80,7 @@ export const DatePicker = ({
   yearLabel,
   locale = 'en-US',
   onChange,
+  onReset,
 }: DatePickerProps) => {
   const [isOpen, setOpen] = useState(false)
 
@@ -91,16 +106,30 @@ export const DatePicker = ({
         }}
       />
       <StyledButton onClick={toggle}>
-        <StyledCalendar size={24} color={color.spaceMedium} />
-        <ButtonText hasDate={!!date}>
-          {!!date
-            ? date.toLocaleString(locale, {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric',
-              })
-            : placeholder}
-        </ButtonText>
+        <div>
+          <StyledCalendar size={24} color={color.spaceMedium} />
+          <ButtonText hasDate={!!date}>
+            {!!date
+              ? date.toLocaleString(locale, {
+                  day: 'numeric',
+                  month: 'short',
+                  year: 'numeric',
+                })
+              : placeholder}
+          </ButtonText>
+        </div>
+        {onReset && date && (
+          <ResetButton
+            onClick={e => {
+              onReset()
+              e.stopPropagation()
+            }}
+            type="button"
+            data-testid="reset-button"
+          >
+            <CloseRounded size={16} />
+          </ResetButton>
+        )}
       </StyledButton>
     </>
   )
