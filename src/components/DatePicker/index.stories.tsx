@@ -125,6 +125,24 @@ export const WithTitle = () => {
 
 WithTitle.storyName = 'With title'
 
+export const WithResetButton = () => {
+  const [date, setDate] = useState(null)
+
+  return (
+    <DatePicker
+      date={date}
+      title="Pick a date"
+      monthLabel="Month"
+      yearLabel="Year"
+      placeholder="Pick a date"
+      onChange={date => setDate(date)}
+      onReset={() => setDate(null)}
+    />
+  )
+}
+
+WithResetButton.storyName = 'With reset button'
+
 export const WithInfo = () => {
   const [date, setDate] = useState(null)
 
