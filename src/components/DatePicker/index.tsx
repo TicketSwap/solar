@@ -14,6 +14,7 @@ interface ButtonTextProps {
 interface DatePickerProps {
   date?: Date | null
   placeholder: string
+  resetLabel?: string
   title?: string
   timeFrame?: TimeFrame
   dateRange?: { start: Date; end: Date }
@@ -79,6 +80,7 @@ export const DatePicker = ({
   monthLabel,
   yearLabel,
   locale = 'en-US',
+  resetLabel,
   onChange,
   onReset,
 }: DatePickerProps) => {
@@ -125,7 +127,7 @@ export const DatePicker = ({
               e.stopPropagation()
             }}
             type="button"
-            data-testid="reset-button"
+            aria-label={resetLabel}
           >
             <CloseRounded size={16} />
           </ResetButton>

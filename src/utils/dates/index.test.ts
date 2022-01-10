@@ -147,6 +147,30 @@ describe('dates', () => {
       ])
     })
 
+    it('returns only the months within a timeRange', () => {
+      const monthsOfTimeRange = getMonths('en-EN', {
+        start: new Date('02-12-2023'),
+        end: new Date('04-20-2023'),
+      })
+      expect(monthsOfTimeRange).toHaveLength(3)
+      expect(monthsOfTimeRange).toEqual(
+        expect.arrayContaining([
+          {
+            name: 'February',
+            value: '1',
+          },
+          {
+            name: 'March',
+            value: '2',
+          },
+          {
+            name: 'April',
+            value: '3',
+          },
+        ])
+      )
+    })
+
     describe('when provided with different "BCP 47" locale tags', () => {
       it('translates them correctly', () => {
         const nl_months = getMonths('nl-NL')
@@ -206,7 +230,11 @@ describe('dates', () => {
   describe('getYears', () => {
     describe('when the timeFrame is "all"', () => {
       it('includes past and future years', () => {
-        const years = getYears(TimeFrame.all, 1)
+        const years = getYears({
+          timeFrame: TimeFrame.all,
+          range: 1,
+          yearOfReference: new Date().getFullYear(),
+        })
 
         expect(years).toEqual([
           {
@@ -228,7 +256,11 @@ describe('dates', () => {
 
   describe('when the timeFrame is "past"', () => {
     it('includes past years', () => {
-      const years = getYears(TimeFrame.past, 1)
+      const years = getYears({
+        timeFrame: TimeFrame.past,
+        range: 1,
+        yearOfReference: new Date().getFullYear(),
+      })
 
       expect(years).toEqual([
         {
@@ -245,7 +277,11 @@ describe('dates', () => {
 
   describe('when the timeFrame is "future"', () => {
     it('includes future years', () => {
-      const years = getYears(TimeFrame.future, 1)
+      const years = getYears({
+        timeFrame: TimeFrame.future,
+        range: 1,
+        yearOfReference: new Date().getFullYear(),
+      })
 
       expect(years).toEqual([
         {
@@ -260,19 +296,31 @@ describe('dates', () => {
     })
   })
 
-  describe('when the range is not specified', () => {
-    it('displays a range of 20 years', () => {
-      const years = getYears(TimeFrame.all)
+  describe('when the timeFrame is all and the range default to 10', () => {
+    it('displays a range of 20 years (10y before and after current year)', () => {
+      const years = getYears({
+        timeFrame: TimeFrame.all,
+        range: 10,
+        yearOfReference: new Date().getFullYear(),
+      })
 
       expect(years).toHaveLength(21)
     })
   })
 
-  describe('when the timeFrame is not specified', () => {
-    it('displays the future years', () => {
-      const years = getYears()
+  describe('when the timeFrame is custom', () => {
+    it('displays the years within date range', () => {
+      const dateRange = {
+        start: new Date('02-12-2023'),
+        end: new Date('04-20-2024'),
+      }
+      const years = getYears({
+        timeFrame: TimeFrame.custom,
+        range: dateRange.end.getFullYear() - dateRange.start.getFullYear(),
+        yearOfReference: dateRange.start.getFullYear(),
+      })
 
-      expect(years).toHaveLength(11)
+      expect(years).toHaveLength(2)
     })
   })
 })

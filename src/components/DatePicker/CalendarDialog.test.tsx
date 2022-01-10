@@ -383,6 +383,45 @@ describe('CalendarDialog', () => {
     })
   })
 
+  describe('when the timeFrame is custom', () => {
+    beforeEach(() => {
+      jest.useFakeTimers('modern')
+      jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
+    })
+
+    afterEach(() => {
+      jest.useRealTimers()
+    })
+
+    it('disables dates outside of the dateRange', async () => {
+      render(
+        <CalendarDialog
+          date={null}
+          title="Pick a date"
+          timeFrame={TimeFrame.custom}
+          dateRange={{
+            start: new Date('02-10-2023'),
+            end: new Date('02-15-2023'),
+          }}
+          monthLabel="Month"
+          yearLabel="Year"
+          info="Some important info"
+          isOpen={true}
+          close={jest.fn()}
+          locale="en-EN"
+          onChange={jest.fn()}
+        />
+      )
+
+      await dialogIsOpen()
+
+      expect(screen.getByRole('button', { name: '16' })).toBeDisabled()
+      expect(screen.getByRole('button', { name: '17' })).toBeDisabled()
+      expect(screen.getByRole('button', { name: '9' })).toBeDisabled()
+      expect(screen.getByRole('button', { name: '8' })).toBeDisabled()
+    })
+  })
+
   describe('when the timeFrame is all', () => {
     beforeEach(() => {
       jest.useFakeTimers('modern')
