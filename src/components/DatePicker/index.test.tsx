@@ -44,6 +44,38 @@ describe('DatePicker', () => {
 
       expect(screen.getByText(/Feb 1, 2020/i)).toBeInTheDocument()
     })
+
+    it('allows you to clear the date when onReset is passed', async () => {
+      const TestScenario = () => {
+        const [startDate, setStartDate] = useState(new Date(2020, 1, 1))
+
+        return (
+          <>
+            <DatePicker
+              date={startDate}
+              placeholder="From"
+              title="Pick a date"
+              timeFrame={TimeFrame.future}
+              monthLabel="Month"
+              yearLabel="Year"
+              info="Some important info"
+              locale="en-EN"
+              resetLabel="Clear"
+              onChange={date => setStartDate(date)}
+              onReset={() => setStartDate(null)}
+            />
+          </>
+        )
+      }
+      render(<TestScenario />)
+
+      expect(screen.getByText(/Feb 1, 2020/i)).toBeInTheDocument()
+
+      const resetButton = screen.getByLabelText('Clear')
+      userEvent.click(resetButton)
+
+      expect(screen.getByText(/from/i)).toBeInTheDocument()
+    })
   })
 
   describe('when open', () => {
