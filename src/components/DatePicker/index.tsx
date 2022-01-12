@@ -58,7 +58,7 @@ const StyledCalendar = styled(Calendar)`
   }
 `
 
-const ResetButton = styled.button`
+const ResetButton = styled.span`
   line-height: 0;
   opacity: 0.35;
   transition: opacity ${transition};
@@ -126,7 +126,6 @@ export const DatePicker = ({
               onReset()
               e.stopPropagation()
             }}
-            type="button"
             aria-label={resetLabel}
           >
             <CloseRounded size={16} />
