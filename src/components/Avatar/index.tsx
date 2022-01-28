@@ -66,7 +66,7 @@ const Placeholder = () => (
 
 export interface AvatarProps {
   size?: number
-  src?: string
+  src?: string | null
   alt?: string
 }
 
