@@ -282,6 +282,18 @@ const StyledClose = styled(Close)`
 
 const Subtitle = styled(Text)`
   color: ${color.stardustLightAlpha};
+
+  [data-theme='dark'] & {
+    color: ${color.spaceMedium};
+  }
+`
+
+const Title = styled(H2)`
+  color: ${color.nova};
+
+  [data-theme='dark'] & {
+    color: ${color.space};
+  }
 `
 
 interface ContentDialogHeaderProps {
@@ -301,7 +313,7 @@ const ContentDialogHeader = React.forwardRef<
     <div ref={ref}>
       <StyledCover imageUrl={imageUrl} blurred={blurred}>
         {logoUrl && <LogoImage logoUrl={logoUrl} />}
-        <H2>{title}</H2>
+        <Title>{title}</Title>
         {subtitle && <Subtitle>{subtitle}</Subtitle>}
         <CloseButton onClick={onDismiss}>
           <StyledClose size={16} />
