@@ -39,12 +39,7 @@ const duration = 200
 
 interface StyledTransitionProps {
   onScroll?: Function
-  state:
-    | TransitionState.ENTERED
-    | TransitionState.ENTERING
-    | TransitionState.EXITED
-    | TransitionState.EXITING
-    | boolean // @TODO: Why is `state` boolean | TransitionState?
+  state: TransitionState
 }
 
 const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(

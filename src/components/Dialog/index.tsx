@@ -58,7 +58,7 @@ export interface DialogProps extends UseDialogProps {
 }
 
 interface DialogOverlayStyles {
-  state: boolean | TransitionState
+  state: TransitionState
 }
 
 const DialogOverlay = styled.div<DialogOverlayStyles>`
@@ -93,7 +93,7 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
 `
 
 interface ContentStyles {
-  state?: boolean | TransitionState
+  state?: TransitionState
 }
 
 const Content = styled.div<ContentStyles>`
