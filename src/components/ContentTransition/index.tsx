@@ -11,12 +11,7 @@ const Container = styled.div`
 `
 
 interface SlideContainerProps {
-  state:
-    | TransitionState.ENTERED
-    | TransitionState.ENTERING
-    | TransitionState.EXITED
-    | TransitionState.EXITING
-    | boolean
+  state: TransitionState
   from: string
   to: string
   initial: boolean

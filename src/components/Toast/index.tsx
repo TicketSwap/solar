@@ -23,7 +23,7 @@ const ItemListContainer = styled.ul`
 `
 
 interface ItemContainerStyles {
-  state: boolean | TransitionState
+  state: TransitionState
 }
 
 const ItemContainer = styled.li<ItemContainerStyles>`

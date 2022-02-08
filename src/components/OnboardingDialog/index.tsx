@@ -40,7 +40,7 @@ const DialogWrapper = styled.div<DialogWrapperProps>`
 
 export interface OnboardingDialogProps {
   show: boolean
-  state: TransitionState | boolean
+  state: TransitionState
   active: boolean
 }
 
@@ -70,7 +70,7 @@ const Container = styled.div`
 `
 
 interface BackdropProps {
-  state: TransitionState | boolean
+  state: TransitionState
 }
 
 const Backdrop = styled.div<BackdropProps>`

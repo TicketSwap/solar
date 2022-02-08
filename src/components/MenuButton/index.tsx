@@ -34,7 +34,7 @@ export const Menu = ({ children, ...props }: MenuProps) => {
 }
 
 export interface MenuListProps extends ReachMenuListProps {
-  state: boolean | TransitionState
+  state: TransitionState
 }
 
 const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
