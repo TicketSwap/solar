@@ -311,6 +311,10 @@ export const Icons = () => {
       />
       <IconWrapper icon={<Icon.Watch title="Watch" />} name="Watch" />
       <IconWrapper icon={<Icon.WhatsApp title="WhatsApp" />} name="WhatsApp" />
+      <IconWrapper
+        icon={<Icon.ExternalLink title="ExternalLink" />}
+        name="ExternalLink"
+      />
     </IconGrid>
   )
 }
