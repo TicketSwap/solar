@@ -1,14 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Text } from '../Text'
-import { Calendar, CloseRounded } from '../../icons'
+import { CloseRounded } from '../../icons'
 import { space, radius, color, device, transition } from '../../theme'
 import CalendarDialog from './CalendarDialog'
 import { TimeFrame } from '../../utils/dates'
 
 interface ButtonTextProps {
   hasDate: boolean
+  leftAdornment?: ReactNode
 }
 
 interface DatePickerProps {
@@ -22,6 +23,7 @@ interface DatePickerProps {
   monthLabel: string
   yearLabel: string
   locale?: string
+  leftAdornment?: ReactNode
   onChange: (date: Date) => void
   onReset?: () => void
 }
@@ -46,11 +48,11 @@ const ButtonText = styled(Text)<ButtonTextProps>`
   text-overflow: ellipsis;
 
   @media ${device.mobileM} {
-    margin-left: ${space[16]};
+    margin-left: ${props => (props.leftAdornment ? space[16] : 0)};
   }
 `
 
-const StyledCalendar = styled(Calendar)`
+const LeftAdornment = styled.span`
   display: none;
 
   @media ${device.mobileM} {
@@ -83,6 +85,7 @@ export const DatePicker = ({
   resetLabel,
   onChange,
   onReset,
+  leftAdornment,
 }: DatePickerProps) => {
   const [isOpen, setOpen] = useState(false)
 
@@ -109,8 +112,8 @@ export const DatePicker = ({
       />
       <StyledButton onClick={toggle}>
         <div>
-          <StyledCalendar size={24} color={color.spaceMedium} />
-          <ButtonText hasDate={!!date}>
+          <LeftAdornment>{leftAdornment}</LeftAdornment>
+          <ButtonText hasDate={!!date} leftAdornment={leftAdornment}>
             {!!date
               ? date.toLocaleString(locale, {
                   day: 'numeric',

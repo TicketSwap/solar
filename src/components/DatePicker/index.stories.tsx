@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DatePicker, TimeFrame } from '.'
+import { Calendar } from '../../icons'
 
 export default {
   title: 'Components/Inputs/DatePicker',
@@ -14,12 +15,29 @@ export const Simple = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
 }
 
 Simple.storyName = 'Without initial date'
+
+export const NoLeftAdornment = () => {
+  const [date, setDate] = useState(null)
+
+  return (
+    <DatePicker
+      date={date}
+      monthLabel="Month"
+      yearLabel="Year"
+      placeholder="Pick a date"
+      onChange={date => setDate(date)}
+    />
+  )
+}
+
+NoLeftAdornment.storyName = 'With no left adornment'
 
 export const InitialDate = () => {
   const [date, setDate] = useState(new Date())
@@ -30,6 +48,7 @@ export const InitialDate = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -46,6 +65,7 @@ export const Future = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -63,6 +83,7 @@ export const Past = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -80,6 +101,7 @@ export const All = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -101,6 +123,7 @@ export const WithTimeRange = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -118,6 +141,7 @@ export const WithTitle = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
@@ -135,6 +159,7 @@ export const WithResetButton = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
       onReset={() => setDate(null)}
     />
@@ -153,6 +178,7 @@ export const WithInfo = () => {
       monthLabel="Month"
       yearLabel="Year"
       placeholder="Pick a date"
+      leftAdornment={<Calendar size={24} />}
       onChange={date => setDate(date)}
     />
   )
