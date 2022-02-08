@@ -31,7 +31,7 @@ export function useTransition({
   onEntering,
   onEntered,
   onExiting,
-}: useTransitionParameters) {
+}: useTransitionParameters): [TransitionState, boolean, boolean] {
   if (typeof on !== 'boolean') throwError('in')
   if (typeof timeout !== 'number') throwError('timeout')
   const [state, setState] = React.useState(defaultTransitionState)
