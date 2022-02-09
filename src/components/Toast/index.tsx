@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useRef } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { space, shadow, device, radius, easing, color } from '../../theme'
-import { useTransition } from '../../hooks'
-import { TransitionState } from '../../hooks/useTransition'
+import { useTransition, TransitionState } from '../../hooks'
+import { css } from '@emotion/react'
 
 const duration = 400
 
@@ -20,6 +20,42 @@ const ItemListContainer = styled.ul`
     left: ${space[16]};
     bottom: ${space[16]};
   }
+`
+
+export interface ToastProps {
+  persist?: boolean
+  leftAdornment?: ReactNode
+  children: ReactNode
+}
+
+export const Toast = ({ ...props }: ToastProps) => (
+  <div {...props}>{props.children}</div>
+)
+
+const LeftAdornmentContainer = styled.span`
+  line-height: 0;
+  margin-top: 3px;
+`
+
+export interface ToastBlockProps extends React.HTMLAttributes<HTMLDivElement> {
+  hasLeftAdornment: boolean
+  hasMultipleLines: boolean
+}
+
+const ToastContainer = styled.div<ToastBlockProps>`
+  border-radius: ${radius.lg};
+  background-color: ${color.nova};
+  box-shadow: ${shadow.strong};
+  padding: ${space[16]};
+
+  ${({ hasLeftAdornment, hasMultipleLines }) =>
+    hasLeftAdornment &&
+    css`
+      display: grid;
+      gap: ${space[8]};
+      grid-template-columns: auto 1fr;
+      align-items: ${hasMultipleLines ? 'start' : 'center'};
+    `}
 `
 
 interface ItemContainerStyles {
@@ -63,17 +99,6 @@ const ItemContainer = styled.li<ItemContainerStyles>`
   }
 `
 
-export interface ToastProps {
-  persist?: boolean
-}
-
-export const Toast = styled.div<ToastProps>`
-  border-radius: ${radius.lg};
-  background-color: ${color.nova};
-  box-shadow: ${shadow.strong};
-  padding: ${space[16]};
-`
-
 export const ToastContext = React.createContext({
   notify: (_renderCallback: (_?: (event?: any) => void) => any) => {},
 })
@@ -93,6 +118,7 @@ interface ItemStateProps {
   key: number
   renderCallback: any
   persist: any
+  leftAdornment?: ReactNode
 }
 
 export const ToastProvider: React.FC = props => {
@@ -101,9 +127,9 @@ export const ToastProvider: React.FC = props => {
 
   function notify(renderCallback: () => any) {
     const component = renderCallback()
-    const { persist } = component.props
+    const { persist, leftAdornment } = component.props
     const key = performance.now()
-    setItems([...items, { key, renderCallback, persist }])
+    setItems([...items, { key, renderCallback, persist, leftAdornment }])
   }
 
   function cancel(key: number) {
@@ -135,6 +161,7 @@ export const ToastProvider: React.FC = props => {
               cancel={() => cancel(item.key)}
               remove={() => remove(item.key)}
               persist={item.persist}
+              leftAdornment={item.leftAdornment}
             >
               {item.renderCallback(() => cancel(item.key))}
             </Item>
@@ -161,10 +188,19 @@ export interface ItemProps {
   remove: () => void
   cancel: () => void
   persist: boolean
+  leftAdornment?: ReactNode
   children: ReactNode
 }
 
-function Item({ on, remove, cancel, persist, children }: ItemProps) {
+function Item({
+  on,
+  remove,
+  cancel,
+  persist,
+  leftAdornment,
+  children,
+}: ItemProps) {
+  const ref = useRef<HTMLDivElement>(null)
   let timer: NodeJS.Timeout | null = null
   const [state, mounted] = useTransition({
     in: on,
@@ -180,7 +216,25 @@ function Item({ on, remove, cancel, persist, children }: ItemProps) {
     },
   })
   if (!mounted) return null
-  return <ItemContainer state={state}>{children}</ItemContainer>
+
+  // If toast has multiple lines in one of it's children the left adornment should be aligned to the top-left.
+  // If there is one line only it should align in the center (vertically).
+  const hasMultipleLines = ref.current
+    ? ref.current.getBoundingClientRect().height > 76
+    : false
+
+  return (
+    <ItemContainer state={state}>
+      <ToastContainer
+        hasLeftAdornment={Boolean(leftAdornment)}
+        hasMultipleLines={hasMultipleLines}
+        ref={ref}
+      >
+        <LeftAdornmentContainer>{leftAdornment}</LeftAdornmentContainer>
+        {children}
+      </ToastContainer>
+    </ItemContainer>
+  )
 }
 
 export function useToast() {
