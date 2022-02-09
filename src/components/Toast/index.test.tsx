@@ -21,7 +21,7 @@ describe('Toast', () => {
     expect(getAllByText(/notification/i)).toHaveLength(2)
   })
 
-  it('hides toast ', () => {
+  it('hides toast', () => {
     const { getByText, queryByText } = render(
       <ToastProvider>
         <ToastConsumer>
