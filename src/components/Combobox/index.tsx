@@ -1,12 +1,6 @@
 import React, { ReactNode } from 'react'
 import Downshift from 'downshift'
-import {
-  Input,
-  InputMenu,
-  InputMenuList,
-  InputMenuItem,
-  InputProps,
-} from '../Input'
+import { Input, InputMenu, InputMenuList, InputMenuItem, InputProps } from '../InputDeprecated'
 import { MagnifyingGlass } from '../../icons'
 import { normalizeChars } from '../../utils'
 
@@ -38,9 +32,7 @@ export const Combobox = ({
     id={props.id}
     onChange={selection => selection && onChange(selection)}
     itemToString={item => (item ? item.name : '')}
-    initialSelectedItem={
-      items.filter(item => initialValue.indexOf(item.value) > -1)[0]
-    }
+    initialSelectedItem={items.filter(item => initialValue.indexOf(item.value) > -1)[0]}
   >
     {({
       getInputProps,
@@ -77,9 +69,7 @@ export const Combobox = ({
                       item =>
                         !inputValue ||
                         (!normalize &&
-                          item.name
-                            .toLowerCase()
-                            .includes(inputValue.toLowerCase())) ||
+                          item.name.toLowerCase().includes(inputValue.toLowerCase())) ||
                         (normalize &&
                           normalizeChars(item.name.toLowerCase()).includes(
                             normalizeChars(inputValue.toLowerCase())
@@ -92,8 +82,7 @@ export const Combobox = ({
                           index,
                           item,
                           // @ts-ignore
-                          highlighted:
-                            highlightedIndex === index ? true : undefined,
+                          highlighted: highlightedIndex === index ? true : undefined,
                           selected: selectedItem === item ? true : undefined,
                           adornment: item.adornment,
                         })}

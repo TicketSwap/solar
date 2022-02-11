@@ -20,9 +20,9 @@ export const Basic = () => {
               <OneTimeCodeInput
                 length={6}
                 id="otc-input"
-                label="Verificationcode"
+                legend="Verificationcode"
                 helpText="Enter your 6 digit code here"
-                ariaLabel="One Time Code Input Field:"
+                ariaLabel="One Time Code Input Field"
                 validate={true}
                 onChange={value => console.log(value)}
               />

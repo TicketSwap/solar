@@ -61,7 +61,7 @@ const Login = (props: {
 const LoginEmail = ({}: { title: string; back: string }) => (
   <DialogBody>
     <div style={{ marginBottom: '0.5rem' }}>
-      <Input type="email" id="email" label="Email address" hideLabel />
+      <Input type="email" id="email" aria-label="Email address" />
     </div>
     <Button variant={ButtonVariant.success} fullWidth>
       Log in

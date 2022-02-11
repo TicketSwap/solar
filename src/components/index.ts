@@ -1,12 +1,7 @@
 export { Alert, AlertVariant } from './Alert'
 export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
-export {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-} from './Accordion'
+export { Accordion, AccordionItem, AccordionButton, AccordionPanel } from './Accordion'
 export { Banner } from './Banner'
 export { Text, SmallText, TinyText } from './Text'
 export { BaseStyles } from './BaseStyles'
@@ -76,3 +71,5 @@ export { Tabs, TabList, Tab, TabPanels, TabPanel } from './Tabs'
 export { VisuallyHidden } from './VisuallyHidden'
 export { Tooltip } from './Tooltip'
 export { DatePicker } from './DatePicker'
+export { Label } from './Label'
+export { RadioGroup } from './RadioGroup'

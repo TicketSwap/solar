@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '../Input'
+import { Input } from '../InputDeprecated'
 
 export interface TimeInputProps {
   id: string
@@ -34,11 +34,9 @@ export const TimeInput: React.FC<TimeInputProps> = ({
 
     const hours = Number(hoursStr)
     const minutes = Number(minutesStr)
-    const isValidHour = (hour: number) =>
-      Number.isInteger(hour) && hour >= 0 && hour < 24
+    const isValidHour = (hour: number) => Number.isInteger(hour) && hour >= 0 && hour < 24
     const isValidMinutes = (minutes: number) =>
-      (Number.isInteger(minutes) && hours >= 0 && hours < 24) ||
-      Number.isNaN(minutes)
+      (Number.isInteger(minutes) && hours >= 0 && hours < 24) || Number.isNaN(minutes)
 
     if (!isValidHour(hours) || !isValidMinutes(minutes)) {
       return false
@@ -77,11 +75,7 @@ export const TimeInput: React.FC<TimeInputProps> = ({
     }
 
     if (isValid(val)) {
-      if (
-        val.length === 2 &&
-        lastVal.current.length !== 3 &&
-        val.indexOf(':') === -1
-      ) {
+      if (val.length === 2 && lastVal.current.length !== 3 && val.indexOf(':') === -1) {
         val = val + ':'
       }
 

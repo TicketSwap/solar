@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Button, ButtonVariant } from '../Button'
 import { H1, H3 } from '../Heading'
-import { Input } from '../Input'
+import { InputWithLabel } from '../Input'
 import styled from '@emotion/styled'
 import { space } from '../../theme'
 import { Text } from '../Text'
@@ -44,9 +44,9 @@ export const StorybookDialog = () => {
 
       <OnboardingWrapper>
         <Form>
-          <Input label="Name" id="name" />
-          <Input label="Email" id="email" />
-          <Input label="Age" id="age" />
+          <InputWithLabel label="Name" id="name" />
+          <InputWithLabel label="Email" id="email" />
+          <InputWithLabel label="Age" id="age" />
           <Button
             type="button"
             onClick={() => {

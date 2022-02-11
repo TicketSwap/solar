@@ -21,7 +21,7 @@ import {
   LabelText,
   Adornment,
   Help,
-} from '../Input'
+} from '../InputDeprecated'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ArrowDown } from '../../icons'
 import { useOnClickOutside, useKeyPress, useDeviceInfo } from '../../hooks'

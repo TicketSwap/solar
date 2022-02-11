@@ -1,6 +1,7 @@
 import React from 'react'
 import { StarRating } from '.'
-import { Input } from '../Input'
+import { InputWithLabel } from '../Input'
+import { Input } from '../InputDeprecated'
 
 export default {
   title: 'Components/Inputs/StarRating',
@@ -22,7 +23,7 @@ WithInitialRating.storyName = 'With initial rating'
 
 export const WithinForm = () => (
   <form style={{ display: 'grid', gridGap: '1rem' }}>
-    <Input id="email" label="Email" />
+    <InputWithLabel id="email" label="Email" />
     <StarRating label="Your rating" onChange={rating => console.log(rating)} />
     <Input id="message" label="Message" as="textarea" />
   </form>
