@@ -28,9 +28,12 @@ export interface ToastProps {
   children: ReactNode
 }
 
-export const Toast = ({ ...props }: ToastProps) => (
-  <div {...props}>{props.children}</div>
-)
+export const Toast: React.FC<ToastProps> = ({
+  children,
+  leftAdornment,
+  persist,
+  ...props
+}) => <div {...props}>{children}</div>
 
 const LeftAdornmentContainer = styled.span`
   line-height: 0;
