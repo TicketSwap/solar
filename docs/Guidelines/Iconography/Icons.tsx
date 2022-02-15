@@ -299,6 +299,7 @@ export const Icons = () => {
         icon={<Icon.TicketSwap title="TicketSwap" />}
         name="TicketSwap"
       />
+      <IconWrapper icon={<Icon.Tidal title="Tidal" />} name="Tidal" />
       <IconWrapper icon={<Icon.Trash title="Trash" />} name="Trash" />
       <IconWrapper icon={<Icon.Trophy title="Trophy" />} name="Trophy" />
       <IconWrapper icon={<Icon.Twitter title="Twitter" />} name="Twitter" />
