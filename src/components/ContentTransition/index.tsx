@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { easing } from '../../theme'
 import { usePrevious, useTransition } from '../../hooks'
@@ -54,14 +54,14 @@ function Slide({
   initialActiveIndex,
   initialPreviousIndex,
 }: SlideProps) {
-  const [activeIndex, setActiveIndex] = React.useState(initialActiveIndex)
-  const [previousIndex, setPreviousIndex] = React.useState(initialPreviousIndex)
+  const [activeIndex, setActiveIndex] = useState(initialActiveIndex)
+  const [previousIndex, setPreviousIndex] = useState(initialPreviousIndex)
   const [state, mounted] = useTransition({
     in: active,
     timeout: duration,
   })
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (initialActiveIndex !== initialPreviousIndex) {
       setActiveIndex(initialActiveIndex)
       setPreviousIndex(initialPreviousIndex)
@@ -98,7 +98,7 @@ export function ContentTransition({
   const activeIndex = children.findIndex(item => item.key === activeView)
   const previousIndex = usePrevious(activeIndex)
 
-  React.useEffect(() => {
+  useEffect(() => {
     onChange(children[activeIndex])
   }, [children, onChange, activeIndex])
 
