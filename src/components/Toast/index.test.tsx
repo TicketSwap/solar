@@ -1,10 +1,11 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { screen, render } from '@testing-library/react'
 import { ToastProvider, ToastConsumer, Toast } from './'
+import userEvent from '@testing-library/user-event'
 
 describe('Toast', () => {
-  it('shows button and renders toasts on button-click', () => {
-    const { getByText, getAllByText } = render(
+  it('shows button and renders toasts on button-click', async () => {
+    render(
       <ToastProvider>
         <ToastConsumer>
           {({ notify }) => (
@@ -15,14 +16,15 @@ describe('Toast', () => {
         </ToastConsumer>
       </ToastProvider>
     )
-    expect(getByText(/show toast/i)).toBeInTheDocument()
-    fireEvent.click(getByText(/show toast/i))
-    fireEvent.click(getByText(/show toast/i))
-    expect(getAllByText(/notification/i)).toHaveLength(2)
+
+    expect(await screen.findByText(/show toast/i)).toBeInTheDocument()
+    userEvent.click(await screen.findByText(/show toast/i))
+    userEvent.click(await screen.findByText(/show toast/i))
+    expect(await screen.findAllByText(/notification/i)).toHaveLength(2)
   })
 
-  it('hides toast', () => {
-    const { getByText, queryByText } = render(
+  it('hides toast', async () => {
+    render(
       <ToastProvider>
         <ToastConsumer>
           {({ notify }) => (
@@ -42,9 +44,9 @@ describe('Toast', () => {
         </ToastConsumer>
       </ToastProvider>
     )
-    fireEvent.click(getByText(/show toast/i))
-    expect(getByText(/payment failed/i)).toBeInTheDocument()
-    fireEvent.click(getByText(/discard/i))
-    expect(queryByText(/payment failed/i)).toBeNull()
+    userEvent.click(await screen.findByText(/show toast/i))
+    expect(await screen.findByText(/payment failed/i)).toBeInTheDocument()
+    userEvent.click(await screen.findByText(/discard/i))
+    expect(screen.queryByText(/payment failed/i)).toBeNull()
   })
 })

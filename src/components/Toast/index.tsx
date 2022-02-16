@@ -2,7 +2,7 @@ import React, { ReactNode, useRef } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { space, shadow, device, radius, easing, color } from '../../theme'
-import { useTransition, TransitionState } from '../../hooks'
+import { useTransition, TransitionState, useIsMounted } from '../../hooks'
 import { css } from '@emotion/react'
 
 const duration = 400
@@ -125,10 +125,13 @@ interface ItemStateProps {
 }
 
 export const ToastProvider: React.FC = props => {
+  const isMounted = useIsMounted()
   const [items, setItems] = React.useState<ItemStateProps[]>([])
   const [cancellations, setCancellations] = React.useState<number[]>([])
 
   function notify(renderCallback: () => any) {
+    if (!isMounted) return
+
     const component = renderCallback()
     const { persist, leftAdornment } = component.props
     const key = performance.now()
