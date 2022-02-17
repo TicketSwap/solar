@@ -1,10 +1,5 @@
-import {
-  useState,
-  useCallback,
-  useLayoutEffect,
-  useEffect,
-  useRef,
-} from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 import { usePrevious } from '../usePrevious'
 
 export const EXITED = 'exited'
@@ -75,7 +70,7 @@ export const useTransition = ({
     return setTimeout(handleExited, timeout)
   }, [onExiting, handleExited, timeout])
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (transitioning) return
 
     if (on && !prevOn) {
