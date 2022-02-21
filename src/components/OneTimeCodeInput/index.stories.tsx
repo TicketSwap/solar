@@ -1,3 +1,4 @@
+import React from 'react'
 import { OneTimeCodeInput } from './index'
 import {
   Dialog,

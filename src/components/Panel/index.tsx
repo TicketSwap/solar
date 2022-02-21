@@ -15,7 +15,7 @@ export interface PanelContentProps {
 
 export const Panel = styled.div`
   ${fullBleed};
-  background-color: ${color.nova};
+  background-color: ${color.background};
   box-shadow: ${shadow.strong};
 
   @media ${device.mobileL} {
@@ -29,7 +29,8 @@ export const PanelContent = styled.div<PanelContentProps>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${props => (props.bgColor ? props.bgColor : color.nova)};
+  background-color: ${props =>
+    props.bgColor ? props.bgColor : color.background};
 
   &:first-of-type {
     border-top-left-radius: ${radius.lg};
@@ -42,7 +43,7 @@ export const PanelContent = styled.div<PanelContentProps>`
   }
 
   :not(:first-of-type) {
-    border-top: 1px solid ${color.spaceLightest};
+    border-top: 1px solid ${color.stroke};
   }
 
   @media ${device.tablet} {
@@ -59,7 +60,7 @@ export const PanelBody = styled.div`
 `
 
 export const PanelText = styled.p`
-  color: ${color.spaceMedium};
+  color: ${color.foregroundMuted};
 
   span {
     display: block;

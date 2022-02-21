@@ -26,18 +26,18 @@ const cards = [
 ]
 
 const StyledCard = styled(Card)`
-  background-color: ${color.nova};
+  background-color: ${color.background};
   min-width: 320px;
 
   &:hover,
   &:focus {
-    background-color: ${color.nova};
+    background-color: ${color.background};
   }
 `
 
 const Container = styled.div`
   padding: ${space[32]};
-  background-color: ${color.stardustLight};
+  background-color: ${color.elevatedBackground};
 `
 
 const Author = styled.div`

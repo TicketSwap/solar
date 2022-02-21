@@ -53,7 +53,9 @@ const InputWrapper = styled.div`
 
 export const fieldStyles = (props: InputProps) => css`
   font-family: inherit;
-  background-color: ${props.invalid ? color.marsLightestAlpha : color.stardust};
+  background-color: ${props.invalid
+    ? color.failureBackground
+    : color.elevatedBackground};
   border-radius: ${props.rounded ? space[32] : radius.md};
   width: 100%;
   font-size: ${fontSize[18]};
@@ -69,17 +71,13 @@ export const fieldStyles = (props: InputProps) => css`
   props.rightAdornment
     ? space[48]
     : space[16]};
-  color: ${color.space};
+  color: ${color.foreground};
   box-shadow: none;
   border: 0;
   text-align: left;
   appearance: none;
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
-
-  [data-theme='dark'] & {
-    border: 1px solid ${color.stardust};
-  }
 
   ${props.as === 'textarea' &&
   css`
@@ -108,24 +106,19 @@ export const fieldStyles = (props: InputProps) => css`
   &:focus,
   &.focus {
     outline: none;
-    box-shadow: ${shadow.strong};
-    background-color: ${props.invalid ? color.marsLightestAlpha : color.nova};
-
-    [data-theme='dark'] & {
-      box-shadow: none;
-      border: 1px solid ${color.spaceLightest};
-      background-color: ${props.invalid
-        ? color.marsLightestAlpha
-        : color.stardust};
-    }
+    background-color: ${props.invalid
+      ? color.failureBackground
+      : color.elevatedBackground};
+    box-shadow: 0 0 0 ${space[4]}
+      ${props.invalid ? color.failureFocus : color.actionFocus};
   }
 
   &::placeholder {
-    color: ${color.spaceLight};
+    color: ${color.foregroundSubtle};
   }
 
   &.invalid {
-    color: ${color.mars} !important;
+    color: ${color.failure} !important;
   }
 
   &::-webkit-search-cancel-button {
@@ -144,7 +137,7 @@ export const Label = styled.label`
 
 export const LabelText = styled.span`
   display: inline-block;
-  color: ${color.space};
+  color: ${color.foreground};
   margin-bottom: ${space[4]};
 `
 
@@ -156,7 +149,7 @@ type AdornmentProps = {
 export const Adornment = styled.span<AdornmentProps>`
   position: absolute;
   top: 0;
-  color: ${color.spaceMedium};
+  color: ${color.foregroundMuted};
   left: ${props => (props.left ? 0 : 'auto')};
   right: ${props => (props.right ? 0 : 'auto')};
   bottom: 0;
@@ -168,7 +161,7 @@ export const Adornment = styled.span<AdornmentProps>`
   transition: color ${transition};
 
   ${Label}:focus-within & {
-    color: ${color.space};
+    color: ${color.foreground};
   }
 `
 
@@ -188,7 +181,7 @@ export const Help = styled.p`
   font-size: ${fontSize[14]};
   margin-bottom: 0;
   margin-top: ${6 / 16}rem;
-  color: ${color.spaceLight};
+  color: ${color.foregroundMuted};
 
   @media ${device.tablet} {
     font-size: ${fontSize[16]};
@@ -198,7 +191,7 @@ export const Help = styled.p`
 export const InputMenuFooter = styled.footer`
   text-align: right;
   padding: ${space[4]} ${space[16]};
-  border-top: 1px solid ${color.spaceLightest};
+  border-top: 1px solid ${color.stroke};
 `
 
 export const InputMenuList = styled.ul`
@@ -225,16 +218,16 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
   padding-right: ${space[16]};
   min-height: ${space[56]};
   background-color: ${props =>
-    props.highlighted ? color.stardust : color.nova};
+    props.highlighted ? color.elevatedBackground : color.background};
   font-weight: ${props =>
     props.selected ? fontWeight.semiBold : fontWeight.regular};
-  color: ${props => (props.selected ? color.earth : color.space)};
+  color: ${props => (props.selected ? color.action : color.foreground)};
   cursor: pointer;
   transition: color ${transition};
   margin: 0;
 
   :not(:first-of-type) {
-    border-top: 1px solid ${color.spaceLightest};
+    border-top: 1px solid ${color.stroke};
   }
 `
 
@@ -245,13 +238,13 @@ export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   right: 0;
   top: calc(100% + ${space[4]});
   border-radius: ${radius.md};
-  background-color: ${color.nova};
+  background-color: ${color.background};
   box-shadow: ${shadow.strong};
   overflow: hidden;
   z-index: 1;
 
   [data-theme='dark'] & {
-    border: 1px solid ${color.spaceLightest};
+    border: 1px solid ${color.stroke};
   }
 `
 

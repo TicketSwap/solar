@@ -68,8 +68,7 @@ interface StyledSelectProps {
 }
 
 const StyledInput = styled(Input)`
-  color: transparent;
-  text-shadow: 0 0 0 ${color.space};
+  color: ${color.foreground};
   cursor: pointer;
 
   &:disabled {
@@ -98,7 +97,7 @@ const SelectWrapper = styled.div`
 
 const StyledSelect = styled.select<StyledSelectProps>`
   font-family: inherit;
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   border-radius: ${radius.md};
   width: 100%;
   font-size: ${fontSize[18]};
@@ -108,7 +107,7 @@ const StyledSelect = styled.select<StyledSelectProps>`
   padding-bottom: 0;
   padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
   padding-right: ${space[16]};
-  color: ${color.space};
+  color: ${color.foreground};
   box-shadow: none;
   border: 0;
   text-align: left;

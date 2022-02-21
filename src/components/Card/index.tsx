@@ -49,7 +49,7 @@ const Container = styled.div<StyledCardProps>`
     props.size === CardSize.large
       ? !props.hasImage && space[16]
       : !props.hasImage && space[12]};
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
 
   @media ${device.mobileL} {
     padding: ${p =>
@@ -67,7 +67,12 @@ const Container = styled.div<StyledCardProps>`
 
   &:hover,
   &:focus {
-    background-color: ${color.spaceLightest};
+    background-color: ${color.actionBackground};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
+    outline: 0;
   }
 `
 
@@ -129,7 +134,7 @@ const LeftAdornment = styled.header`
 `
 
 const TextContent = styled.div<StyledCardProps>`
-  color: ${color.space};
+  color: ${color.foreground};
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -141,7 +146,7 @@ const TextContent = styled.div<StyledCardProps>`
   ${props =>
     props.hasImage &&
     css`
-      color: ${color.spaceMedium};
+      color: ${color.foregroundMuted};
     `};
 `
 
@@ -198,11 +203,7 @@ const Title = styled.h4<StyledCardProps>`
   ${props =>
     props.hasImage &&
     css`
-      color: ${color.nova};
-
-      [data-theme='dark'] & {
-        color: ${color.space};
-      }
+      color: ${color.lightForeground};
     `};
 `
 
@@ -210,7 +211,7 @@ const Subtitle = styled.h5<StyledCardProps>`
   ${props => !props.hasImage && truncate};
   font-size: ${p => (p.size === CardSize.large ? fontSize[16] : fontSize[14])};
   font-weight: ${fontWeight.regular};
-  color: ${color.spaceMedium};
+  color: ${color.foregroundMuted};
 
   @media ${device.mobileL} {
     font-size: ${p =>
@@ -243,11 +244,7 @@ const Text = styled.span<StyledCardProps>`
   ${props =>
     props.hasImage &&
     css`
-      color: ${color.nova};
-
-      [data-theme='dark'] & {
-        color: ${color.space};
-      }
+      color: ${color.lightForeground};
     `};
 `
 

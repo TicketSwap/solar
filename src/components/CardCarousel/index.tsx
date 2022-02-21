@@ -32,7 +32,7 @@ const Controls = styled.div`
 `
 
 const Control = styled.button`
-  background-color: ${color.skyLightAlpha};
+  background-color: ${color.actionBackground};
   width: 56px;
   height: 56px;
   border-radius: ${radius.md};
@@ -41,8 +41,7 @@ const Control = styled.button`
   align-items: center;
 
   &:disabled {
-    background-color: ${color.skyLightAlpha};
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: default;
   }
 `
@@ -112,16 +111,10 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
           ) : (
             <Controls>
               <Control onClick={handlePrevious} disabled={previousDisabled}>
-                <ChevronLeft
-                  color={false ? color.spaceLightest : color.earth}
-                  size={18}
-                />
+                <ChevronLeft color={color.action} size={18} />
               </Control>
               <Control onClick={handleNext} disabled={nextDisabled}>
-                <ChevronRight
-                  color={false ? color.spaceLightest : color.earth}
-                  size={18}
-                />
+                <ChevronRight color={color.action} size={18} />
               </Control>
             </Controls>
           )}

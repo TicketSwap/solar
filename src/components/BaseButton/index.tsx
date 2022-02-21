@@ -4,6 +4,7 @@ import { space, color, fontWeight, radius, device } from '../../theme'
 import { baseTextStyles } from '../Text'
 
 export enum ButtonVariant {
+  info = 'info',
   success = 'success',
   warning = 'warning',
   danger = 'danger',
@@ -21,14 +22,14 @@ const StyledButton = styled.button<ButtonProps>`
   display: inline-block;
   color: ${p =>
     p.disabled
-      ? color.spaceLight
+      ? color.inactive
       : p.variant === ButtonVariant.success
-      ? color.titan
+      ? color.success
       : p.variant === ButtonVariant.danger
-      ? color.mars
+      ? color.failure
       : p.variant === ButtonVariant.warning
-      ? color.sun
-      : color.earth};
+      ? color.warning
+      : color.info};
   font-weight: ${fontWeight.semiBold};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 
@@ -36,16 +37,7 @@ const StyledButton = styled.button<ButtonProps>`
   &:focus {
     outline: 0;
     box-shadow: none;
-    color: ${p =>
-      p.disabled
-        ? color.spaceLight
-        : p.variant === ButtonVariant.success
-        ? color.titanLight
-        : p.variant === ButtonVariant.danger
-        ? color.marsLight
-        : p.variant === ButtonVariant.warning
-        ? color.sunLight
-        : color.earthLight};
+    opacity: 0.8;
   }
 
   &:focus::after {
@@ -57,15 +49,16 @@ const StyledButton = styled.button<ButtonProps>`
     bottom: 0;
     background-color: transparent;
     border-radius: ${radius.md};
+    opacity: 0.6;
     box-shadow: 0 0 0 ${space[4]}
       ${p =>
         p.variant === ButtonVariant.success
-          ? color.titanLighterAlpha
+          ? color.success
           : p.variant === ButtonVariant.danger
-          ? color.marsLighterAlpha
+          ? color.failure
           : p.variant === ButtonVariant.warning
-          ? color.sunLighterAlpha
-          : color.earthLighterAlpha};
+          ? color.warning
+          : color.info};
 
     @media ${device.tablet} {
       top: -2px;

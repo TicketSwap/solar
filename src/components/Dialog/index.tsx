@@ -73,7 +73,7 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: ${color.spaceMediumAlpha};
+  background-color: ${color.overlay};
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -81,10 +81,6 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
-
-  [data-theme='dark'] & {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
 
   @media ${device.mobileL} {
     overflow-y: scroll;
@@ -104,7 +100,7 @@ interface ContentStyles {
 const Content = styled.div<ContentStyles>`
   position: relative;
   width: 100%;
-  background-color: ${color.nova};
+  background-color: ${color.background};
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
   transform: ${props =>
@@ -138,17 +134,13 @@ export const DialogContent: React.FC<any> = ({ children, ...props }) => {
 export const DialogHeader = styled.header`
   position: relative;
   height: ${space[56]};
-  border-bottom: 1px solid ${color.stardust};
-  color: ${color.space};
+  border-bottom: 1px solid ${color.stroke};
+  color: ${color.foreground};
   font-weight: ${fontWeight.semiBold};
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  [data-theme='dark'] & {
-    border-bottom: 1px solid ${color.spaceLightest};
-  }
 `
 
 interface DialogAdornmentStyles {

@@ -38,23 +38,23 @@ export interface AlertProps {
 
 const textColor = (props: AlertProps) => css`
   color: ${props.variant === AlertVariant.success
-    ? color.titan
+    ? color.success
     : props.variant === AlertVariant.error
-    ? color.mars
+    ? color.failure
     : props.variant === AlertVariant.warning
-    ? color.sun
-    : color.earth};
+    ? color.warning
+    : color.info};
 `
 
 const Container = styled.div<AlertProps>`
   background-color: ${props =>
     props.variant === AlertVariant.success
-      ? color.titanLightest
+      ? color.successBackground
       : props.variant === AlertVariant.error
-      ? color.marsLightest
+      ? color.failureBackground
       : props.variant === AlertVariant.warning
-      ? color.sunLightest
-      : color.earthLightest};
+      ? color.warningBackground
+      : color.infoBackground};
   border-radius: ${radius.md};
   min-height: ${space[44]};
   display: flex;
@@ -104,7 +104,7 @@ const Title = styled(H4)`
 `
 
 const Message = styled.p`
-  color: ${color.space};
+  color: ${color.foreground};
   margin: 0;
 `
 
@@ -128,12 +128,12 @@ const Action = styled.button`
   &:focus {
     color: ${props =>
       props.variant === AlertVariant.success
-        ? color.titanLight
+        ? color.onSuccess
         : props.variant === AlertVariant.error
-        ? color.marsLight
+        ? color.onFailure
         : props.variant === AlertVariant.warning
-        ? color.sunLight
-        : color.earthLight};
+        ? color.onWarning
+        : color.onInfo};
   }
 `
 

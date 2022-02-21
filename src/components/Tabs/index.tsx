@@ -28,7 +28,7 @@ export const Tabs: React.FC = ({ children, ...props }) => {
 export const TabList = styled<React.FC<TabListProps>>(ReachTabList)`
   display: flex;
   border-radius: ${radius.lg};
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   padding-top: ${space[8]};
   padding-bottom: ${space[8]};
   overflow-x: auto;
@@ -61,7 +61,7 @@ export const Tab = styled<React.FC<TabProps>>(ReachTab)`
   cursor: pointer;
   border: 0;
   background-color: transparent;
-  color: ${color.space};
+  color: ${color.foreground};
   padding: ${space[4]} ${space[16]};
   font-size: ${fontSize[16]};
   font-weight: ${fontWeight.semiBold};
@@ -70,25 +70,19 @@ export const Tab = styled<React.FC<TabProps>>(ReachTab)`
     margin-left: 0;
   }
 
-  &:active {
-    background: hsla(0, 0%, 0%, 0.05);
-  }
-
   &[data-selected] {
-    color: ${color.nova};
-    background-color: ${color.earth};
+    color: ${color.onAction};
+    background-color: ${color.action};
 
-    [data-theme='dark'] & {
-      color: ${color.space};
+    &:hover {
+      color: ${color.onAction};
+      background-color: ${color.action};
     }
   }
 
   &:hover {
-    background-color: ${color.spaceLightest};
-  }
-
-  &[data-selected]:hover {
-    background-color: ${color.earth};
+    background-color: ${color.inactiveBackground};
+    color: ${color.foreground};
   }
 
   &:disabled {

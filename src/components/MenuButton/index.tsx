@@ -38,7 +38,7 @@ export interface MenuListProps extends ReachMenuListProps {
 }
 
 const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
-  background-color: ${color.nova};
+  background-color: ${color.background};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
   padding-top: ${space[16]};
@@ -47,21 +47,21 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
   margin-bottom: ${space[8]};
 
   [data-reach-menu-item][data-selected] {
-    background-color: ${color.stardust};
+    background-color: ${color.elevatedBackground};
   }
 
   [data-reach-menu-item] {
     :focus,
     :active {
       outline: none;
-      box-shadow: 0 0 0 ${space[4]} ${color.earthLightestAlpha};
+      box-shadow: 0 0 0 ${space[4]} ${color.actionBackground};
     }
   }
 
   :focus,
   :active {
     outline: none;
-    box-shadow: 0 0 0 ${space[4]} ${color.earthLightestAlpha};
+    box-shadow: 0 0 0 ${space[4]} ${color.actionBackground};
   }
 
   opacity: ${props =>

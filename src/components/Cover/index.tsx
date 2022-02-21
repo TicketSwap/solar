@@ -35,9 +35,10 @@ const Container = styled.div<CoverProps>`
   ${props =>
     props.withInsetShadow &&
     css`
-      background-color: ${color.space};
+      background-color: ${color.darkElevatedBackground};
+
       [data-theme='dark'] & {
-        background-color: ${color.nova};
+        background-color: ${color.darkBackground};
       }
     `}
 
@@ -256,7 +257,7 @@ const Caption = styled.span<CaptionProps>`
   font-size: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.0375rem;
-  color: ${color.stardustLightAlpha};
+  color: ${color.foregroundSubtle};
   margin-right: 0.5rem;
 
   ${props =>
@@ -266,16 +267,12 @@ const Caption = styled.span<CaptionProps>`
 
       &:hover,
       &:focus {
-        opacity: 0.6;
+        color: ${color.foregroundMuted};
       }
     `}
 
   @media ${device.tablet} {
     font-size: ${fontSize[12]};
-  }
-
-  [data-theme='dark'] & {
-    color: ${color.spaceMediumAlpha};
   }
 `
 

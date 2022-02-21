@@ -31,8 +31,8 @@ interface DatePickerProps {
 const StyledButton = styled.button`
   padding: ${space[16]};
   border-radius: ${radius.md};
-  background-color: ${color.stardust};
-  color: ${color.spaceLight};
+  background-color: ${color.elevatedBackground};
+  color: ${color.foregroundSubtle};
   font-family: inherit;
   display: flex;
   align-items: center;
@@ -42,7 +42,8 @@ const StyledButton = styled.button`
 `
 
 const ButtonText = styled(Text)<ButtonTextProps>`
-  color: ${props => (props.hasDate ? color.space : color.spaceLight)};
+  color: ${props =>
+    props.hasDate ? color.foreground : color.foregroundSubtle};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -51,16 +51,12 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   bottom: 0;
   left: 0;
   overflow: auto;
-  background-color: ${color.spaceMediumAlpha};
+  background-color: ${color.overlay};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
   opacity: ${props =>
     props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
-
-  [data-theme='dark'] & {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
 `
 
 const StyledDialogContent = styled<React.FC<DialogContentProps>>(
@@ -71,7 +67,7 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
   max-width: 44rem;
   margin: 0;
   min-height: 100vh;
-  background: ${color.nova};
+  background: ${color.background};
   outline: none;
   transform: ${props =>
     props.state === 'entering' || props.state === 'entered'
@@ -109,7 +105,7 @@ const TitleHeader = styled.div<StyledHeaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${color.stardustLight};
+  background-color: ${color.elevatedBackground};
   padding: ${space[8]} ${space[16]};
   z-index: 10;
   transform: ${props => (props.show ? 'translateY(0)' : 'translateY(-100%)')};
@@ -132,11 +128,11 @@ const TitleHeader = styled.div<StyledHeaderProps>`
     height: ${space[44]};
     width: ${space[44]};
     border-radius: 50%;
-    background-color: ${color.skyLight};
+    background-color: ${color.actionBackground};
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${color.earth};
+    color: ${color.action};
   }
 `
 
@@ -229,7 +225,7 @@ const StyledCover = styled(Cover)`
   }
 
   h2 {
-    color: ${color.nova};
+    color: ${color.lightForeground};
   }
 `
 
@@ -254,7 +250,7 @@ const CloseButton = styled.button`
   height: ${space[44]};
   width: ${space[44]};
   border-radius: 50%;
-  background-color: ${color.spaceDark};
+  background-color: ${color.darkBackground};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,7 +264,7 @@ const CloseButton = styled.button`
 `
 
 const StyledClose = styled(Close)`
-  color: ${color.nova};
+  color: ${color.lightForeground};
 
   @media ${device.tablet} {
     transform: scale(1.5);
@@ -276,19 +272,11 @@ const StyledClose = styled(Close)`
 `
 
 const Subtitle = styled(Text)`
-  color: ${color.stardustLightAlpha};
-
-  [data-theme='dark'] & {
-    color: ${color.spaceMedium};
-  }
+  color: ${color.foregroundMuted};
 `
 
 const Title = styled(H2)`
-  color: ${color.nova};
-
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
+  color: ${color.foreground};
 `
 
 interface ContentDialogHeaderProps {

@@ -18,10 +18,10 @@ const itemsWithActions = [
   { value: 'ideal', name: 'iDeal' },
   { value: 'credit_card', name: 'Credit Card' },
   {
-    value: null,
+    value: 'other',
     name: 'My prefered payment method is missing',
     type: SelectItemType.action,
-    leftAdornment: <Plus size={20} color={color.spaceLighter} />,
+    leftAdornment: <Plus size={20} color={color.action} />,
     onClick: () => alert('That is a bummer!'),
   },
 ]

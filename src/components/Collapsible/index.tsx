@@ -25,7 +25,7 @@ const Toggle = styled.button<CollapsibleStyledProps>`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   padding: ${space[16]};
   font-weight: ${fontWeight.semiBold};
   border-top-left-radius: ${radius.md};
@@ -42,11 +42,11 @@ const Body = styled.div<CollapsibleStyledProps>`
   max-height: ${props => (props.isOn ? '100vh' : 0)};
   overflow: hidden;
   transition: max-height ${transition};
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   border-bottom-left-radius: ${radius.md};
   border-bottom-right-radius: ${radius.md};
   box-shadow: 0 1px 0
-    ${props => (props.isOn ? color.spaceLightestAlpha : 'transparent')} inset;
+    ${props => (props.isOn ? color.strokeStrong : 'transparent')} inset;
 `
 
 const Content = styled.div`

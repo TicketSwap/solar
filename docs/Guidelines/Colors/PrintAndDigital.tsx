@@ -1,12 +1,13 @@
 import { Global } from '@emotion/react'
 import styled from '@emotion/styled'
+import React from 'react'
 import { globalStyles } from '../../../src'
 import { H3 } from '../../../src/components/Heading'
 import { Text } from '../../../src/components/Text'
 import { space, color, fontSize } from '../../../src/theme'
 import { colors } from './data'
 
-interface ColorStrokeProps {
+interface ColorStrokeContainerProps {
   hex: string
   backgroundColor: string
 }
@@ -16,7 +17,7 @@ const ContainerGrid = styled.div`
   grid-template-columns: repeat(6, 1fr);
 `
 
-const ColorStrokeContainer = styled.div<ColorStrokeProps>`
+const ColorStrokeContainer = styled.div<ColorStrokeContainerProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -26,7 +27,8 @@ const ColorStrokeContainer = styled.div<ColorStrokeProps>`
 
   h3,
   span {
-    color: ${props => (props.hex === '#FFFFFF' ? color.space : color.nova)};
+    color: ${props =>
+      props.hex === '#CCD0D1' ? color.darkForeground : color.lightForeground};
   }
 
   background-color: ${props => props.backgroundColor};
@@ -45,7 +47,21 @@ const ColorStrokeType = styled.div`
   }
 `
 
-const ColorStroke = ({ label, cymk, rgb, hex, backgroundColor }) => {
+type ColorStrokeProps = {
+  label: string
+  cymk: string
+  rgb: string
+  hex: string
+  backgroundColor: string
+}
+
+const ColorStroke = ({
+  label,
+  cymk,
+  rgb,
+  hex,
+  backgroundColor,
+}: ColorStrokeProps) => {
   return (
     <ColorStrokeContainer backgroundColor={backgroundColor} hex={hex}>
       <H3>{label}</H3>

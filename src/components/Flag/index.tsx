@@ -7,7 +7,7 @@ const StyledImage = styled(Image)`
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  background-color: ${color.spaceLightest};
+  background-color: ${color.elevatedBackground};
   border-radius: 2px;
   overflow: hidden;
   width: 21px;
@@ -22,7 +22,8 @@ const StyledImage = styled(Image)`
     top: 0;
     right: 0;
     bottom: 0;
-    box-shadow: 0 0 0 1px ${color.spaceLightestAlpha} inset;
+    opacity: 0.6;
+    box-shadow: 0 0 0 1px ${color.strokeStrong} inset;
   }
 `
 

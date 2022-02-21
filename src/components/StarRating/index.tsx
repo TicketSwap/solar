@@ -18,7 +18,7 @@ interface StyledLabelProps {
 
 const Label = styled.label<StyledLabelProps>`
   display: inline-block;
-  color: ${props => (props.isActive ? color.sun : color.spaceLightest)};
+  color: ${props => (props.isActive ? color.sun : color.inactiveBackground)};
   cursor: pointer;
 `
 
@@ -27,7 +27,7 @@ const Input = styled.input`
 `
 
 const LabelText = styled.span`
-  color: ${color.space};
+  color: ${color.foreground};
 `
 
 const VisuallyHiddenLabelText = styled.span`

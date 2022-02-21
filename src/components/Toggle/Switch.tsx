@@ -33,16 +33,12 @@ const Button = styled.button<ButtonProps>`
   position: relative;
   cursor: pointer;
   user-select: none;
-  background: ${props => (props.isOn ? color.titanLight : color.spaceLightest)};
+  background: ${props =>
+    props.isOn ? color.success : color.inactiveBackground};
   border-radius: ${space[32]};
   padding: ${space[4]};
   transition: all 0.4s ease;
   border: 0;
-
-  [data-theme='dark'] & {
-    background: ${props =>
-      props.isOn ? color.titanLight : color.spaceLighter};
-  }
 
   &:focus::before,
   &:active::before {
@@ -62,14 +58,10 @@ const Button = styled.button<ButtonProps>`
     width: ${28 / 16}rem;
     height: 100%;
     border-radius: ${space[32]};
-    background: ${color.nova};
+    background: ${color.lightBackground};
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
       padding 0.3s ease, margin 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-
-    [data-theme='dark'] & {
-      background: ${color.space};
-    }
   }
 
   &:focus {
@@ -86,7 +78,7 @@ const Button = styled.button<ButtonProps>`
     bottom: -1px;
     background-color: transparent;
     border-radius: ${space[32]};
-    box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
+    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
     pointer-events: none;
   }
 `
@@ -95,19 +87,11 @@ const Adornment = styled.span<AdornmentProps>`
   position: absolute;
   left: ${props => (props.isOn ? 34 : 10)}px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  color: ${props => (props.isOn ? color.titan : color.spaceLight)};
+  color: ${props => (props.isOn ? color.success : color.inactive)};
   display: flex;
   top: 0;
   bottom: 0;
   align-items: center;
-
-  [data-theme='dark'] & {
-    > div {
-      > span {
-        color: ${props => (props.isOn ? color.titan : color.spaceLight)};
-      }
-    }
-  }
 `
 
 const StyledSpinner = styled(Spinner)`

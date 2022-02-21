@@ -61,10 +61,10 @@ const SpeechBubbleContent = styled.div<StyledProps>`
   position: relative;
   display: inline-block;
   padding: ${space[16]};
-  color: ${color.space};
+  color: ${color.foreground};
   font-size: ${fontSize[16]};
   line-height: ${lineHeight.title};
-  background: ${color.stardust};
+  background: ${color.elevatedBackground};
   border-radius: ${radius.lg};
 
   &::before {

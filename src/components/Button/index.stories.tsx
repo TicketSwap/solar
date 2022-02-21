@@ -65,9 +65,6 @@ export const WithStates = () => (
           <Button variant={variant} loading>
             Loading
           </Button>
-          <Button variant={variant} active>
-            Active
-          </Button>
           <Button as="a" href="/" variant={variant}>
             As anchor
           </Button>

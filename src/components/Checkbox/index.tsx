@@ -13,17 +13,16 @@ const Label = styled.label`
 `
 
 const Help = styled(SmallText)`
-  color: ${color.spaceLight};
+  color: ${color.foregroundMuted};
   display: block;
 `
 
 const LabelText = styled.span`
   flex-shrink: 1;
   display: inline-block;
-  color: ${color.spaceMedium};
+  color: ${color.foreground};
 
   strong {
-    color: ${color.space};
     font-weight: ${fontWeight.semiBold};
   }
 `
@@ -52,15 +51,15 @@ interface CustomCheckboxProps {
 const CustomCheckbox = styled.div<CustomCheckboxProps>`
   flex-shrink: 0;
   position: relative;
-  color: ${color.nova};
+  color: ${color.onAction};
   width: ${space[24]};
   height: ${space[24]};
   background-color: ${props =>
     props.disabled
-      ? color.spaceLightest
+      ? color.inactiveBackground
       : props.checked
-      ? color.earth
-      : color.spaceLightest};
+      ? color.action
+      : color.inactiveBackground};
   border-radius: ${radius.sm};
   transition: background-color 150ms ease-out;
   cursor: ${props => (props.disabled ? 'unset' : 'pointer')};
@@ -69,19 +68,13 @@ const CustomCheckbox = styled.div<CustomCheckboxProps>`
   ${NativeCheckbox}:active + & {
     outline: 0;
     box-shadow: ${props =>
-      props.disabled
-        ? 'unset'
-        : `0 0 0 ${space[4]} ${color.earthLightestAlpha}`};
+      props.disabled ? 'unset' : `0 0 0 ${space[4]} ${color.actionBackground}`};
     background-color: ${props =>
       props.disabled
-        ? color.spaceLightest
+        ? color.inactiveBackground
         : props.checked
-        ? color.earth
-        : color.stardust};
-  }
-
-  [data-theme='dark'] & {
-    color: ${color.space};
+        ? color.action
+        : color.inactiveBackground};
   }
 `
 

@@ -13,7 +13,7 @@ import { useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 
 const BodyWrapper = styled.div`
-  background-color: ${color.nova};
+  background-color: ${color.background};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
   padding: ${space[32]};
@@ -79,7 +79,7 @@ const Backdrop = styled.div<BackdropProps>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${color.novaLightAlpha};
+  background-color: ${color.overlay};
   opacity: ${props =>
     props.state === TransitionState.ENTERING ||
     props.state === TransitionState.ENTERED

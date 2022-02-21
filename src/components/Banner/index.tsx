@@ -6,10 +6,10 @@ import { ChevronRightAlt } from '../../icons'
 
 const Container = styled.div<BannerProps>`
   position: relative;
-  background-color: ${color.space};
+  background-color: ${color.foreground};
   background-position: center;
   background-size: cover;
-  color: ${color.stardust};
+  color: ${color.elevatedBackground};
   cursor: pointer;
   display: block;
   padding-top: ${space[32]};
@@ -42,11 +42,7 @@ const Container = styled.div<BannerProps>`
 `
 
 const StyledChevronRightAlt = styled(ChevronRightAlt)`
-  color: ${color.nova};
-
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
+  color: ${color.lightForeground};
 `
 
 const Content = styled.div`
@@ -61,11 +57,7 @@ const Content = styled.div`
   h5,
   h6,
   p {
-    color: ${color.nova};
-
-    [data-theme='dark'] & {
-      color: ${color.space};
-    }
+    color: ${color.lightForeground};
   }
 `
 

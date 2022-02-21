@@ -6,11 +6,7 @@ import styled from '@emotion/styled'
 import { color } from '../../theme'
 
 const Title = styled(H1)`
-  color: ${color.nova};
-
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
+  color: ${color.lightForeground};
 `
 
 const data = {
