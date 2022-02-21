@@ -40,7 +40,7 @@ describe('PhoneInput', () => {
 
     expect(getByLabelText('Number')).toHaveStyleRule(
       'background-color',
-      color.marsLightestAlpha
+      color.failureBackground
     )
   })
 

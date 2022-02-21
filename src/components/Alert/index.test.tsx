@@ -37,9 +37,9 @@ describe('Alert', () => {
     )
     expect(container.firstChild).toHaveStyleRule(
       'background-color',
-      color.earthLightest
+      color.infoBackground
     )
-    expect(getByText(/action/i)).toHaveStyleRule('color', color.earth)
+    expect(getByText(/action/i)).toHaveStyleRule('color', color.info)
   })
 
   it('renders success colors correctly', () => {
@@ -56,9 +56,9 @@ describe('Alert', () => {
     )
     expect(container.firstChild).toHaveStyleRule(
       'background-color',
-      color.titanLightest
+      color.successBackground
     )
-    expect(getByText(/action/i)).toHaveStyleRule('color', color.titan)
+    expect(getByText(/action/i)).toHaveStyleRule('color', color.success)
   })
 
   it('renders error colors correctly', () => {
@@ -75,9 +75,9 @@ describe('Alert', () => {
     )
     expect(container.firstChild).toHaveStyleRule(
       'background-color',
-      color.marsLightest
+      color.failureBackground
     )
-    expect(getByText(/action/i)).toHaveStyleRule('color', color.mars)
+    expect(getByText(/action/i)).toHaveStyleRule('color', color.failure)
   })
 
   it('renders warning colors correctly', () => {
@@ -94,8 +94,8 @@ describe('Alert', () => {
     )
     expect(container.firstChild).toHaveStyleRule(
       'background-color',
-      color.sunLightest
+      color.warningBackground
     )
-    expect(getByText(/action/i)).toHaveStyleRule('color', color.sun)
+    expect(getByText(/action/i)).toHaveStyleRule('color', color.warning)
   })
 })
