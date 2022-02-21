@@ -19,8 +19,8 @@ describe('Pill', () => {
     )
     expect(container.firstChild).toHaveStyleRule(
       'background-color',
-      color.titan
+      color.success
     )
-    expect(getByText(/Success/i)).toHaveStyleRule('color', color.space)
+    expect(getByText(/Success/i)).toHaveStyleRule('color', color.onSuccess)
   })
 })

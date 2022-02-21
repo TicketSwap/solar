@@ -22,7 +22,10 @@ describe('BaseButton', () => {
       <Button variant={ButtonVariant.danger}>Danger</Button>
     )
 
-    expect(getByText(/Danger/i)).toHaveStyleRule('background-color', color.mars)
+    expect(getByText(/Danger/i)).toHaveStyleRule(
+      'background-color',
+      color.failure
+    )
   })
 
   it('can render with a left adornment', () => {
