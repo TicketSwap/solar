@@ -56,7 +56,7 @@ export const H6 = styled.h6`
   font-size: ${fontSize[12]};
   text-transform: uppercase;
   letter-spacing: 0.0375rem;
-  color: ${color.spaceLight};
+  color: ${color.foregroundSubtle};
 
   @media ${device.tablet} {
     font-size: ${fontSize[12]};

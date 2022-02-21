@@ -76,24 +76,21 @@ const StyledButton = styled.button<StyledButtonProps>`
     bottom: -1px;
     background-color: transparent;
     border-radius: calc(${radius.md} + 1px);
-    box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
+    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
     pointer-events: none;
   }
 
   &:active {
     outline: 0;
     background-image: none;
-    background-color: ${color.earthLight};
   }
 
   &:hover {
-    ${({ variant }) =>
-      variant === ButtonVariant.primary &&
-      css`
-        color: ${color.nova};
-        text-shadow: 0px 1px 0px rgba(0, 19, 25, 0.08);
-        background-color: ${color.earthLight};
-      `};
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.48),
+      rgba(255, 255, 255, 0.24)
+    );
   }
 
   ${({ disabled }) =>
@@ -144,232 +141,121 @@ const StyledButton = styled.button<StyledButtonProps>`
       border-radius: ${radius.md};
     `}
 
-  background-color: ${color.earth};
-  color: ${color.nova};
+  ${({ variant }) =>
+    variant === ButtonVariant.primary &&
+    css`
+      background-color: ${color.action};
+      color: ${color.onAction};
+    `};
 
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
-
-  ${({ variant, active }) =>
+  ${({ variant }) =>
     variant === ButtonVariant.secondary &&
     css`
-      background-color: ${active ? color.earth : color.skyLightAlpha};
-      color: ${active ? color.nova : color.earth};
-      background-image: unset;
+      background-color: ${color.actionBackground};
+      color: ${color.action};
 
       [data-theme='dark'] & {
-        color: ${active ? color.space : color.earth};
-      }
-
-      &:hover {
-        background-color: ${active ? color.earthLight : color.skyAlpha};
-        color: ${active ? color.nova : color.earth};
-
-        [data-theme='dark'] & {
-          color: ${color.space};
-        }
-      }
-
-      &:active {
-        background-color: ${active
-          ? color.earthLight
-          : color.earthLightestAlpha};
-        color: ${active ? color.nova : color.earth};
+        background-image: unset;
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.caution &&
     css`
-      background-color: #fff4f4;
-      color: ${color.mars};
-      text-shadow: none;
-      background-image: unset;
+      background-color: ${color.failureBackground};
+      color: ${color.failure};
 
       [data-theme='dark'] & {
-        color: ${color.mars};
-        background-color: rgba(254, 74, 73, 0.1);
-
-        &:hover {
-          background-color: rgba(254, 74, 73, 0.2);
-        }
-
-        &:active {
-          background-color: rgba(254, 74, 73, 0.3);
-        }
-      }
-
-      &:hover {
-        background-color: #fee9e9;
+        background-image: unset;
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.marsLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.marsLightest};
+        box-shadow: 0 0 0 ${space[4]} ${color.failureFocus};
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.success &&
     css`
-      background-color: ${color.titan};
-
-      &:hover {
-        background-color: ${color.titanLight};
-      }
+      background-color: ${color.success};
+      color: ${color.onSuccess};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.titanLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.titanLight};
+        box-shadow: 0 0 0 ${space[4]} ${color.successFocus};
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.warning &&
     css`
-      background-color: ${color.sun};
-
-      &:hover {
-        background-color: ${color.sunLight};
-      }
+      background-color: ${color.warning};
+      color: ${color.onWarning};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.sunLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.sunLight};
+        box-shadow: 0 0 0 ${space[4]} ${color.warningFocus};
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.danger &&
     css`
-      background-color: ${color.mars};
-
-      &:hover {
-        background-color: ${color.marsLight};
-      }
+      background-color: ${color.failure};
+      color: ${color.onFailure};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.marsLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.marsLight};
-      }
-    `};
-
-  ${({ variant }) =>
-    variant === ButtonVariant.facebook &&
-    css`
-      background-color: ${color.facebook};
-
-      &:hover {
-        background-color: ${color.facebookLight};
-      }
-
-      &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.facebookLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.facebookLight};
+        box-shadow: 0 0 0 ${space[4]} ${color.failureFocus};
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.inverted &&
     css`
-      text-shadow: none;
-      background-color: ${color.nova};
-      color: ${color.earth};
-
-      svg {
-        filter: none;
-      }
-
-      &:hover {
-        color: ${color.earthLight};
-        background-color: ${color.nova};
-      }
-
-      &:active {
-        color: ${color.earth};
-        background-color: ${color.nova};
-      }
+      background-color: ${color.background};
+      color: ${color.action};
 
       [data-theme='dark'] & {
-        color: ${color.earth};
         background-image: unset;
+      }
+    `};
 
-        &:hover,
-        &:active {
-          color: ${color.earthLight};
-          background-image: unset;
-        }
+  ${({ variant }) =>
+    variant === ButtonVariant.facebook &&
+    css`
+      background-color: #1777f2;
+      color: #ffffff;
+
+      &:focus::after {
+        box-shadow: 0 0 0 ${space[4]} #1777f252;
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.apple &&
     css`
-      background-color: ${color.space};
+      background-color: ${color.foreground};
+      color: ${color.background};
 
       [data-theme='dark'] & {
-        color: ${color.nova};
-      }
-
-      &:hover {
-        background-color: ${color.spaceDark};
+        &:focus::after {
+          box-shadow: 0 0 0 ${space[4]} #ffffff52;
+        }
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.spaceDark};
+        box-shadow: 0 0 0 ${space[4]} #1a212952;
       }
     `};
 
   ${({ variant }) =>
     variant === ButtonVariant.google &&
     css`
-      background-color: ${color.nova};
-      color: ${color.spaceMedium};
-      border: 1px solid ${color.spaceLightest};
+      background-color: ${color.lightBackground};
+      color: ${color.darkForeground};
+      border: 1px solid ${color.lightElevatedBackground};
       background-image: unset;
 
-      &:hover {
-        background-color: ${color.spaceLightest};
-      }
-
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.spaceLighterAlpha};
-      }
-
-      &:active {
-        background-color: ${color.spaceLightest};
-      }
-
-      [data-theme='dark'] & {
-        background-color: ${color.space};
-        color: ${color.spaceLighter};
-
-        &:hover {
-          background-color: ${color.spaceDark};
-        }
-        &:active {
-          background-color: ${color.spaceDark};
-        }
+        box-shadow: 0 0 0 ${space[4]} #ccd0d152;
       }
     `};
 `
@@ -399,7 +285,6 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       size = ButtonSize.large,
       variant = ButtonVariant.primary,
       loading = false,
-      active = false,
       fullWidth = false,
       onClick,
       ...props
@@ -420,7 +305,6 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
         size={size}
         isSquare={isSquare}
         variant={variant}
-        active={active}
         fullWidth={fullWidth}
         onClick={loading ? () => {} : onClick}
         {...props}

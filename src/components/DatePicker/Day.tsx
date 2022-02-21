@@ -22,7 +22,7 @@ interface DayButtonProps {
 
 const DayButton = styled.button<DayButtonProps>`
   padding: ${space[4]};
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   border-radius: ${radius.sm};
   display: flex;
   justify-content: center;
@@ -42,11 +42,7 @@ const DayButton = styled.button<DayButtonProps>`
       background-color: ${color.earth};
 
       p {
-        color: ${color.nova};
-
-        [data-theme='dark'] & {
-          color: ${color.space};
-        }
+        color: ${color.lightForeground};
       }
     `}
   ${({ disabled }) =>
@@ -60,7 +56,7 @@ const DayButton = styled.button<DayButtonProps>`
 const DayLabel = styled.p<DayLabelProps>`
   font-weight: ${props =>
     props.isCurrentDay ? fontWeight.semiBold : fontWeight.regular};
-  color: ${color.space};
+  color: ${color.foreground};
 `
 
 const Day = ({ date, isSelected, isDisabled, onSelect }: DayProps) => {

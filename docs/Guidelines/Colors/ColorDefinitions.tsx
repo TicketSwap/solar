@@ -11,7 +11,7 @@ const Grid = styled.div`
   flex-direction: column;
   gap: ${space[16]};
   padding: ${space[16]};
-  border-radius: ${radius[4]};
+  border-radius: ${radius.sm};
   box-shadow: ${shadow.strong};
 `
 
@@ -24,7 +24,7 @@ const StyledHeading = styled(H3)<StyledHeadingProps>`
 `
 
 const Description = styled(Text)`
-  color: ${color.spaceLight};
+  color: ${color.foregroundSubtle};
 `
 
 const KeywordContainer = styled.div`

@@ -53,7 +53,7 @@ export const Group = () => (
 
 export const WithSelected = () => (
   <Panel>
-    <PanelContent bgColor={color.earthLightest}>
+    <PanelContent bgColor={color.actionBackground}>
       <PanelBody>
         <H4>Title</H4>
         <PanelText>Lorem ipsum dolor sit amet</PanelText>

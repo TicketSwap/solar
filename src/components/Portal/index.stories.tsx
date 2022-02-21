@@ -10,12 +10,12 @@ export default {
 
 const Container = styled.div`
   height: 90vh;
-  background-color: ${color.spaceLightest};
+  background-color: ${color.elevatedBackground};
 `
 
 const PortalContainer = styled.div`
   position: absolute;
-  background-color: ${color.nova};
+  background-color: ${color.background};
   top: ${space[56]};
   left: ${space[56]};
   box-shadow: ${shadow.strong};

@@ -47,7 +47,7 @@ export interface ToastBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ToastContainer = styled.div<ToastBlockProps>`
   border-radius: ${radius.lg};
-  background-color: ${color.nova};
+  background-color: ${color.background};
   box-shadow: ${shadow.strong};
   padding: ${space[16]};
 

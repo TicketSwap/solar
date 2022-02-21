@@ -45,7 +45,7 @@ interface StyledImageProps {
 const Placeholder = styled.img<StyledImageProps>`
   vertical-align: middle;
   transition: opacity ${transition};
-  background-color: ${color.stardust};
+  background-color: ${color.elevatedBackground};
   opacity: ${props => (props.show ? 0 : 1)};
   width: 100%;
   height: 100%;

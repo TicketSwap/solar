@@ -2,6 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { Image } from '../Image'
+import { color } from '../../theme'
 
 export interface WrapperProps {
   size: number
@@ -54,12 +55,12 @@ const Placeholder = () => (
     preserveAspectRatio="xMidYMid meet"
   >
     <g>
-      <path fill="#E6F8FE" d="M0 0h32v32H0z" />
+      <path fill={color.infoBackground} d="M0 0h32v32H0z" />
       <path
         d="M28.45 32H3.608c-.115-1.43.033-2.87.472-4.235C4.957 25.631 6.762 24 8.864 24h1.078c1.695 1.25 3.79 2 6.065 2 2.273 0 4.368-.75 6.063-2h1.066c2.101 0 3.907 1.631 4.784 3.765A10.58 10.58 0 0 1 28.45 32z"
-        fill="#00B2F3"
+        fill={color.info}
       />
-      <path d="M23 16a7 7 0 1 1-14 0 7 7 0 0 1 14 0" fill="#00B2F3" />
+      <path d="M23 16a7 7 0 1 1-14 0 7 7 0 0 1 14 0" fill={color.info} />
     </g>
   </InlineSvg>
 )

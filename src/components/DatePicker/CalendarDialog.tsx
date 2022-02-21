@@ -49,7 +49,7 @@ const CalendarTitle = styled(H6)`
 
 const InfoText = styled(Text)`
   margin-top: ${space[16]};
-  color: ${color.spaceMedium};
+  color: ${color.foregroundMuted};
 `
 
 const StyledDialogBody = styled(DialogBody)`

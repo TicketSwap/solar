@@ -41,10 +41,10 @@ const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
   box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
   white-space: nowrap;
   font-size: inherit;
-  color: ${color.nova};
+  color: ${color.invertedForeground};
   border: 0;
   border-radius: ${radius.md};
-  background: ${color.spaceMedium};
+  background: ${color.foregroundMuted};
 `
 
 interface TriangleStyleProps {
@@ -57,7 +57,7 @@ const Triangle = styled.div<TriangleStyleProps>`
   height: 0;
   border-left: ${props => props.size || 10}px solid transparent;
   border-right: ${props => props.size || 10}px solid transparent;
-  border-bottom: ${props => props.size || 10}px solid ${color.spaceMedium};
+  border-bottom: ${props => props.size || 10}px solid ${color.foregroundMuted};
 `
 
 export const Tooltip = ({

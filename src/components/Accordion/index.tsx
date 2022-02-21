@@ -34,10 +34,10 @@ const Accordion: React.FC<AccordionProps> = ({
 }
 
 const AccordionItem = styled<React.FC<AccordionItemProps>>(Reach.AccordionItem)`
-  border-top: 1px solid ${color.spaceLightest};
+  border-top: 1px solid ${color.stroke};
 
   &:last-of-type {
-    border-bottom: 1px solid ${color.spaceLightest};
+    border-bottom: 1px solid ${color.stroke};
   }
 `
 
@@ -80,10 +80,10 @@ const ButtonAdornment = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${color.earth};
+  color: ${color.action};
   width: ${space[32]};
   height: ${space[32]};
-  background-color: ${color.skyLight};
+  background-color: ${color.actionBackground};
   border-radius: 50%;
 
   [data-state='open'] & {

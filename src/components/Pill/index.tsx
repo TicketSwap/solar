@@ -19,23 +19,30 @@ export const Container = styled.span<PillProps>`
   align-items: center;
   line-height: 1;
   text-transform: uppercase;
-  color: ${p => (p.variant === 'secondary' ? color.earth : color.nova)};
+  color: ${p =>
+    p.variant === 'danger'
+      ? color.onFailure
+      : p.variant === 'secondary'
+      ? color.earth
+      : p.variant === 'success'
+      ? color.onSuccess
+      : p.variant === 'warning'
+      ? color.onWarning
+      : p.variant === 'disabled'
+      ? color.onInactive
+      : color.onAction};
   background-color: ${p =>
     p.variant === 'danger'
-      ? color.mars
+      ? color.failure
       : p.variant === 'secondary'
-      ? color.skyLight
+      ? color.actionBackground
       : p.variant === 'success'
-      ? color.titan
+      ? color.success
       : p.variant === 'warning'
-      ? color.sun
+      ? color.warning
       : p.variant === 'disabled'
-      ? color.spaceLighter
-      : color.earth};
-
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
+      ? color.inactive
+      : color.action};
 `
 
 const LeftAdornment = styled.span`

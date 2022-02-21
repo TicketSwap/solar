@@ -13,7 +13,7 @@ export const baseTextStyles = css`
   font-family: ${fontStack};
   font-weight: ${fontWeight.regular};
   line-height: ${lineHeight.copy};
-  color: ${color.space};
+  color: ${color.foreground};
   font-size: ${fontSize[16]};
 
   @media ${device.tablet} {

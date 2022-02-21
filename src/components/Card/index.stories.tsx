@@ -49,7 +49,7 @@ const Adornment = styled.div`
   display: block;
   border-radius: ${radius.sm};
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
-  background-color: ${color.nova};
+  background-color: ${color.background};
   text-align: center;
   width: 40px;
   height: 40px;
@@ -211,15 +211,16 @@ export const Large = () => (
 )
 
 const StyledCard = styled(Card)`
-  background-color: ${color.skyLight};
+  background-color: ${color.actionBackground};
 
   &:hover,
   &:focus {
-    background-color: ${color.sky};
+    background-color: ${color.actionBackground};
+    opacity: 0.8;
   }
 
   * {
-    color: ${color.earth};
+    color: ${color.action};
   }
 `
 

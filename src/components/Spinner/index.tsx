@@ -9,9 +9,7 @@ export interface SpinnerProps {
 }
 
 const StyledSpinnerIcon = styled(SpinnerIcon)`
-  [data-theme='dark'] & {
-    color: ${color.space};
-  }
+  color: ${color.foreground};
 `
 
 const rotate = keyframes`

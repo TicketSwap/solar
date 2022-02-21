@@ -4,161 +4,204 @@ import { baseTextStyles } from './components/Text'
 
 export const globalStyles = css`
   :root {
-    --space: rgb(0, 19, 25);
-    --spaceDark: rgb(40, 56, 61);
-    --spaceMedium: rgb(102, 113, 117);
-    --spaceLight: rgb(153, 161, 163);
-    --spaceLighter: rgb(204, 208, 209);
-    --spaceLightest: rgb(229, 231, 232);
-    --spaceMediumAlpha: rgba(0, 19, 25, 0.6);
-    --spaceLightAlpha: rgba(0, 19, 25, 0.4);
-    --spaceLighterAlpha: rgba(0, 19, 25, 0.2);
-    --spaceLightestAlpha: rgba(0, 19, 25, 0.1);
+    --earth50: #f0fbfe;
+    --earth100: #d6f3fc;
+    --earth200: #99e2f9;
+    --earth300: #33c5f3;
+    --earth400: #00b6f0;
+    --earth500: #0598c8;
+    --earth600: #2881a4;
+    --earth700: #105d79;
+    --earth800: #163949;
+    --earth900: #182a35;
+    --titan50: #eefcf4;
+    --titan100: #d6f7e5;
+    --titan200: #99ebbe;
+    --titan300: #33d87d;
+    --titan400: #00ce5c;
+    --titan500: #05ab52;
+    --titan600: #20975d;
+    --titan700: #10663d;
+    --titan800: #1b4b3c;
+    --titan900: #163d31;
+    --sun50: #fff8eb;
+    --sun100: #fff1d6;
+    --sun200: #ffdb99;
+    --sun300: #ffb833;
+    --sun400: #ffa600;
+    --sun500: #d18b08;
+    --sun600: #b17607;
+    --sun700: #765619;
+    --sun800: #3f3622;
+    --sun900: #322b1b;
+    --mars50: #fff4f4;
+    --mars100: #ffe2e2;
+    --mars200: #ffb7b6;
+    --mars300: #fe6e6d;
+    --mars400: #fe6e6d;
+    --mars500: #d04243;
+    --mars600: #ac2b2c;
+    --mars700: #753136;
+    --mars800: #3e282e;
+    --mars900: #31252c;
+    --stardust50: #fbfbfc;
+    --stardust100: #f5f5f6;
+    --stardust200: #ececee;
+    --stardust300: #e5e7e8;
+    --stardust400: #ccd0d1;
+    --stardust500: #99a1a3;
+    --stardust600: #667175;
+    --stardust700: #59616b;
+    --stardust800: #3b424b;
+    --stardust900: #1a2129;
+    --nova: #ffffff;
+    --space: #00131a;
+    --overlay: #1a212999;
 
-    --nova: rgb(255, 255, 255);
-    --novaLight: rgb(255, 255, 255);
-    --novaLightAlpha: rgba(255, 255, 255, 0.6);
-    --novaLighterAlpha: rgba(255, 255, 255, 0.4);
-    --novaLightestAlpha: rgba(255, 255, 255, 0.2);
+    // Brand
+    --brand: var(--earth400);
 
-    --stardust: rgb(245, 245, 246);
-    --stardustLight: rgb(247, 247, 248);
-    --stardustLighter: rgb(251, 251, 252);
-    --stardustLightAlpha: rgba(245, 245, 246, 0.8);
-    --stardustLighterAlpha: rgba(245, 245, 246, 0.32);
+    // Foreground
+    --foreground: var(--stardust900);
+    --foregroundMuted: var(--stardust600);
+    --foregroundSubtle: var(--stardust500);
 
-    --earth: rgb(0, 182, 240);
-    --earthLight: rgb(51, 197, 243);
-    --earthLighter: rgb(153, 226, 249);
-    --earthLightest: rgb(214, 243, 252);
-    --earthLightAlpha: rgba(0, 182, 240, 0.8);
-    --earthLighterAlpha: rgba(0, 182, 240, 0.4);
-    --earthLightestAlpha: rgba(0, 182, 240, 0.16);
+    // Background
+    --background: var(--nova);
+    --elevatedBackground: var(--stardust100);
 
-    --sky: rgb(224, 246, 253);
-    --skyAlpha: rgba(0, 182, 240, 0.12);
-    --skyLight: rgb(240, 251, 254);
-    --skyLightAlpha: rgba(0, 182, 240, 0.06);
+    // Action
+    --action: var(--earth400);
+    --actionBackground: var(--earth50);
+    --onAction: var(--nova);
+    --actionFocus: #00b6f052;
 
-    --titan: rgb(0, 206, 92);
-    --titanLight: rgb(51, 216, 125);
-    --titanLighter: rgb(153, 235, 190);
-    --titanLightest: rgb(214, 247, 229);
-    --titanLightAlpha: rgba(0, 206, 92, 0.8);
-    --titanLighterAlpha: rgba(0, 206, 92, 0.4);
-    --titanLightestAlpha: rgba(0, 206, 92, 0.16);
+    // Success
+    --success: var(--titan400);
+    --successBackground: var(--titan50);
+    --onSuccess: var(--nova);
+    --successFocus: #00ce5c52;
 
-    --mars: rgb(254, 74, 73);
-    --marsLight: rgb(254, 110, 109);
-    --marsLighter: rgb(255, 183, 182);
-    --marsLightest: rgb(254, 226, 226);
-    --marsLightAlpha: rgba(254, 74, 73, 0.8);
-    --marsLighterAlpha: rgba(254, 74, 73, 0.4);
-    --marsLightestAlpha: rgba(254, 74, 73, 0.16);
+    // Warning
+    --warning: var(--sun400);
+    --warningBackground: var(--sun50);
+    --onWarning: var(--nova);
+    --warningFocus: #ffa60052;
 
-    --sun: rgb(255, 166, 0);
-    --sunLight: rgb(255, 184, 51);
-    --sunLighter: rgb(255, 219, 153);
-    --sunLightest: rgb(255, 241, 214);
-    --sunLightAlpha: rgba(255, 166, 0, 0.8);
-    --sunLighterAlpha: rgba(255, 166, 0, 0.4);
-    --sunLightestAlpha: rgba(255, 166, 0, 0.16);
+    // Failure
+    --failure: var(--mars400);
+    --failureBackground: var(--mars50);
+    --onFailure: var(--nova);
+    --failureFocus: #fe6e6d52;
 
-    --facebook: rgb(23, 119, 242);
-    --facebookLight: rgb(69, 146, 245);
+    // Info
+    --info: var(--earth400);
+    --infoBackground: var(--earth50);
+    --onInfo: var(--nova);
+    --actionFocus: #00b6f052;
 
-    --twitter: rgb(56, 161, 243);
-    --twitterLight: rgb(96, 180, 245);
+    // Inactive
+    --inactive: var(--stardust500);
+    --inactiveBackground: var(--stardust300);
+    --onInactive: var(--stardust800);
+    --inactiveFocus: #99a1a352;
 
-    --whatsapp: rgb(37, 211, 102);
+    // Misc
+    --accent: var(--mars400);
+    --stroke: var(--stardust300);
+    --strokeStrong: var(--stardust400);
+    --shadow: var(--stardust900);
+    --invertedForeground: var(--nova);
+    --invertedBackground: var(--stardust900);
 
-    --shadowLighterAlpha: rgba(0, 19, 25, 0.2);
-    --shadowLightestAlpha: rgba(0, 19, 25, 0.1);
+    // Palette
+    --earth: var(--earth400);
+    --titan: var(--titan400);
+    --sun: var(--sun400);
+    --mars: var(--mars400);
 
-    --gradientNova: rgba(255, 255, 255, 1);
-    --gradientNovaAlpha: rgba(255, 255, 255, 0);
-  }
+    // Theme independent
+    --lightBackground: var(--nova);
+    --lightElevatedBackground: var(--stardust100);
+    --lightForeground: var(--nova);
+    --lightForegroundMuted: var(--stardust500);
+    --darkBackground: var(--stardust900);
+    --darkElevatedBackground: var(--space);
+    --darkForeground: var(--stardust900);
+    --darkForegroundMuted: var(--stardust600);
 
-  [data-theme='dark'] {
-    --space: rgb(255, 255, 255);
-    --spaceDark: rgb(209, 211, 212);
-    --spaceMedium: rgb(163, 166, 169);
-    --spaceLight: rgb(118, 122, 127);
-    --spaceLighter: rgb(72, 77, 84);
-    --spaceLightest: rgb(49, 55, 62);
-    --spaceMediumAlpha: rgba(255, 255, 255, 0.6);
-    --spaceLightAlpha: rgba(255, 255, 255, 0.4);
-    --spaceLighterAlpha: rgba(255, 255, 255, 0.2);
-    --spaceLightestAlpha: rgba(255, 255, 255, 0.1);
+    [data-theme='dark'] {
+      // Brand
+      --brand: var(--earth400);
 
-    --nova: rgb(26, 33, 41);
-    --novaLightAlpha: rgba(26, 33, 41, 0.6);
-    --novaLighterAlpha: rgba(26, 33, 41, 0.4);
-    --novaLightestAlpha: rgba(26, 33, 41, 0.2);
+      // Foreground
+      --foreground: var(--nova);
+      --foregroundMuted: var(--stardust500);
+      --foregroundSubtle: var(--stardust600);
 
-    --stardust: rgb(13, 13, 13);
-    --stardustLight: rgb(16, 17, 19);
-    --stardustLighter: rgb(21, 25, 30);
-    --stardustLightAlpha: rgba(13, 13, 13, 0.8);
-    --stardustLighterAlpha: rgba(13, 13, 13, 0.4);
+      // Background
+      --background: var(--stardust900);
+      --elevatedBackground: var(--space);
 
-    --earth: rgb(0, 182, 240);
-    --earthLight: rgb(5, 152, 200);
-    --earthLighter: rgb(16, 93, 121);
-    --earthLightest: rgb(22, 57, 73);
-    --earthLightAlpha: rgba(0, 182, 240, 0.8);
-    --earthLighterAlpha: rgba(0, 182, 240, 0.4);
-    --earthLightestAlpha: rgba(0, 182, 240, 0.16);
+      // Action
+      --action: var(--earth400);
+      --actionBackground: var(--earth800);
+      --onAction: var(--nova);
 
-    --sky: rgb(20, 52, 67);
-    --skyLight: rgb(24, 42, 53);
+      // Success
+      --success: var(--titan400);
+      --successBackground: var(--titan800);
+      --onSuccess: var(--nova);
 
-    --titan: rgb(0, 206, 92);
-    --titanLight: rgb(5, 171, 82);
-    --titanLighter: rgb(16, 102, 61);
-    --titanLightest: rgb(22, 61, 49);
-    --titanLightAlpha: rgba(0, 206, 92, 0.8);
-    --titanLighterAlpha: rgba(0, 206, 92, 0.4);
-    --titanLightestAlpha: rgba(0, 206, 92, 0.16);
+      // Warning
+      --warning: var(--sun400);
+      --warningBackground: var(--sun800);
+      --onWarning: var(--nova);
 
-    --mars: rgb(254, 74, 73);
-    --marsLight: rgb(208, 66, 67);
-    --marsLighter: rgb(117, 49, 54);
-    --marsLightest: rgb(62, 40, 46, 1);
-    --marsLightAlpha: rgba(254, 74, 73, 0.8);
-    --marsLighterAlpha: rgba(254, 74, 73, 0.4);
-    --marsLightestAlpha: rgba(254, 74, 73, 0.16);
+      // Failure
+      --failure: var(--mars400);
+      --failureBackground: var(--mars800);
+      --onFailure: var(--nova);
 
-    --sun: rgb(255, 166, 0);
-    --sunLight: rgb(209, 139, 8);
-    --sunLighter: rgb(118, 86, 25);
-    --sunLightest: rgb(63, 54, 34);
-    --sunLightAlpha: rgba(255, 166, 0, 0.8);
-    --sunLighterAlpha: rgba(255, 166, 0, 0.4);
-    --sunLightestAlpha: rgba(255, 166, 0, 0.16);
+      // Info
+      --info: var(--earth400);
+      --infoBackground: var(--earth800);
+      --onInfo: var(--nova);
 
-    --facebook: rgb(23, 119, 242);
-    --facebookLight: rgb(69, 146, 245);
+      // Inactive
+      --inactive: var(--stardust600);
+      --inactiveBackground: var(--stardust800);
+      --onInactive: var(--stardust300);
 
-    --twitter: rgb(56, 161, 243);
-    --twitterLight: rgb(96, 180, 245);
+      // Misc
+      --accent: var(--mars400);
+      --stroke: var(--stardust800);
+      --strokeStrong: var(--stardust700);
+      --shadow: var(--space);
+      --invertedForeground: var(--stardust900);
+      --invertedBackground: var(--nova);
 
-    --whatsapp: rgb(37, 211, 102);
+      // Palette
+      --earth: var(--earth400);
+      --titan: var(--titan400);
+      --sun: var(--sun400);
+      --mars: var(--mars400);
 
-    --shadowLighterAlpha: rgba(0, 19, 25, 0.9);
-    --shadowLightestAlpha: rgba(0, 19, 25, 0.9);
-
-    --gradientNova: rgba(26, 33, 41, 1);
-    --gradientNovaAlpha: rgba(26, 33, 41, 0);
+      // Theme independent
+      --lightBackground: var(--nova);
+      --lightElevatedBackground: var(--stardust100);
+      --lightForeground: var(--nova);
+      --lightForegroundMuted: var(--stardust500);
+      --darkBackground: var(--stardust900);
+      --darkElevatedBackground: var(--space);
+      --darkForeground: var(--stardust900);
+      --darkForegroundMuted: var(--stardust600);
+    }
   }
 
   ::selection {
     background-color: ${color.earth};
-    color: ${color.nova};
-
-    [data-theme='dark'] & {
-      color: ${color.space};
-    }
+    color: ${color.lightForeground};
   }
 
   *,
@@ -202,7 +245,7 @@ export const globalStyles = css`
   h5,
   h6,
   li {
-    color: ${color.space};
+    color: ${color.foreground};
   }
 
   a {
@@ -215,14 +258,14 @@ export const globalStyles = css`
     margin: 0;
     border: none;
     font: inherit;
-    color: ${color.space};
+    color: ${color.earth};
     background-color: transparent;
     cursor: pointer;
     border-radius: ${radius.md};
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 ${space[4]} ${color.earthLighterAlpha};
+      box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
     }
   }
 
