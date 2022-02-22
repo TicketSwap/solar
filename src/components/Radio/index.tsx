@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import React, { forwardRef } from 'react'
-import { color, space, transition } from '../..'
+import React, { forwardRef, InputHTMLAttributes } from 'react'
+import { color, device, fontSize, radius, space, transition } from '../..'
 import { Checkmark } from '../../icons'
+import { Label } from '../Label'
 
 const Container = styled.span`
   position: relative;
@@ -19,8 +20,8 @@ const Icon = styled(Checkmark)`
 const StyledInput = styled.input`
   grid-area: 1 / 1;
   background-color: ${color.nova};
-  height: 24px;
-  width: 24px;
+  height: ${space[24]};
+  width: ${space[24]};
   appearance: none;
   border: 1px solid ${color.spaceLightest};
   border-radius: 50%;
@@ -51,14 +52,12 @@ const StyledInput = styled.input`
   }
 `
 
-export interface RadioProps {
+type InputAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'id'>
+
+export interface RadioProps extends InputAttributes {
   ref?: React.Ref<HTMLInputElement>
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  value: string
-  checked: boolean
   id: string
-  name: string
-  disabled?: boolean
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Radio: React.FC<RadioProps> = forwardRef(
@@ -80,3 +79,88 @@ export const Radio: React.FC<RadioProps> = forwardRef(
     )
   }
 )
+
+const Wrapper = styled.span`
+  label {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    padding: ${space[16]} ${space[16]} ${space[16]} 0;
+    align-items: center;
+    background-color: ${color.stardust};
+    border-radius: ${radius.md};
+  }
+`
+
+export interface RadioWithLabelProps extends RadioProps {
+  label: string
+  ref?: React.Ref<HTMLInputElement>
+}
+
+export const RadioWithLabel: React.FC<RadioWithLabelProps> = forwardRef(
+  ({ label, ...radioProps }, ref) => {
+    return (
+      <Wrapper>
+        <Label htmlFor={radioProps.id}>
+          <Radio {...radioProps} ref={ref} />
+          {label}
+        </Label>
+      </Wrapper>
+    )
+  }
+)
+
+const Fieldset = styled.fieldset`
+  display: grid;
+  grid-gap: ${space[8]};
+`
+
+const Legend = styled.legend`
+  margin-bottom: ${space[16]};
+  font-size: ${fontSize[16]};
+  color: ${color.space};
+
+  @media ${device.tablet} {
+    font-size: ${fontSize[18]};
+  }
+`
+
+interface RadioOption {
+  id: string
+  value: string
+  label: string
+  disabled?: boolean
+}
+
+export interface RadioGroupProps {
+  options: RadioOption[]
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string
+  legend?: string
+  name: string
+}
+
+export const RadioGroup: React.FC<RadioGroupProps> = ({
+  options = [],
+  onChange,
+  value,
+  name,
+  legend,
+}) => {
+  return (
+    <Fieldset>
+      {legend && <Legend>{legend}</Legend>}
+      {options.map(option => (
+        <RadioWithLabel
+          key={option.id}
+          onChange={onChange}
+          name={name}
+          value={option.value}
+          id={option.id}
+          checked={option.value === value}
+          label={option.label}
+          disabled={option.disabled}
+        />
+      ))}
+    </Fieldset>
+  )
+}
