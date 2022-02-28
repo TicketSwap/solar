@@ -8,7 +8,7 @@ export {
   AccordionPanel,
 } from './Accordion'
 export { Banner } from './Banner'
-export { Text, SmallText } from './Text'
+export { Text, SmallText, TinyText } from './Text'
 export { BaseStyles } from './BaseStyles'
 export { StarRating } from './StarRating'
 export { Button, ButtonVariant, ButtonSize } from './Button'
