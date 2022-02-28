@@ -37,3 +37,13 @@ export const SmallText = styled.span`
     font-size: ${fontSize[16]};
   }
 `
+
+export const TinyText = styled.span`
+  ${baseTextStyles};
+  font-size: ${fontSize[14]};
+  color: ${color.spaceLight};
+
+  @media ${device.tablet} {
+    font-size: ${fontSize[14]};
+  }
+`
