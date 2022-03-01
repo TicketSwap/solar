@@ -1,17 +1,6 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
-
-function canUseDOM() {
-  return Boolean(
-    typeof window !== 'undefined' &&
-      window.document &&
-      window.document.createElement
-  )
-}
-
-export const useIsomorphicLayoutEffect = canUseDOM()
-  ? React.useLayoutEffect
-  : React.useEffect
+import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect'
 
 export const Portal: React.FC = ({ children }) => {
   let mountNode = React.useRef<HTMLDivElement | null>(null)
