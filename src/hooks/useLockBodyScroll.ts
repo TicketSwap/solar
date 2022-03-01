@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect as useLayoutEffect_SAFE_FOR_SSR } from '@reach/utils'
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect'
 
 const isIosDevice =
   typeof window !== 'undefined' &&
@@ -76,7 +76,7 @@ const restoreBodyScroll = () => {
 }
 
 export function useLockBodyScroll() {
-  useLayoutEffect_SAFE_FOR_SSR(() => {
+  useIsomorphicLayoutEffect(() => {
     lockBodyScroll({ reserveScrollBarGap: true })
     return () => restoreBodyScroll()
   }, [])
