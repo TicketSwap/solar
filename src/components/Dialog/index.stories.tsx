@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import {
   Dialog,
   DialogAdornment,
@@ -23,40 +23,14 @@ const items = [
   { value: 'es', name: 'Spanish' },
 ]
 
-function ControlledDialog() {
-  const [show, setShow] = React.useState(false)
-  return (
-    <>
-      <Button
-        onClick={() => setShow(!show)}
-        style={{ position: 'absolute', zIndex: 2147483647 }}
-      >
-        Toggle
-      </Button>
-      <Dialog on={show} onToggle={console.log}>
-        {({ getWindowProps }) => (
-          <DialogWindow
-            {...getWindowProps({
-              onClick: () => show && setShow(false),
-              onEscKeyDown: () => show && setShow(false),
-            })}
-          >
-            <DialogHeader>Hi</DialogHeader>
-            <DialogBody>I am a controlled dialog</DialogBody>
-          </DialogWindow>
-        )}
-      </Dialog>
-    </>
-  )
-}
-
-interface MyDialogProps {
+const BasicDialog = ({
+  children,
+  ...props
+}: {
   children: ReactNode
   persist?: boolean
   defaultOn?: boolean
-}
-
-const MyDialog = ({ children, ...props }: MyDialogProps) => (
+}) => (
   <Dialog {...props}>
     {({ hide, getToggleProps, getWindowProps }) => (
       <>
@@ -92,7 +66,34 @@ const MyDialog = ({ children, ...props }: MyDialogProps) => (
   </Dialog>
 )
 
-function HooksDialog() {
+const ControlledDialog = () => {
+  const [show, setShow] = useState(false)
+  return (
+    <>
+      <Button
+        onClick={() => setShow(!show)}
+        style={{ position: 'absolute', zIndex: 2147483647 }}
+      >
+        Toggle
+      </Button>
+      <Dialog on={show} onToggle={console.log}>
+        {({ getWindowProps }) => (
+          <DialogWindow
+            {...getWindowProps({
+              onClick: () => show && setShow(false),
+              onEscKeyDown: () => show && setShow(false),
+            })}
+          >
+            <DialogHeader>Hi</DialogHeader>
+            <DialogBody>I am a controlled dialog</DialogBody>
+          </DialogWindow>
+        )}
+      </Dialog>
+    </>
+  )
+}
+
+const HooksDialog = () => {
   const { hide, getToggleProps, getWindowProps } = useDialog({
     onToggle: (on: any) => console.log(on),
     onEntered: () => console.log('entered'),
@@ -116,21 +117,21 @@ export default {
   title: 'Components/Surfaces/Dialog',
 }
 
-export const Basic = () => <MyDialog>Body</MyDialog>
-export const DefaultOn = () => <MyDialog defaultOn>Body</MyDialog>
+export const Basic = () => <BasicDialog>Body</BasicDialog>
+export const DefaultOn = () => <BasicDialog defaultOn>Body</BasicDialog>
 
 DefaultOn.storyName = 'Default on'
 
 export const DefaultOnAndPersist = () => (
-  <MyDialog defaultOn persist>
+  <BasicDialog defaultOn persist>
     Body
-  </MyDialog>
+  </BasicDialog>
 )
 
 DefaultOnAndPersist.storyName = 'Default on and persist'
 
 export const WithLongBody = () => (
-  <MyDialog>
+  <BasicDialog>
     <div style={{ display: 'grid', gridGap: 16 }}>
       <Input id="email" type="email" label="Email address" />
       <Input id="fname" label="First name" />
@@ -144,7 +145,7 @@ export const WithLongBody = () => (
         initialSelectedItem={items[1]}
       />
     </div>
-  </MyDialog>
+  </BasicDialog>
 )
 
 WithLongBody.storyName = 'With long body'
