@@ -244,7 +244,6 @@ export const DialogBody: React.FC = ({ children, ...props }) => {
 
 export const DialogFooter = styled.footer`
   position: relative;
-  z-index: 1;
   margin-top: -${space[16]};
   padding: ${space[16]};
   padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
