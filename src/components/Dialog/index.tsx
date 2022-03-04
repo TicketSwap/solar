@@ -12,7 +12,12 @@ import {
   easing,
   gradients,
 } from '../../theme'
-import { useLockBodyScroll, usePrevious, useTransition } from '../../hooks'
+import {
+  useIsMounted,
+  useLockBodyScroll,
+  usePrevious,
+  useTransition,
+} from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 
 const duration = 200
@@ -275,6 +280,7 @@ export function Dialog({
 }
 
 export function useDialog(config: UseDialogProps = {}) {
+  const isMounted = useIsMounted()
   const { persist, defaultOn, onToggle, onEntered, onExited, ...props } = config
   const isOnControlled = React.useCallback(() => {
     return props.on !== undefined
@@ -282,7 +288,11 @@ export function useDialog(config: UseDialogProps = {}) {
   const [on, setOn] = useState(isOnControlled() ? props.on : false)
   const previousOn = usePrevious(isOnControlled() ? props.on : on)
   const show = () => (!isOnControlled() ? setOn(true) : undefined)
-  const hide = () => (!isOnControlled() ? setOn(false) : undefined)
+  const hide = () => {
+    if (!isMounted()) return
+
+    !isOnControlled() ? setOn(false) : undefined
+  }
   const toggle = () => (!isOnControlled() ? setOn(!on) : undefined)
 
   const getOn = React.useCallback(() => {
