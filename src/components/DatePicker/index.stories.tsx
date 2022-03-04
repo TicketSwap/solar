@@ -109,7 +109,7 @@ export const All = () => {
 
 All.storyName = 'All dates'
 
-export const WithTimeRange = () => {
+export const WithDateRange = () => {
   const [date, setDate] = useState(null)
 
   return (
@@ -118,7 +118,7 @@ export const WithTimeRange = () => {
       timeFrame={TimeFrame.custom}
       dateRange={{
         start: new Date(2023, 2, 12),
-        end: new Date(2023, 4, 20),
+        end: new Date(2025, 4, 20),
       }}
       monthLabel="Month"
       yearLabel="Year"
@@ -129,7 +129,7 @@ export const WithTimeRange = () => {
   )
 }
 
-WithTimeRange.storyName = 'With a time range'
+WithDateRange.storyName = 'With a date range'
 
 export const WithTitle = () => {
   const [date, setDate] = useState(null)
