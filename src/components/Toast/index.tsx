@@ -130,7 +130,7 @@ export const ToastProvider: React.FC = props => {
   const [cancellations, setCancellations] = React.useState<number[]>([])
 
   function notify(renderCallback: () => any) {
-    if (!isMounted) return
+    if (!isMounted()) return
 
     const component = renderCallback()
     const { persist, leftAdornment } = component.props
