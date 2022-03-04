@@ -84,7 +84,7 @@ const getYears = ({ timeFrame, range, yearOfReference }: YearParams) => {
   }
 
   if (timeFrame === TimeFrame.custom) {
-    return generateYears(yearOfReference - range, yearOfReference)
+    return generateYears(yearOfReference, yearOfReference + range)
   }
 
   return generateYears(yearOfReference, yearOfReference + range)
