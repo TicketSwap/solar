@@ -71,7 +71,11 @@ export const useTransition = ({
   }, [onExiting, handleExited, timeout])
 
   useIsomorphicLayoutEffect(() => {
-    if (transitioning) return
+    if (state === TransitionState.EXITING) return
+
+    if (!on && typeof enteringTimerID.current !== 'undefined') {
+      clearTimeout(enteringTimerID.current)
+    }
 
     if (on && !prevOn) {
       setMounted(true)
@@ -84,7 +88,7 @@ export const useTransition = ({
     if (prevOn && !on) {
       exitingTimerID.current = handleExiting()
     }
-  }, [on, prevOn, handleEntering, transitioning, handleExiting])
+  }, [on, prevOn, handleEntering, transitioning, handleExiting, state])
 
   useEffect(() => {
     return () => {
