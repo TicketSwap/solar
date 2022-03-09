@@ -1,8 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import { easing } from '../../theme'
-import { usePrevious, useTransition } from '../../hooks'
-import { TransitionState } from '../../hooks/useTransition'
+import { TransitionState, usePrevious, useTransition } from '../../hooks'
 
 const duration = 400
 
