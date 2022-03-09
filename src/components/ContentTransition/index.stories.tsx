@@ -97,7 +97,13 @@ const Signup = (props: {
   </DialogBody>
 )
 
-const SignupEmail = ({}: { title: string; back: string }) => (
+const SignupEmail = (props: {
+  title: string
+  back: string
+  showSuccessView: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void
+}) => (
   <>
     <DialogBody>
       <div>
@@ -108,11 +114,23 @@ const SignupEmail = ({}: { title: string; back: string }) => (
       </div>
     </DialogBody>
     <DialogFooter>
-      <Button variant={ButtonVariant.success} fullWidth>
+      <Button
+        variant={ButtonVariant.success}
+        fullWidth
+        onClick={props.showSuccessView}
+      >
         Sign up
       </Button>
     </DialogFooter>
   </>
+)
+
+const SuccessView = ({}: { title: string; back: string }) => (
+  <DialogBody>
+    <div>
+      <p>Signup successful!</p>
+    </div>
+  </DialogBody>
 )
 
 function Dialog() {
@@ -167,7 +185,9 @@ function Dialog() {
             key="signupEmail"
             title="Sign up with email"
             back="signup"
+            showSuccessView={() => setActiveView('success')}
           />
+          <SuccessView key="success" title="Success" back="signupEmail" />
         </ContentTransition>
       </DialogWindow>
     </>
