@@ -88,7 +88,7 @@
     "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.13",
+    "@types/react-dom": "^17.0.14",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "babel-loader": "^8.2.3",
