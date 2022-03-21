@@ -41,7 +41,7 @@ export const SmallText = styled.span`
 export const TinyText = styled.span`
   ${baseTextStyles};
   font-size: ${fontSize[14]};
-  color: ${color.spaceLight};
+  color: ${color.foregroundSubtle};
 
   @media ${device.tablet} {
     font-size: ${fontSize[14]};
