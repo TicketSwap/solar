@@ -41,7 +41,7 @@ export const Container = styled.span<PillProps>`
       : p.variant === 'warning'
       ? color.warning
       : p.variant === 'disabled'
-      ? color.inactive
+      ? color.inactiveBackground
       : color.action};
 `
 
