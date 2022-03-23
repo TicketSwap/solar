@@ -50,6 +50,7 @@ const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   padding-top: ${space[12]};
   padding-bottom: ${space[12]};
   text-align: left;
+  color: ${color.foreground};
 
   &[data-disabled] {
     cursor: not-allowed;
