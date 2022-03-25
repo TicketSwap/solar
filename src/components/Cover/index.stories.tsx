@@ -15,13 +15,13 @@ const data = {
     copyrightLink: 'https://www.facebook.com/gezatalaberphotography',
     imageSizes: {
       desktop:
-        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/80afc84b-2091-4359-9fd7-9126d684182c.jpeg',
+        'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/201610/80afc84b-2091-4359-9fd7-9126d684182c.jpeg',
       tablet:
-        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/87dc40a0-2c46-4130-9881-42779bcd3215.jpeg',
+        'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/201610/87dc40a0-2c46-4130-9881-42779bcd3215.jpeg',
       mobileLandscape:
-        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/3154ef01-2e6b-4e50-99c9-91edc13f3f6a.jpeg',
+        'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/201610/3154ef01-2e6b-4e50-99c9-91edc13f3f6a.jpeg',
       mobilePortrait:
-        'https://s3-eu-west-1.amazonaws.com/ticketswap/public/201610/904e600a-4994-40cf-8ea2-792e6d6d7a9b.jpeg',
+        'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/201610/904e600a-4994-40cf-8ea2-792e6d6d7a9b.jpeg',
     },
   },
 }
