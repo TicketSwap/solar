@@ -5,44 +5,44 @@ const logos = [
   {
     image: '/static/images/logo/white.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-hor-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-hor-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-hor-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-hor-blue.png',
   },
   {
     image: '/static/images/logo/blue.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-hor-white-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-hor-white-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-hor-white-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-hor-white-blue.png',
   },
   {
     image: '/static/images/logo/icon-white.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.png',
   },
   {
     image: '/static/images/logo/vertical-white.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-ver-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-ver-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-ver-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-ver-blue.png',
   },
   {
     image: '/static/images/logo/vertical-blue.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-ver-white-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-ver-white-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-ver-white-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-ver-white-blue.png',
   },
   {
     image: '/static/images/logo/icon-blue.png',
     urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-white-blue.eps',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-white-blue.eps',
     urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-white-blue.png',
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-white-blue.png',
   },
 ]
 
@@ -106,14 +106,14 @@ const Info = styled.div`
 `
 
 const Link = styled.a`
-  color: rgb(0, 182, 240);
+  color: #00b6f0;
   text-decoration: none;
   font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular',
     'San Francisco', BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica,
     Arial, sans-serif;
 
-  &:active {
-    color: black;
+  &:hover {
+    color: #99a1a3;
   }
 `
 

@@ -5,7 +5,7 @@ export default create({
   brandTitle: 'Solar Design System',
   brandUrl: 'https://ticketswap.com',
   brandImage:
-    'https://s3-eu-west-1.amazonaws.com/ticketswap/public/downloads/bm-wm-hor-white-blue.png',
+    'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-wm-hor-white-blue.png',
 
   // UI
   appBg: 'rgba(0, 182, 240, 0.08)',
