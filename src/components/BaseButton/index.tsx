@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { space, color, fontWeight, radius, device } from '../../theme'
+import { space, color, fontWeight, radius, device, fontSize } from '../../theme'
 import { baseTextStyles } from '../Text'
+import { css } from '@emotion/react'
 
 export enum ButtonVariant {
   info = 'info',
@@ -10,10 +11,16 @@ export enum ButtonVariant {
   danger = 'danger',
 }
 
+export enum BaseButtonSize {
+  medium = 'medium',
+  small = 'small',
+}
+
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   leftAdornment?: ReactNode
   variant?: ButtonVariant
   disabled?: boolean
+  size?: BaseButtonSize
 }
 
 const StyledButton = styled.button<ButtonProps>`
@@ -32,6 +39,17 @@ const StyledButton = styled.button<ButtonProps>`
       : color.info};
   font-weight: ${fontWeight.semiBold};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
+
+  ${({ size }) =>
+    size === BaseButtonSize.small &&
+    css`
+      font-size: ${fontSize[14]};
+      font-weight: ${fontWeight.regular};
+
+      @media ${device.tablet} {
+        font-size: ${fontSize[16]};
+      }
+    `}
 
   &:hover,
   &:focus {
@@ -77,10 +95,10 @@ const Adornment = styled.span`
 
 const BaseButton: React.FC<ButtonProps> = React.forwardRef(
   (
-    { children, leftAdornment, ...props },
+    { children, leftAdornment, size = BaseButtonSize.medium, ...props },
     ref: React.Ref<HTMLButtonElement>
   ) => (
-    <StyledButton ref={ref} {...props}>
+    <StyledButton ref={ref} size={size} {...props}>
       {leftAdornment && <Adornment>{leftAdornment}</Adornment>}
       {children}
     </StyledButton>

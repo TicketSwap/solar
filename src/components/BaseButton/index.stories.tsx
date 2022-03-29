@@ -1,41 +1,67 @@
 import React from 'react'
-import { BaseButton, ButtonVariant } from './'
+import { BaseButton, BaseButtonSize, ButtonVariant } from './'
 import { File } from '../../icons'
+import styled from '@emotion/styled'
+
+const ButtonWrapper = styled.div`
+  button {
+    display: block;
+    margin-bottom: 16px;
+  }
+`
 
 export const Basic = () => (
-  <BaseButton id="baseButton" onClick={() => alert('Clicked')}>
-    Default
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton onClick={() => alert('Clicked')}>Default medium</BaseButton>
+    <BaseButton size={BaseButtonSize.small} onClick={() => alert('Clicked')}>
+      Default small
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export const WithIcon = () => (
-  <BaseButton id="baseButton" leftAdornment={<File size={24} />}>
-    View example
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton leftAdornment={<File size={24} />}>View example</BaseButton>
+    <BaseButton size={BaseButtonSize.small} leftAdornment={<File size={16} />}>
+      View example
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export const Success = () => (
-  <BaseButton id="baseButton" variant={ButtonVariant.success}>
-    Success
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton variant={ButtonVariant.success}>Success</BaseButton>
+    <BaseButton size={BaseButtonSize.small} variant={ButtonVariant.success}>
+      Success
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export const Warning = () => (
-  <BaseButton id="baseButton" variant={ButtonVariant.warning}>
-    Warning
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton variant={ButtonVariant.warning}>Warning</BaseButton>
+    <BaseButton size={BaseButtonSize.small} variant={ButtonVariant.warning}>
+      Warning
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export const Danger = () => (
-  <BaseButton id="baseButton" variant={ButtonVariant.danger}>
-    Danger
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton variant={ButtonVariant.danger}>Danger</BaseButton>
+    <BaseButton size={BaseButtonSize.small} variant={ButtonVariant.danger}>
+      Danger
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export const Disabled = () => (
-  <BaseButton id="baseButton" disabled>
-    Disabled
-  </BaseButton>
+  <ButtonWrapper>
+    <BaseButton disabled>Disabled</BaseButton>
+    <BaseButton size={BaseButtonSize.small} disabled>
+      Disabled
+    </BaseButton>
+  </ButtonWrapper>
 )
 
 export default {
