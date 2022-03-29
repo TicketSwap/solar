@@ -1,32 +1,41 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { matchers } from '@emotion/jest'
-import { BaseButton, ButtonVariant } from '.'
-import { color } from '../../theme'
+import { BaseButton, BaseButtonSize, ButtonVariant } from '.'
+import { color, fontSize } from '../../theme'
 
 expect.extend(matchers)
 
 describe('BaseButton', () => {
   it('renders without crashing and calls action handlers', () => {
     const action = jest.fn()
-    const { container, getByText } = render(
-      <BaseButton onClick={action}>Default</BaseButton>
-    )
-    expect(container.firstChild).toBeInTheDocument()
-    fireEvent.click(getByText(/Default/i))
+    render(<BaseButton onClick={action}>Default</BaseButton>)
+    fireEvent.click(screen.getByText('Default'))
     expect(action).toHaveBeenCalledTimes(1)
   })
 
-  it('renders the varriant prop correctly', () => {
-    const { getByText } = render(
-      <BaseButton variant={ButtonVariant.danger}>Danger</BaseButton>
-    )
+  it('renders the variant prop correctly', () => {
+    render(<BaseButton variant={ButtonVariant.danger}>Danger</BaseButton>)
 
-    expect(getByText(/Danger/i)).toHaveStyleRule('color', color.failure)
+    expect(screen.getByText('Danger')).toHaveStyleRule('color', color.failure)
+  })
+
+  it('renders the small size correctly', () => {
+    render(<BaseButton size={BaseButtonSize.small}>Small</BaseButton>)
+    expect(screen.getByText('Small')).toHaveStyleRule('font-size', fontSize[14])
+  })
+
+  it('renders the medium size correctly', () => {
+    render(<BaseButton>Medium</BaseButton>)
+
+    expect(screen.getByText('Medium')).toHaveStyleRule(
+      'font-size',
+      fontSize[16]
+    )
   })
 
   it('can render with a left adornment', () => {
-    const { getByText } = render(
+    render(
       <BaseButton
         leftAdornment={
           <span role="img" aria-label="fire">
@@ -38,6 +47,6 @@ describe('BaseButton', () => {
       </BaseButton>
     )
 
-    expect(getByText(/🔥/i)).toBeInTheDocument()
+    expect(screen.getByText('🔥')).toBeInTheDocument()
   })
 })
