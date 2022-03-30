@@ -158,10 +158,9 @@ const CalendarDialog = ({
     <Dialog on={isOpen}>
       {({ getWindowProps }) => (
         <DialogWindow
-          {...getWindowProps({
-            onClick: close,
-            onEscKeyDown: close,
-          })}
+          {...getWindowProps()}
+          onClick={close}
+          onEscKeyDown={close}
         >
           <DialogHeader>
             {title}
