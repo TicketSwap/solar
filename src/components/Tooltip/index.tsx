@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
-import { radius, color, space } from '../../theme'
+import { radius, color, space, fontSize } from '../../theme'
 import { Global, css } from '@emotion/react'
 import { useTooltip, TooltipPopup, TooltipPopupProps } from '@reach/tooltip'
 
@@ -37,14 +37,15 @@ const centered = (
 const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
   pointer-events: none;
   position: absolute;
+  margin-top: 4px;
   padding: ${space[8]} ${space[12]};
   box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
   white-space: nowrap;
-  font-size: inherit;
+  font-size: ${fontSize[16]};
   color: ${color.invertedForeground};
   border: 0;
   border-radius: ${radius.md};
-  background: ${color.foregroundMuted};
+  background: ${color.invertedBackground};
 `
 
 interface TriangleStyleProps {
@@ -57,7 +58,8 @@ const Triangle = styled.div<TriangleStyleProps>`
   height: 0;
   border-left: ${props => props.size || 10}px solid transparent;
   border-right: ${props => props.size || 10}px solid transparent;
-  border-bottom: ${props => props.size || 10}px solid ${color.foregroundMuted};
+  border-bottom: ${props => props.size || 10}px solid
+    ${color.invertedBackground};
 `
 
 export const Tooltip = ({
