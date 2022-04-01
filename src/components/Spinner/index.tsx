@@ -6,10 +6,11 @@ import { color } from '../../theme'
 
 export interface SpinnerProps {
   size?: number
+  color?: string
 }
 
 const StyledSpinnerIcon = styled(SpinnerIcon)`
-  color: ${color.foreground};
+  color: ${props => props.color || color.foreground};
 `
 
 const rotate = keyframes`
@@ -29,8 +30,12 @@ const Rotate = styled.div`
   align-items: center;
 `
 
-export const Spinner: React.FC<SpinnerProps> = ({ size = 32, ...props }) => (
+export const Spinner: React.FC<SpinnerProps> = ({
+  size = 32,
+  color,
+  ...props
+}) => (
   <Rotate {...props} role="status">
-    <StyledSpinnerIcon size={size} />
+    <StyledSpinnerIcon size={size} color={color} />
   </Rotate>
 )
