@@ -47,6 +47,19 @@ interface StyledButtonProps extends ButtonProps {
   isSquare: boolean
 }
 
+const spinnerColor = {
+  primary: color.onAction,
+  secondary: color.action,
+  caution: color.failure,
+  success: color.onAction,
+  warning: color.onAction,
+  danger: color.onAction,
+  facebook: color.onAction,
+  inverted: color.action,
+  apple: color.invertedForeground,
+  google: color.darkForeground,
+}
+
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
   display: inline-flex;
@@ -311,7 +324,11 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(
       >
         {hasAdornment && (
           <LeftAdornment size={size} isSquare={isSquare}>
-            {loading ? <Spinner size={loadingIconSize} /> : leftAdornment}
+            {loading ? (
+              <Spinner size={loadingIconSize} color={spinnerColor[variant]} />
+            ) : (
+              leftAdornment
+            )}
           </LeftAdornment>
         )}
         {children}
