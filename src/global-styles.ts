@@ -38,7 +38,7 @@ export const globalStyles = css`
     --mars100: #ffe2e2;
     --mars200: #ffb7b6;
     --mars300: #fe6e6d;
-    --mars400: #fe6e6d;
+    --mars400: #fe4a49;
     --mars500: #d04243;
     --mars600: #ac2b2c;
     --mars700: #753136;
