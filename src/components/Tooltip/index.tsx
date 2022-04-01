@@ -93,7 +93,7 @@ export const Tooltip = ({
               left: triggerRect
                 ? triggerRect.left - triangleSize + triggerRect.width / 2
                 : 0,
-              top: triggerRect ? triggerRect.bottom + 1 + window.scrollY : 0,
+              top: triggerRect ? triggerRect.bottom + 2 + window.scrollY : 0,
             }}
             size={triangleSize}
           />
