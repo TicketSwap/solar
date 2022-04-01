@@ -111,7 +111,7 @@ const Message = styled.p`
 const Action = styled.button`
   ${textColor};
   outline: 0;
-  font-weight: ${fontWeight.bold};
+  font-weight: ${fontWeight.semiBold};
   flex-shrink: 0;
   transition: color ${transition};
   margin-top: ${6 / 16}rem;
@@ -126,14 +126,7 @@ const Action = styled.button`
 
   &:hover,
   &:focus {
-    color: ${props =>
-      props.variant === AlertVariant.success
-        ? color.onSuccess
-        : props.variant === AlertVariant.error
-        ? color.onFailure
-        : props.variant === AlertVariant.warning
-        ? color.onWarning
-        : color.onInfo};
+    text-decoration: underline;
   }
 `
 
