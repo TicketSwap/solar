@@ -29,7 +29,7 @@ export const Container = styled.span<PillProps>`
       : p.variant === 'warning'
       ? color.onWarning
       : p.variant === 'disabled'
-      ? color.onInactive
+      ? color.inactive
       : color.onAction};
   background-color: ${p =>
     p.variant === 'danger'
