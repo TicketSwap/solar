@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render } from '../../../test/test.utils'
 import { Panel, PanelContent, PanelText, PanelBody } from '.'
 
 describe('Panel', () => {

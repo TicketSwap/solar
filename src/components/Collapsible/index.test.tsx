@@ -1,7 +1,6 @@
 import React from 'react'
 import { Collapsible } from './index'
-import { fireEvent, render } from '@testing-library/react'
-
+import { fireEvent, render } from '../../../test/test.utils'
 describe('Collapsible', () => {
   it('renders without crashing', () => {
     const { container } = render(

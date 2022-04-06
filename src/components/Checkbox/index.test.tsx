@@ -1,7 +1,6 @@
 import React from 'react'
 import { Checkbox } from './'
-import { fireEvent, render } from '@testing-library/react'
-
+import { fireEvent, render } from '../../../test/test.utils'
 describe('Checkbox', () => {
   it('renders without crashing', () => {
     const { container } = render(

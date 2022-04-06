@@ -1,5 +1,5 @@
 import React from 'react'
-import { screen, render, fireEvent } from '@testing-library/react'
+import { screen, render, fireEvent } from '../../../test/test.utils'
 import { Select } from '.'
 import * as useDeviceInfo from '../../hooks/useDeviceInfo'
 

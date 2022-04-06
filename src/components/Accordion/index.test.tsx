@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '../../../test/test.utils'
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '.'
 
 describe('Accordion', () => {

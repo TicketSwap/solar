@@ -1,6 +1,5 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen, render } from '../../../test/test.utils'
 import CalendarDialog from './CalendarDialog'
 import { TimeFrame } from '../../utils/dates'
 
@@ -15,7 +14,7 @@ describe('CalendarDialog', () => {
       const close = jest.fn()
       const date = new Date(2020, 1, 1)
 
-      render(
+      const { user } = render(
         <CalendarDialog
           date={date}
           title="Pick a date"
@@ -32,7 +31,7 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      userEvent.click(
+      await user.click(
         screen.getByRole('button', {
           name: /closealt/i,
         })
@@ -212,7 +211,7 @@ describe('CalendarDialog', () => {
     it('displays the new month', async () => {
       const date = new Date(2020, 1, 1)
 
-      render(
+      const { user } = render(
         <CalendarDialog
           date={date}
           title="Pick a date"
@@ -229,11 +228,13 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      userEvent.click(screen.getByRole('textbox', { name: /month arrowdown/i }))
+      await user.click(
+        screen.getByRole('textbox', { name: /month arrowdown/i })
+      )
 
       await dropdownIsOpen()
 
-      userEvent.click(
+      await user.click(
         screen.getByRole('option', {
           name: /march/i,
         })
@@ -251,7 +252,7 @@ describe('CalendarDialog', () => {
     it('displays the new year', async () => {
       const date = new Date(2020, 1, 1)
 
-      render(
+      const { user } = render(
         <CalendarDialog
           date={date}
           title="Pick a date"
@@ -268,11 +269,11 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      userEvent.click(screen.getByRole('textbox', { name: /year arrowdown/i }))
+      await user.click(screen.getByRole('textbox', { name: /year arrowdown/i }))
 
       await dropdownIsOpen()
 
-      userEvent.click(
+      await user.click(
         screen.getByRole('option', {
           name: /2023/i,
         })
@@ -290,7 +291,7 @@ describe('CalendarDialog', () => {
     it('saves the selected day', async () => {
       const date = new Date(2020, 1, 1)
 
-      render(
+      const { user } = render(
         <CalendarDialog
           date={date}
           title="Pick a date"
@@ -307,7 +308,7 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      userEvent.click(screen.getByRole('button', { name: '4' }))
+      await user.click(screen.getByRole('button', { name: '4' }))
 
       expect(
         screen.getByRole('button', {
