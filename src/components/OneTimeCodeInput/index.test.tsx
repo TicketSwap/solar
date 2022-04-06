@@ -6,14 +6,6 @@ import { OneTimeCodeInput } from './'
 
 expect.extend(matchers)
 
-const fillOneTimeCode = async () => {
-  await screen.findByRole('textbox', { name: /onetimecode input field 1/i })
-  await screen.findByRole('textbox', { name: /onetimecode input field 2/i })
-  await screen.findByRole('textbox', { name: /onetimecode input field 3/i })
-  await screen.findByRole('textbox', { name: /onetimecode input field 4/i })
-  await screen.findByRole('textbox', { name: /onetimecode input field 5/i })
-}
-
 describe('OneTimeCodeInput', () => {
   describe('when the length is equal to 6', () => {
     it('renders a component with 6 inputs', () => {
@@ -80,8 +72,6 @@ describe('OneTimeCodeInput', () => {
         '75689'
       )
 
-      await fillOneTimeCode()
-
       expect(
         screen.getByRole('textbox', { name: /onetimecode input field 1/i })
       ).toHaveDisplayValue(/7/i)
@@ -117,8 +107,6 @@ describe('OneTimeCodeInput', () => {
         }),
         { target: { value: '75689' } }
       )
-
-      await fillOneTimeCode()
 
       expect(
         screen.getByRole('textbox', { name: /onetimecode input field 1/i })
@@ -192,8 +180,6 @@ describe('OneTimeCodeInput', () => {
           '75689'
         )
 
-        await fillOneTimeCode()
-
         userEvent.type(
           screen.getByRole('textbox', {
             name: /onetimecode input field 4/i,
@@ -228,8 +214,6 @@ describe('OneTimeCodeInput', () => {
             '75689'
           )
 
-          await fillOneTimeCode()
-
           userEvent.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 5/i,
@@ -237,7 +221,7 @@ describe('OneTimeCodeInput', () => {
             '{backspace}'
           )
 
-          waitFor(() => {
+          await waitFor(() => {
             expect(
               screen.getByRole('textbox', {
                 name: /onetimecode input field 5/i,
@@ -246,9 +230,9 @@ describe('OneTimeCodeInput', () => {
 
             expect(
               screen.getByRole('textbox', {
-                name: /onetimecode input field 4/i,
+                name: /onetimecode input field 5/i,
               })
-            ).toHaveDisplayValue('')
+            ).toHaveFocus()
           })
         })
       })
@@ -271,8 +255,6 @@ describe('OneTimeCodeInput', () => {
             '7568'
           )
 
-          await fillOneTimeCode()
-
           userEvent.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 5/i,
@@ -280,7 +262,7 @@ describe('OneTimeCodeInput', () => {
             '{backspace}'
           )
 
-          waitFor(() => {
+          await waitFor(() => {
             expect(
               screen.getByRole('textbox', {
                 name: /onetimecode input field 4/i,
