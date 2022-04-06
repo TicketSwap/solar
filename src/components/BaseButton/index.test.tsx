@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '../../../test/test.utils'
 import { matchers } from '@emotion/jest'
 import { BaseButton, BaseButtonSize, ButtonVariant } from '.'
 import { color, fontSize } from '../../theme'

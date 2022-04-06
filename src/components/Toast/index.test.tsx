@@ -1,11 +1,10 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
+import { screen, render } from '../../../test/test.utils'
 import { ToastProvider, ToastConsumer, Toast } from './'
-import userEvent from '@testing-library/user-event'
 
 describe('Toast', () => {
   it('shows button and renders toasts on button-click', async () => {
-    render(
+    const { user } = render(
       <ToastProvider>
         <ToastConsumer>
           {({ notify }) => (
@@ -18,13 +17,13 @@ describe('Toast', () => {
     )
 
     expect(await screen.findByText(/show toast/i)).toBeInTheDocument()
-    userEvent.click(await screen.findByText(/show toast/i))
-    userEvent.click(await screen.findByText(/show toast/i))
+    await user.click(await screen.findByText(/show toast/i))
+    await user.click(await screen.findByText(/show toast/i))
     expect(await screen.findAllByText(/notification/i)).toHaveLength(2)
   })
 
   it('hides toast', async () => {
-    render(
+    const { user } = render(
       <ToastProvider>
         <ToastConsumer>
           {({ notify }) => (
@@ -44,9 +43,9 @@ describe('Toast', () => {
         </ToastConsumer>
       </ToastProvider>
     )
-    userEvent.click(await screen.findByText(/show toast/i))
+    await user.click(await screen.findByText(/show toast/i))
     expect(await screen.findByText(/payment failed/i)).toBeInTheDocument()
-    userEvent.click(await screen.findByText(/discard/i))
+    await user.click(await screen.findByText(/discard/i))
     expect(screen.queryByText(/payment failed/i)).toBeNull()
   })
 })

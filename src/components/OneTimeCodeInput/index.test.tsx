@@ -1,6 +1,5 @@
 import React from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { fireEvent, render, screen, waitFor } from '../../../test/test.utils'
 import { matchers } from '@emotion/jest'
 import { OneTimeCodeInput } from './'
 
@@ -56,7 +55,7 @@ describe('OneTimeCodeInput', () => {
 
   describe('when an onChange event is triggered', () => {
     it('handles the onChange event', async () => {
-      render(
+      const { user } = render(
         <OneTimeCodeInput
           id="OneTimeCodeInput"
           length={5}
@@ -65,7 +64,7 @@ describe('OneTimeCodeInput', () => {
         />
       )
 
-      userEvent.type(
+      await user.type(
         screen.getByRole('textbox', {
           name: /onetimecode input field 1/i,
         }),
@@ -129,7 +128,7 @@ describe('OneTimeCodeInput', () => {
   describe('when there is a navigation event', () => {
     describe('and it is an ArrowLeft', () => {
       it('moves left', async () => {
-        render(
+        const { user } = render(
           <OneTimeCodeInput
             id="OneTimeCodeInput"
             length={5}
@@ -138,16 +137,14 @@ describe('OneTimeCodeInput', () => {
           />
         )
 
-        userEvent.type(
+        await user.type(
           screen.getByRole('textbox', {
             name: /onetimecode input field 1/i,
           }),
           '75689'
         )
 
-        await fillOneTimeCode()
-
-        userEvent.type(
+        await user.type(
           screen.getByRole('textbox', {
             name: /onetimecode input field 5/i,
           }),
@@ -164,7 +161,7 @@ describe('OneTimeCodeInput', () => {
 
     describe('and it is an ArrowRight', () => {
       it('moves right', async () => {
-        render(
+        const { user } = render(
           <OneTimeCodeInput
             id="OneTimeCodeInput"
             length={5}
@@ -173,14 +170,14 @@ describe('OneTimeCodeInput', () => {
           />
         )
 
-        userEvent.type(
+        await user.type(
           screen.getByRole('textbox', {
             name: /onetimecode input field 1/i,
           }),
           '75689'
         )
 
-        userEvent.type(
+        await user.type(
           screen.getByRole('textbox', {
             name: /onetimecode input field 4/i,
           }),
@@ -198,7 +195,7 @@ describe('OneTimeCodeInput', () => {
     describe('and its a Backspace', () => {
       describe('and there is a value', () => {
         it('removes the value', async () => {
-          render(
+          const { user } = render(
             <OneTimeCodeInput
               id="OneTimeCodeInput"
               length={5}
@@ -207,14 +204,14 @@ describe('OneTimeCodeInput', () => {
             />
           )
 
-          userEvent.type(
+          await user.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 1/i,
             }),
             '75689'
           )
 
-          userEvent.type(
+          await user.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 5/i,
             }),
@@ -239,7 +236,7 @@ describe('OneTimeCodeInput', () => {
 
       describe('and there is no value', () => {
         it('moves focus to the previous input field', async () => {
-          render(
+          const { user } = render(
             <OneTimeCodeInput
               id="OneTimeCodeInput"
               length={5}
@@ -248,14 +245,14 @@ describe('OneTimeCodeInput', () => {
             />
           )
 
-          userEvent.type(
+          await user.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 1/i,
             }),
             '7568'
           )
 
-          userEvent.type(
+          await user.type(
             screen.getByRole('textbox', {
               name: /onetimecode input field 5/i,
             }),

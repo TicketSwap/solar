@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, screen, render } from '@testing-library/react'
+import { fireEvent, screen, render } from '../../../test/test.utils'
 import { ContentDialog } from '.'
 import { H1 } from '../Heading'
 

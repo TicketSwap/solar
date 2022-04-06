@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '../../../test/test.utils'
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from '.'
 
 const Content = () => (

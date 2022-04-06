@@ -1,7 +1,6 @@
 import React from 'react'
 import { StorybookDialog } from './index.stories'
-import { fireEvent, render } from '@testing-library/react'
-
+import { fireEvent, render } from '../../../test/test.utils'
 describe('OnboardingDialog', () => {
   it('renders without crashing', () => {
     const { container } = render(<StorybookDialog />)

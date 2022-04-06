@@ -1,6 +1,5 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen, render } from '../../../test/test.utils'
 import Day from './Day'
 
 describe('Day', () => {
@@ -18,13 +17,15 @@ describe('Day', () => {
     })
 
     describe('and the day is selected', () => {
-      it('saves the selected day', () => {
+      it('saves the selected day', async () => {
         const date = new Date(2050, 1, 1)
         const onSelect = jest.fn()
 
-        render(<Day date={date} isSelected={false} onSelect={onSelect} />)
+        const { user } = render(
+          <Day date={date} isSelected={false} onSelect={onSelect} />
+        )
 
-        userEvent.click(
+        await user.click(
           screen.getByRole('button', {
             name: /1/i,
           })
@@ -68,11 +69,11 @@ describe('Day', () => {
     })
 
     describe('and the day is selected', () => {
-      it('does not save the selected day', () => {
+      it('does not save the selected day', async () => {
         const date = new Date(2000, 1, 1)
         const onSelect = jest.fn()
 
-        render(
+        const { user } = render(
           <Day
             date={date}
             isSelected={false}
@@ -81,7 +82,7 @@ describe('Day', () => {
           />
         )
 
-        userEvent.click(
+        await user.click(
           screen.getByRole('button', {
             name: /1/i,
           })

@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useState } from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen, render } from '../../../test/test.utils'
 import { ContentTransition } from './'
 
 const delay = ms => new Promise(res => setTimeout(res, ms))
@@ -37,9 +36,9 @@ describe('ContentTransition', () => {
 
   describe('when the view changes', () => {
     it('renders the new view', async () => {
-      render(<TransitionExample />)
+      const { user } = render(<TransitionExample />)
 
-      userEvent.click(screen.getByRole('button', { name: /go to second/i }))
+      await user.click(screen.getByRole('button', { name: /go to second/i }))
 
       const secondView = await screen.findByText('Second view')
 
@@ -48,13 +47,13 @@ describe('ContentTransition', () => {
 
     describe('and the view changes again', () => {
       it('renders the initial view', async () => {
-        render(<TransitionExample />)
+        const { user } = render(<TransitionExample />)
 
-        userEvent.click(screen.getByRole('button', { name: /go to second/i }))
+        await user.click(screen.getByRole('button', { name: /go to second/i }))
 
         await screen.findByText('Second view')
 
-        userEvent.click(screen.getByRole('button', { name: /go to first/i }))
+        await user.click(screen.getByRole('button', { name: /go to first/i }))
 
         const firstView = await screen.findByText('First view')
 
@@ -66,9 +65,11 @@ describe('ContentTransition', () => {
       it('invokes the callback', async () => {
         const callback = jest.fn()
 
-        render(<TransitionExample callback={view => callback(view)} />)
+        const { user } = render(
+          <TransitionExample callback={view => callback(view)} />
+        )
 
-        userEvent.click(screen.getByRole('button', { name: /go to second/i }))
+        await user.click(screen.getByRole('button', { name: /go to second/i }))
 
         await screen.findByText('Second view')
 
@@ -82,7 +83,7 @@ describe('ContentTransition', () => {
         it('does not cancel async tasks', async () => {
           const callback = jest.fn()
 
-          const { unmount } = render(
+          const { unmount, user } = render(
             <TransitionExample
               callback={async children => {
                 await delay(10)
@@ -91,7 +92,9 @@ describe('ContentTransition', () => {
             />
           )
 
-          userEvent.click(screen.getByRole('button', { name: /go to second/i }))
+          await user.click(
+            screen.getByRole('button', { name: /go to second/i })
+          )
 
           unmount()
 

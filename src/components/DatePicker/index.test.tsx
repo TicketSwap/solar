@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { screen, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen, render } from '../../../test/test.utils'
 import { DatePicker, TimeFrame } from '.'
 
 jest.mock('../../hooks/useOnClickOutside')
@@ -67,12 +66,12 @@ describe('DatePicker', () => {
           </>
         )
       }
-      render(<TestScenario />)
+      const { user } = render(<TestScenario />)
 
       expect(screen.getByText(/Feb 1, 2020/i)).toBeInTheDocument()
 
       const resetButton = screen.getByLabelText('Clear')
-      userEvent.click(resetButton)
+      await user.click(resetButton)
 
       expect(screen.getByText(/from/i)).toBeInTheDocument()
     })
@@ -80,7 +79,7 @@ describe('DatePicker', () => {
 
   describe('when open', () => {
     it('renders the calendar', async () => {
-      render(
+      const { user } = render(
         <DatePicker
           date={new Date(2020, 1, 1)}
           placeholder="From"
@@ -94,7 +93,7 @@ describe('DatePicker', () => {
         />
       )
 
-      userEvent.click(screen.getByText(/Feb 1, 2020/i))
+      await user.click(screen.getByText(/Feb 1, 2020/i))
 
       const calendarTitle = await screen.findByText(/pick a date/i)
 
@@ -114,7 +113,7 @@ describe('DatePicker', () => {
       it('calls the onChange with the selected date', async () => {
         const onChange = jest.fn()
 
-        render(
+        const { user } = render(
           <DatePicker
             date={null}
             placeholder="From"
@@ -128,11 +127,15 @@ describe('DatePicker', () => {
           />
         )
 
-        userEvent.click(screen.getByText(/From/i))
+        await user.click(
+          screen.getByRole('button', {
+            name: /from/i,
+          })
+        )
 
         await screen.findByText(/pick a date/i)
 
-        userEvent.click(screen.getByText(/25/i))
+        await user.click(screen.getByText(/25/i))
 
         expect(onChange).toHaveBeenCalledWith(new Date(2020, 10, 25))
       })
@@ -158,15 +161,15 @@ describe('DatePicker', () => {
           )
         }
 
-        render(<TestScenario />)
+        const { user } = render(<TestScenario />)
 
-        userEvent.click(screen.getByText(/From/i))
+        await user.click(screen.getByText(/From/i))
 
         await screen.findByText(/pick a date/i)
 
-        userEvent.click(screen.getByText(/25/i))
+        await user.click(screen.getByText(/25/i))
 
-        userEvent.click(screen.getByText(/nov 25, 2020/i))
+        await user.click(screen.getByText(/nov 25, 2020/i))
 
         expect(
           screen.getByRole('button', {
@@ -248,25 +251,25 @@ describe('DatePicker', () => {
         )
       }
 
-      render(<TestScenario />)
+      const { user } = render(<TestScenario />)
 
-      userEvent.click(screen.getByText(/From/i))
+      await user.click(screen.getByText(/From/i))
 
       await screen.findByText(/pick a date/i)
 
-      userEvent.click(screen.getByText(/year/i))
+      await user.click(screen.getByText(/year/i))
 
-      userEvent.click(screen.getByText(/2022/i))
+      await user.click(screen.getByText(/2022/i))
 
-      userEvent.click(screen.getByText(/month/i))
+      await user.click(screen.getByText(/month/i))
 
-      userEvent.click(screen.getByText(/january/i))
+      await user.click(screen.getByText(/january/i))
 
-      userEvent.click(screen.getByText(/25/i))
+      await user.click(screen.getByText(/25/i))
 
       expect(screen.getAllByText(/jan 25, 2022/i)).toHaveLength(2)
 
-      userEvent.click(screen.getAllByText(/jan 25, 2022/i)[1])
+      await user.click(screen.getAllByText(/jan 25, 2022/i)[1])
 
       expect(
         screen.getByRole('button', {
