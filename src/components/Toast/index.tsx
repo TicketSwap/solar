@@ -47,7 +47,7 @@ export interface ToastBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ToastContainer = styled.div<ToastBlockProps>`
   border-radius: ${radius.lg};
-  background-color: ${color.background};
+  background-color: ${color.invertedBackground};
   box-shadow: ${shadow.strong};
   padding: ${space[16]};
 
@@ -59,6 +59,9 @@ const ToastContainer = styled.div<ToastBlockProps>`
       grid-template-columns: auto 1fr;
       align-items: ${hasMultipleLines ? 'start' : 'center'};
     `}
+`
+const ToastText = styled.span`
+  color: ${color.invertedForeground};
 `
 
 interface ItemContainerStyles {
@@ -237,7 +240,7 @@ function Item({
         ref={ref}
       >
         <LeftAdornmentContainer>{leftAdornment}</LeftAdornmentContainer>
-        {children}
+        <ToastText>{children}</ToastText>
       </ToastContainer>
     </ItemContainer>
   )
