@@ -83,7 +83,7 @@
     "@storybook/react": "^6.4.20",
     "@storybook/storybook-deployer": "^2.8.10",
     "@testing-library/dom": "^8.11.3",
-    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
     "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/user-event": "^14.0.4",
