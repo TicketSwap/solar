@@ -110,7 +110,11 @@ export const Switch: React.FC<SwitchProps> = ({
     <Button isOn={Boolean(on)} onClick={onClick} {...props}>
       {loading || adornment ? (
         <Adornment isOn={on}>
-          {loading ? <StyledSpinner size={16} /> : adornment ? adornment : null}
+          {loading ? (
+            <StyledSpinner color={color.darkForeground} size={16} />
+          ) : adornment ? (
+            adornment
+          ) : null}
         </Adornment>
       ) : null}
     </Button>
