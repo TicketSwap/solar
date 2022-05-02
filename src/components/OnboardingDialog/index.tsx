@@ -79,13 +79,17 @@ const Backdrop = styled.div<BackdropProps>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${color.overlay};
+  background-color: #ffffff99;
   opacity: ${props =>
     props.state === TransitionState.ENTERING ||
     props.state === TransitionState.ENTERED
       ? 1
       : 0};
   transition: opacity ${transition};
+
+  [data-theme='dark'] & {
+    background-color: #1a212999;
+  }
 `
 
 const OnboardingWrapper: React.FC<OnboardingWrapperProps> = ({
