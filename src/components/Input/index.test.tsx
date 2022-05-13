@@ -22,18 +22,14 @@ describe('Input', () => {
   })
 
   it('renders the input with hidden label', () => {
-    const { getByText } = render(
-      <Input id="fname" label="First Name" hideLabel />
-    )
+    const { getByText } = render(<Input id="fname" label="First Name" hideLabel />)
     const label = getByText(/first name/i).parentNode
     expect(label).toHaveStyleRule('height', '1px')
-    expect(label).toHaveStyleRule('margin', '-1px')
+    expect(label).toHaveStyleRule('margin-block', '-1px')
   })
 
   it('renders the input with a rounded border', () => {
-    const { getByLabelText } = render(
-      <Input id="fname" label="First Name" rounded />
-    )
+    const { getByLabelText } = render(<Input id="fname" label="First Name" rounded />)
     const input = getByLabelText(/first name/i)
     expect(input).toHaveStyleRule('border-radius', space[32])
   })
