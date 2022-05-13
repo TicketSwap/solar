@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { color, space, fontWeight, radius, transition, device } from '../../theme'
+import {
+  color,
+  space,
+  fontWeight,
+  radius,
+  transition,
+  device,
+} from '../../theme'
 import { ChevronDown } from '../../icons'
 
 export interface CollapsibleProps {
@@ -39,7 +46,8 @@ const Body = styled.div<CollapsibleStyledProps>`
   background-color: ${color.elevatedBackground};
   border-end-start-radius: ${radius.md};
   border-end-end-radius: ${radius.md};
-  box-shadow: 0 1px 0 ${props => (props.isOn ? color.strokeStrong : 'transparent')} inset;
+  box-shadow: 0 1px 0
+    ${props => (props.isOn ? color.strokeStrong : 'transparent')} inset;
 `
 
 const Content = styled.div`

@@ -1,5 +1,13 @@
 import styled from '@emotion/styled'
-import { radius, shadow, color, space, device, fullBleed, resetFullBleed } from '../../theme'
+import {
+  radius,
+  shadow,
+  color,
+  space,
+  device,
+  fullBleed,
+  resetFullBleed,
+} from '../../theme'
 
 export interface PanelContentProps {
   bgColor?: string
@@ -22,7 +30,8 @@ export const PanelContent = styled.div<PanelContentProps>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${props => (props.bgColor ? props.bgColor : color.background)};
+  background-color: ${props =>
+    props.bgColor ? props.bgColor : color.background};
 
   &:first-of-type {
     border-start-start-radius: ${radius.lg};

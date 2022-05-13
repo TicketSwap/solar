@@ -1,8 +1,21 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import { color, space, fontWeight, transition, radius, device, lineHeight } from '../../theme'
-import { CloseRounded, InfoRounded, WarningRounded, CheckmarkRounded } from '../../icons'
+import {
+  color,
+  space,
+  fontWeight,
+  transition,
+  radius,
+  device,
+  lineHeight,
+} from '../../theme'
+import {
+  CloseRounded,
+  InfoRounded,
+  WarningRounded,
+  CheckmarkRounded,
+} from '../../icons'
 import { H4 } from '../Heading'
 
 export type AlertAction = {
@@ -146,7 +159,11 @@ const Alert: React.FC<AlertProps> = ({
         {title && <Title as="h4">{title}</Title>}
         <Message>{children}</Message>
         {action && (
-          <Action variant={variant} onClick={event => action.onClick(event)} type="button">
+          <Action
+            variant={variant}
+            onClick={event => action.onClick(event)}
+            type="button"
+          >
             {action.label}
           </Action>
         )}

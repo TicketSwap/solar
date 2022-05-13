@@ -63,7 +63,9 @@ const Color = ({ variant, label }) => {
   )
 }
 
-const ColorGrid = ({ children }) => <DefinitionsGrid>{children}</DefinitionsGrid>
+const ColorGrid = ({ children }) => (
+  <DefinitionsGrid>{children}</DefinitionsGrid>
+)
 
 const ColorDefinition = ({ variant, label, description, keyWords = [] }) => {
   return (

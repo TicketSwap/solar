@@ -59,10 +59,15 @@ const Triangle = styled.div<TriangleStyleProps>`
   height: 0;
   border-inline-start: ${props => props.size || 10}px solid transparent;
   border-inline-end: ${props => props.size || 10}px solid transparent;
-  border-block-end: ${props => props.size || 10}px solid ${color.invertedBackground};
+  border-block-end: ${props => props.size || 10}px solid
+    ${color.invertedBackground};
 `
 
-export const Tooltip = ({ label, 'aria-label': ariaLabel, children }: TooltipProps) => {
+export const Tooltip = ({
+  label,
+  'aria-label': ariaLabel,
+  children,
+}: TooltipProps) => {
   const [trigger, tooltip] = useTooltip()
   const { isVisible, triggerRect } = tooltip
   const triangleSize = 10
@@ -70,7 +75,12 @@ export const Tooltip = ({ label, 'aria-label': ariaLabel, children }: TooltipPro
   return (
     <>
       {React.cloneElement(children, trigger)}
-      <Popup {...tooltip} label={label} aria-label={ariaLabel} position={centered} />
+      <Popup
+        {...tooltip}
+        label={label}
+        aria-label={ariaLabel}
+        position={centered}
+      />
       {isVisible && (
         // Position the triangle relative to the trigger, not the
         // popup so that collisions don't have a triangle pointing off
@@ -81,7 +91,9 @@ export const Tooltip = ({ label, 'aria-label': ariaLabel, children }: TooltipPro
         <Portal>
           <Triangle
             style={{
-              left: triggerRect ? triggerRect.left - triangleSize + triggerRect.width / 2 : 0,
+              left: triggerRect
+                ? triggerRect.left - triangleSize + triggerRect.width / 2
+                : 0,
               top: triggerRect ? triggerRect.bottom + 2 + window.scrollY : 0,
             }}
             size={triangleSize}

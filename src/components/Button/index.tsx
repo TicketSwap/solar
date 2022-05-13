@@ -1,6 +1,14 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import { color, device, fontSize, fontWeight, lineHeight, radius, space } from '../../theme'
+import {
+  color,
+  device,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  radius,
+  space,
+} from '../../theme'
 import { css } from '@emotion/react'
 import { Spinner } from '../Spinner'
 
@@ -23,7 +31,8 @@ export enum ButtonSize {
   small = 'small',
 }
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   leftAdornment?: ReactNode
   size?: ButtonSize
@@ -58,7 +67,11 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   font-family: inherit;
   font-weight: ${fontWeight.semiBold};
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0)
+  );
   line-height: ${lineHeight.solid};
   align-items: center;
 
@@ -270,7 +283,8 @@ interface LeftAdornmentProps {
 }
 
 const LeftAdornment = styled.span<LeftAdornmentProps>`
-  margin-inline-end: ${({ size }) => (size === ButtonSize.small ? space[4] : space[8])};
+  margin-inline-end: ${({ size }) =>
+    size === ButtonSize.small ? space[4] : space[8]};
   line-height: 0;
 
   ${({ isSquare }) =>

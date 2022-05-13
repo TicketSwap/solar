@@ -2,7 +2,15 @@ import React from 'react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Image } from '../Image'
-import { color, radius, space, fontSize, fontWeight, device, lineHeight } from '../../theme'
+import {
+  color,
+  radius,
+  space,
+  fontSize,
+  fontWeight,
+  device,
+  lineHeight,
+} from '../../theme'
 
 export enum CardVerticalAlign {
   top = 'top',
@@ -38,16 +46,24 @@ const Container = styled.div<StyledCardProps>`
   position: relative;
   border-radius: ${radius.lg};
   padding-block: ${props =>
-    props.size === CardSize.large ? !props.hasImage && space[16] : !props.hasImage && space[12]};
+    props.size === CardSize.large
+      ? !props.hasImage && space[16]
+      : !props.hasImage && space[12]};
   padding-inline: ${props =>
-    props.size === CardSize.large ? !props.hasImage && space[16] : !props.hasImage && space[12]};
+    props.size === CardSize.large
+      ? !props.hasImage && space[16]
+      : !props.hasImage && space[12]};
   background-color: ${color.elevatedBackground};
 
   @media ${device.mobileL} {
     padding-block: ${p =>
-      p.size === CardSize.large ? !p.hasImage && space[24] : !p.hasImage && space[16]};
+      p.size === CardSize.large
+        ? !p.hasImage && space[24]
+        : !p.hasImage && space[16]};
     padding-inline: ${p =>
-      p.size === CardSize.large ? !p.hasImage && space[24] : !p.hasImage && space[16]};
+      p.size === CardSize.large
+        ? !p.hasImage && space[24]
+        : !p.hasImage && space[16]};
   }
 
   @media ${device.tablet} {
@@ -108,7 +124,11 @@ const Body = styled.div<StyledCardProps>`
 
       ${Container}:hover &,
       ${Container}:focus & {
-        background-image: linear-gradient(to bottom, rgba(0, 19, 25, 0.1), rgba(0, 19, 25, 0.5));
+        background-image: linear-gradient(
+          to bottom,
+          rgba(0, 19, 25, 0.1),
+          rgba(0, 19, 25, 0.5)
+        );
       }
     `};
 `
@@ -190,7 +210,8 @@ const Title = styled.h4<StyledCardProps>`
   line-height: ${lineHeight.title};
 
   @media ${device.mobileL} {
-    font-size: ${p => (p.size === CardSize.large ? fontSize[20] : fontSize[18])};
+    font-size: ${p =>
+      p.size === CardSize.large ? fontSize[20] : fontSize[18]};
   }
 
   ${props =>
@@ -207,7 +228,8 @@ const Subtitle = styled.h5<StyledCardProps>`
   color: ${color.foregroundMuted};
 
   @media ${device.mobileL} {
-    font-size: ${p => (p.size === CardSize.large ? fontSize[18] : fontSize[16])};
+    font-size: ${p =>
+      p.size === CardSize.large ? fontSize[18] : fontSize[16]};
   }
 `
 
@@ -307,10 +329,14 @@ const Card: React.FC<CardPropTypes> = ({
 
   return (
     <Container hasImage={hasImage} {...props}>
-      {!!image && <BackgroundImage src={image} alt={title ? title : 'Image'} rounded />}
+      {!!image && (
+        <BackgroundImage src={image} alt={title ? title : 'Image'} rounded />
+      )}
 
       <Content hasImage={hasImage}>
-        {hasImage && topLeftAdornment && <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>}
+        {hasImage && topLeftAdornment && (
+          <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>
+        )}
 
         <Body hasImage={hasImage}>
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
@@ -326,7 +352,9 @@ const Card: React.FC<CardPropTypes> = ({
               </Text>
             )}
 
-            {description && <Description hasImage={hasImage}>{description}</Description>}
+            {description && (
+              <Description hasImage={hasImage}>{description}</Description>
+            )}
           </TextContent>
 
           {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}

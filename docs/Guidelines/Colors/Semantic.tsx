@@ -76,7 +76,12 @@ const Semantic = () => {
               const { label, variant, hex, foreground } = type
 
               return (
-                <Card color={variant} title={label} colorValue={hex} foregroundColor={foreground} />
+                <Card
+                  color={variant}
+                  title={label}
+                  colorValue={hex}
+                  foregroundColor={foreground}
+                />
               )
             })}
           </ColorGrid>

@@ -33,7 +33,8 @@ const Button = styled.button<ButtonProps>`
   position: relative;
   cursor: pointer;
   user-select: none;
-  background: ${props => (props.isOn ? color.success : color.inactiveBackground)};
+  background: ${props =>
+    props.isOn ? color.success : color.inactiveBackground};
   border-radius: ${space[32]};
   padding-block: ${space[4]};
   padding-inline: ${space[4]};
@@ -59,8 +60,8 @@ const Button = styled.button<ButtonProps>`
     height: 100%;
     border-radius: ${space[32]};
     background: ${color.lightBackground};
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease,
-      margin 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      padding 0.3s ease, margin 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   }
 

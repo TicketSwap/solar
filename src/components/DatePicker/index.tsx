@@ -43,7 +43,8 @@ const StyledButton = styled.button`
 `
 
 const ButtonText = styled(Text)<ButtonTextProps>`
-  color: ${props => (props.hasDate ? color.foreground : color.foregroundSubtle)};
+  color: ${props =>
+    props.hasDate ? color.foreground : color.foregroundSubtle};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -72,7 +72,9 @@ export interface PillProps {
 
 const Pill: React.FC<PillProps> = ({ children, ...props }) => (
   <Container className="pill" {...props}>
-    {props.leftAdornment && <LeftAdornment>{props.leftAdornment}</LeftAdornment>}
+    {props.leftAdornment && (
+      <LeftAdornment>{props.leftAdornment}</LeftAdornment>
+    )}
     {children}
   </Container>
 )

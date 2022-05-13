@@ -64,9 +64,12 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
     box-shadow: 0 0 0 ${space[4]} ${color.actionBackground};
   }
 
-  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
+  opacity: ${props =>
+    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transform: ${props =>
-    props.state === 'entering' || props.state === 'entered' || props.state === 'exiting'
+    props.state === 'entering' ||
+    props.state === 'entered' ||
+    props.state === 'exiting'
       ? 'translateY(0)'
       : `translateY(1rem)`};
   transition: opacity ${DURATION}ms ${easing.easeInOutCubic},

@@ -2,8 +2,22 @@ import React, { useState, useEffect, ReactNode, ReactElement } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { callAll, stopPropagation } from '../../utils'
-import { space, device, sizes, fontWeight, radius, color, easing, gradients } from '../../theme'
-import { useIsMounted, useLockBodyScroll, usePrevious, useTransition } from '../../hooks'
+import {
+  space,
+  device,
+  sizes,
+  fontWeight,
+  radius,
+  color,
+  easing,
+  gradients,
+} from '../../theme'
+import {
+  useIsMounted,
+  useLockBodyScroll,
+  usePrevious,
+  useTransition,
+} from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 
 const duration = 200
@@ -63,7 +77,8 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
+  opacity: ${props =>
+    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 
@@ -177,12 +192,20 @@ const BodyWrapper = styled.div`
 
   &::before {
     top: 0;
-    background-image: linear-gradient(to bottom, ${gradients.nova}, ${gradients.novaAlpha});
+    background-image: linear-gradient(
+      to bottom,
+      ${gradients.nova},
+      ${gradients.novaAlpha}
+    );
   }
 
   &::after {
     bottom: 0;
-    background-image: linear-gradient(to bottom, ${gradients.novaAlpha}, ${gradients.nova});
+    background-image: linear-gradient(
+      to bottom,
+      ${gradients.novaAlpha},
+      ${gradients.nova}
+    );
   }
 `
 
@@ -361,7 +384,11 @@ export function DialogWindow({
           data-testid="dialog-overlay"
           {...props}
         >
-          <DialogContent onClick={stopPropagation} data-testid="dialog-content" state={state}>
+          <DialogContent
+            onClick={stopPropagation}
+            data-testid="dialog-content"
+            state={state}
+          >
             {children}
           </DialogContent>
         </DialogOverlay>

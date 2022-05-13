@@ -4,13 +4,21 @@ import { ChevronDown } from '../../icons'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
 import * as Reach from '@reach/accordion'
-import { AccordionItemProps, AccordionPanelProps, AccordionButtonProps } from '@reach/accordion'
+import {
+  AccordionItemProps,
+  AccordionPanelProps,
+  AccordionButtonProps,
+} from '@reach/accordion'
 
 export interface AccordionProps {
   collapsible?: boolean
 }
 
-const Accordion: React.FC<AccordionProps> = ({ children, collapsible = false, ...props }) => {
+const Accordion: React.FC<AccordionProps> = ({
+  children,
+  collapsible = false,
+  ...props
+}) => {
   return (
     <Reach.Accordion {...props} collapsible={collapsible}>
       {children}
@@ -84,7 +92,10 @@ const ButtonAdornment = styled.span`
   }
 `
 
-const AccordionButton: React.FC<AccordionButtonProps> = ({ children, ...props }) => {
+const AccordionButton: React.FC<AccordionButtonProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <Button {...props}>
       <span>{children}</span>
@@ -95,7 +106,9 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({ children, ...props })
   )
 }
 
-const AccordionPanel = styled<React.FC<AccordionPanelProps>>(Reach.AccordionPanel)`
+const AccordionPanel = styled<React.FC<AccordionPanelProps>>(
+  Reach.AccordionPanel
+)`
   outline: none;
   padding-block-end: ${space[12]};
 `

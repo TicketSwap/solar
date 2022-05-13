@@ -100,7 +100,9 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
 }) => {
   const isAmountControlled = typeof props.amount !== 'undefined'
   const selectedCurrency = props.currency || props.initialSelectedCurrency
-  const initialSelectedIndex = selectedCurrency ? currencies.indexOf(selectedCurrency) : 0
+  const initialSelectedIndex = selectedCurrency
+    ? currencies.indexOf(selectedCurrency)
+    : 0
   const initialValue = props.initialAmount ? props.initialAmount / 100 : 0
   const [amount, setAmount] = React.useState(
     props.initialAmount
@@ -109,7 +111,9 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
         : initialValue.toFixed(2)
       : ''
   )
-  const [currency, setCurrency] = React.useState(currencies[initialSelectedIndex])
+  const [currency, setCurrency] = React.useState(
+    currencies[initialSelectedIndex]
+  )
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef<HTMLInputElement>(null)
 
@@ -145,7 +149,9 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
             }
             initialSelectedItem={options[initialSelectedIndex]}
             onChange={e => {
-              const selectedCurrency = currencies.filter(c => c.code === e.value)[0]
+              const selectedCurrency = currencies.filter(
+                c => c.code === e.value
+              )[0]
               setCurrency(selectedCurrency)
               onChange({
                 currency: selectedCurrency,
@@ -189,7 +195,9 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
               setAmount(event.target.value)
               onChange({
                 currency,
-                amount: isAmountControlled ? event.target.value : parseAmount(event.target.value),
+                amount: isAmountControlled
+                  ? event.target.value
+                  : parseAmount(event.target.value),
               })
             }}
           />

@@ -28,9 +28,12 @@ export interface ToastProps {
   children: ReactNode
 }
 
-export const Toast: React.FC<ToastProps> = ({ children, leftAdornment, persist, ...props }) => (
-  <div {...props}>{children}</div>
-)
+export const Toast: React.FC<ToastProps> = ({
+  children,
+  leftAdornment,
+  persist,
+  ...props
+}) => <div {...props}>{children}</div>
 
 const LeftAdornmentContainer = styled.span`
   line-height: 0;
@@ -86,17 +89,20 @@ const ItemContainer = styled.li<ItemContainerStyles>`
   }
 
   &:nth-last-of-type(3) {
-    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 0.6 : 0)};
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 0.6 : 0};
     transform: translate3d(0, -1.2rem, 0) scale(0.96);
   }
 
   &:nth-last-of-type(2) {
-    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 0.8 : 0)};
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 0.8 : 0};
     transform: translate3d(0, -0.6rem, 0) scale(0.98);
   }
 
   &:last-of-type {
-    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
+    opacity: ${props =>
+      props.state === 'entering' || props.state === 'entered' ? 1 : 0};
     position: relative;
   }
 `
@@ -197,7 +203,14 @@ export interface ItemProps {
   children: ReactNode
 }
 
-function Item({ on, remove, cancel, persist, leftAdornment, children }: ItemProps) {
+function Item({
+  on,
+  remove,
+  cancel,
+  persist,
+  leftAdornment,
+  children,
+}: ItemProps) {
   const ref = useRef<HTMLDivElement>(null)
   let timer: NodeJS.Timeout | null = null
   const [state, mounted] = useTransition({
@@ -217,7 +230,9 @@ function Item({ on, remove, cancel, persist, leftAdornment, children }: ItemProp
 
   // If toast has multiple lines in one of it's children the left adornment should be aligned to the top-left.
   // If there is one line only it should align in the center (vertically).
-  const hasMultipleLines = ref.current ? ref.current.getBoundingClientRect().height > 76 : false
+  const hasMultipleLines = ref.current
+    ? ref.current.getBoundingClientRect().height > 76
+    : false
 
   return (
     <ItemContainer state={state}>

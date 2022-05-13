@@ -1,8 +1,22 @@
 import React, { useState } from 'react'
-import { DialogOverlay, DialogContent, DialogOverlayProps, DialogContentProps } from '@reach/dialog'
+import {
+  DialogOverlay,
+  DialogContent,
+  DialogOverlayProps,
+  DialogContentProps,
+} from '@reach/dialog'
 import styled from '@emotion/styled'
 import { Cover } from '../Cover'
-import { color, device, easing, fontWeight, radius, shadow, space, transition } from '../../theme'
+import {
+  color,
+  device,
+  easing,
+  fontWeight,
+  radius,
+  shadow,
+  space,
+  transition,
+} from '../../theme'
 import { Text } from '../Text'
 import { H2, H4 } from '../Heading'
 import { Close } from '../../icons'
@@ -39,7 +53,8 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   overflow: auto;
   background-color: ${color.overlay};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
-  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
+  opacity: ${props =>
+    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 `
@@ -281,19 +296,20 @@ interface ContentDialogHeaderProps {
   onDismiss?: (event?: any) => void
 }
 
-const ContentDialogHeader = React.forwardRef<HTMLDivElement, ContentDialogHeaderProps>(
-  ({ imageUrl, logoUrl, blurred, title, subtitle, onDismiss }, ref) => {
-    return (
-      <div ref={ref}>
-        <StyledCover imageUrl={imageUrl} blurred={blurred}>
-          {logoUrl && <LogoImage logoUrl={logoUrl} />}
-          <Title>{title}</Title>
-          {subtitle && <Subtitle>{subtitle}</Subtitle>}
-          <CloseButton onClick={onDismiss}>
-            <StyledClose size={16} />
-          </CloseButton>
-        </StyledCover>
-      </div>
-    )
-  }
-)
+const ContentDialogHeader = React.forwardRef<
+  HTMLDivElement,
+  ContentDialogHeaderProps
+>(({ imageUrl, logoUrl, blurred, title, subtitle, onDismiss }, ref) => {
+  return (
+    <div ref={ref}>
+      <StyledCover imageUrl={imageUrl} blurred={blurred}>
+        {logoUrl && <LogoImage logoUrl={logoUrl} />}
+        <Title>{title}</Title>
+        {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        <CloseButton onClick={onDismiss}>
+          <StyledClose size={16} />
+        </CloseButton>
+      </StyledCover>
+    </div>
+  )
+})

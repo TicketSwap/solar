@@ -65,7 +65,11 @@ export interface BannerProps {
   backgroundImageUrl: string
 }
 
-const Banner: React.FC<BannerProps> = ({ backgroundImageUrl, children, ...props }) => {
+const Banner: React.FC<BannerProps> = ({
+  backgroundImageUrl,
+  children,
+  ...props
+}) => {
   return (
     <Container backgroundImageUrl={backgroundImageUrl} {...props}>
       <Content>

@@ -57,7 +57,8 @@ const DayButton = styled.button<DayButtonProps>`
 `
 
 const DayLabel = styled.p<DayLabelProps>`
-  font-weight: ${props => (props.isCurrentDay ? fontWeight.semiBold : fontWeight.regular)};
+  font-weight: ${props =>
+    props.isCurrentDay ? fontWeight.semiBold : fontWeight.regular};
   color: ${color.foreground};
 `
 

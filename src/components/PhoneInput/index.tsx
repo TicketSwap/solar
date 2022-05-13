@@ -102,8 +102,12 @@ export const PhoneInput = React.forwardRef(
     const intialSelectedIndex = initialSelectedCountry
       ? countries.indexOf(initialSelectedCountry)
       : 0
-    const [country, setCountry] = React.useState(countries[intialSelectedIndex || 0])
-    const [number, setNumber] = React.useState(initialNumber ? initialNumber : '')
+    const [country, setCountry] = React.useState(
+      countries[intialSelectedIndex || 0]
+    )
+    const [number, setNumber] = React.useState(
+      initialNumber ? initialNumber : ''
+    )
     const { isMobile } = useDeviceInfo()
     const inputId = `phone-input-${useId()}`
 
@@ -131,7 +135,9 @@ export const PhoneInput = React.forwardRef(
               initialSelectedItem={options[intialSelectedIndex]}
               leftAdornment={<Flag countryCode={country && country.value} />}
               onChange={e => {
-                const selectedCountry = countries.filter(c => c.value === e.value)[0]
+                const selectedCountry = countries.filter(
+                  c => c.value === e.value
+                )[0]
                 setCountry(selectedCountry)
                 onChange({ country: selectedCountry, number })
                 if (typeof requestAnimationFrame === 'undefined') return
@@ -153,7 +159,9 @@ export const PhoneInput = React.forwardRef(
                   label="Country"
                   hideLabel
                   value={`+${country.code}`}
-                  leftAdornment={<Flag countryCode={country && country.value} />}
+                  leftAdornment={
+                    <Flag countryCode={country && country.value} />
+                  }
                   rightAdornment={<ArrowDown size={16} />}
                   onChange={() => {}}
                 />

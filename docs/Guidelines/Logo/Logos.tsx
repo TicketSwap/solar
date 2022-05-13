@@ -18,8 +18,10 @@ const logos = [
   },
   {
     image: '/static/images/logo/icon-white.png',
-    urlEPS: 'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.eps',
-    urlPNG: 'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.png',
+    urlEPS:
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.eps',
+    urlPNG:
+      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.png',
   },
   {
     image: '/static/images/logo/vertical-white.png',
@@ -109,8 +111,9 @@ const Info = styled.div`
 const Link = styled.a`
   color: #00b6f0;
   text-decoration: none;
-  font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',
-    BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular',
+    'San Francisco', BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
 
   &:hover {
     color: #99a1a3;
@@ -124,7 +127,8 @@ export const Logos = ({ ...props }) => {
         <Card key={image}>
           <Image src={urlPNG} isWhite={index === 0 || index === 3} />
           <Info>
-            <Link href={urlEPS}>EPS</Link> &middot; <Link href={urlPNG}>PNG</Link>
+            <Link href={urlEPS}>EPS</Link> &middot;{' '}
+            <Link href={urlPNG}>PNG</Link>
           </Info>
         </Card>
       ))}

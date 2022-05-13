@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { Dialog, DialogAdornment, DialogBody, DialogHeader, DialogWindow } from '../Dialog'
+import {
+  Dialog,
+  DialogAdornment,
+  DialogBody,
+  DialogHeader,
+  DialogWindow,
+} from '../Dialog'
 import { Select } from '../Select'
 import { Text } from '../Text'
 import { H6 } from '../Heading'
@@ -81,8 +87,12 @@ const CalendarDialog = ({
   locale,
   onChange,
 }: CalendarDialogProps) => {
-  const dateRangeMonth = dateRange ? dateRange.start.getMonth() : new Date().getMonth()
-  const dateRangeYear = dateRange ? dateRange.start.getFullYear() : new Date().getFullYear()
+  const dateRangeMonth = dateRange
+    ? dateRange.start.getMonth()
+    : new Date().getMonth()
+  const dateRangeYear = dateRange
+    ? dateRange.start.getFullYear()
+    : new Date().getFullYear()
 
   const initialMonth = date ? date.getMonth() : dateRangeMonth
   const initialYear = date ? date.getFullYear() : dateRangeYear
@@ -97,8 +107,12 @@ const CalendarDialog = ({
   const months = getMonths(locale, dateRange)
   const years = getYears({
     timeFrame: timeFrame || TimeFrame.future,
-    range: dateRange ? dateRange.end.getFullYear() - dateRange.start.getFullYear() : 10,
-    yearOfReference: dateRange ? dateRange.start.getFullYear() : new Date().getFullYear(),
+    range: dateRange
+      ? dateRange.end.getFullYear() - dateRange.start.getFullYear()
+      : 10,
+    yearOfReference: dateRange
+      ? dateRange.start.getFullYear()
+      : new Date().getFullYear(),
   })
   const days: Array<React.ReactNode> = []
 
@@ -122,7 +136,8 @@ const CalendarDialog = ({
       (timeFrame === TimeFrame.future && isPastDate(day)) ||
       (timeFrame === TimeFrame.past && isFutureDate(day)) ||
       (timeFrame === TimeFrame.custom &&
-        (isFutureDate(day, dateRange?.end) || isPastDate(day, dateRange?.start)))
+        (isFutureDate(day, dateRange?.end) ||
+          isPastDate(day, dateRange?.start)))
 
     days.push(
       <Day
@@ -142,7 +157,11 @@ const CalendarDialog = ({
   return (
     <Dialog on={isOpen}>
       {({ getWindowProps }) => (
-        <DialogWindow {...getWindowProps()} onClick={close} onEscKeyDown={close}>
+        <DialogWindow
+          {...getWindowProps()}
+          onClick={close}
+          onEscKeyDown={close}
+        >
           <DialogHeader>
             {title}
             <DialogAdornment right>
@@ -157,7 +176,9 @@ const CalendarDialog = ({
                 id="month"
                 items={months}
                 label={monthLabel}
-                initialSelectedItem={months.find(i => i.value === String(initialMonth))}
+                initialSelectedItem={months.find(
+                  i => i.value === String(initialMonth)
+                )}
                 hideLabel
                 onChange={selected => setSelectedMonth(Number(selected.value))}
               />
@@ -165,7 +186,9 @@ const CalendarDialog = ({
                 id="year"
                 items={years}
                 label={yearLabel}
-                initialSelectedItem={years.find(i => i.value === String(initialYear))}
+                initialSelectedItem={years.find(
+                  i => i.value === String(initialYear)
+                )}
                 hideLabel
                 onChange={selected => setSelectedYear(Number(selected.value))}
               />
