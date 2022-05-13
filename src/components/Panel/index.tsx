@@ -1,13 +1,5 @@
 import styled from '@emotion/styled'
-import {
-  radius,
-  shadow,
-  color,
-  space,
-  device,
-  fullBleed,
-  resetFullBleed,
-} from '../../theme'
+import { radius, shadow, color, space, device, fullBleed, resetFullBleed } from '../../theme'
 
 export interface PanelContentProps {
   bgColor?: string
@@ -25,29 +17,30 @@ export const Panel = styled.div`
 `
 
 export const PanelContent = styled.div<PanelContentProps>`
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${props =>
-    props.bgColor ? props.bgColor : color.background};
+  background-color: ${props => (props.bgColor ? props.bgColor : color.background)};
 
   &:first-of-type {
-    border-top-left-radius: ${radius.lg};
-    border-top-right-radius: ${radius.lg};
+    border-start-start-radius: ${radius.lg};
+    border-start-end-radius: ${radius.lg};
   }
 
   &:last-of-type {
-    border-bottom-left-radius: ${radius.lg};
-    border-bottom-right-radius: ${radius.lg};
+    border-end-start-radius: ${radius.lg};
+    border-end-end-radius: ${radius.lg};
   }
 
   :not(:first-of-type) {
-    border-top: 1px solid ${color.stroke};
+    border-block-start: 1px solid ${color.stroke};
   }
 
   @media ${device.tablet} {
-    padding: ${space[24]};
+    padding-block: ${space[24]};
+    padding-inline: ${space[24]};
   }
 `
 
@@ -55,7 +48,7 @@ export const PanelBody = styled.div`
   width: 100%;
 
   > * + * {
-    margin-top: ${space[8]};
+    margin-block-start: ${space[8]};
   }
 `
 
@@ -74,5 +67,5 @@ export const PanelFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: ${space[16]};
+  padding-inline-start: ${space[16]};
 `

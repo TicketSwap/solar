@@ -2,15 +2,7 @@ import React from 'react'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Image } from '../Image'
-import {
-  color,
-  radius,
-  space,
-  fontSize,
-  fontWeight,
-  device,
-  lineHeight,
-} from '../../theme'
+import { color, radius, space, fontSize, fontWeight, device, lineHeight } from '../../theme'
 
 export enum CardVerticalAlign {
   top = 'top',
@@ -45,17 +37,17 @@ export interface StyledCardProps extends CardPropTypes {
 const Container = styled.div<StyledCardProps>`
   position: relative;
   border-radius: ${radius.lg};
-  padding: ${props =>
-    props.size === CardSize.large
-      ? !props.hasImage && space[16]
-      : !props.hasImage && space[12]};
+  padding-block: ${props =>
+    props.size === CardSize.large ? !props.hasImage && space[16] : !props.hasImage && space[12]};
+  padding-inline: ${props =>
+    props.size === CardSize.large ? !props.hasImage && space[16] : !props.hasImage && space[12]};
   background-color: ${color.elevatedBackground};
 
   @media ${device.mobileL} {
-    padding: ${p =>
-      p.size === CardSize.large
-        ? !p.hasImage && space[24]
-        : !p.hasImage && space[16]};
+    padding-block: ${p =>
+      p.size === CardSize.large ? !p.hasImage && space[24] : !p.hasImage && space[16]};
+    padding-inline: ${p =>
+      p.size === CardSize.large ? !p.hasImage && space[24] : !p.hasImage && space[16]};
   }
 
   @media ${device.tablet} {
@@ -104,32 +96,31 @@ const Body = styled.div<StyledCardProps>`
   ${props =>
     props.hasImage &&
     css`
-      padding: ${space[12]};
-      border-bottom-left-radius: ${radius.lg};
-      border-bottom-right-radius: ${radius.lg};
+      padding-block: ${space[12]};
+      padding-inline: ${space[12]};
+      border-end-start-radius: ${radius.lg};
+      border-end-end-radius: ${radius.lg};
 
       @media ${device.mobileL} {
-        padding: ${space[16]};
+        padding-block: ${space[16]};
+        padding-inline: ${space[16]};
       }
 
       ${Container}:hover &,
       ${Container}:focus & {
-        background-image: linear-gradient(
-          to bottom,
-          rgba(0, 19, 25, 0.1),
-          rgba(0, 19, 25, 0.5)
-        );
+        background-image: linear-gradient(to bottom, rgba(0, 19, 25, 0.1), rgba(0, 19, 25, 0.5));
       }
     `};
 `
 
 const LeftAdornment = styled.header`
-  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
   flex-grow: 0;
-  margin-right: ${space[12]};
+  margin-inline-end: ${space[12]};
 
   @media ${device.mobileL} {
-    margin-right: ${space[16]};
+    margin-inline-end: ${space[16]};
   }
 `
 
@@ -138,7 +129,7 @@ const TextContent = styled.div<StyledCardProps>`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  text-align: left;
+  text-align: start;
   position: relative;
   overflow: hidden;
   word-break: break-all;
@@ -151,12 +142,13 @@ const TextContent = styled.div<StyledCardProps>`
 `
 
 const RightAdornment = styled.footer`
-  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
   flex-grow: 0;
-  margin-left: ${space[12]};
+  margin-inline-start: ${space[12]};
 
   @media ${device.mobileL} {
-    margin-left: ${space[16]};
+    margin-inline-start: ${space[16]};
   }
 `
 
@@ -181,11 +173,13 @@ const clamp = css`
 
 const TopLeftAdornment = styled.div`
   display: flex;
-  margin-bottom: auto;
-  padding: ${space[12]};
+  margin-block-end: auto;
+  padding-block: ${space[12]};
+  padding-inline: ${space[12]};
 
   @media ${device.mobileL} {
-    padding: ${space[16]};
+    padding-block: ${space[16]};
+    padding-inline: ${space[16]};
   }
 `
 
@@ -196,8 +190,7 @@ const Title = styled.h4<StyledCardProps>`
   line-height: ${lineHeight.title};
 
   @media ${device.mobileL} {
-    font-size: ${p =>
-      p.size === CardSize.large ? fontSize[20] : fontSize[18]};
+    font-size: ${p => (p.size === CardSize.large ? fontSize[20] : fontSize[18])};
   }
 
   ${props =>
@@ -214,8 +207,7 @@ const Subtitle = styled.h5<StyledCardProps>`
   color: ${color.foregroundMuted};
 
   @media ${device.mobileL} {
-    font-size: ${p =>
-      p.size === CardSize.large ? fontSize[18] : fontSize[16]};
+    font-size: ${p => (p.size === CardSize.large ? fontSize[18] : fontSize[16])};
   }
 `
 
@@ -256,16 +248,16 @@ const Description = styled.div<StyledCardProps>`
   overflow: hidden;
   width: 100%;
   font-size: ${fontSize[14]};
-  margin-top: 0.75rem;
+  margin-block-start: 0.75rem;
 
   @media ${device.mobileL} {
-    margin-top: 1rem;
+    margin-block-start: 1rem;
     font-size: ${fontSize[16]};
   }
 `
 
 const Footer = styled.div`
-  margin-top: ${space[24]};
+  margin-block-start: ${space[24]};
 `
 
 const BackgroundImage = styled(Image)`
@@ -315,14 +307,10 @@ const Card: React.FC<CardPropTypes> = ({
 
   return (
     <Container hasImage={hasImage} {...props}>
-      {!!image && (
-        <BackgroundImage src={image} alt={title ? title : 'Image'} rounded />
-      )}
+      {!!image && <BackgroundImage src={image} alt={title ? title : 'Image'} rounded />}
 
       <Content hasImage={hasImage}>
-        {hasImage && topLeftAdornment && (
-          <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>
-        )}
+        {hasImage && topLeftAdornment && <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>}
 
         <Body hasImage={hasImage}>
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
@@ -338,9 +326,7 @@ const Card: React.FC<CardPropTypes> = ({
               </Text>
             )}
 
-            {description && (
-              <Description hasImage={hasImage}>{description}</Description>
-            )}
+            {description && <Description hasImage={hasImage}>{description}</Description>}
           </TextContent>
 
           {rightAdornment && <RightAdornment>{rightAdornment}</RightAdornment>}

@@ -53,20 +53,16 @@ const InputWrapper = styled.div`
 
 export const fieldStyles = (props: InputProps) => css`
   font-family: inherit;
-  background-color: ${props.invalid
-    ? color.failureBackground
-    : color.elevatedBackground};
+  background-color: ${props.invalid ? color.failureBackground : color.elevatedBackground};
   border-radius: ${props.rounded ? space[32] : radius.md};
   width: 100%;
   font-size: ${fontSize[18]};
   line-height: ${props.as === 'textarea' ? lineHeight.copy : lineHeight.solid};
   height: ${props.as === 'textarea' ? 'auto' : space[56]};
-  padding-top: ${props.as === 'textarea' ? space[12] : 0};
-  padding-bottom: ${props.as === 'textarea' ? space[12] : 0};
-  padding-left: ${props.leftAdornment ? space[48] : space[16]};
-  padding-right: ${(typeof props.value === 'string' &&
-    props.value.length &&
-    props.onReset) ||
+  padding-block-start: ${props.as === 'textarea' ? space[12] : 0};
+  padding-block-end: ${props.as === 'textarea' ? space[12] : 0};
+  padding-inline-start: ${props.leftAdornment ? space[48] : space[16]};
+  padding-inline-end: ${(typeof props.value === 'string' && props.value.length && props.onReset) ||
   props.isLoading ||
   props.rightAdornment
     ? space[48]
@@ -74,7 +70,7 @@ export const fieldStyles = (props: InputProps) => css`
   color: ${color.foreground};
   box-shadow: none;
   border: 0;
-  text-align: left;
+  text-align: start;
   appearance: none;
   transition: box-shadow ${transition}, background-color ${transition};
   -webkit-font-smoothing: auto;
@@ -106,11 +102,8 @@ export const fieldStyles = (props: InputProps) => css`
   &:focus,
   &.focus {
     outline: none;
-    background-color: ${props.invalid
-      ? color.failureBackground
-      : color.elevatedBackground};
-    box-shadow: 0 0 0 ${space[4]}
-      ${props.invalid ? color.failureFocus : color.actionFocus};
+    background-color: ${props.invalid ? color.failureBackground : color.elevatedBackground};
+    box-shadow: 0 0 0 ${space[4]} ${props.invalid ? color.failureFocus : color.actionFocus};
   }
 
   &::placeholder {
@@ -138,7 +131,7 @@ export const Label = styled.label`
 export const LabelText = styled.span`
   display: inline-block;
   color: ${color.foreground};
-  margin-bottom: ${space[4]};
+  margin-block-end: ${space[4]};
 `
 
 type AdornmentProps = {
@@ -179,8 +172,8 @@ const ResetButton = styled.button`
 
 export const Help = styled.p`
   font-size: ${fontSize[14]};
-  margin-bottom: 0;
-  margin-top: ${6 / 16}rem;
+  margin-block-end: 0;
+  margin-block-start: ${6 / 16}rem;
   color: ${color.foregroundMuted};
 
   @media ${device.tablet} {
@@ -189,21 +182,23 @@ export const Help = styled.p`
 `
 
 export const InputMenuFooter = styled.footer`
-  text-align: right;
-  padding: ${space[4]} ${space[16]};
-  border-top: 1px solid ${color.stroke};
+  text-align: end;
+  padding-block: ${space[4]};
+  padding-inline: ${space[16]};
+  border-block-start: 1px solid ${color.stroke};
 `
 
 export const InputMenuList = styled.ul`
   max-height: ${space[256]};
-  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
 `
 
-export interface InputMenuItemProps
-  extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface InputMenuItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   adornment?: ReactNode
   highlighted?: boolean
   selected?: boolean
@@ -214,25 +209,24 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding-left: ${props => (props.adornment ? space[48] : space[16])};
-  padding-right: ${space[16]};
+  padding-inline-start: ${props => (props.adornment ? space[48] : space[16])};
+  padding-inline-end: ${space[16]};
   min-height: ${space[56]};
-  background-color: ${props =>
-    props.highlighted ? color.elevatedBackground : color.background};
-  font-weight: ${props =>
-    props.selected ? fontWeight.semiBold : fontWeight.regular};
+  background-color: ${props => (props.highlighted ? color.elevatedBackground : color.background)};
+  font-weight: ${props => (props.selected ? fontWeight.semiBold : fontWeight.regular)};
   color: ${props => (props.selected ? color.action : color.foreground)};
   cursor: pointer;
   transition: color ${transition};
-  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
 
   :not(:first-of-type) {
-    border-top: 1px solid ${color.stroke};
+    border-block-start: 1px solid ${color.stroke};
   }
 `
 
 export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
-  text-align: left;
+  text-align: start;
   position: absolute;
   left: 0;
   right: 0;
@@ -258,10 +252,7 @@ export interface StyledSelectMenuProps extends InputMenuProps {
 }
 
 const StyledSelectMenu = styled(InputMenu)<StyledSelectMenuProps>`
-  top: ${props =>
-    props.isOutsideViewport
-      ? `-${props.heightOfMenu + 4}px`
-      : 'calc(100% + 4px)'};
+  top: ${props => (props.isOutsideViewport ? `-${props.heightOfMenu + 4}px` : 'calc(100% + 4px)')};
   opacity: ${props => (props.isOpen ? 1 : 0)};
 `
 
@@ -304,10 +295,7 @@ export const SelectMenu = ({ children, ...props }: InputMenuProps) => {
 }
 
 export const InputMenuItem = React.forwardRef(
-  (
-    { children, ...props }: InputMenuItemProps,
-    ref: React.Ref<HTMLLIElement>
-  ) => (
+  ({ children, ...props }: InputMenuItemProps, ref: React.Ref<HTMLLIElement>) => (
     <InputMenuItemContainer {...props} ref={ref}>
       {props.adornment && <Adornment left>{props.adornment}</Adornment>}
       {children}
@@ -352,9 +340,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <LabelText>{label}</LabelText>
         )}
         <InputWrapper>
-          {props.leftAdornment ? (
-            <Adornment left>{props.leftAdornment}</Adornment>
-          ) : null}
+          {props.leftAdornment ? <Adornment left>{props.leftAdornment}</Adornment> : null}
           <Field
             ref={ref}
             id={id}
@@ -372,11 +358,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </Adornment>
           ) : showResetButton ? (
             <Adornment right>
-              <ResetButton
-                onClick={props.onReset}
-                type="button"
-                data-testid="reset-button"
-              >
+              <ResetButton onClick={props.onReset} type="button" data-testid="reset-button">
                 <CloseRounded size={16} />
               </ResetButton>
             </Adornment>

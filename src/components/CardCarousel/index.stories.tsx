@@ -36,7 +36,8 @@ const StyledCard = styled(Card)`
 `
 
 const Container = styled.div`
-  padding: ${space[32]};
+  padding-block: ${space[32]};
+  padding-inline: ${space[32]};
   background-color: ${color.elevatedBackground};
 `
 

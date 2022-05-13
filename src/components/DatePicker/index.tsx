@@ -29,7 +29,8 @@ interface DatePickerProps {
 }
 
 const StyledButton = styled.button`
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   border-radius: ${radius.md};
   background-color: ${color.elevatedBackground};
   color: ${color.foregroundSubtle};
@@ -37,19 +38,18 @@ const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${space[8]};
+  margin-block-end: ${space[8]};
   width: 100%;
 `
 
 const ButtonText = styled(Text)<ButtonTextProps>`
-  color: ${props =>
-    props.hasDate ? color.foreground : color.foregroundSubtle};
+  color: ${props => (props.hasDate ? color.foreground : color.foregroundSubtle)};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   @media ${device.mobileM} {
-    margin-left: ${props => (props.leftAdornment ? space[16] : 0)};
+    margin-inline-start: ${props => (props.leftAdornment ? space[16] : 0)};
   }
 `
 

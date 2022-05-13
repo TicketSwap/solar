@@ -12,10 +12,10 @@ const Container = styled.div<BannerProps>`
   color: ${color.elevatedBackground};
   cursor: pointer;
   display: block;
-  padding-top: ${space[32]};
-  padding-bottom: ${space[32]};
-  padding-left: ${space[16]};
-  padding-right: ${space[8]};
+  padding-block-start: ${space[32]};
+  padding-block-end: ${space[32]};
+  padding-inline-start: ${space[16]};
+  padding-inline-end: ${space[8]};
   text-decoration: none;
 
   ${props => css`
@@ -26,18 +26,18 @@ const Container = styled.div<BannerProps>`
   width: 100vw;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-inline-start: -50vw;
+  margin-inline-end: -50vw;
 
   @media ${device.tablet} {
-    padding-left: ${space[32]};
-    padding-right: ${space[16]};
+    padding-inline-start: ${space[32]};
+    padding-inline-end: ${space[16]};
     border-radius: ${radius.lg};
     width: auto;
     left: auto;
     right: auto;
-    margin-left: 0;
-    margin-right: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
 `
 
@@ -65,11 +65,7 @@ export interface BannerProps {
   backgroundImageUrl: string
 }
 
-const Banner: React.FC<BannerProps> = ({
-  backgroundImageUrl,
-  children,
-  ...props
-}) => {
+const Banner: React.FC<BannerProps> = ({ backgroundImageUrl, children, ...props }) => {
   return (
     <Container backgroundImageUrl={backgroundImageUrl} {...props}>
       <Content>

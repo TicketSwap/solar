@@ -21,7 +21,8 @@ interface DayButtonProps {
 }
 
 const DayButton = styled.button<DayButtonProps>`
-  padding: ${space[4]};
+  padding-block: ${space[4]};
+  padding-inline: ${space[4]};
   background-color: ${color.elevatedBackground};
   border-radius: ${radius.sm};
   display: flex;
@@ -29,11 +30,13 @@ const DayButton = styled.button<DayButtonProps>`
   align-items: center;
 
   @media ${device.mobileM} {
-    padding: ${space[8]};
+    padding-block: ${space[8]};
+    padding-inline: ${space[8]};
   }
 
   @media ${device.tablet} {
-    padding: ${space[16]};
+    padding-block: ${space[16]};
+    padding-inline: ${space[16]};
   }
 
   ${({ selected }) =>
@@ -54,8 +57,7 @@ const DayButton = styled.button<DayButtonProps>`
 `
 
 const DayLabel = styled.p<DayLabelProps>`
-  font-weight: ${props =>
-    props.isCurrentDay ? fontWeight.semiBold : fontWeight.regular};
+  font-weight: ${props => (props.isCurrentDay ? fontWeight.semiBold : fontWeight.regular)};
   color: ${color.foreground};
 `
 

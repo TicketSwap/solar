@@ -41,10 +41,10 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
   background-color: ${color.background};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
-  padding-top: ${space[16]};
-  padding-bottom: ${space[16]};
-  margin-top: ${space[8]};
-  margin-bottom: ${space[8]};
+  padding-block-start: ${space[16]};
+  padding-block-end: ${space[16]};
+  margin-block-start: ${space[8]};
+  margin-block-end: ${space[8]};
 
   [data-reach-menu-item][data-selected] {
     background-color: ${color.elevatedBackground};
@@ -64,12 +64,9 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
     box-shadow: 0 0 0 ${space[4]} ${color.actionBackground};
   }
 
-  opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
   transform: ${props =>
-    props.state === 'entering' ||
-    props.state === 'entered' ||
-    props.state === 'exiting'
+    props.state === 'entering' || props.state === 'entered' || props.state === 'exiting'
       ? 'translateY(0)'
       : `translateY(1rem)`};
   transition: opacity ${DURATION}ms ${easing.easeInOutCubic},
@@ -91,7 +88,8 @@ export const MenuList = ({ children, ...props }: ReachMenuListProps) => {
 }
 
 export const MenuItem = styled<React.FC<MenuItemProps>>(ReachMenuItem)`
-  padding: ${space[8]} ${space[16]};
+  padding-block: ${space[8]};
+  padding-inline: ${space[16]};
   cursor: pointer;
 `
 
@@ -101,7 +99,8 @@ export interface MenuLinkProps extends ReachMenuLinkProps {
 }
 
 export const MenuLink = styled<React.FC<MenuLinkProps>>(ReachMenuLink)`
-  padding: ${space[8]} ${space[16]};
+  padding-block: ${space[8]};
+  padding-inline: ${space[16]};
   display: block;
 `
 

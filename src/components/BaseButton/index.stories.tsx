@@ -6,7 +6,7 @@ import styled from '@emotion/styled'
 const ButtonWrapper = styled.div`
   button {
     display: block;
-    margin-bottom: 16px;
+    margin-block-end: 16px;
   }
 `
 

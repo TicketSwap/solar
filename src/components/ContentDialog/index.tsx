@@ -1,22 +1,8 @@
 import React, { useState } from 'react'
-import {
-  DialogOverlay,
-  DialogContent,
-  DialogOverlayProps,
-  DialogContentProps,
-} from '@reach/dialog'
+import { DialogOverlay, DialogContent, DialogOverlayProps, DialogContentProps } from '@reach/dialog'
 import styled from '@emotion/styled'
 import { Cover } from '../Cover'
-import {
-  color,
-  device,
-  easing,
-  fontWeight,
-  radius,
-  shadow,
-  space,
-  transition,
-} from '../../theme'
+import { color, device, easing, fontWeight, radius, shadow, space, transition } from '../../theme'
 import { Text } from '../Text'
 import { H2, H4 } from '../Heading'
 import { Close } from '../../icons'
@@ -53,8 +39,7 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   overflow: auto;
   background-color: ${color.overlay};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
-  opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 `
@@ -62,10 +47,12 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
 const StyledDialogContent = styled<React.FC<DialogContentProps>>(
   DialogContent
 )<StyledTransitionProps>`
-  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
   width: 100%;
   max-width: 44rem;
-  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
   min-height: 100vh;
   background: ${color.background};
   outline: none;
@@ -76,7 +63,8 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
   transition: transform ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.tablet} {
-    margin: 10vh auto;
+    margin-block: 10vh;
+    margin-inline: auto;
     border-radius: ${radius.lg};
     overflow-x: hidden;
     min-height: auto;
@@ -106,7 +94,8 @@ const TitleHeader = styled.div<StyledHeaderProps>`
   align-items: center;
   justify-content: space-between;
   background-color: ${color.elevatedBackground};
-  padding: ${space[8]} ${space[16]};
+  padding-block: ${space[8]};
+  padding-inline: ${space[16]};
   z-index: 10;
   transform: ${props => (props.show ? 'translateY(0)' : 'translateY(-100%)')};
   transition: transform ${transition};
@@ -137,10 +126,12 @@ const TitleHeader = styled.div<StyledHeaderProps>`
 `
 
 const ContentWrapper = styled.div`
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 
   @media ${device.tablet} {
-    padding: ${space[24]};
+    padding-block: ${space[24]};
+    padding-inline: ${space[24]};
   }
 `
 
@@ -214,14 +205,16 @@ export const ContentDialog: React.FC<ContentDialogProps> = ({
 }
 
 const StyledCover = styled(Cover)`
-  padding: 0 ${space[16]};
+  padding-block: 0;
+  padding-inline: ${space[16]};
 
   @media ${device.tablet} {
-    padding: 0 ${space[24]};
+    padding-block: 0;
+    padding-inline: ${space[24]};
   }
 
   > div {
-    padding-bottom: ${space[16]};
+    padding-block-end: ${space[16]};
   }
 
   h2 {
@@ -235,8 +228,8 @@ interface StyledLogoImageProps {
 
 const LogoImage = styled.div<StyledLogoImageProps>`
   height: ${space[96]};
-  margin-top: -${space[56]};
-  margin-bottom: ${space[24]};
+  margin-block-start: -${space[56]};
+  margin-block-end: ${space[24]};
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -288,20 +281,19 @@ interface ContentDialogHeaderProps {
   onDismiss?: (event?: any) => void
 }
 
-const ContentDialogHeader = React.forwardRef<
-  HTMLDivElement,
-  ContentDialogHeaderProps
->(({ imageUrl, logoUrl, blurred, title, subtitle, onDismiss }, ref) => {
-  return (
-    <div ref={ref}>
-      <StyledCover imageUrl={imageUrl} blurred={blurred}>
-        {logoUrl && <LogoImage logoUrl={logoUrl} />}
-        <Title>{title}</Title>
-        {subtitle && <Subtitle>{subtitle}</Subtitle>}
-        <CloseButton onClick={onDismiss}>
-          <StyledClose size={16} />
-        </CloseButton>
-      </StyledCover>
-    </div>
-  )
-})
+const ContentDialogHeader = React.forwardRef<HTMLDivElement, ContentDialogHeaderProps>(
+  ({ imageUrl, logoUrl, blurred, title, subtitle, onDismiss }, ref) => {
+    return (
+      <div ref={ref}>
+        <StyledCover imageUrl={imageUrl} blurred={blurred}>
+          {logoUrl && <LogoImage logoUrl={logoUrl} />}
+          <Title>{title}</Title>
+          {subtitle && <Subtitle>{subtitle}</Subtitle>}
+          <CloseButton onClick={onDismiss}>
+            <StyledClose size={16} />
+          </CloseButton>
+        </StyledCover>
+      </div>
+    )
+  }
+)

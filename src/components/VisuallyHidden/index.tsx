@@ -6,8 +6,10 @@ export const visuallyHidden = css`
   clip: rect(0 0 0 0);
   height: 1px;
   width: 1px;
-  margin: -1px;
-  padding: 0;
+  margin-block: -1px;
+  margin-inline: -1px;
+  padding-block: 0;
+  padding-inline: 0;
   overflow: hidden;
   position: absolute;
 `

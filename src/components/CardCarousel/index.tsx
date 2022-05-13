@@ -15,10 +15,10 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: ${space[16]};
+  margin-block-end: ${space[16]};
 
   @media ${device.tablet} {
-    margin-bottom: ${space[32]};
+    margin-block-end: ${space[32]};
   }
 `
 
@@ -53,8 +53,10 @@ interface CardsProps {
 const Cards = styled.div<CardsProps>`
   display: flex;
   overflow: scroll;
-  padding: ${space[16]};
-  margin: -${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
+  margin-block: -${space[16]};
+  margin-inline: -${space[16]};
   -ms-overflow-style: none;
   scrollbar-width: none;
   gap: ${space[16]};
@@ -64,8 +66,10 @@ const Cards = styled.div<CardsProps>`
   }
 
   @media ${device.tablet} {
-    padding: unset;
-    margin: unset;
+    padding-block: unset;
+    padding-inline: unset;
+    margin-block: unset;
+    margin-inline: unset;
     overflow: unset;
 
     display: grid;

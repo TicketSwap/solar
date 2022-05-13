@@ -1,14 +1,6 @@
 import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
-import {
-  color,
-  device,
-  fontSize,
-  fontWeight,
-  lineHeight,
-  radius,
-  space,
-} from '../../theme'
+import { color, device, fontSize, fontWeight, lineHeight, radius, space } from '../../theme'
 import { css } from '@emotion/react'
 import { Spinner } from '../Spinner'
 
@@ -31,8 +23,7 @@ export enum ButtonSize {
   small = 'small',
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant
   leftAdornment?: ReactNode
   size?: ButtonSize
@@ -67,11 +58,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   font-family: inherit;
   font-weight: ${fontWeight.semiBold};
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.24),
-    rgba(255, 255, 255, 0)
-  );
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0));
   line-height: ${lineHeight.solid};
   align-items: center;
 
@@ -120,7 +107,8 @@ const StyledButton = styled.button<StyledButtonProps>`
       height: ${space[24]};
       width: ${fullWidth ? '100%' : isSquare ? space[24] : 'auto'};
       font-size: ${fontSize[16]};
-      padding: ${isSquare ? space[4] : `${space[4]} ${space[12]}`};
+      padding-block: ${space[4]};
+      padding-inline: ${isSquare ? space[4] : space[12]};
       border-radius: ${space[32]};
 
       &:focus::after {
@@ -130,7 +118,8 @@ const StyledButton = styled.button<StyledButtonProps>`
       @media ${device.tablet} {
         height: ${space[32]};
         width: ${isSquare ? space[32] : 'auto'};
-        padding: ${isSquare ? space[8] : `${space[8]} ${space[16]}`};
+        padding-block: ${space[8]};
+        padding-inline: ${isSquare ? space[8] : space[16]};
       }
     `}
 
@@ -140,17 +129,19 @@ const StyledButton = styled.button<StyledButtonProps>`
       height: ${space[44]};
       width: ${fullWidth ? '100%' : isSquare ? space[44] : 'auto'};
       font-size: ${fontSize[16]};
-      padding: ${isSquare ? space[12] : `${space[12]} ${space[24]}`};
+      padding-block: ${space[12]};
+      padding-inline: ${isSquare ? space[12] : space[24]};
       border-radius: ${radius.md};
     `}
 
-    ${({ size, isSquare, fullWidth }) =>
+  ${({ size, isSquare, fullWidth }) =>
     size === ButtonSize.large &&
     css`
       height: ${space[56]};
       width: ${fullWidth ? '100%' : isSquare ? space[56] : 'auto'};
       font-size: ${fontSize[18]};
-      padding: ${isSquare ? space[16] : `${space[16]} ${space[32]}`};
+      padding-block: ${space[16]};
+      padding-inline: ${isSquare ? space[16] : space[32]};
       border-radius: ${radius.md};
     `}
 
@@ -279,14 +270,13 @@ interface LeftAdornmentProps {
 }
 
 const LeftAdornment = styled.span<LeftAdornmentProps>`
-  margin-right: ${({ size }) =>
-    size === ButtonSize.small ? space[4] : space[8]};
+  margin-inline-end: ${({ size }) => (size === ButtonSize.small ? space[4] : space[8])};
   line-height: 0;
 
   ${({ isSquare }) =>
     isSquare &&
     css`
-      margin-right: 0;
+      margin-inline-end: 0;
     `}
 `
 

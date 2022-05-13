@@ -28,16 +28,13 @@ export interface ToastProps {
   children: ReactNode
 }
 
-export const Toast: React.FC<ToastProps> = ({
-  children,
-  leftAdornment,
-  persist,
-  ...props
-}) => <div {...props}>{children}</div>
+export const Toast: React.FC<ToastProps> = ({ children, leftAdornment, persist, ...props }) => (
+  <div {...props}>{children}</div>
+)
 
 const LeftAdornmentContainer = styled.span`
   line-height: 0;
-  margin-top: 3px;
+  margin-block-start: 3px;
 `
 
 export interface ToastBlockProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -49,7 +46,8 @@ const ToastContainer = styled.div<ToastBlockProps>`
   border-radius: ${radius.lg};
   background-color: ${color.invertedBackground};
   box-shadow: ${shadow.strong};
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 
   ${({ hasLeftAdornment, hasMultipleLines }) =>
     hasLeftAdornment &&
@@ -72,7 +70,8 @@ const ItemContainer = styled.li<ItemContainerStyles>`
   position: absolute;
   width: 100%;
   pointer-events: auto;
-  padding: 0 ${space[16]} ${space[16]};
+  padding-block: 0 ${space[16]};
+  padding-inline: ${space[16]};
   opacity: 0;
   transform: ${props =>
     props.state === 'entering' || props.state === 'entered'
@@ -87,20 +86,17 @@ const ItemContainer = styled.li<ItemContainerStyles>`
   }
 
   &:nth-last-of-type(3) {
-    opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 0.6 : 0};
+    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 0.6 : 0)};
     transform: translate3d(0, -1.2rem, 0) scale(0.96);
   }
 
   &:nth-last-of-type(2) {
-    opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 0.8 : 0};
+    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 0.8 : 0)};
     transform: translate3d(0, -0.6rem, 0) scale(0.98);
   }
 
   &:last-of-type {
-    opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
     position: relative;
   }
 `
@@ -201,14 +197,7 @@ export interface ItemProps {
   children: ReactNode
 }
 
-function Item({
-  on,
-  remove,
-  cancel,
-  persist,
-  leftAdornment,
-  children,
-}: ItemProps) {
+function Item({ on, remove, cancel, persist, leftAdornment, children }: ItemProps) {
   const ref = useRef<HTMLDivElement>(null)
   let timer: NodeJS.Timeout | null = null
   const [state, mounted] = useTransition({
@@ -228,9 +217,7 @@ function Item({
 
   // If toast has multiple lines in one of it's children the left adornment should be aligned to the top-left.
   // If there is one line only it should align in the center (vertically).
-  const hasMultipleLines = ref.current
-    ? ref.current.getBoundingClientRect().height > 76
-    : false
+  const hasMultipleLines = ref.current ? ref.current.getBoundingClientRect().height > 76 : false
 
   return (
     <ItemContainer state={state}>

@@ -1,21 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import {
-  color,
-  space,
-  fontWeight,
-  transition,
-  radius,
-  device,
-  lineHeight,
-} from '../../theme'
-import {
-  CloseRounded,
-  InfoRounded,
-  WarningRounded,
-  CheckmarkRounded,
-} from '../../icons'
+import { color, space, fontWeight, transition, radius, device, lineHeight } from '../../theme'
+import { CloseRounded, InfoRounded, WarningRounded, CheckmarkRounded } from '../../icons'
 import { H4 } from '../Heading'
 
 export type AlertAction = {
@@ -86,17 +73,19 @@ const Adornment = styled.span`
 
 const Main = styled.div`
   flex-basis: 100%;
-  padding: ${11 / 16}rem ${10 / 16}rem ${10 / 16}rem 0;
+  padding-block: ${11 / 16}rem ${10 / 16}rem;
+  padding-inline: ${10 / 16}rem 0;
 
   @media ${device.tablet} {
-    padding: ${15 / 16}rem ${14 / 16}rem ${14 / 16}rem 0;
+    padding-block: ${15 / 16}rem ${14 / 16}rem;
+    padding-inline: ${14 / 16}rem 0;
   }
 `
 
 const Title = styled(H4)`
   line-height: ${lineHeight.title};
   font-weight: ${fontWeight.semiBold};
-  margin-bottom: ${6 / 16}rem;
+  margin-block-end: ${6 / 16}rem;
 
   @media ${device.tablet} {
     line-height: 1.4;
@@ -105,7 +94,8 @@ const Title = styled(H4)`
 
 const Message = styled.p`
   color: ${color.foreground};
-  margin: 0;
+  margin-block: 0;
+  margin-inline: 0;
 `
 
 const Action = styled.button`
@@ -114,10 +104,10 @@ const Action = styled.button`
   font-weight: ${fontWeight.semiBold};
   flex-shrink: 0;
   transition: color ${transition};
-  margin-top: ${6 / 16}rem;
+  margin-block-start: ${6 / 16}rem;
 
   @media ${device.tablet} {
-    margin-top: ${6 / 16}rem;
+    margin-block-start: ${6 / 16}rem;
   }
 
   &:focus {
@@ -156,11 +146,7 @@ const Alert: React.FC<AlertProps> = ({
         {title && <Title as="h4">{title}</Title>}
         <Message>{children}</Message>
         {action && (
-          <Action
-            variant={variant}
-            onClick={event => action.onClick(event)}
-            type="button"
-          >
+          <Action variant={variant} onClick={event => action.onClick(event)} type="button">
             {action.label}
           </Action>
         )}

@@ -175,8 +175,8 @@ export const fullBleed = css`
   position: relative;
   left: 50%;
   right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-inline-start: -50vw;
+  margin-inline-end: -50vw;
 `
 
 export const resetFullBleed = css`
@@ -184,6 +184,6 @@ export const resetFullBleed = css`
   position: relative;
   left: auto;
   right: auto;
-  margin-left: 0;
-  margin-right: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 `

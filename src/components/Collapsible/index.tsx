@@ -1,13 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import {
-  color,
-  space,
-  fontWeight,
-  radius,
-  transition,
-  device,
-} from '../../theme'
+import { color, space, fontWeight, radius, transition, device } from '../../theme'
 import { ChevronDown } from '../../icons'
 
 export interface CollapsibleProps {
@@ -21,20 +14,21 @@ interface CollapsibleStyledProps {
 
 const Toggle = styled.button<CollapsibleStyledProps>`
   position: relative;
-  text-align: left;
+  text-align: start;
   width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: ${color.elevatedBackground};
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   font-weight: ${fontWeight.semiBold};
-  border-top-left-radius: ${radius.md};
-  border-top-right-radius: ${radius.md};
-  border-bottom-left-radius: ${props => (props.isOn ? 0 : radius.md)};
-  border-bottom-right-radius: ${props => (props.isOn ? 0 : radius.md)};
+  border-start-start-radius: ${radius.md};
+  border-start-end-radius: ${radius.md};
+  border-end-start-radius: ${props => (props.isOn ? 0 : radius.md)};
+  border-end-end-radius: ${props => (props.isOn ? 0 : radius.md)};
 
   @media ${device.tablet} {
-    padding-left: ${space[24]};
+    padding-inline-start: ${space[24]};
   }
 `
 
@@ -43,18 +37,18 @@ const Body = styled.div<CollapsibleStyledProps>`
   overflow: hidden;
   transition: max-height ${transition};
   background-color: ${color.elevatedBackground};
-  border-bottom-left-radius: ${radius.md};
-  border-bottom-right-radius: ${radius.md};
-  box-shadow: 0 1px 0
-    ${props => (props.isOn ? color.strokeStrong : 'transparent')} inset;
+  border-end-start-radius: ${radius.md};
+  border-end-end-radius: ${radius.md};
+  box-shadow: 0 1px 0 ${props => (props.isOn ? color.strokeStrong : 'transparent')} inset;
 `
 
 const Content = styled.div`
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 
   @media ${device.tablet} {
-    padding-left: ${space[24]};
-    padding-right: ${space[24]};
+    padding-inline-start: ${space[24]};
+    padding-inline-end: ${space[24]};
   }
 `
 

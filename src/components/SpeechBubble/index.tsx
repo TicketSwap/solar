@@ -16,7 +16,7 @@ interface StyledProps {
 }
 
 const SpeechBubbleBottomContent = (props: StyledProps) => css`
-  margin-top: ${space[12]};
+  margin-block-start: ${space[12]};
 
   &::before {
     top: -10px;
@@ -35,7 +35,7 @@ const SpeechBubbleBottomContent = (props: StyledProps) => css`
 `
 
 const SpeechBubbleTopContent = (props: StyledProps) => css`
-  margin-bottom: ${space[12]};
+  margin-block-end: ${space[12]};
 
   &::before {
     bottom: -10px;
@@ -60,7 +60,8 @@ const SpeechBubbleContent = styled.div<StyledProps>`
 
   position: relative;
   display: inline-block;
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   color: ${color.foreground};
   font-size: ${fontSize[16]};
   line-height: ${lineHeight.title};

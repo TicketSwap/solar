@@ -4,10 +4,10 @@ import { color, fontSize, space, fontWeight } from '../../theme'
 
 export const Container = styled.span<PillProps>`
   position: relative;
-  padding-left: ${p => (p.leftAdornment ? space[24] : space[8])};
-  padding-right: ${space[8]};
-  padding-top: 5px;
-  padding-bottom: 3px;
+  padding-inline-start: ${p => (p.leftAdornment ? space[24] : space[8])};
+  padding-inline-end: ${space[8]};
+  padding-block-start: 5px;
+  padding-block-end: 3px;
   border-radius: ${space[32]};
   text-align: center;
   white-space: nowrap;
@@ -72,9 +72,7 @@ export interface PillProps {
 
 const Pill: React.FC<PillProps> = ({ children, ...props }) => (
   <Container className="pill" {...props}>
-    {props.leftAdornment && (
-      <LeftAdornment>{props.leftAdornment}</LeftAdornment>
-    )}
+    {props.leftAdornment && <LeftAdornment>{props.leftAdornment}</LeftAdornment>}
     {children}
   </Container>
 )

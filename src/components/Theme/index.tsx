@@ -3,7 +3,8 @@ import styled from '@emotion/styled'
 import { space } from '../../theme'
 
 const Container = styled.div`
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 `
 
 const Theme = ({ darkOn, children }: any) => {

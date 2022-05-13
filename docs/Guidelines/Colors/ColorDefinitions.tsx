@@ -10,7 +10,8 @@ const Grid = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${space[16]};
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   border-radius: ${radius.sm};
   box-shadow: ${shadow.strong};
 `
@@ -31,8 +32,8 @@ const KeywordContainer = styled.div`
   span:not(:last-child) {
     &:after {
       content: '\\00B7';
-      padding-left: ${space[8]};
-      padding-right: ${space[8]};
+      padding-inline-start: ${space[8]};
+      padding-inline-end: ${space[8]};
     }
   }
 `
@@ -41,7 +42,7 @@ const DefinitionsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: ${space[32]};
-  margin-top: ${space[16]};
+  margin-block-start: ${space[16]};
 `
 
 const Representation = ({ keyWords }) => {
@@ -62,9 +63,7 @@ const Color = ({ variant, label }) => {
   )
 }
 
-const ColorGrid = ({ children }) => (
-  <DefinitionsGrid>{children}</DefinitionsGrid>
-)
+const ColorGrid = ({ children }) => <DefinitionsGrid>{children}</DefinitionsGrid>
 
 const ColorDefinition = ({ variant, label, description, keyWords = [] }) => {
   return (

@@ -85,11 +85,11 @@ const StyledButton = styled.button<ButtonProps>`
 `
 
 const Adornment = styled.span`
-  margin-left: -${space[4]};
-  margin-right: ${space[4]};
+  margin-inline-start: -${space[4]};
+  margin-inline-end: ${space[4]};
 
   & > span {
-    margin-top: -2px;
+    margin-block-start: -2px;
   }
 `
 

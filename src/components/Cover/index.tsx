@@ -1,14 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import {
-  color,
-  space,
-  fontSize,
-  fontWeight,
-  transition,
-  device,
-} from '../../theme'
+import { color, space, fontSize, fontWeight, transition, device } from '../../theme'
 
 export interface CoverImagesPropType {
   desktop?: string
@@ -71,8 +64,7 @@ const BackgroundImage = styled.div<CoverProps>`
       transform: scale(1.2);
     `}
 
-  background-image: ${props =>
-    props.imageUrl ? `url(${props.imageUrl})` : `none`};
+  background-image: ${props => (props.imageUrl ? `url(${props.imageUrl})` : `none`)};
 
   ${props =>
     props.images &&
@@ -160,11 +152,7 @@ const BackgroundImage = styled.div<CoverProps>`
   &::after {
     bottom: 0;
     height: 75%;
-    background-image: linear-gradient(
-      to top,
-      rgba(0, 19, 25, 0.6) 0%,
-      rgba(0, 19, 25, 0) 100%
-    );
+    background-image: linear-gradient(to top, rgba(0, 19, 25, 0.6) 0%, rgba(0, 19, 25, 0) 100%);
 
     ${props =>
       props.withInsetShadow &&
@@ -188,11 +176,7 @@ const BackgroundImage = styled.div<CoverProps>`
       `};
 
     [data-theme='dark'] & {
-      background-image: linear-gradient(
-        to top,
-        rgba(26, 33, 41, 0.6) 0%,
-        rgba(26, 33, 41, 0) 100%
-      );
+      background-image: linear-gradient(to top, rgba(26, 33, 41, 0.6) 0%, rgba(26, 33, 41, 0) 100%);
 
       ${props =>
         props.withInsetShadow &&
@@ -220,12 +204,12 @@ const BackgroundImage = styled.div<CoverProps>`
 
 const Content = styled.section<CoverProps>`
   position: relative;
-  padding-top: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
-  padding-bottom: ${space[24]};
+  padding-block-start: ${props => (props.blurred ? `${space[64]}` : `${space[128]}`)};
+  padding-block-end: ${space[24]};
 
   @media ${device.tablet} {
-    padding-top: ${space[144]};
-    padding-bottom: ${space[48]};
+    padding-block-start: ${space[144]};
+    padding-block-end: ${space[48]};
   }
 `
 
@@ -258,7 +242,7 @@ const Caption = styled.span<CaptionProps>`
   text-transform: uppercase;
   letter-spacing: 0.0375rem;
   color: ${color.foregroundSubtle};
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
 
   ${props =>
     props.as === 'a' &&

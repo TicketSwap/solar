@@ -23,12 +23,12 @@ const ColorStrokeContainer = styled.div<ColorStrokeContainerProps>`
   justify-content: space-between;
 
   height: 300px;
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 
   h3,
   span {
-    color: ${props =>
-      props.hex === '#CCD0D1' ? color.darkForeground : color.lightForeground};
+    color: ${props => (props.hex === '#CCD0D1' ? color.darkForeground : color.lightForeground)};
   }
 
   background-color: ${props => props.backgroundColor};
@@ -55,13 +55,7 @@ type ColorStrokeProps = {
   backgroundColor: string
 }
 
-const ColorStroke = ({
-  label,
-  cymk,
-  rgb,
-  hex,
-  backgroundColor,
-}: ColorStrokeProps) => {
+const ColorStroke = ({ label, cymk, rgb, hex, backgroundColor }: ColorStrokeProps) => {
   return (
     <ColorStrokeContainer backgroundColor={backgroundColor} hex={hex}>
       <H3>{label}</H3>

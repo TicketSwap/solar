@@ -11,7 +11,7 @@ const Categories = styled.div`
 
 const CategoryTitle = styled(Text)`
   display: block;
-  margin-bottom: ${space[8]};
+  margin-block-end: ${space[8]};
   font-weight: ${fontWeight.semiBold};
 `
 
@@ -30,7 +30,8 @@ const ColorCard = styled.div<ColorCardProps>`
   width: 200px;
   height: 144px;
   border-radius: ${space[16]};
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   display: grid;
   grid-template-rows: 1fr auto auto;
   border: 1px solid #e5e7e8;
@@ -75,12 +76,7 @@ const Semantic = () => {
               const { label, variant, hex, foreground } = type
 
               return (
-                <Card
-                  color={variant}
-                  title={label}
-                  colorValue={hex}
-                  foregroundColor={foreground}
-                />
+                <Card color={variant} title={label} colorValue={hex} foregroundColor={foreground} />
               )
             })}
           </ColorGrid>

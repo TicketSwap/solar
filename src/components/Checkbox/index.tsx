@@ -28,16 +28,18 @@ const LabelText = styled.span`
 `
 
 const LabelTextContainer = styled.span`
-  margin-left: ${space[8]};
+  margin-inline-start: ${space[8]};
 `
 
 const NativeCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
-  margin: -1px;
+  margin-block: -1px;
+  margin-inline: -1px;
   overflow: hidden;
-  padding: 0;
+  padding-block: 0;
+  padding-inline: 0;
   position: absolute;
   white-space: nowrap;
   width: 1px;

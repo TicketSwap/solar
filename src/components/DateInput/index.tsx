@@ -63,12 +63,14 @@ const InputWrapper = styled.div`
 
 const SelectWrapper = styled.div`
   width: 100%;
-  padding: ${space[8]} 0;
+  padding-block: ${space[8]};
+  padding-inline: 0;
   flex-shrink: 1;
   flex-basis: 60%;
 
   @media ${device.mobile} {
-    padding: 0 ${space[8]};
+    padding-block: 0;
+    padding-inline: ${space[8]};
   }
 `
 
@@ -102,25 +104,16 @@ function getDate(input?: Date | string) {
   return [null, null, null]
 }
 
-export const DateInput: React.FC<DateInputProps> = ({
-  id,
-  label,
-  onChange,
-  ...props
-}) => {
+export const DateInput: React.FC<DateInputProps> = ({ id, label, onChange, ...props }) => {
   const { isIOS } = useDeviceInfo()
   const dateInputRef = React.useRef<HTMLInputElement>(null)
   const months = createSelectOptions(props.months)
-  const [initialYear, initialMonth, initialDay] = getDate(
-    props.initialSelectedDate
-  )
+  const [initialYear, initialMonth, initialDay] = getDate(props.initialSelectedDate)
 
   const [year, setYear] = React.useState(initialYear || '')
   const [month, setMonth] = React.useState(initialMonth || 0)
   const [day, setDay] = React.useState(initialDay || '')
-  const previousValue = usePrevious(
-    dateInputRef.current && dateInputRef.current.value
-  )
+  const previousValue = usePrevious(dateInputRef.current && dateInputRef.current.value)
   const inputId = `date-input-${useId()}`
 
   React.useEffect(() => {
@@ -141,9 +134,7 @@ export const DateInput: React.FC<DateInputProps> = ({
         type="date"
         label={label}
         id={id}
-        value={[year, pad((month + 1).toString()), pad(day.toString())].join(
-          '-'
-        )}
+        value={[year, pad((month + 1).toString()), pad(day.toString())].join('-')}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           const [y, m, d] = splitDateString(event.target.value)
           setYear(y)
@@ -156,9 +147,7 @@ export const DateInput: React.FC<DateInputProps> = ({
         <InputGroup>
           <InputWrapper>
             <Input
-              label={
-                props.dayInputProps ? props.dayInputProps.label : `${label}-day`
-              }
+              label={props.dayInputProps ? props.dayInputProps.label : `${label}-day`}
               placeholder={props.dayInputProps && props.dayInputProps.label}
               id={`${inputId}-day`}
               hideLabel
@@ -181,11 +170,7 @@ export const DateInput: React.FC<DateInputProps> = ({
           </SelectWrapper>
           <InputWrapper>
             <Input
-              label={
-                props.yearInputProps
-                  ? props.yearInputProps.label
-                  : `${label}-year`
-              }
+              label={props.yearInputProps ? props.yearInputProps.label : `${label}-year`}
               placeholder={props.yearInputProps && props.yearInputProps.label}
               id={`${inputId}-year`}
               hideLabel

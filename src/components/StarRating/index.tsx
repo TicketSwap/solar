@@ -36,7 +36,7 @@ const VisuallyHiddenLabelText = styled.span`
 
 const Stars = styled.div`
   transform: translateX(-${space[4]});
-  margin-bottom: -${space[4]};
+  margin-block-end: -${space[4]};
 `
 
 export const StarRating: React.FC<StarRatingProps> = ({

@@ -37,8 +37,9 @@ const centered = (
 const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
   pointer-events: none;
   position: absolute;
-  margin-top: 4px;
-  padding: ${space[8]} ${space[12]};
+  margin-block-start: 4px;
+  padding-block: ${space[8]};
+  padding-inline: ${space[12]};
   box-shadow: 2px 2px 10px hsla(0, 0%, 0%, 0.1);
   white-space: nowrap;
   font-size: ${fontSize[16]};
@@ -56,17 +57,12 @@ const Triangle = styled.div<TriangleStyleProps>`
   position: absolute;
   width: 0;
   height: 0;
-  border-left: ${props => props.size || 10}px solid transparent;
-  border-right: ${props => props.size || 10}px solid transparent;
-  border-bottom: ${props => props.size || 10}px solid
-    ${color.invertedBackground};
+  border-inline-start: ${props => props.size || 10}px solid transparent;
+  border-inline-end: ${props => props.size || 10}px solid transparent;
+  border-block-end: ${props => props.size || 10}px solid ${color.invertedBackground};
 `
 
-export const Tooltip = ({
-  label,
-  'aria-label': ariaLabel,
-  children,
-}: TooltipProps) => {
+export const Tooltip = ({ label, 'aria-label': ariaLabel, children }: TooltipProps) => {
   const [trigger, tooltip] = useTooltip()
   const { isVisible, triggerRect } = tooltip
   const triangleSize = 10
@@ -74,12 +70,7 @@ export const Tooltip = ({
   return (
     <>
       {React.cloneElement(children, trigger)}
-      <Popup
-        {...tooltip}
-        label={label}
-        aria-label={ariaLabel}
-        position={centered}
-      />
+      <Popup {...tooltip} label={label} aria-label={ariaLabel} position={centered} />
       {isVisible && (
         // Position the triangle relative to the trigger, not the
         // popup so that collisions don't have a triangle pointing off
@@ -90,9 +81,7 @@ export const Tooltip = ({
         <Portal>
           <Triangle
             style={{
-              left: triggerRect
-                ? triggerRect.left - triangleSize + triggerRect.width / 2
-                : 0,
+              left: triggerRect ? triggerRect.left - triangleSize + triggerRect.width / 2 : 0,
               top: triggerRect ? triggerRect.bottom + 2 + window.scrollY : 0,
             }}
             size={triangleSize}

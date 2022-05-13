@@ -20,7 +20,8 @@ const PortalContainer = styled.div`
   left: ${space[56]};
   box-shadow: ${shadow.strong};
   border-radius: ${radius.lg};
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
 `
 
 export const Default = () => (

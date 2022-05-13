@@ -19,15 +19,15 @@ const VARIANTS = [
 
 const PresentationalWrapper = styled.div`
   :not(:last-of-type) {
-    margin-bottom: ${space[16]};
+    margin-block-end: ${space[16]};
   }
 
   *:not(:last-of-type) {
-    margin-right: ${space[16]};
+    margin-inline-end: ${space[16]};
   }
 
   a {
-    margin-left: ${space[16]};
+    margin-inline-start: ${space[16]};
   }
 `
 

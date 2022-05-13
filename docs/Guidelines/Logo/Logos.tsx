@@ -18,10 +18,8 @@ const logos = [
   },
   {
     image: '/static/images/logo/icon-white.png',
-    urlEPS:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.eps',
-    urlPNG:
-      'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.png',
+    urlEPS: 'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.eps',
+    urlPNG: 'https://s3-eu-west-1.amazonaws.com/ticketswap-public/public/downloads/bm-blue.png',
   },
   {
     image: '/static/images/logo/vertical-white.png',
@@ -52,10 +50,11 @@ const List = styled.div`
   grid-template-rows: auto;
   grid-gap: 10px;
   height: calc(100vh - 10px);
-  margin-top: 1rem;
+  margin-block-start: 1rem;
 
   @media ${device.tablet} {
-    margin: 0 -${space[16]};
+    margin-block: 0;
+    margin-inline: -${space[16]};
     grid-template-columns: repeat(3, 1fr);
   }
 `
@@ -65,14 +64,16 @@ const Card = styled.div`
   flex: 0 0 100%;
   flex-direction: column;
   justify-content: center;
-  padding: ${space[8]} 0;
+  padding-block: ${space[8]};
+  padding-inline: 0;
 
   @media ${device.tablet} {
     flex: 0 0 50%;
-    padding: ${space[16]};
+    padding-block: ${space[16]};
+    padding-inline: ${space[16]};
 
     &:nth-child(even) {
-      margin-left: auto;
+      margin-inline-start: auto;
     }
   }
 
@@ -80,7 +81,7 @@ const Card = styled.div`
     flex: 0 0 33.33%;
 
     &:nth-child(even) {
-      margin-left: 0;
+      margin-inline-start: 0;
     }
   }
 `
@@ -102,15 +103,14 @@ const Image = styled.img<StyledImageProps>`
   }
 `
 const Info = styled.div`
-  margin-top: ${space[16]};
+  margin-block-start: ${space[16]};
 `
 
 const Link = styled.a`
   color: #00b6f0;
   text-decoration: none;
-  font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular',
-    'San Francisco', BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica,
-    Arial, sans-serif;
+  font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular', 'San Francisco',
+    BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   &:hover {
     color: #99a1a3;
@@ -124,8 +124,7 @@ export const Logos = ({ ...props }) => {
         <Card key={image}>
           <Image src={urlPNG} isWhite={index === 0 || index === 3} />
           <Info>
-            <Link href={urlEPS}>EPS</Link> &middot;{' '}
-            <Link href={urlPNG}>PNG</Link>
+            <Link href={urlEPS}>EPS</Link> &middot; <Link href={urlPNG}>PNG</Link>
           </Info>
         </Card>
       ))}

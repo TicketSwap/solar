@@ -76,7 +76,7 @@ const StyledInput = styled(Input)`
   }
 `
 const LeftAdornment = styled.span`
-  margin-right: ${space[8]};
+  margin-inline-end: ${space[8]};
 `
 
 const RightAdornment = styled.span`
@@ -103,14 +103,14 @@ const StyledSelect = styled.select<StyledSelectProps>`
   font-size: ${fontSize[18]};
   line-height: ${lineHeight.solid};
   height: ${space[56]};
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: ${props => (props.leftAdornment ? space[48] : space[16])};
-  padding-right: ${space[16]};
+  padding-block-start: 0;
+  padding-block-end: 0;
+  padding-inline-start: ${props => (props.leftAdornment ? space[48] : space[16])};
+  padding-inline-end: ${space[16]};
   color: ${color.foreground};
   box-shadow: none;
   border: 0;
-  text-align: left;
+  text-align: start;
   appearance: none;
   -webkit-font-smoothing: auto;
 
@@ -133,9 +133,7 @@ export const Select: FC<SelectProps> = ({
   const { isMobile } = useDeviceInfo()
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
-  const [selectedItem, setSelectedItem] = useState(
-    initialSelectedItem || items[0]
-  )
+  const [selectedItem, setSelectedItem] = useState(initialSelectedItem || items[0])
   const [highlightedIndex, setHighlightedIndex] = useState(
     items.indexOf(initialSelectedItem || items[0])
   )
@@ -170,18 +168,14 @@ export const Select: FC<SelectProps> = ({
 
   useEffect(() => {
     // Select is controlled
-    if (typeof props.selectedItem !== 'undefined')
-      setSelectedItem(props.selectedItem)
+    if (typeof props.selectedItem !== 'undefined') setSelectedItem(props.selectedItem)
   }, [props.selectedItem])
 
   useEffect(() => {
     if (esc) handleClose()
   }, [esc, handleClose])
 
-  function scrollIntoView(
-    node: Element | null,
-    menuNode: HTMLUListElement | null
-  ) {
+  function scrollIntoView(node: Element | null, menuNode: HTMLUListElement | null) {
     if (node === null) return false
     const actions = computeScrollIntoView(node, {
       boundary: menuNode,
@@ -231,23 +225,17 @@ export const Select: FC<SelectProps> = ({
       let input = query + e.key
       setQuery(prevQuery => prevQuery + e.key)
 
-      const index = items.findIndex(item =>
-        item.name.toLowerCase().startsWith(input.toLowerCase())
-      )
+      const index = items.findIndex(item => item.name.toLowerCase().startsWith(input.toLowerCase()))
 
       scrollHighlightedItemIntoView()
       return setHighlightedIndex(index === -1 ? highlightedIndex : index)
     }
 
     if (inputIsArrowUp) {
-      return setHighlightedIndex(prev =>
-        prev === 0 ? items.length - 1 : prev - 1
-      )
+      return setHighlightedIndex(prev => (prev === 0 ? items.length - 1 : prev - 1))
     }
     if (inputIsArrowDown) {
-      return setHighlightedIndex(prev =>
-        prev !== items.length - 1 ? prev + 1 : 0
-      )
+      return setHighlightedIndex(prev => (prev !== items.length - 1 ? prev + 1 : 0))
     }
 
     if (inputIsSpaceOrEnter) {
@@ -289,14 +277,10 @@ export const Select: FC<SelectProps> = ({
             aria-selected={selectedItem === item ? 'true' : 'false'}
             data-highlighted={highlightedIndex}
           >
-            {item.leftAdornment && (
-              <LeftAdornment>{item.leftAdornment}</LeftAdornment>
-            )}
+            {item.leftAdornment && <LeftAdornment>{item.leftAdornment}</LeftAdornment>}
             {item.name}
 
-            {item.rightAdornment && (
-              <RightAdornment>{item.rightAdornment}</RightAdornment>
-            )}
+            {item.rightAdornment && <RightAdornment>{item.rightAdornment}</RightAdornment>}
           </InputMenuItem>
         ))}
       </InputMenuList>
@@ -323,16 +307,11 @@ export const Select: FC<SelectProps> = ({
             <StyledSelect
               ref={mobileSelectRef}
               leftAdornment={leftAdornment}
-              defaultValue={items
-                .map(item => item.value)
-                .indexOf(selectedItem.value)}
+              defaultValue={items.map(item => item.value).indexOf(selectedItem.value)}
               id={id}
               onChange={(e: SyntheticEvent) => {
-                const selected = items
-                  .map(item => item.value)
-                  .indexOf(selectedItem.value)
-                const item =
-                  items[parseInt((e.target as HTMLInputElement).value)]
+                const selected = items.map(item => item.value).indexOf(selectedItem.value)
+                const item = items[parseInt((e.target as HTMLInputElement).value)]
 
                 if (item.type === SelectItemType.action && item.onClick) {
                   if (mobileSelectRef.current) {

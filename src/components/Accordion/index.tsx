@@ -4,21 +4,13 @@ import { ChevronDown } from '../../icons'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
 import * as Reach from '@reach/accordion'
-import {
-  AccordionItemProps,
-  AccordionPanelProps,
-  AccordionButtonProps,
-} from '@reach/accordion'
+import { AccordionItemProps, AccordionPanelProps, AccordionButtonProps } from '@reach/accordion'
 
 export interface AccordionProps {
   collapsible?: boolean
 }
 
-const Accordion: React.FC<AccordionProps> = ({
-  children,
-  collapsible = false,
-  ...props
-}) => {
+const Accordion: React.FC<AccordionProps> = ({ children, collapsible = false, ...props }) => {
   return (
     <Reach.Accordion {...props} collapsible={collapsible}>
       {children}
@@ -34,10 +26,10 @@ const Accordion: React.FC<AccordionProps> = ({
 }
 
 const AccordionItem = styled<React.FC<AccordionItemProps>>(Reach.AccordionItem)`
-  border-top: 1px solid ${color.stroke};
+  border-block-start: 1px solid ${color.stroke};
 
   &:last-of-type {
-    border-bottom: 1px solid ${color.stroke};
+    border-block-end: 1px solid ${color.stroke};
   }
 `
 
@@ -47,9 +39,9 @@ const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding-top: ${space[12]};
-  padding-bottom: ${space[12]};
-  text-align: left;
+  padding-block-start: ${space[12]};
+  padding-block-end: ${space[12]};
+  text-align: start;
   color: ${color.foreground};
 
   &[data-disabled] {
@@ -72,8 +64,8 @@ const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   }
 
   @media ${device.tablet} {
-    padding-bottom: ${space[16]};
-    padding-top: ${space[16]};
+    padding-block-end: ${space[16]};
+    padding-block-start: ${space[16]};
   }
 `
 
@@ -92,10 +84,7 @@ const ButtonAdornment = styled.span`
   }
 `
 
-const AccordionButton: React.FC<AccordionButtonProps> = ({
-  children,
-  ...props
-}) => {
+const AccordionButton: React.FC<AccordionButtonProps> = ({ children, ...props }) => {
   return (
     <Button {...props}>
       <span>{children}</span>
@@ -106,11 +95,9 @@ const AccordionButton: React.FC<AccordionButtonProps> = ({
   )
 }
 
-const AccordionPanel = styled<React.FC<AccordionPanelProps>>(
-  Reach.AccordionPanel
-)`
+const AccordionPanel = styled<React.FC<AccordionPanelProps>>(Reach.AccordionPanel)`
   outline: none;
-  padding-bottom: ${space[12]};
+  padding-block-end: ${space[12]};
 `
 
 export { Accordion, AccordionItem, AccordionButton, AccordionPanel }

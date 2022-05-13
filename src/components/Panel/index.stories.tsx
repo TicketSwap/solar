@@ -6,7 +6,7 @@ import { color } from '../../theme'
 import { Panel, PanelContent, PanelText, PanelBody, PanelFooter } from '.'
 
 const Wrapper = (story: () => React.ReactNode) => (
-  <div style={{ padding: 24 }}>{story()}</div>
+  <div style={{ paddingBlock: 24, paddingInline: 24 }}>{story()}</div>
 )
 
 export default {

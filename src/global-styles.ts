@@ -213,8 +213,10 @@ export const globalStyles = css`
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
+    margin-block: 0;
+    margin-inline: 0;
+    padding-block: 0;
+    padding-inline: 0;
     border: 0;
   }
 
@@ -257,8 +259,10 @@ export const globalStyles = css`
   }
 
   button {
-    padding: 0;
-    margin: 0;
+    padding-block: 0;
+    padding-inline: 0;
+    margin-block: 0;
+    margin-inline: 0;
     border: none;
     font: inherit;
     color: ${color.earth};

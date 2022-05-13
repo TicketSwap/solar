@@ -1,14 +1,6 @@
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import {
-  radius,
-  shadow,
-  space,
-  duration,
-  transition,
-  color,
-  device,
-} from '../../theme'
+import { radius, shadow, space, duration, transition, color, device } from '../../theme'
 import { useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 
@@ -16,7 +8,8 @@ const BodyWrapper = styled.div`
   background-color: ${color.background};
   border-radius: ${radius.lg};
   box-shadow: ${shadow.strong};
-  padding: ${space[32]};
+  padding-block: ${space[32]};
+  padding-inline: ${space[32]};
 `
 
 const OnboardingDialogBody: React.FC = ({ children, ...props }) => (
@@ -81,10 +74,7 @@ const Backdrop = styled.div<BackdropProps>`
   bottom: 0;
   background-color: #ffffff99;
   opacity: ${props =>
-    props.state === TransitionState.ENTERING ||
-    props.state === TransitionState.ENTERED
-      ? 1
-      : 0};
+    props.state === TransitionState.ENTERING || props.state === TransitionState.ENTERED ? 1 : 0};
   transition: opacity ${transition};
 
   [data-theme='dark'] & {
@@ -92,10 +82,7 @@ const Backdrop = styled.div<BackdropProps>`
   }
 `
 
-const OnboardingWrapper: React.FC<OnboardingWrapperProps> = ({
-  children,
-  ...props
-}) => {
+const OnboardingWrapper: React.FC<OnboardingWrapperProps> = ({ children, ...props }) => {
   return <Container {...props}>{children}</Container>
 }
 
@@ -104,10 +91,7 @@ export interface OnboardingProps {
   children(data: object): React.ReactElement
 }
 
-const Onboarding: React.FC<OnboardingProps> = ({
-  children,
-  defaultOn = true,
-}) => {
+const Onboarding: React.FC<OnboardingProps> = ({ children, defaultOn = true }) => {
   const onboardingProps = useOnboarding({
     defaultOn,
   })
@@ -121,8 +105,7 @@ export interface useOnboardingProps {
 }
 
 function useOnboarding(config: useOnboardingProps = {}) {
-  const { defaultOn = true, defaultTransitionState = TransitionState.EXITED } =
-    config
+  const { defaultOn = true, defaultTransitionState = TransitionState.EXITED } = config
 
   const [show, setShow] = useState(defaultOn)
   const [active, setActive] = useState(defaultOn)
@@ -149,11 +132,6 @@ function useOnboarding(config: useOnboardingProps = {}) {
   }
 }
 
-export {
-  OnboardingDialog,
-  OnboardingDialogBody,
-  useOnboarding,
-  OnboardingWrapper,
-}
+export { OnboardingDialog, OnboardingDialogBody, useOnboarding, OnboardingWrapper }
 
 export default Onboarding

@@ -2,22 +2,8 @@ import React, { useState, useEffect, ReactNode, ReactElement } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { callAll, stopPropagation } from '../../utils'
-import {
-  space,
-  device,
-  sizes,
-  fontWeight,
-  radius,
-  color,
-  easing,
-  gradients,
-} from '../../theme'
-import {
-  useIsMounted,
-  useLockBodyScroll,
-  usePrevious,
-  useTransition,
-} from '../../hooks'
+import { space, device, sizes, fontWeight, radius, color, easing, gradients } from '../../theme'
+import { useIsMounted, useLockBodyScroll, usePrevious, useTransition } from '../../hooks'
 import { TransitionState } from '../../hooks/useTransition'
 
 const duration = 200
@@ -77,8 +63,7 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+  opacity: ${props => (props.state === 'entering' || props.state === 'entered' ? 1 : 0)};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 
@@ -86,10 +71,10 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     align-items: flex-start;
-    padding-top: ${space[64]};
-    padding-top: 10vmin;
-    padding-bottom: ${space[64]};
-    padding-bottom: 10vmin;
+    padding-block-start: ${space[64]};
+    padding-block-start: 10vmin;
+    padding-block-end: ${space[64]};
+    padding-block-end: 10vmin;
   }
 `
 
@@ -134,7 +119,7 @@ export const DialogContent: React.FC<any> = ({ children, ...props }) => {
 export const DialogHeader = styled.header`
   position: relative;
   height: ${space[56]};
-  border-bottom: 1px solid ${color.stroke};
+  border-block-end: 1px solid ${color.stroke};
   color: ${color.foreground};
   font-weight: ${fontWeight.semiBold};
   text-align: center;
@@ -155,7 +140,8 @@ export const DialogAdornment = styled.span<DialogAdornmentStyles>`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
   left: ${props => (props.left ? 0 : 'auto')};
   right: ${props => (props.right ? 0 : 'auto')};
 
@@ -191,27 +177,20 @@ const BodyWrapper = styled.div`
 
   &::before {
     top: 0;
-    background-image: linear-gradient(
-      to bottom,
-      ${gradients.nova},
-      ${gradients.novaAlpha}
-    );
+    background-image: linear-gradient(to bottom, ${gradients.nova}, ${gradients.novaAlpha});
   }
 
   &::after {
     bottom: 0;
-    background-image: linear-gradient(
-      to bottom,
-      ${gradients.novaAlpha},
-      ${gradients.nova}
-    );
+    background-image: linear-gradient(to bottom, ${gradients.novaAlpha}, ${gradients.nova});
   }
 `
 
 const Body = styled.div`
   max-height: 50vh;
-  padding: ${space[16]};
-  padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
+  padding-block-end: calc(${space[16]} + env(safe-area-inset-bottom));
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 
@@ -224,7 +203,8 @@ const Body = styled.div`
   }
 
   @media ${device.mobileL} {
-    padding: ${space[32]};
+    padding-block: ${space[32]};
+    padding-inline: ${space[32]};
     max-height: none;
     overflow-y: unset;
     -webkit-overflow-scrolling: auto;
@@ -241,13 +221,15 @@ export const DialogBody: React.FC = ({ children, ...props }) => {
 
 export const DialogFooter = styled.footer`
   position: relative;
-  margin-top: -${space[16]};
-  padding: ${space[16]};
-  padding-bottom: calc(${space[16]} + env(safe-area-inset-bottom));
+  margin-block-start: -${space[16]};
+  padding-block: ${space[16]};
+  padding-inline: ${space[16]};
+  padding-block-end: calc(${space[16]} + env(safe-area-inset-bottom));
 
   @media ${device.mobileL} {
-    margin-top: -${space[32]};
-    padding: ${space[32]};
+    margin-block-start: -${space[32]};
+    padding-block: ${space[32]};
+    padding-inline: ${space[32]};
   }
 `
 
@@ -379,11 +361,7 @@ export function DialogWindow({
           data-testid="dialog-overlay"
           {...props}
         >
-          <DialogContent
-            onClick={stopPropagation}
-            data-testid="dialog-content"
-            state={state}
-          >
+          <DialogContent onClick={stopPropagation} data-testid="dialog-content" state={state}>
             {children}
           </DialogContent>
         </DialogOverlay>

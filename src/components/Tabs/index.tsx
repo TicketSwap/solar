@@ -29,8 +29,8 @@ export const TabList = styled<React.FC<TabListProps>>(ReachTabList)`
   display: flex;
   border-radius: ${radius.lg};
   background-color: ${color.elevatedBackground};
-  padding-top: ${space[8]};
-  padding-bottom: ${space[8]};
+  padding-block-start: ${space[8]};
+  padding-block-end: ${space[8]};
   overflow-x: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
@@ -43,7 +43,7 @@ export const TabList = styled<React.FC<TabListProps>>(ReachTabList)`
   }
 
   > * + * {
-    margin-left: ${space[8]};
+    margin-inline-start: ${space[8]};
   }
 
   &::before,
@@ -62,12 +62,13 @@ export const Tab = styled<React.FC<TabProps>>(ReachTab)`
   border: 0;
   background-color: transparent;
   color: ${color.foreground};
-  padding: ${space[4]} ${space[16]};
+  padding-block: ${space[4]};
+  padding-inline: ${space[16]};
   font-size: ${fontSize[16]};
   font-weight: ${fontWeight.semiBold};
 
   &:first-of-type {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 
   &[data-selected] {

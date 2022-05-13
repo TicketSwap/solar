@@ -50,7 +50,7 @@ const InputWrapper = styled.div`
 const selectWidth = `${112 / 16}rem`
 
 const SelectWrapper = styled.div`
-  padding-right: ${space[8]};
+  padding-inline-end: ${space[8]};
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: ${selectWidth};
@@ -67,7 +67,7 @@ const FauxSelectWrapper = styled.span`
   left: 0;
   top: 0;
   width: ${selectWidth};
-  padding-right: ${space[8]};
+  padding-inline-end: ${space[8]};
 `
 
 function createSelectOptions(currencies: MoneyInputCurrencyProp[]) {
@@ -100,9 +100,7 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
 }) => {
   const isAmountControlled = typeof props.amount !== 'undefined'
   const selectedCurrency = props.currency || props.initialSelectedCurrency
-  const initialSelectedIndex = selectedCurrency
-    ? currencies.indexOf(selectedCurrency)
-    : 0
+  const initialSelectedIndex = selectedCurrency ? currencies.indexOf(selectedCurrency) : 0
   const initialValue = props.initialAmount ? props.initialAmount / 100 : 0
   const [amount, setAmount] = React.useState(
     props.initialAmount
@@ -111,9 +109,7 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
         : initialValue.toFixed(2)
       : ''
   )
-  const [currency, setCurrency] = React.useState(
-    currencies[initialSelectedIndex]
-  )
+  const [currency, setCurrency] = React.useState(currencies[initialSelectedIndex])
   const options = createSelectOptions(currencies)
   const inputRef = React.useRef<HTMLInputElement>(null)
 
@@ -149,9 +145,7 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
             }
             initialSelectedItem={options[initialSelectedIndex]}
             onChange={e => {
-              const selectedCurrency = currencies.filter(
-                c => c.code === e.value
-              )[0]
+              const selectedCurrency = currencies.filter(c => c.code === e.value)[0]
               setCurrency(selectedCurrency)
               onChange({
                 currency: selectedCurrency,
@@ -195,9 +189,7 @@ export const MoneyInput: React.FC<MoneyInputProps> = ({
               setAmount(event.target.value)
               onChange({
                 currency,
-                amount: isAmountControlled
-                  ? event.target.value
-                  : parseAmount(event.target.value),
+                amount: isAmountControlled ? event.target.value : parseAmount(event.target.value),
               })
             }}
           />
