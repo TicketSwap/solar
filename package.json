@@ -52,7 +52,7 @@
     "arrowParens": "avoid"
   },
   "dependencies": {
-    "@reach/accordion": "^0.16.1",
+    "@reach/accordion": "^0.17.0",
     "@reach/auto-id": "^0.17.0",
     "@reach/dialog": "^0.16.2",
     "@reach/menu-button": "^0.16.2",
