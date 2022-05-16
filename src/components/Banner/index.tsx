@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { color, space, device, radius } from '../../theme'
@@ -63,6 +63,7 @@ const Content = styled.div`
 
 export interface BannerProps {
   backgroundImageUrl: string
+  children: ReactNode
 }
 
 const Banner: React.FC<BannerProps> = ({

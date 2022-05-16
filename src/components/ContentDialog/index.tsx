@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import {
   DialogOverlay,
   DialogContent,
@@ -33,6 +33,7 @@ export interface ContentDialogProps {
   blurred?: boolean
   title: string
   subtitle?: string
+  children: ReactNode
 }
 
 const duration = 200

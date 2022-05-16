@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { device, space, color, fontWeight } from '../../theme'
 import { ChevronDown } from '../../icons'
 import styled from '@emotion/styled'
@@ -12,6 +12,7 @@ import {
 
 export interface AccordionProps {
   collapsible?: boolean
+  children: ReactNode
 }
 
 const Accordion: React.FC<AccordionProps> = ({

@@ -21,14 +21,16 @@ const DURATION = 200
 export const Menu = ({ children, ...props }: MenuProps) => {
   return (
     <ReachMenu {...props}>
-      {children}
-      <Global
-        styles={css`
-          :root {
-            --reach-menu-button: 1;
-          }
-        `}
-      />
+      <>
+        {children}
+        <Global
+          styles={css`
+            :root {
+              --reach-menu-button: 1;
+            }
+          `}
+        />
+      </>
     </ReachMenu>
   )
 }

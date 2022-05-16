@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { color, fontSize, space, fontWeight } from '../../theme'
 
@@ -67,7 +67,8 @@ export enum PillVariant {
 
 export interface PillProps {
   variant?: PillVariant
-  leftAdornment?: Element | React.ReactNode
+  leftAdornment?: ReactNode
+  children: ReactNode
 }
 
 const Pill: React.FC<PillProps> = ({ children, ...props }) => (

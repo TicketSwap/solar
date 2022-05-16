@@ -356,38 +356,40 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <LabelText>{label}</LabelText>
         )}
         <InputWrapper>
-          {props.leftAdornment ? (
-            <Adornment left>{props.leftAdornment}</Adornment>
-          ) : null}
-          <Field
-            ref={ref}
-            id={id}
-            invalid={invalid}
-            isLoading={loading}
-            disabled={disabled}
-            label={label}
-            name={name}
-            autocomplete={autocomplete}
-            {...props}
-          />
-          {loading ? (
-            <Adornment right>
-              <Spinner size={24} />
-            </Adornment>
-          ) : showResetButton ? (
-            <Adornment right>
-              <ResetButton
-                onClick={props.onReset}
-                type="button"
-                data-testid="reset-button"
-              >
-                <CloseRounded size={16} />
-              </ResetButton>
-            </Adornment>
-          ) : props.rightAdornment ? (
-            <Adornment right>{props.rightAdornment}</Adornment>
-          ) : null}
-          {props.menu && props.menu}
+          <>
+            {props.leftAdornment ? (
+              <Adornment left>{props.leftAdornment}</Adornment>
+            ) : null}
+            <Field
+              ref={ref}
+              id={id}
+              invalid={invalid}
+              isLoading={loading}
+              disabled={disabled}
+              label={label}
+              name={name}
+              autocomplete={autocomplete}
+              {...props}
+            />
+            {loading ? (
+              <Adornment right>
+                <Spinner size={24} />
+              </Adornment>
+            ) : showResetButton ? (
+              <Adornment right>
+                <ResetButton
+                  onClick={props.onReset}
+                  type="button"
+                  data-testid="reset-button"
+                >
+                  <CloseRounded size={16} />
+                </ResetButton>
+              </Adornment>
+            ) : props.rightAdornment ? (
+              <Adornment right>{props.rightAdornment}</Adornment>
+            ) : null}
+            {props.menu && props.menu}
+          </>
         </InputWrapper>
         {props.help && <Help>{props.help}</Help>}
       </Label>

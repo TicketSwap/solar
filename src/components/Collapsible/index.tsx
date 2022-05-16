@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import {
   color,
@@ -13,6 +13,7 @@ import { ChevronDown } from '../../icons'
 export interface CollapsibleProps {
   buttonLabel?: string
   defaultOn?: boolean
+  children: ReactNode
 }
 
 interface CollapsibleStyledProps {

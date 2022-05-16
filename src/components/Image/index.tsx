@@ -94,7 +94,7 @@ export const Image: React.FC<ImageProps> = ({
   }, [height, src, width])
 
   const handleLazyLoad = useCallback(
-    entries => {
+    (entries: IntersectionObserverEntry[]) => {
       if (entries && entries.length && entries[0].intersectionRatio > 0) {
         if (imageRef.current !== null && observer.current !== null) {
           handleLoad()

@@ -6,7 +6,7 @@ export function useKeyPress(targetKey: string) {
 
   // If pressed key is our target key then set to true
   const downHandler = React.useCallback(
-    ({ key }) => {
+    ({ key }: KeyboardEvent) => {
       if (key === targetKey) {
         setKeyPressed(true)
       }
@@ -16,7 +16,7 @@ export function useKeyPress(targetKey: string) {
 
   // If released key is our target key then set to false
   const upHandler = React.useCallback(
-    ({ key }) => {
+    ({ key }: KeyboardEvent) => {
       if (key === targetKey) {
         setKeyPressed(false)
       }

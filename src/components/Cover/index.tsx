@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import {
@@ -25,6 +25,7 @@ export interface CoverProps {
   blurred?: boolean
   fullHeight?: boolean
   withInsetShadow?: boolean
+  children?: ReactNode
 }
 
 const Container = styled.div<CoverProps>`

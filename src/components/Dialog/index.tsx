@@ -234,7 +234,14 @@ const Body = styled.div`
   }
 `
 
-export const DialogBody: React.FC = ({ children, ...props }) => {
+type DialogBodyProps = {
+  children: ReactNode
+}
+
+export const DialogBody: React.FC<DialogBodyProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <BodyWrapper>
       <Body {...props}>{children}</Body>
@@ -288,7 +295,9 @@ export function useDialog(config: UseDialogProps = {}) {
   const hide = () => {
     if (!isMounted()) return
 
-    !isOnControlled() ? setOn(false) : undefined
+    if (!isOnControlled()) {
+      setOn(false)
+    }
   }
   const toggle = () => (!isOnControlled() ? setOn(!on) : undefined)
 
@@ -353,8 +362,8 @@ export function DialogWindow({
     onExited,
   })
   const handleHide = React.useCallback(
-    ({ keyCode }) => {
-      if (keyCode === 27) {
+    ({ key }: KeyboardEvent) => {
+      if (key === 'Escape') {
         onEscKeyDown && onEscKeyDown()
         hide()
       }

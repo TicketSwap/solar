@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { useIsomorphicLayoutEffect } from '../../hooks/useIsomorphicLayoutEffect'
 
-export const Portal: React.FC = ({ children }) => {
+type PortalProps = {
+  children: ReactNode
+}
+
+export const Portal: React.FC<PortalProps> = ({ children }) => {
   let mountNode = React.useRef<HTMLDivElement | null>(null)
   let portalNode = React.useRef<HTMLElement | null>(null)
   let [, dispatch] = React.useState<{}>(Object.create(null))

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import {
@@ -34,6 +34,7 @@ export interface AlertProps {
   title?: string
   action?: AlertAction
   variant?: AlertVariant
+  children: ReactNode
 }
 
 const textColor = (props: AlertProps) => css`

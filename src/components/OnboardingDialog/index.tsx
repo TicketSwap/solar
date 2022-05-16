@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import styled from '@emotion/styled'
 import {
   radius,
@@ -20,9 +20,14 @@ const BodyWrapper = styled.div`
   padding-inline: ${space[32]};
 `
 
-const OnboardingDialogBody: React.FC = ({ children, ...props }) => (
-  <BodyWrapper {...props}>{children}</BodyWrapper>
-)
+type OnboardingDialogBodyProps = {
+  children: ReactNode
+}
+
+const OnboardingDialogBody: React.FC<OnboardingDialogBodyProps> = ({
+  children,
+  ...props
+}) => <BodyWrapper {...props}>{children}</BodyWrapper>
 
 interface DialogWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   tabindex: string
@@ -43,6 +48,7 @@ export interface OnboardingDialogProps {
   show: boolean
   state: TransitionState
   active: boolean
+  children: ReactNode
 }
 
 const OnboardingDialog: React.FC<OnboardingDialogProps> = ({
@@ -64,7 +70,9 @@ const OnboardingDialog: React.FC<OnboardingDialogProps> = ({
   )
 }
 
-export interface OnboardingWrapperProps {}
+export interface OnboardingWrapperProps {
+  children: ReactNode
+}
 
 const Container = styled.div`
   position: relative;

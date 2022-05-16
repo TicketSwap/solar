@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styled from '@emotion/styled'
 import { Global, css } from '@emotion/react'
 import {
@@ -10,7 +10,11 @@ import {
 } from '@reach/tabs'
 import { color, radius, space, fontSize, fontWeight } from '../../theme'
 
-export const Tabs: React.FC = ({ children, ...props }) => {
+type TabsProps = {
+  children: ReactNode
+}
+
+export const Tabs: React.FC<TabsProps> = ({ children, ...props }) => {
   return (
     <ReachTabs {...props}>
       {children}

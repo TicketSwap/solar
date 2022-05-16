@@ -129,7 +129,11 @@ interface ItemStateProps {
   leftAdornment?: ReactNode
 }
 
-export const ToastProvider: React.FC = props => {
+type ToastProviderProps = {
+  children: ReactNode
+}
+
+export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const isMounted = useIsMounted()
   const [items, setItems] = React.useState<ItemStateProps[]>([])
   const [cancellations, setCancellations] = React.useState<number[]>([])
@@ -162,7 +166,7 @@ export const ToastProvider: React.FC = props => {
 
   return (
     <ToastContext.Provider value={getStateAndHelpers()}>
-      {props.children}
+      {children}
       <Portal>
         <ItemList on={items.length > 0}>
           {items.map(item => (
