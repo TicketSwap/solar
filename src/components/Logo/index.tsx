@@ -43,7 +43,7 @@ export const Logo = ({
 }: LogoProps) => (
   <SvgWrapper {...props}>
     <InlineSvg
-      viewBox="0 0 244 40"
+      viewBox="0 0 244 35"
       fillRule="evenodd"
       clipRule="evenodd"
       strokeLinejoin="round"
