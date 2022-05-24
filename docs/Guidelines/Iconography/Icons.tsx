@@ -284,6 +284,8 @@ export const Icons = () => {
         icon={<Icon.SoundCloud title="SoundCloud" />}
         name="SoundCloud"
       />
+      <IconWrapper icon={<Icon.SoundOff title="Sound off" />} name="SoundOff" />
+      <IconWrapper icon={<Icon.SoundOn title="Sound on" />} name="SoundOn" />
       <IconWrapper icon={<Icon.Spinner title="Spinner" />} name="Spinner" />
       <IconWrapper icon={<Icon.Spotify title="Spotify" />} name="Spotify" />
       <IconWrapper icon={<Icon.Star title="Star" />} name="Star" />
