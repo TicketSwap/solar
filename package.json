@@ -71,7 +71,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.17.12",
-    "@commitlint/config-conventional": "^16.2.1",
+    "@commitlint/config-conventional": "^17.0.0",
     "@emotion/babel-plugin": "^11.9.2",
     "@emotion/jest": "^11.8.0",
     "@emotion/react": "^11.9.0",
