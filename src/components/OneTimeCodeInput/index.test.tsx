@@ -268,6 +268,44 @@ describe('OneTimeCodeInput', () => {
           })
         })
       })
+
+      describe('when focusOnMount is being', () => {
+        it('auto focus the first input when focusOnMount is true', async () => {
+          render(
+            <OneTimeCodeInput
+              id="OneTimeCodeInput"
+              length={5}
+              label="Verificationcode"
+              ariaLabel="OneTimeCode Input Field"
+              focusOnMount={true}
+            />
+          )
+
+          expect(
+            screen.getByRole('textbox', {
+              name: /onetimecode input field 1/i,
+            })
+          ).toHaveFocus()
+        })
+
+        it('does not focus the first input when focusOnMount is false', async () => {
+          render(
+            <OneTimeCodeInput
+              id="OneTimeCodeInput"
+              length={5}
+              label="Verificationcode"
+              ariaLabel="OneTimeCode Input Field"
+              focusOnMount={false}
+            />
+          )
+
+          expect(
+            screen.getByRole('textbox', {
+              name: /onetimecode input field 1/i,
+            })
+          ).not.toHaveFocus()
+        })
+      })
     })
   })
 })

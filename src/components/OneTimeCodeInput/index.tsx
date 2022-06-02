@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from '@emotion/styled'
 import { fieldStyles, Help, LabelText } from '../Input'
 import { space } from '../../theme'
@@ -17,6 +17,7 @@ interface OneTimeCodeInputProps {
   ariaLabel: string
   label: string
   disabled?: boolean
+  focusOnMount?: boolean
   helpText?: string
   labelProps?: object
   validate?: boolean
@@ -38,6 +39,7 @@ const Input = styled.input`
 `
 
 export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
+  focusOnMount = false,
   length = 5,
   id,
   hideLabel,
@@ -51,6 +53,12 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
     new Array(length === 0 ? 1 : length).fill('')
   )
   const containerRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (focusOnMount && containerRef.current) {
+      containerRef.current.querySelectorAll('input')[0].focus()
+    }
+  }, [focusOnMount])
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement>,

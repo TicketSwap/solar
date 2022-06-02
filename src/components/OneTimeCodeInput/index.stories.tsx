@@ -69,6 +69,37 @@ export const ShortCode = () => {
   )
 }
 
+export const WithFocusOnMount = () => {
+  return (
+    <Dialog on>
+      {({ getWindowProps }) => (
+        <>
+          <DialogWindow {...getWindowProps()}>
+            <DialogHeader>One Time Code Input</DialogHeader>
+            <DialogBody>
+              <OneTimeCodeInput
+                focusOnMount={true}
+                length={4}
+                id="otc-input"
+                label="Verificationcode"
+                helpText="Enter your 6 digit code here"
+                ariaLabel="One Time Code Input Field:"
+                validate={true}
+                onChange={value => console.log(value)}
+              />
+            </DialogBody>
+            <DialogFooter>
+              <Button onClick={() => console.log('submitted')} fullWidth>
+                Submit
+              </Button>
+            </DialogFooter>
+          </DialogWindow>
+        </>
+      )}
+    </Dialog>
+  )
+}
+
 export const LongCode = () => {
   return (
     <Dialog on>
