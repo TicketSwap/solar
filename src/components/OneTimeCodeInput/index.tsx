@@ -47,7 +47,9 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
   helpText,
   onChange = () => {},
 }) => {
-  const [inputValues, setInputValues] = useState(new Array(length).fill(''))
+  const [inputValues, setInputValues] = useState(
+    new Array(length === 0 ? 1 : length).fill('')
+  )
   const containerRef = useRef<HTMLInputElement>(null)
 
   const handleChange = (
