@@ -136,33 +136,7 @@
     "@babel/helper-replace-supers" "^7.16.5"
     "@babel/helper-split-export-declaration" "^7.16.0"
 
-"@babel/helper-create-class-features-plugin@^7.16.7":
-  version "7.16.7"
-  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.16.7.tgz#9c5b34b53a01f2097daf10678d65135c1b9f84ba"
-  integrity sha512-kIFozAvVfK05DM4EVQYKK+zteWvY85BFdGBRQBytRyY3y+6PX0DkDOn/CZ3lEuczCfrCxEzwt0YtP/87YPTWSw==
-  dependencies:
-    "@babel/helper-annotate-as-pure" "^7.16.7"
-    "@babel/helper-environment-visitor" "^7.16.7"
-    "@babel/helper-function-name" "^7.16.7"
-    "@babel/helper-member-expression-to-functions" "^7.16.7"
-    "@babel/helper-optimise-call-expression" "^7.16.7"
-    "@babel/helper-replace-supers" "^7.16.7"
-    "@babel/helper-split-export-declaration" "^7.16.7"
-
 "@babel/helper-create-class-features-plugin@^7.17.12", "@babel/helper-create-class-features-plugin@^7.18.0":
-  version "7.18.0"
-  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.18.0.tgz#fac430912606331cb075ea8d82f9a4c145a4da19"
-  integrity sha512-Kh8zTGR9de3J63e5nS0rQUdRs/kbtwoeQQ0sriS0lItjC96u8XXZN6lKpuyWd2coKSU13py/y+LTmThLuVX0Pg==
-  dependencies:
-    "@babel/helper-annotate-as-pure" "^7.16.7"
-    "@babel/helper-environment-visitor" "^7.16.7"
-    "@babel/helper-function-name" "^7.17.9"
-    "@babel/helper-member-expression-to-functions" "^7.17.7"
-    "@babel/helper-optimise-call-expression" "^7.16.7"
-    "@babel/helper-replace-supers" "^7.16.7"
-    "@babel/helper-split-export-declaration" "^7.16.7"
-
-"@babel/helper-create-class-features-plugin@^7.18.0":
   version "7.18.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.18.0.tgz#fac430912606331cb075ea8d82f9a4c145a4da19"
   integrity sha512-Kh8zTGR9de3J63e5nS0rQUdRs/kbtwoeQQ0sriS0lItjC96u8XXZN6lKpuyWd2coKSU13py/y+LTmThLuVX0Pg==
@@ -9904,10 +9878,10 @@ jest-resolve@^27.5.1:
     resolve.exports "^1.1.0"
     slash "^3.0.0"
 
-jest-runner-eslint@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/jest-runner-eslint/-/jest-runner-eslint-1.0.0.tgz#5cede321ed5ed57233462c5204a0fa8d90f993bd"
-  integrity sha512-LMlAaIQqIIySEThv651bfvzwX6J4nOu91RaEUYmXJgn4XXbM40rSMlBaC8ZrrFcFemu88MFlnrCLuYf7ZHE2sQ==
+jest-runner-eslint@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jest-runner-eslint/-/jest-runner-eslint-1.0.1.tgz#145f0cb57cae44b0621f433970208baff7f7d6f3"
+  integrity sha512-jK3lfLY3yNg58plTZUnOTrf32IXVwlSm8x89VxuK0EyeHrsa3F0rQ6nqaLrbm6hbtQJyt+v97SPVKvGJ36s1HA==
   dependencies:
     chalk "^3.0.0"
     cosmiconfig "^6.0.0"
