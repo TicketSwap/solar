@@ -6,6 +6,7 @@ import styled from '@emotion/styled'
 import { Text } from '../Text'
 import { CheckmarkRounded } from '../../icons'
 import { color, space } from '../../theme'
+import { Dialog, DialogBody, DialogHeader, DialogWindow } from '../Dialog'
 
 const ToastContent = styled.div`
   display: flex;
@@ -178,11 +179,42 @@ function PersistentWithAdornment() {
   )
 }
 
+const WithDialog = () => {
+  const { notify } = useToast()
+
+  return (
+    <Dialog>
+      {({ hide, getToggleProps, getWindowProps }) => (
+        <>
+          <Button {...getToggleProps()}>Show dialog</Button>
+          <DialogWindow {...getWindowProps()}>
+            <DialogHeader>Dialog Title</DialogHeader>
+            <DialogBody>
+              <Button
+                onClick={() =>
+                  notify(() => (
+                    <Toast persist>
+                      <Text>Notification</Text>
+                    </Toast>
+                  ))
+                }
+              >
+                Show toast
+              </Button>
+            </DialogBody>
+          </DialogWindow>
+        </>
+      )}
+    </Dialog>
+  )
+}
+
 export const BasicToast = () => <Basic />
 export const WithAdornmentToast = () => <WithAdornment />
 export const WithInputToast = () => <WithInput />
 export const PersistentToast = () => <Persistent />
 export const PersistentWithAdornmentToast = () => <PersistentWithAdornment />
+export const withDialogToast = () => <WithDialog />
 
 BasicToast.storyName = 'Basic'
 WithAdornmentToast.storyName = 'With Adornment'
