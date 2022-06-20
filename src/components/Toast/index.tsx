@@ -15,6 +15,7 @@ const ItemListContainer = styled.ul`
   max-width: 100%;
   flex-direction: column-reverse;
   pointer-events: none;
+  z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
 
   @media ${device.tablet} {
     left: ${space[16]};
