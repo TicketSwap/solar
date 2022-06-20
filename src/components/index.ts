@@ -1,7 +1,12 @@
 export { Alert, AlertVariant } from './Alert'
 export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
-export { Accordion, AccordionItem, AccordionButton, AccordionPanel } from './Accordion'
+export {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from './Accordion'
 export { Banner } from './Banner'
 export { Text, SmallText, TinyText } from './Text'
 export { BaseStyles } from './BaseStyles'
