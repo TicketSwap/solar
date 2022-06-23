@@ -33,7 +33,7 @@ export enum AlertVariant {
 export interface AlertProps {
   title?: string
   action?: AlertAction
-  variant?: AlertVariant
+  variant?: keyof typeof AlertVariant
   children: ReactNode
 }
 
@@ -155,8 +155,6 @@ const Alert: React.FC<AlertProps> = ({
         )}
       </Adornment>
       <Main>
-        {/* Will be fixed in version 11 of emotion: https://github.com/emotion-js/emotion/pull/1874 */}
-        {/* @ts-ignore */}
         {title && <Title as="h4">{title}</Title>}
         <Message>{children}</Message>
         {action && (

@@ -66,7 +66,7 @@ export enum PillVariant {
 }
 
 export interface PillProps {
-  variant?: PillVariant
+  variant?: keyof typeof PillVariant
   leftAdornment?: ReactNode
   children: ReactNode
 }

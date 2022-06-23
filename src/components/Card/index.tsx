@@ -32,8 +32,8 @@ export interface CardPropTypes {
   leftAdornment?: React.ReactNode
   rightAdornment?: React.ReactNode
   topLeftAdornment?: React.ReactNode
-  verticalAlign?: CardVerticalAlign
-  size?: CardSize
+  verticalAlign?: keyof typeof CardVerticalAlign
+  size?: keyof typeof CardSize
   footer?: React.ReactNode
 }
 

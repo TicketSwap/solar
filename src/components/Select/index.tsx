@@ -48,7 +48,7 @@ type SelectItem = {
   displayName?: string
   leftAdornment?: ReactNode
   rightAdornment?: ReactNode
-  type?: SelectItemType
+  type?: keyof typeof SelectItemType
   onClick?: Function
 }
 
