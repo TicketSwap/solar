@@ -2,27 +2,29 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '../useIsomorphicLayoutEffect'
 import { usePrevious } from '../usePrevious'
 
-export const EXITED = 'exited'
-export const ENTERING = 'entering'
-export const ENTERED = 'entered'
-export const EXITING = 'exiting'
+export const EXITED = 'EXITED'
+export const ENTERING = 'ENTERING'
+export const ENTERED = 'ENTERED'
+export const EXITING = 'EXITING'
 
 export enum TransitionState {
-  EXITED = 'exited',
-  ENTERING = 'entering',
-  ENTERED = 'entered',
-  EXITING = 'exiting',
+  EXITED = 'EXITED',
+  ENTERING = 'ENTERING',
+  ENTERED = 'ENTERED',
+  EXITING = 'EXITING',
 }
 
 interface useTransitionParameters {
   in: boolean
   timeout: number
-  defaultTransitionState?: TransitionState
+  defaultTransitionState?: keyof typeof TransitionState
   onExited?: Function
   onEntering?: Function
   onEntered?: Function
   onExiting?: Function
 }
+
+type DefaultTransitionState = keyof typeof TransitionState
 
 export const useTransition = ({
   in: on,
@@ -32,7 +34,7 @@ export const useTransition = ({
   onEntering = () => {},
   onEntered = () => {},
   onExiting = () => {},
-}: useTransitionParameters): [TransitionState, boolean, boolean] => {
+}: useTransitionParameters): [DefaultTransitionState, boolean, boolean] => {
   const [state, setState] = useState(defaultTransitionState)
   const [mounted, setMounted] = useState(false)
 

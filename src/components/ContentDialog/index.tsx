@@ -40,7 +40,7 @@ const duration = 200
 
 interface StyledTransitionProps {
   onScroll?: Function
-  state: TransitionState
+  state: keyof typeof TransitionState
 }
 
 const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
@@ -55,7 +55,10 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   background-color: ${color.overlay};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
   opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
+      ? 1
+      : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 `
@@ -73,7 +76,8 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
   background: ${color.background};
   outline: none;
   transform: ${props =>
-    props.state === 'entering' || props.state === 'entered'
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
   transition: transform ${duration}ms ${easing.easeOutCubic};
@@ -86,9 +90,9 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
     min-height: auto;
     transform: ${props => {
       switch (props.state) {
-        case 'exited':
+        case 'EXITED':
           return 'translate3d(0,-1rem,0)'
-        case 'exiting':
+        case 'EXITING':
           return 'translate3d(0,1rem,0)'
         default:
           return 'translate3d(0,0,0)'

@@ -63,7 +63,7 @@ export interface DialogProps extends UseDialogProps {
 }
 
 interface DialogOverlayStyles {
-  state: TransitionState
+  state: keyof typeof TransitionState
 }
 
 const DialogOverlay = styled.div<DialogOverlayStyles>`
@@ -78,7 +78,7 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
   justify-content: center;
   align-items: flex-end;
   opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    props.state === 'ENTERING' || props.state === 'ENTERED' ? 1 : 0};
   transition: opacity ${duration}ms ${easing.easeOutCubic};
   backdrop-filter: blur(16px);
 
@@ -94,7 +94,7 @@ const DialogOverlay = styled.div<DialogOverlayStyles>`
 `
 
 interface ContentStyles {
-  state?: TransitionState
+  state?: keyof typeof TransitionState
 }
 
 const Content = styled.div<ContentStyles>`
@@ -104,7 +104,8 @@ const Content = styled.div<ContentStyles>`
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
   transform: ${props =>
-    props.state === 'entering' || props.state === 'entered'
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
   transition: transform ${duration}ms ${easing.easeOutCubic};
@@ -115,9 +116,9 @@ const Content = styled.div<ContentStyles>`
     overflow: unset;
     transform: ${props => {
       switch (props.state) {
-        case 'exited':
+        case 'EXITED':
           return 'translate3d(0,-1rem,0)'
-        case 'exiting':
+        case 'EXITING':
           return 'translate3d(0,1rem,0)'
         default:
           return 'translate3d(0,0,0)'
