@@ -33,9 +33,9 @@ export enum ButtonSize {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant
+  variant?: keyof typeof ButtonVariant
   leftAdornment?: ReactNode
-  size?: ButtonSize
+  size?: keyof typeof ButtonSize
   fullWidth?: boolean
   loading?: boolean
   active?: boolean
@@ -278,7 +278,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 `
 
 interface LeftAdornmentProps {
-  size: ButtonSize
+  size: keyof typeof ButtonSize
   isSquare: boolean
 }
 

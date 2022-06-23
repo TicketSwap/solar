@@ -18,9 +18,9 @@ export enum BaseButtonSize {
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   leftAdornment?: ReactNode
-  variant?: ButtonVariant
+  variant?: keyof typeof ButtonVariant
   disabled?: boolean
-  size?: BaseButtonSize
+  size?: keyof typeof BaseButtonSize
 }
 
 const StyledButton = styled.button<ButtonProps>`

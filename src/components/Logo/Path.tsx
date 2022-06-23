@@ -6,7 +6,7 @@ export enum LogoVariant {
 }
 
 export interface PathProps {
-  variant: LogoVariant
+  variant: keyof typeof LogoVariant
 }
 
 export const Path = ({ variant }: PathProps) => (

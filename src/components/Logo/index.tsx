@@ -34,7 +34,7 @@ export enum LogoVariant {
 }
 
 export interface LogoProps {
-  variant?: LogoVariant
+  variant?: keyof typeof LogoVariant
 }
 
 export const Logo = ({
