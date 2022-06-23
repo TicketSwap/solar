@@ -130,8 +130,7 @@ export interface useOnboardingProps {
 }
 
 function useOnboarding(config: useOnboardingProps = {}) {
-  const { defaultOn = true, defaultTransitionState = TransitionState.EXITED } =
-    config
+  const { defaultOn = true } = config
 
   const [show, setShow] = useState(defaultOn)
   const [active, setActive] = useState(defaultOn)
@@ -139,7 +138,6 @@ function useOnboarding(config: useOnboardingProps = {}) {
     in: show,
     timeout: duration,
     onExited: () => setActive(false),
-    defaultTransitionState,
   })
 
   return {
