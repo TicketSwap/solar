@@ -36,7 +36,7 @@ export const Menu = ({ children, ...props }: MenuProps) => {
 }
 
 export interface MenuListProps extends ReachMenuListProps {
-  state: TransitionState
+  state: keyof typeof TransitionState
 }
 
 const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
@@ -67,11 +67,14 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
   }
 
   opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
+      ? 1
+      : 0};
   transform: ${props =>
-    props.state === 'entering' ||
-    props.state === 'entered' ||
-    props.state === 'exiting'
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED ||
+    props.state === TransitionState.EXITING
       ? 'translateY(0)'
       : `translateY(1rem)`};
   transition: opacity ${DURATION}ms ${easing.easeInOutCubic},

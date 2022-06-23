@@ -46,7 +46,7 @@ const DialogWrapper = styled.div<DialogWrapperProps>`
 
 export interface OnboardingDialogProps {
   show: boolean
-  state: TransitionState
+  state: keyof typeof TransitionState
   active: boolean
   children: ReactNode
 }
@@ -79,7 +79,7 @@ const Container = styled.div`
 `
 
 interface BackdropProps {
-  state: TransitionState
+  state: keyof typeof TransitionState
 }
 
 const Backdrop = styled.div<BackdropProps>`
@@ -126,7 +126,7 @@ const Onboarding: React.FC<OnboardingProps> = ({
 
 export interface useOnboardingProps {
   defaultOn?: boolean
-  defaultTransitionState?: TransitionState
+  defaultTransitionState?: keyof typeof TransitionState
 }
 
 function useOnboarding(config: useOnboardingProps = {}) {

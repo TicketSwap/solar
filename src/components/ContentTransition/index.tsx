@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 interface SlideContainerProps {
-  state: TransitionState
+  state: keyof typeof TransitionState
   from: string
   to: string
   initial: boolean
@@ -19,14 +19,18 @@ interface SlideContainerProps {
 const SlideContainer = styled.div<SlideContainerProps>`
   width: 100%;
   top: 0;
-  position: ${props => (props.state === 'exiting' ? 'absolute' : 'relative')};
+  position: ${props =>
+    props.state === TransitionState.EXITING ? 'absolute' : 'relative'};
   opacity: ${props =>
-    props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
+      ? 1
+      : 0};
   transform: ${props => {
     switch (props.state) {
-      case 'exited':
+      case TransitionState.EXITED:
         return `translate3d(${props.initial ? 0 : props.from},0,0)`
-      case 'exiting':
+      case TransitionState.EXITING:
         return `translate3d(${props.to},0,0)`
       default:
         return 'translate3d(0,0,0)'
@@ -36,8 +40,9 @@ const SlideContainer = styled.div<SlideContainerProps>`
   transition-timing-function: ${easing.easeOutCubic};
   transition-property: opacity, transform;
   /* Make sure the exiting slide doesn’t reach outside the dialog */
-  overflow: ${props => (props.state === 'exiting' ? 'hidden' : 'visible')};
-  bottom: ${props => (props.state === 'exiting' ? 0 : 'auto')};
+  overflow: ${props =>
+    props.state === TransitionState.EXITING ? 'hidden' : 'visible'};
+  bottom: ${props => (props.state === TransitionState.EXITING ? 0 : 'auto')};
 `
 
 export interface SlideProps {

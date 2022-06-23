@@ -67,7 +67,7 @@ const ToastText = styled.span`
 `
 
 interface ItemContainerStyles {
-  state: TransitionState
+  state: keyof typeof TransitionState
 }
 
 const ItemContainer = styled.li<ItemContainerStyles>`
@@ -78,7 +78,8 @@ const ItemContainer = styled.li<ItemContainerStyles>`
   padding-inline: ${space[16]};
   opacity: 0;
   transform: ${props =>
-    props.state === 'entering' || props.state === 'entered'
+    props.state === TransitionState.ENTERING ||
+    props.state === TransitionState.ENTERED
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
   transition-duration: ${duration}ms;
@@ -91,19 +92,28 @@ const ItemContainer = styled.li<ItemContainerStyles>`
 
   &:nth-last-of-type(3) {
     opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 0.6 : 0};
+      props.state === TransitionState.ENTERING ||
+      props.state === TransitionState.ENTERED
+        ? 0.6
+        : 0};
     transform: translate3d(0, -1.2rem, 0) scale(0.96);
   }
 
   &:nth-last-of-type(2) {
     opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 0.8 : 0};
+      props.state === TransitionState.ENTERING ||
+      props.state === TransitionState.ENTERED
+        ? 0.8
+        : 0};
     transform: translate3d(0, -0.6rem, 0) scale(0.98);
   }
 
   &:last-of-type {
     opacity: ${props =>
-      props.state === 'entering' || props.state === 'entered' ? 1 : 0};
+      props.state === TransitionState.ENTERING ||
+      props.state === TransitionState.ENTERED
+        ? 1
+        : 0};
     position: relative;
   }
 `
