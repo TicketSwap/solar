@@ -1,9 +1,5 @@
 import React from 'react'
-
-export enum LogoVariant {
-  default = 'default',
-  lgbt = 'lgbt',
-}
+import { LogoVariant } from '.'
 
 export interface PathProps {
   variant: keyof typeof LogoVariant
