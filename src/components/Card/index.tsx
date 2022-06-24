@@ -338,7 +338,7 @@ const Card: React.FC<CardPropTypes> = ({
           <TopLeftAdornment>{topLeftAdornment}</TopLeftAdornment>
         )}
 
-        <Body hasImage={hasImage}>
+        <Body hasImage={hasImage} verticalAlign={verticalAlign}>
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
 
           <TextContent hasImage={hasImage}>
