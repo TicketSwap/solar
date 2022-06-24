@@ -113,26 +113,29 @@ export const WithTextAndSubtitle = () => (
       <Card
         title="Eurovision Song Contest - 1st Semi Final Jury Show"
         subtitle="I'm a subtitle"
-        text="Lorem ipsum dolor sit amet."
-        verticalAlign={CardVerticalAlign.top}
+        text="The card is aligned to the bottom."
+        leftAdornment={
+          <Avatar size={44} src="https://www.placecage.com/200/200" />
+        }
+        verticalAlign={CardVerticalAlign.bottom}
       />
     </a>
     <a href="/" style={{ minWidth: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Family Show"
         subtitle="I'm a subtitle"
-        text="Lorem ipsum dolor sit amet."
+        text="The card is aligned to the center."
         leftAdornment={
           <Avatar size={44} src="https://www.placecage.com/200/200" />
         }
-        verticalAlign={CardVerticalAlign.top}
+        verticalAlign={CardVerticalAlign.center}
       />
     </a>
     <a href="/" style={{ minWidth: 0 }}>
       <Card
         title="Eurovision Song Contest - Grand Final Live Show"
         subtitle="I'm a subtitle"
-        text="Lorem ipsum dolor sit amet."
+        text="The card is aligned to the top."
         leftAdornment={
           <Avatar size={44} src="https://www.placecage.com/200/200" />
         }
