@@ -68,7 +68,7 @@ interface DialogOverlayStyles {
 
 const DialogOverlay = styled.div<DialogOverlayStyles>`
   position: fixed;
-  z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
+  z-index: 2147483645; /* largest accepted z-index value as integer minus 2 */
   left: 0;
   top: 0;
   right: 0;
