@@ -137,6 +137,7 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
             value={value}
             key={index}
             label={label}
+            pattern="\d*"
             validate={true}
             disabled={disabled}
             id={`${id}-${index + 1}`}
