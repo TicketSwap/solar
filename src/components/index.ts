@@ -1,12 +1,7 @@
 export { Alert, AlertVariant } from './Alert'
 export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
-export {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-} from './Accordion'
+export { Accordion, AccordionItem, AccordionButton, AccordionPanel } from './Accordion'
 export { Banner } from './Banner'
 export { Text, SmallText, TinyText } from './Text'
 export { BaseStyles } from './BaseStyles'
@@ -25,7 +20,6 @@ export { Select } from './Select'
 export { DateInput } from './DateInput'
 export { MoneyInput } from './MoneyInput'
 export { PhoneInput } from './PhoneInput'
-export { TimeInput } from './TimeInput'
 export { OneTimeCodeInput } from './OneTimeCodeInput'
 export { Combobox } from './Combobox'
 export type { SelectItem } from './Combobox'
@@ -78,3 +72,4 @@ export { Tooltip } from './Tooltip'
 export { DatePicker } from './DatePicker'
 export { Label } from './Label'
 export { RadioGroup } from './RadioGroup'
+export { Textarea, TextareaWithLabel } from './Textarea'

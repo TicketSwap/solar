@@ -1,12 +1,6 @@
 import React from 'react'
 import { OneTimeCodeInput } from './index'
-import {
-  Dialog,
-  DialogBody,
-  DialogFooter,
-  DialogHeader,
-  DialogWindow,
-} from '../Dialog'
+import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogWindow } from '../Dialog'
 import { Button } from '../Button'
 
 export const Basic = () => {

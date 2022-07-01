@@ -10,7 +10,8 @@ import {
 } from './'
 import { Select } from '../Select'
 import { Button, ButtonVariant } from '../Button'
-import { Input } from '../Input'
+import { InputWithLabel } from '../InputNew'
+import { TextareaWithLabel } from '../Textarea'
 import { CloseAlt } from '../../icons'
 
 const items = [
@@ -70,10 +71,7 @@ const ControlledDialog = () => {
   const [show, setShow] = useState(false)
   return (
     <>
-      <Button
-        onClick={() => setShow(!show)}
-        style={{ position: 'absolute', zIndex: 2147483647 }}
-      >
+      <Button onClick={() => setShow(!show)} style={{ position: 'absolute', zIndex: 2147483647 }}>
         Toggle
       </Button>
       <Dialog on={show} onToggle={console.log}>
@@ -133,10 +131,10 @@ DefaultOnAndPersist.storyName = 'Default on and persist'
 export const WithLongBody = () => (
   <BasicDialog>
     <div style={{ display: 'grid', gridGap: 16 }}>
-      <Input id="email" type="email" label="Email address" />
-      <Input id="fname" label="First name" />
-      <Input id="lname" label="Last name" />
-      <Input id="message" label="Message" as="textarea" rows="4" />
+      <InputWithLabel id="email" type="email" label="Email address" />
+      <InputWithLabel id="fname" label="First name" />
+      <InputWithLabel id="lname" label="Last name" />
+      <TextareaWithLabel id="message" label="Message" rows={4} />
       <Select
         items={items}
         id="language"

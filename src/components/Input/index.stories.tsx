@@ -3,18 +3,14 @@ import { Input } from './'
 import { MagnifyingGlass } from '../../icons'
 
 export default {
-  title: 'Components/Inputs/Input',
+  title: 'Components/Inputs/Deprecated/Input',
 }
 
-export const Basic = () => <Input id="fname" label="First name" />
+export const Basic = () => <Input id="fname" label="First name" onChange={console.log} />
 
-export const Disabled = () => (
-  <Input id="fname" label="First name" disabled={true} />
-)
+export const Disabled = () => <Input id="fname" label="First name" disabled={true} />
 
-export const WithHiddenLabel = () => (
-  <Input id="fname" label="First name" hideLabel />
-)
+export const WithHiddenLabel = () => <Input id="fname" label="First name" hideLabel />
 
 WithHiddenLabel.storyName = 'With hidden label'
 
@@ -62,9 +58,7 @@ export const WithIconLoading = () => (
 
 WithIconLoading.storyName = 'With icon loading'
 
-export const Rounded = () => (
-  <Input id="fname" type="search" label="Search" hideLabel rounded />
-)
+export const Rounded = () => <Input id="fname" type="search" label="Search" hideLabel rounded />
 
 export const RoundedWithIcon = () => (
   <Input
@@ -146,8 +140,6 @@ export const WithError = () => <Input id="id" label="Label" validate={false} />
 
 WithError.storyName = 'With error'
 
-export const AsTextarea = () => (
-  <Input as="textarea" id="message" label="Message" rows="6" />
-)
+export const AsTextarea = () => <Input as="textarea" id="message" label="Message" rows="6" />
 
 AsTextarea.storyName = 'As textarea'

@@ -27,7 +27,7 @@ const itemsWithActions = [
 ]
 
 export default {
-  title: 'Components/Inputs/Select',
+  title: 'Components/Inputs/Deprecated/Select',
 }
 
 export const Basic = () => (

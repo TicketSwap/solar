@@ -17,7 +17,7 @@ const months = [
 ]
 
 export default {
-  title: 'Components/Inputs/DateInput',
+  title: 'Components/Inputs/Deprecated/DateInput',
 }
 
 export const Basic = () => (

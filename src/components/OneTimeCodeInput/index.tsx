@@ -1,10 +1,24 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { fieldStyles, Help, LabelText } from '../Input'
-import { space } from '../../theme'
+import { Input } from '../InputNew'
+import { color, device, fontSize, space } from '../../theme'
 import { useRef, useState } from 'react'
-import { VisuallyHidden } from '../VisuallyHidden'
-import { Label } from '../Input'
+import { SmallText } from '../Text'
+
+const Fieldset = styled.fieldset`
+  display: grid;
+  grid-gap: ${space[8]};
+`
+
+const Legend = styled.legend`
+  margin-bottom: ${space[16]};
+  font-size: ${fontSize[16]};
+  color: ${color.foreground};
+
+  @media ${device.tablet} {
+    font-size: ${fontSize[18]};
+  }
+`
 
 interface OneTimeCodeContainerProps {
   length: number
@@ -13,9 +27,8 @@ interface OneTimeCodeContainerProps {
 interface OneTimeCodeInputProps {
   length: number
   id: string
-  hideLabel?: boolean
   ariaLabel: string
-  label: string
+  legend: string
   disabled?: boolean
   helpText?: string
   labelProps?: object
@@ -33,16 +46,16 @@ const OneTimeCodeContainer = styled.section<OneTimeCodeContainerProps>`
   }
 `
 
-const Input = styled.input`
-  ${fieldStyles};
+const Help = styled(SmallText)`
+  margin-block-start: ${space[4]};
+  color: ${color.foregroundMuted};
 `
 
 export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
   length = 5,
   id,
-  hideLabel,
   ariaLabel,
-  label,
+  legend,
   disabled = false,
   helpText,
   onChange = () => {},
@@ -50,10 +63,7 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
   const [inputValues, setInputValues] = useState(new Array(length).fill(''))
   const containerRef = useRef<HTMLInputElement>(null)
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    position: number
-  ) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, position: number) => {
     if (!containerRef.current) return
 
     const inputs = containerRef.current.querySelectorAll('input')
@@ -86,8 +96,7 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
 
     const inputs = containerRef.current.querySelectorAll('input')
     const newInputValues = [...inputValues]
-    const moveRight =
-      event.key === 'ArrowRight' && position !== inputValues.length - 1
+    const moveRight = event.key === 'ArrowRight' && position !== inputValues.length - 1
     const moveLeft = event.key === 'ArrowLeft' && position !== 0
     const Backspace = event.key === 'Backspace'
 
@@ -116,16 +125,9 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
   }
 
   return (
-    <>
-      <Label htmlFor={`${id}-1`}>
-        {hideLabel ? (
-          <VisuallyHidden>
-            <LabelText>{label}</LabelText>
-          </VisuallyHidden>
-        ) : (
-          <LabelText>{label}</LabelText>
-        )}
-      </Label>
+    <Fieldset>
+      {legend && <Legend>{legend}</Legend>}
+
       <OneTimeCodeContainer ref={containerRef} length={length}>
         {inputValues.map((value, index) => (
           <Input
@@ -136,7 +138,6 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
             onFocus={event => event.target.setSelectionRange(1, 1)}
             value={value}
             key={index}
-            label={label}
             validate={true}
             disabled={disabled}
             id={`${id}-${index + 1}`}
@@ -146,6 +147,6 @@ export const OneTimeCodeInput: React.FC<OneTimeCodeInputProps> = ({
         ))}
       </OneTimeCodeContainer>
       {helpText && <Help>{helpText}</Help>}
-    </>
+    </Fieldset>
   )
 }

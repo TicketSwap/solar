@@ -56,20 +56,14 @@ const countries = [
 ]
 
 export default {
-  title: 'Components/Inputs/Combobox',
+  title: 'Components/Inputs/Deprecated/Combobox',
 }
 
-export const basic = () => (
-  <Combobox id="Combobox" label="Combobox" items={tickets} />
-)
+export const basic = () => <Combobox id="Combobox" label="Combobox" items={tickets} />
 
-export const withAdornment = () => (
-  <Combobox id="Combobox" label="Combobox" items={countries} />
-)
+export const withAdornment = () => <Combobox id="Combobox" label="Combobox" items={countries} />
 
-export const mixed = () => (
-  <Combobox id="Combobox" label="Combobox" items={communicationMethods} />
-)
+export const mixed = () => <Combobox id="Combobox" label="Combobox" items={communicationMethods} />
 
 export const normalized = () => (
   <Combobox id="Combobox" label="Combobox" items={banks} normalize={true} />

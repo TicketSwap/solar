@@ -66,9 +66,7 @@ const currencies = [
 ]
 
 function ControlledMoneyInput() {
-  const [currency, setCurrency] = React.useState<MoneyInputCurrencyProp>(
-    currencies[2]
-  )
+  const [currency, setCurrency] = React.useState<MoneyInputCurrencyProp>(currencies[2])
   const [amount, setAmount] = React.useState<number | string>(25)
 
   React.useEffect(() => {
@@ -88,16 +86,10 @@ function ControlledMoneyInput() {
           marginBottom: '0.25rem',
         }}
       >
-        <Button
-          size={ButtonSize.medium}
-          onClick={() => setCurrency(currencies[0])}
-        >
+        <Button size={ButtonSize.medium} onClick={() => setCurrency(currencies[0])}>
           Set Euro
         </Button>
-        <Button
-          size={ButtonSize.medium}
-          onClick={() => setCurrency(currencies[2])}
-        >
+        <Button size={ButtonSize.medium} onClick={() => setCurrency(currencies[2])}>
           Set Pounds
         </Button>
         <Button
@@ -132,7 +124,7 @@ function ControlledMoneyInput() {
 }
 
 export default {
-  title: 'Components/Inputs/MoneyInput',
+  title: 'Components/Inputs/Deprecated/MoneyInput',
 }
 
 export const Basic = () => (

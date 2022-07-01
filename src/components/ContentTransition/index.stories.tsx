@@ -1,5 +1,6 @@
 import React from 'react'
-import { Input } from '../Input'
+import { InputWithLabel } from '../InputNew'
+import { TextareaWithLabel } from '../Textarea'
 import { Button, ButtonVariant } from '../Button'
 import { Select } from '../Select'
 import { ChevronLeftAlt, CloseAlt } from '../../icons'
@@ -26,18 +27,13 @@ const items = [
 
 const Login = (props: {
   showLoginEmailView: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
-  showSignupView: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void
+  showSignupView: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   title: string
 }) => (
   <DialogBody>
     <div style={{ display: 'grid', gridGap: '0.5rem', marginBottom: '2rem' }}>
       <Button variant={ButtonVariant.facebook}>Log in with Facebook</Button>
-      <Button
-        variant={ButtonVariant.secondary}
-        onClick={props.showLoginEmailView}
-      >
+      <Button variant={ButtonVariant.secondary} onClick={props.showLoginEmailView}>
         Log in with email
       </Button>
 
@@ -61,7 +57,7 @@ const Login = (props: {
 const LoginEmail = ({}: { title: string; back: string }) => (
   <DialogBody>
     <div style={{ marginBottom: '0.5rem' }}>
-      <Input type="email" id="email" label="Email address" hideLabel />
+      <InputWithLabel type="email" id="email" label="Email address" />
     </div>
     <Button variant={ButtonVariant.success} fullWidth>
       Log in
@@ -70,21 +66,14 @@ const LoginEmail = ({}: { title: string; back: string }) => (
 )
 
 const Signup = (props: {
-  showSignupEmailView: (
-    event: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => void
-  showLoginView: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void
+  showSignupEmailView: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void
+  showLoginView: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   title: string
 }) => (
   <DialogBody>
     <div style={{ display: 'grid', gridGap: '0.5rem', marginBottom: '2rem' }}>
       <Button variant={ButtonVariant.facebook}>Sign up with Facebook</Button>
-      <Button
-        variant={ButtonVariant.secondary}
-        onClick={props.showSignupEmailView}
-      >
+      <Button variant={ButtonVariant.secondary} onClick={props.showSignupEmailView}>
         Sign up with email
       </Button>
     </div>
@@ -100,25 +89,19 @@ const Signup = (props: {
 const SignupEmail = (props: {
   title: string
   back: string
-  showSuccessView: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void
+  showSuccessView: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }) => (
   <>
     <DialogBody>
       <div>
-        <Input type="email" id="email" label="Email address" />
-        <Input id="fname" label="First name" />
-        <Input id="lname" label="Last name" />
-        <Input id="message" label="Message" as="textarea" rows="4" />
+        <InputWithLabel type="email" id="email" label="Email address" />
+        <InputWithLabel id="fname" label="First name" />
+        <InputWithLabel id="lname" label="Last name" />
+        <TextareaWithLabel id="message" label="Message" rows={4} />
       </div>
     </DialogBody>
     <DialogFooter>
-      <Button
-        variant={ButtonVariant.success}
-        fullWidth
-        onClick={props.showSuccessView}
-      >
+      <Button variant={ButtonVariant.success} fullWidth onClick={props.showSuccessView}>
         Sign up
       </Button>
     </DialogFooter>
