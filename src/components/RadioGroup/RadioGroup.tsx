@@ -10,7 +10,7 @@ const Fieldset = styled.fieldset`
 `
 
 const Legend = styled.legend`
-  margin-block-end: ${space[16]};
+  margin-block-end: ${space[4]};
   font-size: ${fontSize[16]};
   color: ${color.foreground};
 
