@@ -59,8 +59,7 @@
     "@reach/tabs": "^0.16.4",
     "@reach/tooltip": "^0.17.0",
     "compute-scroll-into-view": "^1.0.16",
-    "downshift": "^6.1.7",
-    "jest-environment-jsdom": "^28.1.2"
+    "downshift": "^6.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
@@ -102,6 +101,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "is-ci-cli": "^2.2.0",
     "jest": "^28.1.2",
+    "jest-environment-jsdom": "^28.1.2",
     "jest-runner-eslint": "^1.0.1",
     "jest-watch-select-projects": "^2.0.0",
     "jest-watch-typeahead": "^1.0.0",
