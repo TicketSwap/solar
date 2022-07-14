@@ -13,6 +13,7 @@ import {
 } from '../Dialog'
 import { ContentTransition } from './'
 import { color } from '../../theme'
+import { Textarea } from '../Textarea'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -110,7 +111,7 @@ const SignupEmail = (props: {
         <Input type="email" id="email" label="Email address" />
         <Input id="fname" label="First name" />
         <Input id="lname" label="Last name" />
-        <Input id="message" label="Message" as="textarea" rows="4" />
+        <Textarea id="message" label="Message" rows={4} />
       </div>
     </DialogBody>
     <DialogFooter>

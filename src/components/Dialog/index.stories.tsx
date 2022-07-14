@@ -12,6 +12,7 @@ import { Select } from '../Select'
 import { Button, ButtonVariant } from '../Button'
 import { Input } from '../Input'
 import { CloseAlt } from '../../icons'
+import { Textarea } from '../Textarea'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -136,7 +137,7 @@ export const WithLongBody = () => (
       <Input id="email" type="email" label="Email address" />
       <Input id="fname" label="First name" />
       <Input id="lname" label="Last name" />
-      <Input id="message" label="Message" as="textarea" rows="4" />
+      <Textarea id="message" label="Message" rows={4} />
       <Select
         items={items}
         id="language"

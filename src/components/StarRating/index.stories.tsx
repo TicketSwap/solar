@@ -1,6 +1,7 @@
 import React from 'react'
 import { StarRating } from '.'
 import { Input } from '../Input'
+import { Textarea } from '../Textarea'
 
 export default {
   title: 'Components/Inputs/StarRating',
@@ -24,7 +25,7 @@ export const WithinForm = () => (
   <form style={{ display: 'grid', gridGap: '1rem' }}>
     <Input id="email" label="Email" />
     <StarRating label="Your rating" onChange={rating => console.log(rating)} />
-    <Input id="message" label="Message" as="textarea" />
+    <Textarea id="message" label="Message" />
   </form>
 )
 
