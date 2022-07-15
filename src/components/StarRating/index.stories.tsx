@@ -1,22 +1,16 @@
 import React from 'react'
 import { StarRating } from '.'
-import { Input } from '../Input'
 import { Textarea } from '../Textarea'
+import { Input } from '../InputV2'
 
 export default {
   title: 'Components/Inputs/StarRating',
 }
 
-export const Basic = () => (
-  <StarRating onChange={rating => console.log(rating)} label="Rating" />
-)
+export const Basic = () => <StarRating onChange={rating => console.log(rating)} label="Rating" />
 
 export const WithInitialRating = () => (
-  <StarRating
-    initialRating={3}
-    onChange={rating => console.log(rating)}
-    label="Rating"
-  />
+  <StarRating initialRating={3} onChange={rating => console.log(rating)} label="Rating" />
 )
 
 WithInitialRating.storyName = 'With initial rating'
