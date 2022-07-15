@@ -10,7 +10,10 @@ interface AdornmentProps {
 const Adornment = styled.span<AdornmentProps>`
   display: grid;
   place-items: center;
-  ${props => (Boolean(props.$start) ? 'grid-area: 1 / 1 / 1 / 2' : 'grid-area: 1 / -2 / 1 / -1')}
+  ${props =>
+    Boolean(props.$start)
+      ? 'grid-area: 1 / 1 / 1 / 2'
+      : 'grid-area: 1 / -2 / 1 / -1'}
 `
 
 interface ContainerProps {
@@ -101,7 +104,10 @@ export const Input = ({
   rounded = false,
   ...props
 }: InputProps) => (
-  <Container $hasStartAdornment={Boolean(startAdornment)} $hasEndAdornment={Boolean(endAdornment)}>
+  <Container
+    $hasStartAdornment={Boolean(startAdornment)}
+    $hasEndAdornment={Boolean(endAdornment)}
+  >
     {startAdornment && <Adornment $start>{startAdornment}</Adornment>}
     <StyledInput
       $hasStartAdornment={Boolean(startAdornment)}
