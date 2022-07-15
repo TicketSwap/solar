@@ -1,1 +1,4 @@
-export { TextareaWithLabel as Textarea } from './TextareaWithLabel'
+export {
+  TextareaWithLabel as Textarea,
+  TextareaWithLabelProps as TextareaProps,
+} from './TextareaWithLabel'
