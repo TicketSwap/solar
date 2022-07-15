@@ -4,8 +4,7 @@ import { fontSize, lineHeight, space, color, radius, shadow } from '../../theme'
 
 const StyledTextarea = styled.textarea`
   font-family: inherit;
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
   min-height: ${space[64]};
   font-size: ${fontSize[18]};
   line-height: ${lineHeight.copy};
@@ -14,6 +13,9 @@ const StyledTextarea = styled.textarea`
   color: ${color.foreground};
   border-radius: ${radius.md};
   background-color: ${color.elevatedBackground};
+  resize: vertical;
+  // Future proofing (still experimental)
+  resize: block;
 
   &:focus {
     outline: none;
