@@ -71,7 +71,10 @@ const ControlledDialog = () => {
   const [show, setShow] = useState(false)
   return (
     <>
-      <Button onClick={() => setShow(!show)} style={{ position: 'absolute', zIndex: 2147483647 }}>
+      <Button
+        onClick={() => setShow(!show)}
+        style={{ position: 'absolute', zIndex: 2147483647 }}
+      >
         Toggle
       </Button>
       <Dialog on={show} onToggle={console.log}>

@@ -5,7 +5,12 @@ import { Input } from '../InputV2'
 import styled from '@emotion/styled'
 import { space } from '../../theme'
 import { Text } from '../Text'
-import { OnboardingDialog, OnboardingDialogBody, OnboardingWrapper, useOnboarding } from './index'
+import {
+  OnboardingDialog,
+  OnboardingDialogBody,
+  OnboardingWrapper,
+  useOnboarding,
+} from './index'
 import { ContentTransition } from '../ContentTransition'
 import { TransitionState } from '../../hooks/useTransition'
 
@@ -60,9 +65,10 @@ export const StorybookDialog = () => {
             <OnboardingDialogBody key="step1">
               <H3>Onboarding you</H3>
               <Text as="p">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra porttitor quam.
-                Proin rutrum feugiat hendrerit. Fusce sed felis at massa finibus varius. Nulla
-                mattis risus arcu, vitae facilisis metus mollis sed.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                viverra porttitor quam. Proin rutrum feugiat hendrerit. Fusce
+                sed felis at massa finibus varius. Nulla mattis risus arcu,
+                vitae facilisis metus mollis sed.
               </Text>
 
               <Actions>
@@ -72,13 +78,17 @@ export const StorybookDialog = () => {
             <OnboardingDialogBody key="step2">
               <H3>This explains everything</H3>
               <Text as="p">
-                Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus cursus
-                venenatis suscipit. Donec et diam commodo, accumsan risus.
+                Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                Phasellus cursus venenatis suscipit. Donec et diam commodo,
+                accumsan risus.
               </Text>
 
               <Actions>
                 <Button onClick={hide}>Close</Button>
-                <Button onClick={() => setActiveView('step1')} variant={ButtonVariant.secondary}>
+                <Button
+                  onClick={() => setActiveView('step1')}
+                  variant={ButtonVariant.secondary}
+                >
                   Previous
                 </Button>
               </Actions>

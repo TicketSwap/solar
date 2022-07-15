@@ -1,1 +1,4 @@
-export { InputWithLabel as Input, InputWithLabelProps as InputProps } from './InputWithLabel'
+export {
+  InputWithLabel as Input,
+  InputWithLabelProps as InputProps,
+} from './InputWithLabel'

@@ -15,7 +15,8 @@ export interface InputWithAriaLabel extends InputProps {
   label?: string
 }
 
-interface InputWithRequiredLabel extends Omit<InputWithAriaLabel, 'aria-label'> {
+interface InputWithRequiredLabel
+  extends Omit<InputWithAriaLabel, 'aria-label'> {
   label: string
   'aria-label'?: string
 }

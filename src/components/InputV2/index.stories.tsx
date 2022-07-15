@@ -72,7 +72,11 @@ export const WithAdornments = () => {
       placeholder="Search.."
       startAdornment={<MagnifyingGlass size={24} color={color.foreground} />}
       endAdornment={
-        loading ? <Spinner size={24} /> : <CloseRounded size={24} color={color.foreground} />
+        loading ? (
+          <Spinner size={24} />
+        ) : (
+          <CloseRounded size={24} color={color.foreground} />
+        )
       }
       value={query}
       onChange={event => {
@@ -85,7 +89,13 @@ export const WithAdornments = () => {
 
 export const Disabled = () => (
   <>
-    <Input maxLength={10} id="search" label="Search here" disabled onChange={console.log} />
+    <Input
+      maxLength={10}
+      id="search"
+      label="Search here"
+      disabled
+      onChange={console.log}
+    />
   </>
 )
 
@@ -100,4 +110,6 @@ export const Rounded = () => (
   />
 )
 
-export const Time = () => <Input type="time" id="time" label="Select time" onChange={console.log} />
+export const Time = () => (
+  <Input type="time" id="time" label="Select time" onChange={console.log} />
+)
