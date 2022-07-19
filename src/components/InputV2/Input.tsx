@@ -54,6 +54,7 @@ interface StyledInputProps {
 const StyledInput = styled.input<StyledInputProps>`
   grid-area: 1 / 1 / 1 / 4;
   width: 100%;
+  font-family: inherit;
   font-size: ${fontSize[18]};
   line-height: ${lineHeight.solid};
   height: ${space[56]};
