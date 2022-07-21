@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import styled from '@emotion/styled'
 import * as Icon from '../../../src/icons'
 import { device, fontSize, radius, SmallText, space } from '../../../src'
+import { BaseStyles } from '../../../src/components/BaseStyles'
 
 const IconGrid = styled.div`
   display: grid;
@@ -51,6 +52,7 @@ const IconWrapper: React.FC<IconWrapperProps> = ({ icon, name }) => {
 
   return (
     <IconBlock>
+      <BaseStyles></BaseStyles>
       {icon}
       <IconName>{name}</IconName>
       <CopyButton
