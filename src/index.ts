@@ -1,5 +1,5 @@
 export * from './theme'
 export * from './hooks'
-export { normalizeChars } from './utils'
+export { normalizeChars, callAll } from './utils'
 export { globalStyles } from './global-styles'
 export * from './components'
