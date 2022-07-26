@@ -1,22 +1,13 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import { color, device, fontSize, space } from '../..'
+import { space } from '../..'
 import { RadioProps } from './Radio'
 import { RadioWithLabel } from './RadioWithLabel'
+import { Label } from '../Label'
 
 const Fieldset = styled.fieldset`
   display: grid;
-  grid-gap: ${space[8]};
-`
-
-const Legend = styled.legend`
-  margin-block-end: ${space[4]};
-  font-size: ${fontSize[16]};
-  color: ${color.foreground};
-
-  @media ${device.tablet} {
-    font-size: ${fontSize[18]};
-  }
+  grid-gap: ${space[4]};
 `
 
 export interface RadioOption
@@ -42,7 +33,7 @@ export const RadioGroup = ({
   legend,
 }: RadioGroupProps) => (
   <Fieldset>
-    {legend && <Legend>{legend}</Legend>}
+    {legend && <Label as="legend">{legend}</Label>}
     {options.map(option => (
       <RadioWithLabel
         key={option.id}

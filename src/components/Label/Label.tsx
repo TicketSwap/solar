@@ -1,4 +1,4 @@
-import React, { LabelHTMLAttributes } from 'react'
+import React, { ElementType, LabelHTMLAttributes } from 'react'
 import styled from '@emotion/styled'
 import { device, fontSize, color } from '../..'
 
@@ -11,9 +11,12 @@ const StyledLabel = styled.label`
   }
 `
 
-export const Label = ({
-  children,
-  ...props
-}: LabelHTMLAttributes<HTMLLabelElement>) => (
-  <StyledLabel {...props}>{children}</StyledLabel>
+interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  as?: ElementType
+}
+
+export const Label = ({ children, as = 'label', ...props }: LabelProps) => (
+  <StyledLabel {...props} as={as}>
+    {children}
+  </StyledLabel>
 )
