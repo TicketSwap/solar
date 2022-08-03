@@ -106,6 +106,25 @@ export const OneTimeCodeInput = ({
         ...event,
         target: { ...event.target, value: newInputValues.join('') },
       })
+
+      return setInputValues(newInputValues)
+    }
+
+    if (event.target.value.length === 2) {
+      newInputValues[Math.min(length - 1, position + 1)] =
+        event.target.value.split('')[1]
+
+      const index = newInputValues.findIndex(value => value === '')
+      if (index !== -1) {
+        inputs[index].focus()
+      } else {
+        inputs[length - 1].focus()
+      }
+      onChange?.({
+        ...event,
+        target: { ...event.target, value: newInputValues.join('') },
+      })
+
       return setInputValues(newInputValues)
     }
 
@@ -128,14 +147,20 @@ export const OneTimeCodeInput = ({
     const inputs = containerRef.current.querySelectorAll('input')
     const moveRight =
       event.key === 'ArrowRight' && position !== currentValues.length - 1
-    const moveLeft = event.key === 'ArrowLeft' && position !== 0
+    const moveLeft = event.key === 'ArrowLeft'
+
+    if (event.key === 'Backspace') {
+      if (!currentValues[position]) {
+        inputs[Math.max(0, position - 1)].focus()
+      }
+    }
 
     if (moveRight) {
-      inputs[position + 1].focus()
+      inputs[Math.min(length - 1, position + 1)].focus()
     }
 
     if (moveLeft) {
-      inputs[position - 1].focus()
+      inputs[Math.max(0, position - 1)].focus()
     }
   }
 
