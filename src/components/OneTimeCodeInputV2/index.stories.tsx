@@ -27,6 +27,7 @@ export const Basic = () => {
                 }
                 aria-label="One Time Code Input Field:"
                 onChange={value => console.log(value)}
+                inputProps={{ pattern: '\\d*', inputMode: 'numeric' }}
               />
             </DialogBody>
             <DialogFooter>

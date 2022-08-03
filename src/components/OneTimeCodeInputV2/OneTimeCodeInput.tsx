@@ -9,6 +9,7 @@ import { Input } from '../InputV2'
 import { space } from '../../theme'
 import { useRef, useState } from 'react'
 import { Label } from '../Label'
+import { InputWithAriaLabel } from '../InputV2/InputWithLabel'
 
 const Fieldset = styled.fieldset`
   display: grid;
@@ -25,6 +26,16 @@ const OneTimeCodeContainer = styled.section`
   }
 `
 
+type OverwrittenInputProps =
+  | 'id'
+  | 'aria-label'
+  | 'onChange'
+  | 'onKeyDown'
+  | 'onFocus'
+  | 'value'
+  | 'disabled'
+  | 'autoComplete'
+
 interface OneTimeCodeInputProps {
   length: number
   id: string
@@ -35,6 +46,7 @@ interface OneTimeCodeInputProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
   value?: string
   defaultValue?: string
+  inputProps?: Omit<InputWithAriaLabel, OverwrittenInputProps>
 }
 
 export const OneTimeCodeInput = ({
@@ -47,6 +59,7 @@ export const OneTimeCodeInput = ({
   onChange,
   defaultValue = '',
   value,
+  inputProps = {},
 }: OneTimeCodeInputProps) => {
   const [inputValues, setInputValues] = useState([
     ...defaultValue,
@@ -143,6 +156,7 @@ export const OneTimeCodeInput = ({
             id={`${id}-${index + 1}`}
             aria-label={`${ariaLabel} ${index + 1}`}
             {...(index === 0 && { autoComplete: 'one-time-code' })}
+            {...inputProps}
           />
         ))}
       </OneTimeCodeContainer>
