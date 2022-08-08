@@ -60,7 +60,7 @@
     "@reach/tooltip": "^0.17.0",
     "compute-scroll-into-view": "^1.0.16",
     "downshift": "^6.1.7",
-    "jest-environment-jsdom": "^28.1.2"
+    "jest-environment-jsdom": "^28.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
