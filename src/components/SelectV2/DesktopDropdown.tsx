@@ -3,6 +3,7 @@ import React, { SyntheticEvent, useRef, useState } from 'react'
 import { debounce } from '../../utils/debounce'
 import { OptionProps, SelectVariant } from './Select'
 import { Listbox } from './Listbox'
+import scrollIntoView from 'scroll-into-view-if-needed'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -73,8 +74,13 @@ export const DesktopDropdown = ({
 
     setFocussed(currentFocussed)
     setOpen(true)
-    listbox.children[focussed].scrollIntoView()
     listbox.focus()
+
+    scrollIntoView(listbox.children[currentFocussed], {
+      boundary: listbox,
+      scrollMode: 'always',
+      block: 'nearest',
+    })
   }
 
   return (
