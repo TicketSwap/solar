@@ -34,7 +34,6 @@ const Container = styled.span<ContainerProps>`
   display: grid;
   grid-template-columns: 1fr ${space[48]};
   position: relative;
-  isolation: isolate;
 
   ${props =>
     props.hasStartAdornment &&
