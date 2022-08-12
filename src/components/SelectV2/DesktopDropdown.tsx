@@ -66,6 +66,12 @@ export const DesktopDropdown = ({
       listbox.style.height = ''
     }
 
+    const currentFocussed = Math.max(
+      0,
+      options.findIndex(option => option.value === value)
+    )
+
+    setFocussed(currentFocussed)
     setOpen(true)
     listbox.children[focussed].scrollIntoView()
     listbox.focus()
