@@ -159,6 +159,11 @@ export const gradients = {
   novaAlpha: 'var(--gradientNovaAlpha)',
 }
 
+export const linearGradients = {
+  dark: 'var(--linearGradientDark)',
+  cover: 'var(--linearGradientCover)',
+}
+
 export const device = {
   mobile: `(min-width: ${sizes.mobile / 16}em)`,
   mobileM: `(min-width: ${sizes.mobileM / 16}em)`,

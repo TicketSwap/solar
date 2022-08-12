@@ -131,6 +131,16 @@ export const globalStyles = css`
     --darkElevatedBackground: var(--space);
     --darkForeground: var(--stardust900);
     --darkForegroundMuted: var(--stardust600);
+
+    // Gradients
+    --linearGradientDark: rgba(0, 19, 25, 0.6) 0%, rgba(0, 19, 25, 0) 100%;
+    --linearGradientCover: rgba(0, 19, 25, 1) 0%, rgba(0, 19, 25, 0.738) 19%,
+      rgba(0, 19, 25, 0.541) 34%, rgba(0, 19, 25, 0.382) 47%,
+      rgba(0, 19, 25, 0.278) 56.5%, rgba(0, 19, 25, 0.194) 65%,
+      rgba(0, 19, 25, 0.126) 73%, rgba(0, 19, 25, 0.075) 80.2%,
+      rgba(0, 19, 25, 0.042) 86.1%, rgba(0, 19, 25, 0.021) 91%,
+      rgba(0, 19, 25, 0.008) 95.2%, rgba(0, 19, 25, 0.002) 98.2%,
+      rgba(0, 19, 25, 0) 100%;
   }
 
   [data-theme='dark'] {
@@ -200,6 +210,16 @@ export const globalStyles = css`
     --darkElevatedBackground: var(--space);
     --darkForeground: var(--stardust900);
     --darkForegroundMuted: var(--stardust600);
+
+    // Gradients
+    --linearGradientDark: rgba(26, 33, 41, 0.6) 0%, rgba(26, 33, 41, 0) 100%;
+    --linearGradientCover: rgba(26, 33, 41, 1) 0%, rgba(26, 33, 41, 0.738) 19%,
+      rgba(26, 33, 41, 0.541) 34%, rgba(26, 33, 41, 0.382) 47%,
+      rgba(26, 33, 41, 0.278) 56.5%, rgba(26, 33, 41, 0.194) 65%,
+      rgba(26, 33, 41, 0.126) 73%, rgba(26, 33, 41, 0.075) 80.2%,
+      rgba(26, 33, 41, 0.042) 86.1%, rgba(26, 33, 41, 0.021) 91%,
+      rgba(26, 33, 41, 0.008) 95.2%, rgba(26, 33, 41, 0.002) 98.2%,
+      rgba(26, 33, 41, 0) 100%;
   }
 
   ::selection {
