@@ -255,7 +255,7 @@ export const globalStyles = css`
 
   a {
     text-decoration: none;
-    color: ${color.earth};
+    color: ${color.action};
   }
 
   button {
@@ -265,7 +265,7 @@ export const globalStyles = css`
     margin-inline: 0;
     border: none;
     font: inherit;
-    color: ${color.earth};
+    color: ${color.action};
     background-color: transparent;
     cursor: pointer;
     border-radius: ${radius.md};
