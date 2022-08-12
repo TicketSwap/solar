@@ -156,10 +156,7 @@ export const Select = ({
             setCurrentValue(value)
             onChange?.({
               ...event,
-              target: {
-                ...event.target,
-                value: value as string,
-              } as EventTarget & HTMLSelectElement,
+              target: selectbox,
             } as ChangeEvent<HTMLSelectElement>)
           }}
           variant={variant}
