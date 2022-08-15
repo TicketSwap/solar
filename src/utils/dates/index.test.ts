@@ -147,28 +147,70 @@ describe('dates', () => {
       ])
     })
 
-    it('returns only the months within a timeRange', () => {
-      const monthsOfTimeRange = getMonths('en-EN', {
-        start: new Date('02-12-2023'),
-        end: new Date('04-20-2023'),
+    describe('and it has a dateRange', () => {
+      describe('and this timeRange is on the same year', () => {
+        it('returns only the months within a timeRange', () => {
+          const monthsOfTimeRange = getMonths('en-EN', {
+            start: new Date('02-12-2023'),
+            end: new Date('04-20-2023'),
+          })
+          expect(monthsOfTimeRange).toHaveLength(3)
+          expect(monthsOfTimeRange).toEqual(
+            expect.arrayContaining([
+              {
+                name: 'February',
+                value: '1',
+              },
+              {
+                name: 'March',
+                value: '2',
+              },
+              {
+                name: 'April',
+                value: '3',
+              },
+            ])
+          )
+        })
       })
-      expect(monthsOfTimeRange).toHaveLength(3)
-      expect(monthsOfTimeRange).toEqual(
-        expect.arrayContaining([
-          {
-            name: 'February',
-            value: '1',
-          },
-          {
-            name: 'March',
-            value: '2',
-          },
-          {
-            name: 'April',
-            value: '3',
-          },
-        ])
-      )
+
+      describe('and this timeRange is on a different year', () => {
+        it('returns the months within the timeRange', () => {
+          const monthsOfTimeRange = getMonths('en-EN', {
+            start: new Date('11-12-2023'),
+            end: new Date('04-20-2024'),
+          })
+          expect(monthsOfTimeRange).toHaveLength(6)
+          expect(monthsOfTimeRange).toEqual(
+            expect.arrayContaining([
+              {
+                name: 'November',
+                value: '10',
+              },
+              {
+                name: 'December',
+                value: '11',
+              },
+              {
+                name: 'January',
+                value: '0',
+              },
+              {
+                name: 'February',
+                value: '1',
+              },
+              {
+                name: 'March',
+                value: '2',
+              },
+              {
+                name: 'April',
+                value: '3',
+              },
+            ])
+          )
+        })
+      })
     })
 
     describe('when provided with different "BCP 47" locale tags', () => {
