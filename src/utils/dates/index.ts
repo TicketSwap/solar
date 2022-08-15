@@ -43,13 +43,31 @@ const getMonths = (locale: string, dateRange?: { start: Date; end: Date }) => {
   }
 
   if (dateRange) {
+    const startYear = dateRange.start.getFullYear()
+    const endYear = dateRange.end.getFullYear()
+
+    // check if the date range is on different years
+    if (endYear !== startYear) {
+      const monthsOfTheYearAfterStartMonth = months.filter(
+        month => Number(month.value) >= dateRange.start.getMonth()
+      )
+
+      const monthsOfTheYearBeforeEndMonth = months.filter(
+        month => Number(month.value) <= dateRange.end.getMonth()
+      )
+
+      return [
+        ...monthsOfTheYearAfterStartMonth,
+        ...monthsOfTheYearBeforeEndMonth,
+      ]
+    }
+
     return months.filter(
       month =>
         Number(month.value) >= dateRange.start.getMonth() &&
         Number(month.value) <= dateRange.end.getMonth()
     )
   }
-
   return months
 }
 
@@ -64,7 +82,6 @@ const generateYears = (startYear: number, endYear: number) => {
 
     startYear++
   }
-
   return years
 }
 
