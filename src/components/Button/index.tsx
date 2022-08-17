@@ -170,8 +170,9 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${color.actionBackground};
       color: ${color.action};
+      background-image: unset;
 
-      [data-theme='dark'] & {
+      &:hover {
         background-image: unset;
       }
     `};
