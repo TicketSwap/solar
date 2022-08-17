@@ -60,6 +60,7 @@ export const globalStyles = css`
 
     // Brand
     --brand: var(--earth400);
+    --onBrand: var(--nova);
 
     // Foreground
     --foreground: var(--stardust900);
@@ -146,6 +147,7 @@ export const globalStyles = css`
   [data-theme='dark'] {
     // Brand
     --brand: var(--earth400);
+    --onBrand: var(--nova);
 
     // Foreground
     --foreground: var(--nova);
