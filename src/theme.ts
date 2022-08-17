@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 
 export const color = {
   brand: 'var(--brand)',
+  onBrand: 'var(--onBrand)',
   foreground: 'var(--foreground)',
   foregroundMuted: 'var(--foregroundMuted)',
   foregroundSubtle: 'var(--foregroundSubtle)',
