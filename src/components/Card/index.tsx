@@ -157,7 +157,7 @@ const TextContent = styled.div<StyledCardProps>`
   ${props =>
     props.hasImage &&
     css`
-      color: ${color.foregroundMuted};
+      color: ${color.lightForegroundMuted};
     `};
 `
 
