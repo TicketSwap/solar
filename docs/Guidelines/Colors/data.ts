@@ -73,6 +73,12 @@ export const semanticColors = [
         hex: '#00B6F0',
         foreground: color.lightForeground,
       },
+      {
+        label: 'On Brand',
+        variant: color.onBrand,
+        hex: '#FFFFFF',
+        foreground: color.onBrand,
+      },
     ],
   },
   {
