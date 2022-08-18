@@ -83,6 +83,7 @@ interface ListboxProps {
   open: boolean
   'aria-label': string
   onBlur: (event: FocusEvent<HTMLDivElement>) => void
+  onFocus: (event: FocusEvent<HTMLDivElement>) => void
   onHover: (index: number) => void
   onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void
   onClick: (event: MouseEvent<HTMLDivElement>) => void
@@ -98,6 +99,7 @@ export const Listbox = forwardRef(
       'aria-label': ariaLabel,
       open,
       onBlur,
+      onFocus,
       onHover,
       onKeyDown,
       onClick,
@@ -119,6 +121,7 @@ export const Listbox = forwardRef(
         aria-activedescendant={activeDescendant?.id ?? `${id}-${focussed}`}
         $open={open}
         onBlur={onBlur}
+        onFocus={onFocus}
         onClick={onClick}
         onKeyDown={onKeyDown}
       >

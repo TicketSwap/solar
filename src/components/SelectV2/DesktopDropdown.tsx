@@ -23,6 +23,8 @@ interface DesktopDropdownProps {
   options: OptionProps[]
   value?: ValueProp
   onChange?: (event: SyntheticEvent, value?: ValueProp) => void
+  onFocus: (event: SyntheticEvent) => void
+  onBlur: (event: SyntheticEvent) => void
   variant: SelectVariant
 }
 
@@ -31,6 +33,8 @@ export const DesktopDropdown = ({
   options,
   value,
   onChange,
+  onBlur,
+  onFocus,
   variant,
 }: DesktopDropdownProps) => {
   const listboxRef = useRef<HTMLDivElement>(null)
@@ -92,7 +96,13 @@ export const DesktopDropdown = ({
         focussed={focussed}
         aria-label={ariaLabel}
         open={open}
-        onBlur={() => setOpen(false)}
+        onBlur={event => {
+          setOpen(false)
+          onBlur?.(event)
+        }}
+        onFocus={event => {
+          onFocus?.(event)
+        }}
         onHover={index => setFocussed(index)}
         onKeyDown={event => {
           event.stopPropagation()

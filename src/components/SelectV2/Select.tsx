@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, {
   ChangeEvent,
+  FocusEvent,
   InputHTMLAttributes,
   OptionHTMLAttributes,
   ReactNode,
@@ -158,6 +159,18 @@ export const Select = ({
               ...event,
               target: selectbox,
             } as ChangeEvent<HTMLSelectElement>)
+          }}
+          onBlur={event => {
+            props.onBlur?.({
+              ...event,
+              target: selectboxRef.current,
+            } as FocusEvent<HTMLSelectElement>)
+          }}
+          onFocus={event => {
+            props.onFocus?.({
+              ...event,
+              target: selectboxRef.current,
+            } as FocusEvent<HTMLSelectElement>)
           }}
           variant={variant}
         />
