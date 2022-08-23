@@ -101,6 +101,10 @@ export const Icons = () => {
       <IconWrapper icon={<Icon.Bookmark title="Bookmark" />} name="Bookmark" />
       <IconWrapper icon={<Icon.Calendar title="Calendar" />} name="Calendar" />
       <IconWrapper
+        icon={<Icon.CalendarAlt title="CalendarAlt" />}
+        name="CalendarAlt"
+      />
+      <IconWrapper
         icon={<Icon.CalendarClock title="CalendarClock" />}
         name="CalendarClock"
       />
