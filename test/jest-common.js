@@ -11,4 +11,7 @@ module.exports = {
     'jest-watch-typeahead/testname',
     'jest-watch-select-projects',
   ],
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/test/jest-svg-transform.js',
+  },
 }
