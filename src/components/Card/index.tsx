@@ -27,6 +27,7 @@ export interface CardPropTypes {
   title?: string
   subtitle?: string
   text?: string
+  header?: React.ReactNode
   description?: string | React.ReactNode
   image?: string
   leftAdornment?: React.ReactNode
@@ -207,7 +208,6 @@ const Title = styled.h4<StyledCardProps>`
   ${props => (props.hasImage ? clamp : truncate)};
   font-size: ${p => (p.size === CardSize.large ? fontSize[18] : fontSize[16])};
   font-weight: ${fontWeight.semiBold};
-  line-height: ${lineHeight.title};
 
   @media ${device.mobileL} {
     font-size: ${p =>
@@ -225,7 +225,7 @@ const Subtitle = styled.h5<StyledCardProps>`
   ${props => !props.hasImage && truncate};
   font-size: ${p => (p.size === CardSize.large ? fontSize[16] : fontSize[14])};
   font-weight: ${fontWeight.regular};
-  color: ${color.foregroundMuted};
+  color: ${color.lightForegroundMuted};
 
   @media ${device.mobileL} {
     font-size: ${p =>
@@ -316,6 +316,7 @@ const Card: React.FC<CardPropTypes> = ({
   text,
   description,
   image,
+  header,
   leftAdornment,
   rightAdornment,
   topLeftAdornment,
@@ -342,6 +343,8 @@ const Card: React.FC<CardPropTypes> = ({
           {leftAdornment && <LeftAdornment>{leftAdornment}</LeftAdornment>}
 
           <TextContent hasImage={hasImage}>
+            {header}
+
             {title && <Title hasImage={hasImage}>{title}</Title>}
 
             {hasSubtitle && <Subtitle hasImage={hasImage}>{subtitle}</Subtitle>}

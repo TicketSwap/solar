@@ -3,9 +3,10 @@ import styled from '@emotion/styled'
 import { Card, CardVerticalAlign, CardSize } from '.'
 import { Avatar } from '../Avatar'
 import { Pill } from '../Pill'
-import { Ticket } from '../../icons'
+import { Ticket, CalendarAlt } from '../../icons'
 import { color, space, device, fontSize, lineHeight, radius } from '../../theme'
 import { Flag } from '../Flag'
+import { TinyText } from '../Text'
 
 const Container = styled.div`
   padding-block: ${space[16]};
@@ -21,6 +22,12 @@ const Grid = styled.div`
     grid-gap: ${space[16]};
     grid-auto-flow: column;
   }
+`
+
+const Header = styled.header`
+  display: flex;
+  align-items: center;
+  gap: ${space[4]};
 `
 
 const Wrapper = (story: () => React.ReactNode) => (
@@ -190,6 +197,60 @@ export const WithImage = () => (
 )
 
 WithImage.storyName = 'With image'
+
+export const WithHeader = () => (
+  <Grid>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        image="https://assets.imgix.net/unsplash/moon.jpg?fit=crop&crop=entropy&w=1678&h=1259&ixlib=imgixjs-3.4.1"
+        header={
+          <Header>
+            <CalendarAlt size={16} />
+            <TinyText>Multiple dates</TinyText>
+          </Header>
+        }
+        title="Eurovision"
+        subtitle="Paradiso, Amsterdam"
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        image="https://assets.imgix.net/unsplash/moon.jpg?fit=crop&crop=entropy&w=1678&h=1259&ixlib=imgixjs-3.4.1"
+        header={
+          <Header>
+            <CalendarAlt size={16} color={color.mars} />
+            <TinyText>Today</TinyText>
+          </Header>
+        }
+        title="Eurovision"
+        subtitle="Paradiso, Amsterdam"
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        header={
+          <Header>
+            <CalendarAlt size={16} color={color.mars} />
+            <TinyText>May 15 - 3</TinyText>
+          </Header>
+        }
+        title="Eurovision"
+        subtitle="Paradiso, Amsterdam"
+        rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
+      />
+    </a>
+    <a href="/" style={{ minWidth: 0 }}>
+      <Card
+        header={<TinyText>Best concert of the year</TinyText>}
+        title="Eurovision"
+        subtitle="Paradiso, Amsterdam"
+      />
+    </a>
+  </Grid>
+)
+
+WithHeader.storyName = 'With header'
 
 const RightAdornment = styled.h4`
   font-size: ${fontSize[18]};
