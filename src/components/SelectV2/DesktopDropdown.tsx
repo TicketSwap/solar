@@ -26,6 +26,7 @@ interface DesktopDropdownProps {
   onFocus: (event: SyntheticEvent) => void
   onBlur: (event: SyntheticEvent) => void
   variant: SelectVariant
+  id?: string
 }
 
 export const DesktopDropdown = ({
@@ -36,6 +37,7 @@ export const DesktopDropdown = ({
   onBlur,
   onFocus,
   variant,
+  id,
 }: DesktopDropdownProps) => {
   const listboxRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState(false)
@@ -88,7 +90,7 @@ export const DesktopDropdown = ({
   }
 
   return (
-    <Wrapper onClick={onClickWrapper}>
+    <Wrapper onClick={onClickWrapper} id={`wrapper-${id}`}>
       <Listbox
         ref={listboxRef}
         options={options}

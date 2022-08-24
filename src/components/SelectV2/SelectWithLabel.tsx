@@ -30,9 +30,23 @@ export const SelectWithLabel = ({
   'aria-label': ariaLabel,
   ...props
 }: SelectWithLabelProps) => {
+  const handleClick = () => {
+    const select = document.querySelector(`#${id}`) as HTMLSelectElement
+
+    if (select.offsetParent) return
+
+    const wrapper = document.querySelector(`#wrapper-${id}`) as HTMLDivElement
+
+    wrapper.click()
+  }
+
   return (
     <Wrapper>
-      {label && <Label htmlFor={id}>{label}</Label>}
+      {label && (
+        <Label onClick={handleClick} htmlFor={id}>
+          {label}
+        </Label>
+      )}
       <Select id={id} aria-label={(ariaLabel || label) as string} {...props} />
       {instruction}
     </Wrapper>
