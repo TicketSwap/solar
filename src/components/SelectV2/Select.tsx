@@ -150,6 +150,7 @@ export const Select = ({
         <DesktopDropdown
           aria-label={ariaLabel}
           options={options}
+          id={props.id}
           value={currentValue}
           onChange={(event, value) => {
             const selectbox = selectboxRef.current as HTMLSelectElement
