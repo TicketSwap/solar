@@ -118,6 +118,6 @@
     "storybook-addon-theme-toggle": "^0.0.1",
     "storybook-addon-themes": "^6.1.0",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.2"
   }
 }
