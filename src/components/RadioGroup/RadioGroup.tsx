@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { space } from '../..'
 import { RadioProps } from './Radio'
 import { RadioWithLabel } from './RadioWithLabel'
 import { Label } from '../Label'
 
-const Fieldset = styled.fieldset`
+const Fieldset = styled.div`
   display: grid;
   grid-gap: ${space[4]};
 `
@@ -23,6 +23,7 @@ export interface RadioGroupProps {
   value: string
   legend?: string
   name: string
+  instruction?: ReactNode
 }
 
 export const RadioGroup = ({
@@ -31,6 +32,7 @@ export const RadioGroup = ({
   value,
   name,
   legend,
+  instruction,
 }: RadioGroupProps) => (
   <Fieldset>
     {legend && <Label as="legend">{legend}</Label>}
@@ -43,5 +45,6 @@ export const RadioGroup = ({
         {...option}
       />
     ))}
+    {instruction}
   </Fieldset>
 )

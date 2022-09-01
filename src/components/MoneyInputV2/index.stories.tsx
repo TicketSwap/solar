@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Instruction } from '../Instruction'
 import { MoneyInput } from './'
 
 const currencies = [
@@ -89,6 +90,11 @@ export const Basic = () => {
           }),
         value: money.currency,
       }}
+      instruction={
+        <Instruction>
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </Instruction>
+      }
       amountProps={{
         id: 'amount',
         'aria-label': 'Amount',
@@ -134,7 +140,12 @@ export const WithLegend = () => {
 
   return (
     <MoneyInput
-      legend="Selling price"
+      legend="Selling price for all of your amazing tickets"
+      instruction={
+        <Instruction>
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </Instruction>
+      }
       currencyProps={{
         id: 'currency',
         options: currencies,
