@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Flag } from '../Flag'
+import { Instruction } from '../Instruction'
 import { PhoneInput } from './'
 
 const countries = [
@@ -87,6 +88,7 @@ export const WithLegend = () => {
         options: countries,
         defaultValue: '+975',
       }}
+      instruction={<Instruction>Enter your phone number</Instruction>}
       numberProps={{
         id: 'number',
         'aria-label': 'Number',
