@@ -11,7 +11,7 @@ const Wrapper = styled.span`
 
 export interface SelectWithAriaLabel extends SelectProps {
   id: string
-  instruction?: ReactElement | null
+  instruction?: ReactElement
   label?: string
 }
 
@@ -25,7 +25,7 @@ export type SelectWithLabelProps = SelectWithAriaLabel | SelectWithRequiredLabel
 
 export const SelectWithLabel = ({
   id,
-  instruction = null,
+  instruction,
   label,
   'aria-label': ariaLabel,
   ...props

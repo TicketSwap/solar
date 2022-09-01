@@ -42,7 +42,7 @@ interface OneTimeCodeInputProps {
   'aria-label': string
   legend?: string
   disabled?: boolean
-  instruction?: ReactElement | null
+  instruction?: ReactElement
   onChange?: ChangeEventHandler<HTMLInputElement>
   value?: string
   defaultValue?: string
@@ -55,7 +55,7 @@ export const OneTimeCodeInput = ({
   'aria-label': ariaLabel,
   legend,
   disabled = false,
-  instruction = null,
+  instruction,
   onChange,
   defaultValue = '',
   value,

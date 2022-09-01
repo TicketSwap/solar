@@ -11,7 +11,7 @@ const Wrapper = styled.span`
 
 export interface InputWithAriaLabel extends InputProps {
   id: string
-  instruction?: ReactElement | null
+  instruction?: ReactElement
   label?: string
 }
 
@@ -25,7 +25,7 @@ export type InputWithLabelProps = InputWithAriaLabel | InputWithRequiredLabel
 
 export const InputWithLabel = ({
   id,
-  instruction = null,
+  instruction,
   label,
   'aria-label': ariaLabel,
   ...props

@@ -12,7 +12,7 @@ const Wrapper = styled.span`
 
 interface TextareaWithAriaLabel extends TextareaProps {
   id: string
-  instruction?: ReactElement | null
+  instruction?: ReactElement
   label?: string
 }
 
@@ -28,7 +28,7 @@ export type TextareaWithLabelProps =
 
 export const TextareaWithLabel = ({
   id,
-  instruction = null,
+  instruction,
   label,
   'aria-label': ariaLabel,
   ...props
