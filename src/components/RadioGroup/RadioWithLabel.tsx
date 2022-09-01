@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, ReactNode, Ref } from 'react'
 import { color, radius, space } from '../..'
 import { Label } from '../Label'
 import { Radio, RadioProps } from './Radio'
@@ -18,7 +18,7 @@ const Wrapper = styled.span`
 
 export interface RadioWithLabelProps extends Omit<RadioProps, 'id'> {
   id: string
-  label: string
+  label: ReactNode
 }
 
 export const RadioWithLabel = forwardRef(

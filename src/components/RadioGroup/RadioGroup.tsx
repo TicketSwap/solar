@@ -14,7 +14,7 @@ export interface RadioOption
   extends Omit<RadioProps, 'id' | 'value' | 'label'> {
   id: string
   value: string
-  label: string
+  label: ReactNode
 }
 
 export interface RadioGroupProps {
