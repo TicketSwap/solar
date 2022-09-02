@@ -26,15 +26,19 @@ interface useTransitionParameters {
 
 type DefaultTransitionState = keyof typeof TransitionState
 
-export const useTransition = ({
-  in: on,
-  defaultTransitionState = TransitionState.EXITED,
-  timeout,
-  onExited = () => {},
-  onEntering = () => {},
-  onEntered = () => {},
-  onExiting = () => {},
-}: useTransitionParameters): [DefaultTransitionState, boolean, boolean] => {
+export const useTransition = (
+  props: useTransitionParameters
+): [DefaultTransitionState, boolean, boolean] => {
+  const {
+    in: on,
+    defaultTransitionState = TransitionState.EXITED,
+    timeout,
+    onExited = () => {},
+    onEntering = () => {},
+    onEntered = () => {},
+    onExiting = () => {},
+  } = props
+
   const [state, setState] = useState(defaultTransitionState)
   const [mounted, setMounted] = useState(false)
 
