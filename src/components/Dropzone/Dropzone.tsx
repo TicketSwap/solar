@@ -1,10 +1,18 @@
 import React, { useState, ChangeEvent, DragEvent, useRef } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import { color, space, radius, transition, fontWeight } from '../../theme'
+import {
+  color,
+  space,
+  radius,
+  transition,
+  fontWeight,
+  device,
+} from '../../theme'
 import { H4 } from '../Heading'
 import { SmallText } from '../Text'
 import { BaseButton } from '../BaseButton'
+import { Button } from '../Button'
 import { FilesIllustration } from './FilesIllustration'
 
 interface DropOverlayProps {
@@ -53,14 +61,18 @@ const DropArea = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: ${color.actionBackground};
   border-radius: ${radius.lg};
   padding-block-start: ${space[16]};
   padding-block-end: ${space[24]};
   padding-inline: ${space[16]};
   text-align: center;
   position: relative;
-  border: 2px dashed ${color.earth};
+  background-color: ${color.elevatedBackground};
+
+  @media ${device.tablet} {
+    background-color: ${color.actionBackground};
+    border: 2px dashed ${color.earth};
+  }
 `
 
 const StyledFilesIllustration = styled(FilesIllustration)`
@@ -86,10 +98,32 @@ const FileInput = styled.input`
   display: none;
 `
 
+const DesktopUI = styled.div`
+  display: none;
+
+  @media ${device.tablet} {
+    display: block;
+  }
+`
+
+const MobileUI = styled.div`
+  display: block;
+  width: 100%;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`
+
+const StyledButton = styled(Button)`
+  width: 100%;
+`
+
 export const Dropzone = ({
   title,
   subtitle,
   action,
+  mobileAction,
   dropTitle,
   accept = ['*'],
   multiple = false,
@@ -148,24 +182,41 @@ export const Dropzone = ({
         onDragExit={onDragExit}
         onDrop={onDrop}
       >
-        <img src={ILLUSTRATION} alt={dropTitle} />
+        <StyledFilesIllustration
+          width="170px"
+          height="100px"
+          alt={dropTitle}
+          onClick={onButtonClick}
+        />
         <h2>{dropTitle}</h2>
       </DropOverlay>
 
       <>
-        <StyledFilesIllustration width="170px" height="100px" />
+        <StyledFilesIllustration
+          width="170px"
+          height="100px"
+          alt={dropTitle}
+          onClick={onButtonClick}
+        />
         <Information>
           <Title>{title}</Title>
           <SmallText>{subtitle}</SmallText>
-          <BaseButton onClick={onButtonClick}>{action}</BaseButton>
-          <FileInput
-            type="file"
-            aria-label={ariaLabel}
-            ref={inputFile}
-            accept={accept.join(',')}
-            multiple={multiple}
-            onChange={onSelectFile}
-          />
+          <DesktopUI>
+            <BaseButton onClick={onButtonClick}>{action}</BaseButton>
+            <FileInput
+              type="file"
+              aria-label={ariaLabel}
+              ref={inputFile}
+              accept={accept.join(',')}
+              multiple={multiple}
+              onChange={onSelectFile}
+            />
+          </DesktopUI>
+          <MobileUI>
+            <StyledButton onClick={onButtonClick}>
+              {mobileAction ?? action}
+            </StyledButton>
+          </MobileUI>
         </Information>
       </>
     </DropArea>
