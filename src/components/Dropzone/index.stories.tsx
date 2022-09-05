@@ -20,6 +20,7 @@ export const Default = () => (
       title="Upload PDF or Apple Wallet tickets"
       subtitle="If your original file contains multiple tickets make sure to upload all of them, and we will let you select the ones you want to sell."
       action="Drop files here or click here to select"
+      mobileAction="Select a file"
       dropTitle="Release"
       onFileChange={file => console.log(file)}
     />
@@ -54,6 +55,7 @@ export const WithFileRestrictions = () => {
         title="Upload PDF or Apple Wallet tickets"
         subtitle="If your original file contains multiple tickets make sure to upload all of them, and we will let you select the ones you want to sell."
         action="Drop files here or click here to select"
+        mobileAction="Select a file"
         dropTitle="Release"
         accept={['.pdf']}
         onFileChange={file => console.log(file)}
@@ -91,6 +93,7 @@ export const Multiple = () => {
         title="Upload PDF or Apple Wallet tickets"
         subtitle="If your original file contains multiple tickets make sure to upload all of them, and we will let you select the ones you want to sell."
         action="Drop files here or click here to select"
+        mobileAction="Select a file"
         dropTitle="Release"
         multiple
         accept={['.pdf']}
