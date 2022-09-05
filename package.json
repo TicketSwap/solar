@@ -59,7 +59,7 @@
     "@reach/tabs": "^0.17.0",
     "@reach/tooltip": "^0.17.0",
     "compute-scroll-into-view": "^1.0.16",
-    "downshift": "^6.1.7",
+    "downshift": "^6.1.9",
     "jest-environment-jsdom": "^28.1.3",
     "scroll-into-view-if-needed": "^2.2.29"
   },
