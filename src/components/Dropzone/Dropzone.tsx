@@ -44,10 +44,16 @@ const DropOverlay = styled.div<DropOverlayProps>`
   align-items: center;
   justify-content: center;
   transition: ${transition};
+
   h2 {
     margin-block: 0;
     margin-inline: 0;
   }
+
+  * {
+    pointer-events: none;
+  }
+
   ${({ isDragging }) =>
     isDragging &&
     css`
