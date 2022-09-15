@@ -3,7 +3,6 @@ import { Toast, ToastProvider, useToast } from './'
 import { Button, ButtonSize, ButtonVariant } from '../Button'
 import { Select } from '../Select'
 import styled from '@emotion/styled'
-import { Text } from '../Text'
 import { CheckmarkRounded } from '../../icons'
 import { color, space } from '../../theme'
 import { Dialog, DialogBody, DialogHeader, DialogWindow } from '../Dialog'
@@ -22,15 +21,7 @@ function Basic() {
   const { notify } = useToast()
 
   return (
-    <Button
-      onClick={() =>
-        notify(() => (
-          <Toast>
-            <Text>Notification</Text>
-          </Toast>
-        ))
-      }
-    >
+    <Button onClick={() => notify(() => <Toast>Notification</Toast>)}>
       Show toast
     </Button>
   )
@@ -47,7 +38,7 @@ function WithAdornment() {
             persist
             leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
           >
-            <Text>Your preferences have been successfully updated</Text>
+            Your preferences have been successfully updated
           </Toast>
         ))
       }
@@ -101,7 +92,8 @@ function Persistent() {
         notify(remove => (
           <Toast persist>
             <ToastContent>
-              <Text>Payment failed</Text>
+              <span>Payment failed</span>
+
               <Button
                 onClick={remove}
                 size={ButtonSize.medium}
@@ -137,7 +129,8 @@ function PersistentWithAdornment() {
               leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
             >
               <ToastContent>
-                <Text>Your preferences have been successfully updated</Text>
+                <span>Your preferences have been successfully updated</span>
+
                 <Button
                   onClick={remove}
                   size={ButtonSize.medium}
@@ -160,7 +153,8 @@ function PersistentWithAdornment() {
               leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
             >
               <ToastContent>
-                <Text>Saved!</Text>
+                <span>Saved!</span>
+
                 <Button
                   onClick={remove}
                   size={ButtonSize.medium}
@@ -192,11 +186,7 @@ const WithDialog = () => {
             <DialogBody>
               <Button
                 onClick={() =>
-                  notify(() => (
-                    <Toast persist>
-                      <Text>Notification</Text>
-                    </Toast>
-                  ))
+                  notify(() => <Toast persist>Notification</Toast>)
                 }
               >
                 Show toast
