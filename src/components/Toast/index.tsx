@@ -48,7 +48,7 @@ export interface ToastBlockProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const ToastContainer = styled.div<ToastBlockProps>`
   border-radius: ${radius.lg};
-  background-color: ${color.elevatedBackground};
+  background-color: ${color.invertedBackground};
   box-shadow: ${shadow.strong};
   padding-block: ${space[16]};
   padding-inline: ${space[16]};
@@ -63,7 +63,7 @@ const ToastContainer = styled.div<ToastBlockProps>`
     `}
 `
 const ToastText = styled.span`
-  color: ${color.foreground};
+  color: ${color.invertedForeground};
 `
 
 interface ItemContainerStyles {
