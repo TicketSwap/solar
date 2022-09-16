@@ -1,6 +1,7 @@
 import React from 'react'
 import { Toast, ToastProvider, useToast } from './'
 import { Button, ButtonSize, ButtonVariant } from '../Button'
+import { BaseButton } from '../BaseButton'
 import { Select } from '../Select'
 import styled from '@emotion/styled'
 import { CheckmarkRounded } from '../../icons'
@@ -94,13 +95,7 @@ function Persistent() {
             <ToastContent>
               <span>Payment failed</span>
 
-              <Button
-                onClick={remove}
-                size={ButtonSize.medium}
-                variant={ButtonVariant.secondary}
-              >
-                Discard
-              </Button>
+              <BaseButton onClick={remove}>Discard</BaseButton>
             </ToastContent>
           </Toast>
         ))
@@ -155,13 +150,7 @@ function PersistentWithAdornment() {
               <ToastContent>
                 <span>Saved!</span>
 
-                <Button
-                  onClick={remove}
-                  size={ButtonSize.medium}
-                  variant={ButtonVariant.secondary}
-                >
-                  Discard
-                </Button>
+                <BaseButton onClick={remove}>Discard</BaseButton>
               </ToastContent>
             </Toast>
           ))
