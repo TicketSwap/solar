@@ -27,8 +27,8 @@ const StyledInput = styled.input`
   transition: all ${transition};
 
   &:checked {
-    background-color: ${color.earth};
-    border-color: ${color.earth};
+    background-color: ${color.action};
+    border-color: ${color.action};
   }
 
   &:disabled {

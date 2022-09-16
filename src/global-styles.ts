@@ -225,8 +225,8 @@ export const globalStyles = css`
   }
 
   ::selection {
-    background-color: ${color.earth};
-    color: ${color.lightForeground};
+    background-color: ${color.brand};
+    color: ${color.onBrand};
   }
 
   *,

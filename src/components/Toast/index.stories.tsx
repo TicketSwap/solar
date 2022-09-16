@@ -45,7 +45,7 @@ function WithAdornment() {
         notify(() => (
           <Toast
             persist
-            leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
+            leftAdornment={<CheckmarkRounded color={color.success} size={24} />}
           >
             <Text>Your preferences have been successfully updated</Text>
           </Toast>
@@ -134,7 +134,9 @@ function PersistentWithAdornment() {
           notify(remove => (
             <Toast
               persist
-              leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
+              leftAdornment={
+                <CheckmarkRounded color={color.success} size={24} />
+              }
             >
               <ToastContent>
                 <Text>Your preferences have been successfully updated</Text>
@@ -157,7 +159,9 @@ function PersistentWithAdornment() {
           notify(remove => (
             <Toast
               persist
-              leftAdornment={<CheckmarkRounded color={color.titan} size={24} />}
+              leftAdornment={
+                <CheckmarkRounded color={color.success} size={24} />
+              }
             >
               <ToastContent>
                 <Text>Saved!</Text>

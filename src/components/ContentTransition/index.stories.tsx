@@ -52,7 +52,7 @@ const Login = (props: {
     </div>
     <div>
       Don’t have an account yet?{' '}
-      <button style={{ color: color.earth }} onClick={props.showSignupView}>
+      <button style={{ color: color.action }} onClick={props.showSignupView}>
         Sign up
       </button>
     </div>
@@ -91,7 +91,7 @@ const Signup = (props: {
     </div>
     <div>
       Already have an account{' '}
-      <button style={{ color: color.earth }} onClick={props.showLoginView}>
+      <button style={{ color: color.action }} onClick={props.showLoginView}>
         Log in
       </button>
     </div>
