@@ -23,7 +23,7 @@ export const Container = styled.span<PillProps>`
     p.variant === 'danger'
       ? color.onFailure
       : p.variant === 'secondary'
-      ? color.earth
+      ? color.action
       : p.variant === 'success'
       ? color.onSuccess
       : p.variant === 'warning'

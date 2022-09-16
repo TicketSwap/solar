@@ -42,10 +42,10 @@ const DayButton = styled.button<DayButtonProps>`
   ${({ selected }) =>
     selected &&
     css`
-      background-color: ${color.earth};
+      background-color: ${color.action};
 
       p {
-        color: ${color.lightForeground};
+        color: ${color.onAction};
       }
     `}
   ${({ disabled }) =>

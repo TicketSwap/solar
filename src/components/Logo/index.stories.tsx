@@ -4,7 +4,7 @@ import styled from '@emotion/styled'
 import { color } from '../../theme'
 
 const StyledLogo = styled(Logo)`
-  color: ${color.earth};
+  color: ${color.brand};
 `
 
 export default {
