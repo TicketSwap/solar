@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { keyframes } from '@emotion/react'
 import { Spinner as SpinnerIcon } from '../../icons'
-import { color } from '../../theme'
 
 export interface SpinnerProps {
   size?: number
@@ -10,7 +9,7 @@ export interface SpinnerProps {
 }
 
 const StyledSpinnerIcon = styled(SpinnerIcon)`
-  color: ${props => props.color || color.foreground};
+  color: ${props => props.color || 'inherit'};
 `
 
 const rotate = keyframes`
