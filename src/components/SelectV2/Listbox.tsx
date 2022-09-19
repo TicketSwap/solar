@@ -79,11 +79,11 @@ const ListboxOption = styled.div<ListBoxOptionProps>`
 interface ListboxProps {
   options: OptionProps[]
   selected?: string | number | readonly string[]
-  focussed: number
+  focussed: number | null
   open: boolean
   'aria-label': string
   onBlur: (event: FocusEvent<HTMLDivElement>) => void
-  onFocus: (event: FocusEvent<HTMLDivElement>) => void
+  onFocus?: (event: FocusEvent<HTMLDivElement>) => void
   onHover: (index: number) => void
   onKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void
   onClick: (event: MouseEvent<HTMLDivElement>) => void
@@ -104,6 +104,7 @@ export const Listbox = forwardRef(
       onKeyDown,
       onClick,
       variant,
+      ...props
     }: ListboxProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -124,10 +125,15 @@ export const Listbox = forwardRef(
         onFocus={onFocus}
         onClick={onClick}
         onKeyDown={onKeyDown}
+        {...props}
       >
         {options.map((option, index) => (
           <ListboxOption
-            key={index}
+            key={
+              option.id ??
+              `${id}-${option.value?.toString().replace(/[^a-z0-9]/gi, '-')}` ??
+              index
+            }
             role="option"
             id={option.id ?? `${id}-${index}`}
             aria-selected={option.value === selected}
