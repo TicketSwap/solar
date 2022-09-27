@@ -145,12 +145,34 @@ export const DesktopDropdown = ({
               setFocussed(options.length - 1)
               break
             case 'ArrowUp':
-              setFocussed(focussed => Math.max(0, focussed - 1))
+              event.preventDefault()
+
+              setFocussed(previousFocussed => {
+                const focussed = Math.max(0, previousFocussed - 1)
+
+                scrollIntoView(listbox.children[focussed], {
+                  boundary: listbox,
+                  scrollMode: 'always',
+                  block: 'nearest',
+                })
+
+                return focussed
+              })
               break
             case 'ArrowDown':
-              setFocussed(focussed =>
-                Math.min(options.length - 1, focussed + 1)
-              )
+              event.preventDefault()
+
+              setFocussed(prevFocussed => {
+                const focussed = Math.min(options.length - 1, prevFocussed + 1)
+
+                scrollIntoView(listbox.children[focussed], {
+                  boundary: listbox,
+                  scrollMode: 'always',
+                  block: 'nearest',
+                })
+
+                return focussed
+              })
               break
             case 'Escape':
               setOpen(false)
