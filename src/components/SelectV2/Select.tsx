@@ -63,11 +63,10 @@ const StyledSelect = styled.select<StyledSelectProps>`
   }
 
   ${props =>
-    props.variant === 'short' &&
+    props.variant.startsWith('short') &&
     css`
       position: absolute;
       inset: 0;
-      z-index: -1;
     `}
 `
 
