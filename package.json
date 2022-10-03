@@ -37,7 +37,7 @@
     "semantic-release": "semantic-release"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.9.3",
+    "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.8.1",
     "react": ">=16",
     "react-dom": ">=16"
