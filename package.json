@@ -87,7 +87,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.33.1",
     "babel-loader": "^8.2.5",
     "commitizen": "^4.2.5",
