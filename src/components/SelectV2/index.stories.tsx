@@ -113,3 +113,47 @@ export const WithValues = () => (
     options={[{ value: 'dog' }, { value: 'cat' }, { value: 'pig' }]}
   />
 )
+
+export const Controlled = () => {
+  const [value, setValue] = useState('horse')
+
+  return (
+    <Select
+      id="pet"
+      onChange={event => setValue(event.target.value)}
+      aria-label="Select your favourite pet"
+      value={value}
+      options={[
+        { label: 'Dog', value: 'dog' },
+        { label: 'Cat', value: 'cat' },
+        { label: 'Pig', value: 'pig' },
+        { label: 'Horse', value: 'horse' },
+        { label: 'Chicken', value: 'chicken' },
+        { label: 'Turtle', value: 'turtle' },
+        { label: 'Tiger', value: 'tiger' },
+        { label: 'Izzy', value: 'izzy' },
+      ]}
+    />
+  )
+}
+
+export const Uncontrolled = () => {
+  return (
+    <Select
+      id="pet"
+      onChange={console.log}
+      aria-label="Select your favourite pet"
+      defaultValue="izzy"
+      options={[
+        { label: 'Dog', value: 'dog' },
+        { label: 'Cat', value: 'cat' },
+        { label: 'Pig', value: 'pig' },
+        { label: 'Horse', value: 'horse' },
+        { label: 'Chicken', value: 'chicken' },
+        { label: 'Turtle', value: 'turtle' },
+        { label: 'Tiger', value: 'tiger' },
+        { label: 'Izzy', value: 'izzy' },
+      ]}
+    />
+  )
+}
