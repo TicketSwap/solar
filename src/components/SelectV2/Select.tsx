@@ -133,14 +133,18 @@ export const Select = ({
   variant = 'default',
   onChange,
   'aria-label': ariaLabel,
+  value: externalValue,
   ...props
 }: SelectProps) => {
   const selectboxRef = useRef<HTMLSelectElement>(null)
-  const [currentValue, setCurrentValue] = useState(
-    props.value || props.defaultValue || options[0].value
+  const [internalValue, setInternalValue] = useState(
+    props.defaultValue || options[0].value
   )
+  const value =
+    typeof externalValue !== 'undefined' ? externalValue : internalValue
+
   const currentOption = options.find(
-    option => option.value === currentValue
+    option => option.value === value
   ) as OptionProps
 
   return (
@@ -150,11 +154,11 @@ export const Select = ({
           aria-label={ariaLabel}
           options={options}
           id={props.id}
-          value={currentValue}
-          onChange={(event, value) => {
+          value={value}
+          onChange={(event, newValue) => {
             const selectbox = selectboxRef.current as HTMLSelectElement
-            selectbox.value = value as string
-            setCurrentValue(value)
+            selectbox.value = newValue as string
+            setInternalValue(newValue)
             onChange?.({
               ...event,
               target: selectbox,
@@ -179,9 +183,10 @@ export const Select = ({
         ref={selectboxRef}
         variant={variant}
         onChange={event => {
-          setCurrentValue(event.target.value)
+          setInternalValue(event.target.value)
           onChange?.(event)
         }}
+        value={value}
         {...props}
       >
         {options.map(({ startAdornment, ...option }, index) => (
