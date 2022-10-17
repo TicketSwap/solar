@@ -112,6 +112,7 @@ export const easing = {
   easeInExpo: 'cubic-bezier(.95, .05, .795, .035)',
   easeInCirc: 'cubic-bezier(.6, .04, .98, .335)',
 
+  easeOutBack: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
   easeOutQuad: 'cubic-bezier(.25, .46, .45, .94)',
   easeOutCubic: 'cubic-bezier(.215, .61, .355, 1)',
   easeOutQuart: 'cubic-bezier(.165, .84, .44, 1)',

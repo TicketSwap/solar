@@ -10,28 +10,13 @@ import {
   transition,
   fontSize,
   duration,
+  easing,
 } from '../../theme'
 import { ChevronDown } from '../../icons'
 import { H3 } from '../Heading'
 
-interface CollapsibleProps {
-  summary: string
-  children: ReactNode
-  defaultOpen?: boolean
-  open?: boolean
-  onToggle?: (open: boolean) => void
-  as?: string | undefined
-}
-
-interface ButtonProps {
-  open: boolean
-}
 interface DetailsProps {
   open: boolean
-}
-interface PanelWrapperProps {
-  ref: React.MutableRefObject<HTMLDivElement | null>
-  height: string
 }
 
 const Details = styled.div<DetailsProps>`
@@ -41,6 +26,10 @@ const Details = styled.div<DetailsProps>`
   background-color: ${color.elevatedBackground};
   border-radius: ${radius.md};
 `
+
+interface ButtonProps {
+  open: boolean
+}
 
 const Button = styled.button<ButtonProps>`
   width: 100%;
@@ -60,6 +49,11 @@ const Button = styled.button<ButtonProps>`
   border-radius: 0;
   border-bottom: 1px solid
     ${({ open }) => (open ? color.strokeStrong : 'transparent')};
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: border-bottom ${transition}
+      ${({ open }) => (open ? '200ms' : '0ms')};
+  }
 
   &:focus-within {
     outline: 0;
@@ -96,6 +90,11 @@ const Panel = styled.div`
   }
 `
 
+interface PanelWrapperProps {
+  ref: React.MutableRefObject<HTMLDivElement | null>
+  height: string
+}
+
 const PanelWrapper = styled.div<PanelWrapperProps>`
   height: ${({ height }) => `${height}px`};
   overflow: hidden;
@@ -103,14 +102,23 @@ const PanelWrapper = styled.div<PanelWrapperProps>`
     Boolean(parseInt(height)) ? 'visible' : 'hidden'};
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: height ${transition}, padding-block ${transition};
+    transition: height 400ms ${easing.easeOutBack}, padding-block ${transition};
 
     &.closed {
-      transition: height ${transition}, padding-block ${transition},
-        visibility ${transition} ${duration}ms;
+      transition: height 600ms ${easing.easeOutBack},
+        padding-block ${transition}, visibility ${transition} ${duration}ms;
     }
   }
 `
+
+interface CollapsibleProps {
+  summary: string
+  children: ReactNode
+  defaultOpen?: boolean
+  open?: boolean
+  onToggle?: (open: boolean) => void
+  as?: string | undefined
+}
 
 export const Collapsible = ({
   summary,
