@@ -14093,12 +14093,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-node-externals@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-node-externals/-/rollup-plugin-node-externals-4.1.1.tgz#81d90eea6f99831a90206df1f0531fdcfc360d7c"
-  integrity sha512-hiGCMTKHVoueaTmtcUv1KR0/dlNBuI9GYzHUlSHQbMd7T7yomYdXCFnBisoBqdZYy61EGAIfz8AvJaWWBho3Pg==
-  dependencies:
-    find-up "^5.0.0"
+rollup-plugin-node-externals@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-node-externals/-/rollup-plugin-node-externals-5.0.1.tgz#21fcd040948d193fc401d26d62d14ec32a76b299"
+  integrity sha512-x2ooOmSR1zZpUUxRuQ2nuwZP6BncrJAUmr8t5tgB8NOID0HqL0JxEnvoC/uhahyPxp2VqEr/YFvy29zK0Zq1bA==
 
 rollup-plugin-terser@^7.0.2:
   version "7.0.2"
