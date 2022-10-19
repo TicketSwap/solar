@@ -9,6 +9,7 @@ import {
   useDialog,
 } from '../Dialog'
 import { Text } from '../Text'
+import { DropzoneVariant } from './Dropzone'
 
 export default {
   title: 'Components/Actions/Dropzone',
@@ -28,6 +29,22 @@ export const Default = () => (
 )
 
 Default.storyName = 'Default'
+
+export const Small = () => (
+  <>
+    <Dropzone
+      title="Upload PDF or Apple Wallet tickets"
+      subtitle="If your original file contains multiple tickets make sure to upload all of them, and we will let you select the ones you want to sell."
+      action="Drop files here or click here to select"
+      mobileAction="Select a file"
+      dropTitle="Release"
+      variant={DropzoneVariant.small}
+      onFileChange={file => console.log(file)}
+    />
+  </>
+)
+
+Small.storyName = 'Small'
 
 export const WithFileRestrictions = () => {
   const { show, hide, getWindowProps } = useDialog()
