@@ -19,6 +19,11 @@ interface DropOverlayProps {
   isDragging: boolean
 }
 
+export enum DropzoneVariant {
+  default = 'default',
+  small = 'small',
+}
+
 export interface DropzoneProps {
   title: string
   subtitle: string
@@ -28,8 +33,17 @@ export interface DropzoneProps {
   accept?: string[]
   multiple?: boolean
   ariaLabel?: string
+  variant?: DropzoneVariant
   onFileChange: (files: FileList | File) => void
   onUnacceptedFileChange?: () => void
+}
+
+interface InformationStyles {
+  variant: DropzoneVariant
+}
+
+interface DropAreaStyles {
+  variant: DropzoneVariant
 }
 
 const DropOverlay = styled.div<DropOverlayProps>`
@@ -62,9 +76,10 @@ const DropOverlay = styled.div<DropOverlayProps>`
     `}
 `
 
-const DropArea = styled.div`
+const DropArea = styled.div<DropAreaStyles>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ variant }) =>
+    variant === DropzoneVariant.small ? 'row' : 'column'};
   align-items: center;
   width: 100%;
   border-radius: ${radius.lg};
@@ -89,12 +104,14 @@ const Title = styled(H4)`
   font-weight: ${fontWeight.semiBold};
 `
 
-const Information = styled.div`
+const Information = styled.div<InformationStyles>`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: ${({ variant }) =>
+    variant === DropzoneVariant.small ? 'flex-start' : 'center'};
+  text-align: ${({ variant }) =>
+    variant === DropzoneVariant.small ? 'left' : 'center'};
   justify-content: center;
-  text-align: center;
   padding-block-start: ${space[12]};
   flex: 1;
   gap: ${space[8]};
@@ -134,6 +151,7 @@ export const Dropzone = ({
   accept = ['*'],
   multiple = false,
   ariaLabel,
+  variant = DropzoneVariant.default,
   onFileChange,
   onUnacceptedFileChange,
 }: DropzoneProps) => {
@@ -179,7 +197,11 @@ export const Dropzone = ({
   }
 
   return (
-    <DropArea data-testid="droparea" onDragEnter={onDragEnter}>
+    <DropArea
+      data-testid="droparea"
+      variant={variant}
+      onDragEnter={onDragEnter}
+    >
       <DropOverlay
         data-testid="dropoverlay"
         isDragging={isDragging}
@@ -204,7 +226,7 @@ export const Dropzone = ({
           alt={dropTitle}
           onClick={onButtonClick}
         />
-        <Information>
+        <Information variant={variant}>
           <Title>{title}</Title>
           <SmallText>{subtitle}</SmallText>
           <DesktopUI>
