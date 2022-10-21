@@ -1,6 +1,7 @@
 import React from 'react'
 import { Dropzone } from '.'
-import { CloseAlt } from '../../icons'
+import { CloseAlt, File } from '../../icons'
+import { BaseButton } from '../BaseButton'
 import {
   DialogAdornment,
   DialogBody,
@@ -122,3 +123,50 @@ export const Multiple = () => {
 }
 
 Multiple.storyName = 'Accepts Multiple'
+
+export const SecondaryAction = () => {
+  const { show, hide, getWindowProps } = useDialog()
+
+  return (
+    <>
+      <DialogWindow {...getWindowProps()}>
+        <DialogHeader>
+          Help
+          <DialogAdornment right>
+            <button onClick={hide}>
+              <CloseAlt size={24} />
+            </button>
+          </DialogAdornment>
+        </DialogHeader>
+        <DialogBody>
+          <Text>
+            Since it’s not possible to download Go Mobile tickets from
+            Ticketmaster, you can upload screenshots of them instead. Each
+            screenshot must contain only one fully visible ticket.
+          </Text>
+        </DialogBody>
+      </DialogWindow>
+      <Dropzone
+        title="Upload PDF or Apple Wallet tickets"
+        subtitle="If your original file contains multiple tickets make sure to upload all of them, and we will let you select the ones you want to sell."
+        action="Drop files here or click here to select"
+        secondaryAction={
+          <BaseButton
+            leftAdornment={<File size={20} />}
+            onClick={event => {
+              event.stopPropagation()
+              show()
+            }}
+          >
+            View example
+          </BaseButton>
+        }
+        mobileAction="Select a file"
+        dropTitle="Release"
+        onFileChange={file => console.log(file)}
+      />
+    </>
+  )
+}
+
+SecondaryAction.storyName = 'Secondary Action'
