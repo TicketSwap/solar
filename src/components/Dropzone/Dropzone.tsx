@@ -1,4 +1,10 @@
-import React, { useState, ChangeEvent, DragEvent, useRef } from 'react'
+import React, {
+  useState,
+  ChangeEvent,
+  DragEvent,
+  useRef,
+  ReactNode,
+} from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import {
@@ -29,6 +35,7 @@ export interface DropzoneProps {
   subtitle: string
   action: string
   mobileAction?: string
+  secondaryAction?: ReactNode
   dropTitle: string
   accept?: string[]
   multiple?: boolean
@@ -43,6 +50,10 @@ interface InformationStyles {
 }
 
 interface DropAreaStyles {
+  variant: DropzoneVariant
+}
+
+interface DesktopUIStyles {
   variant: DropzoneVariant
 }
 
@@ -78,8 +89,7 @@ const DropOverlay = styled.div<DropOverlayProps>`
 
 const DropArea = styled.div<DropAreaStyles>`
   display: flex;
-  flex-direction: ${({ variant }) =>
-    variant === DropzoneVariant.small ? 'row' : 'column'};
+  flex-direction: column;
   align-items: center;
   width: 100%;
   border-radius: ${radius.lg};
@@ -91,6 +101,8 @@ const DropArea = styled.div<DropAreaStyles>`
   background-color: ${color.elevatedBackground};
 
   @media ${device.tablet} {
+    flex-direction: ${({ variant }) =>
+      variant === DropzoneVariant.small ? 'row' : 'column'};
     background-color: ${color.actionBackground};
     border: 2px dashed ${color.earth};
   }
@@ -107,30 +119,41 @@ const Title = styled(H4)`
 const Information = styled.div<InformationStyles>`
   display: flex;
   flex-direction: column;
-  align-items: ${({ variant }) =>
-    variant === DropzoneVariant.small ? 'flex-start' : 'center'};
-  text-align: ${({ variant }) =>
-    variant === DropzoneVariant.small ? 'left' : 'center'};
+  align-items: center;
+  text-align: center;
   justify-content: center;
   padding-block-start: ${space[12]};
   flex: 1;
   gap: ${space[8]};
+
+  @media ${device.tablet} {
+    align-items: ${({ variant }) =>
+      variant === DropzoneVariant.small ? 'flex-start' : 'center'};
+    text-align: ${({ variant }) =>
+      variant === DropzoneVariant.small ? 'left' : 'center'};
+  }
 `
 
 const FileInput = styled.input`
   display: none;
 `
 
-const DesktopUI = styled.div`
+const DesktopUI = styled.div<DesktopUIStyles>`
   display: none;
 
   @media ${device.tablet} {
-    display: block;
+    display: flex;
+    flex-direction: ${({ variant }) =>
+      variant === DropzoneVariant.small ? 'row' : 'column'};
+    gap: ${({ variant }) =>
+      variant === DropzoneVariant.small ? space[32] : space[24]};
   }
 `
 
 const MobileUI = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: ${space[16]};
   width: 100%;
 
   @media ${device.tablet} {
@@ -146,6 +169,7 @@ export const Dropzone = ({
   title,
   subtitle,
   action,
+  secondaryAction,
   mobileAction,
   dropTitle,
   accept = ['*'],
@@ -229,7 +253,7 @@ export const Dropzone = ({
         <Information variant={variant}>
           <Title>{title}</Title>
           <SmallText>{subtitle}</SmallText>
-          <DesktopUI>
+          <DesktopUI variant={variant}>
             <BaseButton onClick={onButtonClick}>{action}</BaseButton>
             <FileInput
               type="file"
@@ -239,11 +263,13 @@ export const Dropzone = ({
               multiple={multiple}
               onChange={onSelectFile}
             />
+            {secondaryAction && <>{secondaryAction}</>}
           </DesktopUI>
           <MobileUI>
             <StyledButton onClick={onButtonClick}>
               {mobileAction ?? action}
             </StyledButton>
+            {secondaryAction && <>{secondaryAction}</>}
           </MobileUI>
         </Information>
       </>
