@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import React, { ReactNode, useState } from 'react'
 import {
   Dialog,
   DialogAdornment,
@@ -8,11 +8,13 @@ import {
   DialogWindow,
   useDialog,
 } from './'
+import { ContentTransition } from '../ContentTransition'
 import { Select } from '../Select'
 import { Button, ButtonVariant } from '../Button'
 import { Input } from '../InputV2'
-import { CloseAlt } from '../../icons'
+import { ChevronLeftAlt, CloseAlt } from '../../icons'
 import { Textarea } from '../Textarea'
+import { BaseButton } from '../BaseButton'
 
 const items = [
   { value: 'de', name: 'German' },
@@ -156,3 +158,62 @@ export const WithHook = () => <HooksDialog />
 WithHook.storyName = 'useDialog()'
 
 export const Controlled = () => <ControlledDialog />
+
+export const WithContentTransition = () => {
+  const [activeView, setActiveView] = useState('overview')
+  const [title, setTitle] = useState('')
+  const [back, setBack] = useState('')
+
+  const { hide, getToggleProps, getWindowProps } = useDialog({
+    onToggle: (on: any) => console.log(on),
+    onEntered: () => console.log('entered'),
+    onExited: () => console.log('exited'),
+  })
+
+  return (
+    <>
+      <Button {...getToggleProps()}>Show dialog</Button>
+      <DialogWindow {...getWindowProps()}>
+        <DialogHeader>
+          {title}
+          <DialogAdornment right>
+            <BaseButton onClick={hide}>
+              <CloseAlt size={24} />
+            </BaseButton>
+          </DialogAdornment>
+
+          <DialogAdornment left>
+            <BaseButton onClick={() => setActiveView(back)}>
+              <ChevronLeftAlt size={24} />
+            </BaseButton>
+          </DialogAdornment>
+        </DialogHeader>
+        <ContentTransition
+          activeView={activeView}
+          onChange={({ props }) => {
+            props.title && setTitle(props.title)
+            props.back && setBack(props.back)
+          }}
+        >
+          <DialogBody key="overview" title="Overview">
+            <BaseButton onClick={() => setActiveView('errors')}>
+              Go to errors
+            </BaseButton>
+          </DialogBody>
+          <DialogBody key="errors" title="Errors" back="overview">
+            <BaseButton onClick={() => setActiveView('confirmation')}>
+              Go to confirmation
+            </BaseButton>
+          </DialogBody>
+          <DialogBody key="confirmation" title="Confirmation" back="errors">
+            <BaseButton onClick={() => setActiveView('overview')}>
+              Go to overview
+            </BaseButton>
+          </DialogBody>
+        </ContentTransition>
+      </DialogWindow>
+    </>
+  )
+}
+
+WithContentTransition.storyName = 'With Content Transistion'
