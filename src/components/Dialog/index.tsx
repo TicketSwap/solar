@@ -237,6 +237,8 @@ const Body = styled.div`
 
 type DialogBodyProps = {
   children: ReactNode
+  title?: string
+  back?: string
 }
 
 export const DialogBody: React.FC<DialogBodyProps> = ({
