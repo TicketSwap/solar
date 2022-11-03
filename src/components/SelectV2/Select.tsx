@@ -143,9 +143,8 @@ export const Select = ({
   const value =
     typeof externalValue !== 'undefined' ? externalValue : internalValue
 
-  const currentOption = options.find(
-    option => option.value === value
-  ) as OptionProps
+  const currentOption =
+    options.find(option => option.value === value) || ({} as OptionProps)
 
   return (
     <Container hasStartAdornment={Boolean(startAdornment)}>
