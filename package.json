@@ -73,7 +73,7 @@
     "@emotion/babel-plugin": "^11.10.2",
     "@emotion/jest": "^11.10.0",
     "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.10.4",
+    "@emotion/styled": "^11.10.5",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-node-resolve": "^14.1.0",
