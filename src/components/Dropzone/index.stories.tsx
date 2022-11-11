@@ -47,6 +47,20 @@ export const Small = () => (
 
 Small.storyName = 'Small'
 
+export const Light = () => (
+  <>
+    <Dropzone
+      action="Drop files here or click here to select"
+      mobileAction="Select a file"
+      dropTitle="Release"
+      variant={DropzoneVariant.light}
+      onFileChange={file => console.log(file)}
+    />
+  </>
+)
+
+Light.storyName = 'Light'
+
 export const WithFileRestrictions = () => {
   const { show, hide, getWindowProps } = useDialog()
 

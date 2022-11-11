@@ -20,6 +20,7 @@ import { SmallText } from '../Text'
 import { BaseButton } from '../BaseButton'
 import { Button } from '../Button'
 import { FilesIllustration } from './FilesIllustration'
+import { ArrowUpRounded } from '../../icons'
 
 interface DropOverlayProps {
   isDragging: boolean
@@ -28,11 +29,12 @@ interface DropOverlayProps {
 export enum DropzoneVariant {
   default = 'default',
   small = 'small',
+  light = 'light',
 }
 
 export interface DropzoneProps {
-  title: string
-  subtitle: string
+  title?: string
+  subtitle?: string
   action: string
   mobileAction?: string
   secondaryAction?: ReactNode
@@ -93,18 +95,26 @@ const DropArea = styled.div<DropAreaStyles>`
   align-items: center;
   width: 100%;
   border-radius: ${radius.lg};
-  padding-block-start: ${space[16]};
-  padding-block-end: ${space[24]};
+  padding-block-start: ${({ variant }) =>
+    variant === DropzoneVariant.light ? space[24] : space[16]};
+  padding-block-end: ${({ variant }) =>
+    variant === DropzoneVariant.light ? space[40] : space[24]};
   padding-inline: ${space[16]};
   text-align: center;
   position: relative;
-  background-color: ${color.elevatedBackground};
+  background-color: ${({ variant }) =>
+    variant === DropzoneVariant.light
+      ? 'transparent'
+      : color.elevatedBackground};
 
   @media ${device.tablet} {
     flex-direction: ${({ variant }) =>
       variant === DropzoneVariant.small ? 'row' : 'column'};
     background-color: ${color.actionBackground};
-    border: 2px dashed ${color.earth};
+    border-width: 2px;
+    border-style: dashed;
+    border-color: ${({ variant }) =>
+      variant === DropzoneVariant.light ? color.actionFocus : color.action};
   }
 `
 
@@ -159,10 +169,6 @@ const MobileUI = styled.div`
   @media ${device.tablet} {
     display: none;
   }
-`
-
-const StyledButton = styled(Button)`
-  width: 100%;
 `
 
 export const Dropzone = ({
@@ -244,15 +250,17 @@ export const Dropzone = ({
       </DropOverlay>
 
       <>
-        <StyledFilesIllustration
-          width="170px"
-          height="100px"
-          alt={dropTitle}
-          onClick={onButtonClick}
-        />
+        {variant !== DropzoneVariant.light && (
+          <StyledFilesIllustration
+            width="170px"
+            height="100px"
+            alt={dropTitle}
+            onClick={onButtonClick}
+          />
+        )}
         <Information variant={variant}>
-          <Title>{title}</Title>
-          <SmallText>{subtitle}</SmallText>
+          {title && <Title>{title}</Title>}
+          {subtitle && <SmallText>{subtitle}</SmallText>}
           <DesktopUI variant={variant}>
             <BaseButton onClick={onButtonClick}>{action}</BaseButton>
             <FileInput
@@ -266,10 +274,23 @@ export const Dropzone = ({
             {secondaryAction && <>{secondaryAction}</>}
           </DesktopUI>
           <MobileUI>
-            <StyledButton onClick={onButtonClick}>
-              {mobileAction ?? action}
-            </StyledButton>
-            {secondaryAction && <>{secondaryAction}</>}
+            {variant === DropzoneVariant.light ? (
+              <Button
+                fullWidth
+                variant="secondary"
+                leftAdornment={<ArrowUpRounded size={24} />}
+                onClick={onButtonClick}
+              >
+                {mobileAction ?? action}
+              </Button>
+            ) : (
+              <>
+                <Button fullWidth onClick={onButtonClick}>
+                  {mobileAction ?? action}
+                </Button>
+                {secondaryAction && <>{secondaryAction}</>}
+              </>
+            )}
           </MobileUI>
         </Information>
       </>
