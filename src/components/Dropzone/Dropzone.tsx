@@ -199,7 +199,7 @@ export const Dropzone = ({
     if (
       accept[0] !== '*' &&
       Array.from(e.dataTransfer.files).some(
-        ({ name }) => !accept.includes(`.${name.split('.')[1]}`)
+        ({ name }) => !accept.includes(`.${name.split('.').at(-1)}`)
       )
     ) {
       if (onUnacceptedFileChange) {
