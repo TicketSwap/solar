@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import {
   radius,
-  shadow,
   color,
   space,
   device,
@@ -15,8 +14,7 @@ export interface PanelContentProps {
 
 export const Panel = styled.div`
   ${fullBleed};
-  background-color: ${color.background};
-  box-shadow: ${shadow.strong};
+  border: 1px solid ${color.stroke};
 
   @media ${device.mobileL} {
     ${resetFullBleed};
