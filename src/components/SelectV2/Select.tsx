@@ -134,11 +134,12 @@ export const Select = ({
   onChange,
   'aria-label': ariaLabel,
   value: externalValue,
+  defaultValue,
   ...props
 }: SelectProps) => {
   const selectboxRef = useRef<HTMLSelectElement>(null)
   const [internalValue, setInternalValue] = useState(
-    props.defaultValue || options[0].value
+    defaultValue || options[0].value
   )
   const value =
     typeof externalValue !== 'undefined' ? externalValue : internalValue
