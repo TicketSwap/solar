@@ -12,18 +12,21 @@ import { ContentTransition } from '../ContentTransition'
 import { Select } from '../Select'
 import { Button, ButtonVariant } from '../Button'
 import { Input } from '../InputV2'
-import { ChevronLeftAlt, CloseAlt } from '../../icons'
+import { ChevronLeftAlt, CloseAlt, MagnifyingGlass } from '../../icons'
 import { Textarea } from '../Textarea'
 import { BaseButton } from '../BaseButton'
+import { color, device, space } from '../../theme'
+import styled from '@emotion/styled'
+import { Card } from '../Card'
 
 const items = [
-  { value: 'de', name: 'German' },
-  { value: 'it', name: 'Italian' },
-  { value: 'nl', name: 'Dutch' },
-  { value: 'en', name: 'English' },
-  { value: 'hu', name: 'Hungarian' },
-  { value: 'fr', name: 'French' },
-  { value: 'es', name: 'Spanish' },
+  { value: 'de', name: 'German', flag: '🇩🇪' },
+  { value: 'it', name: 'Italian', flag: '🇮🇹' },
+  { value: 'nl', name: 'Dutch', flag: '🇳🇱' },
+  { value: 'en', name: 'English', flag: '🇬🇧' },
+  { value: 'hu', name: 'Hungarian', flag: '🇭🇺' },
+  { value: 'fr', name: 'French', flag: '🇫🇷' },
+  { value: 'es', name: 'Spanish', flag: '🇪🇸' },
 ]
 
 const BasicDialog = ({
@@ -152,6 +155,72 @@ export const WithLongBody = () => (
 )
 
 WithLongBody.storyName = 'With long body'
+
+const Search = styled.div`
+  padding: ${space[16]};
+  border-block-end: 1px solid ${color.stroke};
+
+  @media ${device.mobileL} {
+    padding-block: ${space[32]};
+    padding-inline: ${space[32]};
+  }
+`
+
+const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: ${space[8]};
+
+  @media ${device.tablet} {
+    grid-gap: ${space[16]};
+  }
+`
+
+export const WithScroll = ({
+  children,
+  ...props
+}: {
+  children: ReactNode
+  persist?: boolean
+  defaultOn?: boolean
+}) => (
+  <Dialog {...props}>
+    {({ hide, getToggleProps, getWindowProps }) => (
+      <>
+        <Button {...getToggleProps()}>Show dialog</Button>
+        <DialogWindow {...getWindowProps()}>
+          <DialogHeader>
+            Dialog Title
+            {!props.persist && (
+              <DialogAdornment right>
+                <button onClick={hide}>
+                  <CloseAlt size={24} />
+                </button>
+              </DialogAdornment>
+            )}
+          </DialogHeader>
+          <Search>
+            <Input
+              id="preferredCurrency"
+              startAdornment={<MagnifyingGlass size={24} />}
+              aria-label="A search field"
+              placeholder="Search for your currency"
+            />
+          </Search>
+          <DialogBody height="375px">
+            <Flex>
+              {items.map(({ value, name, flag }) => (
+                <Card title={name} key={value} leftAdornment={flag}></Card>
+              ))}
+            </Flex>
+          </DialogBody>
+        </DialogWindow>
+      </>
+    )}
+  </Dialog>
+)
+
+WithScroll.storyName = 'With scrollable body'
 
 export const WithHook = () => <HooksDialog />
 
