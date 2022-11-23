@@ -210,7 +210,12 @@ const BodyWrapper = styled.div`
   }
 `
 
-const Body = styled.div`
+interface BodyStyles {
+  height?: string
+}
+
+const Body = styled.div<BodyStyles>`
+  height: ${props => (props.height ? props.height : 'auto')};
   max-height: 50vh;
   padding-block: ${space[16]};
   padding-inline: ${space[16]};
@@ -230,7 +235,7 @@ const Body = styled.div`
     padding-block: ${space[32]};
     padding-inline: ${space[32]};
     max-height: none;
-    overflow-y: unset;
+    overflow-y: ${props => (props.height ? 'auto' : 'unset')};
     -webkit-overflow-scrolling: auto;
   }
 `
@@ -239,18 +244,17 @@ type DialogBodyProps = {
   children: ReactNode
   title?: string
   back?: string
+  height?: string
 }
 
 export const DialogBody: React.FC<DialogBodyProps> = ({
   children,
   ...props
-}) => {
-  return (
-    <BodyWrapper>
-      <Body {...props}>{children}</Body>
-    </BodyWrapper>
-  )
-}
+}) => (
+  <BodyWrapper>
+    <Body {...props}>{children}</Body>
+  </BodyWrapper>
+)
 
 export const DialogFooter = styled.footer`
   position: relative;
