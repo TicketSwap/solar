@@ -78,6 +78,82 @@ export const Controlled = () => {
   )
 }
 
+export const WithLettersOnly = () => {
+  const [value, setValue] = useState('fooba')
+
+  return (
+    <Dialog on>
+      {({ getWindowProps }) => (
+        <>
+          <DialogWindow {...getWindowProps()}>
+            <DialogHeader>One Time Code Input</DialogHeader>
+            <DialogBody>
+              <OneTimeCodeInput
+                length={6}
+                value={value}
+                id="otc-input"
+                legend="Verificationcode"
+                instruction={
+                  <Instruction>Enter your 6 letter code here</Instruction>
+                }
+                type="lettersOnly"
+                aria-label="One Time Code Input Field:"
+                onChange={event => {
+                  console.log(event)
+                  setValue(event.target.value)
+                }}
+              />
+            </DialogBody>
+            <DialogFooter>
+              <Button onClick={() => console.log('submitted')} fullWidth>
+                Submit
+              </Button>
+            </DialogFooter>
+          </DialogWindow>
+        </>
+      )}
+    </Dialog>
+  )
+}
+
+export const WithNumbersOnly = () => {
+  const [value, setValue] = useState('1234')
+
+  return (
+    <Dialog on>
+      {({ getWindowProps }) => (
+        <>
+          <DialogWindow {...getWindowProps()}>
+            <DialogHeader>One Time Code Input</DialogHeader>
+            <DialogBody>
+              <OneTimeCodeInput
+                length={6}
+                value={value}
+                id="otc-input"
+                legend="Verificationcode"
+                instruction={
+                  <Instruction>Enter your 6 digit code here</Instruction>
+                }
+                type="numbersOnly"
+                aria-label="One Time Code Input Field:"
+                onChange={event => {
+                  console.log(event)
+                  setValue(event.target.value)
+                }}
+              />
+            </DialogBody>
+            <DialogFooter>
+              <Button onClick={() => console.log('submitted')} fullWidth>
+                Submit
+              </Button>
+            </DialogFooter>
+          </DialogWindow>
+        </>
+      )}
+    </Dialog>
+  )
+}
+
 export const ShortCode = () => {
   return (
     <Dialog on>
