@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { device, space, color, fontWeight } from '../../theme'
 import { ChevronDown } from '../../icons'
 import styled from '@emotion/styled'
@@ -10,9 +10,8 @@ import {
   AccordionButtonProps,
 } from '@reach/accordion'
 
-export interface AccordionProps {
-  collapsible?: boolean
-  children: ReactNode
+export interface AccordionProps extends Reach.AccordionProps {
+  onChange?: (index: number) => void
 }
 
 const Accordion: React.FC<AccordionProps> = ({
