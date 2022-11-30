@@ -26,6 +26,12 @@ const OneTimeCodeContainer = styled.section`
   }
 `
 
+export enum OneTimeCodeInputType {
+  default = 'default',
+  numbersOnly = 'numbersOnly',
+  lettersOnly = 'lettersOnly',
+}
+
 type OverwrittenInputProps =
   | 'id'
   | 'aria-label'
@@ -47,6 +53,7 @@ interface OneTimeCodeInputProps {
   value?: string
   defaultValue?: string
   inputProps?: Omit<InputWithAriaLabel, OverwrittenInputProps>
+  type?: keyof typeof OneTimeCodeInputType
 }
 
 export const OneTimeCodeInput = ({
@@ -60,6 +67,7 @@ export const OneTimeCodeInput = ({
   defaultValue = '',
   value,
   inputProps = {},
+  type = OneTimeCodeInputType.default,
 }: OneTimeCodeInputProps) => {
   const [inputValues, setInputValues] = useState([
     ...defaultValue,
@@ -148,6 +156,18 @@ export const OneTimeCodeInput = ({
     const moveRight =
       event.key === 'ArrowRight' && position !== currentValues.length - 1
     const moveLeft = event.key === 'ArrowLeft'
+
+    if (type === OneTimeCodeInputType.lettersOnly) {
+      if (!event.key.match(/^[a-zA-Z]$/) && event.key !== 'Backspace') {
+        return event.preventDefault()
+      }
+    }
+
+    if (type === OneTimeCodeInputType.numbersOnly) {
+      if (!event.key.match(/^[0-9]$/) && event.key !== 'Backspace') {
+        return event.preventDefault()
+      }
+    }
 
     if (event.key === 'Backspace') {
       if (!currentValues[position]) {
