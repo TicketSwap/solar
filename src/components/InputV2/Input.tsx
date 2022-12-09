@@ -109,13 +109,13 @@ export const Input = ({
     $hasStartAdornment={Boolean(startAdornment)}
     $hasEndAdornment={Boolean(endAdornment)}
   >
-    {startAdornment && <Adornment $start>{startAdornment}</Adornment>}
     <StyledInput
       $hasStartAdornment={Boolean(startAdornment)}
       $hasEndAdornment={Boolean(endAdornment)}
       $rounded={rounded}
       {...props}
     />
+    {startAdornment && <Adornment $start>{startAdornment}</Adornment>}
     {endAdornment && <Adornment>{endAdornment}</Adornment>}
   </Container>
 )
