@@ -17,10 +17,13 @@ const SelectContent = styled.select`
 
 type RequiredChipProps = Omit<ChipProps, 'active' | 'endAdornment'>
 
+interface OptionsProps extends OptionHTMLAttributes<HTMLOptionElement> {
+  name?: string | undefined
+}
 interface ChipWithSelectProps
   extends RequiredChipProps,
     InputHTMLAttributes<HTMLSelectElement> {
-  options: OptionHTMLAttributes<HTMLOptionElement>[]
+  options: OptionsProps[]
 }
 
 export const ChipWithSelect = ({
@@ -66,7 +69,7 @@ export const ChipWithSelect = ({
             }
             {...option}
           >
-            {option.label || option.value}
+            {option.label || option.name || option.value}
           </option>
         ))}
       </SelectContent>
