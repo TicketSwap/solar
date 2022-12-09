@@ -1,3 +1,5 @@
+import { Chip, ChipWithSelect, ChipWithToggle } from './Chip'
+
 export { Alert, AlertVariant } from './Alert'
 export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
@@ -9,6 +11,7 @@ export {
 } from './Accordion'
 export { Banner } from './Banner'
 export { Text, SmallText, TinyText } from './Text'
+export { Chip, ChipWithSelect, ChipWithToggle } from './Chip'
 export { BaseStyles } from './BaseStyles'
 export { StarRating } from './StarRating'
 export { Button, ButtonVariant, ButtonSize } from './Button'
