@@ -1,5 +1,3 @@
-import { Chip, ChipWithSelect, ChipWithToggle } from './Chip'
-
 export { Alert, AlertVariant } from './Alert'
 export type { AlertAction } from './Alert'
 export { Avatar } from './Avatar'
