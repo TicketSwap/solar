@@ -7,13 +7,13 @@ export interface WrapperProps {
 }
 
 const Wrapper = styled.span<WrapperProps>`
-  display: inline-block;
+  display: inline-grid;
+  place-items: center;
   vertical-align: middle;
   width: ${props => `${props.iconSize || 32}px`};
   height: ${props => `${props.iconSize || 32}px`};
   min-width: ${props => `${props.iconSize || 32}px`};
   min-height: ${props => `${props.iconSize || 32}px`};
-  position: relative;
 
   /*
     Overwrite the color from a styled component if
@@ -23,13 +23,6 @@ const Wrapper = styled.span<WrapperProps>`
 `
 
 const InlineSvg = styled.svg`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   color: inherit;
   fill: currentColor;
 `
