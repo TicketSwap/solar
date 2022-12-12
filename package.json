@@ -61,7 +61,7 @@
     "compute-scroll-into-view": "^1.0.16",
     "downshift": "^6.1.12",
     "jest-environment-jsdom": "^29.1.2",
-    "scroll-into-view-if-needed": "^2.2.29"
+    "scroll-into-view-if-needed": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
