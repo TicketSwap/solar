@@ -89,7 +89,7 @@ function Slide({
 }
 
 export interface ContentTransitionProps {
-  children: ReactElement[]
+  children: Array<ReactElement | ReactElement[]>
   activeView: string
   onChange?: (child: ReactElement) => void
 }
@@ -99,16 +99,17 @@ export function ContentTransition({
   onChange = () => null,
   activeView,
 }: ContentTransitionProps) {
-  const activeIndex = children.findIndex(item => item.key === activeView)
+  const flatChildren = children.flatMap(child => child)
+  const activeIndex = flatChildren.findIndex(item => item.key === activeView)
   const previousIndex = usePrevious(activeIndex)
 
   useEffect(() => {
-    onChange(children[activeIndex])
-  }, [children, onChange, activeIndex])
+    onChange(flatChildren[activeIndex])
+  }, [flatChildren, onChange, activeIndex])
 
   return (
     <Container>
-      {children.map(child => (
+      {flatChildren.map(child => (
         <Slide
           key={child.key}
           active={child.key === activeView}
