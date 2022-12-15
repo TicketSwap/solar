@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Input } from '../InputV2'
 import { Button, ButtonVariant } from '../Button'
 import { Select } from '../Select'
@@ -12,6 +12,8 @@ import {
   useDialog,
 } from '../Dialog'
 import { ContentTransition } from './'
+import WithSpreading from './withSpreading'
+import WithFlattening from './withFlattening'
 import { color } from '../../theme'
 import { Textarea } from '../Textarea'
 
@@ -134,24 +136,7 @@ const SuccessView = ({}: { title: string; back: string }) => (
   </DialogBody>
 )
 
-const extraBodies = [
-  <DialogBody key="extra1" title="extra1" back="login">
-    <div>
-      <p>Extra body 1</p>
-    </div>
-  </DialogBody>,
-  <DialogBody key="extra2" title="extra2">
-    <div>
-      <p>Extra body 2</p>
-    </div>
-  </DialogBody>,
-]
-
-interface Props {
-  slots: ReactElement[]
-}
-
-function Dialog({ slots }: Props) {
+function Dialog() {
   const [title, setTitle] = React.useState('')
   const [back, setBack] = React.useState('')
   const initialView = 'login'
@@ -159,30 +144,6 @@ function Dialog({ slots }: Props) {
   const { hide, getToggleProps, getWindowProps } = useDialog({
     onToggle: on => on && setActiveView(initialView),
   })
-
-  const dialogBodies = [
-    <Login
-      key="login"
-      title="Login"
-      showLoginEmailView={() => setActiveView('loginEmail')}
-      showSignupView={() => setActiveView('signup')}
-    />,
-    <LoginEmail key="loginEmail" title="Login with email" back="login" />,
-    <Signup
-      key="signup"
-      title="Signup"
-      showSignupEmailView={() => setActiveView('signupEmail')}
-      showLoginView={() => setActiveView('login')}
-    />,
-    <SignupEmail
-      key="signupEmail"
-      title="Sign up with email"
-      back="signup"
-      showSuccessView={() => setActiveView('success')}
-    />,
-    <SuccessView key="success" title="Success" back="signupEmail" />,
-    ...slots,
-  ]
 
   return (
     <>
@@ -230,7 +191,6 @@ function Dialog({ slots }: Props) {
             showSuccessView={() => setActiveView('success')}
           />
           <SuccessView key="success" title="Success" back="signupEmail" />
-          {slots.map(slot => slot)}
         </ContentTransition>
       </DialogWindow>
     </>
@@ -241,4 +201,16 @@ export default {
   title: 'Components/Animation/ContentTransition',
 }
 
-export const Basic = () => <Dialog slots={extraBodies} />
+export const Basic = () => <Dialog />
+
+const extraBodies = [
+  <DialogBody key="extra1" title="extra1" back="login">
+    <h1>Extra body 1</h1>
+  </DialogBody>,
+  <DialogBody key="extra2" title="extra2">
+    <h1>Extra body 2</h1>
+  </DialogBody>,
+]
+
+export const SpreadingSlots = () => <WithSpreading slots={extraBodies} />
+export const FlatteningSlots = () => <WithFlattening slots={extraBodies} />
