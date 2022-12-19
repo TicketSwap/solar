@@ -114,6 +114,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
 
 export interface OptionProps extends OptionHTMLAttributes<HTMLOptionElement> {
   startAdornment?: ReactNode
+  shortLabel?: string
 }
 
 export type SelectVariant = 'default' | 'short' | 'long' | 'shortvalue'
@@ -205,7 +206,8 @@ export const Select = ({
         {variant !== 'default' && currentOption.startAdornment}{' '}
         {!variant.startsWith('short') &&
           (currentOption.label || currentOption.value)}
-        {variant === 'shortvalue' && currentOption.value}
+        {variant === 'shortvalue' &&
+          (currentOption.shortLabel || currentOption.value)}
       </DisplayValue>
       <Adornment>
         <ArrowDown size={16} />

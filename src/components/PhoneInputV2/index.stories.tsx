@@ -5,32 +5,38 @@ import { PhoneInput } from './'
 
 const countries = [
   {
-    value: '+1684',
+    value: 'AS',
+    shortLabel: '+1684',
     label: 'American Samoa',
     startAdornment: <Flag countryCode="as" />,
   },
   {
-    value: '+1441',
+    value: 'BM',
+    shortLabel: '+1441',
     label: 'Bermuda',
     startAdornment: <Flag countryCode="bm" />,
   },
   {
-    value: '+975',
+    value: 'BO',
+    shortLabel: '+975',
     label: 'Bolivia',
     startAdornment: <Flag countryCode="bo" />,
   },
   {
-    value: '+591',
+    value: 'BT',
+    shortLabel: '+591',
     label: 'Bhutan',
     startAdornment: <Flag countryCode="bt" />,
   },
   {
-    value: '+31',
+    value: 'NL',
+    shortLabel: '+31',
     label: 'The Netherlands',
     startAdornment: <Flag countryCode="nl" />,
   },
   {
-    value: '+40',
+    value: 'RO',
+    shortLabel: '+40',
     label: 'Romania',
     startAdornment: <Flag countryCode="ro" />,
   },
@@ -42,7 +48,7 @@ export default {
 
 export const Controlled = () => {
   const [phoneNumber, setPhoneNumber] = useState({
-    country: '+31',
+    country: 'NL',
     number: '',
   })
 
