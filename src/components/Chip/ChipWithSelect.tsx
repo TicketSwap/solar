@@ -44,7 +44,7 @@ export const ChipWithSelect = ({
   return (
     <Chip
       compact={compact}
-      active={Boolean(value)}
+      active={Boolean(value) && !options[0].value}
       startAdornment={startAdornment}
       endAdornment={<ChevronDown size={16} />}
       as="label"
