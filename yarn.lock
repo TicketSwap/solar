@@ -2539,17 +2539,15 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
   integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
-"@reach/accordion@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.17.0.tgz#298541028e90f5ca4b80ebdbb34345cb34d3dc5c"
-  integrity sha512-BoFDIYpaW56j1Ys2N1wA2E5UsMW7yJQtVCJkaV0OO4Q/JJY8r8JZoiQ/+Juc8z0DqOJGVIgYebMAgroDT8Oo0g==
+"@reach/accordion@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/accordion/-/accordion-0.18.0.tgz#7bd76caaa8394b2e67cbf6de7892b02d9cbd7eb1"
+  integrity sha512-jOQ1jj0Oc4yYu58R7WzSCkDSNO8kpy8ovQTjKk0Bo3pbmmkX7QQq292TTl8dMz0RXGe0pmLViubRsD0GkrBFIA==
   dependencies:
-    "@reach/auto-id" "0.17.0"
-    "@reach/descendants" "0.17.0"
-    "@reach/utils" "0.17.0"
-    prop-types "^15.7.2"
-    tiny-warning "^1.0.3"
-    tslib "^2.3.0"
+    "@reach/auto-id" "0.18.0"
+    "@reach/descendants" "0.18.0"
+    "@reach/polymorphic" "0.18.0"
+    "@reach/utils" "0.18.0"
 
 "@reach/auto-id@0.17.0", "@reach/auto-id@^0.17.0":
   version "0.17.0"
@@ -2559,6 +2557,13 @@
     "@reach/utils" "0.17.0"
     tslib "^2.3.0"
 
+"@reach/auto-id@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.18.0.tgz#4b97085cd1cf1360a9bedc6e9c78e97824014f0d"
+  integrity sha512-XwY1IwhM7mkHZFghhjiqjQ6dstbOdpbFLdggeke75u8/8icT8uEHLbovFUgzKjy9qPvYwZIB87rLiR8WdtOXCg==
+  dependencies:
+    "@reach/utils" "0.18.0"
+
 "@reach/descendants@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.17.0.tgz#3fb087125a67870acd4dee1528449ed546829b67"
@@ -2566,6 +2571,13 @@
   dependencies:
     "@reach/utils" "0.17.0"
     tslib "^2.3.0"
+
+"@reach/descendants@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.18.0.tgz#16fe52a5154da262994b0b8768baff4f670922d1"
+  integrity sha512-GXUxnM6CfrX5URdnipPIl3Tlc6geuz4xb4n61y4tVWXQX1278Ra9Jz9DMRN8x4wheHAysvrYwnR/SzAlxQzwtA==
+  dependencies:
+    "@reach/utils" "0.18.0"
 
 "@reach/dialog@^0.17.0":
   version "0.17.0"
@@ -2606,6 +2618,11 @@
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
   integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
+
+"@reach/polymorphic@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/polymorphic/-/polymorphic-0.18.0.tgz#2fe42007a774e06cdbc8e13e0d46f2dc30f2f1ed"
+  integrity sha512-N9iAjdMbE//6rryZZxAPLRorzDcGBnluf7YQij6XDLiMtfCj1noa7KyLpEc/5XCIB/EwhX3zCluFAwloBKdblA==
 
 "@reach/popover@0.17.0":
   version "0.17.0"
@@ -2670,6 +2687,11 @@
   dependencies:
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
+
+"@reach/utils@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.18.0.tgz#4f3cebe093dd436eeaff633809bf0f68f4f9d2ee"
+  integrity sha512-KdVMdpTgDyK8FzdKO9SCpiibuy/kbv3pwgfXshTI6tEcQT1OOwj7BAksnzGC0rPz0UholwC+AgkqEl3EJX3M1A==
 
 "@reach/visually-hidden@0.17.0":
   version "0.17.0"
