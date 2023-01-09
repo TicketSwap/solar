@@ -99,11 +99,17 @@ const CalendarDialog = ({
 
   const [selectedMonth, setSelectedMonth] = useState(initialMonth)
   const [selectedYear, setSelectedYear] = useState(initialYear)
-
   const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate()
-  const firstDayOfMonth = new Date(selectedYear, selectedMonth, 1).getDay()
-
   const weekdays = getWeekdays(locale)
+
+  const firstDayOfMonth = weekdays.findIndex(
+    day =>
+      day ===
+      new Date(selectedYear, selectedMonth, 1).toLocaleDateString(locale, {
+        weekday: 'short',
+      })
+  )
+
   const months = getMonths(locale, dateRange)
   const years = getYears({
     timeFrame: timeFrame || TimeFrame.future,
@@ -150,7 +156,7 @@ const CalendarDialog = ({
     )
   }
 
-  for (let i = 1; i < firstDayOfMonth; i++) {
+  for (let i = 0; i < firstDayOfMonth; i++) {
     days.unshift(<div key={`prev-${i}`} />)
   }
 
