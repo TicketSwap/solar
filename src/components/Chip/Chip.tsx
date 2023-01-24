@@ -71,12 +71,12 @@ const Container = styled.span<ContainerProps>`
     hasStartAdornment &&
     compact &&
     css`
-      > *:first-of-type {
+      > *:first-of-type:not(style) {
         display: none;
       }
 
       @media ${device.tablet} {
-        > *:first-of-type {
+        > *:first-of-type:not(style) {
           display: block;
         }
       }
