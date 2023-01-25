@@ -16,7 +16,8 @@ export enum BaseButtonSize {
   small = 'small',
 }
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   leftAdornment?: ReactNode
   variant?: keyof typeof ButtonVariant
   disabled?: boolean
@@ -27,14 +28,14 @@ const StyledButton = styled.button<ButtonProps>`
   ${baseTextStyles};
   position: relative;
   display: inline-block;
-  color: ${p =>
-    p.disabled
+  color: ${props =>
+    props.disabled
       ? color.inactive
-      : p.variant === ButtonVariant.success
+      : props.variant === ButtonVariant.success
       ? color.success
-      : p.variant === ButtonVariant.danger
+      : props.variant === ButtonVariant.danger
       ? color.failure
-      : p.variant === ButtonVariant.warning
+      : props.variant === ButtonVariant.warning
       ? color.warning
       : color.info};
   font-weight: ${fontWeight.semiBold};
@@ -68,15 +69,15 @@ const StyledButton = styled.button<ButtonProps>`
     background-color: transparent;
     border-radius: ${radius.md};
     opacity: 0.6;
-    box-shadow: 0 0 0 ${space[4]}
-      ${p =>
-        p.variant === ButtonVariant.success
-          ? color.success
-          : p.variant === ButtonVariant.danger
-          ? color.failure
-          : p.variant === ButtonVariant.warning
-          ? color.warning
-          : color.info};
+    box-shadow: 0 0 0 ${space[4]};
+    ${({ variant }) =>
+      variant === ButtonVariant.success
+        ? color.success
+        : variant === ButtonVariant.danger
+        ? color.failure
+        : variant === ButtonVariant.warning
+        ? color.warning
+        : color.info};
 
     @media ${device.tablet} {
       top: -2px;
