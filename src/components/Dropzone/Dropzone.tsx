@@ -135,6 +135,7 @@ const Information = styled.div<InformationStyles>`
   padding-block-start: ${space[12]};
   flex: 1;
   gap: ${space[8]};
+  width: 100%;
 
   @media ${device.tablet} {
     align-items: ${({ variant }) =>
@@ -262,7 +263,9 @@ export const Dropzone = ({
           {title && <Title>{title}</Title>}
           {subtitle && <SmallText>{subtitle}</SmallText>}
           <DesktopUI variant={variant}>
-            <BaseButton onClick={onButtonClick}>{action}</BaseButton>
+            <BaseButton type="button" onClick={onButtonClick}>
+              {action}
+            </BaseButton>
             <FileInput
               type="file"
               aria-label={ariaLabel}
@@ -276,6 +279,7 @@ export const Dropzone = ({
           <MobileUI>
             {variant === DropzoneVariant.light ? (
               <Button
+                type="button"
                 fullWidth
                 variant="secondary"
                 leftAdornment={<ArrowUpRounded size={24} />}
@@ -285,7 +289,7 @@ export const Dropzone = ({
               </Button>
             ) : (
               <>
-                <Button fullWidth onClick={onButtonClick}>
+                <Button type="button" fullWidth onClick={onButtonClick}>
                   {mobileAction ?? action}
                 </Button>
                 {secondaryAction && <>{secondaryAction}</>}
