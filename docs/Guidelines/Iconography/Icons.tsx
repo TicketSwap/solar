@@ -76,6 +76,10 @@ const IconWrapper: React.FC<IconWrapperProps> = ({ icon, name }) => {
 export const Icons = () => {
   return (
     <IconGrid>
+      <IconWrapper
+        icon={<Icon.Accessibility title="Accessibility" />}
+        name="Accessibility"
+      />
       <IconWrapper icon={<Icon.Alert title="Alert" />} name="Alert" />
       <IconWrapper icon={<Icon.AlertOff title="AlertOff" />} name="AlertOff" />
       <IconWrapper

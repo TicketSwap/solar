@@ -1,3 +1,4 @@
+export { Accessibility } from './Accessibility'
 export { Alert } from './Alert'
 export { AlertOff } from './AlertOff'
 export { AlertRounded } from './AlertRounded'
