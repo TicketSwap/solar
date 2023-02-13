@@ -32,7 +32,7 @@ const Container = styled.span<ContainerProps>`
     position: absolute;
     inset: -2px;
     border: 2px solid var(--_accentColor);
-    border-radius: ${space[32]};
+    border-radius: ${space[8]};
     pointer-events: none;
   }
 
@@ -44,7 +44,7 @@ const Container = styled.span<ContainerProps>`
   padding-block: ${space[8]};
   gap: ${space[4]};
   background-color: var(--_backgroundColor);
-  border-radius: ${space[32]};
+  border-radius: ${space[8]};
   color: var(--_accentColor);
   max-width: ${space[144]};
   line-height: 20px;
