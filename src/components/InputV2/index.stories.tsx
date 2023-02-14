@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CloseRounded, MagnifyingGlass } from '../../icons'
-import { color } from '../../theme'
+import { color, fontSize, space } from '../../theme'
 import { Spinner } from '../Spinner'
 import { Input } from '.'
+import styled from '@emotion/styled'
 
 export default {
   title: 'Components/Inputs/InputV2',
@@ -112,4 +113,14 @@ export const Rounded = () => (
 
 export const Time = () => (
   <Input type="time" id="time" label="Select time" onChange={console.log} />
+)
+
+const CustomInput = styled(Input)`
+  --_inputHeight: ${space[44]};
+  --_inputPadding: ${space[12]};
+  --_inputFontSize: ${fontSize[16]};
+`
+
+export const CustomStyledInput = () => (
+  <CustomInput id="custom" label="Enter your name" onChange={console.log} />
 )
