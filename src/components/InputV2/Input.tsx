@@ -55,11 +55,11 @@ const StyledInput = styled.input<StyledInputProps>`
   grid-area: 1 / 1 / 1 / 4;
   inline-size: 100%;
   font-family: inherit;
-  font-size: ${fontSize[18]};
+  font-size: var(--_inputFontSize, ${fontSize[18]});
   line-height: ${lineHeight.solid};
-  block-size: ${space[56]};
+  block-size: var(--_inputHeight, ${space[56]});
   padding-block: 0;
-  padding-inline: ${space[16]};
+  padding-inline: var(--_inputPadding, ${space[16]});
   color: ${color.foreground};
   border-radius: ${props => (props.$rounded ? space[32] : radius.md)};
   background-color: ${color.elevatedBackground};
