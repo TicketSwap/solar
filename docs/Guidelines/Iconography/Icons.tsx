@@ -231,6 +231,10 @@ export const Icons = () => {
         icon={<Icon.Messenger title="Messenger" />}
         name="Messenger"
       />
+      <IconWrapper
+        icon={<Icon.Microphone title="Microphone" />}
+        name="Microphone"
+      />
       <IconWrapper icon={<Icon.Minus title="Minus" />} name="Minus" />
       <IconWrapper icon={<Icon.MinusAlt title="MinusAlt" />} name="MinusAlt" />
       <IconWrapper
