@@ -197,7 +197,6 @@ export const Select = ({
         ))}
       </StyledSelect>
 
-      {startAdornment && <Adornment $start>{startAdornment}</Adornment>}
       <DisplayValue
         hasStartAdornment={Boolean(startAdornment)}
         rounded={rounded}
@@ -209,6 +208,7 @@ export const Select = ({
         {variant === 'shortvalue' &&
           (currentOption.shortLabel || currentOption.value)}
       </DisplayValue>
+      {startAdornment && <Adornment $start>{startAdornment}</Adornment>}
       <Adornment>
         <ArrowDown size={16} />
       </Adornment>
