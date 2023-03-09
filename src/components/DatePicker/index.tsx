@@ -39,7 +39,7 @@ const StyledButton = styled.button`
   align-items: center;
   justify-content: space-between;
   margin-block-end: ${space[8]};
-  width: 100%;
+  inline-size: 100%;
 `
 
 const ButtonText = styled(Text)<ButtonTextProps>`

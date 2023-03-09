@@ -47,10 +47,7 @@ const StyledDialogOverlay = styled<React.FC<DialogOverlayProps>>(
   DialogOverlay
 )<StyledTransitionProps>`
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   overflow: auto;
   background-color: ${color.overlay};
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
@@ -68,11 +65,11 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
 )<StyledTransitionProps>`
   padding-block: 0;
   padding-inline: 0;
-  width: 100%;
-  max-width: 44rem;
+  inline-size: 100%;
+  max-inline-size: 44rem;
   margin-block: 0;
   margin-inline: 0;
-  min-height: 100vh;
+  min-block-size: 100vh;
   background: ${color.background};
   outline: none;
   transform: ${props =>
@@ -87,7 +84,7 @@ const StyledDialogContent = styled<React.FC<DialogContentProps>>(
     margin-inline: auto;
     border-radius: ${radius.lg};
     overflow-x: hidden;
-    min-height: auto;
+    min-block-size: auto;
     transform: ${props => {
       switch (props.state) {
         case 'EXITED':
@@ -107,9 +104,9 @@ interface StyledHeaderProps {
 
 const TitleHeader = styled.div<StyledHeaderProps>`
   position: fixed;
-  top: 0;
-  width: 100%;
-  height: ${space[56]};
+  inset-block-start: 0;
+  inline-size: 100%;
+  block-size: ${space[56]};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,8 +131,8 @@ const TitleHeader = styled.div<StyledHeaderProps>`
   }
 
   button {
-    height: ${space[44]};
-    width: ${space[44]};
+    block-size: ${space[44]};
+    inline-size: ${space[44]};
     border-radius: 50%;
     background-color: ${color.actionBackground};
     display: flex;
@@ -247,7 +244,7 @@ interface StyledLogoImageProps {
 }
 
 const LogoImage = styled.div<StyledLogoImageProps>`
-  height: ${space[96]};
+  block-size: ${space[96]};
   margin-block-start: -${space[56]};
   margin-block-end: ${space[24]};
   background-size: contain;
@@ -258,10 +255,10 @@ const LogoImage = styled.div<StyledLogoImageProps>`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: ${space[16]};
-  right: ${space[16]};
-  height: ${space[44]};
-  width: ${space[44]};
+  inset-block-start: ${space[16]};
+  inset-inline-end: ${space[16]};
+  block-size: ${space[44]};
+  inline-size: ${space[44]};
   border-radius: 50%;
   background-color: ${color.darkBackground};
   display: flex;
@@ -269,10 +266,10 @@ const CloseButton = styled.button`
   justify-content: center;
 
   @media ${device.tablet} {
-    top: ${space[24]};
-    right: ${space[24]};
-    height: ${space[56]};
-    width: ${space[56]};
+    inset-block-start: ${space[24]};
+    inset-inline-end: ${space[24]};
+    block-size: ${space[56]};
+    inline-size: ${space[56]};
   }
 `
 

@@ -57,12 +57,12 @@ const Container = styled.div<AlertProps>`
       ? color.warningBackground
       : color.infoBackground};
   border-radius: ${radius.md};
-  min-height: ${space[44]};
+  min-block-size: ${space[44]};
   display: flex;
   align-items: flex-start;
 
   @media ${device.tablet} {
-    min-height: ${space[56]};
+    min-block-size: ${space[56]};
   }
 
   a {
@@ -72,16 +72,16 @@ const Container = styled.div<AlertProps>`
 
 const Adornment = styled.span`
   ${textColor};
-  width: ${space[44]};
-  height: ${space[44]};
+  inline-size: ${space[44]};
+  block-size: ${space[44]};
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
 
   @media ${device.tablet} {
-    width: ${space[56]};
-    height: ${space[56]};
+    inline-size: ${space[56]};
+    block-size: ${space[56]};
   }
 `
 

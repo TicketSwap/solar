@@ -53,10 +53,10 @@ const InfoText = styled(Text)`
 `
 
 const StyledDialogBody = styled(DialogBody)`
-  max-height: 70vh;
+  max-block-size: 70vh;
 
   @media ${device.mobileL} {
-    max-height: none;
+    max-block-size: none;
   }
 `
 

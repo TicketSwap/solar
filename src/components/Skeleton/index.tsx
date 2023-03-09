@@ -13,8 +13,8 @@ const pulse = keyframes`
 
 export const SkeletonPulse = styled.span`
   display: inline-block;
-  height: 100%;
-  width: 100%;
+  block-size: 100%;
+  inline-size: 100%;
   background-image: linear-gradient(
     -90deg,
     rgba(0, 0, 0, 0.07) 0%,
@@ -43,7 +43,7 @@ export interface SkeletonLineProps {
 }
 
 export const SkeletonLine = styled(SkeletonPulse)<SkeletonLineProps>`
-  width: ${props => (props.width ? props.width * 100 : 75)}%;
+  inline-size: ${props => (props.width ? props.width * 100 : 75)}%;
   border-radius: ${radius.md};
   line-height: 100%;
 

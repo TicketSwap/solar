@@ -22,7 +22,7 @@ const ColorStrokeContainer = styled.div<ColorStrokeContainerProps>`
   flex-direction: column;
   justify-content: space-between;
 
-  height: 300px;
+  block-size: 300px;
   padding-block: ${space[16]};
   padding-inline: ${space[16]};
 

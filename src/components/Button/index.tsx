@@ -83,10 +83,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   &:focus::after {
     content: '';
     position: absolute;
-    left: -1px;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
+    inset: -1px;
     background-color: transparent;
     border-radius: calc(${radius.md} + 1px);
     box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
@@ -117,8 +114,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ size, isSquare, fullWidth }) =>
     size === ButtonSize.small &&
     css`
-      height: ${space[24]};
-      width: ${fullWidth ? '100%' : isSquare ? space[24] : 'auto'};
+      block-size: ${space[24]};
+      inline-size: ${fullWidth ? '100%' : isSquare ? space[24] : 'auto'};
       font-size: ${fontSize[16]};
       padding-block: ${space[4]};
       padding-inline: ${isSquare ? space[4] : space[12]};
@@ -129,8 +126,8 @@ const StyledButton = styled.button<StyledButtonProps>`
       }
 
       @media ${device.tablet} {
-        height: ${space[32]};
-        width: ${isSquare ? space[32] : 'auto'};
+        block-size: ${space[32]};
+        inline-size: ${isSquare ? space[32] : 'auto'};
         padding-block: ${space[8]};
         padding-inline: ${isSquare ? space[8] : space[16]};
       }
@@ -139,8 +136,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ size, isSquare, fullWidth }) =>
     size === ButtonSize.medium &&
     css`
-      height: ${space[44]};
-      width: ${fullWidth ? '100%' : isSquare ? space[44] : 'auto'};
+      block-size: ${space[44]};
+      inline-size: ${fullWidth ? '100%' : isSquare ? space[44] : 'auto'};
       font-size: ${fontSize[16]};
       padding-block: ${space[12]};
       padding-inline: ${isSquare ? space[12] : space[24]};
@@ -150,8 +147,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ size, isSquare, fullWidth }) =>
     size === ButtonSize.large &&
     css`
-      height: ${space[56]};
-      width: ${fullWidth ? '100%' : isSquare ? space[56] : 'auto'};
+      block-size: ${space[56]};
+      inline-size: ${fullWidth ? '100%' : isSquare ? space[56] : 'auto'};
       font-size: ${fontSize[18]};
       padding-block: ${space[16]};
       padding-inline: ${isSquare ? space[16] : space[32]};

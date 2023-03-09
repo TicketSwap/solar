@@ -12,10 +12,10 @@ const Wrapper = styled.div<WrapperProps>`
   vertical-align: middle;
   display: inline-block;
   flex: ${props => `${props.size}px`};
-  width: ${props => `${props.size}px`};
-  height: ${props => `${props.size}px`};
-  min-width: ${props => `${props.size}px`};
-  min-height: ${props => `${props.size}px`};
+  inline-size: ${props => `${props.size}px`};
+  block-size: ${props => `${props.size}px`};
+  min-inline-size: ${props => `${props.size}px`};
+  min-block-size: ${props => `${props.size}px`};
   border-radius: 50%;
   position: relative;
   overflow: hidden;
@@ -25,12 +25,9 @@ const Wrapper = styled.div<WrapperProps>`
 
 const imageStyles = css`
   position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
+  inset: 0;
+  block-size: 100%;
+  inline-size: 100%;
   border-radius: 50%;
 `
 

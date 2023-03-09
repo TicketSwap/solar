@@ -17,8 +17,8 @@ interface SlideContainerProps {
 }
 
 const SlideContainer = styled.div<SlideContainerProps>`
-  width: 100%;
-  top: 0;
+  inline-size: 100%;
+  inset-block-start: 0;
   position: ${props =>
     props.state === TransitionState.EXITING ? 'absolute' : 'relative'};
   opacity: ${props =>
@@ -42,7 +42,8 @@ const SlideContainer = styled.div<SlideContainerProps>`
   /* Make sure the exiting slide doesn’t reach outside the dialog */
   overflow: ${props =>
     props.state === TransitionState.EXITING ? 'hidden' : 'visible'};
-  bottom: ${props => (props.state === TransitionState.EXITING ? 0 : 'auto')};
+  inset-block-end: ${props =>
+    props.state === TransitionState.EXITING ? 0 : 'auto'};
 `
 
 export interface SlideProps {

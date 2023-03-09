@@ -35,12 +35,11 @@ interface DialogWrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const DialogWrapper = styled.div<DialogWrapperProps>`
   position: absolute;
-  top: ${space[56]};
-  left: 0;
-  right: 0;
+  inset-block-start: ${space[56]};
+  inset-inline: 0;
 
   @media ${device.tablet} {
-    top: ${space[48]};
+    inset-block-start: ${space[48]};
   }
 `
 
@@ -84,10 +83,7 @@ interface BackdropProps {
 
 const Backdrop = styled.div<BackdropProps>`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: #ffffff99;
   opacity: ${props =>
     props.state === TransitionState.ENTERING ||

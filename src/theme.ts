@@ -177,19 +177,17 @@ export const device = {
 }
 
 export const fullBleed = css`
-  width: 100vw;
+  inline-size: 100vw;
   position: relative;
-  left: 50%;
-  right: 50%;
+  inset-inline: 50%;
   margin-inline-start: -50vw;
   margin-inline-end: -50vw;
 `
 
 export const resetFullBleed = css`
-  width: auto;
+  inline-size: auto;
   position: relative;
-  left: auto;
-  right: auto;
+  inset-inline: auto;
   margin-inline-start: 0;
   margin-inline-end: 0;
 `

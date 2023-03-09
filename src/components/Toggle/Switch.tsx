@@ -28,8 +28,8 @@ const Button = styled.button<ButtonProps>`
   box-sizing: initial;
   display: inline-block;
   outline: 0;
-  width: ${52 / 16}rem;
-  height: ${28 / 16}rem;
+  inline-size: ${52 / 16}rem;
+  block-size: ${28 / 16}rem;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -52,12 +52,12 @@ const Button = styled.button<ButtonProps>`
   }
 
   &::before {
-    left: ${props => (props.isOn ? space[24] : 0)};
+    inset-inline-start: ${props => (props.isOn ? space[24] : 0)};
     position: relative;
     display: block;
     content: '';
-    width: ${28 / 16}rem;
-    height: 100%;
+    inline-size: ${28 / 16}rem;
+    block-size: 100%;
     border-radius: ${space[32]};
     background: ${color.lightBackground};
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
@@ -73,10 +73,7 @@ const Button = styled.button<ButtonProps>`
   &:focus::after {
     content: '';
     position: absolute;
-    left: -1px;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
+    inset: -1px;
     background-color: transparent;
     border-radius: ${space[32]};
     box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
@@ -86,12 +83,11 @@ const Button = styled.button<ButtonProps>`
 
 const Adornment = styled.span<AdornmentProps>`
   position: absolute;
-  left: ${props => (props.isOn ? 34 : 10)}px;
+  inset-inline-start: ${props => (props.isOn ? 34 : 10)}px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   color: ${props => (props.isOn ? color.success : color.inactive)};
   display: flex;
-  top: 0;
-  bottom: 0;
+  inset-block: 0;
   align-items: center;
 `
 

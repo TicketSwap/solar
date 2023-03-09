@@ -46,7 +46,7 @@ const Container = styled.span<ContainerProps>`
   background-color: var(--_backgroundColor);
   border-radius: ${space[32]};
   color: var(--_accentColor);
-  max-width: ${space[144]};
+  max-inline-size: ${space[144]};
   line-height: 20px;
   font-size: ${fontSize[14]};
   font-weight: ${fontWeight.semiBold};
@@ -83,7 +83,7 @@ const Container = styled.span<ContainerProps>`
     `}
 
   @media ${device.tablet} {
-    max-width: 240px;
+    max-inline-size: 240px;
     gap: ${space[8]};
     font-size: ${fontSize[16]};
     line-height: ${lineHeight.copy};

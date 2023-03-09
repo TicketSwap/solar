@@ -4,8 +4,8 @@ import { fontSize, lineHeight, space, color, radius, shadow } from '../../theme'
 
 const StyledTextarea = styled.textarea`
   font-family: inherit;
-  width: 100%;
-  min-height: ${space[64]};
+  inline-size: 100%;
+  min-block-size: ${space[64]};
   font-size: ${fontSize[18]};
   line-height: ${lineHeight.copy};
   padding-block: ${space[16]};

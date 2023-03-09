@@ -33,8 +33,8 @@ const Controls = styled.div`
 
 const Control = styled.button`
   background-color: ${color.actionBackground};
-  width: 56px;
-  height: 56px;
+  inline-size: 56px;
+  block-size: 56px;
   border-radius: ${radius.md};
   display: flex;
   justify-content: center;
@@ -81,12 +81,12 @@ const Cards = styled.div<CardsProps>`
 
     > div:nth-of-type(${props => props.index}) {
       display: block;
-      width: 100%;
+      inline-size: 100%;
     }
 
     > div:nth-of-type(${props => props.index + 1}) {
       display: block;
-      width: 100%;
+      inline-size: 100%;
     }
   }
 `

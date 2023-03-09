@@ -56,13 +56,13 @@ const InputGroup = styled.div`
 `
 
 const InputWrapper = styled.div`
-  width: 100%;
+  inline-size: 100%;
   flex-shrink: 2;
   flex-basis: 40%;
 `
 
 const SelectWrapper = styled.div`
-  width: 100%;
+  inline-size: 100%;
   padding-block: ${space[8]};
   padding-inline: 0;
   flex-shrink: 1;

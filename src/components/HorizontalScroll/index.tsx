@@ -25,16 +25,14 @@ export const HorizontalScroll = styled.div`
   }
 
   /* Span entire viewport width on mobile */
-  width: 100vw;
-  left: 50%;
-  right: 50%;
+  inline-size: 100vw;
+  inset-inline: 50%;
   margin-inline-start: -50vw;
   margin-inline-end: -50vw;
 
   @media ${device.tablet} {
-    width: auto;
-    left: auto;
-    right: auto;
+    inline-size: auto;
+    inset-inline: auto;
     margin-inline-start: 0;
     margin-inline-end: 0;
   }

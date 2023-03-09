@@ -55,7 +55,7 @@ export const TabList = styled<React.FC<TabListProps>>(ReachTabList)`
     /* Adds spacing at the beginning and end of the list. */
     /* Gotta use pseudo-elements, as padding would be ignored. */
     content: '';
-    min-width: ${space[8]};
+    min-inline-size: ${space[8]};
   }
 `
 

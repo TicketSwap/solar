@@ -93,7 +93,7 @@ const DropArea = styled.div<DropAreaStyles>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  inline-size: 100%;
   border-radius: ${radius.lg};
   padding-block-start: ${({ variant }) =>
     variant === DropzoneVariant.light ? space[24] : space[16]};
@@ -111,7 +111,7 @@ const DropArea = styled.div<DropAreaStyles>`
     flex-direction: ${({ variant }) =>
       variant === DropzoneVariant.small ? 'row' : 'column'};
     background-color: ${color.actionBackground};
-    border-width: 2px;
+    border-inline-size: 2px;
     border-style: dashed;
     border-color: ${({ variant }) =>
       variant === DropzoneVariant.light ? color.actionFocus : color.action};
@@ -135,7 +135,7 @@ const Information = styled.div<InformationStyles>`
   padding-block-start: ${space[12]};
   flex: 1;
   gap: ${space[8]};
-  width: 100%;
+  inline-size: 100%;
 
   @media ${device.tablet} {
     align-items: ${({ variant }) =>
@@ -165,7 +165,7 @@ const MobileUI = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${space[16]};
-  width: 100%;
+  inline-size: 100%;
 
   @media ${device.tablet} {
     display: none;

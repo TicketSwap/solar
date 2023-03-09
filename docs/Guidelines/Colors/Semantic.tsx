@@ -27,8 +27,8 @@ type ColorCardProps = {
 }
 
 const ColorCard = styled.div<ColorCardProps>`
-  width: 200px;
-  height: 144px;
+  inline-size: 200px;
+  block-size: 144px;
   border-radius: ${space[16]};
   padding-block: ${space[16]};
   padding-inline: ${space[16]};

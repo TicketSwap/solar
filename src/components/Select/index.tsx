@@ -81,7 +81,7 @@ const LeftAdornment = styled.span`
 
 const RightAdornment = styled.span`
   position: absolute;
-  right: ${space[16]};
+  inset-inline-end: ${space[16]};
 `
 
 const SelectContainer = styled.div`
@@ -99,10 +99,10 @@ const StyledSelect = styled.select<StyledSelectProps>`
   font-family: inherit;
   background-color: ${color.elevatedBackground};
   border-radius: ${radius.md};
-  width: 100%;
+  inline-size: 100%;
   font-size: ${fontSize[18]};
   line-height: ${lineHeight.solid};
-  height: ${space[56]};
+  block-size: ${space[56]};
   padding-block-start: 0;
   padding-block-end: 0;
   padding-inline-start: ${props =>

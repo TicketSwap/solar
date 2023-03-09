@@ -31,8 +31,8 @@ export interface CoverProps {
 
 const Container = styled.div<CoverProps>`
   position: relative;
-  width: 100%;
-  height: ${props => (props.fullHeight ? '100vh' : 'auto')};
+  inline-size: 100%;
+  block-size: ${props => (props.fullHeight ? '100vh' : 'auto')};
 
   ${props =>
     props.withInsetShadow &&
@@ -53,17 +53,16 @@ const Container = styled.div<CoverProps>`
 
 const BackgroundImage = styled.div<CoverProps>`
   position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 100%;
+  inset-inline: 0;
+  inset-block-start: 0;
+  block-size: 100%;
   background-size: cover;
   background-position: center;
 
   ${props =>
     props.withInsetShadow &&
     css`
-      height: 75%;
+      block-size: 75%;
     `}
 
   ${props =>
@@ -114,20 +113,19 @@ const BackgroundImage = styled.div<CoverProps>`
   &::after {
     position: absolute;
     content: '';
-    left: 0;
-    right: 0;
+    inset-inline: 0;
   }
 
   &::before {
-    top: 0;
-    height: 40%;
+    inset-block-start: 0;
+    block-size: 40%;
     opacity: 0.4;
     background-image: linear-gradient(to bottom, ${linearGradients.cover});
   }
 
   &::after {
-    bottom: 0;
-    height: 75%;
+    inset-block-end: 0;
+    block-size: 75%;
     background-image: linear-gradient(to top, ${linearGradients.dark});
 
     ${props =>
@@ -155,12 +153,12 @@ const CaptionContainer = styled.div`
   white-space: nowrap;
   justify-content: center;
   position: absolute;
-  right: ${space[4]};
-  top: 33%;
-  height: ${space[16]};
+  inset-inline-end: ${space[4]};
+  inset-block-start: 33%;
+  block-size: ${space[16]};
 
   @media ${device.tablet} {
-    top: 50%;
+    inset-block-start: 50%;
   }
 `
 
