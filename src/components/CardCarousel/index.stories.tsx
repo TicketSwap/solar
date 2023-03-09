@@ -27,7 +27,7 @@ const cards = [
 
 const StyledCard = styled(Card)`
   background-color: ${color.background};
-  min-width: 320px;
+  min-inline-size: 320px;
 
   &:hover,
   &:focus {

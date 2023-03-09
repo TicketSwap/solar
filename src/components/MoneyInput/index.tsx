@@ -42,7 +42,7 @@ const InputGroup = styled.div`
 `
 
 const InputWrapper = styled.div`
-  width: 100%;
+  inline-size: 100%;
   flex-grow: 1;
   flex-shrink: 1;
 `
@@ -64,9 +64,9 @@ const FauxSelectWrapper = styled.span`
   display: block;
   pointer-events: none;
   position: absolute;
-  left: 0;
-  top: 0;
-  width: ${selectWidth};
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  inline-size: ${selectWidth};
   padding-inline-end: ${space[8]};
 `
 

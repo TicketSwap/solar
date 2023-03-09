@@ -19,8 +19,8 @@ const Icon = styled(Checkmark)`
 const StyledInput = styled.input`
   grid-area: 1 / 1;
   background-color: ${color.background};
-  height: ${space[24]};
-  width: ${space[24]};
+  block-size: ${space[24]};
+  inline-size: ${space[24]};
   appearance: none;
   border: 1px solid ${color.stroke};
   border-radius: 50%;

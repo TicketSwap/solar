@@ -62,10 +62,10 @@ const StyledButton = styled.button<ButtonProps>`
   &:focus::after {
     content: '';
     position: absolute;
-    left: -4px;
-    right: -4px;
-    top: -1px;
-    bottom: 0;
+    inset-inline-start: -4px;
+    inset-inline-end: -4px;
+    inset-block-start: -1px;
+    inset-block-end: 0;
     background-color: transparent;
     border-radius: ${radius.md};
     opacity: 0.6;
@@ -80,7 +80,7 @@ const StyledButton = styled.button<ButtonProps>`
         : color.info};
 
     @media ${device.tablet} {
-      top: -2px;
+      inset-block-start: -2px;
     }
   }
 `

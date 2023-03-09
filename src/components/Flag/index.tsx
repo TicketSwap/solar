@@ -10,18 +10,15 @@ const StyledImage = styled(Image)`
   background-color: ${color.elevatedBackground};
   border-radius: 2px;
   overflow: hidden;
-  width: 21px;
-  height: 15px;
-  min-width: 21px;
-  min-height: 15px;
+  inline-size: 21px;
+  block-size: 15px;
+  min-inline-size: 21px;
+  min-block-size: 15px;
 
   &::after {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     opacity: 0.6;
     box-shadow: 0 0 0 1px ${color.strokeStrong} inset;
   }

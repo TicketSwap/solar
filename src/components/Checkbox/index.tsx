@@ -34,7 +34,7 @@ const LabelTextContainer = styled.span`
 const NativeCheckbox = styled.input`
   border: 0;
   clip: rect(0 0 0 0);
-  height: 1px;
+  block-size: 1px;
   margin-block: -1px;
   margin-inline: -1px;
   overflow: hidden;
@@ -42,7 +42,7 @@ const NativeCheckbox = styled.input`
   padding-inline: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  inline-size: 1px;
 `
 
 interface CustomCheckboxProps {
@@ -54,8 +54,8 @@ const CustomCheckbox = styled.div<CustomCheckboxProps>`
   flex-shrink: 0;
   position: relative;
   color: ${color.onAction};
-  width: ${space[24]};
-  height: ${space[24]};
+  inline-size: ${space[24]};
+  block-size: ${space[24]};
   background-color: ${props =>
     props.disabled
       ? color.inactiveBackground
@@ -86,10 +86,7 @@ const IconContainer = styled.span`
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
 `
 
 export interface CheckboxProps {

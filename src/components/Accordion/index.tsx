@@ -44,7 +44,7 @@ const AccordionItem = styled<React.FC<AccordionItemProps>>(Reach.AccordionItem)`
 const Button = styled<React.FC<AccordionButtonProps>>(Reach.AccordionButton)`
   font-weight: ${fontWeight.semiBold};
   display: flex;
-  width: 100%;
+  inline-size: 100%;
   align-items: center;
   justify-content: space-between;
   padding-block-start: ${space[12]};
@@ -82,8 +82,8 @@ const ButtonAdornment = styled.span`
   justify-content: center;
   align-items: center;
   color: ${color.action};
-  width: ${space[32]};
-  height: ${space[32]};
+  inline-size: ${space[32]};
+  block-size: ${space[32]};
   background-color: ${color.actionBackground};
   border-radius: 50%;
 

@@ -9,15 +9,15 @@ export default {
 }
 
 const Container = styled.div`
-  height: 90vh;
+  block-size: 90vh;
   background-color: ${color.elevatedBackground};
 `
 
 const PortalContainer = styled.div`
   position: absolute;
   background-color: ${color.background};
-  top: ${space[56]};
-  left: ${space[56]};
+  inset-block-start: ${space[56]};
+  inset-inline-start: ${space[56]};
   box-shadow: ${shadow.strong};
   border-radius: ${radius.lg};
   padding-block: ${space[16]};

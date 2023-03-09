@@ -23,9 +23,8 @@ const Container = styled.div<BannerProps>`
   `};
 
   /* Span entire viewport width on mobile */
-  width: 100vw;
-  left: 50%;
-  right: 50%;
+  inline-size: 100vw;
+  inset-inline: 50%;
   margin-inline-start: -50vw;
   margin-inline-end: -50vw;
 
@@ -33,9 +32,8 @@ const Container = styled.div<BannerProps>`
     padding-inline-start: ${space[32]};
     padding-inline-end: ${space[16]};
     border-radius: ${radius.lg};
-    width: auto;
-    left: auto;
-    right: auto;
+    inline-size: auto;
+    inset-inline: auto;
     margin-inline-start: 0;
     margin-inline-end: 0;
   }

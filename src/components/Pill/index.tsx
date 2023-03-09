@@ -50,10 +50,9 @@ const LeftAdornment = styled.span`
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: ${28 / 16}rem;
+  inset-inline-start: 0;
+  inset-block: 0;
+  inline-size: ${28 / 16}rem;
 `
 
 export enum PillVariant {

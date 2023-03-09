@@ -69,10 +69,7 @@ interface DialogOverlayStyles {
 const DialogOverlay = styled.div<DialogOverlayStyles>`
   position: fixed;
   z-index: 2147483645; /* largest accepted z-index value as integer minus 2 */
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background-color: ${color.overlay};
   display: flex;
   justify-content: center;
@@ -99,7 +96,7 @@ interface ContentStyles {
 
 const Content = styled.div<ContentStyles>`
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   background-color: ${color.background};
   border-radius: ${radius.lg} ${radius.lg} 0 0;
   overflow: hidden;
@@ -111,7 +108,7 @@ const Content = styled.div<ContentStyles>`
   transition: transform ${duration}ms ${easing.easeOutCubic};
 
   @media ${device.mobileL} {
-    width: ${sizes.mobileL / 16}em;
+    inline-size: ${sizes.mobileL / 16}em;
     border-radius: ${radius.lg};
     overflow: unset;
     transform: ${props => {
@@ -134,7 +131,7 @@ export const DialogContent: React.FC<any> = ({ children, ...props }) => {
 
 export const DialogHeader = styled.header`
   position: relative;
-  height: ${space[56]};
+  block-size: ${space[56]};
   border-block-end: 1px solid ${color.stroke};
   color: ${color.foreground};
   font-weight: ${fontWeight.semiBold};
@@ -151,15 +148,15 @@ interface DialogAdornmentStyles {
 
 export const DialogAdornment = styled.span<DialogAdornmentStyles>`
   position: absolute;
-  top: 0;
-  height: 100%;
+  inset-block-start: 0;
+  block-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-block: ${space[16]};
   padding-inline: ${space[16]};
-  left: ${props => (props.left ? 0 : 'auto')};
-  right: ${props => (props.right ? 0 : 'auto')};
+  inset-inline-start: ${props => (props.left ? 0 : 'auto')};
+  inset-inline-end: ${props => (props.right ? 0 : 'auto')};
 
   button {
     line-height: 0;
@@ -182,9 +179,8 @@ const BodyWrapper = styled.div`
     position: absolute;
     pointer-events: none;
     z-index: 1;
-    left: 0;
-    right: 0;
-    height: ${space[16]};
+    inset-inline: 0;
+    block-size: ${space[16]};
 
     @media ${device.mobileL} {
       display: none;
@@ -192,7 +188,7 @@ const BodyWrapper = styled.div`
   }
 
   &::before {
-    top: 0;
+    inset-block-start: 0;
     background-image: linear-gradient(
       to bottom,
       ${gradients.nova},
@@ -201,7 +197,7 @@ const BodyWrapper = styled.div`
   }
 
   &::after {
-    bottom: 0;
+    inset-block-end: 0;
     background-image: linear-gradient(
       to bottom,
       ${gradients.novaAlpha},
@@ -211,7 +207,7 @@ const BodyWrapper = styled.div`
 `
 
 const Body = styled.div`
-  max-height: 50vh;
+  max-block-size: 50vh;
   padding-block: ${space[16]};
   padding-inline: ${space[16]};
   padding-block-end: calc(${space[16]} + env(safe-area-inset-bottom));
@@ -223,13 +219,13 @@ const Body = styled.div`
   }
 
   @media (min-height: 32em) {
-    max-height: 65vh;
+    max-block-size: 65vh;
   }
 
   @media ${device.mobileL} {
     padding-block: ${space[32]};
     padding-inline: ${space[32]};
-    max-height: none;
+    max-block-size: none;
     overflow-y: unset;
     -webkit-overflow-scrolling: auto;
   }

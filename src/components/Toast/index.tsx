@@ -9,17 +9,17 @@ const duration = 400
 
 const ItemListContainer = styled.ul`
   position: fixed;
-  left: 0;
-  bottom: 0;
-  width: ${space[512]};
-  max-width: 100%;
+  inset-inline-start: 0;
+  inset-block-end: 0;
+  inline-size: ${space[512]};
+  max-inline-size: 100%;
   flex-direction: column-reverse;
   pointer-events: none;
   z-index: 2147483646; /* largest accepted z-index value as integer minus 1 */
 
   @media ${device.tablet} {
-    left: ${space[16]};
-    bottom: ${space[16]};
+    inset-inline-start: ${space[16]};
+    inset-block-end: ${space[16]};
   }
 `
 
@@ -72,7 +72,7 @@ interface ItemContainerStyles {
 
 const ItemContainer = styled.li<ItemContainerStyles>`
   position: absolute;
-  width: 100%;
+  inline-size: 100%;
   pointer-events: auto;
   padding-block: 0 ${space[16]};
   padding-inline: ${space[16]};

@@ -47,8 +47,9 @@ describe('OneTimeCodeInput', () => {
           hideLabel
         />
       )
+
       const label = getByText(/Verificationcode/i).parentNode
-      expect(label).toHaveStyleRule('height', '1px')
+      expect(label).toHaveStyleRule('block-size', '1px')
       expect(label).toHaveStyleRule('margin-block', '-1px')
     })
   })

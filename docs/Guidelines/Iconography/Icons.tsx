@@ -34,8 +34,8 @@ const IconBlock = styled.div`
 
 const CopyButton = styled.button`
   position: absolute;
-  top: ${space[4]};
-  right: ${space[4]};
+  inset-block-start: ${space[4]};
+  inset-inline-end: ${space[4]};
   border: none;
   background-color: transparent;
   cursor: pointer;

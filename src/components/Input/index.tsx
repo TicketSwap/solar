@@ -57,10 +57,10 @@ export const fieldStyles = (props: InputProps) => css`
     ? color.failureBackground
     : color.elevatedBackground};
   border-radius: ${props.rounded ? space[32] : radius.md};
-  width: 100%;
+  inline-size: 100%;
   font-size: ${fontSize[18]};
   line-height: ${props.as === 'textarea' ? lineHeight.copy : lineHeight.solid};
-  height: ${props.as === 'textarea' ? 'auto' : space[56]};
+  block-size: ${props.as === 'textarea' ? 'auto' : space[56]};
   padding-block-start: ${props.as === 'textarea' ? space[12] : 0};
   padding-block-end: ${props.as === 'textarea' ? space[12] : 0};
   padding-inline-start: ${props.leftAdornment ? space[48] : space[16]};
@@ -82,7 +82,7 @@ export const fieldStyles = (props: InputProps) => css`
   ${props.as === 'textarea' &&
   css`
     resize: vertical;
-    min-height: ${space[96]};
+    min-block-size: ${space[96]};
   `};
 
   &[type='search']::-webkit-search-decoration {
@@ -148,12 +148,11 @@ type AdornmentProps = {
 
 export const Adornment = styled.span<AdornmentProps>`
   position: absolute;
-  top: 0;
   color: ${color.foregroundMuted};
-  left: ${props => (props.left ? 0 : 'auto')};
-  right: ${props => (props.right ? 0 : 'auto')};
-  bottom: 0;
-  width: ${space[48]};
+  inset-inline-start: ${props => (props.left ? 0 : 'auto')};
+  inset-inline-end: ${props => (props.right ? 0 : 'auto')};
+  inset-block: 0;
+  inline-size: ${space[48]};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,7 +195,7 @@ export const InputMenuFooter = styled.footer`
 `
 
 export const InputMenuList = styled.ul`
-  max-height: ${space[256]};
+  max-block-size: ${space[256]};
   margin-block: 0;
   margin-inline: 0;
   overflow-y: auto;
@@ -219,7 +218,7 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
   position: relative;
   padding-inline-start: ${props => (props.adornment ? space[48] : space[16])};
   padding-inline-end: ${space[16]};
-  min-height: ${space[56]};
+  min-block-size: ${space[56]};
   background-color: ${props =>
     props.highlighted ? color.elevatedBackground : color.background};
   font-weight: ${props =>
@@ -238,9 +237,8 @@ const InputMenuItemContainer = styled.li<InputMenuItemProps>`
 export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   text-align: start;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(100% + ${space[4]});
+  inset-inline: 0;
+  inset-block-start: calc(100% + ${space[4]});
   border-radius: ${radius.md};
   background-color: ${color.background};
   box-shadow: ${shadow.strong};
@@ -262,7 +260,7 @@ export interface StyledSelectMenuProps extends InputMenuProps {
 }
 
 const StyledSelectMenu = styled(InputMenu)<StyledSelectMenuProps>`
-  top: ${props =>
+  inset-block-start: ${props =>
     props.isOutsideViewport
       ? `-${props.heightOfMenu + 4}px`
       : 'calc(100% + 4px)'};

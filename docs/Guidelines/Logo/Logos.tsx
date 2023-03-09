@@ -51,7 +51,7 @@ const List = styled.div`
   grid-template-columns: repeat(1fr);
   grid-template-rows: auto;
   grid-gap: 10px;
-  height: calc(100vh - 10px);
+  block-size: calc(100vh - 10px);
   margin-block-start: 1rem;
 
   @media ${device.tablet} {
@@ -96,12 +96,12 @@ const Image = styled.img<StyledImageProps>`
   background-color: ${props => (props.isWhite ? 'rgb(0, 182, 240)' : 'unset')};
   border-radius: ${radius.md};
   box-shadow: ${shadow.strong};
-  height: auto;
-  max-width: 320px;
-  width: 100%;
+  block-size: auto;
+  max-inline-size: 320px;
+  inline-size: 100%;
 
   @media ${device.tablet} {
-    max-width: none;
+    max-inline-size: none;
   }
 `
 const Info = styled.div`

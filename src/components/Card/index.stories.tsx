@@ -41,13 +41,13 @@ export default {
 
 export const Basic = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" />
     </a>
   </Grid>
@@ -59,19 +59,19 @@ const Adornment = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
   background-color: ${color.background};
   text-align: center;
-  width: 40px;
-  height: 40px;
+  inline-size: 40px;
+  block-size: 40px;
 `
 
 export const WithAdornment = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" leftAdornment={<Adornment />} />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" leftAdornment={<Adornment />} />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card title="Title" leftAdornment={<Adornment />} />
     </a>
   </Grid>
@@ -81,14 +81,14 @@ WithAdornment.storyName = 'With adornment'
 
 export const WithText = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Jury Show"
         text="Lorem ipsum dolor sit amet."
         verticalAlign={CardVerticalAlign.top}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Family Show"
         text="Lorem ipsum dolor sit amet."
@@ -98,7 +98,7 @@ export const WithText = () => (
         verticalAlign={CardVerticalAlign.top}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - Grand Final Live Show"
         text="Lorem ipsum dolor sit amet."
@@ -116,7 +116,7 @@ WithText.storyName = 'With text'
 
 export const WithTextAndSubtitle = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Jury Show"
         subtitle="I'm a subtitle"
@@ -127,7 +127,7 @@ export const WithTextAndSubtitle = () => (
         verticalAlign={CardVerticalAlign.bottom}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Family Show"
         subtitle="I'm a subtitle"
@@ -138,7 +138,7 @@ export const WithTextAndSubtitle = () => (
         verticalAlign={CardVerticalAlign.center}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - Grand Final Live Show"
         subtitle="I'm a subtitle"
@@ -157,7 +157,7 @@ WithText.storyName = 'With text and subtitle'
 
 export const WithImage = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Jury Show"
         text="May 11, 2020"
@@ -168,7 +168,7 @@ export const WithImage = () => (
         verticalAlign={CardVerticalAlign.top}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final Family Show"
         text="May 12, 2020"
@@ -180,7 +180,7 @@ export const WithImage = () => (
         verticalAlign={CardVerticalAlign.top}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         title="Eurovision Song Contest - 1st Semi Final International Show"
         text="May 13, 2020"
@@ -200,7 +200,7 @@ WithImage.storyName = 'With image'
 
 export const WithHeader = () => (
   <Grid>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         image="https://assets.imgix.net/unsplash/moon.jpg?fit=crop&crop=entropy&w=1678&h=1259&ixlib=imgixjs-3.4.1"
         header={
@@ -213,7 +213,7 @@ export const WithHeader = () => (
         subtitle="Paradiso, Amsterdam"
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         image="https://assets.imgix.net/unsplash/moon.jpg?fit=crop&crop=entropy&w=1678&h=1259&ixlib=imgixjs-3.4.1"
         header={
@@ -227,7 +227,7 @@ export const WithHeader = () => (
         rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         header={
           <Header>
@@ -240,7 +240,7 @@ export const WithHeader = () => (
         rightAdornment={<Pill leftAdornment={<Ticket size={16} />}>25</Pill>}
       />
     </a>
-    <a href="/" style={{ minWidth: 0 }}>
+    <a href="/" style={{ minInlineSize: 0 }}>
       <Card
         header={<TinyText>Best concert of the year</TinyText>}
         title="Eurovision"
@@ -262,7 +262,7 @@ const RightAdornment = styled.h4`
 `
 
 export const Large = () => (
-  <a href="/" style={{ minWidth: 0 }}>
+  <a href="/" style={{ minInlineSize: 0 }}>
     <Card
       size={CardSize.large}
       title="Title"
@@ -290,7 +290,7 @@ const StyledCard = styled(Card)`
 `
 
 export const Styled = () => (
-  <a href="/" style={{ minWidth: 0 }}>
+  <a href="/" style={{ minInlineSize: 0 }}>
     <StyledCard title="Show more" text="Events in your area" />
   </a>
 )

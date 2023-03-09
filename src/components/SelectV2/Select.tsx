@@ -80,7 +80,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
   grid-area: 1 / 1 / 1 / 4;
   font-size: ${fontSize[18]};
   line-height: ${space[56]};
-  height: ${space[56]};
+  block-size: ${space[56]};
   padding-inline: ${space[16]} ${space[48]};
   color: ${color.foreground};
   display: grid;

@@ -52,7 +52,7 @@ export const PanelContent = styled.div<PanelContentProps>`
 `
 
 export const PanelBody = styled.div`
-  width: 100%;
+  inline-size: 100%;
 
   > * + * {
     margin-block-start: ${space[8]};

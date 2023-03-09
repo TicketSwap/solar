@@ -47,19 +47,19 @@ const Placeholder = styled.img<StyledImageProps>`
   transition: opacity ${transition};
   background-color: ${color.elevatedBackground};
   opacity: ${props => (props.show ? 0 : 1)};
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
 `
 
 const StyledImage = styled.img<StyledImageProps>`
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   vertical-align: middle;
   transition: opacity ${transition};
   opacity: ${props => (props.show ? 1 : 0)};
   position: absolute;
-  left: 0;
-  top: 0;
+  inset-inline-start: 0;
+  inset-block-start: 0;
   object-fit: cover;
 `
 

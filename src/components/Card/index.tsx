@@ -70,7 +70,7 @@ const Container = styled.div<StyledCardProps>`
   @media ${device.tablet} {
     img {
       object-fit: cover;
-      max-height: ${space[256]};
+      max-block-size: ${space[256]};
     }
   }
 
@@ -87,10 +87,7 @@ const Container = styled.div<StyledCardProps>`
 
 const Content = styled.div<StyledCardProps>`
   position: ${props => (props.hasImage ? 'absolute' : 'relative')};
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -268,7 +265,7 @@ const Description = styled.div<StyledCardProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 100%;
+  inline-size: 100%;
   font-size: ${fontSize[14]};
   margin-block-start: 0.75rem;
 
@@ -286,10 +283,9 @@ const BackgroundImage = styled(Image)`
   &::after {
     content: '';
     position: absolute;
-    height: 100%;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    block-size: 100%;
+    inset-inline: 0;
+    inset-block-end: 0;
     border-radius: ${radius.lg};
     background-image: linear-gradient(
       to bottom,

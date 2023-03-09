@@ -10,10 +10,10 @@ const Wrapper = styled.span<WrapperProps>`
   display: inline-grid;
   place-items: center;
   vertical-align: middle;
-  width: ${props => `${props.iconSize || 32}px`};
-  height: ${props => `${props.iconSize || 32}px`};
-  min-width: ${props => `${props.iconSize || 32}px`};
-  min-height: ${props => `${props.iconSize || 32}px`};
+  inline-size: ${props => `${props.iconSize || 32}px`};
+  block-size: ${props => `${props.iconSize || 32}px`};
+  min-inline-size: ${props => `${props.iconSize || 32}px`};
+  min-block-size: ${props => `${props.iconSize || 32}px`};
 
   /*
     Overwrite the color from a styled component if

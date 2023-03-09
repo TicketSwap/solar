@@ -27,11 +27,11 @@ const centered = (
     const left = triggerCenter - tooltipRect.width / 2
     const maxLeft = window.innerWidth - tooltipRect.width - 2
     return {
-      left: Math.min(Math.max(2, left), maxLeft) + window.scrollX,
-      top: triggerRect.bottom + 8 + window.scrollY,
+      insetInlineStart: Math.min(Math.max(2, left), maxLeft) + window.scrollX,
+      insetBlockStart: triggerRect.bottom + 8 + window.scrollY,
     }
   }
-  return { left: 0, top: 0 }
+  return { insetInlineStart: 0, insetBlockStart: 0 }
 }
 
 const Popup = styled<React.FC<TooltipPopupProps>>(TooltipPopup)`
@@ -55,8 +55,8 @@ interface TriangleStyleProps {
 
 const Triangle = styled.div<TriangleStyleProps>`
   position: absolute;
-  width: 0;
-  height: 0;
+  inline-size: 0;
+  block-size: 0;
   border-inline-start: ${props => props.size || 10}px solid transparent;
   border-inline-end: ${props => props.size || 10}px solid transparent;
   border-block-end: ${props => props.size || 10}px solid
@@ -91,10 +91,12 @@ export const Tooltip = ({
         <Portal>
           <Triangle
             style={{
-              left: triggerRect
+              insetInlineStart: triggerRect
                 ? triggerRect.left - triangleSize + triggerRect.width / 2
                 : 0,
-              top: triggerRect ? triggerRect.bottom + 2 + window.scrollY : 0,
+              insetBlockStart: triggerRect
+                ? triggerRect.bottom + 2 + window.scrollY
+                : 0,
             }}
             size={triangleSize}
           />

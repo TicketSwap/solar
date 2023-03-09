@@ -21,12 +21,12 @@ const Wrapper = styled.div<WrapperProps>`
   opacity: 0;
   position: absolute;
   inset-inline-start: 0;
-  min-width: 100%;
+  min-inline-size: 100%;
   inset-block-start: ${space[56]};
   pointer-events: none;
   box-shadow: ${shadow.strong};
   z-index: 1;
-  max-height: ${space[256]};
+  max-block-size: ${space[256]};
   user-select: none;
 
   &:focus {
