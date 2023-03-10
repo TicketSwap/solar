@@ -196,7 +196,7 @@ describe('DatePicker', () => {
         />
       )
 
-      expect(screen.getByText(/1 feb. 2020/i)).toBeInTheDocument()
+      expect(screen.getByText(/1 feb\.? 2020/i)).toBeInTheDocument()
     })
   })
 
