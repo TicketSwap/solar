@@ -1,10 +1,11 @@
-import { Global } from '@emotion/react'
+import React, { Global } from '@emotion/react'
 import styled from '@emotion/styled'
 import { color, globalStyles } from '../../../src'
 import { shadow, space, radius } from '../../../src/theme'
 import { H3 } from '../../../src/components/Heading'
 import { Text } from '../../../src/components/Text'
 import { colors } from './data'
+import { ReactNode } from 'react'
 
 const Grid = styled.div`
   display: flex;
@@ -45,7 +46,11 @@ const DefinitionsGrid = styled.div`
   margin-block-start: ${space[16]};
 `
 
-const Representation = ({ keyWords }) => {
+interface RepresentationProps {
+  keyWords: string[]
+}
+
+const Representation = ({ keyWords }: RepresentationProps) => {
   return (
     <KeywordContainer>
       {keyWords.map(keyWord => (
@@ -55,7 +60,12 @@ const Representation = ({ keyWords }) => {
   )
 }
 
-const Color = ({ variant, label }) => {
+interface ColorProps {
+  variant: string
+  label: string
+}
+
+const Color = ({ variant, label }: ColorProps) => {
   return (
     <>
       <StyledHeading variant={variant}>{label}</StyledHeading>
@@ -63,11 +73,19 @@ const Color = ({ variant, label }) => {
   )
 }
 
-const ColorGrid = ({ children }) => (
+interface ColorGridProps {
+  children: ReactNode
+}
+
+const ColorGrid = ({ children }: ColorGridProps) => (
   <DefinitionsGrid>{children}</DefinitionsGrid>
 )
 
-const ColorDefinition = ({ variant, label, description, keyWords = [] }) => {
+interface Props extends ColorProps, RepresentationProps {
+  description: string
+}
+
+const ColorDefinition = ({ variant, label, description, keyWords }: Props) => {
   return (
     <Grid>
       <Color variant={variant} label={label} />
