@@ -47,10 +47,10 @@ interface ListBoxOptionProps {
 
 const ListboxOption = styled.div<ListBoxOptionProps>`
   cursor: default;
-  padding-block: ${space[16]};
-  padding-inline: ${space[16]};
-  background-color: ${color.background};
-  border-block-start: 1px solid ${color.stroke};
+  padding-block: var(--listBoxOptionPaddingBlock, ${space[16]});
+  padding-inline: var(--listBoxOptionPaddingInline, ${space[16]});
+  background-color: var(--listBoxOptionBackground, ${color.background});
+  border-block-start: 1px solid var(--listBoxOptionStroke, ${color.stroke});
   white-space: nowrap;
   align-items: center;
 
@@ -59,11 +59,14 @@ const ListboxOption = styled.div<ListBoxOptionProps>`
   }
 
   &[data-focussed='true'] {
-    background-color: ${color.actionBackground};
+    background-color: var(
+      --listBoxOptionFocussedBackground,
+      ${color.actionBackground}
+    );
   }
 
   &[aria-selected='true'] {
-    color: ${color.action};
+    color: var(--listBoxOptionSelectedBackground, ${color.action});
     font-weight: ${fontWeight.semiBold};
   }
 
