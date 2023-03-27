@@ -78,12 +78,12 @@ interface DisplayValueProps {
 
 const DisplayValue = styled.span<DisplayValueProps>`
   grid-area: 1 / 1 / 1 / 4;
-  font-size: var(--selectDisplayValueFontSize, ${fontSize[18]});
-  line-height: var(--selectDisplayValueLineHight, ${space[56]});
-  block-size: var(--selectDisplayValueBlockSize, ${space[56]});
-  padding-inline: var(--selectDisplayValuePaddingInlineStart, ${space[16]})
-    var(--selectDisplayValuePaddingInlineEnd, ${space[48]});
-  color: var(--selectDisplayValueColor, ${color.foreground});
+  font-size: var(--_selectDisplayValueFontSize, ${fontSize[18]});
+  line-height: var(--_selectDisplayValueLineHight, ${space[56]});
+  block-size: var(--_selectDisplayValueBlockSize, ${space[56]});
+  padding-inline: var(--_selectDisplayValuePaddingInlineStart, ${space[16]})
+    var(--_selectDisplayValuePaddingInlineEnd, ${space[48]});
+  color: var(--_selectDisplayValueColor, ${color.foreground});
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -103,7 +103,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
     `}
 
   ${Container}:focus-within & {
-    box-shadow: var(--selectDisplayValueFocusWithinShadow, ${shadow.strong});
+    box-shadow: var(--_selectDisplayValueFocusWithinShadow, ${shadow.strong});
     background-color: var(
       --selectDisplayValueFocusWithinBackgroundColor,
       ${color.background}
