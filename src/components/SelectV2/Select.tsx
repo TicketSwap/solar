@@ -20,6 +20,7 @@ interface AdornmentProps {
 const Adornment = styled.span<AdornmentProps>`
   display: grid;
   place-items: center;
+  opacity: var(--_selectAdornmentOpacity, 1);
   pointer-events: none;
   ${props =>
     Boolean(props.$start)
@@ -91,7 +92,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
   gap: ${space[8]};
   border-radius: ${props => (props.rounded ? space[32] : radius.md)};
   background-color: var(
-    --selectDisplayValueBackgroundColor,
+    --_selectDisplayValueBackgroundColor,
     ${color.elevatedBackground}
   );
   pointer-events: none;
@@ -105,7 +106,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
   ${Container}:focus-within & {
     box-shadow: var(--_selectDisplayValueFocusWithinShadow, ${shadow.strong});
     background-color: var(
-      --selectDisplayValueFocusWithinBackgroundColor,
+      --_selectDisplayValueFocusWithinBackgroundColor,
       ${color.background}
     );
   }
@@ -114,7 +115,7 @@ const DisplayValue = styled.span<DisplayValueProps>`
     props.disabled &&
     css`
       background-color: var(
-        --selectDisplayValueDisabledBackgroundColor,
+        --_selectDisplayValueDisabledBackgroundColor,
         ${color.inactiveBackground}
       );
       cursor: not-allowed;
