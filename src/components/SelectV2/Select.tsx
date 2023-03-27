@@ -78,18 +78,22 @@ interface DisplayValueProps {
 
 const DisplayValue = styled.span<DisplayValueProps>`
   grid-area: 1 / 1 / 1 / 4;
-  font-size: ${fontSize[18]};
-  line-height: ${space[56]};
-  block-size: ${space[56]};
-  padding-inline: ${space[16]} ${space[48]};
-  color: ${color.foreground};
+  font-size: var(--selectDisplayValueFontSize, ${fontSize[18]});
+  line-height: var(--selectDisplayValueLineHight, ${space[56]});
+  block-size: var(--selectDisplayValueBlockSize, ${space[56]});
+  padding-inline: var(--selectDisplayValuePaddingInlineStart, ${space[16]})
+    var(--selectDisplayValuePaddingInlineEnd, ${space[48]});
+  color: var(--selectDisplayValueColor, ${color.foreground});
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   justify-content: start;
   gap: ${space[8]};
   border-radius: ${props => (props.rounded ? space[32] : radius.md)};
-  background-color: ${color.elevatedBackground};
+  background-color: var(
+    --selectDisplayValueBackgroundColor,
+    ${color.elevatedBackground}
+  );
   pointer-events: none;
 
   ${props =>
@@ -99,14 +103,20 @@ const DisplayValue = styled.span<DisplayValueProps>`
     `}
 
   ${Container}:focus-within & {
-    box-shadow: ${shadow.strong};
-    background-color: ${color.background};
+    box-shadow: var(--selectDisplayValueFocusWithinShadow, ${shadow.strong});
+    background-color: var(
+      --selectDisplayValueFocusWithinBackgroundColor,
+      ${color.background}
+    );
   }
 
   ${props =>
     props.disabled &&
     css`
-      background-color: ${color.inactiveBackground};
+      background-color: var(
+        --selectDisplayValueDisabledBackgroundColor,
+        ${color.inactiveBackground}
+      );
       cursor: not-allowed;
       pointer-events: auto;
     `}
