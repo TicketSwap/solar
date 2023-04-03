@@ -111,7 +111,7 @@ const DropArea = styled.div<DropAreaStyles>`
     flex-direction: ${({ variant }) =>
       variant === DropzoneVariant.small ? 'row' : 'column'};
     background-color: ${color.actionBackground};
-    border-inline-size: 2px;
+    border-width: 2px;
     border-style: dashed;
     border-color: ${({ variant }) =>
       variant === DropzoneVariant.light ? color.actionFocus : color.action};
