@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react'
+import React, { ReactNode, useCallback, useMemo, useRef } from 'react'
 import styled from '@emotion/styled'
 import { Portal } from '../Portal'
 import { space, shadow, device, radius, easing, color } from '../../theme'
@@ -149,14 +149,20 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
   const [items, setItems] = React.useState<ItemStateProps[]>([])
   const [cancellations, setCancellations] = React.useState<number[]>([])
 
-  function notify(renderCallback: () => any) {
-    if (!isMounted()) return
+  const notify = useCallback(
+    (renderCallback: (_?: (event?: any) => void) => any) => {
+      if (!isMounted()) return
 
-    const component = renderCallback()
-    const { persist, leftAdornment } = component.props
-    const key = performance.now()
-    setItems([...items, { key, renderCallback, persist, leftAdornment }])
-  }
+      const component = renderCallback()
+      const { persist, leftAdornment } = component.props
+      const key = performance.now()
+      setItems(prevItems => [
+        ...prevItems,
+        { key, renderCallback, persist, leftAdornment },
+      ])
+    },
+    [isMounted]
+  )
 
   function cancel(key: number) {
     setCancellations([...cancellations, key])
@@ -169,14 +175,10 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     })
   }
 
-  function getStateAndHelpers() {
-    return {
-      notify,
-    }
-  }
+  const value = useMemo(() => ({ notify }), [notify])
 
   return (
-    <ToastContext.Provider value={getStateAndHelpers()}>
+    <ToastContext.Provider value={value}>
       {children}
       <Portal>
         <ItemList on={items.length > 0}>

@@ -171,7 +171,7 @@ const WithDialog = () => {
 
   return (
     <Dialog>
-      {({ hide, getToggleProps, getWindowProps }) => (
+      {({ getToggleProps, getWindowProps }) => (
         <>
           <Button {...getToggleProps()}>Show dialog</Button>
           <DialogWindow {...getWindowProps()}>
