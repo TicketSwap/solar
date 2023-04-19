@@ -22,6 +22,8 @@ export interface ButtonProps
   variant?: keyof typeof ButtonVariant
   disabled?: boolean
   size?: keyof typeof BaseButtonSize
+  as?: 'a'
+  href?: string
 }
 
 const StyledButton = styled.button<ButtonProps>`
