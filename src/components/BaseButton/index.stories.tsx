@@ -19,6 +19,14 @@ export const Basic = () => (
   </ButtonWrapper>
 )
 
+export const AsLink = () => (
+  <ButtonWrapper>
+    <BaseButton as="a" href="https://www.ticketswap.com">
+      TicketSwap website
+    </BaseButton>
+  </ButtonWrapper>
+)
+
 export const WithIcon = () => (
   <ButtonWrapper>
     <BaseButton leftAdornment={<File size={24} />}>View example</BaseButton>
