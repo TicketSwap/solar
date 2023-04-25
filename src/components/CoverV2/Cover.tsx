@@ -167,7 +167,7 @@ const MetaInfo = styled.div`
 
 interface CoverProps {
   title: string
-  subtitle?: string
+  subtitle?: string | ReactElement
   images?: CoverImages
   graphic?: ReactElement
   metaInfo?: ReactElement
