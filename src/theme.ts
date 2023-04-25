@@ -51,7 +51,7 @@ export const color = {
   darkForeground: 'var(--darkForeground)',
   darkForegroundMuted: 'var(--darkForegroundMuted)',
   overlay: 'var(--overlay)',
-}
+} as const
 
 export const fontStack = `'Proxima Nova', -apple-system, BlinkMacSystemFont,
 'avenir next', avenir, 'helvetica neue', helvetica, ubuntu, roboto, noto,
@@ -68,13 +68,13 @@ export const fontSize = {
   28: '1.75rem',
   32: '2rem',
   56: '3.5rem',
-}
+} as const
 
 export const shadow = {
   text: `0 1px 0 var(--shadowLighter)`,
   light: `0 1px 4px var(--shadowLighter)`,
   strong: `0 1px 2px var(--shadowLighter), 0 4px 12px var(--shadowLighter)`,
-}
+} as const
 
 export const space = {
   0: '0',
@@ -97,13 +97,13 @@ export const space = {
   256: '16rem',
   512: '32rem',
   768: '48rem',
-}
+} as const
 
 export const radius = {
   sm: space[4],
   md: space[8],
   lg: space[12],
-}
+} as const
 
 export const easing = {
   easeInQuad: 'cubic-bezier(.55, .085, .68, .53)',
@@ -126,7 +126,7 @@ export const easing = {
   easeInOutQuint: 'cubic-bezier(.86, 0, .07, 1)',
   easeInOutExpo: 'cubic-bezier(1, 0, 0, 1)',
   easeInOutCirc: 'cubic-bezier(.785, .135, .15, .86)',
-}
+} as const
 
 export const duration = 200
 export const transition = `${duration}ms ${easing.easeInOutCubic}`
@@ -136,13 +136,13 @@ export const lineHeight = {
   title: 1.25,
   titleLg: 1.125,
   copy: 1.5,
-}
+} as const
 
 export const fontWeight = {
   regular: 400,
   semiBold: 600,
   bold: 700,
-}
+} as const
 
 export const sizes = {
   mobile: 320,
@@ -153,17 +153,17 @@ export const sizes = {
   laptopM: 1280,
   laptopL: 1440,
   desktop: 2560,
-}
+} as const
 
 export const gradients = {
   nova: 'var(--gradientNova)',
   novaAlpha: 'var(--gradientNovaAlpha)',
-}
+} as const
 
 export const linearGradients = {
   dark: 'var(--linearGradientDark)',
   cover: 'var(--linearGradientCover)',
-}
+} as const
 
 export const device = {
   mobile: `(min-width: ${sizes.mobile / 16}em)`,
@@ -174,7 +174,7 @@ export const device = {
   laptopM: `(min-width: ${sizes.laptopM / 16}em)`,
   laptopL: `(min-width: ${sizes.laptopL / 16}em)`,
   desktop: `(min-width: ${sizes.desktop / 16}em)`,
-}
+} as const
 
 export const fullBleed = css`
   inline-size: 100vw;
