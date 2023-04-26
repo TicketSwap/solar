@@ -73,7 +73,7 @@ export const globalStyles = css`
 
     // Action
     --action: var(--earth400);
-    --actionBackground: var(--earth50);
+    --actionBackground: #00b6f01f;
     --onAction: var(--nova);
     --actionFocus: #00b6f052;
 
@@ -125,11 +125,11 @@ export const globalStyles = css`
     --lightBackground: var(--nova);
     --lightElevatedBackground: var(--stardust100);
     --lightForeground: var(--nova);
-    --lightForegroundMuted: var(--stardust500);
+    --lightForegroundMuted: #ffffffcc;
     --darkBackground: var(--stardust900);
     --darkElevatedBackground: var(--space);
     --darkForeground: var(--stardust900);
-    --darkForegroundMuted: var(--stardust600);
+    --darkForegroundMuted: #1a2129cc;
 
     // Gradients
     --linearGradientDark: rgba(0, 19, 25, 0.6) 0%, rgba(0, 19, 25, 0) 100%;
@@ -158,7 +158,7 @@ export const globalStyles = css`
 
     // Action
     --action: var(--earth400);
-    --actionBackground: var(--earth800);
+    --actionBackground: #00b6f01f;
     --onAction: var(--nova);
 
     // Success
