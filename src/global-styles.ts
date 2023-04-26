@@ -56,7 +56,7 @@ export const globalStyles = css`
     --stardust900: #1a2129;
     --nova: #ffffff;
     --space: #00131a;
-    --overlay: #1a212999;
+    --overlay: #00000099;
 
     // Brand
     --brand: var(--earth400);
@@ -111,9 +111,7 @@ export const globalStyles = css`
     --accent: var(--mars400);
     --stroke: var(--stardust300);
     --strokeStrong: var(--stardust400);
-    --shadow: var(--stardust500);
-    --shadowLighter: var(--stardust200);
-
+    --shadow: var(--stardust900);
     --invertedForeground: var(--nova);
     --invertedBackground: var(--stardust900);
 
@@ -192,8 +190,7 @@ export const globalStyles = css`
     --accent: var(--mars400);
     --stroke: var(--stardust800);
     --strokeStrong: var(--stardust700);
-    --shadow: var(--space);
-    --shadowLighter: rgba(0, 19, 25, 0.9);
+    --shadow: var(--stardust900);
     --invertedForeground: var(--stardust900);
     --invertedBackground: var(--nova);
 
