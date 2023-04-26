@@ -54,6 +54,10 @@ const List = styled.ul`
       color: ${color.lightForegroundMuted};
     }
   }
+
+  @media ${device.tablet} {
+    gap: ${space[24]};
+  }
 `
 
 export const basic = () => (
