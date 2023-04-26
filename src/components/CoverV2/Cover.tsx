@@ -43,6 +43,7 @@ export interface CoverImages {
 interface CoverBackgroundImageProps {
   images?: CoverImages
   fullHeight: boolean
+  defaultImage?: string
 }
 
 const CoverBackgroundImage = styled.div<CoverBackgroundImageProps>`
@@ -54,6 +55,12 @@ const CoverBackgroundImage = styled.div<CoverBackgroundImageProps>`
   background-position: center;
   filter: ${props => (props.fullHeight ? 'none' : 'blur(15px)')};
   transform: scale(1.2);
+
+  ${props =>
+    props.defaultImage &&
+    css`
+      background-image: url(${props.defaultImage});
+    `};
 
   ${props =>
     props.images &&
@@ -190,9 +197,19 @@ export const Cover = ({
   fullHeight = false,
   ...props
 }: CoverProps) => {
+  const defaultImage =
+    images?.desktop ||
+    images?.tablet ||
+    images?.mobilePortrait ||
+    images?.mobileLandscape
+
   return (
     <CoverContainer {...props} fullHeight={fullHeight}>
-      <CoverBackgroundImage images={images} fullHeight={fullHeight} />
+      <CoverBackgroundImage
+        defaultImage={defaultImage}
+        images={images}
+        fullHeight={fullHeight}
+      />
 
       <CoverContent>
         {graphic && <Graphic>{graphic}</Graphic>}
