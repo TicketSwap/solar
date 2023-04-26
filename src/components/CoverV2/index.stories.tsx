@@ -15,7 +15,7 @@ import { Button } from '../Button'
 const Graphic = styled.div`
   block-size: ${space[64]};
   inline-size: ${space[64]};
-  background-color: ${color.lightBackground};
+  background-color: ${color.lightForeground};
   opacity: 0.12;
   border-radius: 50%;
   display: flex;
