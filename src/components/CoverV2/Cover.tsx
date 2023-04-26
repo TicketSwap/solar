@@ -111,12 +111,16 @@ const CoverContent = styled.div`
   padding-inline-start: ${space[16]};
   padding-inline-end: ${space[16]};
   padding-block: ${space[48]};
-  max-inline-size: ${space[768]};
+  max-inline-size: 960px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+
+  @media ${device.laptopM} {
+    max-inline-size: 1128px;
+  }
 
   @media ${device.tablet} {
     padding-block: ${space[64]};
