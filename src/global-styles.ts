@@ -125,7 +125,7 @@ export const globalStyles = css`
     --lightBackground: var(--nova);
     --lightElevatedBackground: var(--stardust100);
     --lightForeground: var(--nova);
-    --lightForegroundMuted: #ffffffcc;
+    --lightForegroundMuted: var(--stardust500);
     --darkBackground: var(--stardust900);
     --darkElevatedBackground: var(--space);
     --darkForeground: var(--stardust900);
