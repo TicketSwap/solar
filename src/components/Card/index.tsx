@@ -222,7 +222,7 @@ const Subtitle = styled.h5<StyledCardProps>`
   ${props => !props.hasImage && truncate};
   font-size: ${p => (p.size === CardSize.large ? fontSize[16] : fontSize[14])};
   font-weight: ${fontWeight.regular};
-  color: ${color.lightForegroundMuted};
+  color: ${color.foregroundMuted};
 
   @media ${device.mobileL} {
     font-size: ${p =>
