@@ -71,9 +71,9 @@ export const fontSize = {
 } as const
 
 export const shadow = {
-  text: `0 1px 0 var(--shadow)`,
-  light: `0 1px 4px var(--shadow)`,
-  strong: `0 1px 2px var(--shadow), 0 4px 12px var(--shadow)`,
+  text: `0 1px 0 var(--shadowLighter)`,
+  light: `0 1px 4px var(--shadowLighter)`,
+  strong: `0 1px 2px var(--shadowLighter), 0 4px 12px var(--shadowLighter)`,
 } as const
 
 export const space = {
