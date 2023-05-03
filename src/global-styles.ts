@@ -204,11 +204,11 @@ export const globalStyles = css`
     --lightBackground: var(--nova);
     --lightElevatedBackground: var(--stardust100);
     --lightForeground: var(--nova);
-    --lightForegroundMuted: var(--stardust500);
+    --lightForegroundMuted: #ffffffcc;
     --darkBackground: var(--stardust900);
     --darkElevatedBackground: var(--space);
     --darkForeground: var(--stardust900);
-    --darkForegroundMuted: var(--stardust600);
+    --darkForegroundMuted: #1a2129cc;
 
     // Gradients
     --linearGradientDark: rgba(26, 33, 41, 0.6) 0%, rgba(26, 33, 41, 0) 100%;
