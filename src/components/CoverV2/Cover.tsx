@@ -22,6 +22,11 @@ const CoverContainer = styled.div<CoverContainerProps>`
   overflow: hidden;
   background-color: var(--_coverBackgroundColor, ${color.darkBackground});
 
+  [data-theme='dark'] & {
+    border-top: 1px solid ${color.strokeStrong};
+    border-bottom: 1px solid ${color.strokeStrong};
+  }
+
   ${props =>
     props.fullHeight &&
     css`
@@ -53,7 +58,7 @@ const CoverBackgroundImage = styled.div<CoverBackgroundImageProps>`
   block-size: 100%;
   background-size: cover;
   background-position: center;
-  filter: ${props => (props.fullHeight ? 'none' : 'blur(15px)')};
+  filter: ${props => (props.fullHeight ? 'none' : 'blur(32px)')};
   transform: scale(1.2);
 
   ${props =>
@@ -105,7 +110,7 @@ const CoverBackgroundImage = styled.div<CoverBackgroundImageProps>`
     inset-block-start: 0;
     background: linear-gradient(
       180deg,
-      rgba(26, 33, 41, 0.6) 0%,
+      rgba(26, 33, 41, 0.4) 0%,
       rgba(26, 33, 41, 0.8) 100%
     );
   }
@@ -140,6 +145,12 @@ const Titles = styled.div`
   + * {
     margin-block-start: ${space[16]};
   }
+
+  @media ${device.tablet} {
+    + * {
+      margin-block-start: ${space[24]};
+    }
+  }
 `
 
 const Title = styled(H1)`
@@ -166,6 +177,8 @@ const Graphic = styled.div`
 `
 
 const MetaInfo = styled.div`
+  max-width: 100%;
+
   + * {
     margin-block-start: ${space[16]};
   }
