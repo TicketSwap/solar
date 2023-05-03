@@ -111,8 +111,7 @@ export const globalStyles = css`
     --accent: var(--mars400);
     --stroke: var(--stardust300);
     --strokeStrong: var(--stardust400);
-    --shadow: var(--stardust500);
-    --shadowLighter: var(--stardust200);
+    --shadow: #1a21291a;
     --invertedForeground: var(--nova);
     --invertedBackground: var(--stardust900);
 
@@ -191,8 +190,7 @@ export const globalStyles = css`
     --accent: var(--mars400);
     --stroke: var(--stardust800);
     --strokeStrong: var(--stardust700);
-    --shadow: var(--space);
-    --shadowLighter: rgba(0, 19, 25, 0.9);
+    --shadow: #00000073;
     --invertedForeground: var(--stardust900);
     --invertedBackground: var(--nova);
 
