@@ -1,0 +1,1 @@
+export { StylisedIcon } from './StylisedIcon'
