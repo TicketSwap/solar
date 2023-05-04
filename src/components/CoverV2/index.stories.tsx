@@ -11,6 +11,7 @@ import {
   Tag,
 } from '../../icons'
 import { Button } from '../Button'
+import { StylisedIcon } from '../StylisedIcon'
 
 const Graphic = styled.div`
   block-size: ${space[64]};
@@ -31,7 +32,9 @@ const Graphic = styled.div`
 const Image = styled.img`
   aspect-ratio: 16 / 9;
   border-radius: ${radius.lg};
-  max-width: 375px;
+  width: 100%;
+  max-inline-size: 375px;
+  object-fit: cover;
 `
 
 const StyledCover = styled(Cover)`
@@ -47,6 +50,10 @@ const Actions = styled.div`
 const List = styled.ul`
   display: flex;
   gap: ${space[16]};
+
+  @media ${device.tablet} {
+    gap: ${space[24]};
+  }
 
   li {
     a,
@@ -123,11 +130,7 @@ export const withMetaInfo = () => (
         </li>
       </List>
     }
-    graphic={
-      <Graphic>
-        <Tag size={40} />
-      </Graphic>
-    }
+    graphic={<StylisedIcon icon={<Tag />} />}
   />
 )
 
@@ -162,11 +165,7 @@ export const withActions = () => (
         </Button>
       </Actions>
     }
-    graphic={
-      <Graphic>
-        <MusicalNote size={40} />
-      </Graphic>
-    }
+    graphic={<StylisedIcon icon={<MusicalNote />} />}
   />
 )
 
@@ -200,11 +199,7 @@ export const withOtherColors = () => (
   <StyledCover
     title="Pop"
     subtitle="Discover our pop content"
-    graphic={
-      <Graphic>
-        <Tag size={40} />
-      </Graphic>
-    }
+    graphic={<StylisedIcon icon={<Tag />} />}
   />
 )
 
