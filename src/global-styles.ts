@@ -76,6 +76,7 @@ export const globalStyles = css`
     --actionBackground: var(--earth50);
     --onAction: var(--nova);
     --actionFocus: #00b6f052;
+    --actionBackgroundAlpha12: #00b6f01f;
 
     // Success
     --success: var(--titan400);

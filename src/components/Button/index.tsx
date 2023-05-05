@@ -165,7 +165,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ variant }) =>
     variant === ButtonVariant.secondary &&
     css`
-      background-color: ${color.actionBackground};
+      background-color: ${color.actionBackgroundAlpha12};
       color: ${color.action};
       background-image: unset;
 
