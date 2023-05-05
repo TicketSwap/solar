@@ -73,7 +73,7 @@ export const globalStyles = css`
 
     // Action
     --action: var(--earth400);
-    --actionBackground: #00b6f01f;
+    --actionBackground: var(--earth50);
     --onAction: var(--nova);
     --actionFocus: #00b6f052;
 
@@ -158,7 +158,7 @@ export const globalStyles = css`
 
     // Action
     --action: var(--earth400);
-    --actionBackground: #00b6f01f;
+    --actionBackground: var(--earth800);
     --onAction: var(--nova);
 
     // Success
