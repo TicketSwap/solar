@@ -12,6 +12,7 @@ export const color = {
   actionBackground: 'var(--actionBackground)',
   onAction: 'var(--onAction)',
   actionFocus: 'var(--actionFocus)',
+  actionBackgroundAlpha12: 'var(--actionBackgroundAlpha12)',
   success: 'var(--success)',
   successBackground: 'var(--successBackground)',
   onSuccess: 'var(--onSuccess)',
