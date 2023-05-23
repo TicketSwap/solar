@@ -6,11 +6,13 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
+  opacity,
   radius,
   space,
 } from '../../theme'
 import { css } from '@emotion/react'
 import { Spinner } from '../Spinner'
+import { transparentize, transparentGradient } from '../../utils/colors'
 
 export enum ButtonVariant {
   primary = 'primary',
@@ -67,11 +69,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   justify-content: center;
   font-family: inherit;
   font-weight: ${fontWeight.semiBold};
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.24),
-    rgba(255, 255, 255, 0)
-  );
+  background-image: ${transparentGradient('currentColor', 'to bottom', .24, 0)};
   line-height: ${lineHeight.solid};
   align-items: center;
 
@@ -86,7 +84,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     inset: -1px;
     background-color: transparent;
     border-radius: calc(${radius.md} + 1px);
-    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
+    outline: ${space[4]} solid ${transparentize(color.action, opacity.statusFocusColor)};
     pointer-events: none;
   }
 
@@ -96,11 +94,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 
   &:hover {
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.48),
-      rgba(255, 255, 255, 0.24)
-    );
+    background-image: ${transparentGradient('currentColor', 'to bottom', .48, .24)};
   }
 
   ${({ disabled }) =>
@@ -165,12 +159,12 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${({ variant }) =>
     variant === ButtonVariant.secondary &&
     css`
-      background-color: ${color.actionBackgroundAlpha12};
+      background-color: ${color.actionBackground};
       color: ${color.action};
       background-image: unset;
 
       &:hover {
-        background-image: unset;
+        background-image: ${transparentGradient('currentColor', 'to top', .2, .1)};
       }
     `};
 
@@ -179,13 +173,14 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${color.failureBackground};
       color: ${color.failure};
+      background-image: unset;
 
-      [data-theme='dark'] & {
-        background-image: unset;
+      &:hover {
+        background-image: ${transparentGradient('currentColor', 'to top', .2, .1)};
       }
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.failureFocus};
+        outline-color: ${transparentize(color.failure, opacity.statusFocusColor)};
       }
     `};
 
@@ -196,7 +191,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       color: ${color.onSuccess};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.successFocus};
+        outline-color: ${transparentize(color.success, opacity.statusFocusColor)};
       }
     `};
 
@@ -207,7 +202,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       color: ${color.onWarning};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.warningFocus};
+        outline-color: ${transparentize(color.warning, opacity.statusFocusColor)};
       }
     `};
 
@@ -218,7 +213,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       color: ${color.onFailure};
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} ${color.failureFocus};
+        outline-color: ${transparentize(color.failure, opacity.statusFocusColor)};
       }
     `};
 
@@ -227,9 +222,14 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${color.background};
       color: ${color.action};
+      background-image: unset;
 
       [data-theme='dark'] & {
         background-image: unset;
+      }
+
+      &:hover {
+        background-image: ${transparentGradient('currentColor', 'to top', .2, .1)};
       }
     `};
 
@@ -240,7 +240,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       color: #ffffff;
 
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} #1777f252;
+        outline-color: ${transparentize('#1777f2', opacity.statusFocusColor)};
       }
     `};
 
@@ -250,14 +250,8 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: ${color.foreground};
       color: ${color.background};
 
-      [data-theme='dark'] & {
-        &:focus::after {
-          box-shadow: 0 0 0 ${space[4]} #ffffff52;
-        }
-      }
-
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} #1a212952;
+        outline-color: ${transparentize(color.foreground, opacity.statusFocusColor)};
       }
     `};
 
@@ -269,8 +263,12 @@ const StyledButton = styled.button<StyledButtonProps>`
       border: 1px solid ${color.lightElevatedBackground};
       background-image: unset;
 
+      &:hover {
+        background-image: ${transparentGradient('currentColor', 'to top', .1, 0)};
+      }
+
       &:focus::after {
-        box-shadow: 0 0 0 ${space[4]} #ccd0d152;
+        outline-color: ${transparentize('#ccd0d1', opacity.statusFocusColor)};
       }
     `};
 `

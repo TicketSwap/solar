@@ -13,8 +13,10 @@ import {
   radius,
   device,
   fontWeight,
+  opacity,
 } from '../../theme'
 import { CloseRounded } from '../../icons'
+import { transparentize } from '../../utils/colors'
 
 export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   id: string
@@ -109,8 +111,9 @@ export const fieldStyles = (props: InputProps) => css`
     background-color: ${props.invalid
       ? color.failureBackground
       : color.elevatedBackground};
-    box-shadow: 0 0 0 ${space[4]}
-      ${props.invalid ? color.failureFocus : color.actionFocus};
+    outline: ${space[4]} solid
+      ${props.invalid ? color.failureFocus :
+          transparentize(color.action, opacity.statusFocusColor)};
   }
 
   &::placeholder {

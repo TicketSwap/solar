@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
-import { space, radius, color } from './theme'
+import { space, radius, color, opacity } from './theme'
 import { baseTextStyles } from './components/Text'
+import { transparentize } from './utils/colors'
 
 export const globalStyles = css`
   :root {
@@ -73,10 +74,8 @@ export const globalStyles = css`
 
     // Action
     --action: var(--earth400);
-    --actionBackground: var(--earth50);
+    --actionBackground: ${transparentize(color.action, opacity.statusBackgroundColor)};
     --onAction: var(--nova);
-    --actionFocus: #00b6f052;
-    --actionBackgroundAlpha12: #00b6f01f;
 
     // Success
     --success: var(--titan400);
@@ -100,7 +99,6 @@ export const globalStyles = css`
     --info: var(--earth400);
     --infoBackground: var(--earth50);
     --onInfo: var(--nova);
-    --actionFocus: #00b6f052;
 
     // Inactive
     --inactive: var(--stardust500);
@@ -292,7 +290,7 @@ export const globalStyles = css`
 
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
+      box-shadow: 0 0 0 ${space[4]} ${transparentize('currentColor', opacity.statusFocusColor)};
     }
   }
 
