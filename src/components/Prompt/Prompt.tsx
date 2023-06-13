@@ -28,6 +28,7 @@ const TextContent = styled.div`
 
 const Title = styled(H3)`
   font-weight: ${fontWeight.semiBold};
+  text-wrap: balance;
 
   @media ${device.tablet} {
     font-size: ${space[24]};
@@ -36,6 +37,7 @@ const Title = styled(H3)`
 
 const Subtitle = styled(Text)`
   color: ${color.foregroundMuted};
+  text-wrap: balance;
 `
 
 interface Props {
