@@ -159,6 +159,7 @@ const Titles = styled.div`
 
 const Title = styled(H1)`
   color: var(--_coverTitleColor, ${color.lightForeground});
+  text-wrap: balance;
 `
 
 const Subtitle = styled(H2)`
@@ -166,6 +167,7 @@ const Subtitle = styled(H2)`
   font-weight: ${fontWeight.regular};
   font-size: ${fontSize[20]};
   line-height: ${lineHeight.title};
+  text-wrap: balance;
 
   @media ${device.tablet} {
     font-size: ${fontSize[24]};
