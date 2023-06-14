@@ -101,19 +101,23 @@ const CoverBackgroundImage = styled.div<CoverBackgroundImageProps>`
       }
     `};
 
-  &:after {
-    content: '';
-    position: absolute;
-    block-size: 100%;
-    inline-size: 100%;
-    inset-inline: 0;
-    inset-block-start: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(26, 33, 41, 0.4) 0%,
-      rgba(26, 33, 41, 0.8) 100%
-    );
-  }
+  ${({ defaultImage }) =>
+    defaultImage &&
+    css`
+      &:after {
+        content: '';
+        position: absolute;
+        block-size: 100%;
+        inline-size: 100%;
+        inset-inline: 0;
+        inset-block-start: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(26, 33, 41, 0.4) 0%,
+          rgba(26, 33, 41, 0.8) 100%
+        );
+      }
+    `}
 `
 
 const CoverContent = styled.div`
