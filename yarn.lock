@@ -2658,6 +2658,13 @@
     "@reach/utils" "0.17.0"
     tslib "^2.3.0"
 
+"@reach/auto-id@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.18.0.tgz#4b97085cd1cf1360a9bedc6e9c78e97824014f0d"
+  integrity sha512-XwY1IwhM7mkHZFghhjiqjQ6dstbOdpbFLdggeke75u8/8icT8uEHLbovFUgzKjy9qPvYwZIB87rLiR8WdtOXCg==
+  dependencies:
+    "@reach/utils" "0.18.0"
+
 "@reach/descendants@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.17.0.tgz#3fb087125a67870acd4dee1528449ed546829b67"
@@ -2706,6 +2713,11 @@
   resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
   integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
 
+"@reach/polymorphic@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/polymorphic/-/polymorphic-0.18.0.tgz#2fe42007a774e06cdbc8e13e0d46f2dc30f2f1ed"
+  integrity sha512-N9iAjdMbE//6rryZZxAPLRorzDcGBnluf7YQij6XDLiMtfCj1noa7KyLpEc/5XCIB/EwhX3zCluFAwloBKdblA==
+
 "@reach/popover@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@reach/popover/-/popover-0.17.0.tgz#feda6961f37d17b8738d2d52af6bfc5c4584464f"
@@ -2726,6 +2738,13 @@
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
+"@reach/portal@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.18.0.tgz#dd466f5110689d14a0e7491b3aa8a449e8cefb40"
+  integrity sha512-TImozRapd576ofRk30Le2L3lRTFXF1p47B182wnp5eMTdZa74JX138BtNGEPJFOyrMaVmguVF8SSwZ6a0fon1Q==
+  dependencies:
+    "@reach/utils" "0.18.0"
+
 "@reach/rect@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.17.0.tgz#804f0cfb211e0beb81632c64d4532ec9d1d73c48"
@@ -2736,6 +2755,14 @@
     prop-types "^15.7.2"
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
+
+"@reach/rect@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.18.0.tgz#d1dc45adc92f80cc54b64498e19de909ced40722"
+  integrity sha512-Xk8urN4NLn3F70da/DtByMow83qO6DF6vOxpLjuDBqud+kjKgxAU9vZMBSZJyH37+F8mZinRnHyXtlLn5njQOg==
+  dependencies:
+    "@reach/observe-rect" "1.2.0"
+    "@reach/utils" "0.18.0"
 
 "@reach/tabs@^0.17.0":
   version "0.17.0"
@@ -2748,19 +2775,17 @@
     prop-types "^15.7.2"
     tslib "^2.3.0"
 
-"@reach/tooltip@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@reach/tooltip/-/tooltip-0.17.0.tgz#044b43de248a05b18641b4220310983cb54675a2"
-  integrity sha512-HP8Blordzqb/Cxg+jnhGmWQfKgypamcYLBPlcx6jconyV5iLJ5m93qipr1giK7MqKT2wlsKWy44ZcOrJ+Wrf8w==
+"@reach/tooltip@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/tooltip/-/tooltip-0.18.0.tgz#6d416e77a82543af9a57d122962f9c0294fc2a5f"
+  integrity sha512-yugoTmTjB3qoMk/nUvcnw99MqpyE2TQMOXE29qnQhSqHriRwQhfftjXlTAGTSzsUJmbyms3A/1gQW0X61kjFZw==
   dependencies:
-    "@reach/auto-id" "0.17.0"
-    "@reach/portal" "0.17.0"
-    "@reach/rect" "0.17.0"
-    "@reach/utils" "0.17.0"
-    "@reach/visually-hidden" "0.17.0"
-    prop-types "^15.7.2"
-    tiny-warning "^1.0.3"
-    tslib "^2.3.0"
+    "@reach/auto-id" "0.18.0"
+    "@reach/polymorphic" "0.18.0"
+    "@reach/portal" "0.18.0"
+    "@reach/rect" "0.18.0"
+    "@reach/utils" "0.18.0"
+    "@reach/visually-hidden" "0.18.0"
 
 "@reach/utils@0.17.0":
   version "0.17.0"
@@ -2770,13 +2795,17 @@
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
 
-"@reach/visually-hidden@0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.17.0.tgz#033adba10b5ec419649da8d6bd8e46db06d4c3a1"
-  integrity sha512-T6xF3Nv8vVnjVkGU6cm0+kWtvliLqPAo8PcZ+WxkKacZsaHTjaZb4v1PaCcyQHmuTNT/vtTVNOJLG0SjQOIb7g==
+"@reach/utils@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.18.0.tgz#4f3cebe093dd436eeaff633809bf0f68f4f9d2ee"
+  integrity sha512-KdVMdpTgDyK8FzdKO9SCpiibuy/kbv3pwgfXshTI6tEcQT1OOwj7BAksnzGC0rPz0UholwC+AgkqEl3EJX3M1A==
+
+"@reach/visually-hidden@0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@reach/visually-hidden/-/visually-hidden-0.18.0.tgz#17923c08acc5946624c2836b2b09d359b3aa8c27"
+  integrity sha512-NsJ3oeHJtPc6UOeV6MHMuzQ5sl1ouKhW85i3C0S7VM+klxVlYScBZ2J4UVnWB50A2c+evdVpCnld2YeuyYYwBw==
   dependencies:
-    prop-types "^15.7.2"
-    tslib "^2.3.0"
+    "@reach/polymorphic" "0.18.0"
 
 "@rollup/plugin-babel@^6.0.2":
   version "6.0.2"
