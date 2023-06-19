@@ -3,7 +3,7 @@ import { color, device, fontSize, fontWeight, lineHeight } from '../../theme'
 
 export const H1 = styled.h1`
   font-weight: ${fontWeight.bold};
-  font-size: ${fontSize[28]};
+  font-size: ${fontSize[32]};
   line-height: ${lineHeight.title};
 
   @media ${device.tablet} {
