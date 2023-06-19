@@ -5,6 +5,7 @@ export const H1 = styled.h1`
   font-weight: ${fontWeight.bold};
   font-size: ${fontSize[32]};
   line-height: ${lineHeight.title};
+  text-wrap: balance;
 
   @media ${device.tablet} {
     font-size: ${fontSize[56]};
@@ -16,6 +17,7 @@ export const H2 = styled.h2`
   font-weight: ${fontWeight.bold};
   font-size: ${fontSize[24]};
   line-height: ${lineHeight.title};
+  text-wrap: balance;
 
   @media ${device.tablet} {
     font-size: ${fontSize[32]};
