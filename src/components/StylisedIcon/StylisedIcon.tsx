@@ -19,12 +19,10 @@ interface IconBackgroundProps {
 }
 
 const IconBackground = styled.div<IconBackgroundProps>`
-  background-color: var(
-    --_stylisedIconBackgroundColor,
-    ${color.elevatedBackground}
-  );
+  color: var(--_stylisedIconColor, ${color.foregroundMuted});
+  border: 1px solid currentColor;
+  opacity: 0.25;
   border-radius: 50%;
-  opacity: 0.6;
   padding: ${space[16]};
   inline-size: var(--_stylisedIconBackgroundSize, ${space[64]});
   block-size: var(--_stylisedIconBackgroundSize, ${space[64]});
@@ -37,9 +35,15 @@ const IconBackground = styled.div<IconBackgroundProps>`
     block-size: var(--_stylisedIconIconSize, ${space[24]});
     max-inline-size: var(--_stylisedIconIconSize, ${space[24]});
     max-block-size: var(--_stylisedIconIconSize, ${space[24]});
+  }
 
-    svg {
-      color: var(--_stylisedIconIconColor, ${color.foregroundMuted});
+  @supports (background-color: color-mix(in srgb, currentColor, transparent)) {
+    border: none;
+    opacity: 1;
+    background-color: color-mix(in srgb, currentColor, transparent 88%);
+
+    > span {
+      opacity: 0.5;
     }
   }
 
@@ -63,8 +67,7 @@ const IconBackground = styled.div<IconBackgroundProps>`
   ${({ variant }) =>
     variant === 'light' &&
     css`
-      --_stylisedIconBackgroundColor: ${color.lightElevatedBackground};
-      --_stylisedIconIconColor: ${color.darkForegroundMuted};
+      --_stylisedIconColor: ${color.lightForeground};
     `}
 `
 
