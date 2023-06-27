@@ -6,6 +6,7 @@ import { css } from '@emotion/react'
 export enum StylisedIconVariant {
   default = 'default',
   light = 'light',
+  success = 'success',
 }
 
 export enum StylisedIconSize {
@@ -68,6 +69,12 @@ const IconBackground = styled.div<IconBackgroundProps>`
     variant === 'light' &&
     css`
       --_stylisedIconColor: ${color.lightForeground};
+    `}
+
+  ${({ variant }) =>
+    variant === 'success' &&
+    css`
+      --_stylisedIconColor: ${color.success};
     `}
 `
 
