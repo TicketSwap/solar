@@ -5,6 +5,7 @@ import { color, device, fontWeight, radius, space } from '../../theme'
 import { H3 } from '../Heading'
 import { Text } from '../Text'
 import { StylisedIcon } from '../StylisedIcon'
+import { StylisedIconVariant } from '../StylisedIcon/StylisedIcon'
 
 const Container = styled.div`
   display: flex;
@@ -45,12 +46,19 @@ interface Props {
   subtitle?: string
   action?: ReactElement
   icon: ReactElement
+  variant?: keyof typeof StylisedIconVariant
 }
 
-export const Prompt = ({ title, subtitle, action, icon }: Props) => {
+export const Prompt = ({
+  title,
+  subtitle,
+  action,
+  icon,
+  variant = StylisedIconVariant.default,
+}: Props) => {
   return (
     <Container>
-      <StylisedIcon icon={icon} />
+      <StylisedIcon variant={variant} icon={icon} />
 
       <TextContent>
         <Title>{title}</Title>

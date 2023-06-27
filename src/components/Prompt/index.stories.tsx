@@ -1,6 +1,6 @@
 import React from 'react'
 import { Prompt } from './Prompt'
-import { Event } from '../../icons'
+import { CheckmarkRounded, Event } from '../../icons'
 import { Button } from '../Button'
 
 export const Default = () => (
@@ -13,6 +13,15 @@ export const Default = () => (
         Add event
       </Button>
     }
+  />
+)
+
+export const Success = () => (
+  <Prompt
+    variant="success"
+    icon={<CheckmarkRounded />}
+    title="Success"
+    subtitle="Your event has been added to Adele's calendar"
   />
 )
 
