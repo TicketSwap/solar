@@ -1,9 +1,13 @@
 import React from 'react'
 import { StylisedIcon } from '.'
-import { Event, Tag } from '../../icons'
+import { CheckmarkRounded, Event, Tag } from '../../icons'
 import { Cover } from '../CoverV2'
 
 export const Default = () => <StylisedIcon icon={<Event />} />
+
+export const Success = () => (
+  <StylisedIcon variant="success" icon={<CheckmarkRounded />} />
+)
 
 export const Large = () => <StylisedIcon size="large" icon={<Event />} />
 
