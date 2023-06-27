@@ -11,13 +11,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: ${space[32]};
+  padding: var(--_promptPadding, ${space[32]});
   border-radius: ${radius.lg};
   text-align: center;
   gap: ${space[16]};
 
   @media ${device.tablet} {
-    padding: ${space[48]};
+    padding: var(--_promptPadding, ${space[48]});
   }
 `
 
