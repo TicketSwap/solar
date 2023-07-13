@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import React, { forwardRef, InputHTMLAttributes, Ref } from 'react'
-import { color, space, transition } from '../..'
+import { color, opacity, space, transition } from '../..'
 import { Checkmark } from '../../icons'
+import { transparentize } from '../../utils/colors'
 
 const Container = styled.span`
   position: relative;
@@ -46,8 +47,7 @@ const StyledInput = styled.input`
 
   &:focus,
   &:active {
-    outline: 0;
-    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
+    outline: ${space[4]} solid ${transparentize(color.action, opacity.statusFocusColor)};
   }
 `
 

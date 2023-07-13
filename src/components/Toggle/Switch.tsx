@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Spinner } from '../Spinner'
-import { space, color } from '../../theme'
+import { space, color, opacity } from '../../theme'
+import { transparentize } from '../../utils/colors'
 
 export interface SwitchProps {
   on: boolean
@@ -76,7 +77,7 @@ const Button = styled.button<ButtonProps>`
     inset: -1px;
     background-color: transparent;
     border-radius: ${space[32]};
-    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
+    outline: ${space[4]} solid ${transparentize(color.action, opacity.statusFocusColor)};
     pointer-events: none;
   }
 `

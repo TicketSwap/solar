@@ -21,6 +21,7 @@ import { BaseButton } from '../BaseButton'
 import { Button } from '../Button'
 import { FilesIllustration } from './FilesIllustration'
 import { ArrowUpRounded } from '../../icons'
+import { transparentize } from '../../utils/colors'
 
 interface DropOverlayProps {
   isDragging: boolean
@@ -114,7 +115,7 @@ const DropArea = styled.div<DropAreaStyles>`
     border-width: 2px;
     border-style: dashed;
     border-color: ${({ variant }) =>
-      variant === DropzoneVariant.light ? color.actionFocus : color.action};
+      variant === DropzoneVariant.light ? transparentize(color.action, .5) : color.action};
   }
 `
 

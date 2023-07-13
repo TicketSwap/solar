@@ -11,8 +11,6 @@ export const color = {
   action: 'var(--action)',
   actionBackground: 'var(--actionBackground)',
   onAction: 'var(--onAction)',
-  actionFocus: 'var(--actionFocus)',
-  actionBackgroundAlpha12: 'var(--actionBackgroundAlpha12)',
   success: 'var(--success)',
   successBackground: 'var(--successBackground)',
   onSuccess: 'var(--onSuccess)',
@@ -52,6 +50,11 @@ export const color = {
   darkForeground: 'var(--darkForeground)',
   darkForegroundMuted: 'var(--darkForegroundMuted)',
   overlay: 'var(--overlay)',
+} as const
+
+export const opacity = {
+  statusBackgroundColor: .1,
+  statusFocusColor: .5
 } as const
 
 export const fontStack = `'Proxima Nova', -apple-system, BlinkMacSystemFont,

@@ -10,7 +10,9 @@ import {
   fontWeight,
   device,
   lineHeight,
+  opacity,
 } from '../../theme'
+import { transparentize } from '../../utils/colors'
 
 export enum CardVerticalAlign {
   top = 'top',
@@ -80,8 +82,7 @@ const Container = styled.div<StyledCardProps>`
   }
 
   &:focus {
-    box-shadow: 0 0 0 ${space[4]} ${color.actionFocus};
-    outline: 0;
+    outline: ${space[4]} solid ${transparentize(color.action, opacity.statusFocusColor)};
   }
 `
 
