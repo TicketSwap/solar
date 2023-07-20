@@ -30,11 +30,9 @@ const CoverContainer = styled.div<CoverContainerProps>`
   ${props =>
     props.fullHeight &&
     css`
-      @media ${device.tablet} {
-        min-block-size: 100vh;
-        display: flex;
-        align-items: flex-end;
-      }
+      min-block-size: 100vh;
+      display: flex;
+      align-items: flex-end;
     `}
 `
 
