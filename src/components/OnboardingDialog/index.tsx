@@ -92,7 +92,7 @@ const Backdrop = styled.div<BackdropProps>`
       : 0};
   transition: opacity ${transition};
 
-  [data-theme='dark'] & {
+  @media (prefers-color-scheme: dark) {
     background-color: #1a212999;
   }
 `

@@ -28,7 +28,7 @@ export const SkeletonPulse = styled.span`
   animation-fill-mode: both;
   animation-name: ${pulse};
 
-  [data-theme='dark'] & {
+  @media (prefers-color-scheme: dark) {
     background-image: linear-gradient(
       -90deg,
       rgba(255, 255, 255, 0.07) 0%,

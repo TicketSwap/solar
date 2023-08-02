@@ -245,7 +245,7 @@ export const InputMenu = styled.div<React.HTMLAttributes<HTMLDivElement>>`
   overflow: hidden;
   z-index: 1;
 
-  [data-theme='dark'] & {
+  @media (prefers-color-scheme: dark) {
     border: 1px solid ${color.stroke};
   }
 `

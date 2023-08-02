@@ -39,7 +39,7 @@ const Container = styled.div<CoverProps>`
     css`
       background-color: ${color.darkElevatedBackground};
 
-      [data-theme='dark'] & {
+      @media (prefers-color-scheme: dark) {
         background-color: ${color.darkBackground};
       }
     `}

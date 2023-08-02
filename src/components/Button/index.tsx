@@ -180,7 +180,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: ${color.failureBackground};
       color: ${color.failure};
 
-      [data-theme='dark'] & {
+      @media (prefers-color-scheme: dark) {
         background-image: unset;
       }
 
@@ -228,7 +228,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: ${color.background};
       color: ${color.action};
 
-      [data-theme='dark'] & {
+      @media (prefers-color-scheme: dark) {
         background-image: unset;
       }
     `};
@@ -250,7 +250,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-color: ${color.foreground};
       color: ${color.background};
 
-      [data-theme='dark'] & {
+      @media (prefers-color-scheme: dark) {
         &:focus::after {
           box-shadow: 0 0 0 ${space[4]} #ffffff52;
         }
