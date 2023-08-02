@@ -22,7 +22,7 @@ const CoverContainer = styled.div<CoverContainerProps>`
   overflow: hidden;
   background-color: var(--_coverBackgroundColor, ${color.darkBackground});
 
-  [data-theme='dark'] & {
+  @media (prefers-color-scheme: dark) {
     border-top: 1px solid ${color.strokeStrong};
     border-bottom: 1px solid ${color.strokeStrong};
   }

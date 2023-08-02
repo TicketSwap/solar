@@ -141,85 +141,85 @@ export const globalStyles = css`
       rgba(0, 19, 25, 0.042) 86.1%, rgba(0, 19, 25, 0.021) 91%,
       rgba(0, 19, 25, 0.008) 95.2%, rgba(0, 19, 25, 0.002) 98.2%,
       rgba(0, 19, 25, 0) 100%;
-  }
 
-  [data-theme='dark'] {
-    // Brand
-    --brand: var(--earth400);
-    --onBrand: var(--nova);
+    @media (prefers-color-scheme: dark) {
+      // Brand
+      --brand: var(--earth400);
+      --onBrand: var(--nova);
 
-    // Foreground
-    --foreground: var(--nova);
-    --foregroundMuted: var(--stardust500);
-    --foregroundSubtle: var(--stardust600);
+      // Foreground
+      --foreground: var(--nova);
+      --foregroundMuted: var(--stardust500);
+      --foregroundSubtle: var(--stardust600);
 
-    // Background
-    --background: var(--stardust900);
-    --elevatedBackground: var(--space);
+      // Background
+      --background: var(--stardust900);
+      --elevatedBackground: var(--space);
 
-    // Action
-    --action: var(--earth400);
-    --actionBackground: var(--earth800);
-    --onAction: var(--nova);
+      // Action
+      --action: var(--earth400);
+      --actionBackground: var(--earth800);
+      --onAction: var(--nova);
 
-    // Success
-    --success: var(--titan400);
-    --successBackground: var(--titan800);
-    --onSuccess: var(--nova);
+      // Success
+      --success: var(--titan400);
+      --successBackground: var(--titan800);
+      --onSuccess: var(--nova);
 
-    // Warning
-    --warning: var(--sun400);
-    --warningBackground: var(--sun800);
-    --onWarning: var(--nova);
+      // Warning
+      --warning: var(--sun400);
+      --warningBackground: var(--sun800);
+      --onWarning: var(--nova);
 
-    // Failure
-    --failure: var(--mars400);
-    --failureBackground: var(--mars800);
-    --onFailure: var(--nova);
+      // Failure
+      --failure: var(--mars400);
+      --failureBackground: var(--mars800);
+      --onFailure: var(--nova);
 
-    // Info
-    --info: var(--earth400);
-    --infoBackground: var(--earth800);
-    --onInfo: var(--nova);
+      // Info
+      --info: var(--earth400);
+      --infoBackground: var(--earth800);
+      --onInfo: var(--nova);
 
-    // Inactive
-    --inactive: var(--stardust600);
-    --inactiveBackground: var(--stardust800);
-    --onInactive: var(--stardust300);
+      // Inactive
+      --inactive: var(--stardust600);
+      --inactiveBackground: var(--stardust800);
+      --onInactive: var(--stardust300);
 
-    // Misc
-    --accent: var(--mars400);
-    --stroke: var(--stardust800);
-    --strokeStrong: var(--stardust700);
-    --shadow: #00000073;
-    --invertedForeground: var(--stardust900);
-    --invertedBackground: var(--nova);
+      // Misc
+      --accent: var(--mars400);
+      --stroke: var(--stardust800);
+      --strokeStrong: var(--stardust700);
+      --shadow: #00000073;
+      --invertedForeground: var(--stardust900);
+      --invertedBackground: var(--nova);
 
-    // Palette
-    --earth: var(--earth400);
-    --titan: var(--titan400);
-    --sun: var(--sun400);
-    --mars: var(--mars400);
+      // Palette
+      --earth: var(--earth400);
+      --titan: var(--titan400);
+      --sun: var(--sun400);
+      --mars: var(--mars400);
 
-    // Theme independent
-    --lightBackground: var(--nova);
-    --lightElevatedBackground: var(--stardust100);
-    --lightForeground: var(--nova);
-    --lightForegroundMuted: #ffffffcc;
-    --darkBackground: var(--stardust900);
-    --darkElevatedBackground: var(--space);
-    --darkForeground: var(--stardust900);
-    --darkForegroundMuted: #1a2129cc;
+      // Theme independent
+      --lightBackground: var(--nova);
+      --lightElevatedBackground: var(--stardust100);
+      --lightForeground: var(--nova);
+      --lightForegroundMuted: #ffffffcc;
+      --darkBackground: var(--stardust900);
+      --darkElevatedBackground: var(--space);
+      --darkForeground: var(--stardust900);
+      --darkForegroundMuted: #1a2129cc;
 
-    // Gradients
-    --linearGradientDark: rgba(26, 33, 41, 0.6) 0%, rgba(26, 33, 41, 0) 100%;
-    --linearGradientCover: rgba(26, 33, 41, 1) 0%, rgba(26, 33, 41, 0.738) 19%,
-      rgba(26, 33, 41, 0.541) 34%, rgba(26, 33, 41, 0.382) 47%,
-      rgba(26, 33, 41, 0.278) 56.5%, rgba(26, 33, 41, 0.194) 65%,
-      rgba(26, 33, 41, 0.126) 73%, rgba(26, 33, 41, 0.075) 80.2%,
-      rgba(26, 33, 41, 0.042) 86.1%, rgba(26, 33, 41, 0.021) 91%,
-      rgba(26, 33, 41, 0.008) 95.2%, rgba(26, 33, 41, 0.002) 98.2%,
-      rgba(26, 33, 41, 0) 100%;
+      // Gradients
+      --linearGradientDark: rgba(26, 33, 41, 0.6) 0%, rgba(26, 33, 41, 0) 100%;
+      --linearGradientCover: rgba(26, 33, 41, 1) 0%, rgba(26, 33, 41, 0.738) 19%,
+        rgba(26, 33, 41, 0.541) 34%, rgba(26, 33, 41, 0.382) 47%,
+        rgba(26, 33, 41, 0.278) 56.5%, rgba(26, 33, 41, 0.194) 65%,
+        rgba(26, 33, 41, 0.126) 73%, rgba(26, 33, 41, 0.075) 80.2%,
+        rgba(26, 33, 41, 0.042) 86.1%, rgba(26, 33, 41, 0.021) 91%,
+        rgba(26, 33, 41, 0.008) 95.2%, rgba(26, 33, 41, 0.002) 98.2%,
+        rgba(26, 33, 41, 0) 100%;
+    }
   }
 
   ::selection {
