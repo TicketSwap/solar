@@ -28,6 +28,20 @@ function Basic() {
   )
 }
 
+function BasicWithLongDisplayLength() {
+  const { notify } = useToast()
+
+  return (
+    <Button
+      onClick={() =>
+        notify(() => <Toast displayLength="long">Notification</Toast>)
+      }
+    >
+      Show toast
+    </Button>
+  )
+}
+
 function WithAdornment() {
   const { notify } = useToast()
 
@@ -195,6 +209,9 @@ const WithDialog = () => {
 }
 
 export const BasicToast = () => <Basic />
+export const BasicToastWithLongDisplayLength = () => (
+  <BasicWithLongDisplayLength />
+)
 export const WithAdornmentToast = () => <WithAdornment />
 export const WithInputToast = () => <WithInput />
 export const PersistentToast = () => <Persistent />
