@@ -7,6 +7,12 @@ import { css } from '@emotion/react'
 
 const duration = 400
 
+export enum ToastDisplayLength {
+  persistent = 'persistent',
+  short = 'short',
+  long = 'long',
+}
+
 const ItemListContainer = styled.ul`
   position: fixed;
   inset-inline-start: 0;
@@ -24,7 +30,7 @@ const ItemListContainer = styled.ul`
 `
 
 export interface ToastProps {
-  persist?: boolean
+  displayLength?: keyof typeof ToastDisplayLength
   leftAdornment?: ReactNode
   children: ReactNode
 }
@@ -32,7 +38,7 @@ export interface ToastProps {
 export const Toast: React.FC<ToastProps> = ({
   children,
   leftAdornment,
-  persist,
+  displayLength = ToastDisplayLength.short,
   ...props
 }) => <div {...props}>{children}</div>
 
@@ -136,7 +142,7 @@ export function withToastContext(Component: React.ComponentType) {
 interface ItemStateProps {
   key: number
   renderCallback: any
-  persist: any
+  displayLength: keyof typeof ToastDisplayLength
   leftAdornment?: ReactNode
 }
 
@@ -154,11 +160,11 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
       if (!isMounted()) return
 
       const component = renderCallback()
-      const { persist, leftAdornment } = component.props
+      const { displayLength, leftAdornment } = component.props
       const key = performance.now()
       setItems(prevItems => [
         ...prevItems,
-        { key, renderCallback, persist, leftAdornment },
+        { key, renderCallback, displayLength, leftAdornment },
       ])
     },
     [isMounted]
@@ -188,7 +194,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
               on={cancellations.indexOf(item.key) === -1}
               cancel={() => cancel(item.key)}
               remove={() => remove(item.key)}
-              persist={item.persist}
+              displayLength={item.displayLength}
               leftAdornment={item.leftAdornment}
             >
               {item.renderCallback(() => cancel(item.key))}
@@ -215,7 +221,7 @@ export interface ItemProps {
   on: boolean
   remove: () => void
   cancel: () => void
-  persist: boolean
+  displayLength: keyof typeof ToastDisplayLength
   leftAdornment?: ReactNode
   children: ReactNode
 }
@@ -224,7 +230,7 @@ function Item({
   on,
   remove,
   cancel,
-  persist,
+  displayLength,
   leftAdornment,
   children,
 }: ItemProps) {
@@ -234,9 +240,11 @@ function Item({
     in: on,
     timeout: duration,
     onEntered: () => {
-      if (!persist) {
-        timer = setTimeout(cancel, 3000)
-      }
+      if (displayLength === ToastDisplayLength.persistent) return
+
+      const delay = displayLength === ToastDisplayLength.long ? 5000 : 3000
+
+      timer = setTimeout(cancel, delay)
     },
     onExited: () => {
       timer && clearTimeout(timer)
