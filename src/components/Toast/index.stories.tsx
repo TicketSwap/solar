@@ -36,7 +36,7 @@ function WithAdornment() {
       onClick={() =>
         notify(() => (
           <Toast
-            persist
+            displayLength="persistent"
             leftAdornment={<CheckmarkRounded color={color.success} size={24} />}
           >
             Your preferences have been successfully updated
@@ -66,7 +66,7 @@ function WithInput() {
     <Button
       onClick={() =>
         notify(() => (
-          <Toast persist>
+          <Toast displayLength="persistent">
             <Select
               items={items}
               id="language"
@@ -91,7 +91,7 @@ function Persistent() {
     <Button
       onClick={() =>
         notify(remove => (
-          <Toast persist>
+          <Toast displayLength="persistent">
             <ToastContent>
               <span>Payment failed</span>
 
@@ -120,7 +120,7 @@ function PersistentWithAdornment() {
         onClick={() =>
           notify(remove => (
             <Toast
-              persist
+              displayLength="persistent"
               leftAdornment={
                 <CheckmarkRounded color={color.success} size={24} />
               }
@@ -146,7 +146,7 @@ function PersistentWithAdornment() {
         onClick={() =>
           notify(remove => (
             <Toast
-              persist
+              displayLength="persistent"
               leftAdornment={
                 <CheckmarkRounded color={color.success} size={24} />
               }
@@ -179,7 +179,9 @@ const WithDialog = () => {
             <DialogBody>
               <Button
                 onClick={() =>
-                  notify(() => <Toast persist>Notification</Toast>)
+                  notify(() => (
+                    <Toast displayLength="persistent">Notification</Toast>
+                  ))
                 }
               >
                 Show toast
