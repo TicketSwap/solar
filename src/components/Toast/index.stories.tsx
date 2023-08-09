@@ -28,14 +28,12 @@ function Basic() {
   )
 }
 
-function BasicWithLongDisplayLength() {
+function BasicWithLongDuration() {
   const { notify } = useToast()
 
   return (
     <Button
-      onClick={() =>
-        notify(() => <Toast displayLength="long">Notification</Toast>)
-      }
+      onClick={() => notify(() => <Toast duration="long">Notification</Toast>)}
     >
       Show toast
     </Button>
@@ -50,7 +48,7 @@ function WithAdornment() {
       onClick={() =>
         notify(() => (
           <Toast
-            displayLength="persistent"
+            duration="persistent"
             leftAdornment={<CheckmarkRounded color={color.success} size={24} />}
           >
             Your preferences have been successfully updated
@@ -80,7 +78,7 @@ function WithInput() {
     <Button
       onClick={() =>
         notify(() => (
-          <Toast displayLength="persistent">
+          <Toast duration="persistent">
             <Select
               items={items}
               id="language"
@@ -105,7 +103,7 @@ function Persistent() {
     <Button
       onClick={() =>
         notify(remove => (
-          <Toast displayLength="persistent">
+          <Toast duration="persistent">
             <ToastContent>
               <span>Payment failed</span>
 
@@ -134,7 +132,7 @@ function PersistentWithAdornment() {
         onClick={() =>
           notify(remove => (
             <Toast
-              displayLength="persistent"
+              duration="persistent"
               leftAdornment={
                 <CheckmarkRounded color={color.success} size={24} />
               }
@@ -160,7 +158,7 @@ function PersistentWithAdornment() {
         onClick={() =>
           notify(remove => (
             <Toast
-              displayLength="persistent"
+              duration="persistent"
               leftAdornment={
                 <CheckmarkRounded color={color.success} size={24} />
               }
@@ -194,7 +192,7 @@ const WithDialog = () => {
               <Button
                 onClick={() =>
                   notify(() => (
-                    <Toast displayLength="persistent">Notification</Toast>
+                    <Toast duration="persistent">Notification</Toast>
                   ))
                 }
               >
@@ -209,9 +207,7 @@ const WithDialog = () => {
 }
 
 export const BasicToast = () => <Basic />
-export const BasicToastWithLongDisplayLength = () => (
-  <BasicWithLongDisplayLength />
-)
+export const BasicToastWithLongDuration = () => <BasicWithLongDuration />
 export const WithAdornmentToast = () => <WithAdornment />
 export const WithInputToast = () => <WithInput />
 export const PersistentToast = () => <Persistent />
