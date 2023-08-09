@@ -180,6 +180,10 @@ const Graphic = styled.div`
   }
 `
 
+const Tag = styled.div`
+  margin-block-end: ${space[8]};
+`
+
 const MetaInfo = styled.div`
   max-width: 100%;
 
@@ -198,6 +202,7 @@ interface CoverProps {
   title: string
   subtitle?: string | ReactElement
   images?: CoverImages
+  tag?: ReactElement
   graphic?: ReactElement
   metaInfo?: ReactElement
   actions?: ReactElement
@@ -206,6 +211,7 @@ interface CoverProps {
 
 export const Cover = ({
   images,
+  tag,
   title,
   subtitle,
   graphic,
@@ -230,6 +236,8 @@ export const Cover = ({
 
       <CoverContent>
         {graphic && <Graphic>{graphic}</Graphic>}
+
+        {tag && <Tag>{tag}</Tag>}
 
         <Titles>
           <Title>{title}</Title>

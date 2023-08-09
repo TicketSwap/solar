@@ -6,6 +6,7 @@ import {
   Calendar,
   ChevronRightAlt,
   Clock,
+  Event,
   MusicalNote,
   PlusAlt,
   Tag,
@@ -35,6 +36,10 @@ const Image = styled.img`
   width: 100%;
   max-inline-size: 375px;
   object-fit: cover;
+`
+
+const TagLabel = styled.span`
+  color: ${color.lightForeground};
 `
 
 const StyledCover = styled(Cover)`
@@ -94,6 +99,28 @@ export const withImageGraphic = () => (
   <Cover
     title="Pop"
     subtitle="Discover our pop content"
+    images={{
+      desktop:
+        'https://cdn.ticketswap.com/public/202211/zwarte-cross-2023-zwarte-cross-20-july-2023-1667298561.image.jpeg',
+    }}
+    graphic={
+      <Image
+        src="https://cdn.ticketswap.com/public/202211/zwarte-cross-2023-zwarte-cross-20-july-2023-1667298561.image.jpeg"
+        alt="Pop image"
+      />
+    }
+  />
+)
+
+export const withTag = () => (
+  <Cover
+    title="Pop"
+    subtitle="Discover our pop content"
+    tag={
+      <TagLabel>
+        <Event size={20} /> Partnered events
+      </TagLabel>
+    }
     images={{
       desktop:
         'https://cdn.ticketswap.com/public/202211/zwarte-cross-2023-zwarte-cross-20-july-2023-1667298561.image.jpeg',
