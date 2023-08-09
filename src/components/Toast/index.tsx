@@ -5,9 +5,9 @@ import { space, shadow, device, radius, easing, color } from '../../theme'
 import { useTransition, TransitionState, useIsMounted } from '../../hooks'
 import { css } from '@emotion/react'
 
-const duration = 400
+const timeout = 400
 
-export enum ToastDisplayLength {
+export enum ToastDuration {
   persistent = 'persistent',
   short = 'short',
   long = 'long',
@@ -30,7 +30,7 @@ const ItemListContainer = styled.ul`
 `
 
 export interface ToastProps {
-  displayLength?: keyof typeof ToastDisplayLength
+  duration?: keyof typeof ToastDuration
   leftAdornment?: ReactNode
   children: ReactNode
 }
@@ -38,7 +38,7 @@ export interface ToastProps {
 export const Toast: React.FC<ToastProps> = ({
   children,
   leftAdornment,
-  displayLength = ToastDisplayLength.short,
+  duration = ToastDuration.short,
   ...props
 }) => <div {...props}>{children}</div>
 
@@ -88,7 +88,7 @@ const ItemContainer = styled.li<ItemContainerStyles>`
     props.state === TransitionState.ENTERED
       ? 'translate3d(0,0,0)'
       : 'translate3d(0,1rem,0)'};
-  transition-duration: ${duration}ms;
+  transition-duration: ${timeout}ms;
   transition-timing-function: ${easing.easeOutCubic};
   transition-property: opacity, transform;
 
@@ -142,7 +142,7 @@ export function withToastContext(Component: React.ComponentType) {
 interface ItemStateProps {
   key: number
   renderCallback: any
-  displayLength: keyof typeof ToastDisplayLength
+  duration: keyof typeof ToastDuration
   leftAdornment?: ReactNode
 }
 
@@ -160,11 +160,11 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
       if (!isMounted()) return
 
       const component = renderCallback()
-      const { displayLength, leftAdornment } = component.props
+      const { duration, leftAdornment } = component.props
       const key = performance.now()
       setItems(prevItems => [
         ...prevItems,
-        { key, renderCallback, displayLength, leftAdornment },
+        { key, renderCallback, duration, leftAdornment },
       ])
     },
     [isMounted]
@@ -194,7 +194,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
               on={cancellations.indexOf(item.key) === -1}
               cancel={() => cancel(item.key)}
               remove={() => remove(item.key)}
-              displayLength={item.displayLength}
+              duration={item.duration}
               leftAdornment={item.leftAdornment}
             >
               {item.renderCallback(() => cancel(item.key))}
@@ -212,7 +212,7 @@ export interface ItemListProps {
 }
 
 function ItemList({ on, children }: ItemListProps) {
-  const [, mounted] = useTransition({ in: on, timeout: duration })
+  const [, mounted] = useTransition({ in: on, timeout: timeout })
   if (!mounted) return null
   return <ItemListContainer>{children}</ItemListContainer>
 }
@@ -221,7 +221,7 @@ export interface ItemProps {
   on: boolean
   remove: () => void
   cancel: () => void
-  displayLength: keyof typeof ToastDisplayLength
+  duration: keyof typeof ToastDuration
   leftAdornment?: ReactNode
   children: ReactNode
 }
@@ -230,7 +230,7 @@ function Item({
   on,
   remove,
   cancel,
-  displayLength,
+  duration,
   leftAdornment,
   children,
 }: ItemProps) {
@@ -238,11 +238,11 @@ function Item({
   let timer: NodeJS.Timeout | null = null
   const [state, mounted] = useTransition({
     in: on,
-    timeout: duration,
+    timeout: timeout,
     onEntered: () => {
-      if (displayLength === ToastDisplayLength.persistent) return
+      if (duration === ToastDuration.persistent) return
 
-      const delay = displayLength === ToastDisplayLength.long ? 5000 : 3000
+      const delay = duration === ToastDuration.long ? 5000 : 3000
 
       timer = setTimeout(cancel, delay)
     },
