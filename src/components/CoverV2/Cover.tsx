@@ -180,8 +180,8 @@ const Graphic = styled.div`
   }
 `
 
-const Tag = styled.div`
-  margin-block-end: ${space[8]};
+const TagContent = styled.div`
+  margin-block-end: ${space[16]};
 `
 
 const MetaInfo = styled.div`
@@ -237,7 +237,7 @@ export const Cover = ({
       <CoverContent>
         {graphic && <Graphic>{graphic}</Graphic>}
 
-        {tag && <Tag>{tag}</Tag>}
+        {tag && <TagContent>{tag}</TagContent>}
 
         <Titles>
           <Title>{title}</Title>
