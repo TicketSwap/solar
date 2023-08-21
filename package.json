@@ -9,7 +9,7 @@
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "engines": {
-    "node": ">=10"
+    "node": ">=18"
   },
   "scripts": {
     "commit": "git-cz",
