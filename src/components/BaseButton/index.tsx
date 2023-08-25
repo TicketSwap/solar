@@ -39,7 +39,7 @@ const StyledButton = styled.button<ButtonProps>`
       ? color.failure
       : props.variant === ButtonVariant.warning
       ? color.warning
-      : color.info};
+      : color.action};
   font-weight: ${fontWeight.semiBold};
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 
