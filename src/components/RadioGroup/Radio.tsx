@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { forwardRef, InputHTMLAttributes, Ref } from 'react'
-import { color, space, transition } from '../..'
+import { color, space, Spinner, transition } from '../..'
 import { Checkmark } from '../../icons'
 
 const Container = styled.span`
@@ -10,7 +10,7 @@ const Container = styled.span`
   justify-items: center;
 `
 
-const Icon = styled(Checkmark)`
+const Icon = styled.span`
   grid-area: 1 / 1;
   color: ${color.background};
   pointer-events: none;
@@ -51,13 +51,17 @@ const StyledInput = styled.input`
   }
 `
 
-export type RadioProps = InputHTMLAttributes<HTMLInputElement>
+export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
+  $loading?: boolean
+}
 
 export const Radio = forwardRef(
   (props: RadioProps, ref: Ref<HTMLInputElement>) => (
     <Container>
       <StyledInput type="radio" ref={ref} {...props} />
-      <Icon size={16} />
+      <Icon>
+        {props.$loading ? <Spinner size={16} /> : <Checkmark size={16} />}
+      </Icon>
     </Container>
   )
 )
