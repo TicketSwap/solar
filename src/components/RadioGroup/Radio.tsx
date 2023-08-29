@@ -52,16 +52,14 @@ const StyledInput = styled.input`
 `
 
 export interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
-  $loading?: boolean
+  loading?: boolean
 }
 
 export const Radio = forwardRef(
-  (props: RadioProps, ref: Ref<HTMLInputElement>) => (
+  ({ loading, ...props }: RadioProps, ref: Ref<HTMLInputElement>) => (
     <Container>
       <StyledInput type="radio" ref={ref} {...props} />
-      <Icon>
-        {props.$loading ? <Spinner size={16} /> : <Checkmark size={16} />}
-      </Icon>
+      <Icon>{loading ? <Spinner size={16} /> : <Checkmark size={16} />}</Icon>
     </Container>
   )
 )
