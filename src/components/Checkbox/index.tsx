@@ -93,7 +93,7 @@ export interface CheckboxProps {
   id: string
   className?: string
   defaultOn?: boolean
-  onChange?: (event: React.ChangeEvent<HTMLElement>) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   label: string | ReactNode
   hideLabel?: boolean
   help?: string
