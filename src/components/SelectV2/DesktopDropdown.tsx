@@ -125,8 +125,8 @@ export const DesktopDropdown = ({
             resetQuery()
             event.preventDefault()
 
-            const index = options.findIndex(({ label }) =>
-              label?.toLowerCase().startsWith(query + event.key)
+            const index = options.findIndex(
+              ({ label }) => label?.toLowerCase().startsWith(query + event.key)
             )
 
             if (index !== -1) {

@@ -111,9 +111,17 @@ const Info = styled.div`
 const Link = styled.a`
   color: #00b6f0;
   text-decoration: none;
-  font-family: 'Nunito Sans', -apple-system, '.SFNSText-Regular',
-    'San Francisco', BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica,
-    Arial, sans-serif;
+  font-family:
+    'Nunito Sans',
+    -apple-system,
+    '.SFNSText-Regular',
+    'San Francisco',
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
 
   &:hover {
     color: #99a1a3;

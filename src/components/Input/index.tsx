@@ -76,7 +76,9 @@ export const fieldStyles = (props: InputProps) => css`
   border: 0;
   text-align: start;
   appearance: none;
-  transition: box-shadow ${transition}, background-color ${transition};
+  transition:
+    box-shadow ${transition},
+    background-color ${transition};
   -webkit-font-smoothing: auto;
 
   ${props.as === 'textarea' &&

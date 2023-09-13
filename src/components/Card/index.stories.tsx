@@ -56,7 +56,9 @@ export const Basic = () => (
 const Adornment = styled.div`
   display: block;
   border-radius: ${radius.sm};
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 0 2px rgba(0, 0, 0, 0.1);
   background-color: ${color.background};
   text-align: center;
   inline-size: 40px;
