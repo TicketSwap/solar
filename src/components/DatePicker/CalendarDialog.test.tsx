@@ -161,7 +161,7 @@ describe('CalendarDialog', () => {
 
         expect(
           screen.getByRole('textbox', {
-            name: /month arrowdown/i,
+            name: /month/i,
           })
         ).toHaveDisplayValue('January')
       })
@@ -170,7 +170,7 @@ describe('CalendarDialog', () => {
 
   describe('when a date is not initially provided', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-02-18T00:00:00Z'))
     })
 
@@ -196,12 +196,12 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      expect(
-        screen.getByRole('textbox', { name: /month arrowdown/i })
-      ).toHaveValue('February')
+      expect(screen.getByRole('textbox', { name: /month/i })).toHaveValue(
+        'February'
+      )
       expect(
         screen.getByRole('textbox', {
-          name: /year arrowdown/i,
+          name: /year/i,
         })
       ).toHaveValue('2020')
     })
@@ -228,9 +228,7 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      await user.click(
-        screen.getByRole('textbox', { name: /month arrowdown/i })
-      )
+      await user.click(screen.getByRole('textbox', { name: /month/i }))
 
       await dropdownIsOpen()
 
@@ -242,9 +240,9 @@ describe('CalendarDialog', () => {
 
       await screen.findByDisplayValue(/march/i)
 
-      expect(
-        screen.getByRole('textbox', { name: /month arrowdown/i })
-      ).toHaveValue('March')
+      expect(screen.getByRole('textbox', { name: /month/i })).toHaveValue(
+        'March'
+      )
     })
   })
 
@@ -269,7 +267,7 @@ describe('CalendarDialog', () => {
 
       await dialogIsOpen()
 
-      await user.click(screen.getByRole('textbox', { name: /year arrowdown/i }))
+      await user.click(screen.getByRole('textbox', { name: /year/i }))
 
       await dropdownIsOpen()
 
@@ -281,9 +279,7 @@ describe('CalendarDialog', () => {
 
       await screen.findByDisplayValue(/2023/i)
 
-      expect(
-        screen.getByRole('textbox', { name: /year arrowdown/i })
-      ).toHaveValue('2023')
+      expect(screen.getByRole('textbox', { name: /year/i })).toHaveValue('2023')
     })
   })
 
@@ -320,7 +316,7 @@ describe('CalendarDialog', () => {
 
   describe('when the timeFrame is in the future', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
     })
 
@@ -353,7 +349,7 @@ describe('CalendarDialog', () => {
 
   describe('when the timeFrame is in the past', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
     })
 
@@ -386,7 +382,7 @@ describe('CalendarDialog', () => {
 
   describe('when the timeFrame is custom', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
     })
 
@@ -425,7 +421,7 @@ describe('CalendarDialog', () => {
 
   describe('when the timeFrame is all', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
     })
 

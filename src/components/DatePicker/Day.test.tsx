@@ -95,7 +95,7 @@ describe('Day', () => {
 
   describe('when the day is today', () => {
     beforeEach(() => {
-      jest.useFakeTimers('modern')
+      jest.useFakeTimers()
       jest.setSystemTime(Date.parse('2020-11-18T00:00:00Z'))
     })
 
