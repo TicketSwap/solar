@@ -41,7 +41,7 @@ describe('Select', () => {
       )
 
       expect(
-        screen.queryByRole('textbox', { name: /language arrowdown/i })
+        screen.queryByRole('textbox', { name: /language/i })
       ).not.toBeInTheDocument()
 
       expect(
@@ -79,7 +79,7 @@ describe('Select', () => {
       ).not.toBeInTheDocument()
 
       expect(
-        screen.getByRole('textbox', { name: /language arrowdown/i })
+        screen.getByRole('textbox', { name: /language/i })
       ).toBeInTheDocument()
     })
 
