@@ -9,7 +9,7 @@ import React, {
   FC,
 } from 'react'
 import styled from '@emotion/styled'
-import computeScrollIntoView from 'compute-scroll-into-view'
+import { compute } from 'compute-scroll-into-view'
 import { color, space, lineHeight, radius, fontSize } from '../../theme'
 import {
   Input,
@@ -184,7 +184,7 @@ export const Select: FC<SelectProps> = ({
     menuNode: HTMLUListElement | null
   ) {
     if (node === null) return false
-    const actions = computeScrollIntoView(node, {
+    const actions = compute(node, {
       boundary: menuNode,
       block: 'nearest',
       scrollMode: 'if-needed',
