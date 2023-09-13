@@ -77,7 +77,8 @@ const StyledMenuList = styled<React.FC<MenuListProps>>(ReachMenuList)`
     props.state === TransitionState.EXITING
       ? 'translateY(0)'
       : `translateY(1rem)`};
-  transition: opacity ${DURATION}ms ${easing.easeInOutCubic},
+  transition:
+    opacity ${DURATION}ms ${easing.easeInOutCubic},
     transform ${DURATION}ms ${easing.easeInOutCubic};
 `
 
