@@ -9,7 +9,7 @@ import {
 
 describe('dates', () => {
   beforeAll(() => {
-    jest.useFakeTimers('modern')
+    jest.useFakeTimers()
     jest.setSystemTime(Date.parse('2020-01-01T00:00:00Z'))
   })
 
