@@ -78,6 +78,7 @@ const Container = styled.span<ContainerProps>`
       @media ${device.tablet} {
         > *:first-of-type:not(style) {
           display: flex;
+          align-items: initial;
         }
       }
     `}
