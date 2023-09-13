@@ -6,11 +6,14 @@ module.exports = {
     '../src/**/*.stories.@(ts|js|tsx)',
     '../docs/**/*.stories.@(mdx|tsx)',
   ],
+
   addons: ['@storybook/addon-essentials'],
+
   typescript: {
     check: true, // type-check stories during Storybook build
     reactDocgen: 'none',
   },
+
   webpackFinal: async config => {
     return {
       ...config,
@@ -23,5 +26,14 @@ module.exports = {
         },
       },
     }
+  },
+
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
+
+  docs: {
+    autodocs: true,
   },
 }
