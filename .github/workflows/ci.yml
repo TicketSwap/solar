@@ -20,7 +20,7 @@ jobs:
         github.event.pull_request.draft == false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: actions/cache@v3
         with:
           path: "**/node_modules"
@@ -35,7 +35,7 @@ jobs:
         github.event.pull_request.draft == false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Run commitlint
@@ -50,7 +50,7 @@ jobs:
         github.event.pull_request.draft == false
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - uses: actions/cache@v3
         with:
           path: "**/node_modules"
