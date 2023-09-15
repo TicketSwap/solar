@@ -17,7 +17,7 @@ export interface RadioPanelProps {
   options: RadioOption[]
   value: string
   name: string
-  loading: string
+  loading?: string
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
