@@ -2,7 +2,7 @@ import React, { ChangeEvent, ReactNode } from 'react'
 import { Panel, PanelBody, PanelContent } from '../Panel'
 import styled from '@emotion/styled'
 import { Radio, RadioProps } from '../RadioGroup/Radio'
-import { fontWeight, space } from '../../theme'
+import { fontWeight, radius, space } from '../../theme'
 import { Label } from '../Input'
 
 export interface RadioOption
@@ -21,6 +21,14 @@ export interface RadioPanelProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
+const StyledPanel = styled(Panel)`
+  inline-size: 100%;
+  inset-inline: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  border-radius: ${radius.lg};
+`
+
 const Wrapper = styled.span`
   label {
     display: grid;
@@ -38,7 +46,7 @@ export const RadioPanel = ({
   loading,
   onChange,
 }: RadioPanelProps) => (
-  <Panel>
+  <StyledPanel>
     {options.map(({ description = <></>, ...option }) => (
       <PanelContent key={option.id}>
         <PanelBody>
@@ -58,5 +66,5 @@ export const RadioPanel = ({
         </PanelBody>
       </PanelContent>
     ))}
-  </Panel>
+  </StyledPanel>
 )
