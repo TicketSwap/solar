@@ -170,7 +170,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       background-image: unset;
 
       &:hover {
-        background-image: unset;
+        background: color-mix(in srgb, currentColor, transparent 76%);
       }
     `};
 
@@ -179,9 +179,10 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${color.failureBackground};
       color: ${color.failure};
+      background-image: unset;
 
-      @media (prefers-color-scheme: dark) {
-        background-image: unset;
+      &:hover {
+        background: color-mix(in srgb, currentColor, transparent 76%);
       }
 
       &:focus::after {
@@ -227,9 +228,10 @@ const StyledButton = styled.button<StyledButtonProps>`
     css`
       background-color: ${color.background};
       color: ${color.action};
+      background-image: unset;
 
-      @media (prefers-color-scheme: dark) {
-        background-image: unset;
+      &:hover {
+        background: color-mix(in srgb, currentColor, transparent 84%);
       }
     `};
 
