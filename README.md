@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo is no longer maintained
+
 # Solar [![Actions Status](https://github.com/TicketSwap/solar/workflows/Continuous%20Integration/badge.svg)](https://github.com/TicketSwap/solar/actions) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Solar is set of UI components that form the foundation of TicketSwap’s design language. By utilising these building blocks we’re able to standardise the user experience across our platform.
